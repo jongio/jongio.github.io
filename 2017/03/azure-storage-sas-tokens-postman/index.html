@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Generate Azure Storage Shared Access Signature (SAS) Tokens in Postman&#39;s Pre-request Script Sandbox | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,postman" />
+    
+    <meta name="description" content="I’m working on a project that should make it much easier for developers to consume REST APIs that use SAS Tokens with Swagger and Postman. If you don’t already know, Postman is an app that allows you">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Generate Azure Storage Shared Access Signature (SAS) Tokens in Postman's Pre-request Script Sandbox">
+<meta property="og:url" content="http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’m working on a project that should make it much easier for developers to consume REST APIs that use SAS Tokens with Swagger and Postman. If you don’t already know, Postman is an app that allows you">
+<meta property="og:image" content="http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/000102.png">
+<meta property="og:updated_time" content="2017-03-13T23:44:04.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Generate Azure Storage Shared Access Signature (SAS) Tokens in Postman's Pre-request Script Sandbox">
+<meta name="twitter:description" content="I’m working on a project that should make it much easier for developers to consume REST APIs that use SAS Tokens with Swagger and Postman. If you don’t already know, Postman is an app that allows you">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/000102.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-azure-storage-sas-tokens-postman" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Generate Azure Storage Shared Access Signature (SAS) Tokens in Postman&#39;s Pre-request Script Sandbox
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2017/03/azure-storage-sas-tokens-postman/" class="article-date">
+    <time datetime="2017-03-12T20:51:23.000Z" itemprop="datePublished">2017-03-12</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’m working on a project that should make it much easier for developers to consume REST APIs that use SAS Tokens with Swagger and <a href="http://getpostman.com" target="_blank" rel="external">Postman</a>. If you don’t already know, Postman is an app that allows you to easily test REST APIs. I’m in the process of attempting to demonstrate that Postman is an amazing tool to not only test APIs, but all be a primary usage communication mechanism for REST APIs. What I think is missing from most documentation is thorough examples of exactly how to use an API…including generating all the complex authentication tokens needed to execute those APIs. Postman can fill that gap - but getting SAS tokens for Postman requests is not as straight forward as it can be.</p>
+<blockquote>
+<p>Click here to jump right to the GitHub repo <a href="http://github.com/jonbgallant/azure-sas-tokens-postman" target="_blank" rel="external">azure-sas-tokens-postman</a> that contains all you need to get started with Azure Storage SAS Tokens in Postman.</p>
+</blockquote>
+<p>I want a development team to be able to point a user of their REST API to a Postman collection file which fully describes how to use the API, with executable code samples - and SAS token generation code. I also want them to be able to do that without any dependencies on any other services.</p>
+<p>To prove this out, I’m starting with the Azure IoT Resource Provider REST APIs. The docs can be found here: <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource" target="_blank" rel="external">Azure IoT Resource Provider REST API Docs</a> and the Swagger file is here: <a href="https://github.com/Azure/azure-rest-api-specs/blob/master/arm-iothub/2016-02-03/swagger/iothub.json" target="_blank" rel="external">Azure IoT Resource Provider Swagger</a> </p>
+<p>I’m still working on fleshing everything out for that API and I will post the full example soon, but I wanted to pause and blog about how I was able to get the Azure Storage SAS Token that is used in the Azure IoT Export Devices REST API. That is an API that allows you to export your Azure IoT device metadata to a blob in an Azure Storage account. In order to do so, you have to pass the full Azure Storage Blob URI with a SAS Token QueryString in the body of the device export request. You can find the docs for it here: <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource#IotHubResource_ExportDevices" target="_blank" rel="external">Azure IoT Hub Export Devices API</a>.</p>
+<p>The API is straight-forward:<br>1. HTTP POST JSON payload to /exportDevices<br>2. API creates a job that exports Azure IoT Device Metadata to an Azure Storage blob.</p>
+<p>The format of the REST API is as follows:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+<p>The format of the JSON payload is as follows:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line"> <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://azurestorageaccount.blob.core.windows.net/container?azureStorageSasTokenQueryString"</span>,</div><div class="line"> <span class="string">"excludeKeys"</span>: <span class="string">"false"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>As you can see from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource#IotHubResource_ExportDevices" target="_blank" rel="external">Export Devices API docs</a> that JSON format is not actually documented and it doesn’t tell you that you need to provide a container and a SAS Token QueryString. Through some interweb sleuthing, I was able to find this page: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices" target="_blank" rel="external">Azure IoT Device Management in Bulk</a> - where I discovered that the exportBlobContainerUri had to have a SAS Token QueryString.</p>
+<blockquote>
+<p>Wouldn’t it be nice if there was a sample that we could run to show us everything we need to do to consume the REST API? Yes, it would, continue reading…</p>
+</blockquote>
+<p>I’m a huge fan of <strong>Postman as a REST API usage communcation mechanism</strong>, not just a REST API execution engine.</p>
+<p>I want to be able to post a URL to my Postman collection, have you run it and you see actual requests being executed with live data, accurate JSON payloads, headers, response codes…everything.</p>
+<p>The problem comes when you need to do things like generate SAS tokens to be embedded in JSON payload. At first, I wanted to code the SAS Token generation myself in the Postman Pre-request Script block, but I gave up because I couldn’t get the SAS token stringToSign just right. SAS generation is complex and the documentation is incorrect. So, then I tried using an Azure Function that my Postman collection could call to get the SAS token. But that violated my rule of no other HTTP dependencies. So, then I was back to the Pre-request Script block, but this time I had an idea to borrow the SAS token generation code from the official <a href="https://github.com/Azure/azure-storage-node" target="_blank" rel="external">Azure Storage Node SDK</a> and convert it to a one-script-file that could be copied and pasted into the Pre-request Script block. The problem with that approach is that the Postman Pre-request Script block is a sandbox that only allows certain npm packages, like lodash, crypto-js and a few others. The Azure Storage Node SDK uses a lot more than that and different packages, like underscore and crypto. You can find all of the SAS related code in the Azure Storage Node SDK here: <a href="https://github.com/Azure/azure-storage-node/tree/master/lib/common/signing" target="_blank" rel="external">Azure Storage Node SDK SAS Token Code</a>.</p>
+<p>My first step in figuring this out was to see if I could convert the Azure Storage SDK to use lodash and crypto-js so it could work with Postman. It took me a couple of hours, but I got all of the non-Postman-compatible dependencies ripped out and got it to work.</p>
+<p>The next step was making it easy for a consumer to reuse the SAS code in their own Postman projects. I refacted all of the code into a single file and pushed it out to a new GitHub repo: <a href="http://github.com/jonbgallant/azure-sas-tokens-postman" target="_blank" rel="external">azure-sas-tokens-postman</a>.</p>
+<p>The full steps for generating the Azure Storage SAS Token are in the <a href="http://github.com/jonbgallant/azure-sas-tokens-postman/" target="_blank" rel="external">GitHub readme</a>, but the gist is:</p>
+<p>1. Copy the <a href="https://github.com/jonbgallant/azure-sas-tokens-postman/blob/master/azure-storage/azure-storage-sas-postman.js" target="_blank" rel="external">azure-sas-tokens-postman/azure-storage/azure-storage-sas-postman.js</a> file to Postman Pre-request Script sandbox.<br>2. Set some environment variables: account-name, account-key, container-name.<br>3. Execute the request and use the SAS Token QueryString in subsequent requests.</p>
+<p>Here’s a complete example using the Azure IoT Export Device REST API.</p>
+<h2 id="Azure-IoT-Export-Devices-Example"><a href="#Azure-IoT-Export-Devices-Example" class="headerlink" title="Azure IoT Export Devices Example"></a>Azure IoT Export Devices Example</h2><h3 id="1-Open-Postman-and-setup-the-AAD-Token"><a href="#1-Open-Postman-and-setup-the-AAD-Token" class="headerlink" title="1. Open Postman and setup the AAD Token"></a>1. Open Postman and setup the AAD Token</h3><p>As described in this blog post: <a href="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a></p>
+<h3 id="2-Create-a-new-Postman-request-and-copy-the-following-URL-into-the-URL-textbox"><a href="#2-Create-a-new-Postman-request-and-copy-the-following-URL-into-the-URL-textbox" class="headerlink" title="2. Create a new Postman request and copy the following URL into the URL textbox"></a>2. Create a new Postman request and copy the following URL into the URL textbox</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+<p><img src="000094.png" alt=""></p>
+<h3 id="3-Copy-the-azure-storage-sas-postman-js-file-to-the-Pre-request-Script-sandbox"><a href="#3-Copy-the-azure-storage-sas-postman-js-file-to-the-Pre-request-Script-sandbox" class="headerlink" title="3. Copy the azure-storage-sas-postman.js file to the Pre-request Script sandbox."></a>3. Copy the <a href="https://github.com/jonbgallant/azure-sas-tokens-postman/blob/master/azure-storage/azure-storage-sas-postman.js" target="_blank" rel="external">azure-storage-sas-postman.js</a> file to the Pre-request Script sandbox.</h3><p><img src="000102.png" alt=""></p>
+<h3 id="4-Copy-the-following-JSON-payload-into-the-body-tab"><a href="#4-Copy-the-following-JSON-payload-into-the-body-tab" class="headerlink" title="4. Copy the following JSON payload into the body tab:"></a>4. Copy the following JSON payload into the body tab:</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://&#123;&#123;device-storage-account-name&#125;&#125;.blob.core.windows.net/devices?&#123;&#123;device-export-sas-querystring&#125;&#125;"</span>,</div><div class="line">  <span class="string">"excludeKeys"</span>: <span class="string">"false"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="000095.png" alt=""></p>
+<blockquote>
+<p>Make sure you select ‘raw’ and ‘application\json’</p>
+</blockquote>
+<p><img src="000097.png" alt=""></p>
+<h3 id="5-Create-the-following-Postman-environment-keys"><a href="#5-Create-the-following-Postman-environment-keys" class="headerlink" title="5. Create the following Postman environment keys:"></a>5. Create the following Postman environment keys:</h3><blockquote>
+<p>You will add these as new keys. Use name, key and container values from your Azure Storage account.</p>
+</blockquote>
+<p>device-storage-account-name:jongiothubdeviceexport<br>device-storage-account-key:R+Jdx5k+O7bIjCJD8zQF3/bCALFyZjqZWz/pVdtNZqn2O/+HA+0CAZGVuKz3tqh7Lw==<br>device-export-postman-env-variable-name:device-export-sas-querystring<br>device-storage-container:devices</p>
+<p><img src="000096.png" alt=""></p>
+<blockquote>
+<p>You will have these from the AAD/Postman blog post, more on that <a href="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/">here</a>.</p>
+</blockquote>
+<p>subscriptionId:f9766876-e50b-436f-9ad3-5afb7bb8cf45<br>resourceGroupName:jongrg<br>resourceName:jongiothub<br>api-version:2016-02-03<br>clientId:483d39c4-7124-47fc-b5e0-4745d0887fc5<br>clientSecret:DvtpVwsoZvKJ/+gXQk+5CGRGR7IWU2za<br>tenantId:72f988bf-86f1-41af-91ab-2d7cd011db47</p>
+<h3 id="6-Verify-that-you-have-the-‘Authorization’-and-‘Content-Type’-headers-set"><a href="#6-Verify-that-you-have-the-‘Authorization’-and-‘Content-Type’-headers-set" class="headerlink" title="6. Verify that you have the ‘Authorization’ and ‘Content-Type’ headers set."></a>6. Verify that you have the ‘Authorization’ and ‘Content-Type’ headers set.</h3><p><img src="000098.png" alt=""></p>
+<h3 id="7-Send-the-request-and-you-will-see-the-following-output"><a href="#7-Send-the-request-and-you-will-see-the-following-output" class="headerlink" title="7. Send the request and you will see the following output:"></a>7. Send the request and you will see the following output:</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"jobId"</span>: <span class="string">"07dca1d9-eee1-4776-9b9a-1a57fb97d93b"</span>,</div><div class="line">  <span class="string">"startTimeUtc"</span>: <span class="string">"Mon, 13 Mar 2017 05:27:16 GMT"</span>,</div><div class="line">  <span class="string">"type"</span>: <span class="string">"export"</span>,</div><div class="line">  <span class="string">"status"</span>: <span class="string">"enqueued"</span>,</div><div class="line">  <span class="string">"progress"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"outputBlobContainerUri"</span>: <span class="string">"https://jongiothubdeviceexport.blob.core.windows.net/devices?st=2017-03-13T04%3A50%3A20Z&amp;se=2017-03-13T05%3A50%3A20Z&amp;sp=rwd&amp;sv=2016-05-31&amp;sr=c&amp;sig=EqSy2N9YEBXowyEqBQ%2FGv1mrmOZ67%2F80dr%2BKNUvI%3D"</span>,</div><div class="line">  <span class="string">"excludeKeysInExport"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="string">"useSecondaryStorageAsSource "</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="000099.png" alt=""></p>
+<h3 id="8-Then-using-Azure-Storage-Explorer-view-your-devices-txt-file"><a href="#8-Then-using-Azure-Storage-Explorer-view-your-devices-txt-file" class="headerlink" title="8. Then, using Azure Storage Explorer, view your devices.txt file."></a>8. Then, using <a href="http://storageexplorer.com/" target="_blank" rel="external">Azure Storage Explorer</a>, view your devices.txt file.</h3><p><img src="000100.png" alt=""></p>
+<p><img src="000101.png" alt=""></p>
+<h2 id="Postman-Collection-Runner"><a href="#Postman-Collection-Runner" class="headerlink" title="Postman Collection Runner"></a>Postman Collection Runner</h2><p>I’ll blog more about this soon, but the real beauty of Postman is that it gives you the ability to execute all requests in a collection and using their Collection runner like this:</p>
+<p><img src="000103.png" alt=""></p>
+<h2 id="Newman-Postman-Collection-Runner-on-Server"><a href="#Newman-Postman-Collection-Runner-on-Server" class="headerlink" title="Newman Postman Collection Runner (on Server)"></a>Newman Postman Collection Runner (on Server)</h2><p>You can then fully automate your REST API tests with <a href="https://www.npmjs.com/package/newman" target="_blank" rel="external">newman</a> on the server.</p>
+<p>This command: </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">newman run &quot;Blog Samples.postman_collection.json&quot; -e &quot;Blog Samples.postman_environment.json&quot;</div></pre></td></tr></table></figure>
+<p>Will execute all your requests in the collection and give you a pass/fail output like this:</p>
+<p><img src="000105.png" alt=""></p>
+<p>Like I mentioned before, I’m not quite done with the Azure IoT REST in Postman project, but I will continue to blog after I reach each milestone.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/" data-id="cj4io7i8i0061pcj415hfrvgn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

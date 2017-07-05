@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Do I always have to call Dispose() on my DbContext objects? Nope | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="c#" />
+    
+    <meta name="description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs“, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Do I always have to call Dispose() on my DbContext objects? Nope">
+<meta property="og:url" content="http://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs“, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
+<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Do I always have to call Dispose() on my DbContext objects? Nope">
+<meta name="twitter:description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs“, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-do-i-have-to-call-dispose-on-dbcontext" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Do I always have to call Dispose() on my DbContext objects? Nope
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2012/10/do-i-have-to-call-dispose-on-dbcontext/" class="article-date">
+    <time datetime="2012-10-04T23:16:00.000Z" itemprop="datePublished">2012-10-04</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Like I mentioned in my post “<a href="http://blog.jongallant.com/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>“, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a href="http://romiller.com/" target="_blank" rel="external">Rowan Miller</a> and <a href="http://blogs.msdn.com/diego/" target="_blank" rel="external">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
+<p><em><strong>“Should I always call Dispose() on my DbContext objects?”  </strong></em></p>
+<p>Before I talked with the devs on the EF team my answer was always a resounding “of course!”. But it’s not true with DbContext. You don’t need to be religious about calling Dispose on your DbContext objects. Even though it does implement IDisposable, it only implements it so you can call Dispose as a safeguard in some special cases. By default DbContext automatically manages the connection for you. Read to the end to hear the full story and see what the EF devs had to say about it.</p>
+<p><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png" alt=""></p>
+<p><em>(Showing that DbContext implements IDisposable)</em></p>
+<p>I started the conversation with the EF team by proclaiming that the industry needs to stop teaching people to use DbContext objects as private members without disposing of them properly. <a href="http://romiller.com/" target="_blank" rel="external">Rowan Miller</a>‘s first response, was that yes, we do encourage it and try to make sure we dispose of all our DbContext objects anytime we have a demo or sample code. So I thought “yes, I’m right!” let me code up an example that demonstrates to my blog readers the difference calling Dispose makes to our User Connections count. So I setup perfmon to monitor User Connections and ran the sample below. I was surprised to see that the User Connection numbers were exactly the same. I didn’t matter if I called Dispose or not!<br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">bool</span> useUsing = args.Length == <span class="number">0</span> || <span class="keyword">bool</span>.Parse(args[<span class="number">0</span>]);</div><div class="line">            Call(useUsing);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Call</span>(<span class="params"><span class="keyword">bool</span> useUsing</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">5000</span>; i++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span> (useUsing)</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> DbContextUsingTestEntities())</div><div class="line">                    &#123;</div><div class="line">                        CallInternal(db);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">var</span> db = <span class="keyword">new</span> DbContextUsingTestEntities();</div><div class="line">                    CallInternal(db);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CallInternal</span>(<span class="params">DbContextUsingTestEntities db</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> data = <span class="keyword">from</span> d <span class="keyword">in</span> db.Data <span class="keyword">select</span> d;</div><div class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> datum <span class="keyword">in</span> data)</div><div class="line">            &#123;</div><div class="line">                Console.WriteLine(<span class="keyword">string</span>.Concat(datum.Id, <span class="string">":"</span>, datum.Name));</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>So I pinged Rowan again with my code snippet to see if they had any other code samples that accurately demonstrated the effect on User Connections. In the meantime I was watching the MVC4 PluralSight course and saw Scott Allen use a DbContext object without calling Dispose. I thought, man I totally respect Scott Allen and if he’s not calling Dispose then something must be wrong with my thinking, so I sent this along to Rowan as well.</p>
+<p><a href="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/clip_image002.jpg"><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/clip_image002_thumb.jpg" alt="clip_image002" title="clip_image002"></a></p>
+<p>Rowan forwarded my mail to <a href="http://blogs.msdn.com/diego/" target="_blank" rel="external">Diego Vega</a> (the Senior SDE Lead on EF) and here is his response</p>
+<blockquote>
+<p>Hello Jon, </p>
+<p></p><p>The default behavior of DbContext is that the underlying connection is automatically opened any time is needed and closed when it is no longer needed. E.g. when you execute a query and iterate over query results using “foreach”, the call to IEnumerable&lt;T&gt;.GetEnumerator() will cause the connection to be opened, and when later there are no more results available, “foreach” will take care of calling Dispose on the enumerator, which will close the connection. In a similar way, a call to DbContext.SaveChanges() will open the connection before sending changes to the database and will close it before returning. </p>
+<p></p><p>Given this default behavior, in many real-world cases it is harmless to leave the context without disposing it and just rely on garbage collection. </p>
+<p></p><p>That said, there are two main reason our sample code tends to always use “using” or dispose the context in some other way: </p>
+<p></p><p>1. The default automatic open/close behavior is relatively easy to override: you can assume control of when the connection is opened and closed by manually opening the connection. Once you start doing this in some part of your code, then forgetting to dipose the context becomes harmful, because you might be leaking open connections. </p>
+<p></p><p>2. DbContext implements IDiposable following the recommended pattern, which includes exposing a virtual protected Dispose method that derived types can override if for example the need to aggregate other unmanaged resources into the lifetime of the context. </p>
+<p></p><p>  </p><p><em>By the way, with DbContext the pattern to open the connection manually and override the automatic open/close behavior is a bit awkward:</em> </p>
+<p></p><p><em>((IObjectContextAdapter)dbContext).ObjectContext.Connection.Open()</em> </p>
+<p></p><p><em>But we have a bug to make this easier as it used to be with ObjectContext before, e.g.:</em> </p>
+<p></p><p><em>                dbContext.Database.Connection.Open()</em> </p>
+<p></p><p>Hope this helps, </p>
+<p></p><p>Diego</p>
+</blockquote>
+<p>So there you have it. DbContext manages the underlying connection for you. You can call Dispose, but in most common scenarios you don’t need to. I’m old school, so I still call Dispose, but it’s great knowing for sure that you don’t have to.</p>
+<p>Hope this helps those who were curious about why you don’t see people calling Dispose or using the using statement all the time. Maybe it is out of laziness, but at least EF has them covered.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/" data-id="cj4io7id500btpcj498u81e6v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

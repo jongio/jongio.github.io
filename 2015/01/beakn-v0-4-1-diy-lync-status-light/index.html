@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="iot" />
+    
+    <meta name="description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
+<meta property="og:type" content="article">
+<meta property="og:title" content="beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box">
+<meta property="og:url" content="http://blog.jongallant.com/2015/01/beakn-v0-4-1-diy-lync-status-light/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/23994ddf1868_10F1E/image_thumb.png">
+<meta property="og:updated_time" content="2016-12-29T03:35:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box">
+<meta name="twitter:description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/23994ddf1868_10F1E/image_thumb.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/IoT/">IoT</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-beakn-v0-4-1-diy-lync-status-light" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2015/01/beakn-v0-4-1-diy-lync-status-light/" class="article-date">
+    <time datetime="2015-01-21T19:18:00.000Z" itemprop="datePublished">2015-01-21</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Here’s a quick update to <a href="http://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light.html">beakn</a> – my Lync status light maker project – this version uses the Spark Core onboard RGB led. <a href="https://twitter.com/joeshirey" target="_blank" rel="external">Joe Shirey</a> <a href="https://twitter.com/joeshirey/status/557728242795569152" target="_blank" rel="external">tweeted</a> his version of beakn which uses the onboard led – I was super happy to see someone build a beakn that I had to share details on how he did it. (Keep in mind that this approach won’t be as bright as the LED array approached used in the previous versions – but it’s a really quick and simple build)</p>
+<p>Here’s a photo of Joe’s version:</p>
+<p>[<img src="/images/blog/23994ddf1868_10F1E/image_thumb.png" alt="image_thumb" title="image_thumb"></p>
+<p>Here’s how to build your own beakn using the onboard led.</p>
+<p>1. Buy a <a href="https://store.spark.io/" target="_blank" rel="external">Spark Core or Photon</a><br>2. Buy a <a href="http://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Daps&amp;field-keywords=4aa%20battery%20holder&amp;sprefix=4aa+b%2Caps" target="_blank" rel="external">4xAA Battery Holder</a>. Either get one like <a href="http://www.amazon.com/Parts-Express-Battery-Holder-Leads/dp/B007Q2NR1O/ref=sr_1_16?ie=UTF8&amp;qid=1421894013&amp;sr=8-16&amp;keywords=4aa+battery+holder&amp;pebp=1421894091900&amp;peasin=B007Q2NR1O" target="_blank" rel="external">this</a> with the connectors built in, or get some female jumper wires and solder to the battery holder wires to connect to the Spark.<br>3. Buy a Ping Pong Ball<br>4. Cut a hole in the top of the box. Cut off the bottom of the ping pong ball. Tape the ball to the cardboard box. See <a href="http://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light.html">v0.4 post</a> for step-by-step instructions on building the box.</p>
+<p><a href="/images/blog/23994ddf1868_10F1E/P-985_thumb1_thumb.jpg" title="P-985_thumb[1]">![P-985_thumb[1]</a>](/images/blog/23994ddf1868_10F1E/P-985_thumb1.jpg)<br>5. Setup the Spark Core via the iOS or Android app. Go to the <a href="https://www.spark.io/build" target="_blank" rel="external">Spark Core Cloud IDE</a> and copy your deviceId and access token to notepad.<br>6. Connect Battery to Spark Core. You can also add a power switch like I did in v0.4<br>7. Tape the Spark Core to the bottom of the box top.</p>
+<p><a href="/images/blog/23994ddf1868_10F1E/P-997_thumb1_thumb.jpg" title="P-997_thumb[1]">![P-997_thumb[1]</a>](/images/blog/23994ddf1868_10F1E/P-997_thumb1.jpg)<a href="/images/blog/23994ddf1868_10F1E/P-1003_thumb1_thumb.jpg" title="P-1003_thumb[1]">![P-1003_thumb[1]</a>](/images/blog/23994ddf1868_10F1E/P-1003_thumb1.jpg)<br>8. Flash the following code to the Spark via the Cloud IDE.</p>
+<script src="http://gist-it.appspot.com/github/jonbgallant/beakn-sparkcore/blob/master/firmware/examples/beakn-sparkcore-onboard-led.ino"></script>
+
+<p>9. Install the beakn Windows application. It’s an app that runs in the background and calls the Spark Core function setStatus when your Lync status changes. </p>
+<blockquote>
+<p>To install the desktop app you can:</p><p>1. Get the source, build it and run it: <a href="https://github.com/jonbgallant/beakn/tree/master/desktop" target="_blank" rel="external">https://github.com/jonbgallant/beakn/tree/master/desktop</a></p><p>2. Install via the v0.4 MSI: <a href="https://github.com/jonbgallant/beakn/releases/download/v0.4/beakn.v0.4.msi" target="_blank" rel="external">https://github.com/jonbgallant/beakn/releases/download/v0.4/beakn.v0.4.msi</a></p><p>After you install it you are going to need to modify the config to use your Spark Core keys.</p><p>1. If beakn.exe is running you’ll need to stop it.</p><p>2. Open notepad as Admin open beakn.exe.config</p><p>3. Change the Protocol setting to “SparkCore”</p><p>4. Change the AccessToken and DeviceId to the IDs you get from Spark.io</p><p>    &lt;add key=”SparkCoreAccessToken” value=””/&gt; // <a href="http://spark.io/" target="_blank" rel="external">http://spark.io</a> – click on settings in lower left<br>     &lt;add key=”SparkCoreDeviceId” value=””/&gt; // <a href="http://spark.io/" target="_blank" rel="external">http://spark.io</a> – click on cores in lower left, select your core</p><p>5. Save it.</p><p>6. Double-click on beakn.exe to restart it.</p>
+</blockquote>
+<p>Congrats! Your beakn with onboard led should now be working.</p>
+<p><a href="/images/blog/23994ddf1868_10F1E/P-1025_thumb3_thumb.jpg" title="P-1025_thumb[3]">![P-1025_thumb[3]</a>](/images/blog/23994ddf1868_10F1E/P-1025_thumb3.jpg)</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2015/01/beakn-v0-4-1-diy-lync-status-light/" data-id="cj4io7i8z006ipcj4im5sgsde" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2015/01/beakn-v0-4-1-diy-lync-status-light/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

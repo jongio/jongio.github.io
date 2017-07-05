@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to deploy Neo4j to Azure with Visual Studio 2012 - Deploy Neo4j to Azure | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,howto" />
+    
+    <meta name="description" content="UPDATE 7/12/2013: This blog post series was created with Azure SDK 1.8. I spent a bit of time trying to upgrade it to Azure SDK 2.0 and ran into too many breaking changes and not enough motivation to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to deploy Neo4j to Azure with Visual Studio 2012 - Deploy Neo4j to Azure">
+<meta property="og:url" content="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-5/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="UPDATE 7/12/2013: This blog post series was created with Azure SDK 1.8. I spent a bit of time trying to upgrade it to Azure SDK 2.0 and ran into too many breaking changes and not enough motivation to">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb62_thumb.png">
+<meta property="og:updated_time" content="2016-12-29T03:57:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to deploy Neo4j to Azure with Visual Studio 2012 - Deploy Neo4j to Azure">
+<meta name="twitter:description" content="UPDATE 7/12/2013: This blog post series was created with Azure SDK 1.8. I spent a bit of time trying to upgrade it to Azure SDK 2.0 and ran into too many breaking changes and not enough motivation to">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb62_thumb.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-neo4j-azure-vs2012-part-5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to deploy Neo4j to Azure with Visual Studio 2012 - Deploy Neo4j to Azure
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2013/03/neo4j-azure-vs2012-part-5/" class="article-date">
+    <time datetime="2013-03-16T14:39:00.000Z" itemprop="datePublished">2013-03-16</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>UPDATE 7/12/2013: This blog post series was created with Azure SDK 1.8. I spent a bit of time trying to upgrade it to Azure SDK 2.0 and ran into too many breaking changes and not enough motivation to figure them all out. I recommend following the steps in this post: “<a href="http://www.opensourceazure.com/blog/2013/05/22/point-click-deployment-of-neo4j-to-windows-azure/#sthash.Khru8Ysc.dpbs" target="_blank" rel="external">Point-Click Deployment of Neo4j to Windows Azure</a>“ instead. Thanks, Jon</p>
+<p>Part 0. <a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012.html">How to deploy Neo4j to Azure using Visual Studio 2012 – Overview</a></p>
+<p>Part 1. <a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-1.html">Create Azure Account and Prepare Azure for Neo4j Deployment</a></p>
+<p>Part 2. <a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-2.html">Download the Azure SDK and Configure Azure in Visual Studio Server Explorer</a></p>
+<p>Part 3. <a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-3.html">Download and Configure the Neo4j.Azure.Server Solution</a></p>
+<p>Part 4. <a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-4.html">Upload Java and Neo4j to Azure</a></p>
+<p>Part 5. Deploy Neo4j to Azure</p>
+<p><a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-4.html">&lt;—Previous Step</a>                                       </p>
+<h2 id="Update-Port-Optional"><a href="#Update-Port-Optional" class="headerlink" title="Update Port (Optional)"></a>Update Port (Optional)</h2><p>If you want to change the port it is deployed to then double click “Neo4jServerHost”, select Endpoints and change the Neo4j endpoint value.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb62_thumb.png" alt="image_thumb62" title="image_thumb62"></p>
+<p><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb64_thumb.png" alt="image_thumb64" title="image_thumb64"> </p>
+<h2 id="Deploy-Neo4j-to-your-local-Azure-Emulator"><a href="#Deploy-Neo4j-to-your-local-Azure-Emulator" class="headerlink" title="Deploy Neo4j to your local Azure Emulator"></a>Deploy Neo4j to your local Azure Emulator</h2><p>In VS, Select Neo4j.Azure.Server and hit CTRL+F5. That will launch the local Azure Emulator deployment.</p>
+<p>Right click on the Azure Logo in your System Tray and select “Show Compute Emulator UI”<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image.png" alt=""> </p>
+<p>Navigate to the green node under Neo4jServerHost and wait for it to finish uploading and installing.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_3.png" alt=""> </p>
+<p>When it is complete you should see this message:<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_4.png" alt=""> </p>
+<p>And you’ll see a blank Java window….that’s a good thing.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_5.png" alt=""> </p>
+<h2 id="Launch-the-local-Neo4j-Web-Admin-App"><a href="#Launch-the-local-Neo4j-Web-Admin-App" class="headerlink" title="Launch the local Neo4j Web Admin App"></a>Launch the local Neo4j Web Admin App</h2><p>Open your browser and go to <a href="http://localhost:5000/webadmin" target="_blank" rel="external">http://localhost:5000/webadmin</a>. You should see this…  If you do that’s awesome. It means it works locally!<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_6.png" alt=""> </p>
+<h2 id="Deploy-Neo4j-to-Azure-Cloud-Services"><a href="#Deploy-Neo4j-to-Azure-Cloud-Services" class="headerlink" title="Deploy Neo4j to Azure Cloud Services"></a>Deploy Neo4j to Azure Cloud Services</h2><p>We have to update the connection string before deploying to the cloud.</p>
+<p>Back in Solution Explorer, Open ServiceConfiguration.cscfg<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb52_thumb.png" alt="image_thumb52" title="image_thumb52"><br>Replace UseDevelopmentStorage=true to the same “Preview connection string” you copied into Program.cs earlier.<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb54_thumb.png" alt="image_thumb54" title="image_thumb54"><br>Right click on the Neo4j.Azure.Server project and select Publish…<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb66_thumb.png" alt="image_thumb66" title="image_thumb66"><br>Select your subscription, click Next<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb68_thumb.png" alt="image_thumb68" title="image_thumb68"><br>You might get this prompt if you don’t have any Cloud Services configured. Enter the name of the service (whatever you want), select your region (should be the same as the one you created earlier, for me that is West US) and click OK.<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb70_thumb.png" alt="image_thumb70" title="image_thumb70"><br>Select the appropriate Cloud Server, select Staging Environment, Release Configuration and Default Service Configuration and click Next and then Publish.<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb72_thumb.png" alt="image_thumb72" title="image_thumb72"><br>Deployment will start…<br> <img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_thumb76_thumb.png" alt="image_thumb76" title="image_thumb76"></p>
+<p>You can monitor the deployment from within Visual Studio in the Windows Azure Activity Log or on the Azure Portal here: <a href="https://manage.windowsazure.com/#Workspaces/CloudServicesExtension/CloudService/neo4j2service/instances" title="https://manage.windowsazure.com/#Workspaces/CloudServicesExtension/CloudService/neo4j2service/instances" target="_blank" rel="external">https://manage.windowsazure.com/#Workspaces/CloudServicesExtension/CloudService/neo4j2service/instances</a> </p>
+<p>If all goes well you can hit your Neo4j webadmin endpoint to test it out. You can find the base of the URL in the Windows Azure Activity Log item for the deployment.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_7.png" alt=""> </p>
+<p>Add the port and /webadmin to the end of the url like so…<br> <a href="http://7c921141de1343db86ed5d000e031fe0.cloudapp.net:5000/webadmin/]http://7c921141de1343db86ed5d000e031fe0.cloudapp.net:5000/webadmin/" target="_blank" rel="external">http://7c921141de1343db86ed5d000e031fe0.cloudapp.net:5000/webadmin/]http://7c921141de1343db86ed5d000e031fe0.cloudapp.net:5000/webadmin/</a>) </p>
+<p>Hopefully it loads…you should see the web admin app! It’s a great thing if you do. It took me so long to get to this point, hopefully it was a breeze for you.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_8.png" alt=""> </p>
+<p>Okay, now you can deploy to Production. Just repeat the same Publish steps that you did above, but select Production instead of Staging<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_9.png" alt=""> </p>
+<p>Let VS finish publishing to Azure. When it is done you can hit your production endpoint the same way you did staging, but this time use your Cloud Service name, in my case it is neo4j2service.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_10.png" alt=""> </p>
+<p><a href="http://neo4j2service.cloudapp.net:5000/db/data" target="_blank" rel="external">http://neo4j2service.cloudapp.net:5000/db/data</a> – replace neo4j2service with whatever you called your Cloud Service and if you changed the default port, change 5000 to whatever you changed it to.</p>
+<p>If all goes well it will load up the Neo4j console and you are good to go.<br><img src="/images/blog/neo4j-azure-vs2012-part-5_5E87/image_11.png" alt=""> </p>
+<p>Congrats on getting all the way to the end of this EPIC post series!!  Hopefully you found it useful. Do LMK if you run into any issues.</p>
+<p>Jon</p>
+<p><a href="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-4.html">&lt;—Previous Step</a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-5/" data-id="cj4io7inj00p9pcj4msotkjc9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2013/03/neo4j-azure-vs2012-part-5/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>A deeper look at the Intel IvyBridge Ultrabook | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="review" />
+    
+    <meta name="description" content="I’ve spend a lot of time with Intel’s IvyBridge Ultrabook since I wrote my “First look at the Intel IvyBridge Ultrabook“ post a couple of weeks ago. Intel wanted to get a pre-production Ultrabook in t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A deeper look at the Intel IvyBridge Ultrabook">
+<meta property="og:url" content="http://blog.jongallant.com/2012/10/intel-ivybridge-ultrabook-deeper-look/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’ve spend a lot of time with Intel’s IvyBridge Ultrabook since I wrote my “First look at the Intel IvyBridge Ultrabook“ post a couple of weeks ago. Intel wanted to get a pre-production Ultrabook in t">
+<meta property="og:updated_time" content="2016-12-27T16:00:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A deeper look at the Intel IvyBridge Ultrabook">
+<meta name="twitter:description" content="I’ve spend a lot of time with Intel’s IvyBridge Ultrabook since I wrote my “First look at the Intel IvyBridge Ultrabook“ post a couple of weeks ago. Intel wanted to get a pre-production Ultrabook in t">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Reviews/">Reviews</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-intel-ivybridge-ultrabook-deeper-look" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        A deeper look at the Intel IvyBridge Ultrabook
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2012/10/intel-ivybridge-ultrabook-deeper-look/" class="article-date">
+    <time datetime="2012-10-13T08:39:00.000Z" itemprop="datePublished">2012-10-13</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/review/">review</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’ve spend a lot of time with Intel’s IvyBridge Ultrabook since I wrote my “<a href="http://blog.jongallant.com/2012/09/intel-ivybridge-ultrabook-first-look.html#.UGw-0Tw8B8E">First look at the Intel IvyBridge Ultrabook</a>“ post a couple of weeks ago. Intel wanted to get a pre-production Ultrabook in the hands of a few devs so they can dev with it and give some feedback on what development would look like when we have all those sensors at our fingertips.  </p><p>I’m somewhat new to sensor focused development, but I know that I will be considering how I can use them in every app that I build from here on out. Determining the users location, determining distance of movements, supporting touch screen are all capabilities that we can design for from now on. I’m not suggesting that we build just for the coolness factor, but if the sensors make the app easier to use or make the user more productive then I’m all for it. </p><p>Being the career web dev that I am I first thought I would have little use for those sensors and even less demand for features that require those sensors. My limited exposure to sensors was back when I was in Bing Mobile, where I added turn by turn navigation to Windows Mobile 6.x. So that’s the first application I thought of when considering what I could do with all the new Windows 8 sensors. I could see someone rewriting a turn-by-turn navigation application with full sensor support. Instead of just using GPS to find the user’s location, they could use the accelerometer, gyro meter and magnometer to build a full functional app that simulates driving through the Bing Streetside maps. Bing does support Bing “Map Apps” and all you need to build a Windows 8 app is the Windows 8 SDK and .NET 4.5. So it should work. You could also host the Bing map application inside of a Windows 8 application and control the Streetside experience using events triggered by the sensors. You can learn more about all the sensor support that is included with Windows 8 from the “<a href="http://blogs.msdn.com/b/b8/archive/2012/01/24/supporting-sensors-in-windows-8.aspx" target="_blank" rel="external">Supporting sensors in Windows 8</a>“ blog post written by Sinofsky. </p><p>Intel isn’t ever going to mass produce these Ultrabooks, they just built them as a prototype to show other manufacturers what can be done with Intel components. The biggest barrier that I see hardware manufacturers overcoming is the fact that every developer has spent a ton of time perfecting their workstation and the Ultrabook doesn’t easily fit into that space. We spend very long stretches of time at our dev machines and need something that is comfortable and not going to kill our bodies. </p><p>The number one problem is that this Ultrabook doesn’t support a docking station. You’d therefore need to connect and disconnect every time you want to dev for any length of time. My normal machine is a Lenovo W510. It’s big, it’s heavy, but it’s a great dev machine. I have a docking station at work and a docking station at home, each of them have 2 monitors, a wired connection and a ton of USB devices (hard drives, headset, digital audio interface, etc). I just undock, throw it in my bag, drive to work, grab out of my bag and re-dock. I also dock and undock all the time throughout the day, mostly just to grab a focus room to do an interview or triage or whatever. It only takes a few seconds to dock and undock and I can’t imagine connecting and reconnecting all the components it all the time.  </p><p>Something to consider when considering an Ultrabook for your development needs is the number of USB and mini-HDMI ports. Some models that I’ve seen only come with a few of each, so just make sure there’s enough to meet your needs including all your peripherals and multi-monitor configurations.  </p><p><strong>For an Ultrabook to be a real dev machine it is going to need the following:</strong> </p>
+<ul>
+<li>Docking station support with at least 8 USB 3.0 ports and multi-monitor support</li>
+<li>Network adapter for wired connections</li>
+<li><p>An amazing keyboard and trackpad. We spend so much time on those two components that it is going to be crucial they are perfected. </p><p><strong>If you get an Ultrabook without the above then you could make it work by getting the following:</strong> </p>
+</li>
+<li><p>A <a href="http://www.amazon.com/gp/product/B008BUIKD0/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B008BUIKD0&amp;linkCode=as2&amp;tag=blogjg-20" target="_blank" rel="external">EVGA UV Plus+</a> to connect an additional monitor via USB</p>
+</li>
+<li>A <a href="http://www.amazon.com/s/?_encoding=UTF8&amp;camp=1789&amp;creative=390957&amp;field-keywords=mini%20hdmi%20to%20div&amp;linkCode=ur2&amp;tag=blogjg-20&amp;url=search-alias%3Delectronics#/ref=nb_sb_noss_1?url=search-alias%3Delectronics&amp;field-keywords=mini+hdmi+to+dvi&amp;rh=n%3A172282%2Ck%3Amini+hdmi+to+dvi" target="_blank" rel="external">mini-HDMI to DVI</a> connector to connect an additional monitor via the mini-HDMI port</li>
+<li>A <a href="http://www.amazon.com/s/?_encoding=UTF8&amp;camp=1789&amp;creative=390957&amp;keywords=USB%20hubs&amp;linkCode=ur2&amp;page=1&amp;rh=n%3A172282%2Ck%3AUSB%20hubs&amp;tag=blogjg-20" target="_blank" rel="external">USB hub</a> so you can connect all your peripherals. You could also go with an external Bluetooth keyboard and mouse. But you’ll still need a USB hub if you are going to connect all your external drives, headset, etc. <p>Ultrabooks with robust sensors are going to be the norm for Windows users, especially with <a href="http://www.microsoft.com/surface/en/us/about.aspx" target="_blank" rel="external">Surface RT</a> coming out soon and the native sensor support in the new <a href="http://msdn.microsoft.com/en-us/windows/hardware/hh852363.aspx" target="_blank" rel="external">Windows 8 SDK</a>. What Intel is trying to do is combine the Ultrabook with all the sensor support and the normal development environment. That is going to be a difficult thing to sell without docking station support. Every dev I know either uses a desktop or has multiple docking stations. I know some Ultrabook manufacturers have included support for docking stations, which is what devs will gravitate towards. I would be completely sold on this Ultrabook if I could use it both as a lightweight machine that I could dev Windows 8 apps on and a pure dev machine that I could run 4 instances of Visual Studio on and snap it into my docking station. It’s fast, the touch screen is great and it’s a lot lighter than my Lenovo, but at this point I would take one heavy machine that I can get my full dev setup on over a light machine that I have to constantly connect and disconnect. </p><p>I will continue to use the Ultrabook over the next couple of months and will let you know how it fares after daily usage.  </p><p>  </p><p>Thx! </p><p>Jon </p><p>  </p><p>  </p><p><strong><em>Disclosure of Material Connection:</em></strong><em> __Intel sent me this Ultrabook and is letting me keep it so I can continue to give them feedback on it as a dev machine. I am disclosing this in accordance with the </em><a href="http://www.access.gpo.gov/nara/cfr/waisidx_03/16cfr255_03.html" target="_blank" rel="external"><em>Federal Trade Commission’s 16 CFR, Part 255: “Guides Concerning the Use of Endorsements and Testimonials in Advertising.</em></a></p></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2012/10/intel-ivybridge-ultrabook-deeper-look/" data-id="cj4io7ijd00ilpcj4amgrqjsi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2012/10/intel-ivybridge-ultrabook-deeper-look/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to run .NET on RaspberryPi with Mono | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="iot,visual studio" />
+    
+    <meta name="description" content="I’ve spent a good part of the last 15 years doing .NET development. When I joined IoT and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to run .NET on RaspberryPi with Mono">
+<meta property="og:url" content="http://blog.jongallant.com/2014/12/dotnet-raspberrypi-mono/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’ve spent a good part of the last 15 years doing .NET development. When I joined IoT and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world.">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/05a34f94e298_3E89/dotnet-raspberrypi-mono_thumb.png">
+<meta property="og:updated_time" content="2016-12-29T03:35:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to run .NET on RaspberryPi with Mono">
+<meta name="twitter:description" content="I’ve spent a good part of the last 15 years doing .NET development. When I joined IoT and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world.">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/05a34f94e298_3E89/dotnet-raspberrypi-mono_thumb.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-dotnet-raspberrypi-mono" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to run .NET on RaspberryPi with Mono
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2014/12/dotnet-raspberrypi-mono/" class="article-date">
+    <time datetime="2014-12-19T10:56:00.000Z" itemprop="datePublished">2014-12-19</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visual-studio/">visual studio</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’ve spent a good part of the last 15 years doing .NET development. When I <a href="http://blog.jongallant.com/2014/11/iot-devs-needed.html">joined IoT</a> and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world. I’m having a blast learning everything, but I can’t get over the hunch that there are a bunch of devs out there who want to be makers, but aren’t because of the disconnect in technology. I’m positive this mindset is out there: “I want to be a maker, but I don’t know Linux, I don’t know c++ and I don’t have a ton of time to learn everything”. My new passion is helping Microsoft learn about, discover and adapt to the maker movement and meet people where they are and to help Microsoft-tech developers become makers.</p>
+<p>Microsoft-tech devs have a couple of options. You could get a <a href="http://www.netduino.com/hardware/" target="_blank" rel="external">Netduino</a> or <a href="http://www.netmf.com/gadgeteer/" target="_blank" rel="external">Gadgeteer</a> - which run on the <a href="http://netmf.com/" target="_blank" rel="external">.NET Micro Framework</a>. You could get a <a href="http://windowsondevices.com" target="_blank" rel="external">Galileo</a> – which runs Windows. But did you know that you could also use .NET on RaspberryPi with <a href="http://www.mono-project.com/" target="_blank" rel="external">Mono</a>? People typically use python on RaspberryPi, but if your comfort zone is .NET then .NET on RaspberryPi with Mono is worth checking out.</p>
+<p>In this post we’ll build a standard .NET console app with Visual Studio and run it on a RaspberryPi with Mono. The only real magic is Mono, the rest is stock .NET. I don’t even need Mono on my Windows machine. I just write a Console app like I do any other Console app. Deploy it to my Pi and run it with Mono. Xamarin Studio is not required.</p>
+<p>Let’s build a simple Blinky console app (which is the Hello World for maker projects). I’ll show you how to get your RaspberryPi setup with Mono, how to write to pins and how to deploy and run your code.</p>
+<p>I’m using Visual Studio 2013, RaspberryPi model B and Windows 8.1.</p>
+<h2 id="RaspberryPi-Setup"><a href="#RaspberryPi-Setup" class="headerlink" title="RaspberryPi Setup"></a>RaspberryPi Setup</h2><h3 id="1-Setup-Linux-on-Pi"><a href="#1-Setup-Linux-on-Pi" class="headerlink" title="1. Setup Linux on Pi"></a>1. Setup Linux on Pi</h3><blockquote>
+<h4 id="Get-Occidentalis-v0-2"><a href="#Get-Occidentalis-v0-2" class="headerlink" title="Get Occidentalis v0.2"></a>Get Occidentalis v0.2</h4><ul>
+<li><a href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" target="_blank" rel="external">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></li>
+</ul>
+<h4 id="Make-Occidentalis-SD-card"><a href="#Make-Occidentalis-SD-card" class="headerlink" title="Make Occidentalis SD card"></a>Make Occidentalis SD card</h4><ul>
+<li><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" target="_blank" rel="external">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></li>
+</ul>
+<h4 id="Run-first-time-config"><a href="#Run-first-time-config" class="headerlink" title="Run first time config"></a>Run first time config</h4><ul>
+<li><a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" target="_blank" rel="external">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></li>
+</ul>
+</blockquote>
+<h3 id="2-Configure-Network"><a href="#2-Configure-Network" class="headerlink" title="2. Configure Network"></a>2. Configure Network</h3><p>Plug Ethernet Cable into Pi</p><p>Setup Samba for NetBIOS name or give it a static IP. This is so you can deploy your code to the Pi</p>
+<ul>
+<li><p>Samba route: <a href="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" title="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" target="_blank" rel="external">http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html</a> – Takes longer than static IP route, but better long term.</p>
+</li>
+<li><p>Mount as a Windows drive: <a href="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" title="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" target="_blank" rel="external">http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/</a>*   Static IP: <a href="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" title="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" target="_blank" rel="external">https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address</a></p>
+</li>
+</ul>
+<h3 id="3-Setup-Remote-Desktop-Optional"><a href="#3-Setup-Remote-Desktop-Optional" class="headerlink" title="3. Setup Remote Desktop (Optional)"></a>3. Setup Remote Desktop (Optional)</h3><p></p><p>This is so you can use your main computer’s mouse and keyboard instead of having to go back and forth between the Pi and your desktop. I’ve found this link the quickest way with xrdp</p><p><a href="http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/" title="http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/" target="_blank" rel="external">http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/</a></p>
+<h3 id="4-Setup-SFTP"><a href="#4-Setup-SFTP" class="headerlink" title="4. Setup SFTP"></a>4. Setup SFTP</h3><p></p><p>You are going to deploy your code from your Windows machine to your Pi via SFTP. Here’s how with FileZilla</p>
+<p><a href="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" title="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" target="_blank" rel="external">http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html</a></p>
+<h3 id="5-Install-Mono"><a href="#5-Install-Mono" class="headerlink" title="5. Install Mono"></a>5. Install Mono</h3><p>Run this command from RaspberryPi terminal to install mono.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">sudo apt-<span class="keyword">get</span> install mono-complete</div></pre></td></tr></table></figure></p>
+<h3 id="6-Setup-LED"><a href="#6-Setup-LED" class="headerlink" title="6. Setup LED"></a>6. Setup LED</h3><p>This is intentionally very simple because this post is about showing .NET on Pi versus what can be done with Pi.</p>
+<ul>
+<li>1x LED</li>
+<li>1x 220ohm resistor</li>
+<li>1x Breadboard</li>
+<li>2x Jumper Wires</li>
+</ul>
+<p>There are two ways to look at Pi wiring Board layout and BCM, this is great resource for making sure you are using the right pin numbers: <a href="http://pi.gadgetoid.com/pinout" title="http://pi.gadgetoid.com/pinout" target="_blank" rel="external">http://pi.gadgetoid.com/pinout</a>. We’ll use the “Board” physical layout, so the 6th pin down from the outer rail is 12.</p>
+<p>1. Place LED in breadboard</p>
+<p>2. Connect Pin 18 to LED Annode (the long lead) via jumper wire.</p>
+<p>3. Connect Ground to breadboard </p>
+<p>4. Connect resistor from Ground to LED Cathode (the short lead)</p>
+<p>[<img src="/images/blog/05a34f94e298_3E89/dotnet-raspberrypi-mono_thumb.png" alt="dotnet-raspberrypi-mono" title="dotnet-raspberrypi-mono"></p>
+<p><a href="/images/blog/05a34f94e298_3E89/P-738-3.jpg"><img src="/images/blog/05a34f94e298_3E89/P-738-3_thumb.jpg" alt="P-738-3" title="P-738-3"></a><a href="/images/blog/05a34f94e298_3E89/P-750-3.jpg"><img src="/images/blog/05a34f94e298_3E89/P-750-3_thumb.jpg" alt="P-750-3" title="P-750-3"></a></p>
+<h2 id="C-Console-App"><a href="#C-Console-App" class="headerlink" title="C# Console App"></a>C# Console App</h2><p>We are going to use the stock Visual Studio C# console app template. Go ahead and create a Console app. </p>
+<p>We are going to also use the <a href="https://www.nuget.org/packages/Raspberry.IO.GeneralPurpose" target="_blank" rel="external">Raspberry.IO.GeneralPurpose nuget package</a> to talk to the GPIO pin 18. Go ahead and add a reference to that. GPIO = General Purpose Input Output</p>
+<p>That library has a Toggle method so let’s just use it. The code is super simple. Just configure the pin, init a GpioConnection and call Toggle.</p>
+<p>This code is also on GitHub: <a href="https://github.com/jonbgallant/" title="https://github.com/jonbgallant/" target="_blank" rel="external">https://github.com/jonbgallant/</a><a href="http://github.io/jongallant/dotnet-raspberrypi-mono" target="_blank" rel="external">dotnet-raspberrypi-mono</a><br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> Raspberry.IO.GeneralPurpose;</div><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.Collections.Generic;</div><div class="line"><span class="keyword">using</span> System.Linq;</div><div class="line"><span class="keyword">using</span> System.Text;</div><div class="line"><span class="keyword">using</span> System.Threading;</div><div class="line"><span class="keyword">using</span> System.Threading.Tasks;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">dotnet_raspberrypi_mono</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">        &#123;</div><div class="line">            OutputPinConfiguration pin12 = ConnectorPin.P1Pin12.Output();</div><div class="line">            pin12.Enabled = <span class="literal">false</span>;</div><div class="line"></div><div class="line">            <span class="keyword">using</span> (GpioConnection connection = <span class="keyword">new</span> GpioConnection(pin12))</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">while</span> (!Console.KeyAvailable)</div><div class="line">                &#123;</div><div class="line">                    connection.Toggle(pin12);</div><div class="line">                    Thread.Sleep(<span class="number">250</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Build the app in Visual Studio.</p>
+<h2 id="Deploy-to-RaspberryPi"><a href="#Deploy-to-RaspberryPi" class="headerlink" title="Deploy to RaspberryPi"></a>Deploy to RaspberryPi</h2><p>If using samba w/ mapped drive, just output the code to the drive. If using FileZilla then just copy the bin/Debug folder to a folder in a directory such as /home/pi/dotnet-raspberrypi-mono</p>
+<p>It’s just an xcopy deploy.</p>
+<h2 id="Run-app-on-Pi"><a href="#Run-app-on-Pi" class="headerlink" title="Run app on Pi"></a>Run app on Pi</h2><p>Log into your Pi. Open a terminal. Navigate to the exe you just copied over and execute this command.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">sudo mono dotnet-raspberrypi-mono.exe</div></pre></td></tr></table></figure></p>
+<p>Your LED should now be blinking!</p>
+<p>I hope this quick sample gets you going with RaspberryPi and .NET – and helps you become a maker.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2014/12/dotnet-raspberrypi-mono/" data-id="cj4io7icz00bmpcj42m2yuo7w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2014/12/dotnet-raspberrypi-mono/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Building Cross-Platform Apps with HTML5 and DXTREME | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="review,dev" />
+    
+    <meta name="description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building Cross-Platform Apps with HTML5 and DXTREME">
+<meta property="og:url" content="http://blog.jongallant.com/2013/02/dxtreme-cross-platform-apps-html5/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
+<meta property="og:updated_time" content="2016-12-29T03:35:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building Cross-Platform Apps with HTML5 and DXTREME">
+<meta name="twitter:description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Reviews/">Reviews</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-dxtreme-cross-platform-apps-html5" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Building Cross-Platform Apps with HTML5 and DXTREME
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2013/02/dxtreme-cross-platform-apps-html5/" class="article-date">
+    <time datetime="2013-02-26T00:37:00.000Z" itemprop="datePublished">2013-02-26</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/review/">review</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  </p><p>Like so many devs out there, I was recently faced with that exact question. It turns out that there are two options for doing so 1) Build HTML5 web apps and a bunch of shell apps, one for each of the platform or 2) build native apps for each of the platforms. Since I don’t have expertise in all of the platforms or the time and money to get ramped up on all of them, I decided to look into the first option. I was also fortunate enough to hear about a new cross-platform development framework that <a href="http://www.devexpress.com/" target="_blank" rel="external">DevExpress</a> was working on called <a href="http://www.devexpress.com/Subscriptions/DXperience/dxtreme.xml" target="_blank" rel="external">DXTREME</a>. DXTREME is designed to help you build apps for Android, Apple, and Windows 8 using technologies that web devs know inside and out like HTML, JavaScript, CSS and a XAML (for Win8 only). It includes a set of libraries, controls and other assets that abstract away the complexities of building applications for all of these different platforms. It integrates directly with Visual Studio and comes with a project template that you can use to build apps.  </p><p>It is built on two different stacks: HTML5 and XAML.  </p><p>The HTML5 stack is for building Android, Apple, and Windows 8 applications using HTML, JavaScript and CSS. It allows you to create apps that share appearance and multi-touch functionality across platforms, but are also compatible with the Apple App Store, the Google Play Store and the Windows Store.  </p><p>The XAML stack is for building native Windows 8 applications for developers who are already familiar with WPF or Silverlight.  </p><p>I’m going to bring you through my experience of running through DXTREME to create a basic application. Hopefully it will give you an idea of what ramp up time would look like for someone who is using DXTREME for the first time.  </p><p>  </p>
+<h3 id="Starting-a-Multi-Channel-Application-Project"><a href="#Starting-a-Multi-Channel-Application-Project" class="headerlink" title="Starting a Multi-Channel Application Project"></a>Starting a Multi-Channel Application Project</h3><p> </p><p>For this first exercise I selected the Multi-channel Application template, which is what you’ll want to use to create cross-platform mobile apps using HTML, JavaScript and CSS.  </p><p>It turns out that you’re basically building a single-page web application (SPA) using the Model View ViewModel (MVVM) pattern. The ViewModel uses Knockout, and the whole thing is tied together with Apache Cordova, which allows you to publish to the Apple App Store or Google Play.  </p><p>After selecting the Multi-channel application template, a solution is generated with 4 projects, one for Desktop, one for Mobile, one for Win8 and one Shared:  </p><p><a href="/images/blog/dxtreme_CE2A/clip_image0014_thumb.png" title="clip_image001[4]">![clip_image001[4]</a>  </p><p>It compiles out of the box.  </p><p>========== Build: 4 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========  </p><p>With the Desktop app selected I hit F5 to see what happens. It opened this sample app.</p>
+<p> <a href="/images/blog/dxtreme_CE2A/clip_image0034_thumb.jpg" title="clip_image003[4]">![clip_image003[4]</a>](/images/blog/dxtreme_CE2A/clip_image0034.jpg)</p>
+<p>Back in Visual Studio, I select the Mobile project and hit F5 to open it in the simulator.  </p><p><a href="/images/blog/dxtreme_CE2A/clip_image0054_thumb.jpg" title="clip_image005[4]">![clip_image005[4]</a>  </p>
+<h3 id="What’s-in-the-Project"><a href="#What’s-in-the-Project" class="headerlink" title="What’s in the Project?"></a>What’s in the Project?</h3><p> </p><p>Let’s get back into Visual Studio and dig around the projects a bit. In the Desktop project you see a project reference to the Shared project. No other DLLs are required. That is good.  </p><p><a href="/images/blog/dxtreme_CE2A/clip_image0074_thumb.png" title="clip_image007[4]">![clip_image007[4]</a>  </p><p>I poke around and find a file called app.js in the root of the project. Cracking that open I find this code snippet, which uses the DXTREME framework to new up an HtmlApplication object.</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"> $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">     Application2.app = <span class="keyword">new</span> DevExpress.framework.html.HtmlApplication(&#123;</div><div class="line"></div><div class="line">       <span class="attr">ns</span>: Application2,</div><div class="line"></div><div class="line">       <span class="attr">viewPortNode</span>: <span class="built_in">document</span>.getElementById(<span class="string">"viewPort"</span>),</div><div class="line"></div><div class="line">       <span class="attr">defaultLayout</span>: Application2.config.defaultLayout,</div><div class="line"></div><div class="line">       <span class="attr">navigation</span>: Application2.config.navigation</div><div class="line"></div><div class="line">     &#125;);</div><div class="line"></div><div class="line">     Application2.app.router.register(<span class="string">":view/:id"</span>, &#123; <span class="attr">view</span>: <span class="string">"About"</span>, <span class="attr">id</span>: <span class="literal">undefined</span> &#125;);</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p></p><p>The other projects are more of the same. Common logic is shared between applications, but you can dig into the individual files to tweak or enhance platform or device-specific features. </p>
+<p></p><p>One cool thing I notice is that they implemented a custom editor for their views. It allows you to preview the views from within Visual Studio. That is nice. </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0104_thumb.png" title="clip_image010[4]">![clip_image010[4]</a> </p>
+<h3 id="Learning-DXTREME-from-the-Docs"><a href="#Learning-DXTREME-from-the-Docs" class="headerlink" title="Learning DXTREME from the Docs"></a>Learning DXTREME from the Docs</h3><p></p><p>You can find the HTML docs here: <a href="http://help.devexpress.com/HTML/#!Overview" target="_blank" rel="external">http://help.devexpress.com/HTML/#!Overview</a> and the Windows 8 docs here: <a href="http://help.devexpress.com/#XAML/CustomDocument12019" target="_blank" rel="external">http://help.devexpress.com/#XAML/CustomDocument12019</a> </p>
+<p></p><p>The HTML5 docs look good. There is a simple walk-through that looks a lot like the knockout one and it does a decent job of explaining what goes into building a DXTREME app. </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0124_thumb.jpg" title="clip_image012[4]">![clip_image012[4]</a>](/images/blog/dxtreme_CE2A/clip_image0124.jpg) </p>
+<p></p><p>DXTREME also includes several sample apps to get you started and provide examples of how the templates and DevExpress controls work together. Here’s the app that launches when you launch DXTREME. It has pointers to demos and sample apps. </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0144_thumb.jpg" title="clip_image014[4]">![clip_image014[4]</a>](/images/blog/dxtreme_CE2A/clip_image0144.jpg) </p>
+<p></p><p>Let’s take a look at the CRM HTML JS app and see what it tells us about building a DXTREME app. The CRM app includes 5 projects </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0154_thumb.png" title="clip_image015[4]">![clip_image015[4]</a> </p>
+<p></p><p>Everything looks self-explanatory. Most of this looks like the Multi-Channel project template, except this one doesn’t have a Win8 project (there is a separate demo for that) and it includes a Service project. </p>
+<p></p><p>Let’s dig into the solution. The ViewModels are in the Shared project. </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0164_thumb.png" title="clip_image016[4]">![clip_image016[4]</a> </p>
+<p></p><p>And look like this…a basic Knockout ViewModel. </p>
+<p></p><p>[ShipperViewModel.js]</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">     DXCRM.ShipperViewModel = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line"></div><div class="line">       <span class="keyword">this</span>.ShipperID = ko.observable();</div><div class="line"></div><div class="line">       <span class="keyword">this</span>.CompanyName = ko.observable();</div><div class="line"></div><div class="line">       <span class="keyword">this</span>.Phone = ko.observable();</div><div class="line"></div><div class="line">       <span class="keyword">if</span>(data)</div><div class="line"></div><div class="line">       <span class="keyword">this</span>.fromJS(data);</div><div class="line"></div><div class="line">     &#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p></p><p>And they are used in the application views: </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0174_thumb.png" title="clip_image017[4]">![clip_image017[4]</a> </p>
+<p></p><p>Here’s Shippers.js as an example. </p>
+<p></p><p>[Shippers.js]<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">DXCRM.Shippers = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> &#123;</div><div class="line">       <span class="attr">dataSource</span>: <span class="keyword">new</span> DevExpress.data.SimpleDataSource(&#123;</div><div class="line">       <span class="attr">store</span>: DXCRM.db.Shippers,</div><div class="line">       <span class="attr">map</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> <span class="keyword">new</span> DXCRM.ShipperViewModel(item);</div><div class="line">       &#125;</div><div class="line">     &#125;)&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p></p><p>Those same ViewModels are being used in the WinJS project. That is great. I can see that there is code reuse going on between the HTML based projects. </p>
+<p></p><p>The demo applications are generated automatically via the DXTREME Project Wizard using the Microsoft NorthWind sample database. Obviously you can use your own data, but this is a nice way to get data into the application as you experiment. </p>
+<p></p><p>I then focused on the separate XAML solution for the Win8 app. It looks like a standard Win8 app that uses DXTREME controls. </p>
+<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p></p><p>So now that you have the app developed you need to package it up and get it ready to ship to Microsoft, Apple and Google. </p>
+<p></p><p>So, let’s say I built the CRM app and I want to deploy it. There are two solutions, one for Win8 and one for everything else. Let’s try the deploying the latter. </p>
+<p></p><p>I go to the first project in the solution, the “Desktop” project. Right clicking on that gives me a “Build Native Package” option: </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0184_thumb.png" title="clip_image018[4]">![clip_image018[4]</a> </p>
+<p></p><p>Which launches this dialog: </p>
+<p></p><p><a href="/images/blog/dxtreme_CE2A/clip_image0204_thumb.jpg" title="clip_image020[4]">![clip_image020[4]</a>](/images/blog/dxtreme_CE2A/clip_image0204.jpg) </p>
+<p></p><p>Like most .NET devs, let’s say I’ve never shipped an Android or iOS application. I would have no idea what to do with this screen. I then wander over to the DXTREME help docs because I remember seeing something about deployment in that earlier. I find the “Native Packages” section here: <a href="http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages" target="_blank" rel="external">http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages</a> </p>
+<p></p><p>It turns out that I need to register for the Apple and Google developer programs and I can get my certificate files from them. DXTREME provides a link to the Apple and Google program and a link to XCA to generate the certificate. </p>
+<p></p><p>There’s some platform-specific knowledge you’re going to need before deploying on multiple platforms. Because Apple, Google and Microsoft have their own stores, registration requirements, certificates and so on, you’ll have to spend some time learning about that. DXTREME simplifies much of the cross-platform coding experience, but there’s not a one-click solution for deployment. </p>
+<p>  
+
+</p><h3 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts"></a>Final Thoughts</h3><p></p><p>After spending a couple of hours with DXTREME it looks like a good step in the right direction towards cross-platform application development. It’s great that I can utilize the technologies that I already know and having the DXTREME controls adaptively render based on platform is great. I spent a little time looking into what it would take to ramp up on iOS and Android development and as a .NET developer I would definitely rather take the time to ramp up on DXTREME. I look forward to digging into DXTREME a little more and to seeing where they go with it in future releases. </p>
+<p></p><p>Jon </p>
+<p></p><p><em>Disclosure of Material Connection: I received an honorarium and a DXTREME subscription for free in the hope that I would mention it on my blog. Regardless, I only recommend products or services I use personally and believe my readers will enjoy. I am disclosing this in accordance with the </em><a href="http://www.access.gpo.gov/nara/cfr/waisidx_03/16cfr255_03.html" target="_blank" rel="external"><em>Federal Trade Commission’s 16 CFR, Part 255: “Guides Concerning the Use of Endorsements and Testimonials in Advertising.</em></a><em>“</em></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2013/02/dxtreme-cross-platform-apps-html5/" data-id="cj4io7idw00chpcj40sh7jrbw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2013/02/dxtreme-cross-platform-apps-html5/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

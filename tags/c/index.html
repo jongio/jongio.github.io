@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Tag: c# | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="description" content="A tech, leadership, music and coffee blog from Seattle.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jon Gallant">
+<meta property="og:url" content="http://blog.jongallant.com/tags/c/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="A tech, leadership, music and coffee blog from Seattle.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jon Gallant">
+<meta name="twitter:description" content="A tech, leadership, music and coffee blog from Seattle.">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <i class="icon fa fa-tag"></i>Tag: <em>c#</em>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            
+
+    
+    
+        
+        
+        <section class="archives-wrap">
+             
+                <div class="archive-year-wrap">
+                    <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+                </div>
+               
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/07/fiddler-extension-tips/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/8eabae91e1ff_D2C8/image_3.png)" alt="Fiddler Extension Development Tips" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2016/07/fiddler-extension-tips/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
+            </p>
+            <p class="date"><time datetime="2016-07-27T10:52:00.000Z" itemprop="datePublished">2016-07-27</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/07/fiddler-extension-tips/">Fiddler Extension Development Tips</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            I recently created a custom Fiddler extension called PowerBIFiddler. Here are a few tricks that I learned along the way.
+Re-use Default Fiddler InspectorsFor PowerBI-Fiddler, I wanted to re-use the JS
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+        
+            </div></section>
+        
+        
+        <section class="archives-wrap">
+             
+                <div class="archive-year-wrap">
+                    <a href="/archives/2013" class="archive-year"><i class="icon fa fa-calendar-o"></i>2013</a>
+                </div>
+               
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2013/01/linkedin-api-spring-social-extension/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/a83cd1d4579a_E389/image.png)" alt="How to make authenticated calls to the LinkedIn API using the Spring.net Social Extension for LinkedIn" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2013/01/linkedin-api-spring-social-extension/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2013-01-17T16:36:00.000Z" itemprop="datePublished">2013-01-17</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2013/01/linkedin-api-spring-social-extension/">How to make authenticated calls to the LinkedIn API using the Spring.net Social Extension for LinkedIn</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+        
+            </div></section>
+        
+        
+        <section class="archives-wrap">
+             
+                <div class="archive-year-wrap">
+                    <a href="/archives/2012" class="archive-year"><i class="icon fa fa-calendar-o"></i>2012</a>
+                </div>
+               
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/10/clickatell-sms-small-business-api-part2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/How-to-integrate-Clickat.NET-application_1267/image.png)" alt="How to integrate Clickatell&#39;s SMS Small Business API into a .NET application" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/10/clickatell-sms-small-business-api-part2/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-11-01T01:47:00.000Z" itemprop="datePublished">2012-11-01</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/10/clickatell-sms-small-business-api-part2/">How to integrate Clickatell&#39;s SMS Small Business API into a .NET application</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+This is the second post in a two part series on integrating SMS functionality into an application. In the first post, “A high-level look into Clickatell’s new SMS Small Business API“, I focused on th
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/10/do-i-have-to-call-dispose-on-dbcontext/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png)" alt="Do I always have to call Dispose() on my DbContext objects? Nope" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
+            </p>
+            <p class="date"><time datetime="2012-10-04T23:16:00.000Z" itemprop="datePublished">2012-10-04</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/10/do-i-have-to-call-dispose-on-dbcontext/">Do I always have to call Dispose() on my DbContext objects? Nope</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs“, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/08/webapi-twitterizer2-jsonnet/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/5b4ba5fe39de_542C/image.png)" alt="" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/08/webapi-twitterizer2-jsonnet/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-08-16T06:22:00.000Z" itemprop="datePublished">2012-08-16</time></p>
+        </div>
+        
+        <p class="article-excerpt">
+            ProblemMicrosoft ASP.NET Web API (RTM) references Newtonsoft.Json (&gt;= 4.5.6) (AKA Json.net)
+Twitterizer 2 references Newtonsoft.Json (=4.5.5)
+You can’t have both Newtonsoft.Json (&gt;= 4.5.6) AND N
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/08/outputcache-current-date-varybycustom/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/08/outputcache-current-date-varybycustom/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-08-14T15:33:00.000Z" itemprop="datePublished">2012-08-14</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/08/outputcache-current-date-varybycustom/">How to OutputCache an object based on the current date with VaryByCustom and GetVaryByCustomString</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            I have a long running script that needs to run once a day and I’d like to store the results of that script in cache for the rest of the day so only one user (or any automated http request) will incur 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/08/mvc-listing-contents-not-routes/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/0daecff64039_A7DE/image.png)" alt="Solution to MVC app listing contents of directory instead of executing routes" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/08/mvc-listing-contents-not-routes/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+            <p class="date"><time datetime="2012-08-14T12:00:00.000Z" itemprop="datePublished">2012-08-14</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/08/mvc-listing-contents-not-routes/">Solution to MVC app listing contents of directory instead of executing routes</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            I just deployed a new MVC web app and instead of executing the routes it just listed the contents of the directory like so:
+
+There could be many reasons for this, but I figured out the reason it was h
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/08/entity-framework-manual-update/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/5c9ad7bd69d6_ABCB/image.png)" alt="How to manually update your Entity Framework model classes when they get out of sync with your database" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/08/entity-framework-manual-update/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-08-11T12:40:00.000Z" itemprop="datePublished">2012-08-11</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/08/entity-framework-manual-update/">How to manually update your Entity Framework model classes when they get out of sync with your database</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            The ADO.NET Entity Framework.aspx) is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/08/vs-mdf-file-in-use-solution/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/d06e21641104_7285/image.png)" alt="Solution to &quot;This file is in use. Enter a new name or close the file that&#39;s open in another program&quot; when trying to add new MDF connection in Visual Studio" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/08/vs-mdf-file-in-use-solution/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+            <p class="date"><time datetime="2012-08-11T08:19:00.000Z" itemprop="datePublished">2012-08-11</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/08/vs-mdf-file-in-use-solution/">Solution to &quot;This file is in use. Enter a new name or close the file that&#39;s open in another program&quot; when trying to add new MDF connection in Visual Studio</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            I needed to refresh the code generated by the EDMX model, but it wasn’t working for some reason. So I deleted the EDMX file and deleted the connection string from web.config to start from scratch. I g
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/08/entry-point-was-not-found/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image.png)" alt="Solution to &quot;Entry point was not found.&quot; in Visual Studio" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/08/entry-point-was-not-found/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+            <p class="date"><time datetime="2012-08-07T17:17:00.000Z" itemprop="datePublished">2012-08-07</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/08/entry-point-was-not-found/">Solution to &quot;Entry point was not found.&quot; in Visual Studio</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/implementation-query-source-type/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/3db7faf53f1b_5B45/image.png)" alt="[object Object]" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/implementation-query-source-type/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+            <p class="date"><time datetime="2012-07-31T06:38:00.000Z" itemprop="datePublished">2012-07-31</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/implementation-query-source-type/">[object Object]</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’
+You get this error if 
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/htmlagilitypack-set-timeout/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/htmlagilitypack-set-timeout/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-07-27T16:41:00.000Z" itemprop="datePublished">2012-07-27</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/htmlagilitypack-set-timeout/">How to set HtmlAgilityPack Timeout</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            HtmlAgilityPack is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/mvc-razor-uihint-attribute-value/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/mvc-razor-uihint-attribute-value/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-07-26T05:08:00.000Z" itemprop="datePublished">2012-07-26</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/mvc-razor-uihint-attribute-value/">How to get a UIHint attribute value from an MVC Razor view</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            The UIHint Attribute is a great way to pass metadata from a model to a view. I was looking around for a simple way to get the value of the attribute from my razor view. I could be missing something ob
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/mvc-razor-generic-list-property/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/f4404b5bad30_DE9C/image.png)" alt="How to create an MVC Razor view for a generic List property" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/mvc-razor-generic-list-property/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-07-26T04:35:00.000Z" itemprop="datePublished">2012-07-26</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/mvc-razor-generic-list-property/">How to create an MVC Razor view for a generic List property</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            You have a model that has a property of type List. You write a view and your first inclination is to create a cshtml file called List.cshtml, but that doesn’t work. There’s a trick and it has to do wi
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/unable-to-cast-object-of-type/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/Solution-to-Unable-to-cast-object-of-ty_8698/image.png)" alt="Solution to &quot;Unable to cast object of type &#39;[type1]&#39; to type &#39;[type2]&#39;.&quot; when trying to cast a List to List" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/unable-to-cast-object-of-type/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+            <p class="date"><time datetime="2012-07-24T09:47:00.000Z" itemprop="datePublished">2012-07-24</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/unable-to-cast-object-of-type/">Solution to &quot;Unable to cast object of type &#39;[type1]&#39; to type &#39;[type2]&#39;.&quot; when trying to cast a List to List</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance.
+I struggled with this for way too long,
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/type-or-namespace-name-build-error/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/Solution-to-_BEB1/image.png)" alt="[object Object]" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/type-or-namespace-name-build-error/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+            <p class="date"><time datetime="2012-07-23T13:39:00.000Z" itemprop="datePublished">2012-07-23</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/type-or-namespace-name-build-error/">[object Object]</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting.
+In my referenced project the “Target framework” was set 
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/msn-hiring-web-devs/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/msn-hiring-web-devs/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Jobs/">Jobs</a>
+            </p>
+            <p class="date"><time datetime="2012-07-18T16:23:00.000Z" itemprop="datePublished">2012-07-18</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/msn-hiring-web-devs/">MSN is hiring MVC, Razor, C#, jQuery, HTML, CSS web devs</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            I lead the Tools dev team for Bedrock, the CMS system that runs MSN.com. We are rebuilding the entire app one piece at a time in jQuery and MVC4 and need your help. We ship every other week. We do gat
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/07/bing-search-api-azure-csharp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/b02f9479d675_6082/image.png)" alt="How to call the new Azure Marketplace Bing Search API using C#" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/07/bing-search-api-azure-csharp/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-07-18T07:26:00.000Z" itemprop="datePublished">2012-07-18</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/07/bing-search-api-azure-csharp/">How to call the new Azure Marketplace Bing Search API using C#</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The Bing API to Azure Marketplace migration doc is a great resource for learning how to call the new Azure
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/06/tfs-how-to-update-read-only-fields/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/tfs-how-to-update-readonly-fields_5878/image.png)" alt="How to modify read only TFS fields with WorkItemServer.Update" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/06/tfs-how-to-update-read-only-fields/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-06-20T08:48:00.000Z" itemprop="datePublished">2012-06-20</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/06/tfs-how-to-update-read-only-fields/">How to modify read only TFS fields with WorkItemServer.Update</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Sometimes you want to update a read only system field in TFS, such as System.CreatedDate or System.ResolvedDate. There is no way to do that with TFS 2010 by using the UI or the object model because bo
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2012/01/remote-assembly-load/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png)" alt="How to load a remote assembly using Assembly.Load" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://blog.jongallant.com/2012/01/remote-assembly-load/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
+            </p>
+            <p class="date"><time datetime="2012-01-20T02:17:00.000Z" itemprop="datePublished">2012-01-20</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2012/01/remote-assembly-load/">How to load a remote assembly using Assembly.Load</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception. 
+When using LoadFrom:Assembly a1 = Assembly.LoadFrom(file);
+I got this error. Could not load
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
+
+    <nav id="page-nav">
+        <span class="pages">Page 1 of 3</span>
+        <span class="page-number current">1</span><a class="page-number" href="/tags/c/page/2/">2</a><a class="page-number" href="/tags/c/page/3/">3</a><a class="extend next" rel="next" href="/tags/c/page/2/">&raquo;</a>
+    </nav>
+
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

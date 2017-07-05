@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="nodejs" />
+    
+    <meta name="description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js">
+<meta property="og:url" content="http://blog.jongallant.com/2016/08/sphero-sprkplus-rpi-nodejs/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
+<meta property="og:image" content="https://images/blog/-na.ssl-images-amazon.com/images/blog//I/913XYU1VtjL._SX522_.jpg">
+<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js">
+<meta name="twitter:description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
+<meta name="twitter:image" content="https://images/blog/-na.ssl-images-amazon.com/images/blog//I/913XYU1VtjL._SX522_.jpg">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-sphero-sprkplus-rpi-nodejs" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2016/08/sphero-sprkplus-rpi-nodejs/" class="article-date">
+    <time datetime="2016-08-29T16:31:00.000Z" itemprop="datePublished">2016-08-29</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’m working on a demo that involves streaming <a href="http://www.sphero.com/" target="_blank" rel="external">Sphero</a> data through the <a href="https://azure.microsoft.com/en-us/suites/iot-suite/" target="_blank" rel="external">Azure IoT</a> stack. I got my <a href="http://www.sphero.com/sprk-plus" target="_blank" rel="external">Sphero SPRK+</a> last week and quickly discovered that it only has <a href="https://en.wikipedia.org/wiki/Bluetooth_low_energy" target="_blank" rel="external">Bluetooth Low Energy (BLE)</a> enabled and not regular Bluetooth. So, I couldn’t get it to connect to my Windows or OSX machines because they don’t have a BLE chipset. I suspect that Sphero will push Bluetooth support via a firmware update later this fall. Until then, you can do the following to code against your SPRK+ using a Raspberry Pi 3, which ships with BLE.</p>
+<h2 id="Raspberry-Pi-3"><a href="#Raspberry-Pi-3" class="headerlink" title="Raspberry Pi 3"></a>Raspberry Pi 3</h2><p>Get a Raspberry Pi 3 and plug it in. Monitor, keyboard, mouse, network cable.</p>
+<p><img src="https://images/blog/-na.ssl-images-amazon.com/images/blog//I/913XYU1VtjL._SX522_.jpg" alt=""></p>
+<h2 id="Sphero-SPRK"><a href="#Sphero-SPRK" class="headerlink" title="Sphero SPRK+"></a>Sphero SPRK+</h2><p>Get a Sphero SPRK+ and plug it in.</p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image.png" alt=""></p>
+<h2 id="Install-Raspbian"><a href="#Install-Raspbian" class="headerlink" title="Install Raspbian"></a>Install Raspbian</h2><p>Flash Raspbian Jessie onto a MicroSD card and boot up your RPI3. Use <a href="http://blog.jongallant.com/2016/08/azure-iot-gateway-raspberry-pi-3.html">this blog post</a> if you need help with this step.</p>
+<h2 id="Install-TightVNC"><a href="#Install-TightVNC" class="headerlink" title="Install TightVNC"></a>Install TightVNC</h2><p>This is helpful for accessing the RPI3 from your desktop. This step isn’t required if you want to control RPI3 using locally keyboard and mouse.</p>
+<p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" title="http://www.tightvnc.com/download.php" target="_blank" rel="external">http://www.tightvnc.com/download.php</a></p>
+<p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" title="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="external">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
+<p>Use the following to start VNC Server on your RPI3<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">vncserver :1</div></pre></td></tr></table></figure></p>
+<p>Use the following to get your RPI3 IP Address.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hostname -I</div></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="/images/blog/d15999e44a95_CFB4/image_3.png" alt=""></h2><p>Then use that IP when connecting from your desktop</p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_4.png" alt=""></p>
+<h2 id="Pair-the-SPRK"><a href="#Pair-the-SPRK" class="headerlink" title="Pair the SPRK+"></a>Pair the SPRK+</h2><p><img src="/images/blog/d15999e44a95_CFB4/image_5.png" alt=""></p>
+<p>It will be named SK-XXXX.</p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_6.png" alt=""></p>
+<p>You will need to click OK on your RPI3 here:</p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_7.png" alt=""></p>
+<p>You might see this…ignore it.</p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_8.png" alt=""></p>
+<h2 id="Get-SPRK-BLE-Address"><a href="#Get-SPRK-BLE-Address" class="headerlink" title="Get SPRK+ BLE Address"></a>Get SPRK+ BLE Address</h2><p>Run this in Terminal</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">bluetoothctl</div></pre></td></tr></table></figure>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_9.png" alt=""></p>
+<p>Copy the SPRK+ BLE Address. You will need it later.</p>
+<h2 id="Install-Node-js-on-RPI3"><a href="#Install-Node-js-on-RPI3" class="headerlink" title="Install Node.js on RPI3"></a>Install Node.js on RPI3</h2><p>Follow instructions in <a href="http://blog.jongallant.com/2016/08/install-nodejs-raspbian.html">this blog post</a> to get Node.js onto the RPI3</p>
+<h2 id="Install-Sphero-SDK"><a href="#Install-Sphero-SDK" class="headerlink" title="Install Sphero SDK"></a>Install Sphero SDK</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo npm install sphero</div><div class="line">sudo npm install noble</div></pre></td></tr></table></figure>
+<p>You can ignore any errors you get with the noble install</p>
+<h2 id="Create-Node-js-File"><a href="#Create-Node-js-File" class="headerlink" title="Create Node.js File"></a>Create Node.js File</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd ~</div><div class="line">mkdir sphero</div><div class="line">cd sphero</div><div class="line">touch sphero.js</div><div class="line">leafpad sphero.js</div></pre></td></tr></table></figure>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_10.png" alt=""></p>
+<h2 id="Copy-Code-to-Node-js-File"><a href="#Copy-Code-to-Node-js-File" class="headerlink" title="Copy Code to Node.js File"></a>Copy Code to Node.js File</h2><script src="https://gist.github.com/jonbgallant/0f354313489ccd7a138df3c902d00cdb.js"></script>
+
+<h2 id="Change-the-BLE-Address-to-your-SPRK-BLE-Address"><a href="#Change-the-BLE-Address-to-your-SPRK-BLE-Address" class="headerlink" title="Change the BLE Address to your SPRK+ BLE Address"></a>Change the BLE Address to your SPRK+ BLE Address</h2><p>Open the sphero.js file and change the BLE Address to your SPRK+ BLE Address</p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_11.png" alt=""></p>
+<h2 id="Run-and-Watch-with-Delight"><a href="#Run-and-Watch-with-Delight" class="headerlink" title="Run and Watch with Delight!"></a>Run and Watch with Delight!</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo node sphero.js</div></pre></td></tr></table></figure>
+<iframe width="420" height="315" src="https://www.youtube.com/embed/jrO-nhmAC_I" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2016/08/sphero-sprkplus-rpi-nodejs/" data-id="cj4io7iu400xjpcj48t4fps4p" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2016/08/sphero-sprkplus-rpi-nodejs/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

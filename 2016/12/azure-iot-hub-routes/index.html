@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Introducing Azure Iot Hub Routes - A New Feature That Allows You to Route Messages to Alternate Endpoints | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,iot,dev,azureiot" />
+    
+    <meta name="description" content="The Azure IoT team just announced Custom Endpoints and Routes feature - which allows you to route IoT Hub messages to your own Event Hub, Service Bus Queues or Service Bus Topics. You define your alte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introducing Azure Iot Hub Routes - A New Feature That Allows You to Route Messages to Alternate Endpoints">
+<meta property="og:url" content="http://blog.jongallant.com/2016/12/azure-iot-hub-routes/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="The Azure IoT team just announced Custom Endpoints and Routes feature - which allows you to route IoT Hub messages to your own Event Hub, Service Bus Queues or Service Bus Topics. You define your alte">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/a97c5045d7a3_82AA/image.png">
+<meta property="og:updated_time" content="2017-05-30T23:20:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introducing Azure Iot Hub Routes - A New Feature That Allows You to Route Messages to Alternate Endpoints">
+<meta name="twitter:description" content="The Azure IoT team just announced Custom Endpoints and Routes feature - which allows you to route IoT Hub messages to your own Event Hub, Service Bus Queues or Service Bus Topics. You define your alte">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/a97c5045d7a3_82AA/image.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Azure/">Azure</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-azure-iot-hub-routes" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Introducing Azure Iot Hub Routes - A New Feature That Allows You to Route Messages to Alternate Endpoints
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2016/12/azure-iot-hub-routes/" class="article-date">
+    <time datetime="2016-12-14T15:44:00.000Z" itemprop="datePublished">2016-12-14</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azureiot/">azureiot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>The Azure IoT team just announced Custom Endpoints and Routes feature - which allows you to route IoT Hub messages to your own Event Hub, Service Bus Queues or Service Bus Topics. You define your alternate endpoints in “Endpoints” and you define your routing logic in “Routes”.</p>
+<h2 id="Update-1-Routes-Based-on-Message-Payload"><a href="#Update-1-Routes-Based-on-Message-Payload" class="headerlink" title="Update #1: Routes Based on Message Payload"></a>Update #1: Routes Based on Message Payload</h2><p>You can now create routes based on message payload.  You can read more about it <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="external">here</a>.</p>
+<h2 id="What-are-Some-Use-Cases-for-Endpoints-and-Routes"><a href="#What-are-Some-Use-Cases-for-Endpoints-and-Routes" class="headerlink" title="What are Some Use Cases for Endpoints and Routes?"></a>What are Some Use Cases for Endpoints and Routes?</h2><p>This is very useful for customers that want to segregate messages for security or billing purposes. Imagine if you are using IoT Hub to build your own IoT SaaS product that has tenants. You will likely want to push all messages from each tenant into its own Event Hub so you can easily map Event Hub cost to a tenant. Endpoints and Routes is also a great way to integrate with other services, such as Logic Apps or Notification services or your own custom service.</p>
+<h2 id="What-Do-Endpoints-and-Routes-Do-Under-the-Covers"><a href="#What-Do-Endpoints-and-Routes-Do-Under-the-Covers" class="headerlink" title="What Do Endpoints and Routes Do Under the Covers?"></a>What Do Endpoints and Routes Do Under the Covers?</h2><p>When IoT Hub receives a message it first checks to see if there is a custom route available that matches a given rule. If there is a match it will send the message to that endpoint and not the Default Event Hub.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image.png" alt=""></p>
+<h2 id="How-do-I-Use-Endpoints-and-Routes"><a href="#How-do-I-Use-Endpoints-and-Routes" class="headerlink" title="How do I Use Endpoints and Routes?"></a>How do I Use Endpoints and Routes?</h2><p>This video will walk you through the same exercise:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FhuoXSwNiuE" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="Azure-Portal"><a href="#Azure-Portal" class="headerlink" title="Azure Portal"></a>Azure Portal</h3><p>You will now see Endpoints and Routes in your IoT Hub main screen.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_3.png" alt=""></p>
+<p>We will set both of them up starting with Endpoints.</p>
+<h3 id="Define-Your-Endpoints"><a href="#Define-Your-Endpoints" class="headerlink" title="Define Your Endpoints"></a>Define Your Endpoints</h3><p>Event Hub, Service Bus Queues and Service Bus Topics are supported today, but more will come in the future.</p>
+<p>The first thing you are going to want to do is create one of those if you don’t already have one. For this exercise, we’ll create an Event Hub.</p>
+<h4 id="1-Click-on-Endpoints"><a href="#1-Click-on-Endpoints" class="headerlink" title="1) Click on Endpoints"></a>1) Click on Endpoints</h4><p>You will see the Built-in endpoints at the top</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_4.png" alt=""></p>
+<p>And right below that you will see “Additional Endpoints” and you can have up to 10 additional endpoints.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_5.png" alt=""></p>
+<h4 id="2-Click-“Add”"><a href="#2-Click-“Add”" class="headerlink" title="2) Click “Add”"></a>2) Click “Add”</h4><p>Over in the right hand panel, you will see the Add Endpoint screen. I selected Event Hub and as you can see I don’t have an Event Hub defined in the same region as my IoT Hub.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_6.png" alt=""></p>
+<h4 id="3-Create-an-Event-Hub"><a href="#3-Create-an-Event-Hub" class="headerlink" title="3) Create an Event Hub"></a>3) Create an Event Hub</h4><p>Open a new browser window and create an Event Hub in the same region as your IoT Hub, mine is East US.</p>
+<h4 id="4-Add-Event-Hub-Endpoint"><a href="#4-Add-Event-Hub-Endpoint" class="headerlink" title="4) Add Event Hub Endpoint"></a>4) Add Event Hub Endpoint</h4><p>Go back to the IoT Hub Endpoints blade and refresh. You should now see your Event Hub. Select it and click OK.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_7.png" alt=""></p>
+<p>You will now see it listed in “Additional Endpoints”</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_8.png" alt=""></p>
+<h3 id="Define-Your-Routes-and-Rules"><a href="#Define-Your-Routes-and-Rules" class="headerlink" title="Define Your Routes and Rules"></a>Define Your Routes and Rules</h3><p>1) Click on “Routes” and you’ll see the empty rule list. You can have up to 100 rules per IoT Hub</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_9.png" alt=""></p>
+<p>2) Click “Add”</p>
+<p>Give your rule a name, select your data source, add a query and select and endpoint to send the matching message to.</p>
+<blockquote>
+<p><del>The rule works against the IoT Hub message properties. It does not inspect the payload of the message. The IoT Hub team has said message inspection is on their backlog.</del> Routes based on payload are now supported, read more <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="external">here</a>.</p>
+</blockquote>
+<p>You can find the Query String syntax docs <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#get-started-with-device-to-cloud-message-routes-query-expressions" target="_blank" rel="external">here</a> and <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#expressions-and-conditions" target="_blank" rel="external">here</a>.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_10.png" alt=""></p>
+<p>As you can see below, you can send the messages directly to the events endpoint or to the custom endpoint you created.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_11.png" alt=""></p>
+<p>3) Click OK and you will now see your Route Rule</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_12.png" alt=""></p>
+<h3 id="Test-It-Out"><a href="#Test-It-Out" class="headerlink" title="Test It Out"></a>Test It Out</h3><p>1) Download this node.js script to your machine. <a href="https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" title="https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" target="_blank" rel="external">https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend</a></p>
+<p>2) Replace line 17 with your device’s connection string. You can create devices and get their connection strings using the <a href="https://github.com/Azure/azure-iot-sdks/releases" target="_blank" rel="external">IoT Device Explorer</a></p>
+<p>3) Scroll to line 39 and change any of the properties to suit your needs.</p>
+<p>4) Run the following to install the Azure IoT Node SDK</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i azure-iot-device</div><div class="line">npm i azure-iot-device-amqp</div></pre></td></tr></table></figure>
+<p>5. Open a command prompt and run the script<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">node index.js</div></pre></td></tr></table></figure></p>
+<p>You will now see this in your command prompt</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_13.png" alt=""></p>
+<p>You will now see the messages coming through to your Event Hub. You can use the <a href="https://github.com/paolosalvatori/ServiceBusExplorer" target="_blank" rel="external">Service Bus Explorer</a> to view them. I just clone that repo and F5 from VS to run the Service Bus Explorer. </p>
+<p>Notice in the Event Custom Properties section that tenant=1234 and location=sea, which is how we configured the message properties and how we setup the Route rule.</p>
+<p><img src="/images/blog/a97c5045d7a3_82AA/image_14.png" alt=""></p>
+<p>Hope this helps you get started with the new and very useful feature.</p>
+<p>Jon</p>
+<h2 id="Related-Links"><a href="#Related-Links" class="headerlink" title="Related Links"></a>Related Links</h2><ul>
+<li>Blog Announcement: <a href="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/" title="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/" target="_blank" rel="external">https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/</a></li>
+<li>Endpoints Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints</a> &amp; <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints</a></li>
+<li>Routes Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes</a></li>
+<li>IoT Hub Query Language Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language</a> (Does not currently contain “Route rule query syntax”, but will soon)</li>
+<li>Messaging Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging</a></li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2016/12/azure-iot-hub-routes/" data-id="cj4io7i79004hpcj4x7l063b4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2016/12/azure-iot-hub-routes/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

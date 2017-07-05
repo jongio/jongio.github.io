@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="howto,dev,powerbi" />
+    
+    <meta name="description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!–In this series, we are creating a Power BI Custom Visual from an OSS d3 visualization I found">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties">
+<meta property="og:url" content="http://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!–In this series, we are creating a Power BI Custom Visual from an OSS d3 visualization I found">
+<meta property="og:image" content="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/raw/master/assets/thumbnail.png">
+<meta property="og:updated_time" content="2017-01-06T23:17:24.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties">
+<meta name="twitter:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!–In this series, we are creating a Power BI Custom Visual from an OSS d3 visualization I found">
+<meta name="twitter:image" content="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/raw/master/assets/thumbnail.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Power-BI/">Power BI</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-powerbi-custom-visual-from-existing-d3-3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2016/10/powerbi-custom-visual-from-existing-d3-3/" class="article-date">
+    <time datetime="2016-10-11T14:49:00.000Z" itemprop="datePublished">2016-10-11</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/">powerbi</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><span style="font-size: large;">UPDATE: The Liquid Fill Gauge visual is now available to download from the <a href="https://app.powerbi.com/visuals/show/PBI_CV_94E55AB3_5D45_4B62_A49D_19E2109AA028" target="_blank" rel="external">Power BI Custom Visual Gallery</a>!</span><br><span style="font-size: large;">–</span><br>In this series, we are creating a Power BI Custom Visual from an OSS d3 visualization I found on GitHub called Liquid Fill Gauge built by <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Curtis Bratton</a>. It renders a circular gauge with an internal animated wave that represents a “percent full” value.<br><img src="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/raw/master/assets/thumbnail.png" alt=""></p>
+<blockquote>
+<p><a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases" target="_blank" rel="external">Download the Liquid Fill Gauge Custom Visual </a><br><a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">View Liquid Fill Gauge Source Code</a>———————————-<br>Here are the previous posts:<br>1. <a href="http://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing</a><br>2. <a href="http://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings</a></p>
+</blockquote>
+<p>This post is about setting up <strong>custom format properties</strong> to allow the Power BI user to change the way your visual is formatted (i.e. colors, fonts, widths, etc).</p>
+<p>Here’s an example of what a custom format properties looks like:<br><img src="/images/blog/bc08eaa5957e_C044/image.png" alt=""></p>
+<h2 id="Steps-to-enable-Custom-Visual-custom-properties"><a href="#Steps-to-enable-Custom-Visual-custom-properties" class="headerlink" title="Steps to enable Custom Visual custom properties"></a>Steps to enable <em>Custom Visual</em> custom properties</h2><p>1. Define the property metadata in <strong>capabilities.json</strong><br>2. Handle the setting of property values in <strong>enumerateObjectInstances</strong> method<br>3. Get property values with <strong>objectEnumerationUtility.js</strong><br>4. Use a <strong>“settings” object</strong> as an in-memory property store that you use in your visual.</p>
+<h3 id="1-Define-the-property-metadata-in-capabilities-json"><a href="#1-Define-the-property-metadata-in-capabilities-json" class="headerlink" title="1. Define the property metadata in capabilities.json"></a>1. Define the property metadata in <strong>capabilities.json</strong></h3><p>The first thing you need to do is define your properties in your capabilities.json file. They are included in the “objects” object at the same level as dataRoles and dataViewMappings.<br><img src="/images/blog/bc08eaa5957e_C044/image_3.png" alt=""><br>See <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/blob/master/liquidFillGauge/capabilities.json" target="_blank" rel="external">this file</a> for the complete example.<br>The first child of the objects properties is the “property group”. In this example we have “text”, “circle” and “wave” groups.</p>
+<p>Each “property group” has a displayName property (that’s what will appear in the Power BI format pane) and a “properties” object.<br><img src="/images/blog/bc08eaa5957e_C044/image_4.png" alt=""><br>Each property has a displayName, description and type. (There are other properties as well, but we won’t get into that here). In the example below, you can see that a “color” is fill-&gt;solid-&gt;color:true. I’ve also included a numeric and bool sample<br><img src="/images/blog/bc08eaa5957e_C044/image_5.png" alt=""></p>
+<blockquote>
+<p>ISSUE: Do not use “textSize” as a property key as is appears to be a reserved key by Power BI and it will always render the “text size” slider that defaults to a min value of 8. See <a href="https://github.com/Microsoft/PowerBI-visuals-core/issues/484" target="_blank" rel="external">this issue</a> for updates on that.</p>
+</blockquote>
+<p>Here’s how that renders:<br><img src="/images/blog/bc08eaa5957e_C044/image_6.png" alt=""><br>The UI elements are dataType driven, so you automatically get the color selector when you set the type to fill-&gt;solid-&gt;color…same goes for bool, with the on/off switch.</p>
+<h3 id="2-Handle-the-setting-of-property-values-in-enumerateObjectInstances-method"><a href="#2-Handle-the-setting-of-property-values-in-enumerateObjectInstances-method" class="headerlink" title="2. Handle the setting of property values in enumerateObjectInstances method"></a>2. Handle the setting of property values in <strong>enumerateObjectInstances</strong> method</h3><p>Power BI uses the enumerateObjectInstances method to map and store properties to an internal “metadata.objects” property. The enumerateObjectInstances method is called for every “property group” that you define in capabilities.json. You can see below that I have a case statement that matches the “key” from my “objects” in my capabilities.json file called “text”. </p>
+<p>This is where Power BI stores the values, so you want to assign each property to whatever value you have stored. I used a “settings” object to store these values.</p>
+<blockquote>
+<p>My visual needed the color in hex form, but when I save it to the Power BI metadata, it needs to be a “Fill” object, which is why I wrap it in {solid:{color: [value]}}.</p>
+</blockquote>
+<p><img src="/images/blog/bc08eaa5957e_C044/image_7.png" alt=""><br>See <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/blob/master/liquidFillGauge/src/visual.ts" target="_blank" rel="external">visual.ts</a> for complete example of this method.</p>
+<h3 id="3-Get-property-values-with-objectEnumerationUtility-js"><a href="#3-Get-property-values-with-objectEnumerationUtility-js" class="headerlink" title="3. Get property values with objectEnumerationUtility.js"></a>3. Get property values with <strong>objectEnumerationUtility.js</strong></h3><p>Now that you have the values stored in metadata, you’ll want to get the values out and use them in your visual. Power BI provides a sample .js file for doing so. I took their version and added a maxValue optional parameter:<br><img src="/images/blog/bc08eaa5957e_C044/image_8.png" alt=""><br>Add <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/blob/master/liquidFillGauge/src/objectEnumerationUtility.ts" target="_blank" rel="external">this file</a> to your /src folder and update your tsconfig.json<br><img src="/images/blog/bc08eaa5957e_C044/image_9.png" alt=""></p>
+<h3 id="4-Use-a-“settings”-object-as-an-in-memory-property-store-that-you-use-in-your-visual"><a href="#4-Use-a-“settings”-object-as-an-in-memory-property-store-that-you-use-in-your-visual" class="headerlink" title="4. Use a “settings” object as an in-memory property store that you use in your visual."></a>4. Use a <strong>“settings” object</strong> as an in-memory property store that you use in your visual.</h3><p>Power BI recommends using TypeScript definitions and the visualTransform method for doing what I do here, but I didn’t want to take on anymore overhead than necessary and I wanted to try to do the least amount of code to do the conversion from an existing visual to a Power BI one.<br>So, I just reused the settings object that was included with the original liquidFillGauge and am using the “getValue” method from objectEnumerationUtility.js.</p>
+<blockquote>
+<p>ISSUE: Power BI does not correctly update the options.type property when a “Style” object is changed. I’ll be able to remove some of the compare code when they fix <a href="https://github.com/Microsoft/PowerBI-visuals-core/issues/485" target="_blank" rel="external">this bug</a>.</p>
+</blockquote>
+<p>I created a “getSettings” method that populates the settings object. You just pass in the metadata.object property, propertyGroup key, property key, default value and in some cases a maxValue. Take notice of how I deal with “color” based properties. I use the “Fill” type, wrap the default value in a json object and then call solid.color to get the value into the settings object. You won’t need to do it this way if you are creating from scratch and use the recommended ViewModel approach. I wanted to use the settings object as is and it uses hex, so that’s why I have to do that conversion.</p>
+<script src="https://gist.github.com/jonbgallant/1d0bb8283729e459d69204e53706a563.js"></script>
+
+<p>I went through and added properties to change just about every aspect of the liquid fill gauge….including being able to set difference colors for the wave, text and circle.<br><img src="/images/blog/bc08eaa5957e_C044/image_11.png" alt=""><br>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3/" data-id="cj4io7iqi00tlpcj4ndckr5zl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

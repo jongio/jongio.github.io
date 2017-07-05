@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Programmatically Bulk Update TFS Query Columns and Sort Order to Match Another Query Using the TFS SDK | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="I just created 10 queries with all the same columns and sort order. I then realized I missed a column and wanted to add another sort column to all those queries. I made the changes to one of the other">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Programmatically Bulk Update TFS Query Columns and Sort Order to Match Another Query Using the TFS SDK">
+<meta property="og:url" content="http://blog.jongallant.com/2012/01/tfs-query-column-bulk-update/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I just created 10 queries with all the same columns and sort order. I then realized I missed a column and wanted to add another sort column to all those queries. I made the changes to one of the other">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/4403.image_5F00_thumb_5F00_117FE0D7.png">
+<meta property="og:updated_time" content="2016-12-29T03:37:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Programmatically Bulk Update TFS Query Columns and Sort Order to Match Another Query Using the TFS SDK">
+<meta name="twitter:description" content="I just created 10 queries with all the same columns and sort order. I then realized I missed a column and wanted to add another sort column to all those queries. I made the changes to one of the other">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/4403.image_5F00_thumb_5F00_117FE0D7.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-tfs-query-column-bulk-update" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Programmatically Bulk Update TFS Query Columns and Sort Order to Match Another Query Using the TFS SDK
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2012/01/tfs-query-column-bulk-update/" class="article-date">
+    <time datetime="2012-01-17T18:16:00.000Z" itemprop="datePublished">2012-01-17</time>
+</a>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I just created 10 queries with all the same columns and sort order. I then realized I missed a column and wanted to add another sort column to all those queries. I made the changes to one of the other 10 queries and thought there must be a way to do this without having to click a thousand times using the TFS UI.</p>
+<p>The TFS SDK lets you update queries, so I just grab the select columns and the sort columns from the source query (the first one I modified) and then replaced those fields the destination queries. It’s pretty simple, but worth a quick post and will hopefully save you thousands of clicks as well.</p>
+<blockquote>
+<p>You probably need to be a project admin for this to work. Ask your TFS admin to give you those perms.</p>
+</blockquote>
+<p>1. Open a new console app.<br>2. Reference Microsoft.TeamFoundation.Client and Microsoft.TeamFoundation.WorkItemTracking.Client<br><img src="/images/blog/4403.image_5F00_thumb_5F00_117FE0D7.png" alt=""><br>3. Add the using statements:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.Client;</div><div class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;</div></pre></td></tr></table></figure>
+<p>4. Add this code to your main method</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"[url to your tfs server]"</span>));</div><div class="line"><span class="keyword">var</span> store = tfs.GetService();</div><div class="line"><span class="keyword">var</span> project = store.Projects[<span class="string">"[your project name"</span>];</div><div class="line">  <span class="keyword">var</span> sourceGuid = <span class="keyword">new</span> Guid(<span class="string">"14c1bcab-0bcb-40ee-80c1-e23d1dc41a15"</span>); List destinationGuids = <span class="keyword">new</span> List &#123;</div><div class="line">   <span class="keyword">new</span> Guid(<span class="string">"183dba3a-06fd-4b3f-bf60-9dec3fe8cfcd"</span>), <span class="keyword">new</span> Guid(<span class="string">"c0a612b9-9e61-4f78-98ab-07c70702b9d6"</span>), <span class="keyword">new</span> Guid(<span class="string">"3925276a-389c-4052-b1c9-6efedc2ee3a0"</span>), <span class="keyword">new</span> Guid(<span class="string">"599f08f7-a3c0-4b88-a7fe-66f1b9e88e54"</span>), <span class="keyword">new</span> Guid(<span class="string">"80d10f84-b14d-429c-82df-c6c0113fd043"</span>), <span class="keyword">new</span> Guid(<span class="string">"5cc37d79-70c2-426d-bfe4-8544c805ae21"</span>), <span class="keyword">new</span> Guid(<span class="string">"d147d553-0aac-4ebb-8ee7-d281cb5fc7c0"</span>), <span class="keyword">new</span> Guid(<span class="string">"01e8daea-585a-4d3e-af0d-c2c11e742f8c"</span>)</div><div class="line">  &#125;; <span class="comment">// the QueryText is a lot like SQL... SELECT COLUMNS FROM TABLE ORDER BY COLUMNS // we want to get the selected COLUMNS and the ORDER BY columns, then copy those to the destination queries var sourceQuery = project.StoredQueries[sourceGuid];</span></div><div class="line">  <span class="comment">// get the columns</span></div><div class="line">  <span class="keyword">var</span> sourceColumns = sourceQuery.QueryText.Substring(<span class="number">0</span>, sourceQuery.QueryText.IndexOf(<span class="string">" from "</span>));</div><div class="line">  <span class="comment">// get the order by</span></div><div class="line">  <span class="keyword">var</span> sourceSort = sourceQuery.QueryText.Substring(sourceQuery.QueryText.IndexOf(<span class="string">" order by "</span>)); <span class="keyword">foreach</span>(Guid destinationGuid <span class="keyword">in</span> destinationGuids) &#123; <span class="comment">// get the destination query filters, the stuff in between the columns and the order by        StoredQuery destinationQuery = project.StoredQueries[destinationGuid];        int fromIndex = destinationQuery.QueryText.IndexOf(" from ");        int orderByIndex = destinationQuery.QueryText.IndexOf(" order by ");</span></div><div class="line">   <span class="keyword">string</span> queryFilters = destinationQuery.QueryText.Substring(fromIndex, orderByIndex - fromIndex);</div><div class="line">   <span class="comment">// combine the source columns and sort with the destination filters</span></div><div class="line">   destinationQuery.QueryText = <span class="keyword">string</span>.Concat(sourceColumns, queryFilters, sourceSort);</div><div class="line">   destinationQuery.Update();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>5. Replace [url to your tfs server] with the url to your tfs server, you can get this from your TFS admin.<br>6. Replace [your project name] with the name of your project.<br>7. Find the Guid of the source query. You can select the query in Team Explorer and hit F4. Copy the Guid in the Url field to the sourceGuid property in your code.</p>
+<p><img src="/images/blog/1261.image_5F00_thumb_5F00_70203B3A.png" alt=""></p>
+<p>8. Find the Guid for all the queries you want to change and put those Guids in the destinationGuids collection.</p>
+<p>9. Run the app.</p>
+<p>HTH,</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2012/01/tfs-query-column-bulk-update/" data-id="cj4io7iw400zmpcj488hh6zs2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2012/01/tfs-query-column-bulk-update/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

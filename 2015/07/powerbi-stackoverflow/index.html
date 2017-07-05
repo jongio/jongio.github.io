@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to create a StackOverflow driven Power BI Dashboard with the StackOverflow API, Azure WebJob, Azure SQL and Node.js | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,nodejs,dev,powerbi,sql" />
+    
+    <meta name="description" content="Power BI is Microsoft’s new data visualization platform. It allows you to easily pull data from datasources like Salesforce, GitHub and QuickBooks. As I was going through the product I noticed they di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to create a StackOverflow driven Power BI Dashboard with the StackOverflow API, Azure WebJob, Azure SQL and Node.js">
+<meta property="og:url" content="http://blog.jongallant.com/2015/07/powerbi-stackoverflow/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Power BI is Microsoft’s new data visualization platform. It allows you to easily pull data from datasources like Salesforce, GitHub and QuickBooks. As I was going through the product I noticed they di">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/4b108a5f3354_7358/Untitled-3_thumb.png">
+<meta property="og:updated_time" content="2016-12-29T03:36:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to create a StackOverflow driven Power BI Dashboard with the StackOverflow API, Azure WebJob, Azure SQL and Node.js">
+<meta name="twitter:description" content="Power BI is Microsoft’s new data visualization platform. It allows you to easily pull data from datasources like Salesforce, GitHub and QuickBooks. As I was going through the product I noticed they di">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/4b108a5f3354_7358/Untitled-3_thumb.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-powerbi-stackoverflow" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to create a StackOverflow driven Power BI Dashboard with the StackOverflow API, Azure WebJob, Azure SQL and Node.js
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2015/07/powerbi-stackoverflow/" class="article-date">
+    <time datetime="2015-07-28T06:28:00.000Z" itemprop="datePublished">2015-07-28</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/">powerbi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><a href="http://powerbi.com" target="_blank" rel="external">Power BI</a> is Microsoft’s new data visualization platform. It allows you to easily pull data from datasources like Salesforce, GitHub and QuickBooks. As I was going through the product I noticed they didn’t have a <a href="http://stackoverflow.com" target="_blank" rel="external">StackOverflow</a> service connection, <a href="https://github.com/jonbgallant/PowerBI-StackOverflow" target="_blank" rel="external">so I built one</a>. StackOverflow has a <a href="https://api.stackexchange.com/" target="_blank" rel="external">REST/JSON API</a>, but Power BI doesn’t allow you to connect directly to an API yet. Instead of hitting the API directly, I wrote an Azure Web Job to pull the data from the StackOverflow API into an Azure SQL Database and then built the Power BI dashboard from that.</p>
+<p>A StackOverflow dashboard is useful for teams who want to monitor and improve their community engagement. The dashboard will be a quick and easy way for teams to see how many questions are unanswered, how many have no responses, how long it takes to get a response, number of question views over time and number of questions created over time. There’s a lot more insights you could pull from the StackOverflow data, but for now we’ll start with these metrics:</p>
+<p>1. Number of Unanswered Questions – These questions may have responses, but none of them are marked as “Answered”.</p>
+<p>2. Number of Responseless Questions – These questions have no responses at all.</p>
+<p>3. Time to First Response – The time difference between the creation of the question and the first response.</p>
+<p>4. Number of Question Views Over Time – The number of views per month.</p>
+<p>5. Number of Questions Created Over Time – The number of questions created per month.</p>
+<p>[<img src="/images/blog/4b108a5f3354_7358/Untitled-3_thumb.png" alt="Untitled-3" title="Untitled-3"></p>
+<p>Here’s a list of the components you’ll need to build this out yourself.</p>
+<p>1. StackOverflow API – The StackOverflow endpoint that allows you to programmatically access question data.</p>
+<p>2. Azure SQL Database – Where you will store the StackOverflow questions relevant to your Power BI Dashboard.</p>
+<p>3. Azure WebJob (Node.js or C#) – The “console app in the cloud” that will pull data from the StackOverflow API and push it to an Azure SQL Database</p>
+<p>4. Power BI – You will use DataSets and Reports to create your Dashboard.</p>
+<p>All of the code for this post can be found on GitHub here: <a href="https://github.com/jonbgallant/PowerBI-StackOverflow" title="https://github.com/jonbgallant/PowerBI-StackOverflow" target="_blank" rel="external">https://github.com/jonbgallant/PowerBI-StackOverflow</a></p>
+<h2 id="StackOverflow-API"><a href="#StackOverflow-API" class="headerlink" title="StackOverflow API"></a>StackOverflow API</h2><p>StackOverflow has a robust API at <a href="http://api.stackexchange.com" target="_blank" rel="external">http://api.stackexchange.com</a>. You’ll want to use <a href="http://api.stackexchange.com/docs/" target="_blank" rel="external">V2.2</a>. </p>
+<p>Here’s an example URL: </p>
+<p><a href="https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow" title="https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow" target="_blank" rel="external">https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow</a>. That returns a JSON that looks like this:</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image.png" alt=""></p>
+<h3 id="Use-a-filter"><a href="#Use-a-filter" class="headerlink" title="Use a filter"></a>Use a filter</h3><p>The query above will return questions that are tagged with ‘powerbi’ – but it doesn’t contain the ‘answer’ data, which you will need for your Power BI Dashboard. StackOverflow allows you to create ‘filters’ to add that additional data. You can use the one I created<strong> ‘!9YdnSIN1B’</strong> or create your own here: <a href="http://api.stackexchange.com/docs/create-filter" title="http://api.stackexchange.com/docs/create-filter" target="_blank" rel="external">http://api.stackexchange.com/docs/create-filter</a></p>
+<p>Here’s the same URL as above, but with the filter applied:</p>
+<p><a href="https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow&amp;filter=!9YdnSIN1B" title="https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow&amp;filter=!9YdnSIN1B" target="_blank" rel="external">https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow&amp;filter=!9YdnSIN1B</a></p>
+<p>You’ll notice that it now has answer data:</p>
+<p>[<img src="/images/blog/4b108a5f3354_7358/1_thumb.png" alt="1" title="1"></p>
+<h3 id="Register-your-app"><a href="#Register-your-app" class="headerlink" title="Register your app"></a>Register your app</h3><p>By default, StackOverflow will limit your requests to 300 a day, but will up that to 10k a day if you register your application and send a key with each request.</p>
+<p>Register your application to get a key <a href="http://stackapps.com/apps/oauth/register" title="http://stackapps.com/apps/oauth/register" target="_blank" rel="external">http://stackapps.com/apps/oauth/register</a>. Save your key, you will need it when you setup your Azure WebJob.</p>
+<p>Here’s the same URL as above, but with the key applied:</p>
+<p><a href="https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow&amp;filter=!9YdnSIN1B&amp;key=undefined" target="_blank" rel="external">https://api.stackexchange.com/2.2/questions?order=desc&amp;sort=creation&amp;tagged=powerbi&amp;site=stackoverflow&amp;filter=!9YdnSIN1B&amp;key=undefined</a></p>
+<p>(It’s not hyperlinked, because I don’t want my apps key to be on the internet in plain text)</p>
+<h2 id="Azure-SQL-Database"><a href="#Azure-SQL-Database" class="headerlink" title="Azure SQL Database"></a>Azure SQL Database</h2><p>As mentioned above, Power BI cannot talk directly to the StackOverflow API, so we need to cache the data in an Azure SQL Database. (You, of course, can use any database you’d like, but I prefer to use Azure SQL Database). Just create a new database and execute the following scripts to create one table, one proc and two views.</p>
+<p><a href="https://github.com/jonbgallant/PowerBI-StackOverflow/blob/master/SQL/questions-table.sql" target="_blank" rel="external">questions table</a></p>
+<p><a href="https://github.com/jonbgallant/PowerBI-StackOverflow/blob/master/SQL/questions_upsert-proc.sql" target="_blank" rel="external">questions_upsert proc</a></p>
+<p><a href="https://github.com/jonbgallant/PowerBI-StackOverflow/blob/master/SQL/questions_answers_dates-view.sql" target="_blank" rel="external">questions_answers_dates view</a></p>
+<p><a href="https://github.com/jonbgallant/PowerBI-StackOverflow/blob/master/SQL/questions_by_month-view.sql" target="_blank" rel="external">questions_by_month view</a></p>
+<h2 id="Azure-Node-js-WebJob"><a href="#Azure-Node-js-WebJob" class="headerlink" title="Azure Node.js WebJob"></a>Azure Node.js WebJob</h2><p>An Azure WebJob is like a console app running on a scheduled task in the cloud. You can write them in C# or Node.js. I’ll use Node.js for this example. You can find the WebJob code on GitHub <a href="https://github.com/jonbgallant/PowerBI-StackOverflow/tree/master/WebJob" target="_blank" rel="external">here</a>. </p>
+<p>The WebJob process flow is simple; it will request the question data via the StackOverflow API and insert it into the database.</p>
+<h3 id="Create-the-WebJob"><a href="#Create-the-WebJob" class="headerlink" title="Create the WebJob"></a>Create the WebJob</h3><p>WebJobs are housed within Webapps, so just create a Webapp and click on the WebJob tab:</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_3.png" alt=""></p>
+<p>Create a new WebJob and upload <a href="https://github.com/jonbgallant/PowerBI-StackOverflow/blob/master/WebJob/run.zip?raw=true" target="_blank" rel="external">this zip file</a>. I set mine to run once an hour – feel free to configure your schedule as you wish.</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_4.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_5.png" alt=""></p>
+<p>You can also fork the PowerBI-StackOverflow repo and update the code as you wish. I’ve found that using an FTP client to upload WebJob is much easier than using the Azure web interface. If you use FTP, then just upload the code to this folder: /site/wwwroot/App_Data/jobs/triggered/pbisof</p>
+<h3 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h3><p>The WebJob uses appSettings from the Webapp. Documentation for all of the variables can be found in the header of the run.js file. </p>
+<p>You can configure them using the Web app Config tab in Azure:</p>
+<p> <img src="/images/blog/4b108a5f3354_7358/image_6.png" alt=""></p>
+<p>When you run the Node.js script locally you will want to create an .env file in the WebJob folder that looks like this and enter the values applicable to your database and your StackOverflow key. </p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_7.png" alt=""></p>
+<h2 id="Power-BI"><a href="#Power-BI" class="headerlink" title="Power BI"></a>Power BI</h2><p>We are going to create a Dashboard with the following visualizations:</p>
+<p>1. Number of Unanswered Questions – These questions may have responses, but none of them are marked as “Answered”.</p>
+<p>2. Number of Responseless Questions – These questions have no responses at all.</p>
+<p>3. Time to First Response – The time difference between the creation of the question and the first response.</p>
+<p>4. Number of Question Views Over Time – The number of views per month.</p>
+<p>5. Number of Questions Created Over Time – The number of questions created per month.</p>
+<p>In Power BI you have 3 things to be concerned about: </p>
+<p>1. Datasets – The data that you are working with</p>
+<p>2. Reports – The raw visualizations on top of your dataset</p>
+<p>3. Dashboards – The organized reports that you will share with others.</p>
+<h3 id="Get-Data"><a href="#Get-Data" class="headerlink" title="Get Data"></a>Get Data</h3><p>The first thing you need to do is setup a dataset in Power BI</p>
+<p>1. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a></p>
+<p>2. Click Get Data</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_8.png" alt=""></p>
+<p>3. Select Databases, then Select Azure SQL Database and Click Connect</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_9.png" alt=""></p>
+<p>4. Enter your Azure SQL database connection info:</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_10.png" alt=""></p>
+<p>Power BI will connect to your database and import the data into a new dataset, which you can find in the left rail. <img src="/images/blog/4b108a5f3354_7358/image_11.png" alt=""></p>
+<p>### </p>
+<h3 id="Create-Reports"><a href="#Create-Reports" class="headerlink" title="Create Reports"></a>Create Reports</h3><h4 id="REPORT-Number-of-Unanswered-Questions"><a href="#REPORT-Number-of-Unanswered-Questions" class="headerlink" title="REPORT: Number of Unanswered Questions"></a>REPORT: Number of Unanswered Questions</h4><p>Over in the left rail, click on the dataset, mine is called pbisof. Then, over in the right rail click on Fields, then questions.</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_12.png" alt=""></p>
+<p>For this report we need to do 4 things:</p>
+<p>1. Select our fields. We want is_answered and question_id</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_13.png" alt=""></p>
+<p>2. Set our field functions. We want the Count of question_id, not the sum</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_14.png" alt=""></p>
+<p>3. Filter by field value. We want to filter by is_answered = false</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_15.png" alt=""></p>
+<p>4. Select our visualization. For a count like this, the “card” visualization makes the most sense</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_16.png" alt=""></p>
+<p>Here’s what you’ll now see in the report draft view. </p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_17.png" alt=""></p>
+<p>Click Save and name your report</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_18.png" alt=""></p>
+<p>You will now see it in your Reports list</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_19.png" alt=""></p>
+<p>When you hover over the card you’ll see a pin, click that to add it to a Dashboard. (Make sure you create a Dashboard before clicking that pin)</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_20.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_21.png" alt=""></p>
+<p>When you hover over the card you’ll see a pencil icon. Click that to edit the card title.</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_22.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_23.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_24.png" alt=""></p>
+<h4 id="REPORT-Number-of-Responseless-Questions"><a href="#REPORT-Number-of-Responseless-Questions" class="headerlink" title="REPORT: Number of Responseless Questions"></a>REPORT: Number of Responseless Questions</h4><p>This visualization needs to show the number of questions that have no response at all.</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_25.png" alt=""></p>
+<h4 id="REPORT-Time-to-First-Response"><a href="#REPORT-Time-to-First-Response" class="headerlink" title="REPORT: Time to First Response"></a>REPORT: Time to First Response</h4><p><img src="/images/blog/4b108a5f3354_7358/image_27.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_28.png" alt=""></p>
+<p>REPORT: Number of Questions Created Over Time</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_29.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_30.png" alt=""></p>
+<p>REPORT: Number of Question Views Over Time</p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_31.png" alt=""></p>
+<p><img src="/images/blog/4b108a5f3354_7358/image_32.png" alt=""></p>
+<p>Add all of those reports to  your Dashboard and you’ll now have a Dashboard that looks something like this:</p>
+<p>[<img src="/images/blog/4b108a5f3354_7358/Untitled-3_thumb_3.png" alt="Untitled-3" title="Untitled-3"></p>
+<p>Here’s the same view in the <a href="http://go.microsoft.com/fwlink/?LinkId=526218" target="_blank" rel="external">Power BI iPhone app</a>.</p>
+<p>[<img src="/images/blog/4b108a5f3354_7358/IMG_6002_thumb.png" alt="IMG_6002" title="IMG_6002"></p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2015/07/powerbi-stackoverflow/" data-id="cj4io7iqw00u2pcj47u3e85wr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2015/07/powerbi-stackoverflow/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

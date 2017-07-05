@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Use Azure Active Directory (AAD) Access Tokens in Postman | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,postman,aad" />
+    
+    <meta name="description" content="Here’s how to get all setup with AAD access tokens in Postman.
+Step-by-Step Walkthrough Video
+
+Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Directory, then click Prope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use Azure Active Directory (AAD) Access Tokens in Postman">
+<meta property="og:url" content="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Here’s how to get all setup with AAD access tokens in Postman.
+Step-by-Step Walkthrough Video
+
+Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Directory, then click Prope">
+<meta property="og:image" content="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/000042.png">
+<meta property="og:updated_time" content="2017-03-28T07:05:30.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Use Azure Active Directory (AAD) Access Tokens in Postman">
+<meta name="twitter:description" content="Here’s how to get all setup with AAD access tokens in Postman.
+Step-by-Step Walkthrough Video
+
+Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Directory, then click Prope">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/000042.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-azure-active-directory-access-tokens-postman" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Use Azure Active Directory (AAD) Access Tokens in Postman
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2017/03/azure-active-directory-access-tokens-postman/" class="article-date">
+    <time datetime="2017-03-10T14:22:32.000Z" itemprop="datePublished">2017-03-10</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aad/">aad</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Here’s how to get all setup with AAD access tokens in <a href="http://getpostman.com" target="_blank" rel="external">Postman</a>.</p>
+<h2 id="Step-by-Step-Walkthrough-Video"><a href="#Step-by-Step-Walkthrough-Video" class="headerlink" title="Step-by-Step Walkthrough Video"></a>Step-by-Step Walkthrough Video</h2><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/ujzrq8Fg9Gc?rel=0?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+
+<h2 id="Get-Azure-Active-Directory-Id"><a href="#Get-Azure-Active-Directory-Id" class="headerlink" title="Get Azure Active Directory Id"></a>Get Azure Active Directory Id</h2><p>1. Go to the Azure Portal, click on Azure Active Directory, then click Properties.</p>
+<p><img src="000034.png" alt=""></p>
+<blockquote>
+<p>Copy “Directory ID” to a temp location - this will be your <strong>“tenantId”</strong></p>
+</blockquote>
+<h2 id="Create-an-Azure-Active-Directory-App"><a href="#Create-an-Azure-Active-Directory-App" class="headerlink" title="Create an Azure Active Directory App"></a>Create an Azure Active Directory App</h2><p>1. Go to Azure Portal and click on Azure Active Directory, then click on App registrations, then click Add.</p>
+<p><img src="000026.png" alt=""></p>
+<p><img src="000027.png" alt=""></p>
+<p>2. Enter name, select Native type and enter anything into Redirect URI, click Create.</p>
+<p><img src="000029.png" alt=""></p>
+<p>3. Select “My apps” in the filter dropdown, find the app you just created and click on it.</p>
+<p><img src="000030.png" alt=""></p>
+<p><img src="000031.png" alt=""></p>
+<p>4. Find “Application ID” in the main blade.</p>
+<blockquote>
+<p>Copy “Application ID” to a temp location - this will be your <strong>“clientId”</strong></p>
+</blockquote>
+<p><img src="000033.png" alt=""></p>
+<p>5.  Go to Settings -&gt; Keys and create a new key, select Never Expires, click Save.</p>
+<blockquote>
+<p>Copy this key to a temp location. - this will be your <strong>“clientSecret”</strong></p>
+</blockquote>
+<p><img src="000032.png" alt=""></p>
+<h2 id="Give-Azure-Active-Directory-App-Permission-to-Azure-Subscription"><a href="#Give-Azure-Active-Directory-App-Permission-to-Azure-Subscription" class="headerlink" title="Give Azure Active Directory App Permission to Azure Subscription"></a>Give Azure Active Directory App Permission to Azure Subscription</h2><p>1. Go to Azure Portal, click Subscriptions, then click on the Subscription that contains the assets you want to access with the App. For example, I need to use the access token to access IoT Hubs, so I’ll click on the Subscription that contains those IoT Hubs.</p>
+<p>2. Click on Access control (IAM) and then click Add</p>
+<p><img src="000046.png" alt=""></p>
+<p>3. Select the “Contributor” role</p>
+<p><img src="000047.png" alt=""></p>
+<p>4. Add the AAD app as a user and click Select, then click OK.</p>
+<p><img src="000049.png" alt=""></p>
+<p>You will then see the app listed as a user.</p>
+<p><img src="000050.png" alt=""></p>
+<h2 id="Create-Postman-Request"><a href="#Create-Postman-Request" class="headerlink" title="Create Postman Request"></a>Create Postman Request</h2><p>1. Open Postman Desktop app (<a href="http://getpostman.com" target="_blank" rel="external">http://getpostman.com</a>)</p>
+<p>2. Set up a new Environment by clicking on the gears icon in the upper right, then enter the following keys using the values you copied to a temp location earlier.</p>
+<p><img src="000035.png" alt=""></p>
+<p>3. Select that Environment in the Environment dropdown</p>
+<p><img src="000036.png" alt=""></p>
+<p>4. Enter the following url into the textbox and select POST</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://login.microsoftonline.com/&#123;&#123;tenantId&#125;&#125;/oauth2/token</div></pre></td></tr></table></figure>
+<p><img src="000037.png" alt=""></p>
+<p>5. Click on the “Body” tab, select “x-www-form-urlencoded” and enter the following 4 values:</p>
+<p><img src="000038.png" alt=""></p>
+<p>grant_type: client_credentials<br>client_id: {{clientId}}<br>client_secret: {{clientSecret}}<br>resource: <a href="https://management.azure.com/" target="_blank" rel="external">https://management.azure.com/</a> </p>
+<p>6. Click on the Headers tab and make sure Content-Type header is there and is equal to application/x-www-form-urlencoded</p>
+<p><img src="000039.png" alt=""></p>
+<p>7. Click on the Tests tab and enter the following code to save the access_token returned to an Environment variable.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(responseBody);</div><div class="line">postman.setEnvironmentVariable(<span class="string">"bearerToken"</span>, json.access_token);</div></pre></td></tr></table></figure>
+<p><img src="000040.png" alt=""></p>
+<p>8. Click “Send” and you will now see the response output.</p>
+<p><img src="000042.png" alt=""></p>
+<p>If you get the following error, that means you didn’t give the AAD app permissions to your subscription.  Please see above for instructions on how to do that.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;error&quot;: &#123;</div><div class="line">    &quot;code&quot;: &quot;AuthorizationFailed&quot;,</div><div class="line">    &quot;message&quot;: &quot;The client &apos;&apos; with object id &apos;&apos; does not have authorization to perform action &apos;Microsoft.Devices/IotHubs/read&apos; over scope &apos;/subscriptions//resourceGroups/jongrg/providers/Microsoft.Devices/IotHubs/jongiothub&apos;.&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>9. Click on the “Eye” icon in the upper right and you will now see the “bearerToken” environment variable saved and ready for use in subsequent requests.</p>
+<p><img src="000044.png" alt=""></p>
+<h2 id="Use-Token-in-Subsequent-Requests"><a href="#Use-Token-in-Subsequent-Requests" class="headerlink" title="Use Token in Subsequent Requests"></a>Use Token in Subsequent Requests</h2><p>Now that you have the token stored in an environment variable you can use it as a bearer token.  </p>
+<p>To get the variable just use this code:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">postman.getEnvironmentVariable(<span class="string">"bearerToken"</span>);</div></pre></td></tr></table></figure>
+<p>Or double curlys like so:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;&#123;bearerToken&#125;&#125;</div></pre></td></tr></table></figure>
+<p>Here’s an example how to use the bearerToken in the Authorization header</p>
+<p><img src="000045.png" alt=""></p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/" data-id="cj4io7i7g004rpcj4oiyn997z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

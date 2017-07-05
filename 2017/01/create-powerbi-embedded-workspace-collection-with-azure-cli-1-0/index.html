@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Create a Power BI Embedded Workspace Collection with the Azure Command Line Interface (CLI) 1.0 | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,power bi" />
+    
+    <meta name="description" content="While digging into the new Azure CLI 2.0 to create a Power BI Workspace Collection, I discovered that while you can create the Power BI Workspace Collection you cannot currently get to the Access Keys">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Create a Power BI Embedded Workspace Collection with the Azure Command Line Interface (CLI) 1.0">
+<meta property="og:url" content="http://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="While digging into the new Azure CLI 2.0 to create a Power BI Workspace Collection, I discovered that while you can create the Power BI Workspace Collection you cannot currently get to the Access Keys">
+<meta property="og:image" content="http://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/000002.png">
+<meta property="og:updated_time" content="2017-01-10T16:10:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Create a Power BI Embedded Workspace Collection with the Azure Command Line Interface (CLI) 1.0">
+<meta name="twitter:description" content="While digging into the new Azure CLI 2.0 to create a Power BI Workspace Collection, I discovered that while you can create the Power BI Workspace Collection you cannot currently get to the Access Keys">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/000002.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Power-BI/">Power BI</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-create-powerbi-embedded-workspace-collection-with-azure-cli-1-0" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Create a Power BI Embedded Workspace Collection with the Azure Command Line Interface (CLI) 1.0
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/" class="article-date">
+    <time datetime="2017-01-10T07:02:13.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/power-bi/">power bi</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>While digging into the new <a href="https://github.com/Azure/azure-cli" target="_blank" rel="external">Azure CLI 2.0</a> to create a Power BI Workspace Collection, I discovered that while you can create the Power BI Workspace Collection you cannot currently get to the Access Keys via the command line. The team is working on it and I will update this post when the CLI 2.0 has official Power BI support.</p>
+<p>For now, here’s how to create a Power BI Workspace Collection (and get Access Keys) via the <a href="https://docs.microsoft.com/en-us/azure/xplat-cli-install" target="_blank" rel="external">Azure CLI 1.0</a>.</p>
+<h2 id="1-Install-the-Azure-CLI"><a href="#1-Install-the-Azure-CLI" class="headerlink" title="1. Install the Azure CLI"></a>1. Install the Azure CLI</h2><p>Open a command prompt and execute the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g azure-cli</div></pre></td></tr></table></figure>
+<h2 id="2-Login-to-Azure-CLI"><a href="#2-Login-to-Azure-CLI" class="headerlink" title="2. Login to Azure CLI"></a>2. Login to Azure CLI</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure login</div></pre></td></tr></table></figure>
+<p>That will output a URL and a code to enter there.</p>
+<p><strong>To sign in, use a web browser to open the page <a href="https://aka.ms/devicelogin" target="_blank" rel="external">https://aka.ms/devicelogin</a> and enter the code B3L4ZYLGA to authenticate.</strong></p>
+<p>Go back to your command line and you will now see this:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    login command OK</div></pre></td></tr></table></figure></p>
+<h2 id="3-Set-Current-Azure-Subscription"><a href="#3-Set-Current-Azure-Subscription" class="headerlink" title="3. Set Current Azure Subscription"></a>3. Set Current Azure Subscription</h2><p>By default, the first Azure Subscription returned is the one that all future actions will be taken on.  You can find your subscription list by executing the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure account list</div></pre></td></tr></table></figure>
+<p>Find the Id of the Subscription you want to work with and then execute the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure account set &#123;id&#125;</div></pre></td></tr></table></figure>
+<p>You will see the following output:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    account set command OK</div></pre></td></tr></table></figure></p>
+<h2 id="4-Create-Azure-Resource-Group"><a href="#4-Create-Azure-Resource-Group" class="headerlink" title="4. Create Azure Resource Group"></a>4. Create Azure Resource Group</h2><p>You can either create a new resource group or use an existing one. To create a new one, execute the following:</p>
+<blockquote>
+<p>Replace jong-rg1 with your desired resource group name</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure group create jong-rg1 westus</div></pre></td></tr></table></figure>
+<h2 id="5-Create-Power-BI-Workspace-Collection"><a href="#5-Create-Power-BI-Workspace-Collection" class="headerlink" title="5. Create Power BI Workspace Collection"></a>5. Create Power BI Workspace Collection</h2><p>Enter the following:</p>
+<blockquote>
+<p>Replace jong-rg1 with your resource group name<br>Replace jong-pbie4 with your desired Power BI Workspace Collection name<br>Replace westus with your desired location</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure powerbi create jong-rg1 jong-pbie4 westus</div></pre></td></tr></table></figure>
+<p>You will see the following output:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    Executing command powerbi create</div><div class="line">+ Creating workspace collection: jong-pbie4</div><div class="line">info:    WorkspaceCollection created:</div><div class="line">data:    Property  Value</div><div class="line">data:    --------  ----------</div><div class="line">data:    name      jong-pbie4</div><div class="line">data:    location  West US</div><div class="line">data:    tags      null</div><div class="line">info:    powerbi create command OK</div></pre></td></tr></table></figure></p>
+<h2 id="6-Get-Access-Keys"><a href="#6-Get-Access-Keys" class="headerlink" title="6. Get Access Keys"></a>6. Get Access Keys</h2><blockquote>
+<p>Replace jong-rg1 with your resource group name<br>Replace jong-pbie4 with your Workspace Collection name</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure powerbi keys list jong-rg1 jong-pbie4</div></pre></td></tr></table></figure>
+<p>You will see the following output.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    Executing command powerbi keys list</div><div class="line">+ Getting workspace collection access keys...</div><div class="line">data:    Name              Key</div><div class="line">data:    ----------------  ----------------------------------------------------------------------------------------</div><div class="line">data:    key1 (Primary)    1bCTtlodCxqivFexuaHpKX37jqvHJr2cGbeXmXtwfNOxgG8blGoAxSLhlBpr4UwrbSNDfOiw6+4HvWjmIcLqA==</div><div class="line">data:    key2 (Secondary)  yRLu57/T67nsAPbt4AuypDu78Gvi4PNitEOGrXaVAg/hYxK7tksAOnLCIegsM1VryzTf4qL2pxcwVCJLA6Dpw==</div><div class="line">info:    powerbi keys list command OK</div></pre></td></tr></table></figure></p>
+<p>When you go to the Azure Portal, you will now see your newly created Power BI Workspace Collection.</p>
+<p><img src="000025.png" alt=""></p>
+<p>Now that you have your Workspace Collection and Access Keys, you can follow along with my <a href="http://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/">How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API</a> to learn how to use your keys to embed a Power BI report into your application.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/" data-id="cj4io7icd00aspcj4z6tg6e7n" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

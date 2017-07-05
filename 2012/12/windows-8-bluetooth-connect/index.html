@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Quickly Connect and Reconnect a Bluetooth Device to a Windows 8 Machine | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="howto" />
+    
+    <meta name="description" content="I connect and disconnect my RocketFish Bluetooth Headset (RF-MAB2) from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Quickly Connect and Reconnect a Bluetooth Device to a Windows 8 Machine">
+<meta property="og:url" content="http://blog.jongallant.com/2012/12/windows-8-bluetooth-connect/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I connect and disconnect my RocketFish Bluetooth Headset (RF-MAB2) from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/927c62386414_29F9/image.png">
+<meta property="og:updated_time" content="2016-12-29T03:37:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Quickly Connect and Reconnect a Bluetooth Device to a Windows 8 Machine">
+<meta name="twitter:description" content="I connect and disconnect my RocketFish Bluetooth Headset (RF-MAB2) from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/927c62386414_29F9/image.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-windows-8-bluetooth-connect" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Quickly Connect and Reconnect a Bluetooth Device to a Windows 8 Machine
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2012/12/windows-8-bluetooth-connect/" class="article-date">
+    <time datetime="2012-12-04T04:11:00.000Z" itemprop="datePublished">2012-12-04</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I connect and disconnect my <a href="http://www.bing.com/search?q=RF-MAB2" target="_blank" rel="external">RocketFish Bluetooth Headset (RF-MAB2)</a> from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off. The trouble comes when you need to connect and disconnect from multiple devices – Windows depends on third party drivers to help and the result is a non-intuitive experience. As I mentioned in my “<a href="http://blog.jongallant.com/2012/09/quickly-pair-bluetooth-device-windows.html">How to Quickly Connect a Bluetooth Device to a Windows 7 Machine</a>“ post, it wasn’t simple to figure out how to do that in Windows 7 and it’s even harder in Windows 8. The Windows 8 Devices App only allows you to Add and Remove the device. It would be great if I could just double click on a device that is already paired to reestablish the connection, but that isn’t supported for now. I am discussing the issue with the Bluetooth team and they are working on getting this into their backlog. </p>
+<p>The short answer to this post is that there isn’t a way to quickly connect a Bluetooth device in Windows 8. But I will show you the only two options I discovered. </p>
+<p>If you haven’t done so already then you should find out who manufacture’s your Bluetooth stack and get their Windows 8 drivers. My PC uses the Broadcom Bluetooth stack (<a href="http://www.broadcom.com/support/bluetooth/update.php" target="_blank" rel="external">Download</a>) so your experience will be different if you have a different stack, but it should pretty similar.</p>
+<h3 id="Option-1-–-Control-Panel-amp-the-Bluetooth-Driver"><a href="#Option-1-–-Control-Panel-amp-the-Bluetooth-Driver" class="headerlink" title="Option 1 – Control Panel &amp; the Bluetooth Driver"></a>Option 1 – Control Panel &amp; the Bluetooth Driver</h3><p>This is the option that I prefer. It still isn’t very fast, but it is faster than Option 2 because it doesn’t require you to add and remove the device every time you want to connect it. There is a little bit of initial setup, but it is worth it over time.</p>
+<h2 id="Connect-Your-Device"><a href="#Connect-Your-Device" class="headerlink" title="Connect Your Device"></a>Connect Your Device</h2><p>1. Follow the “How to Connect the Device to Your Computer” section under Option 2 below to establish your initial connection.</p>
+<h2 id="Setup-the-Taskbar-Icon"><a href="#Setup-the-Taskbar-Icon" class="headerlink" title="Setup the Taskbar Icon"></a>Setup the Taskbar Icon</h2><p>This will allow you to quickly launch into “Devices and Printers” on your computer.</p>
+<p>1. Create a Shortcut to “Devices and Printers” by following the steps on this page: <a href="http://www.sevenforums.com/tutorials/68235-devices-printers-shortcut-create.html" target="_blank" rel="external">How to Create a “Devices and Printers” Shortcut in Windows 7</a></p>
+<p>2. Drag that Shortcut into your Taskbar</p>
+<p><img src="/images/blog/927c62386414_29F9/image.png" alt=""></p>
+<h2 id="How-to-Reconnect-Your-Device"><a href="#How-to-Reconnect-Your-Device" class="headerlink" title="How to Reconnect Your Device"></a>How to Reconnect Your Device</h2><p>1. Put the Bluetooth device in pairing mode. Read the documentation for the device to find out How to do this. For the RF-MAB2, you just need to hold down the button that has the icon of an old school phone for about 6 seconds.</p>
+<p>2. Click on the icon in your taskbar that you created above. That will launch Devices and Printers.</p>
+<p><img src="/images/blog/927c62386414_29F9/image_3.png" alt=""></p>
+<p>2. Right click on your device and click Control.</p>
+<p><img src="/images/blog/927c62386414_29F9/image_4.png" alt=""></p>
+<p>3. Click Connect</p>
+<p><img src="/images/blog/927c62386414_29F9/image_5.png" alt=""></p>
+<p>There will be a series of beeps and then your device will be connected</p>
+<p><img src="/images/blog/927c62386414_29F9/image_6.png" alt=""></p>
+<h3 id="Option-2-–-Windows-8-Devices-App"><a href="#Option-2-–-Windows-8-Devices-App" class="headerlink" title="Option 2 – Windows 8 Devices App"></a>Option 2 – Windows 8 Devices App</h3><p>With this approach you need to manually remove and then re-add the device every time you want to connect it. </p>
+<h2 id="How-to-Connect-the-Device-to-Your-Computer"><a href="#How-to-Connect-the-Device-to-Your-Computer" class="headerlink" title="How to Connect the Device to Your Computer"></a>How to Connect the Device to Your Computer</h2><p>1. Put the Bluetooth device in pairing mode. Read the documentation for the device to find out how to do this. For the RF-MAB2, you just need to hold down the button that has the icon of an old school phone for about 6 seconds.</p>
+<p>2. Launch the Windows 8 Devices App. You can get there by double clicking the Bluetooth icon in your system tray or by hitting Windows key and then typing in “devices” and click on Settings then click on Devices.</p>
+<p><img src="/images/blog/927c62386414_29F9/image_7.png" alt=""></p>
+<p><img src="/images/blog/927c62386414_29F9/image_8.png" alt=""></p>
+<p>3. Click “Add a device” and your device will be added.</p>
+<p><img src="/images/blog/927c62386414_29F9/image_9.png" alt=""></p>
+<h2 id="How-to-Reconnect-the-Device-to-Your-Computer"><a href="#How-to-Reconnect-the-Device-to-Your-Computer" class="headerlink" title="How to Reconnect the Device to Your Computer"></a>How to Reconnect the Device to Your Computer</h2><p>This is where Windows 8 is lacking. It would be great if I could just load up the Devices App and double click on my device to reconnect it, but double click doesn’t do anything. The only option is to remove the device and then add it back. It’s a pain, but that’s the only way to do it with the Devices App for now.</p>
+<p>1. Follow steps 1 &amp; 2 in the “How to Connect the Device to Your Computer” above to get to the Devices App</p>
+<p>2. Click on your device and then click on the icon that appears with the minus icon in it.</p>
+<p> <img src="/images/blog/927c62386414_29F9/image_11.png" alt=""></p>
+<p>3. Click Remove.</p>
+<p>4. Reconnect your device like you did in the “How to Connect the Device to Your Computer” step above.</p>
+<p>You device should now be reconnected.</p>
+<p>Both options are slow, but it’s the only way I could figure out how to do it. I would be great if I could launch the Broadcom Bluetooth experience directly instead of having to launch the Control Panel first. But I didn’t put any time in to figuring that out.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2012/12/windows-8-bluetooth-connect/" data-id="cj4io7izv0149pcj4lsqmyk4i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2012/12/windows-8-bluetooth-connect/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

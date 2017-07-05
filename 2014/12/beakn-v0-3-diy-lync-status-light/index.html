@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>beakn v0.3 : DIY Lync Status Light with a RaspberryPi, .NET, Mono and MQTT | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="iot" />
+    
+    <meta name="description" content="I’m continuing to build out “beakn” my DIY Lync Status light. This is what I’m calling a “maker experience” project. I want to know what a maker goes through to build things so I’m building it with as">
+<meta property="og:type" content="article">
+<meta property="og:title" content="beakn v0.3 : DIY Lync Status Light with a RaspberryPi, .NET, Mono and MQTT">
+<meta property="og:url" content="http://blog.jongallant.com/2014/12/beakn-v0-3-diy-lync-status-light/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’m continuing to build out “beakn” my DIY Lync Status light. This is what I’m calling a “maker experience” project. I want to know what a maker goes through to build things so I’m building it with as">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/bdbd95e2151d_B728/P-737_thumb.jpg">
+<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="beakn v0.3 : DIY Lync Status Light with a RaspberryPi, .NET, Mono and MQTT">
+<meta name="twitter:description" content="I’m continuing to build out “beakn” my DIY Lync Status light. This is what I’m calling a “maker experience” project. I want to know what a maker goes through to build things so I’m building it with as">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/bdbd95e2151d_B728/P-737_thumb.jpg">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/IoT/">IoT</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-beakn-v0-3-diy-lync-status-light" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        beakn v0.3 : DIY Lync Status Light with a RaspberryPi, .NET, Mono and MQTT
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2014/12/beakn-v0-3-diy-lync-status-light/" class="article-date">
+    <time datetime="2014-12-19T14:17:00.000Z" itemprop="datePublished">2014-12-19</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><a href="/images/blog/bdbd95e2151d_B728/P-737.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-737_thumb.jpg" alt="P-737" title="P-737"></a>I’m continuing to build out “beakn” my DIY Lync Status light. This is what I’m calling a “maker experience” project. I want to know what a maker goes through to build things so I’m building it with as many different platforms as possible. I’ve built it with Arduino and Netduino. <a href="http://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">Version 0.1</a> brought us a USB connected light. <a href="http://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light.html">Version 0.2</a> introduced Ethernet and MQTT. Version 0.3 includes the following:</p>
+<ul>
+<li>RaspberryPi running a .NET Console app via Mono</li>
+<li>Upgraded my breadboard to a custom shield.</li>
+</ul>
+<p><a href="/images/blog/bdbd95e2151d_B728/P-729.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-729_thumb.jpg" alt="P-729" title="P-729"></a><a href="/images/blog/bdbd95e2151d_B728/P-731.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-731_thumb.jpg" alt="P-731" title="P-731">
+</a></p>
+<p>Up until a few days ago I didn’t realize (or it didn’t click) that we could run .NET applications on RaspberryPi. I’ve heard about Mono, but haven’t really have a chance to play with it enough for it to sink in. MS Open Tech released <a href="http://connectthedots.io" target="_blank" rel="external">ConnectTheDots.io</a> (a site to help people get up and going with IoT devices and Azure) this week and in that they have a <a href="https://github.com/MSOpenTech/connectthedots/tree/master/Devices/RaspberryPiGateway" target="_blank" rel="external">RaspberryPiGateway</a> – which uses a .NET console app and Mono. I saw that. It clicked - and of course I had to give it a try for beakn, which led to this post.</p>
+<p>I just did a post on “<a href="http://blog.jongallant.com/2014/12/dotnet-raspberrypi-mono.html">How to run .NET on RaspberryPi with Mono</a>“, so start there to see how things work and then come back to build the beakn. I also recommend that you read through the v0.1 and v0.2 posts before moving on so you can see how we got to this point.</p>
+<p>The “beakn” has three main components</p>
+<p>1. A Windows desktop application that sends messages to an MQTT broker when your Lync status changes</p>
+<p>2. An MQTT broker to receive the Lync status messages</p>
+<p>3. A hardware app that responds to MQTT messages and sets the right LED. Red=Busy, Yellow=Away, Green=Free</p>
+<p>#1 and #2 above have changed very little with this version and #3 is now a RaspberryPi instead of an Arduino or Netduino.</p>
+<p>Here’s how to get v0.3 setup on  your own.</p>
+<h2 id="Step-0-Get-the-beakn-Hardware-setup"><a href="#Step-0-Get-the-beakn-Hardware-setup" class="headerlink" title="Step 0: Get the beakn Hardware setup"></a>Step 0: Get the beakn Hardware setup</h2><p>Supplies</p>
+<p>1. Ping Pong Ball</p>
+<p>2. Cardboard box</p>
+<p>3. Breadboard or protoboard. I’m now using a protoboard instead of breadboard. Mainly because I was taking this thing apart so many times and it was become a pain to get everything setup each time.</p>
+<p>4. RaspberryPi Model B or any model with Ethernet</p>
+<p>5. 3 10mm LEDs</p>
+<p>6. Some Jumper wires. Number of wires depends on how you build.</p>
+<p>7. 220ohm resistor</p>
+<p>Everything (except the RaspberryPi is the same as <a href="http://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light.html">v0.2</a> so please read through that first.</p>
+<p>Connect the LEDs like so:</p>
+<p>Board Pin 12: Red</p>
+<p>Board Pin 16: Yellow</p>
+<p>Board Pin 18: Green</p>
+<p>Put a 220ohm resistor on the cathode. See photos and circuit diagram for possible setup.</p>
+<p><a href="/images/blog/bdbd95e2151d_B728/P-733.jpg"><img src="/images/blog/bdbd95e2151d_B728/beakn.raspberrypi_thumb.png" alt="beakn.raspberrypi" title="beakn.raspberrypi">[<img src="/images/blog/bdbd95e2151d_B728/P-733_thumb.jpg" alt="P-733" title="P-733"></a><a href="/images/blog/bdbd95e2151d_B728/P-737_3.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-737_thumb_3.jpg" alt="P-737" title="P-737"></a></p>
+<p>As you can see my cardboard box has seen better days, but you’ll likely need to cut a few more holes to get the Ethernet and USB Power connected.</p>
+<p><a href="/images/blog/bdbd95e2151d_B728/P-743.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-743_thumb.jpg" alt="P-743" title="P-743"></a></p>
+<h2 id="Step-1-Install-or-Build-the-beakn-desktop-application"><a href="#Step-1-Install-or-Build-the-beakn-desktop-application" class="headerlink" title="Step 1: Install or Build the beakn desktop application."></a>Step 1: Install or Build the beakn desktop application.</h2><p>You can install the desktop app directly from GitHub here: <a href="https://github.com/jonbgallant/beakn/releases/download/v0.3/beakn.v0.3.msi" title="https://github.com/jonbgallant/beakn/releases/download/v0.3/beakn.v0.3.msi" target="_blank" rel="external">https://github.com/jonbgallant/beakn/releases/download/v0.3/beakn.v0.3.msi</a></p>
+<p>Or you can get the source and build it yourself</p>
+<p><a href="https://github.com/jonbgallant/beakn/tree/master/desktop" title="https://github.com/jonbgallant/beakn/tree/master/desktop" target="_blank" rel="external">https://github.com/jonbgallant/beakn/tree/master/desktop</a></p>
+<h2 id="Step-2-Modify-the-beakn-exe-config-file"><a href="#Step-2-Modify-the-beakn-exe-config-file" class="headerlink" title="Step 2: Modify the beakn.exe.config file"></a>Step 2: Modify the beakn.exe.config file</h2><p>Open a CMD prompt as Administrator and navigate to the beakn install directory.</p>
+<p>Change the MqttPairingCode to something unique. Remember what you set this to because you’ll need it later when you install RaspberryPi app.</p>
+<p>Restart beakn.exe. You go into Task Manager and kill it first. Sorry not having a better solution here. Will fix at some point.</p>
+<h2 id="Step-3-Install-the-RaspberryPi-NET-Console-app"><a href="#Step-3-Install-the-RaspberryPi-NET-Console-app" class="headerlink" title="Step 3: Install the RaspberryPi .NET Console app."></a>Step 3: Install the RaspberryPi .NET Console app.</h2><p>Go through my “<a href="http://blog.jongallant.com/2014/12/dotnet-raspberrypi-mono.html">How to run .NET on RaspberryPi with Mono</a>“ post to get Mono and working on Pi.</p>
+<p>You can either copy the compiled version onto your Pi from this zip: <a href="https://github.com/jonbgallant/beakn/releases/download/v0.3/beakn.raspberrypi.v0.3.zip" title="https://github.com/jonbgallant/beakn/releases/download/v0.3/beakn.raspberrypi.v0.3.zip" target="_blank" rel="external">https://github.com/jonbgallant/beakn/releases/download/v0.3/beakn.raspberrypi.v0.3.zip</a></p>
+<p>Or you can get the source and built yourself:</p>
+<p><a href="https://github.com/jonbgallant/beakn/tree/master/raspberrypi/beakn.raspberrypi" title="https://github.com/jonbgallant/beakn/tree/master/raspberrypi/beakn.raspberrypi" target="_blank" rel="external">https://github.com/jonbgallant/beakn/tree/master/raspberrypi/beakn.raspberrypi</a></p>
+<p>The console app that runs on the Pi is plain jane stock .NET without Xamarin Studio. It uses the <a href="https://m2mqtt.codeplex.com/" target="_blank" rel="external">M2Mqtt</a> library to talk with the MQTT broker and <a href="https://www.nuget.org/packages/Raspberry.IO.GeneralPurpose" target="_blank" rel="external">Raspberry.IO.GeneralPurpose</a> library to talk to the RaspberryPi pins.</p>
+<h2 id="Step-4-Modify-the-RaspberryPi-beakn-exe-config-file"><a href="#Step-4-Modify-the-RaspberryPi-beakn-exe-config-file" class="headerlink" title="Step 4: Modify the RaspberryPi beakn.exe.config file"></a>Step 4: Modify the RaspberryPi beakn.exe.config file</h2><p>Open the config file and change the MqttPairingCode to the same code you used in Step 2 above. You can do this directly on the Pi with “sudo nano beakn.exe.config” or you can do on desktop and copy over.</p>
+<h2 id="Step-5-Run-the-RaspberryPi-beakn-exe-using-this-command"><a href="#Step-5-Run-the-RaspberryPi-beakn-exe-using-this-command" class="headerlink" title="Step 5: Run the RaspberryPi beakn.exe using this command."></a>Step 5: Run the RaspberryPi beakn.exe using this command.</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo mono beakn.exe</div></pre></td></tr></table></figure>
+<p>You should see something like this:</p>
+<p><img src="/images/blog/bdbd95e2151d_B728/image.png" alt=""></p>
+<h2 id="Step-6-Make-RaspberryPi-beakn-automatically-start"><a href="#Step-6-Make-RaspberryPi-beakn-automatically-start" class="headerlink" title="Step 6: Make RaspberryPi beakn automatically start"></a>Step 6: Make RaspberryPi beakn automatically start</h2><p>Linux uses /etc/rc.local to list projects that automatically start when the Pi is started.</p>
+<p>This link was helpful: <a href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs" target="_blank" rel="external">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs</a></p>
+<p>Open rc.local to edit.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/rc.local</div></pre></td></tr></table></figure></p>
+<p>Add this line, your path to beakn.exe is where you copied it to – likely different than below.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo mono /home/pi/beakn/beakn.exe &amp;amp;</div></pre></td></tr></table></figure></p>
+<p>That’s it! You should now see your beakn change color when your Lync status changes.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2014/12/beakn-v0-3-diy-lync-status-light/" data-id="cj4io7i96006tpcj46lwlkt3z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2014/12/beakn-v0-3-diy-lync-status-light/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

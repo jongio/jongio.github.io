@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>My Backup Strategy: Local, External and Cloud backups with Windows 8 File History and CrashPlan | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="howto" />
+    
+    <meta name="description" content="I’ve been fine tuning my backup strategy for years, so I thought I’d share to help any one out there who is just getting serious about it. I take backups seriously because many years of hard work woul">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My Backup Strategy: Local, External and Cloud backups with Windows 8 File History and CrashPlan">
+<meta property="og:url" content="http://blog.jongallant.com/2012/11/my-backup-strategy/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’ve been fine tuning my backup strategy for years, so I thought I’d share to help any one out there who is just getting serious about it. I take backups seriously because many years of hard work woul">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_3.png">
+<meta property="og:updated_time" content="2016-12-29T03:36:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="My Backup Strategy: Local, External and Cloud backups with Windows 8 File History and CrashPlan">
+<meta name="twitter:description" content="I’ve been fine tuning my backup strategy for years, so I thought I’d share to help any one out there who is just getting serious about it. I take backups seriously because many years of hard work woul">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_3.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-my-backup-strategy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        My Backup Strategy: Local, External and Cloud backups with Windows 8 File History and CrashPlan
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2012/11/my-backup-strategy/" class="article-date">
+    <time datetime="2012-11-17T07:10:00.000Z" itemprop="datePublished">2012-11-17</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’ve been fine tuning my backup strategy for years, so I thought I’d share to help any one out there who is just getting serious about it. I take backups seriously because many years of hard work would be gone if something happened to that data. I’m sure you are in the same boat. Get a backup strategy now before you regret it. </p>
+<h3 id="Backup-Strategy-Goals"><a href="#Backup-Strategy-Goals" class="headerlink" title="Backup Strategy Goals"></a>Backup Strategy Goals</h3><ol>
+<li>Make sure I don’t permanently lose my hard work.  </li><li>Be able to easily recover from a temporary loss of work. </li>
+</ol>
+<h3 id="Backup-Strategy-Components"><a href="#Backup-Strategy-Components" class="headerlink" title="Backup Strategy Components"></a>Backup Strategy Components</h3><ol>
+<li>Laptop’s Local Hard drive  </li><li>2 External USB Drives connected to my docking station (Drive letters: L and M)  </li><li>Cloud </li>
+</ol>
+<h3 id="File-Locations"><a href="#File-Locations" class="headerlink" title="File Locations"></a>File Locations</h3><ol>
+<li>I source documents (code, word, visio, etc) on my laptop’s local hard drive, because I always need those docs.  </li><li>I source media (music, photos, videos) on an external drive (L) that is connected to my docking station at home. I don’t have those files on my laptop’s local hard drive, because do most of my creative media work at home and I don’t usually need them during the day. </li>
+</ol>
+<h3 id="The-Strategy"><a href="#The-Strategy" class="headerlink" title="The Strategy"></a>The Strategy</h3><ul>
+<li>I use <a href="http://www.hanselman.com/blog/Windows8Step0TurnOnContinuousBackupsViaFileHistory.aspx" target="_blank" rel="external">Windows 8 File History</a> to backup my laptop’s local hard drive to my first external hard drive (L). </li><li>I import my media files from SD cards directly to my first external hard drive (L). </li><li>I use <a href="https://www.crashplan.com" target="_blank" rel="external">CrashPlan</a> to backup my media and my Windows 8 File History log to both the cloud and my second external drive. </li>
+</ul>
+<p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_3.png" alt=""></p>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p><strong>1. Setup Windows 8 File History to sync from laptop to external drive </strong></p>
+<p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_4.png" alt=""></p>
+<blockquote>
+<p>Windows 8 File History backs up your “Windows Library” folders. To find your library folder just open Windows Explorer and find “Libraries” <img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_5.png" alt=""> &gt; If you want Windows 8 File History to back up something you need to add it to a Library. You can do that by right clicking on it and selecting “Include in library”, then select the library you want to include it in or create a new one.</p>
+<p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_6.png" alt=""> </p>
+</blockquote>
+<p><strong>2. Setup CrashPlan to sync to an external drive (M)</strong></p>
+<p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_7.png" alt=""></p>
+<p><strong>3. Setup CrashPlan to sync to the cloud</strong></p>
+<p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_8.png" alt=""></p>
+<h3 id="My-Local-Drives-and-Folders"><a href="#My-Local-Drives-and-Folders" class="headerlink" title="My Local Drives and Folders"></a>My Local Drives and Folders</h3><p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_9.png" alt=""></p>
+<p><strong>C</strong> is my laptop’s local hard drive. It just contains “_docs” which has the docs I need for work (code, word, visio, etc)</p>
+<p><strong>L </strong>is my first external hard drive. It contains “_media” which is where I source media files from SD cards and it has FileHistory, which is where Windows 8 File History creates it’s log.</p>
+<p><strong>M </strong>is my second external hard drive. It contains the CrashPlan encrypted versions of my L drive.</p>
+<p>You will also notice that under /Libraries/Documents/ I have included the “_docs” folder from my C drive. Including that folder in a Library allows it to be picked up by Windows 8 File History.</p>
+<p><img src="/images/blog/My-Backup-Strategy-Local-External-and-Cl_647D/image_10.png" alt=""></p>
+<h3 id="Precautions"><a href="#Precautions" class="headerlink" title="Precautions"></a>Precautions</h3><ol>
+<li>Make sure you get the CrashPlan email notifications. They will tell you when you haven’t backed up in a while and will tell you when you aren’t 100% backed up. </li>
+</ol>
+<h3 id="File-Recovery"><a href="#File-Recovery" class="headerlink" title="File Recovery"></a>File Recovery</h3><ol>
+<li>If my laptop’s local hard drive crashes, I can recover the files from my first external drive (L).  </li><li>If my first external drive (L) crashes, I can recover the files from CrashPlan.  </li><li>If CrashPlan is down, I can recover the files from my second external drive (M).  </li><li>If my house burns down, I can recover the files from CrashPlan. </li>
+</ol>
+<h3 id="Wrap-up"><a href="#Wrap-up" class="headerlink" title="Wrap up"></a>Wrap up</h3><p>I lot of people have more sophisticated backup strategies than I do. Like an offsite physical backup where they swap drives every time they visit that location. But that is over kill for me. The only time I would need that is if CrashPlan was down and both of my hard drives crashed or my house burned down at the same time CrashPlan was down. Possible, but not something I’m worried about.</p>
+<p>Hope this helps you develop your own backup strategy and saves you from losing your work.</p>
+<p><a href="http://www.hanselman.com/blog/" target="_blank" rel="external">Hanselman</a> is also passionate about backups. Have a look at his “<a href="http://www.hanselman.com/blog/TheComputerBackupRuleOfThree.aspx" target="_blank" rel="external">The Computer Backup Rule of Three</a>“ post and scroll to the “Recommended Reading” section at the bottom of that post for more posts.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2012/11/my-backup-strategy/" data-id="cj4io7in100olpcj4t0gdixqy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2012/11/my-backup-strategy/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

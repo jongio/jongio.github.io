@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to use the Azure IoT Hub File Upload API with Python | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="azure,iot,python" />
+    
+    <meta name="description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
+Here’s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use the Azure IoT Hub File Upload API with Python">
+<meta property="og:url" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
+Here’s">
+<meta property="og:image" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
+<meta property="og:updated_time" content="2017-02-01T23:47:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to use the Azure IoT Hub File Upload API with Python">
+<meta name="twitter:description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
+Here’s">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-azure-iot-hub-file-upload-python" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to use the Azure IoT Hub File Upload API with Python
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2017/01/azure-iot-hub-file-upload-python/" class="article-date">
+    <time datetime="2017-01-26T10:08:56.000Z" itemprop="datePublished">2017-01-26</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload" target="_blank" rel="external">File Upload API</a>. It took us a while to figure it out and ran into a bunch of issues.</p>
+<p>Here’s how we got it working.</p>
+<h2 id="Create-Azure-IoT-Hub-and-Register-a-Device"><a href="#Create-Azure-IoT-Hub-and-Register-a-Device" class="headerlink" title="Create Azure IoT Hub and Register a Device"></a>Create Azure IoT Hub and Register a Device</h2><p>1. <a href="https://aka.ms/howtocreateazureiothub" target="_blank" rel="external">Create an Azure IoT Hub</a><br>2. <a href="https://aka.ms/manageiothub" target="_blank" rel="external">Register an Azure IoT Hub Device</a>.<br>3. Copy the Device’s connection string, you’ll need it later.</p>
+<h2 id="Enable-Azure-IoT-Hub-File-Upoads"><a href="#Enable-Azure-IoT-Hub-File-Upoads" class="headerlink" title="Enable Azure IoT Hub File Upoads"></a>Enable Azure IoT Hub File Upoads</h2><p>After you created your IoT Hub, you need to enable file uploads on the Azure Portal. I’m sure you can do via cli as well, but I don’t have time to research that right now.</p>
+<p>1. Go to the IoT Hub on Azure Portal<br>2. Click Messaging -&gt; File Upload<br><img src="000041.png" alt=""><br>3. Create a new or select an existing Standard storage account and create a container.</p>
+<blockquote>
+<p>Make sure you create or use a Standard storage account. For some reason, file upload doesn’t work with Premium storage accounts. I’m following up with the team on that.</p>
+</blockquote>
+<p><img src="000054.png" alt=""></p>
+<p>4. Turn on “Receive notifications for uploaded files”<br><img src="000056.png" alt=""><br>5. Click Save</p>
+<h2 id="Get-Python-IDE"><a href="#Get-Python-IDE" class="headerlink" title="Get Python IDE"></a>Get Python IDE</h2><p>You’ll need an IDE if you want to debug and step-through the code. I use <a href="https://code.visualstudio.com/" target="_blank" rel="external">VS Code</a> and <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python" target="_blank" rel="external">this Python extension</a>.</p>
+<h2 id="Install-Azure-IoT-Python-SDK"><a href="#Install-Azure-IoT-Python-SDK" class="headerlink" title="Install Azure IoT Python SDK"></a>Install Azure IoT Python SDK</h2><p>Follow the instructions <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python" target="_blank" rel="external">here</a> for getting the Python SDK on your machine. If you are using Linux, then you will have to compile it yourself. If you are using Windows you can use pip.  </p>
+<h2 id="Get-Python-Sample"><a href="#Get-Python-Sample" class="headerlink" title="Get Python Sample"></a>Get Python Sample</h2><p>You can either just copy <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_class.py" target="_blank" rel="external">this file</a> locally or <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-clone-the-repository" target="_blank" rel="external">clone the entire SDK repo</a>.</p>
+<h2 id="Run-Python-Sample"><a href="#Run-Python-Sample" class="headerlink" title="Run Python Sample"></a>Run Python Sample</h2><p>You don’t have to open the sample to run it, but if you want to look at the code it is in the <a href="https://github.com/Azure/azure-iot-sdk-python" target="_blank" rel="external">azure-iot-sdk-python</a> repo device/samples/iothub_client_sample_class.py.</p>
+<p>Navigate to the folder devices/samples/ and run the following.</p>
+<blockquote>
+<p>Replace [device connection string] with the device’s connection string that you copied in step 1 above.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">python iothub_client_sample_class.py -p mqtt -c [device connection string]</div></pre></td></tr></table></figure>
+<p>If everything is setup correctly, you will see the following message:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Blob upload confirmation[1001] received for message with result = OK</div><div class="line">Total calls confirmed: 1</div></pre></td></tr></table></figure>
+<p>Here’s the meat of the code for this sample.<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload_to_blob</span><span class="params">(self, destinationfilename, source, size, usercontext)</span>:</span></div><div class="line">        self.client.upload_blob_async(</div><div class="line">            destinationfilename, source, size,</div><div class="line">            self._blob_upload_confirmation_callback, usercontext)</div></pre></td></tr></table></figure></p>
+<p>And here’s the code that calls that method:<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">filename= <span class="string">"hello_python_blob.txt"</span></div><div class="line">content = <span class="string">"Hello World from Python Blob APi"</span></div><div class="line">hub_manager.upload_to_blob(filename, content, len(content), <span class="number">1001</span>)</div></pre></td></tr></table></figure></p>
+<p>If you want to upload files, you need to read them into memory first like this:<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line">filename = <span class="string">"myimage.png"</span></div><div class="line">f = open(<span class="string">"C:\Temp\myimage.png"</span>, <span class="string">"rb"</span>)</div><div class="line">content = f.read()</div><div class="line"></div><div class="line">print(<span class="string">"IoTHubClient is uploading blob to storage"</span>)</div><div class="line">iotHubClient.upload_blob_async(filename, content, len(content), blob_upload_confirmation_callback, <span class="number">1001</span>)</div></pre></td></tr></table></figure></p>
+<p>If you see the following error…you will need to open up the sample file in your IDE and add a comma after ‘size’ like this:</p>
+<p><img src="000047.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">File &quot;iothub_client_sample_class.py&quot;, line 158</div><div class="line">    self._send_reported_state_callback, user_context)</div><div class="line">       ^</div><div class="line">SyntaxError: invalid syntax</div></pre></td></tr></table></figure>
+<p>If you see the following error…it could mean one of two things:<br>1. You don’t have a storage account associated with your IoT Hub.<br>2. You are using a “Premium Storage” Account. Solution: Change your storage account to Standard Storage.<br><del>3. You aren’t using the correct container access type. It must be a container with “container” access type, like this:</del></p>
+<blockquote>
+<p>Note: File upload appears to now work with any container access type.<br><img src="000054.png" alt=""></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_step3 Line:649 HTTP code was 400</div><div class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_Impl Line:843 IoTHubClient_LL_UploadToBlob_step3 failed</div><div class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client.c Func:uploadingThread Line:1500 unable to IoTHubClient_LL_UploadToBlob</div><div class="line">Blob upload confirmation[1001] received for message with result = ERROR</div><div class="line">    Total calls confirmed: 1</div></pre></td></tr></table></figure>
+<p>The error is apparently due to the Premium Storage account not allowing ACLs. See the “warn” statement below. </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure storage container create --container jongcontainer1 -p Container -a jongiothubstorage -k </div><div class="line">info:    Executing command storage container create</div><div class="line">+ Creating storage container jongcontainer1</div><div class="line">warn:    Current storage account doesn&apos;t support setting ACL</div><div class="line">+ Getting storage container information</div><div class="line">data:    &#123;</div><div class="line">data:        name: &apos;jongcontainer1&apos;,</div><div class="line">data:        metadata: &#123;&#125;,</div><div class="line">data:        etag: &apos;&quot;0x8D445A036A4FC64&quot;&apos;,</div><div class="line">data:        lastModified: &apos;Thu, 26 Jan 2017 04:02:57 GMT&apos;,</div><div class="line">data:        lease: &#123; status: &apos;unlocked&apos;, state: &apos;available&apos; &#125;,</div><div class="line">data:        requestId: &apos;de4a3094-001c-0000-2989-7792b7000000&apos;,</div><div class="line">data:        publicAccessLevel: &apos;Off&apos;</div><div class="line">data:    &#125;</div><div class="line">info:    storage container create command OK</div></pre></td></tr></table></figure>
+<h2 id="View-The-File"><a href="#View-The-File" class="headerlink" title="View The File"></a>View The File</h2><p>You can use <a href="http://storageexplorer.com/" target="_blank" rel="external">Azure Storage Explorer</a> to view the uploaded file.</p>
+<p>If you go to the storage account that you associated with IoT Hub in Azure Portal, you’ll see an Open in Storage Explorer button.</p>
+<p><img src="000048.png" alt=""></p>
+<p>Drill down to your container and you’ll see your file.<br><img src="000055.png" alt=""></p>
+<h2 id="Access-The-File"><a href="#Access-The-File" class="headerlink" title="Access The File"></a>Access The File</h2><p>If you want a direct URL to the file it will look like this:<br><a href="https://jongiothubstandard.blob.core.windows.net/blobcontainer/foo/hello_python_blob.txt" target="_blank" rel="external">https://jongiothubstandard.blob.core.windows.net/blobcontainer/foo/hello_python_blob.txt</a></p>
+<p>You’ll need to replace your storage name, container name and then build the rest of the path based on the parameters you passed to the upload method when you uploaded the file.</p>
+<p>Jon</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/" data-id="cj4io7i7b004kpcj49ysi9fp3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>

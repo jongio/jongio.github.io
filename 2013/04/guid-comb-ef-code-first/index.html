@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to implement Guid.Comb on SQL Server with Entity Framework Code First | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="howto" />
+    
+    <meta name="description" content="Read this if you don’t know the “why” behind Guid.Comb. In a nutshell. We want to uniquely identify records and don’t want PK collisions across database instances. Using Guid as a PK used to be taboo.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to implement Guid.Comb on SQL Server with Entity Framework Code First">
+<meta property="og:url" content="http://blog.jongallant.com/2013/04/guid-comb-ef-code-first/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Read this if you don’t know the “why” behind Guid.Comb. In a nutshell. We want to uniquely identify records and don’t want PK collisions across database instances. Using Guid as a PK used to be taboo.">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/343c5f9b6c9a_661C/image.png">
+<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to implement Guid.Comb on SQL Server with Entity Framework Code First">
+<meta name="twitter:description" content="Read this if you don’t know the “why” behind Guid.Comb. In a nutshell. We want to uniquely identify records and don’t want PK collisions across database instances. Using Guid as a PK used to be taboo.">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/343c5f9b6c9a_661C/image.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-guid-comb-ef-code-first" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to implement Guid.Comb on SQL Server with Entity Framework Code First
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2013/04/guid-comb-ef-code-first/" class="article-date">
+    <time datetime="2013-04-11T04:44:00.000Z" itemprop="datePublished">2013-04-11</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Read <a href="http://www.informit.com/articles/article.aspx?p=25862" target="_blank" rel="external">this</a> if you don’t know the “why” behind Guid.Comb. In a nutshell. We want to uniquely identify records and don’t want PK collisions across database instances. Using Guid as a PK used to be taboo. Now (circa 2002) it’s acceptable with Guid.Comb. It generates Guids in a semi-sequential order to limit page splits. This post is a combination of <a href="http://stackoverflow.com/a/7098804/2211981" target="_blank" rel="external">this</a> and <a href="http://stackoverflow.com/a/13014102/2211981" target="_blank" rel="external">this</a>. Here’s a <a href="http://thatextramile.be/blog/2009/05/using-the-guidcomb-identifier-strategy" target="_blank" rel="external">good post</a> on how to do Guid.Comb with NHibernate.</p>
+<p><a href="https://github.com/jonbgallant/guid-comb-ef-code-first" target="_blank" rel="external">Download <span>Latest version from GitHub</span></a></p>
+<p>What I’m using:</p>
+<ol>
+<li><a href="http://nuget.org/packages/entityframework" target="_blank" rel="external">EF 6 beta3</a> – Though you could probably use EF5 without issue  </li><li><a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-products" target="_blank" rel="external">VS2012</a> – Express should work  </li><li><a href="http://www.microsoft.com/en-us/sqlserver/editions/2012-editions/express.aspx" target="_blank" rel="external">SQL Express</a>  </li><li>Nuget </li>
+</ol>
+<p>1. Create a new Console App called GuidComb</p>
+<p>2. Open Package Manager Console and run the following:</p>
+<blockquote>
+<p>PM&gt; Install-Package EntityFramework -Pre </p>
+</blockquote>
+<p>3. Add this code to your app:<br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.ComponentModel.DataAnnotations;</div><div class="line"><span class="keyword">using</span> System.ComponentModel.DataAnnotations.Schema;</div><div class="line"><span class="keyword">using</span> System.Data.Entity;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">GuidComb</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> ItemContext())</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">10</span>; i++)</div><div class="line">                    db.Items.Add(<span class="keyword">new</span> Item());</div><div class="line"></div><div class="line">                db.SaveChanges();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> ItemContext())</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> db.Items)</div><div class="line">                    Console.WriteLine(item.Id);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Console.ReadKey();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Item</span></div><div class="line">    &#123;</div><div class="line">        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]</div><div class="line">        <span class="keyword">public</span> Guid Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemContext</span> : <span class="title">DbContext</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">public</span> DbSet&amp;lt;Item&amp;gt; Items &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4. Run the following in Package Manager Console</p>
+<blockquote>
+<p>PM&gt; Enable-Migrations</p>
+</blockquote>
+<p>5. Run the following in Package Manager Console</p>
+<blockquote>
+<p>PM&gt; Add-Migration Comb</p>
+</blockquote>
+<p>6. Open the /Migrations/[Timestamp]_Comb.cs that was created by the Add-Migration command and add defaultValueSql: “newsequentialid()” to the Item table Column builder.<br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">GuidComb.Migrations</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">using</span> System;</div><div class="line">    <span class="keyword">using</span> System.Data.Entity.Migrations;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Comb</span> : <span class="title">DbMigration</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Up</span>(<span class="params"></span>)</span></div><div class="line">        &#123;</div><div class="line">            CreateTable(</div><div class="line">                <span class="string">"dbo.Items"</span>,</div><div class="line">                c =&amp;gt; <span class="keyword">new</span></div><div class="line">                    &#123;</div><div class="line">                        Id = c.Guid(nullable: <span class="literal">false</span>, identity: <span class="literal">true</span>, defaultValueSql: <span class="string">"newsequentialid()"</span>),</div><div class="line">                    &#125;)</div><div class="line">                .PrimaryKey(t =&amp;gt; t.Id);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Down</span>(<span class="params"></span>)</span></div><div class="line">        &#123;</div><div class="line">            DropTable(<span class="string">"dbo.Items"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>7. Hit F5 and you should see this:</p>
+<p><img src="/images/blog/343c5f9b6c9a_661C/image.png" alt=""></p>
+<p>As you can see the Guid are being generated sequentially.</p>
+<p><a href="https://github.com/jonbgallant/guid-comb-ef-code-first" target="_blank" rel="external">Download <span>Latest version from GitHub</span></a></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://blog.jongallant.com/2013/04/guid-comb-ef-code-first/" data-id="cj4io7ig400expcj4p6eyxqx9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2013/04/guid-comb-ef-code-first/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>
