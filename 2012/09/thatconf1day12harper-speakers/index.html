@@ -194,71 +194,7 @@ ga('send', 'pageview');
 
 <h1 id="SPEAKER-LIST"><a href="#SPEAKER-LIST" class="headerlink" title="SPEAKER LIST"></a>SPEAKER LIST</h1><table border="1"><tr><th valign="top">Name</th><th>Blog</th><th>Feed</th><th>Twitter</th></tr><tr><td valign="top" nowrap="">Adam Hoffman</td><td valign="top"><a href="http://www.stratospher.es/blog/" target="_blank" rel="external">Blog</a></td><td valign="top"><a href="http://stratospher.es/blog/rss/" target="_blank" rel="external">Feed</a></td><td valign="top"><a href="http://twitter.com/stratospher_es" target="_blank" rel="external">stratospher_es</a></td> </tr><tr><td valign="top" nowrap="">Carl Franklin</td><td valign="top"><a href="http://www.dotnetrocks.com/" target="_blank" rel="external">Blog</a></td><td valign="top"><a href="http://www.dotnetrocks.com/feed.aspx" target="_blank" rel="external">Feed</a></td><td valign="top"><a href="http://twitter.com/carlfranklin" target="_blank" rel="external">carlfranklin</a></td> </tr><tr><td valign="top" nowrap="">Clark Sell</td><td valign="top"><a href="http://csell.net/" target="_blank" rel="external">Blog</a></td><td valign="top"><a href="http://feeds.feedburner.com/csell" target="_blank" rel="external">Feed</a></td><td valign="top"><a href="http://twitter.com/csell5" target="_blank" rel="external">csell5</a></td> </tr><tr><td valign="top" nowrap="">Greg Levenhagen</td><td valign="top"><a href="http://devtreats.com/" target="_blank" rel="external">Blog</a></td><td valign="top"><a href="http://devtreats.com/feed/" target="_blank" rel="external">Feed</a></td><td valign="top"><a href="http://twitter.com/GregLevenhagen" target="_blank" rel="external">GregLevenhagen</a></td> </tr><tr><td valign="top" nowrap="">Lwin Maung</td><td valign="top"><a href="http://www.maungs.com/category/lwins-blogs/" target="_blank" rel="external">Blog</a></td><td valign="top"><a href="http://www.maungs.com/category/lwins-blogs/feed/" target="_blank" rel="external">Feed</a></td><td valign="top"><a href="http://twitter.com/lmaung" target="_blank" rel="external">lmaung</a></td> </tr><tr><td valign="top" nowrap="">Richard Campbell</td><td valign="top"><a href="http://www.campbellassociates.ca/blog/default.aspx" target="_blank" rel="external">Blog</a></td><td valign="top"><a href="http://www.campbellassociates.ca/blog/SyndicationService.asmx/GetRss" target="_blank" rel="external">Feed</a></td><td valign="top"><a href="http://twitter.com/richcampbell" target="_blank" rel="external">richcampbell</a></td> </tr><tr><td valign="top" nowrap="">Tony Surma</td><td valign="top"></td><td valign="top"></td><td valign="top"></td> </tr></table>
         </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://blog.jongallant.com/2012/09/thatconf1day12harper-speakers/" data-id="cj4ro5w8r00zt9sj4a778onig" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
+        <footer>
         </footer>
     </div>
 </article>
@@ -289,7 +225,7 @@ ga('send', 'pageview');
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
         </div>
     </div>

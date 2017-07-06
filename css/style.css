@@ -1253,27 +1253,6 @@ a.article-title:hover {
   text-decoration: none;
   text-shadow: 0 1px #20334a;
 }
-.article-footer {
-  font-size: 11px;
-  line-height: 1.5em;
-  border-top: 1px solid #ddd;
-  padding-top: 1.5em;
-}
-.article-footer:before,
-.article-footer:after {
-  content: "";
-  display: table;
-}
-.article-footer:after {
-  clear: both;
-}
-.article-footer a {
-  color: #aaa;
-  text-decoration: none;
-}
-.article-footer a:hover {
-  color: #24292e;
-}
 .article-comment-link i,
 .article-share-link i {
   padding-right: 8px;

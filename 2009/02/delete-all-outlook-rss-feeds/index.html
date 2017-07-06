@@ -194,71 +194,7 @@ ga('send', 'pageview');
 </blockquote>
 <figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.Collections.Generic;</div><div class="line"><span class="keyword">using</span> System.Linq;</div><div class="line"><span class="keyword">using</span> System.Text;</div><div class="line"><span class="keyword">using</span> Microsoft.Office.Interop.Outlook;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">OutlookRssDelete</span> &#123;</div><div class="line"> <span class="keyword">class</span> <span class="title">Program</span> &#123;</div><div class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>) </span>&#123;</div><div class="line">   Application app = <span class="keyword">new</span> Application();</div><div class="line">   NameSpace ns = app.GetNamespace(<span class="string">"MAPI"</span>);</div><div class="line"></div><div class="line">   MAPIFolder feeds = ns.GetDefaultFolder(OlDefaultFolders.olFolderRssFeeds);</div><div class="line">   MAPIFolder delitems = ns.GetDefaultFolder(OlDefaultFolders.olFolderDeletedItems);</div><div class="line"></div><div class="line">   <span class="comment">// Put in temp because we need to delete from the same list</span></div><div class="line">   List feedFolders = <span class="keyword">new</span> List();</div><div class="line">   <span class="keyword">foreach</span>(MAPIFolder f <span class="keyword">in</span> feeds.Folders) &#123;</div><div class="line">    feedFolders.Add(f);</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">foreach</span>(MAPIFolder f <span class="keyword">in</span> feedFolders) &#123;</div><div class="line">    Console.WriteLine(f.Name);</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">     f.Delete();</div><div class="line">    &#125; <span class="keyword">catch</span> &#123;</div><div class="line">     <span class="keyword">try</span> &#123;</div><div class="line">      Console.WriteLine(<span class="string">"Delete failed.Try Moving to Deleted Items"</span>);</div><div class="line">      f.MoveTo(delitems);</div><div class="line">     &#125; <span class="keyword">catch</span> (System.Exception ex1) &#123;</div><div class="line">      Console.WriteLine(<span class="string">"Move to Deleted Items Failed.Call Helpdesk: )"</span> + ex1.ToString());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   &#125;</div><div class="line">  &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://blog.jongallant.com/2009/02/delete-all-outlook-rss-feeds/" data-id="cj4ro5vqh00bx9sj4vwe66l1t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
+        <footer>
         </footer>
     </div>
 </article>
@@ -289,7 +225,7 @@ ga('send', 'pageview');
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
         </div>
     </div>

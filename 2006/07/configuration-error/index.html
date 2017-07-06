@@ -193,71 +193,7 @@ ga('send', 'pageview');
 <p>To resolve, go to IIS, properties of the site, ASP.NET tab and select the .NET framework version.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Configuration Error</div><div class="line"></div><div class="line">Description: **An error occurred during the processing of a configuration file required to service this request. Please review the specific error details below and modify your configuration file appropriately.</div><div class="line"></div><div class="line">Parser Error Message: An error occurred loading a configuration file: Object reference not set to an instance of an object.</div><div class="line"></div><div class="line">Source Error:</div><div class="line">[No relevant source lines]</div><div class="line">Source File: C:\WINNT\Microsoft.NET\Framework\v2.0.50727\Config\machine.config Line: 0</div><div class="line">**</div><div class="line"></div><div class="line">Version Information:** Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.62</div></pre></td></tr></table></figure>
         </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://blog.jongallant.com/2006/07/configuration-error/" data-id="cj4ro5vpj00ag9sj4jlhlhnfz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
+        <footer>
         </footer>
     </div>
 </article>
@@ -288,7 +224,7 @@ ga('send', 'pageview');
                     <a href="/" class="logo"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
-                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>. Hosting provided by <a href="http://birch.com" target="_blank">Birch</a>. <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
         </div>
     </div>
