@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-09-13T04:14:20.948Z</updated>
+  <updated>2017-09-14T13:42:47.149Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>How to Access Raspberry Pi via Hostname and Create File Share with Samba</title>
+    <link href="http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/"/>
+    <id>http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/</id>
+    <published>2017-09-14T05:35:51.000Z</published>
+    <updated>2017-09-14T13:42:47.149Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t g
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to Remote Desktop into Raspberry Pi (Raspbian Stretch) with RealVNC</title>
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/</id>
     <published>2017-09-12T11:59:11.000Z</published>
-    <updated>2017-09-13T04:14:20.948Z</updated>
+    <updated>2017-09-14T13:26:08.952Z</updated>
     
     <summary type="html">
     
@@ -58,9 +82,9 @@
       <category term="Bugs" scheme="http://blog.jongallant.com/category/Tech/Bugs/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   
@@ -82,9 +106,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="avro" scheme="http://blog.jongallant.com/tags/avro/"/>
     
@@ -206,9 +230,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
@@ -259,9 +283,9 @@
     
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
-      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
       <category term="aad" scheme="http://blog.jongallant.com/tags/aad/"/>
+    
+      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
   </entry>
   
@@ -357,9 +381,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
@@ -383,9 +407,9 @@
       <category term="Power BI" scheme="http://blog.jongallant.com/category/Tech/Power-BI/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   
@@ -502,9 +526,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="python" scheme="http://blog.jongallant.com/tags/python/"/>
     
@@ -597,28 +621,6 @@
       <category term="howto" scheme="http://blog.jongallant.com/tags/howto/"/>
     
       <category term="outlook" scheme="http://blog.jongallant.com/tags/outlook/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Find Azure Regions with Lowest Latency</title>
-    <link href="http://blog.jongallant.com/2017/01/azure-region-latency-test/"/>
-    <id>http://blog.jongallant.com/2017/01/azure-region-latency-test/</id>
-    <published>2017-01-11T17:57:22.000Z</published>
-    <updated>2017-01-12T02:40:30.852Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I recently gave a &lt;a href=&quot;https://channel9.msdn.com/Events/Speakers/jon-gallant&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;few presentations&lt;/a&gt; at
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Azure" scheme="http://blog.jongallant.com/category/Tech/Azure/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   

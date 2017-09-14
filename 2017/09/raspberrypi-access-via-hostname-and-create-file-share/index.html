@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to Access Raspberry Pi via Hostname and Create File Share with Samba | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="iot,raspberrypi" />
+    
+    <meta name="description" content="By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t guaranteed to be static. You’ll also want to setup a file share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Access Raspberry Pi via Hostname and Create File Share with Samba">
+<meta property="og:url" content="http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t guaranteed to be static. You’ll also want to setup a file share">
+<meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/000266.png">
+<meta property="og:updated_time" content="2017-09-14T13:42:47.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Access Raspberry Pi via Hostname and Create File Share with Samba">
+<meta name="twitter:description" content="By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t guaranteed to be static. You’ll also want to setup a file share">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/000266.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1148981-8', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                        <div class="banner-ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- banner -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7253926757222509"
+     data-ad-slot="8838481977"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+                            <article id="post-raspberrypi-access-via-hostname-and-create-file-share" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Access Raspberry Pi via Hostname and Create File Share with Samba
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2017/09/raspberrypi-access-via-hostname-and-create-file-share/" class="article-date">
+    <time datetime="2017-09-14T05:35:51.000Z" itemprop="datePublished">2017-09-14</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/">raspberrypi</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t guaranteed to be static. You’ll also want to setup a file share so that you can code on your desktop machine and easily copy your code to your Pi…or work directly off the Pi via a network share.</p>
+<p>You can do both (access via hostname and create a file share) with <a href="https://www.samba.org/" target="_blank" rel="external">Samba</a>.</p>
+<p>Here’s how:</p>
+<h2 id="1-Setup-Remote-Desktop"><a href="#1-Setup-Remote-Desktop" class="headerlink" title="1. Setup Remote Desktop"></a>1. Setup Remote Desktop</h2><p>Follow the instructions in my <a href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">How to Remote Desktop into Raspberry Pi (Raspbian Stretch) with RealVNC
+</a> post. This will allow you to remote into your machine from your Windows desktop.</p>
+<h2 id="2-Assign-a-unique-Hostname"><a href="#2-Assign-a-unique-Hostname" class="headerlink" title="2. Assign a unique Hostname"></a>2. Assign a unique Hostname</h2><ul>
+<li>Go to Raspberry Pi Configuration -&gt; System and set a unique Hostname and click OK.</li>
+</ul>
+<p><img src="000254.png" alt=""></p>
+<ul>
+<li>Click Yes to reboot the Pi</li>
+</ul>
+<p><img src="000262.png" alt=""></p>
+<h2 id="3-Install-Samba"><a href="#3-Install-Samba" class="headerlink" title="3. Install Samba"></a>3. Install Samba</h2><p>Open Terminal and run the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt install -y samba</div></pre></td></tr></table></figure>
+<h2 id="4-Configure-Samba"><a href="#4-Configure-Samba" class="headerlink" title="4. Configure Samba"></a>4. Configure Samba</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo leafpad /etc/samba/smb.conf &amp;</div></pre></td></tr></table></figure>
+<h2 id="5-Configure-Network-Hostname"><a href="#5-Configure-Network-Hostname" class="headerlink" title="5. Configure Network Hostname"></a>5. Configure Network Hostname</h2><p>Scroll down to the Global Settings section:</p>
+<ul>
+<li>Set workgroup to the name of your workgroup or domain name</li>
+<li>Change ‘wins support’ from ‘no’ to ‘yes’</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[global]</div><div class="line">   workgroup = WORKGROUP</div><div class="line">   wins support = yes</div></pre></td></tr></table></figure>
+<p><img src="000256.png" alt=""></p>
+<h2 id="6-Configure-File-Share"><a href="#6-Configure-File-Share" class="headerlink" title="6. Configure File Share"></a>6. Configure File Share</h2><p>Scroll down to the bottom of the smb.config file and paste in the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[pishare]</div><div class="line">  comment=pishare</div><div class="line">  path=/home/pi/</div><div class="line">  browseable=yes</div><div class="line">  writeable=yes</div><div class="line">  only guest=no</div><div class="line">  create mask=0777</div><div class="line">  directory mask=0777</div><div class="line">  public=no</div></pre></td></tr></table></figure>
+<p><img src="000258.png" alt=""></p>
+<blockquote>
+<p>This will share your entire home directory. If you’d like to limit access to a subdirectory, just create a directory and change the ‘path’ variable.</p>
+</blockquote>
+<p>Save smb.config</p>
+<h2 id="7-Set-File-Share-Password"><a href="#7-Set-File-Share-Password" class="headerlink" title="7. Set File Share Password"></a>7. Set File Share Password</h2><p>Open Terminal and execute the following to set the Samba password for the ‘pi’ user.  </p>
+<blockquote>
+<p>This password can be different than the regular Pi user password.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo smbpasswd -a pi</div></pre></td></tr></table></figure>
+<p>You’ll need to enter the password twice.</p>
+<h2 id="8-Remote-Desktop-via-Hostname"><a href="#8-Remote-Desktop-via-Hostname" class="headerlink" title="8. Remote Desktop via Hostname"></a>8. Remote Desktop via Hostname</h2><p>You can now remote into your Pi via hostname instead of IP.  See <a href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">this post</a> for remote desktop instructions.</p>
+<p><img src="000266.png" alt=""></p>
+<h2 id="9-Access-Pi-File-Share-from-Windows"><a href="#9-Access-Pi-File-Share-from-Windows" class="headerlink" title="9. Access Pi File Share from Windows"></a>9. Access Pi File Share from Windows</h2><p>You can now access the file share you just created on your desktop machine</p>
+<ul>
+<li>Open Windows Explorer, type in your Pi hostname and you will see the share</li>
+</ul>
+<p><img src="000264.png" alt=""></p>
+<h2 id="10-Map-Network-Drive-to-Share"><a href="#10-Map-Network-Drive-to-Share" class="headerlink" title="10. Map Network Drive to Share"></a>10. Map Network Drive to Share</h2><p>I like to do this so I can easily access the files without having to type in the Hostname everytime.</p>
+<ul>
+<li>Right click on ‘This PC’ in Windows Explorer and select ‘Map network drive…’</li>
+</ul>
+<p><img src="mapnetworkdrive.png" alt=""></p>
+<ul>
+<li>Enter path to Pi share and check ‘Connect using different credentials’</li>
+</ul>
+<p><img src="000274.png" alt=""></p>
+<ul>
+<li>Select ‘Use a different account’ and enter ‘pi’ and ‘raspberry’ (or whatever you set your Samba user/password to). Check ‘Remember my credentials’ so you don’t get prompted everytime you access the share.</li>
+</ul>
+<p><img src="000272.png" alt=""></p>
+<ul>
+<li>You will now be able to access the share via drive letter</li>
+</ul>
+<p><img src="000276.png" alt=""></p>
+<p><img src="000278.png" alt=""></p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                        <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2017 Jon Gallant</p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+
+    <script type='text/javascript'>
+function _dmBootstrap(file) {
+    var _dma = document.createElement('script');
+    _dma.type = 'text/javascript';
+    _dma.async = true;
+    _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+}
+function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+(function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+</script>
+    
+</body>
+</html>
