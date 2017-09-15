@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-09-15T06:34:59.140Z</updated>
+  <updated>2017-09-15T22:03:32.632Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Create a .NET Core CLI Console App as an EXE Instead of a DLL</title>
+    <link href="http://blog.jongallant.com/2017/09/dotnet-core-console-app-create-exe-instead-of-dll/"/>
+    <id>http://blog.jongallant.com/2017/09/dotnet-core-console-app-create-exe-instead-of-dll/</id>
+    <published>2017-09-15T14:48:10.000Z</published>
+    <updated>2017-09-15T22:03:32.632Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;You may have just discovered that when you create a console app using the .NET Core CLI tools it only produces a DLL by default.&lt;/p&gt;
+&lt;p&gt;I
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Change Your Raspberry Pi Password</title>
@@ -606,28 +629,6 @@
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="python" scheme="http://blog.jongallant.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Install git-ftp on Windows</title>
-    <link href="http://blog.jongallant.com/2017/01/install-git-ftp-windows/"/>
-    <id>http://blog.jongallant.com/2017/01/install-git-ftp-windows/</id>
-    <published>2017-01-21T00:36:03.000Z</published>
-    <updated>2017-02-06T07:09:29.969Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I use &lt;a href=&quot;https://github.com/git-ftp/git-ftp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git-ftp&lt;/a&gt; to deploy my &lt;a href=&quot;http://hexo.io&quot; targe
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="git" scheme="http://blog.jongallant.com/tags/git/"/>
     
   </entry>
   
