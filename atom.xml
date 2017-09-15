@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-09-14T13:42:47.149Z</updated>
+  <updated>2017-09-15T06:34:59.140Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Change Your Raspberry Pi Password</title>
+    <link href="http://blog.jongallant.com/2017/09/raspberrypi-change-password/"/>
+    <id>http://blog.jongallant.com/2017/09/raspberrypi-change-password/</id>
+    <published>2017-09-14T23:19:03.000Z</published>
+    <updated>2017-09-15T06:34:59.140Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;You’ll want to make sure you don’t leave the default ‘pi’ user’s password to the default ‘raspberry’ setting.  Here’s how to change it.&lt;/
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Access a Raspberry Pi over SSH</title>
+    <link href="http://blog.jongallant.com/2017/09/raspberrypi-ssh/"/>
+    <id>http://blog.jongallant.com/2017/09/raspberrypi-ssh/</id>
+    <published>2017-09-14T23:07:01.000Z</published>
+    <updated>2017-09-15T06:34:49.634Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;You will often want to execute commands over SSH instead of having to &lt;a href=&quot;raspberrypi-remote-desktop&quot;&gt;Remote Desktop&lt;/a&gt; or access y
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to run Docker on Raspberry Pi</title>
+    <link href="http://blog.jongallant.com/2017/09/raspberrypi-docker/"/>
+    <id>http://blog.jongallant.com/2017/09/raspberrypi-docker/</id>
+    <published>2017-09-14T13:57:01.000Z</published>
+    <updated>2017-09-15T06:33:28.808Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.&lt;/p&gt;
+&lt;p&gt;You can execute the followin
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Access Raspberry Pi via Hostname and Create File Share with Samba</title>
@@ -40,11 +115,11 @@
   </entry>
   
   <entry>
-    <title>How to Remote Desktop into Raspberry Pi (Raspbian Stretch) with RealVNC</title>
+    <title>How to Remote Desktop into Raspberry Pi with RealVNC</title>
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/</id>
     <published>2017-09-12T11:59:11.000Z</published>
-    <updated>2017-09-14T13:26:08.952Z</updated>
+    <updated>2017-09-15T06:29:42.687Z</updated>
     
     <summary type="html">
     
@@ -82,9 +157,9 @@
       <category term="Bugs" scheme="http://blog.jongallant.com/category/Tech/Bugs/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
   </entry>
   
@@ -106,9 +181,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="avro" scheme="http://blog.jongallant.com/tags/avro/"/>
     
@@ -230,9 +305,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
@@ -283,9 +358,9 @@
     
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
-      <category term="aad" scheme="http://blog.jongallant.com/tags/aad/"/>
-    
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
+    
+      <category term="aad" scheme="http://blog.jongallant.com/tags/aad/"/>
     
   </entry>
   
@@ -381,9 +456,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
@@ -407,9 +482,9 @@
       <category term="Power BI" scheme="http://blog.jongallant.com/category/Tech/Power-BI/"/>
     
     
-      <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
     
   </entry>
   
@@ -526,9 +601,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="python" scheme="http://blog.jongallant.com/tags/python/"/>
     
@@ -553,74 +628,6 @@
     
     
       <category term="git" scheme="http://blog.jongallant.com/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Reference Three.js in a Power BI Custom Visual Project</title>
-    <link href="http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/"/>
-    <id>http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/</id>
-    <published>2017-01-20T11:53:12.000Z</published>
-    <updated>2017-01-20T20:09:00.909Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Here’s how to reference &lt;a href=&quot;https://www.npmjs.com/package/three&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;three.js&lt;/a&gt; in your Power BI Custom
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Power BI" scheme="http://blog.jongallant.com/category/Tech/Power-BI/"/>
-    
-    
-      <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Reference a CSS File in a Power BI Custom Visual Project</title>
-    <link href="http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-css-file/"/>
-    <id>http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-css-file/</id>
-    <published>2017-01-20T11:01:53.000Z</published>
-    <updated>2017-01-20T19:32:43.491Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I’m working on a new visual that uses an open source JavaScript control that includes a CSS file.  I was hoping I could just reference it
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Power BI" scheme="http://blog.jongallant.com/category/Tech/Power-BI/"/>
-    
-    
-      <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Create a Custom Outlook Ribbon Button to Cc Yourself Before Sending an Email</title>
-    <link href="http://blog.jongallant.com/2017/01/outlook-custom-ribbon-button-macro-send-and-cc/"/>
-    <id>http://blog.jongallant.com/2017/01/outlook-custom-ribbon-button-macro-send-and-cc/</id>
-    <published>2017-01-19T22:14:04.000Z</published>
-    <updated>2017-01-20T19:11:29.049Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;A big part of my &lt;a href=&quot;http://blog.jongallant.com/2014/01/how-i-manage-zero-inbox-at-microsoft/&quot;&gt;Zero Inbox&lt;/a&gt; routine is to Cc mysel
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="howto" scheme="http://blog.jongallant.com/tags/howto/"/>
-    
-      <category term="outlook" scheme="http://blog.jongallant.com/tags/outlook/"/>
     
   </entry>
   
