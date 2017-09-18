@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-09-15T22:03:32.632Z</updated>
+  <updated>2017-09-18T04:55:28.278Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to &quot;unknown shorthand flag a in -a&quot; When Trying to Remove Docker Containers</title>
+    <link href="http://blog.jongallant.com/2017/09/unknown-shorthand-flag/"/>
+    <id>http://blog.jongallant.com/2017/09/unknown-shorthand-flag/</id>
+    <published>2017-09-17T21:28:42.000Z</published>
+    <updated>2017-09-18T04:55:28.278Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://docs.docker.com/engine/reference/commandline/rm/#remove-all-stopped-containers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;This dock
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Create a .NET Core CLI Console App as an EXE Instead of a DLL</title>
@@ -603,32 +625,6 @@
       <category term="windows" scheme="http://blog.jongallant.com/tags/windows/"/>
     
       <category term="bluetooth" scheme="http://blog.jongallant.com/tags/bluetooth/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use the Azure IoT Hub File Upload API with Python</title>
-    <link href="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/"/>
-    <id>http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/</id>
-    <published>2017-01-26T10:08:56.000Z</published>
-    <updated>2017-02-01T23:47:33.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the &lt;a href=&quot;https://docs.microso
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="python" scheme="http://blog.jongallant.com/tags/python/"/>
     
   </entry>
   
