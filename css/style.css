@@ -343,11 +343,10 @@ code {
 #header {
   background: #fff;
   position: relative;
-  background: url("../images/background.jpg") no-repeat center top;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  min-height: 346px;
+  min-height: 0;
 }
 #header-outer {
   height: 100%;
@@ -358,7 +357,7 @@ code {
 }
 #header-title {
   text-align: center;
-  padding-bottom: 240px;
+  padding-bottom: 0;
 }
 #header-title:before,
 #header-title:after {
@@ -1185,7 +1184,7 @@ a.article-title:hover {
   border-top: 1px solid #000;
   border-right: 1px solid #000;
   border-bottom: 1px solid #000;
-  font-style: italic;
+  font-size: 1em;
   background-color: #e6f5ff;
 }
 .article-entry blockquote footer {
