@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-11-08T21:23:34.133Z</updated>
+  <updated>2017-11-08T21:52:48.029Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/"/>
     <id>http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/</id>
     <published>2017-11-08T06:55:44.000Z</published>
-    <updated>2017-11-08T21:23:34.133Z</updated>
+    <updated>2017-11-08T21:52:48.029Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;The .NET Core &lt;strong&gt;SDK&lt;/strong&gt; is not yet supported on ARM based devices such as the Raspberry Pi.  If you try to install the SDK on 
+      &lt;p&gt;The .NET Core &lt;strong&gt;SDK&lt;/strong&gt; is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is &lt;strong&gt;not&lt;/
     
     </summary>
     
@@ -35,9 +35,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
-    
       <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
