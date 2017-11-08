@@ -6,7 +6,7 @@
     <title>.NET Core SDK Not Supported on ARM | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="iot,dotnet,raspberrypi" />
+        <meta name="keywords" content="iot,raspberrypi,dotnet" />
     
     <meta name="description" content="The .NET Core SDK is not yet supported on ARM based devices such as the Raspberry Pi.  If you try to install the SDK on a Raspberry Pi you will see the following error:
 pi@raspberrypi:~ $ sudo apt ins">
@@ -17,7 +17,7 @@ pi@raspberrypi:~ $ sudo apt ins">
 <meta property="og:description" content="The .NET Core SDK is not yet supported on ARM based devices such as the Raspberry Pi.  If you try to install the SDK on a Raspberry Pi you will see the following error:
 pi@raspberrypi:~ $ sudo apt ins">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/error.png">
-<meta property="og:updated_time" content="2017-11-08T15:33:44.952Z">
+<meta property="og:updated_time" content="2017-11-08T21:23:34.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".NET Core SDK Not Supported on ARM">
 <meta name="twitter:description" content="The .NET Core SDK is not yet supported on ARM based devices such as the Raspberry Pi.  If you try to install the SDK on a Raspberry Pi you will see the following error:
@@ -196,8 +196,7 @@ ga('send', 'pageview');
             <p>The .NET Core <strong>SDK</strong> is not yet supported on ARM based devices such as the Raspberry Pi.  If you try to install the SDK on a Raspberry Pi you will see the following error:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pi@raspberrypi:~ $ sudo apt install dotnet-sdk-2.0.2</div><div class="line">Reading package lists... Done</div><div class="line">Building dependency tree</div><div class="line">Reading state information... Done</div><div class="line">E: Unable to locate package dotnet-sdk-2.0.2</div><div class="line">E: Couldn&apos;t find any package by glob &apos;dotnet-sdk-2.0.2&apos;</div><div class="line">E: Couldn&apos;t find any package by regex &apos;dotnet-sdk-2.0.2&apos;</div></pre></td></tr></table></figure>
 <p><img src="error.png" alt=""></p>
-<p>As you can see <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="external">here</a>, there are many issues with the .NET Core SDK on ARM.  The team is working on it, but I do not have a timeline for official support.</p>
-<p>However, the .NET Core <strong>Runtime</strong> <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="external">does support ARM</a>, so you can develop on a <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="external">supported OS/Arch</a> and then deploy to an ARM device.  You will find instructions for deploying to Raspberry Pi <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="external">here</a>.</p>
+<p>However, the .NET Core <strong>Runtime</strong> <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="external">does support ARM</a>, so you can develop on a <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="external">supported OS/Arch</a> and then deploy to an ARM device.  You will find instructions for deploying to Raspberry Pi <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="external">here</a>. As you can see <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="external">here</a>, there are many issues with the .NET Core Runtime on ARM.  The team is working on it, but I do not have a timeline for official support.</p>
 <ul>
 <li>.NET Core SDK ARM Runtime Announcement: <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="external">https://github.com/dotnet/announcements/issues/29</a></li>
 <li>.NET Core SDK ARM Issues: <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="external">https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20</a></li>
