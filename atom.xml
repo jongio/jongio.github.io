@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-11-07T21:15:25.092Z</updated>
+  <updated>2017-11-08T15:33:44.952Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>.NET Core SDK Not Supported on ARM</title>
+    <link href="http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/"/>
+    <id>http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/</id>
+    <published>2017-11-08T06:55:44.000Z</published>
+    <updated>2017-11-08T15:33:44.952Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The .NET Core &lt;strong&gt;SDK&lt;/strong&gt; is not yet supported on ARM based devices such as the Raspberry Pi.  If you try to install the SDK on 
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
   
   <entry>
     <title>Microsoft is Hiring High-Scale Data Services Developers</title>
@@ -600,31 +626,6 @@
       <category term="windows" scheme="http://blog.jongallant.com/tags/windows/"/>
     
       <category term="bluetooth" scheme="http://blog.jongallant.com/tags/bluetooth/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Why and How I Switched from AT&amp;T to T-Mobile</title>
-    <link href="http://blog.jongallant.com/2017/02/att-to-tmobile/"/>
-    <id>http://blog.jongallant.com/2017/02/att-to-tmobile/</id>
-    <published>2017-02-04T19:05:48.000Z</published>
-    <updated>2017-02-24T01:12:27.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I recently switched from AT&amp;amp;T to T-Mobile. Here’s a quick post that goes through why and how I made the swtich.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;logo
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Reviews" scheme="http://blog.jongallant.com/category/Tech/Reviews/"/>
-    
-    
-      <category term="phone" scheme="http://blog.jongallant.com/tags/phone/"/>
-    
-      <category term="reviews" scheme="http://blog.jongallant.com/tags/reviews/"/>
     
   </entry>
   
