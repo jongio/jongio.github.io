@@ -233,14 +233,14 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/review/</loc>
+        <loc>http://blog.jongallant.com/tags/music/</loc>
         <lastmod>2017-07-06T00:24:48.917Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/music/</loc>
+        <loc>http://blog.jongallant.com/tags/review/</loc>
         <lastmod>2017-07-06T00:24:48.917Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -310,21 +310,7 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/iot/</loc>
-        <lastmod>2017-11-08T21:52:48.029Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/dotnet/</loc>
-        <lastmod>2017-11-08T21:52:48.029Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
         <lastmod>2017-11-08T21:52:48.029Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -340,6 +326,20 @@
     <url>
         <loc>http://blog.jongallant.com/tags/Reviews/</loc>
         <lastmod>2017-11-09T03:36:36.044Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/iot/</loc>
+        <lastmod>2017-11-12T00:04:51.293Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
+        <lastmod>2017-11-12T00:04:51.293Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
