@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t guaranteed to be static. You’ll also want to setup a file share">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/000266.png">
-<meta property="og:updated_time" content="2017-11-12T00:04:51.293Z">
+<meta property="og:updated_time" content="2017-11-12T15:01:27.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Access Raspberry Pi via Hostname and Create File Share with Samba">
 <meta name="twitter:description" content="By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t guaranteed to be static. You’ll also want to setup a file share">
@@ -201,7 +201,14 @@ ga('send', 'pageview');
 <li>Click Yes to reboot the Pi</li>
 </ul>
 <p><img src="000262.png" alt=""></p>
-<h3 id="Via-Command-Line"><a href="#Via-Command-Line" class="headerlink" title="Via Command Line"></a>Via Command Line</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo hostnamectl set-hostname [name]</div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+<h3 id="Via-Command-Line"><a href="#Via-Command-Line" class="headerlink" title="Via Command Line"></a>Via Command Line</h3><p>1. Change /etc/hostname</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hostname</div></pre></td></tr></table></figure>
+<p>Change raspberrypi to your desired hostname</p>
+<p><img src="000318.png" alt=""></p>
+<p>2. Change /etc/hosts<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hosts</div></pre></td></tr></table></figure></p>
+<p>Change raspberrypi to your desired hostname</p>
+<p><img src="000316.png" alt=""></p>
+<p>3. Reboot<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure></p>
 <h2 id="Remote-Desktop-into-Raspberry-Pi"><a href="#Remote-Desktop-into-Raspberry-Pi" class="headerlink" title="Remote Desktop into Raspberry Pi"></a>Remote Desktop into Raspberry Pi</h2><h3 id="Setup-Remote-Desktop"><a href="#Setup-Remote-Desktop" class="headerlink" title="Setup Remote Desktop"></a>Setup Remote Desktop</h3><p>Follow the instructions in my <a href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">How to Remote Desktop into Raspberry Pi (Raspbian Stretch) with RealVNC
 </a> post. This will allow you to remote into your machine from your Windows desktop.</p>
 <h3 id="Remote-Desktop-via-Hostname"><a href="#Remote-Desktop-via-Hostname" class="headerlink" title="Remote Desktop via Hostname"></a>Remote Desktop via Hostname</h3><p>You can now remote into your Pi via hostname instead of IP.  See <a href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">this post</a> for remote desktop instructions.</p>

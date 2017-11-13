@@ -35,9 +35,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
-    
       <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
@@ -46,7 +46,7 @@
     <link href="http://blog.jongallant.com/2017/11/from-tile-to-trackr/"/>
     <id>http://blog.jongallant.com/2017/11/from-tile-to-trackr/</id>
     <published>2017-11-08T06:08:52.000Z</published>
-    <updated>2017-11-09T03:36:36.044Z</updated>
+    <updated>2017-11-13T03:56:12.834Z</updated>
     
     <summary type="html">
     
@@ -55,14 +55,12 @@
     
     </summary>
     
-      <category term="tip" scheme="http://blog.jongallant.com/category/tip/"/>
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
     
-      <category term="reviews" scheme="http://blog.jongallant.com/category/tip/reviews/"/>
+      <category term="Reviews" scheme="http://blog.jongallant.com/category/Tech/Reviews/"/>
     
     
-      <category term="Tech" scheme="http://blog.jongallant.com/tags/Tech/"/>
-    
-      <category term="Reviews" scheme="http://blog.jongallant.com/tags/Reviews/"/>
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
   </entry>
   
@@ -184,11 +182,11 @@
   </entry>
   
   <entry>
-    <title>How to run Docker on Raspberry Pi</title>
+    <title>How to Run Docker on Raspberry Pi</title>
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-docker/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-docker/</id>
     <published>2017-09-14T13:57:01.000Z</published>
-    <updated>2017-09-15T06:33:28.808Z</updated>
+    <updated>2017-11-13T03:58:35.938Z</updated>
     
     <summary type="html">
     
@@ -211,15 +209,15 @@
   </entry>
   
   <entry>
-    <title>How to Access Raspberry Pi via Hostname and Create File Share with Samba</title>
-    <link href="http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/"/>
-    <id>http://blog.jongallant.com/2017/09/raspberrypi-access-via-hostname-and-create-file-share/</id>
+    <title>How to Access Raspberry Pi Files via a Samba File Share</title>
+    <link href="http://blog.jongallant.com/2017/09/raspberrypi-file-share/"/>
+    <id>http://blog.jongallant.com/2017/09/raspberrypi-file-share/</id>
     <published>2017-09-14T05:35:51.000Z</published>
-    <updated>2017-11-12T00:04:51.293Z</updated>
+    <updated>2017-11-13T03:58:20.176Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;By default, your Raspberry Pi will not be availble to your network via its Hostname. You could access it via IP address, but that isn’t g
+      &lt;p&gt;As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.
     
     </summary>
     
@@ -236,10 +234,10 @@
   
   <entry>
     <title>How to Remote Desktop into Raspberry Pi with RealVNC</title>
-    <link href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/"/>
-    <id>http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/</id>
+    <link href="http://blog.jongallant.com/2017/09/raspberrypi-remote-desktop/"/>
+    <id>http://blog.jongallant.com/2017/09/raspberrypi-remote-desktop/</id>
     <published>2017-09-12T11:59:11.000Z</published>
-    <updated>2017-09-15T06:29:42.688Z</updated>
+    <updated>2017-11-13T03:57:01.334Z</updated>
     
     <summary type="html">
     
