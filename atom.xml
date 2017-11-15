@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-11-08T21:52:48.029Z</updated>
+  <updated>2017-11-15T14:57:37.927Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to SSH into the Docker VM (MobyLinuxVM) on Windows</title>
+    <link href="http://blog.jongallant.com/2017/11/ssh-into-docker-vm-windows/"/>
+    <id>http://blog.jongallant.com/2017/11/ssh-into-docker-vm-windows/</id>
+    <published>2017-11-15T06:14:08.000Z</published>
+    <updated>2017-11-15T14:57:37.927Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;On Windows, Docker runs in a VM called MobyLinuxVM, but you cannot login to that VM via Hyper-V Manager. We aren’t technically going to S
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Delete Docker Container Log Files (Windows or Linux)</title>
+    <link href="http://blog.jongallant.com/2017/11/delete-docker-container-log-files/"/>
+    <id>http://blog.jongallant.com/2017/11/delete-docker-container-log-files/</id>
+    <published>2017-11-15T06:05:34.000Z</published>
+    <updated>2017-11-15T14:57:29.500Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Here’s how to delete your Docker container log files. &lt;/p&gt;
+&lt;h2 id=&quot;Get-Docker-File-Location&quot;&gt;&lt;a href=&quot;#Get-Docker-File-Location&quot; class=&quot;h
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>.NET Core SDK Not Supported on ARM</title>
@@ -35,9 +80,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
-    
       <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+      <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
     
   </entry>
   
@@ -579,52 +624,6 @@
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Create a New Power BI Tenant and Add Users with Azure Active Directory and Office 365</title>
-    <link href="http://blog.jongallant.com/2017/02/create-new-powerbi-tenant-and-add-users-with-azure-active-directory-and-office365/"/>
-    <id>http://blog.jongallant.com/2017/02/create-new-powerbi-tenant-and-add-users-with-azure-active-directory-and-office365/</id>
-    <published>2017-02-06T21:20:21.000Z</published>
-    <updated>2017-04-25T17:47:49.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;As you can imagine, we have many Power BI internal test environments and all Microsofties get redirected to an internal pre-release versi
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Power BI" scheme="http://blog.jongallant.com/category/Tech/Power-BI/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VS Code Integrated Terminal Now Defaults to PowerShell. Here&#39;s How to Change It Back to cmd.exe</title>
-    <link href="http://blog.jongallant.com/2017/02/vs-code-integrated-terminal-powershell-default-change-to-cmd/"/>
-    <id>http://blog.jongallant.com/2017/02/vs-code-integrated-terminal-powershell-default-change-to-cmd/</id>
-    <published>2017-02-06T19:53:00.000Z</published>
-    <updated>2017-02-07T07:34:54.948Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;You may notice that the latest version of &lt;a href=&quot;http://code.visualstudio.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;VS Code&lt;/a&gt; uses PowerShe
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="vscode" scheme="http://blog.jongallant.com/tags/vscode/"/>
     
   </entry>
   
