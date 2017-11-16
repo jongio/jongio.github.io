@@ -10,21 +10,21 @@
     
     <meta name="description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSHVia Boot Disk1. Ins">
+Enable SSHVia Pi Terminalsudo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to SSH into a Raspberry Pi">
 <meta property="og:url" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSHVia Boot Disk1. Ins">
+Enable SSHVia Pi Terminalsudo">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
-<meta property="og:updated_time" content="2017-11-16T20:36:16.846Z">
+<meta property="og:updated_time" content="2017-11-16T22:13:47.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to SSH into a Raspberry Pi">
 <meta name="twitter:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSHVia Boot Disk1. Ins">
+Enable SSHVia Pi Terminalsudo">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
     
 
@@ -198,7 +198,10 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>You will often want to execute commands over SSH instead of having to <a href="/raspberrypi-remote-desktop">Remote Desktop</a> or access your Pi via a monitor and keyboard.</p>
 <p>Here’s how to get SSH setup on your Pi.</p>
-<h2 id="Enable-SSH"><a href="#Enable-SSH" class="headerlink" title="Enable SSH"></a>Enable SSH</h2><h3 id="Via-Boot-Disk"><a href="#Via-Boot-Disk" class="headerlink" title="Via Boot Disk"></a>Via Boot Disk</h3><p>1. Insert SD card with Raspbian onto your host machine (laptop, desktop)<br>2. Create an empty file without an extension called `ssh`` in the root of your boot drive. </p>
+<h2 id="Enable-SSH"><a href="#Enable-SSH" class="headerlink" title="Enable SSH"></a>Enable SSH</h2><h3 id="Via-Pi-Terminal"><a href="#Via-Pi-Terminal" class="headerlink" title="Via Pi Terminal"></a>Via Pi Terminal</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /boot/ssh</div></pre></td></tr></table></figure>
+<p>Hit CTRL+O to Save, Hit Enter, Hit CTRL+X to exit.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+<h3 id="Via-Boot-Disk"><a href="#Via-Boot-Disk" class="headerlink" title="Via Boot Disk"></a>Via Boot Disk</h3><p>1. Insert SD card with Raspbian onto your host machine (laptop, desktop)<br>2. Create an empty file without an extension called `ssh`` in the root of your boot drive. </p>
 <p>You can do that manually with Windows Explorer or you can open a command prompt and execute the following:</p>
 <h4 id="Navigate-to-Boot-Drive-Root"><a href="#Navigate-to-Boot-Drive-Root" class="headerlink" title="Navigate to Boot Drive Root"></a>Navigate to Boot Drive Root</h4><h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><p><code>cd</code> into the SD card drive letter, i.e. <code>g:</code></p>
 <h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /Volumes/boot</div></pre></td></tr></table></figure>

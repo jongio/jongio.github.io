@@ -17,7 +17,7 @@ Create a File S">
 <meta property="og:description" content="As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.  Here’s how to create a file share with Samba.
 Create a File S">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-file-share/000274.png">
-<meta property="og:updated_time" content="2017-11-13T03:58:20.176Z">
+<meta property="og:updated_time" content="2017-11-16T22:22:47.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Access Raspberry Pi Files via a Samba File Share">
 <meta name="twitter:description" content="As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.  Here’s how to create a file share with Samba.
@@ -195,7 +195,7 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.  Here’s how to create a file share with <a href="https://www.samba.org/" target="_blank" rel="external">Samba</a>.</p>
 <h2 id="Create-a-File-Share"><a href="#Create-a-File-Share" class="headerlink" title="Create a File Share"></a>Create a File Share</h2><p>This allows you to access your Raspberry Pi files from your desktop machine.</p>
-<h3 id="1-Run-Update"><a href="#1-Run-Update" class="headerlink" title="1. Run Update"></a>1. Run Update</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade</div></pre></td></tr></table></figure>
+<h3 id="1-Run-Update"><a href="#1-Run-Update" class="headerlink" title="1. Run Update"></a>1. Run Update</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade -y</div></pre></td></tr></table></figure>
 <h3 id="2-Install-Samba"><a href="#2-Install-Samba" class="headerlink" title="2. Install Samba"></a>2. Install Samba</h3><p>Open Terminal and run the following:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt install -y samba</div></pre></td></tr></table></figure>
 <h3 id="3-Configure-Samba"><a href="#3-Configure-Samba" class="headerlink" title="3. Configure Samba"></a>3. Configure Samba</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/samba/smb.conf</div></pre></td></tr></table></figure>
