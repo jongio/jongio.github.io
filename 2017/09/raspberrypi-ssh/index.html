@@ -3,31 +3,28 @@
 <head>
     <meta charset="utf-8">
     
-    <title>How to Access a Raspberry Pi over SSH | Jon Gallant</title>
+    <title>How to SSH into a Raspberry Pi | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="iot,raspberrypi" />
     
     <meta name="description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSH
-On your Pi, go to">
+Enable SSHVia Boot Disk1. Ins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Access a Raspberry Pi over SSH">
+<meta property="og:title" content="How to SSH into a Raspberry Pi">
 <meta property="og:url" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSH
-On your Pi, go to">
+Enable SSHVia Boot Disk1. Ins">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
-<meta property="og:updated_time" content="2017-09-15T06:34:49.634Z">
+<meta property="og:updated_time" content="2017-11-16T20:36:16.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Access a Raspberry Pi over SSH">
+<meta name="twitter:title" content="How to SSH into a Raspberry Pi">
 <meta name="twitter:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSH
-On your Pi, go to">
+Enable SSHVia Boot Disk1. Ins">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
     
 
@@ -179,7 +176,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-        How to Access a Raspberry Pi over SSH
+        How to SSH into a Raspberry Pi
         </h1>
     
 
@@ -199,9 +196,17 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>You will often want to execute commands over SSH instead of having to <a href="raspberrypi-remote-desktop">Remote Desktop</a> or access your Pi via a monitor and keyboard.</p>
+            <p>You will often want to execute commands over SSH instead of having to <a href="/raspberrypi-remote-desktop">Remote Desktop</a> or access your Pi via a monitor and keyboard.</p>
 <p>Here’s how to get SSH setup on your Pi.</p>
-<h2 id="Enable-SSH"><a href="#Enable-SSH" class="headerlink" title="Enable SSH"></a>Enable SSH</h2><ul>
+<h2 id="Enable-SSH"><a href="#Enable-SSH" class="headerlink" title="Enable SSH"></a>Enable SSH</h2><h3 id="Via-Boot-Disk"><a href="#Via-Boot-Disk" class="headerlink" title="Via Boot Disk"></a>Via Boot Disk</h3><p>1. Insert SD card with Raspbian onto your host machine (laptop, desktop)<br>2. Create an empty file without an extension called `ssh`` in the root of your boot drive. </p>
+<p>You can do that manually with Windows Explorer or you can open a command prompt and execute the following:</p>
+<h4 id="Navigate-to-Boot-Drive-Root"><a href="#Navigate-to-Boot-Drive-Root" class="headerlink" title="Navigate to Boot Drive Root"></a>Navigate to Boot Drive Root</h4><h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><p><code>cd</code> into the SD card drive letter, i.e. <code>g:</code></p>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /Volumes/boot</div></pre></td></tr></table></figure>
+<h4 id="Create-SSH-file"><a href="#Create-SSH-file" class="headerlink" title="Create SSH file"></a>Create SSH file</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">touch ssh</div></pre></td></tr></table></figure>
+<ul>
+<li>Insert SD Card into Raspberry Pi and boot it. SSH will be enabled.</li>
+</ul>
+<h3 id="Via-UI"><a href="#Via-UI" class="headerlink" title="Via UI"></a>Via UI</h3><ul>
 <li>On your Pi, go to Preferences -&gt; Raspberry Pi Configuration</li>
 <li>Click ‘Interfaces’ and Enable SSH, Click OK</li>
 </ul>

@@ -16,27 +16,38 @@
 .widget h2,
 .article-entry h2 {
   font-size: 2em;
+  position: relative;
+  padding-bottom: 5px;
   border-bottom: 1px solid #28405c;
+}
+.widget h2:before,
+.article-entry h2:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  height: 5px;
+  background: #28405c;
 }
 .widget h3,
 .article-entry h3 {
   font-size: 1.3em;
-  border-bottom: 1px solid #28405c;
+  border-bottom: 3px solid #28405c;
 }
 .widget h4,
 .article-entry h4 {
-  font-size: 1.2em;
+  font-size: 1em;
   border-bottom: 1px solid #28405c;
 }
 .widget h5,
 .article-entry h5 {
   font-size: 1em;
-  border-bottom: 1px solid #28405c;
 }
 .widget h6,
 .article-entry h6 {
   font-size: 1em;
-  border-bottom: 1px solid #28405c;
 }
 .widget hr,
 .article-entry hr {

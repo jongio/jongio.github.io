@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-11-15T14:57:37.927Z</updated>
+  <updated>2017-11-16T20:50:46.478Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure IoT Edge on Raspberry Pi</title>
+    <link href="http://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/"/>
+    <id>http://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/</id>
+    <published>2017-11-16T12:00:00.000Z</published>
+    <updated>2017-11-16T20:50:46.478Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;000338.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/services/iot-edge/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Azure 
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Increase Disk Space Allocation on Raspberry Pi</title>
+    <link href="http://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/"/>
+    <id>http://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/</id>
+    <published>2017-11-16T09:24:25.000Z</published>
+    <updated>2017-11-16T20:50:30.461Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;By default Raspberry Pi does not allocate enough of your SD card for it to be usable.  Out of the box, if you run &lt;code&gt;sudo apt upgrade&lt;
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Install Raspbian on Raspberry Pi</title>
+    <link href="http://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/"/>
+    <id>http://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/</id>
+    <published>2017-11-16T06:55:56.000Z</published>
+    <updated>2017-11-16T16:44:35.751Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Rasp
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
   
   <entry>
     <title>How to SSH into the Docker VM (MobyLinuxVM) on Windows</title>
@@ -61,11 +128,33 @@
   </entry>
   
   <entry>
+    <title>Raspberry Pi Setup - A Guide to Getting Started with Raspberry Pi Development</title>
+    <link href="http://blog.jongallant.com/2017/11/raspberrypi-setup/"/>
+    <id>http://blog.jongallant.com/2017/11/raspberrypi-setup/</id>
+    <published>2017-11-12T08:07:02.000Z</published>
+    <updated>2017-11-16T20:50:18.902Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatab
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to Change Raspberry Pi (Raspbian) Hostname</title>
     <link href="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/"/>
     <id>http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/</id>
     <published>2017-11-12T07:01:54.000Z</published>
-    <updated>2017-11-16T14:53:13.205Z</updated>
+    <updated>2017-11-16T17:57:57.457Z</updated>
     
     <summary type="html">
     
@@ -104,9 +193,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
-    
       <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+      <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
     
   </entry>
   
@@ -138,7 +227,7 @@
     <link href="http://blog.jongallant.com/2017/11/microsoft-hiring-high-scale-data-services-developers/"/>
     <id>http://blog.jongallant.com/2017/11/microsoft-hiring-high-scale-data-services-developers/</id>
     <published>2017-11-01T13:22:04.000Z</published>
-    <updated>2017-11-07T21:15:25.000Z</updated>
+    <updated>2017-11-16T20:27:05.778Z</updated>
     
     <summary type="html">
     
@@ -227,15 +316,15 @@
   </entry>
   
   <entry>
-    <title>How to Access a Raspberry Pi over SSH</title>
+    <title>How to SSH into a Raspberry Pi</title>
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-ssh/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-ssh/</id>
     <published>2017-09-14T23:07:01.000Z</published>
-    <updated>2017-09-15T06:34:49.634Z</updated>
+    <updated>2017-11-16T20:36:16.846Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;You will often want to execute commands over SSH instead of having to &lt;a href=&quot;raspberrypi-remote-desktop&quot;&gt;Remote Desktop&lt;/a&gt; or access y
+      &lt;p&gt;You will often want to execute commands over SSH instead of having to &lt;a href=&quot;/raspberrypi-remote-desktop&quot;&gt;Remote Desktop&lt;/a&gt; or access 
     
     </summary>
     
@@ -271,9 +360,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
-    
       <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
     
   </entry>
   
@@ -344,9 +433,9 @@
       <category term="Bugs" scheme="http://blog.jongallant.com/category/Tech/Bugs/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
   </entry>
   
@@ -368,9 +457,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="avro" scheme="http://blog.jongallant.com/tags/avro/"/>
     
@@ -492,9 +581,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
@@ -521,107 +610,6 @@
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Use Azure Active Directory (AAD) Access Tokens in Postman</title>
-    <link href="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/"/>
-    <id>http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/</id>
-    <published>2017-03-10T14:22:32.000Z</published>
-    <updated>2017-10-17T05:52:54.747Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Here’s how to get all setup with AAD access tokens in &lt;a href=&quot;http://getpostman.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Postman&lt;/a&gt;.&lt;/p&gt;
-&lt;h2
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="aad" scheme="http://blog.jongallant.com/tags/aad/"/>
-    
-      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Azure Function Message: Read only - because you have started editing with source control, this view is read only. You can edit these settings in function.json</title>
-    <link href="http://blog.jongallant.com/2017/03/solution-azure-functions-read-only/"/>
-    <id>http://blog.jongallant.com/2017/03/solution-azure-functions-read-only/</id>
-    <published>2017-03-09T16:31:01.000Z</published>
-    <updated>2017-03-10T00:39:10.331Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;If you see the following while trying to edit an Azure Function via browser….&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;000084.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;“Read only - be
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="serverless" scheme="http://blog.jongallant.com/tags/serverless/"/>
-    
-      <category term="functions" scheme="http://blog.jongallant.com/tags/functions/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Create a Power BI Slicer with the Power BI Custom Visual SDK</title>
-    <link href="http://blog.jongallant.com/2017/03/powerbi-custom-slicer/"/>
-    <id>http://blog.jongallant.com/2017/03/powerbi-custom-slicer/</id>
-    <published>2017-03-01T12:01:27.000Z</published>
-    <updated>2017-03-07T19:05:07.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Starting with version 1.5 of the &lt;a href=&quot;https://github.com/Microsoft/PowerBI-visuals-tools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Power BI Cus
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Power BI" scheme="http://blog.jongallant.com/category/Tech/Power-BI/"/>
-    
-    
-      <category term="powerbi" scheme="http://blog.jongallant.com/tags/powerbi/"/>
-    
-      <category term="javascript" scheme="http://blog.jongallant.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Securely Share Secrets with Azure Key Vault and Azure Key Vault Explorer</title>
-    <link href="http://blog.jongallant.com/2017/02/azure-key-vault-explorer/"/>
-    <id>http://blog.jongallant.com/2017/02/azure-key-vault-explorer/</id>
-    <published>2017-02-23T16:51:45.000Z</published>
-    <updated>2017-02-24T02:39:25.767Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;We often need to share database connection strings, system account passwords and whatnot with our team members. People typically put the 
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   
