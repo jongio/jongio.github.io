@@ -61,6 +61,30 @@
   </entry>
   
   <entry>
+    <title>How to Change Raspberry Pi (Raspbian) Hostname</title>
+    <link href="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/"/>
+    <id>http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/</id>
+    <published>2017-11-12T07:01:54.000Z</published>
+    <updated>2017-11-16T14:53:13.205Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>.NET Core SDK Not Supported on ARM</title>
     <link href="http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/"/>
     <id>http://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/</id>
@@ -80,9 +104,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
-    
       <category term="dotnet" scheme="http://blog.jongallant.com/tags/dotnet/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
@@ -247,9 +271,9 @@
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
-    
       <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
@@ -320,9 +344,9 @@
       <category term="Bugs" scheme="http://blog.jongallant.com/category/Tech/Bugs/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   
@@ -344,9 +368,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="avro" scheme="http://blog.jongallant.com/tags/avro/"/>
     
@@ -468,9 +492,9 @@
       <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
     
     
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
@@ -521,9 +545,9 @@
     
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
-      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
       <category term="aad" scheme="http://blog.jongallant.com/tags/aad/"/>
+    
+      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
   </entry>
   
@@ -598,32 +622,6 @@
     
     
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman</title>
-    <link href="http://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/"/>
-    <id>http://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/</id>
-    <published>2017-02-08T21:05:24.000Z</published>
-    <updated>2017-03-13T06:53:14.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;This post describes how to use &lt;a href=&quot;https://www.getpostman.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Postman&lt;/a&gt; and &lt;a href=&quot;https://www.
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
   </entry>
   

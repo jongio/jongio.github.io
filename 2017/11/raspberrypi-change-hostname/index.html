@@ -3,27 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>How to Install Node.js on Raspberry Pi 3 (Raspbian) | Jon Gallant</title>
+    <title>How to Change Raspberry Pi (Raspbian) Hostname | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="howto,nodejs" />
+        <meta name="keywords" content="iot,raspberrypi" />
     
-    <meta name="description" content="Here’s how to install Node.js on Raspberry Pi (originally posted as a SoF answer for Ubuntu here)
-Install curlsudo apt-get install curl -y
-Install nodev4curl -sL https://deb.nodesource.com/setup_4.x |">
+    <meta name="description" content="One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is raspberrypi.
+You can change it via editing text files or th">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Install Node.js on Raspberry Pi 3 (Raspbian)">
-<meta property="og:url" content="http://blog.jongallant.com/2016/08/install-nodejs-raspbian/index.html">
+<meta property="og:title" content="How to Change Raspberry Pi (Raspbian) Hostname">
+<meta property="og:url" content="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s how to install Node.js on Raspberry Pi (originally posted as a SoF answer for Ubuntu here)
-Install curlsudo apt-get install curl -y
-Install nodev4curl -sL https://deb.nodesource.com/setup_4.x |">
-<meta property="og:updated_time" content="2017-09-19T17:54:58.000Z">
+<meta property="og:description" content="One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is raspberrypi.
+You can change it via editing text files or th">
+<meta property="og:image" content="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/000316.png">
+<meta property="og:updated_time" content="2017-11-16T14:53:13.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Install Node.js on Raspberry Pi 3 (Raspbian)">
-<meta name="twitter:description" content="Here’s how to install Node.js on Raspberry Pi (originally posted as a SoF answer for Ubuntu here)
-Install curlsudo apt-get install curl -y
-Install nodev4curl -sL https://deb.nodesource.com/setup_4.x |">
+<meta name="twitter:title" content="How to Change Raspberry Pi (Raspbian) Hostname">
+<meta name="twitter:description" content="One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is raspberrypi.
+You can change it via editing text files or th">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/000316.png">
     
 
     
@@ -150,7 +149,7 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -167,14 +166,14 @@ ga('send', 'pageview');
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div>
-                            <article id="post-install-nodejs-raspbian" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-raspberrypi-change-hostname" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        How to Install Node.js on Raspberry Pi 3 (Raspbian)
+        How to Change Raspberry Pi (Raspbian) Hostname
         </h1>
     
 
@@ -183,24 +182,35 @@ ga('send', 'pageview');
         
             <div class="article-subtitle">
                 
-<a href="/2016/08/install-nodejs-raspbian/" class="article-date">
-    <time datetime="2016-08-29T11:12:00.000Z" itemprop="datePublished">2016-08-29</time>
+<a href="/2017/11/raspberrypi-change-hostname/" class="article-date">
+    <time datetime="2017-11-12T07:01:54.000Z" itemprop="datePublished">2017-11-12</time>
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/">raspberrypi</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s how to install Node.js on Raspberry Pi (originally posted as a SoF answer for Ubuntu <a href="http://stackoverflow.com/a/34974626/5500618" target="_blank" rel="external">here</a>)</p>
-<h2 id="Install-curl"><a href="#Install-curl" class="headerlink" title="Install curl"></a>Install curl</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt-get install curl -y</div></pre></td></tr></table></figure>
-<h2 id="Install-node"><a href="#Install-node" class="headerlink" title="Install node"></a>Install node</h2><p>v4<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -</div><div class="line">sudo apt-get install -y nodejs</div></pre></td></tr></table></figure></p>
-<p>v5<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -</div><div class="line">sudo apt-get install -y nodejs</div></pre></td></tr></table></figure></p>
-<p>v6<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -</div><div class="line">sudo apt-get install -y nodejs</div></pre></td></tr></table></figure></p>
-<p>v7<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -</div><div class="line">sudo apt-get install -y nodejs</div></pre></td></tr></table></figure></p>
-<p>v8<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -</div><div class="line">sudo apt-get install -y nodejs</div></pre></td></tr></table></figure></p>
+            <p>One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is <code>raspberrypi</code>.</p>
+<p>You can change it via editing text files or the UI.</p>
+<h2 id="Via-Terminal-or-SSH"><a href="#Via-Terminal-or-SSH" class="headerlink" title="Via Terminal or SSH"></a>Via Terminal or SSH</h2><p>You can use the <code>hostnamectl set-hostname [name]</code> command, but that <strong>does not update /etc/hosts</strong> and causes issues with Docker and other networking services.  </p>
+<p>I prefer to update /etc/hostname and /etc/hosts manually:</p>
+<p>1. Change /etc/hostname</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hostname</div></pre></td></tr></table></figure>
+<p>Change raspberrypi to your desired hostname</p>
+<p><img src="000318.png" alt=""></p>
+<p>2. Change /etc/hosts<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hosts</div></pre></td></tr></table></figure></p>
+<p>Change raspberrypi to your desired hostname</p>
+<p><img src="000316.png" alt=""></p>
+<p>3. Reboot<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure></p>
+<h2 id="Via-Interface"><a href="#Via-Interface" class="headerlink" title="Via Interface"></a>Via Interface</h2><p>You can also change the hostname via the Raspbian UI:</p>
+<p>1. Go to Raspberry Pi Configuration -&gt; System and set a unique hostname and click OK.</p>
+<p><img src="000254.png" alt=""></p>
+<p>2. Click Yes to reboot the Pi</p>
+<p><img src="000262.png" alt=""></p>
+<p>Jon</p>
 
         </div>
         <footer>
@@ -245,7 +255,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2016/08/install-nodejs-raspbian/';
+    var disqus_url = 'http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/';
     
     (function() {
     var dsq = document.createElement('script');
