@@ -156,13 +156,6 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/outlook/</loc>
-        <lastmod>2017-04-13T22:02:45.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/productivity/</loc>
         <lastmod>2017-04-13T22:02:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -275,13 +268,6 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/howto/</loc>
-        <lastmod>2017-11-13T03:57:03.537Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/nodejs/</loc>
         <lastmod>2017-11-13T03:57:03.537Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -326,6 +312,20 @@
     <url>
         <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
         <lastmod>2017-11-16T23:06:37.867Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/howto/</loc>
+        <lastmod>2017-11-17T18:48:03.153Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/outlook/</loc>
+        <lastmod>2017-11-17T19:22:33.788Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

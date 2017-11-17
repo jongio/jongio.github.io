@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-11-16T22:56:24.187Z</updated>
+  <updated>2017-11-17T19:22:33.788Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to Outlook Hanging (Not Responding) When Opening an Appointment</title>
+    <link href="http://blog.jongallant.com/2017/11/outlook-hangs-when-opening-appointment/"/>
+    <id>http://blog.jongallant.com/2017/11/outlook-hangs-when-opening-appointment/</id>
+    <published>2017-11-17T10:48:48.000Z</published>
+    <updated>2017-11-17T19:22:33.788Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Outlook has been hanging on me for the last couple of days. Turns out it is related to the Skype Add-in. I disabled the add-in and it’s f
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="outlook" scheme="http://blog.jongallant.com/tags/outlook/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure IoT Edge on Raspberry Pi</title>
@@ -584,30 +606,6 @@
       <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Generate Azure Storage Shared Access Signature (SAS) Tokens in Postman&#39;s Pre-request Script Sandbox</title>
-    <link href="http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/"/>
-    <id>http://blog.jongallant.com/2017/03/azure-storage-sas-tokens-postman/</id>
-    <published>2017-03-12T20:51:23.000Z</published>
-    <updated>2017-03-13T23:44:04.303Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I’m working on a project that should make it much easier for developers to consume REST APIs that use SAS Tokens with Swagger and &lt;a href
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
     
       <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
     
