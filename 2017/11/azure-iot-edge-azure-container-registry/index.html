@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially supported eventually, right now it is not, but there is a workaround.">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/000359.png">
-<meta property="og:updated_time" content="2017-11-23T12:22:26.553Z">
+<meta property="og:updated_time" content="2017-11-23T12:29:06.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure IoT Edge with Azure Container Registry">
 <meta name="twitter:description" content="You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially supported eventually, right now it is not, but there is a workaround.">
@@ -212,7 +212,7 @@ ga('send', 'pageview');
 <p><img src="000359.png" alt=""></p>
 <h3 id="Modify-Config"><a href="#Modify-Config" class="headerlink" title="Modify Config"></a>Modify Config</h3><p>You now need to change two config files: <strong>Runtime</strong> and <strong>Module</strong> Configuration.</p>
 <h4 id="Runtime-Configuration"><a href="#Runtime-Configuration" class="headerlink" title="Runtime Configuration"></a>Runtime Configuration</h4><p>When you run <code>iotedgectl setup</code> you can pass it a custom config file, which will contain your ACR credentials. Here’s how to get your config file setup:</p>
-<p>1. Copy <a href="https://github.com/jonbgallant/azure-iot-edge-config/blob/master/config/agentconfig.json" target="_blank" rel="external">this file (agentconfig.json)</a> to your local machine.<br>2. Open file and replace all the tokens [[enter …]] with your values for your ACR URI, password, username, connection string and hostname.<br>3. Save the file.</p>
+<p>1. Copy <a href="https://github.com/jonbgallant/azure-iot-edge-config/blob/master/config/runtimeconfig.json" target="_blank" rel="external">this file (runtimeconfig.json)</a> to your local machine.<br>2. Open file and replace all the tokens [[enter …]] with your values for your ACR URI, password, username, connection string and hostname.<br>3. Save the file.</p>
 <p>Now when you setup the Edge Runtime you pass it a <code>--config-file</code> parameter to your new config file.</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">iotedgectl setup --config-file config.json</div></pre></td></tr></table></figure>
 <p><img src="000361.png" alt=""></p>
