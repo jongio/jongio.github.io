@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially supported eventually, right now it is not, but there is a workaround.">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/000359.png">
-<meta property="og:updated_time" content="2017-11-23T04:47:26.893Z">
+<meta property="og:updated_time" content="2017-11-23T12:22:26.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure IoT Edge with Azure Container Registry">
 <meta name="twitter:description" content="You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially supported eventually, right now it is not, but there is a workaround.">
@@ -228,7 +228,7 @@ ga('send', 'pageview');
 <blockquote>
 <p>Make sure you have <a href="https://www.microsoft.com/net/learn/get-started" target="_blank" rel="external">.NET Core Installed</a></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dotnet restore</div><div class="line">dotnet build</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dotnet restore</div><div class="line">dotnet build -r win10-x64</div></pre></td></tr></table></figure>
 <p>Navigate to <code>bin\Debug\netcoreapp2.0\win10-x64</code>.  </p>
 <p>6. Run the following command to apply this custom configuration to your device:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">edgeconf &quot;connection-string&quot; device-id config-file-path</div></pre></td></tr></table></figure>
