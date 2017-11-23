@@ -17,7 +17,7 @@ Here’s">
 <meta property="og:description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
 Here’s">
 <meta property="og:image" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
-<meta property="og:updated_time" content="2017-11-08T21:40:48.065Z">
+<meta property="og:updated_time" content="2017-11-21T20:51:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to use the Azure IoT Hub File Upload API with Python">
 <meta name="twitter:description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
@@ -215,10 +215,10 @@ ga('send', 'pageview');
 </blockquote>
 <p><img src="000314.png" alt=""></p>
 <h2 id="Get-Python-IDE"><a href="#Get-Python-IDE" class="headerlink" title="Get Python IDE"></a>Get Python IDE</h2><p>You’ll need an IDE if you want to debug and step-through the code. I use <a href="https://code.visualstudio.com/" target="_blank" rel="external">VS Code</a> and <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python" target="_blank" rel="external">this Python extension</a>.</p>
-<h2 id="Install-Azure-IoT-Python-SDK"><a href="#Install-Azure-IoT-Python-SDK" class="headerlink" title="Install Azure IoT Python SDK"></a>Install Azure IoT Python SDK</h2><p>Follow the instructions <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python" target="_blank" rel="external">here</a> to get the Python SDK on your machine. You can <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#pypi-wheels" target="_blank" rel="external">use pip</a> or compile it yourself.</p>
+<h2 id="Install-Azure-IoT-Python-SDK"><a href="#Install-Azure-IoT-Python-SDK" class="headerlink" title="Install Azure IoT Python SDK"></a>Install Azure IoT Python SDK</h2><h3 id="Raspberry-Pi"><a href="#Raspberry-Pi" class="headerlink" title="Raspberry Pi"></a>Raspberry Pi</h3><p>If you are running this on a Raspberry PI, then you will likely need to <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#installs-needed-to-compile-the-sdks-for-python-from-souce-code" target="_blank" rel="external">build the SDK locally</a>.   </p>
+<h3 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h3><p>Follow the instructions <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python" target="_blank" rel="external">here</a> to get the Python SDK on your machine. You can <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#pypi-wheels" target="_blank" rel="external">use pip</a> or compile it yourself.</p>
 <h2 id="Get-Python-Sample"><a href="#Get-Python-Sample" class="headerlink" title="Get Python Sample"></a>Get Python Sample</h2><p>1. Clone the Python SDK</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git</div></pre></td></tr></table></figure>
-<p>2. If you are running this on a Raspberry PI, then you will likely need to <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#installs-needed-to-compile-the-sdks-for-python-from-souce-code" target="_blank" rel="external">build the SDK locally</a>.   </p>
 <h2 id="Run-Python-Sample"><a href="#Run-Python-Sample" class="headerlink" title="Run Python Sample"></a>Run Python Sample</h2><p>1. Navigate to the  <code>devices/samples</code> folder.<br>2. Open a command prompt and execute the following command: </p>
 <blockquote>
 <p>Replace [device connection string] with the <strong>device’s</strong> (NOT iotowner) connection string that you copied in step 1 above.</p>
