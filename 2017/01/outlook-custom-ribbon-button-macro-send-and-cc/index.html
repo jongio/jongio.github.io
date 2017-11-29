@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="A big part of my Zero Inbox routine is to Cc myself when I want to be reminded to follow up on the mail. This is useful when you want to make sure you don’t send an email with a request from someone a">
 <meta property="og:image" content="http://blog.jongallant.com/2017/01/outlook-custom-ribbon-button-macro-send-and-cc/000012.png">
-<meta property="og:updated_time" content="2017-01-20T19:11:29.000Z">
+<meta property="og:updated_time" content="2017-01-20T19:11:29.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Custom Outlook Ribbon Button to Cc Yourself Before Sending an Email">
 <meta name="twitter:description" content="A big part of my Zero Inbox routine is to Cc myself when I want to be reminded to follow up on the mail. This is useful when you want to make sure you don’t send an email with a request from someone a">
@@ -193,22 +193,34 @@ ga('send', 'pageview');
             <p>A big part of my <a href="http://blog.jongallant.com/2014/01/how-i-manage-zero-inbox-at-microsoft/">Zero Inbox</a> routine is to Cc myself when I want to be reminded to follow up on the mail. This is useful when you want to make sure you don’t send an email with a request from someone and then forget about it.</p>
 <p>Up until today, I would manually add myself as Cc, but now I have a single button I can click that will add me as Cc and send the mail.  I could have created a rule to <em>always</em> Cc myself, but I only want to occasionally Cc myself and didn’t want to have to clean all that up later.</p>
 <p>Here’s how I did it. It’s pretty straight-forward, but took me longer than it should of. Hope this helps you out.</p>
-<h2 id="Enable-Developer-Tab"><a href="#Enable-Developer-Tab" class="headerlink" title="Enable Developer Tab"></a>Enable Developer Tab</h2><p>1. Open Outlook -&gt; File -&gt; Options -&gt; Customize Ribbon -&gt; Check the Developer Tab<br><img src="000010.png" alt=""></p>
-<h2 id="Create-Macro"><a href="#Create-Macro" class="headerlink" title="Create Macro"></a>Create Macro</h2><p>1. Click on Developer Tab -&gt; Click on Visual Basic Button<br><img src="000011.png" alt=""></p>
+<h2 id="enable-developer-tab"><a class="header-anchor" href="#enable-developer-tab"></a>Enable Developer Tab</h2>
+<p>1. Open Outlook -&gt; File -&gt; Options -&gt; Customize Ribbon -&gt; Check the Developer Tab<br>
+<img src="000010.png" alt=""></p>
+<h2 id="create-macro"><a class="header-anchor" href="#create-macro"></a>Create Macro</h2>
+<p>1. Click on Developer Tab -&gt; Click on Visual Basic Button<br>
+<img src="000011.png" alt=""></p>
 <p>2. Double Click “Project1-&gt;Microsoft Outlook Objects-&gt;ThisOutlookSession”. Copy and Paste the following code into the code window.</p>
 <blockquote>
 <p>Replace <enter your="" email="" here=""> with the email that you want to Cc.</enter></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">Public Sub CcAndSend()</div><div class="line"></div><div class="line">Dim mail As Outlook.MailItem</div><div class="line">Set mail = Application.ActiveInspector.CurrentItem</div><div class="line"></div><div class="line">mail.cc = mail.cc &amp; &quot;;&lt;enter your email here&gt;&quot;</div><div class="line"></div><div class="line">mail.Send</div><div class="line"></div><div class="line">End Sub</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Public Sub CcAndSend()</span><br><span class="line"></span><br><span class="line">Dim mail As Outlook.MailItem</span><br><span class="line">Set mail = Application.ActiveInspector.CurrentItem</span><br><span class="line"></span><br><span class="line">mail.cc = mail.cc &amp; &quot;;&lt;enter your email here&gt;&quot;</span><br><span class="line"></span><br><span class="line">mail.Send</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
 <p><img src="000012.png" alt=""></p>
-<h2 id="Add-Button-to-Ribbon"><a href="#Add-Button-to-Ribbon" class="headerlink" title="Add Button to Ribbon"></a>Add Button to Ribbon</h2><p>1. Open a New Email Message -&gt; Right Click on Ribbon -&gt; Select Customize Ribbon</p>
+<h2 id="add-button-to-ribbon"><a class="header-anchor" href="#add-button-to-ribbon"></a>Add Button to Ribbon</h2>
+<p>1. Open a New Email Message -&gt; Right Click on Ribbon -&gt; Select Customize Ribbon</p>
 <p><img src="000013.png" alt=""></p>
-<p>2. On the right, Click ‘New Mail Message’<br><img src="000014.png" alt=""></p>
-<p>3. Click ‘New Group’<br><img src="000015.png" alt=""></p>
-<p>4. Right click on the New Group you just created and select Rename. Give it a name like ‘Custom’<br><img src="000018.png" alt=""></p>
-<p>5. On the left, Select Macros, click on your macro and then click the Add &gt;&gt; Button<br><img src="000019.png" alt=""></p>
-<p>6. Back on the right, Right Click on your macro, select rename, give it a name and select an icon. Click OK.<br><img src="000020.png" alt=""></p>
-<h2 id="Test-it"><a href="#Test-it" class="headerlink" title="Test it"></a>Test it</h2><p>1. You should now see the button on your ribbon. Click it and make sure it Ccs and Sends.<br><img src="000022.png" alt=""></p>
+<p>2. On the right, Click ‘New Mail Message’<br>
+<img src="000014.png" alt=""></p>
+<p>3. Click ‘New Group’<br>
+<img src="000015.png" alt=""></p>
+<p>4. Right click on the New Group you just created and select Rename. Give it a name like ‘Custom’<br>
+<img src="000018.png" alt=""></p>
+<p>5. On the left, Select Macros, click on your macro and then click the Add &gt;&gt; Button<br>
+<img src="000019.png" alt=""></p>
+<p>6. Back on the right, Right Click on your macro, select rename, give it a name and select an icon. Click OK.<br>
+<img src="000020.png" alt=""></p>
+<h2 id="test-it"><a class="header-anchor" href="#test-it"></a>Test it</h2>
+<p>1. You should now see the button on your ribbon. Click it and make sure it Ccs and Sends.<br>
+<img src="000022.png" alt=""></p>
 <p>Jon</p>
 
         </div>

@@ -191,9 +191,9 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>OOB the ASP.NET TreeView control doesn’t support binding to Hierarchical DataSets. <a href="http://varjabedian.net/Default.aspx" target="_blank" rel="external">Ralph Varjabedian</a> created a HierarchicalDataSet class to help with this. Read more about it <a href="http://varjabedian.net/archive/2008/04/22/binding-asp.net-treeview-to-a-dataset-or-an-objectdatasource.aspx" target="_blank" rel="external">here</a>.</p>
-<p>Here’s a snippet…it’s simple to implement:<br><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">TreeView1.DataSource = <span class="keyword">new</span> HierarchicalDataSet(dataSet, <span class="string">"ID"</span>, <span class="string">"ParentID"</span>);</div></pre></td></tr></table></figure></p>
-
+            <p>OOB the <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> TreeView control doesn’t support binding to Hierarchical DataSets. <a href="http://varjabedian.net/Default.aspx" target="_blank" rel="external">Ralph Varjabedian</a> created a HierarchicalDataSet class to help with this. Read more about it <a href="http://varjabedian.net/archive/2008/04/22/binding-asp.net-treeview-to-a-dataset-or-an-objectdatasource.aspx" target="_blank" rel="external">here</a>.</p>
+<p>Here’s a snippet…it’s simple to implement:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">TreeView1.DataSource = <span class="keyword">new</span> HierarchicalDataSet(dataSet, <span class="string">"ID"</span>, <span class="string">"ParentID"</span>);</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

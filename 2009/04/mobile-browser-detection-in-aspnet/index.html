@@ -196,16 +196,17 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>Before last week the only two viable Mobile Browser Detection options were:</p>
 <ol>
-<li><a href="http://wurfl.sourceforge.net/" target="_blank" rel="external">WURFL</a> – Great for non-.NET solutions. .NET APIs lack support2.  <a href="http://deviceatlas.com/" target="_blank" rel="external">DeviceAtlas</a> – Great for .NET solutions, but it’s starts at $99/server/year. DeviceAtlas claims to have better <a href="http://en.wikipedia.org/wiki/UAProf" target="_blank" rel="external">UAProf</a> support than WURFL.  </li>
+<li><a href="http://wurfl.sourceforge.net/" target="_blank" rel="external">WURFL</a> – Great for non-.NET solutions. .NET APIs lack support2.  <a href="http://deviceatlas.com/" target="_blank" rel="external">DeviceAtlas</a> – Great for .NET solutions, but it’s starts at $99/server/year. DeviceAtlas claims to have better <a href="http://en.wikipedia.org/wiki/UAProf" target="_blank" rel="external">UAProf</a> support than WURFL.</li>
 </ol>
-<p>To solve this problem Microsoft developed an ASP.NET friendly browser detection solution using a standard “<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx" target="_blank" rel="external">.browser</a>“ file called “<a href="http://mdbf.codeplex.com/" target="_blank" rel="external">Mobile Device Browser File</a>“ or <a href="http://mdbf.codeplex.com/" target="_blank" rel="external">MDBF</a>. This is the same solution that is being utilized by many Microsoft properties such as Hotmail.</p>
+<p>To solve this problem Microsoft developed an <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> friendly browser detection solution using a standard “<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx" target="_blank" rel="external">.browser</a>” file called “<a href="http://mdbf.codeplex.com/" target="_blank" rel="external">Mobile Device Browser File</a>” or <a href="http://mdbf.codeplex.com/" target="_blank" rel="external">MDBF</a>. This is the same solution that is being utilized by many Microsoft properties such as Hotmail.</p>
 <p>Chris Woods (the MDBF PM) gave a talk at MIX09 on the new project, view the video here: <a href="http://videos.visitmix.com/MIX09/T85M" title="http://videos.visitmix.com/MIX09/T85M" target="_blank" rel="external">http://videos.visitmix.com/MIX09/T85M</a>. The data for MDBF comes from WURFL and “other sources”. I hope Microsoft contributes back to WURFL since they have direct access to providers they will have a ton of insight into new devices and capabilities that non-.NET platforms utilizing WURFL will benefit from.</p>
-<p>To implement MDBF in your ASP.NET application:</p>
+<p>To implement MDBF in your <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> application:</p>
 <ol>
-<li>Download the mobile.browser file from <a href="http://mdbf.codeplex.com/" target="_blank" rel="external">mdbf.codeplex.com</a>2.  Add the file to your ASP.NET web app here: App_Browsers/Devices/mobile.browser3.  Use the standard Request.Browser[“PropertyName”] to access the new properties    </li>
+<li>Download the mobile.browser file from <a href="http://mdbf.codeplex.com/" target="_blank" rel="external">mdbf.codeplex.com</a>2.  Add the file to your <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> web app here: App_Browsers/Devices/mobile.browser3.  Use the standard Request.Browser[“PropertyName”] to access the new properties</li>
 </ol>
-<p>Jon Gallant<br>  </p><p>dev lead @ microsoft   </p>
-
+<p>Jon Gallant</p>
+  <p>dev lead @ microsoft   
+</p>
         </div>
         <footer>
         </footer>

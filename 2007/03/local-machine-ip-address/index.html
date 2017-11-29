@@ -187,8 +187,8 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on this app that pulls the ip address from the request headers. When debugging the app locally the headers are always “127.0.0.1”, which doesn’t help because I need to know the actual IP address. Here is one way to get the local machines IP address, you can modify to return whatever IP Address type you need. In my case I need the IPv4 so I look for the address byte with a length of 4.</p>
-<div mce_keep="true"><br></div>
-
+<div mce_keep="true">
+</div>
 <pre><code>string netscalarHeader = &quot;client-ip&quot;;
 string ipAddress = (HttpContext.Current.Request.Headers[netscalarHeader] == null) ? HttpContext.Current.Request.UserHostAddress : HttpContext.Current.Request.Headers[netscalarHeader];
 if (string.IsNullOrEmpty(ipAddress) || string.Compare(&quot;127.0.0.1&quot;, ipAddress) == 0)
@@ -201,6 +201,7 @@ if (string.IsNullOrEmpty(ipAddress) || string.Compare(&quot;127.0.0.1&quot;, ipA
          }&lt;/ipaddress&gt;&lt;/ipaddress&gt;``)).ToString();
 }
 </code></pre>
+
         </div>
         <footer>
         </footer>

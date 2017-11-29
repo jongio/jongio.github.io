@@ -8,29 +8,29 @@
     
         <meta name="keywords" content="powerbi" />
     
-    <meta name="description" content="Here’s how to reference three.js in your Power BI Custom Visual project. 
+    <meta name="description" content="Here’s how to reference three.js in your Power BI Custom Visual project.
 
 I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.
 
-1. Setup yo">
+1. Setup you">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Reference Three.js in a Power BI Custom Visual Project">
 <meta property="og:url" content="http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s how to reference three.js in your Power BI Custom Visual project. 
+<meta property="og:description" content="Here’s how to reference three.js in your Power BI Custom Visual project.
 
 I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.
 
-1. Setup yo">
+1. Setup you">
 <meta property="og:image" content="http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/000009.png">
-<meta property="og:updated_time" content="2017-01-20T20:09:00.000Z">
+<meta property="og:updated_time" content="2017-01-20T20:09:00.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Reference Three.js in a Power BI Custom Visual Project">
-<meta name="twitter:description" content="Here’s how to reference three.js in your Power BI Custom Visual project. 
+<meta name="twitter:description" content="Here’s how to reference three.js in your Power BI Custom Visual project.
 
 I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.
 
-1. Setup yo">
+1. Setup you">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/000009.png">
     
 
@@ -202,22 +202,30 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s how to reference <a href="https://www.npmjs.com/package/three" target="_blank" rel="external">three.js</a> in your Power BI Custom Visual project. </p>
+            <p>Here’s how to reference <a href="https://www.npmjs.com/package/three" target="_blank" rel="external">three.js</a> in your Power BI Custom Visual project.</p>
 <blockquote>
-<p>I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.</p>
+<p>I have not tested to see if three.js actually works on <a href="http://powerbi.com" target="_blank" rel="external">powerbi.com</a>, but this is how to resolve reference issues.</p>
 </blockquote>
-<p>1. Setup your dev environment by following the instructions in this post: <a href="http://blog.jongallant.com/2016/09/powerbi-custom-visual-dev/">Power BI Custom Visual Dev Environment Setup Quickstart
+<p>1. Setup your dev environment by following the instructions in this post: <a href="http://blog.jongallant.com/2016/09/powerbi-custom-visual-dev/">Power BI Custom Visual Dev Environment Setup Quickstart<br>
 </a></p>
-<p>2. Create visual and navigate to the new directory.<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pbiviz new threejstest</div><div class="line">cd threejstest</div></pre></td></tr></table></figure></p>
-<p>3. Install three.js<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i three --save</div></pre></td></tr></table></figure></p>
-<p>4. Install typings<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g typings</div></pre></td></tr></table></figure></p>
-<p>5. Install three typings<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">typings install dt~three --save --global</div></pre></td></tr></table></figure></p>
-<p>6. Open in VS Code (or any editor)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">code .</div></pre></td></tr></table></figure></p>
-<p>7. Open tsconfig.json and add references to the three.js files<br><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"compilerOptions"</span>: &#123;</div><div class="line">    <span class="attr">"allowJs"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"target"</span>: <span class="string">"ES5"</span>,</div><div class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"out"</span>: <span class="string">"./.tmp/build/visual.js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"files"</span>: [</div><div class="line">    <span class="string">".api/v1.4.0/PowerBI-visuals.d.ts"</span>,</div><div class="line">    <span class="string">"node_modules/three/build/three.js"</span>,</div><div class="line">    <span class="string">"typings/index.d.ts"</span>,</div><div class="line">    <span class="string">"src/visual.ts"</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>8. Add three.d.ts to /src folder and copy this code to that file<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">declare var three: any;</div></pre></td></tr></table></figure></p>
+<p>2. Create visual and navigate to the new directory.</p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">pbiviz <span class="keyword">new</span> <span class="type">threejstest</span></span><br><span class="line"><span class="type">cd</span> threejstest</span><br></pre></td></tr></table></figure>
+<p>3. Install three.js</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">npm i <span class="literal">three</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<p>4. Install typings</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> -g typings</span><br></pre></td></tr></table></figure>
+<p>5. Install three typings</p>
+<figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">typings</span> <span class="comment">install</span> <span class="comment">dt~three</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">save</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span></span><br></pre></td></tr></table></figure>
+<p>6. Open in VS Code (or any editor)</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">code</span> .</span><br></pre></td></tr></table></figure>
+<p>7. Open tsconfig.json and add references to the three.js files</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"allowJs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"target"</span>: <span class="string">"ES5"</span>,</span><br><span class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"out"</span>: <span class="string">"./.tmp/build/visual.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"files"</span>: [</span><br><span class="line">    <span class="string">".api/v1.4.0/PowerBI-visuals.d.ts"</span>,</span><br><span class="line">    <span class="string">"node_modules/three/build/three.js"</span>,</span><br><span class="line">    <span class="string">"typings/index.d.ts"</span>,</span><br><span class="line">    <span class="string">"src/visual.ts"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>8. Add three.d.ts to /src folder and copy this code to that file</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> three: <span class="keyword">any</span>;</span><br></pre></td></tr></table></figure>
 <p>9. Open src/visual.ts and add this line to the top of the file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/// &lt;amd-dependency path=&apos;three&apos;&gt;</div></pre></td></tr></table></figure>
-<p>10. Instantiate a new THREE.Scene(); object in your constructor<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let scene = new THREE.Scene();</div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">/// <span class="tag">&lt;<span class="name">amd-dependency</span> <span class="attr">path</span>=<span class="string">'three'</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>10. Instantiate a new THREE.Scene(); object in your constructor</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> <span class="built_in">scene</span> = <span class="built_in">new</span> THREE.Scene();</span><br></pre></td></tr></table></figure>
 <p><img src="000009.png" alt=""></p>
 
         </div>

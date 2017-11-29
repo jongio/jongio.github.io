@@ -193,14 +193,12 @@ ga('send', 'pageview');
             <p><img src="/images/blog/49e26d1d9d7e_BCB8/image.png" alt=""></p>
 <p><a href="http://www.pluralsight.com/" target="_blank" rel="external">PluralSight</a> is great, but because I don’t have 3 hours every time I want to learn something, I always watch them at double speed – and that’s as fast as PluralSight allows you to go….until now. <a href="https://twitter.com/itsananderson" target="_blank" rel="external">Will</a> said I should try to get the video player element and increase the speed in the console. <a href="https://twitter.com/wbreza" target="_blank" rel="external">Wallace</a> stopped by and we figured it out.</p>
 <p>They use <a href="http://angularjs.org/" target="_blank" rel="external">AngularJS</a> (yah!) so I got ahold of the controller and called their setPlaybackSpeed method and…it worked!</p>
-<p>So all you have to do is open your Chrome console and execute this line of code:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">angular.element($(<span class="string">'div[ng-controller="PlayerControlsController"]'</span>).get(<span class="number">0</span>)).scope().setPlaybackSpeed(<span class="number">11</span>)</div></pre></td></tr></table></figure></p>
+<p>So all you have to do is open your Chrome console and execute this line of code:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.element($(<span class="string">'div[ng-controller="PlayerControlsController"]'</span>).get(<span class="number">0</span>)).scope().setPlaybackSpeed(<span class="number">11</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/images/blog/49e26d1d9d7e_BCB8/image_3.png" alt=""></p>
 <p>You don’t get audio when it is played that fast and anything over 2 is probably too fast…but hey, you can do it if you want to.</p>
 <p>Watch this if you don’t get the “11” reference.</p>
 <iframe height="315" src="http://www.youtube.com/embed/F7IZZXQ89Oc" frameborder="0" width="560" allowfullscreen></iframe>
-
-
-
 <p>Jon</p>
 
         </div>

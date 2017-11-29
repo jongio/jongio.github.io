@@ -191,56 +191,85 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>The Azure IoT team just announced Custom Endpoints and Routes feature - which allows you to route IoT Hub messages to your own Event Hub, Service Bus Queues or Service Bus Topics. You define your alternate endpoints in “Endpoints” and you define your routing logic in “Routes”.</p>
-<h2 id="Update-1-Routes-Based-on-Message-Payload"><a href="#Update-1-Routes-Based-on-Message-Payload" class="headerlink" title="Update #1: Routes Based on Message Payload"></a>Update #1: Routes Based on Message Payload</h2><p>You can now create routes based on message payload.  You can read more about it <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="external">here</a>.</p>
-<h2 id="What-are-Some-Use-Cases-for-Endpoints-and-Routes"><a href="#What-are-Some-Use-Cases-for-Endpoints-and-Routes" class="headerlink" title="What are Some Use Cases for Endpoints and Routes?"></a>What are Some Use Cases for Endpoints and Routes?</h2><p>This is very useful for customers that want to segregate messages for security or billing purposes. Imagine if you are using IoT Hub to build your own IoT SaaS product that has tenants. You will likely want to push all messages from each tenant into its own Event Hub so you can easily map Event Hub cost to a tenant. Endpoints and Routes is also a great way to integrate with other services, such as Logic Apps or Notification services or your own custom service.</p>
-<h2 id="What-Do-Endpoints-and-Routes-Do-Under-the-Covers"><a href="#What-Do-Endpoints-and-Routes-Do-Under-the-Covers" class="headerlink" title="What Do Endpoints and Routes Do Under the Covers?"></a>What Do Endpoints and Routes Do Under the Covers?</h2><p>When IoT Hub receives a message it first checks to see if there is a custom route available that matches a given rule. If there is a match it will send the message to that endpoint and not the Default Event Hub.</p>
+<h2 id="update-1-routes-based-on-message-payload"><a class="header-anchor" href="#update-1-routes-based-on-message-payload"></a>Update #1: Routes Based on Message Payload</h2>
+<p>You can now create routes based on message payload.  You can read more about it <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="external">here</a>.</p>
+<h2 id="what-are-some-use-cases-for-endpoints-and-routes"><a class="header-anchor" href="#what-are-some-use-cases-for-endpoints-and-routes"></a>What are Some Use Cases for Endpoints and Routes?</h2>
+<p>This is very useful for customers that want to segregate messages for security or billing purposes. Imagine if you are using IoT Hub to build your own IoT SaaS product that has tenants. You will likely want to push all messages from each tenant into its own Event Hub so you can easily map Event Hub cost to a tenant. Endpoints and Routes is also a great way to integrate with other services, such as Logic Apps or Notification services or your own custom service.</p>
+<h2 id="what-do-endpoints-and-routes-do-under-the-covers"><a class="header-anchor" href="#what-do-endpoints-and-routes-do-under-the-covers"></a>What Do Endpoints and Routes Do Under the Covers?</h2>
+<p>When IoT Hub receives a message it first checks to see if there is a custom route available that matches a given rule. If there is a match it will send the message to that endpoint and not the Default Event Hub.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image.png" alt=""></p>
-<h2 id="How-do-I-Use-Endpoints-and-Routes"><a href="#How-do-I-Use-Endpoints-and-Routes" class="headerlink" title="How do I Use Endpoints and Routes?"></a>How do I Use Endpoints and Routes?</h2><p>This video will walk you through the same exercise:</p>
+<h2 id="how-do-i-use-endpoints-and-routes"><a class="header-anchor" href="#how-do-i-use-endpoints-and-routes"></a>How do I Use Endpoints and Routes?</h2>
+<p>This video will walk you through the same exercise:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FhuoXSwNiuE" frameborder="0" allowfullscreen></iframe>
-
-<h3 id="Azure-Portal"><a href="#Azure-Portal" class="headerlink" title="Azure Portal"></a>Azure Portal</h3><p>You will now see Endpoints and Routes in your IoT Hub main screen.</p>
+<h3 id="azure-portal"><a class="header-anchor" href="#azure-portal"></a>Azure Portal</h3>
+<p>You will now see Endpoints and Routes in your IoT Hub main screen.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_3.png" alt=""></p>
 <p>We will set both of them up starting with Endpoints.</p>
-<h3 id="Define-Your-Endpoints"><a href="#Define-Your-Endpoints" class="headerlink" title="Define Your Endpoints"></a>Define Your Endpoints</h3><p>Event Hub, Service Bus Queues and Service Bus Topics are supported today, but more will come in the future.</p>
+<h3 id="define-your-endpoints"><a class="header-anchor" href="#define-your-endpoints"></a>Define Your Endpoints</h3>
+<p>Event Hub, Service Bus Queues and Service Bus Topics are supported today, but more will come in the future.</p>
 <p>The first thing you are going to want to do is create one of those if you don’t already have one. For this exercise, we’ll create an Event Hub.</p>
-<h4 id="1-Click-on-Endpoints"><a href="#1-Click-on-Endpoints" class="headerlink" title="1) Click on Endpoints"></a>1) Click on Endpoints</h4><p>You will see the Built-in endpoints at the top</p>
+<h4 id="1-click-on-endpoints"><a class="header-anchor" href="#1-click-on-endpoints"></a>1) Click on Endpoints</h4>
+<p>You will see the Built-in endpoints at the top</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_4.png" alt=""></p>
 <p>And right below that you will see “Additional Endpoints” and you can have up to 10 additional endpoints.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_5.png" alt=""></p>
-<h4 id="2-Click-“Add”"><a href="#2-Click-“Add”" class="headerlink" title="2) Click “Add”"></a>2) Click “Add”</h4><p>Over in the right hand panel, you will see the Add Endpoint screen. I selected Event Hub and as you can see I don’t have an Event Hub defined in the same region as my IoT Hub.</p>
+<h4 id="2-click-add"><a class="header-anchor" href="#2-click-add"></a>2) Click “Add”</h4>
+<p>Over in the right hand panel, you will see the Add Endpoint screen. I selected Event Hub and as you can see I don’t have an Event Hub defined in the same region as my IoT Hub.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_6.png" alt=""></p>
-<h4 id="3-Create-an-Event-Hub"><a href="#3-Create-an-Event-Hub" class="headerlink" title="3) Create an Event Hub"></a>3) Create an Event Hub</h4><p>Open a new browser window and create an Event Hub in the same region as your IoT Hub, mine is East US.</p>
-<h4 id="4-Add-Event-Hub-Endpoint"><a href="#4-Add-Event-Hub-Endpoint" class="headerlink" title="4) Add Event Hub Endpoint"></a>4) Add Event Hub Endpoint</h4><p>Go back to the IoT Hub Endpoints blade and refresh. You should now see your Event Hub. Select it and click OK.</p>
+<h4 id="3-create-an-event-hub"><a class="header-anchor" href="#3-create-an-event-hub"></a>3) Create an Event Hub</h4>
+<p>Open a new browser window and create an Event Hub in the same region as your IoT Hub, mine is East US.</p>
+<h4 id="4-add-event-hub-endpoint"><a class="header-anchor" href="#4-add-event-hub-endpoint"></a>4) Add Event Hub Endpoint</h4>
+<p>Go back to the IoT Hub Endpoints blade and refresh. You should now see your Event Hub. Select it and click OK.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_7.png" alt=""></p>
 <p>You will now see it listed in “Additional Endpoints”</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_8.png" alt=""></p>
-<h3 id="Define-Your-Routes-and-Rules"><a href="#Define-Your-Routes-and-Rules" class="headerlink" title="Define Your Routes and Rules"></a>Define Your Routes and Rules</h3><p>1) Click on “Routes” and you’ll see the empty rule list. You can have up to 100 rules per IoT Hub</p>
+<h3 id="define-your-routes-and-rules"><a class="header-anchor" href="#define-your-routes-and-rules"></a>Define Your Routes and Rules</h3>
+<ol>
+<li>Click on “Routes” and you’ll see the empty rule list. You can have up to 100 rules per IoT Hub</li>
+</ol>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_9.png" alt=""></p>
-<p>2) Click “Add”</p>
+<ol start="2">
+<li>Click “Add”</li>
+</ol>
 <p>Give your rule a name, select your data source, add a query and select and endpoint to send the matching message to.</p>
 <blockquote>
-<p><del>The rule works against the IoT Hub message properties. It does not inspect the payload of the message. The IoT Hub team has said message inspection is on their backlog.</del> Routes based on payload are now supported, read more <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="external">here</a>.</p>
+<p><s>The rule works against the IoT Hub message properties. It does not inspect the payload of the message. The IoT Hub team has said message inspection is on their backlog.</s> Routes based on payload are now supported, read more <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="external">here</a>.</p>
 </blockquote>
 <p>You can find the Query String syntax docs <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#get-started-with-device-to-cloud-message-routes-query-expressions" target="_blank" rel="external">here</a> and <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#expressions-and-conditions" target="_blank" rel="external">here</a>.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_10.png" alt=""></p>
 <p>As you can see below, you can send the messages directly to the events endpoint or to the custom endpoint you created.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_11.png" alt=""></p>
-<p>3) Click OK and you will now see your Route Rule</p>
+<ol start="3">
+<li>Click OK and you will now see your Route Rule</li>
+</ol>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_12.png" alt=""></p>
-<h3 id="Test-It-Out"><a href="#Test-It-Out" class="headerlink" title="Test It Out"></a>Test It Out</h3><p>1) Download this node.js script to your machine. <a href="https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" title="https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" target="_blank" rel="external">https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend</a></p>
-<p>2) Replace line 17 with your device’s connection string. You can create devices and get their connection strings using the <a href="https://github.com/Azure/azure-iot-sdks/releases" target="_blank" rel="external">IoT Device Explorer</a></p>
-<p>3) Scroll to line 39 and change any of the properties to suit your needs.</p>
-<p>4) Run the following to install the Azure IoT Node SDK</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i azure-iot-device</div><div class="line">npm i azure-iot-device-amqp</div></pre></td></tr></table></figure>
-<p>5. Open a command prompt and run the script<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">node index.js</div></pre></td></tr></table></figure></p>
+<h3 id="test-it-out"><a class="header-anchor" href="#test-it-out"></a>Test It Out</h3>
+<ol>
+<li>
+<p>Download this node.js script to your machine. <a href="https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" title="https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" target="_blank" rel="external">https://gist.githubusercontent.com/jonbgallant/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend</a></p>
+</li>
+<li>
+<p>Replace line 17 with your device’s connection string. You can create devices and get their connection strings using the <a href="https://github.com/Azure/azure-iot-sdks/releases" target="_blank" rel="external">IoT Device Explorer</a></p>
+</li>
+<li>
+<p>Scroll to line 39 and change any of the properties to suit your needs.</p>
+</li>
+<li>
+<p>Run the following to install the Azure IoT Node SDK</p>
+</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> azure-iot-device</span><br><span class="line">npm <span class="selector-tag">i</span> azure-iot-device-amqp</span><br></pre></td></tr></table></figure>
+<p>5. Open a command prompt and run the script</p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="keyword">node</span> <span class="title">index</span>.js</span><br></pre></td></tr></table></figure>
 <p>You will now see this in your command prompt</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_13.png" alt=""></p>
-<p>You will now see the messages coming through to your Event Hub. You can use the <a href="https://github.com/paolosalvatori/ServiceBusExplorer" target="_blank" rel="external">Service Bus Explorer</a> to view them. I just clone that repo and F5 from VS to run the Service Bus Explorer. </p>
+<p>You will now see the messages coming through to your Event Hub. You can use the <a href="https://github.com/paolosalvatori/ServiceBusExplorer" target="_blank" rel="external">Service Bus Explorer</a> to view them. I just clone that repo and F5 from VS to run the Service Bus Explorer.</p>
 <p>Notice in the Event Custom Properties section that tenant=1234 and location=sea, which is how we configured the message properties and how we setup the Route rule.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_14.png" alt=""></p>
 <p>Hope this helps you get started with the new and very useful feature.</p>
 <p>Jon</p>
-<h2 id="Related-Links"><a href="#Related-Links" class="headerlink" title="Related Links"></a>Related Links</h2><ul>
+<h2 id="related-links"><a class="header-anchor" href="#related-links"></a>Related Links</h2>
+<ul>
 <li>Blog Announcement: <a href="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/" title="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/" target="_blank" rel="external">https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/</a></li>
 <li>Endpoints Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints</a> &amp; <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints</a></li>
 <li>Routes Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes</a></li>

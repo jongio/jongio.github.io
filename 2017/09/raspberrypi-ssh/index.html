@@ -10,21 +10,27 @@
     
     <meta name="description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSHVia Pi Terminalsudo">
+Enable SSH
+Via Pi Terminal
+su">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to SSH into a Raspberry Pi">
 <meta property="og:url" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSHVia Pi Terminalsudo">
+Enable SSH
+Via Pi Terminal
+su">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
-<meta property="og:updated_time" content="2017-11-16T22:13:47.000Z">
+<meta property="og:updated_time" content="2017-11-16T22:13:47.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to SSH into a Raspberry Pi">
 <meta name="twitter:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
 Here’s how to get SSH setup on your Pi.
-Enable SSHVia Pi Terminalsudo">
+Enable SSH
+Via Pi Terminal
+su">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
     
 
@@ -198,25 +204,36 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>You will often want to execute commands over SSH instead of having to <a href="/raspberrypi-remote-desktop">Remote Desktop</a> or access your Pi via a monitor and keyboard.</p>
 <p>Here’s how to get SSH setup on your Pi.</p>
-<h2 id="Enable-SSH"><a href="#Enable-SSH" class="headerlink" title="Enable SSH"></a>Enable SSH</h2><h3 id="Via-Pi-Terminal"><a href="#Via-Pi-Terminal" class="headerlink" title="Via Pi Terminal"></a>Via Pi Terminal</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /boot/ssh</div></pre></td></tr></table></figure>
+<h2 id="enable-ssh"><a class="header-anchor" href="#enable-ssh"></a>Enable SSH</h2>
+<h3 id="via-pi-terminal"><a class="header-anchor" href="#via-pi-terminal"></a>Via Pi Terminal</h3>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo nano <span class="regexp">/boot/</span>ssh</span><br></pre></td></tr></table></figure>
 <p>Hit CTRL+O to Save, Hit Enter, Hit CTRL+X to exit.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure>
-<h3 id="Via-Boot-Disk"><a href="#Via-Boot-Disk" class="headerlink" title="Via Boot Disk"></a>Via Boot Disk</h3><p>1. Insert SD card with Raspbian onto your host machine (laptop, desktop)<br>2. Create an empty file without an extension called `ssh`` in the root of your boot drive. </p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo reboot</span></span><br></pre></td></tr></table></figure>
+<h3 id="via-boot-disk"><a class="header-anchor" href="#via-boot-disk"></a>Via Boot Disk</h3>
+<p>1. Insert SD card with Raspbian onto your host machine (laptop, desktop)<br>
+2. Create an empty file without an extension called `ssh`` in the root of your boot drive.</p>
 <p>You can do that manually with Windows Explorer or you can open a command prompt and execute the following:</p>
-<h4 id="Navigate-to-Boot-Drive-Root"><a href="#Navigate-to-Boot-Drive-Root" class="headerlink" title="Navigate to Boot Drive Root"></a>Navigate to Boot Drive Root</h4><h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><p><code>cd</code> into the SD card drive letter, i.e. <code>g:</code></p>
-<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd /Volumes/boot</div></pre></td></tr></table></figure>
-<h4 id="Create-SSH-file"><a href="#Create-SSH-file" class="headerlink" title="Create SSH file"></a>Create SSH file</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">touch ssh</div></pre></td></tr></table></figure>
+<h4 id="navigate-to-boot-drive-root"><a class="header-anchor" href="#navigate-to-boot-drive-root"></a>Navigate to Boot Drive Root</h4>
+<h5 id="windows"><a class="header-anchor" href="#windows"></a>Windows</h5>
+<p><code>cd</code> into the SD card drive letter, i.e. <code>g:</code></p>
+<h5 id="linux"><a class="header-anchor" href="#linux"></a>Linux</h5>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/Volumes/boot</span></span><br></pre></td></tr></table></figure>
+<h4 id="create-ssh-file"><a class="header-anchor" href="#create-ssh-file"></a>Create SSH file</h4>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">touch ssh</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>Insert SD Card into Raspberry Pi and boot it. SSH will be enabled.</li>
 </ul>
-<h3 id="Via-UI"><a href="#Via-UI" class="headerlink" title="Via UI"></a>Via UI</h3><ul>
+<h3 id="via-ui"><a class="header-anchor" href="#via-ui"></a>Via UI</h3>
+<ul>
 <li>On your Pi, go to Preferences -&gt; Raspberry Pi Configuration</li>
 <li>Click ‘Interfaces’ and Enable SSH, Click OK</li>
 </ul>
 <p><img src="000287.png" alt=""></p>
-<h2 id="Install-Putty-on-Desktop"><a href="#Install-Putty-on-Desktop" class="headerlink" title="Install Putty on Desktop"></a>Install Putty on Desktop</h2><p>I use Putty as my SSH client. Download and install it from: <a href="http://www.putty.org/" target="_blank" rel="external">http://www.putty.org/</a></p>
-<h2 id="Create-SSH-Connection"><a href="#Create-SSH-Connection" class="headerlink" title="Create SSH Connection"></a>Create SSH Connection</h2><p>Open a command prompt and execute the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">putty.exe -ssh pi@raspberrypi</div></pre></td></tr></table></figure>
+<h2 id="install-putty-on-desktop"><a class="header-anchor" href="#install-putty-on-desktop"></a>Install Putty on Desktop</h2>
+<p>I use Putty as my SSH client. Download and install it from: <a href="http://www.putty.org/" target="_blank" rel="external">http://www.putty.org/</a></p>
+<h2 id="create-ssh-connection"><a class="header-anchor" href="#create-ssh-connection"></a>Create SSH Connection</h2>
+<p>Open a command prompt and execute the following:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">putty</span><span class="selector-class">.exe</span> <span class="selector-tag">-ssh</span> <span class="selector-tag">pi</span>@<span class="keyword">raspberrypi</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Replace ‘pi’ with your username if you changed it and replace ‘raspberrypi’ with your hostname if you change it.</p>
 </blockquote>

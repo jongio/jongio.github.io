@@ -193,8 +193,10 @@ ga('send', 'pageview');
             <p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image.png" alt=""></p>
 <p>I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app were point to different versions of the same Framework DLL. It compiled fine, just got the exception at runtime.</p>
 <p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_3.png" alt=""></p>
-<h4 id="VERSION-11-REFERENCED-IN-MY-MAIN-APP"><a href="#VERSION-11-REFERENCED-IN-MY-MAIN-APP" class="headerlink" title="VERSION 11 REFERENCED IN MY MAIN APP"></a>VERSION 11 REFERENCED IN MY MAIN APP</h4><p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_4.png" alt=""></p>
-<h4 id="VERSION-10-REFERENCED-IN-MY-LIBRARY-APP"><a href="#VERSION-10-REFERENCED-IN-MY-LIBRARY-APP" class="headerlink" title="VERSION 10 REFERENCED IN MY LIBRARY APP"></a>VERSION 10 REFERENCED IN MY LIBRARY APP</h4><p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_5.png" alt=""></p>
+<h4 id="version-11-referenced-in-my-main-app"><a class="header-anchor" href="#version-11-referenced-in-my-main-app"></a>VERSION 11 REFERENCED IN MY MAIN APP</h4>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_4.png" alt=""></p>
+<h4 id="version-10-referenced-in-my-library-app"><a class="header-anchor" href="#version-10-referenced-in-my-library-app"></a>VERSION 10 REFERENCED IN MY LIBRARY APP</h4>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_5.png" alt=""></p>
 <p>The solution is simple, just change one of the references so they match. In my case I change the Main app to reference version 10.</p>
 <p>Jon</p>
 

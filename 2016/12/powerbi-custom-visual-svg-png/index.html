@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here’s how to render either an SVG or a PNG from within a Power BI Custom Visual. For this post, I’m going to use the IoT Hub icon that can be found in the Microsoft Azure, Cloud and Enterprise Symbol">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/f0bcb844da1f_D7C9/image_4.png">
-<meta property="og:updated_time" content="2017-01-06T23:17:25.000Z">
+<meta property="og:updated_time" content="2017-01-06T23:17:25.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Power BI Custom Visual Tip: How to Render an SVG or PNG">
 <meta name="twitter:description" content="Here’s how to render either an SVG or a PNG from within a Power BI Custom Visual. For this post, I’m going to use the IoT Hub icon that can be found in the Microsoft Azure, Cloud and Enterprise Symbol">
@@ -191,39 +191,37 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here’s how to render either an SVG or a PNG from within a Power BI Custom Visual. For this post, I’m going to use the IoT Hub icon that can be found in the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=41937" target="_blank" rel="external">Microsoft Azure, Cloud and Enterprise Symbol / Icon Set</a>. Download that now if you want to follow along.</p>
-<p>If you get lost in this post, please see my Custom Visual series here: <a href="http://bit.ly/pbicustomviz" target="_blank" rel="external">http://bit.ly/pbicustomviz</a> </p>
+<p>If you get lost in this post, please see my Custom Visual series here: <a href="http://bit.ly/pbicustomviz" target="_blank" rel="external">http://bit.ly/pbicustomviz</a></p>
 <p>Here’s the icon:</p>
 <p>[<img src="/images/blog/f0bcb844da1f_D7C9/iothub_thumb.png" alt="iothub" title="iothub"></p>
 <p>You can find it by searching for “iot” in Windows Explorer.</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image.png" alt=""></p>
 <p>The working code for this post can be found here: <a href="https://gist.github.com/jonbgallant/aba10a2fd9ef88fd5ebb2141dcf310e6" title="https://gist.github.com/jonbgallant/aba10a2fd9ef88fd5ebb2141dcf310e6" target="_blank" rel="external">https://gist.github.com/jonbgallant/aba10a2fd9ef88fd5ebb2141dcf310e6</a></p>
-<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><p>If you open up the file “Azure IoT Hub_Color.svg”, you’ll see the raw SVG code used to render that image. It is verbose, has line breaks and other characters that we don’t need. I used <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="external">SVGOMG</a> to minimize it. Go to the SVGOMG site, open the SVG and click the download button. In the lower right</p>
+<h2 id="svg"><a class="header-anchor" href="#svg"></a>SVG</h2>
+<p>If you open up the file “Azure IoT Hub_Color.svg”, you’ll see the raw SVG code used to render that image. It is verbose, has line breaks and other characters that we don’t need. I used <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="external">SVGOMG</a> to minimize it. Go to the SVGOMG site, open the SVG and click the download button. In the lower right</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image_3.png" alt=""></p>
 <p>Open the optimized version and paste it into a variable in your Custom Visual like this:</p>
 <hr>
 <script src="https://gist.github.com/jonbgallant/01f1ad1c535c5f1730101510110a4987.js"></script>
-
 <hr>
 <p>Then append the SVG to the DOM inside of your Custom Visual’s constructor method like this:</p>
 <hr>
 <script src="https://gist.github.com/jonbgallant/37732030ded77e6b4164556710f515e2.js"></script>
-
 <hr>
 <p>You could also create the element with jQuery if you have that referenced.</p>
 <p>Run the visual using “pbiviz start” and you should now see the SVG version of the image</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image_4.png" alt=""></p>
-<h2 id="PNG"><a href="#PNG" class="headerlink" title="PNG"></a>PNG</h2><p>To reference a PNG, you have to encode it and reference as a background image in CSS. I chose base64 for this post, but other encodings should work as well.</p>
+<h2 id="png"><a class="header-anchor" href="#png"></a>PNG</h2>
+<p>To reference a PNG, you have to encode it and reference as a background image in CSS. I chose base64 for this post, but other encodings should work as well.</p>
 <p>Find the Azure IoTHub_Color.png file from the icon set and use a site like <a href="https://www.base64-image.de/" target="_blank" rel="external">Base64 Image Encoder</a> to get the base64 encoding of it. Just upload the image, click “show code” and copy the “For use as CSS Background” code:</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image_5.png" alt=""></p>
 <p>In your Custom Visual project, open style/visual.less and create a new style like this:</p>
 <hr>
 <script src="https://gist.github.com/jonbgallant/48366ffe88b68a87b71afba0f6c1a319.js"></script>
-
 <hr>
 <p>Open, src/visual.ts and add the following to the constructor</p>
 <hr>
 <script src="https://gist.github.com/jonbgallant/a18507a145326847ce9b8590cd83cba3.js"></script>
-
 <hr>
 <p>You could also create the element with jQuery if you have that referenced.</p>
 <p>Run your visual and you should now see it render on Power BI.</p>

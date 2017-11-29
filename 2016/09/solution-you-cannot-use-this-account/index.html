@@ -8,23 +8,23 @@
     
         <meta name="keywords" content="dev,visual studio" />
     
-    <meta name="description" content="I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error: 
+    <meta name="description" content="I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error:
 
-“Yo">
+“You">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution: "You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one." when trying to signing to a Visual Studio Team Services project from within Visual Studio">
 <meta property="og:url" content="http://blog.jongallant.com/2016/09/solution-you-cannot-use-this-account/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error: 
+<meta property="og:description" content="I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error:
 
-“Yo">
+“You">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/15262229c434_D99C/2016-09-01_thumb.png">
 <meta property="og:updated_time" content="2017-01-21T09:21:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution: "You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one." when trying to signing to a Visual Studio Team Services project from within Visual Studio">
-<meta name="twitter:description" content="I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error: 
+<meta name="twitter:description" content="I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error:
 
-“Yo">
+“You">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/15262229c434_D99C/2016-09-01_thumb.png">
     
 
@@ -196,17 +196,17 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error: </p>
+            <p>I just spent way too much time trying to login to a VSTS instance from VS. Turns out to have something to do with how Microsoft Account is configured in Visual Studio. So, if you get this error:</p>
 <blockquote>
 <p>“You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one.”</p>
 </blockquote>
 <p>[<img src="/images/blog/15262229c434_D99C/2016-09-01_thumb.png" alt="2016-09-01" title="2016-09-01"></p>
 <p>Open a cmd prompt as administrator and run the following:</p>
 <p>For VS2015</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">reg add HKCU\Software\Microsoft\VisualStudio\14.0\TeamFoundation /v LegacyMSA /t REG_SZ /d True</div></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">reg add HKCU<span class="symbol">\S</span>oftware<span class="symbol">\M</span>icrosoft<span class="symbol">\V</span>isualStudio<span class="symbol">\1</span>4.0<span class="symbol">\T</span>eamFoundation /v LegacyMSA /t REG_SZ /d True</span><br></pre></td></tr></table></figure>
 <p>For VS2013</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">reg add HKCU\Software\Microsoft\VisualStudio\12.0\TeamFoundation /v LegacyMSA /t REG_SZ /d True</div></pre></td></tr></table></figure>
-<p>Restart VS and try to signin again. </p>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">reg add HKCU<span class="symbol">\S</span>oftware<span class="symbol">\M</span>icrosoft<span class="symbol">\V</span>isualStudio<span class="symbol">\1</span>2.0<span class="symbol">\T</span>eamFoundation /v LegacyMSA /t REG_SZ /d True</span><br></pre></td></tr></table></figure>
+<p>Restart VS and try to signin again.</p>
 <p>You should now see this auth dialog</p>
 <p>[<img src="/images/blog/15262229c434_D99C/newvs_thumb.png" alt="newvs" title="newvs"></p>
 <p>Jon</p>

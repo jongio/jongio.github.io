@@ -9,21 +9,21 @@
         <meta name="keywords" content="c#,sql" />
     
     <meta name="description" content="You are probably using the wrong DbConnection class.
-If you are using Access then make sure you use OleDbConnection, not SqlConnection&amp;hellip;and vice versa.
-Alternatively you could be referencing you">
+If you are using Access then make sure you use OleDbConnection, not SqlConnection…and vice versa.
+Alternatively you could be referencing your MDB f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to the "Format of the initialization string does not conform to specification starting at index 0." Exception">
 <meta property="og:url" content="http://blog.jongallant.com/2009/05/format-of-initialization-string/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You are probably using the wrong DbConnection class.
-If you are using Access then make sure you use OleDbConnection, not SqlConnection&amp;hellip;and vice versa.
-Alternatively you could be referencing you">
+If you are using Access then make sure you use OleDbConnection, not SqlConnection…and vice versa.
+Alternatively you could be referencing your MDB f">
 <meta property="og:updated_time" content="2016-12-27T16:00:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to the "Format of the initialization string does not conform to specification starting at index 0." Exception">
 <meta name="twitter:description" content="You are probably using the wrong DbConnection class.
-If you are using Access then make sure you use OleDbConnection, not SqlConnection&amp;hellip;and vice versa.
-Alternatively you could be referencing you">
+If you are using Access then make sure you use OleDbConnection, not SqlConnection…and vice versa.
+Alternatively you could be referencing your MDB f">
     
 
     
@@ -195,10 +195,12 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>You are probably using the wrong DbConnection class.</p>
-<p>If you are using Access then make sure you use OleDbConnection, not SqlConnection&hellip;and vice versa.</p>
-<p>Alternatively you could be referencing your MDB file wrong. Here&rsquo;s the proper way:</p>
-<p>&lt;connectionStrings&gt;<br>    &lt;add name=”Videos” connectionString=”Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0}App_Data\Videos.mdb” providerName=”System.Data.OleDb”/&gt;<br>  &lt;/connectionStrings&gt;</p>
-<p>public static string ConnectionString = string.Format(ConfigurationManager.ConnectionStrings[“Videos”].ConnectionString, HttpContext.Current.Server.MapPath(“~/“));</p>
+<p>If you are using Access then make sure you use OleDbConnection, not SqlConnection…and vice versa.</p>
+<p>Alternatively you could be referencing your MDB file wrong. Here’s the proper way:</p>
+<p>&lt;connectionStrings&gt;<br>
+&lt;add name=“Videos” connectionString=“Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0}App_Data\Videos.mdb” providerName=“System.Data.OleDb”/&gt;<br>
+&lt;/connectionStrings&gt;</p>
+<p>public static string ConnectionString = string.Format(ConfigurationManager.ConnectionStrings[“Videos”].ConnectionString, HttpContext.Current.Server.MapPath(&quot;~/&quot;));</p>
 
         </div>
         <footer>

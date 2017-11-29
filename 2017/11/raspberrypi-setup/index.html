@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/raspberrypi-setup/rpi.png">
-<meta property="og:updated_time" content="2017-11-16T23:06:37.000Z">
+<meta property="og:updated_time" content="2017-11-29T15:05:52.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspberry Pi Setup - A Getting Started Guide for Raspberry Pi Development">
 <meta name="twitter:description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
@@ -191,13 +191,42 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-start into Raspberry Pi development setup.</p>
-<p>1. <a href="/raspberrypi-install-raspbian"><strong>Install Raspbian</strong></a>- Flash Raspbian to an SD card.<br>2. <a href="/raspberrypi-change-hostname"><strong>Change Hostname</strong></a> - So you don’t have naming conflicts with other machines on your network.<br>3. <a href="/raspberrypi-change-password"><strong>Change Password</strong></a> - So you don’t get hacked.<br>4. <a href="/raspberrypi-change-keyboard-layout"><strong>Change Keyboard Layout</strong></a> - So your keyboard keys are layed out to your region.<br>5. <strong>Connect to Internet</strong> via <a href="https://www.raspberrypi.org/documentation/configuration/wireless/desktop.md" target="_blank" rel="external">Raspbian Desktop</a> or <a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md" target="_blank" rel="external">CLI</a></p>
+<ol>
+<li>
+<p><a href="/raspberrypi-install-raspbian"><strong>Install Raspbian</strong></a>- Flash Raspbian to an SD card.</p>
+</li>
+<li>
+<p><a href="/raspberrypi-change-hostname"><strong>Change Hostname</strong></a> - So you don’t have naming conflicts with other machines on your network.</p>
+</li>
+<li>
+<p><a href="/raspberrypi-change-password"><strong>Change Password</strong></a> - So you don’t get hacked.</p>
+</li>
+<li>
+<p><a href="/raspberrypi-change-keyboard-layout"><strong>Change Keyboard Layout</strong></a> - So your keyboard keys are layed out to your region.</p>
+</li>
+<li>
+<p><strong>Connect to Internet</strong> via <a href="https://www.raspberrypi.org/documentation/configuration/wireless/desktop.md" target="_blank" rel="external">Raspbian Desktop</a> or <a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md" target="_blank" rel="external">CLI</a></p>
 <ul>
-<li>Make sure you <code>sudo reboot</code> after configuring the network. </li>
+<li>Make sure you <code>sudo reboot</code> after configuring the network.</li>
 </ul>
-<p>6. <a href="/raspberrypi-ssh"><strong>Enable SSH</strong></a> - So you can execute Terminal commands from your main dev machine.<br>7. <a href="/raspberrypi-expand-file-system"><strong>Expand File System</strong></a> - So you have space to install all the dependencies you’ll need later.<br>8. <strong>Update Raspbian</strong> - To get all the latest packages.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo apt update</div><div class="line">sudo apt upgrade -y</div></pre></td></tr></table></figure>
-<p>9. Optional: <a href="/raspberrypi-file-share"><strong>Create File Share</strong></a> - This enables you to easily transfer files from your dev machine to the Pi.<br>10. Optional: <a href="/raspberrypi-remote-desktop"><strong>Setup Remote Desktop</strong></a> - If you want to remote into your Pi from your dev machine.</p>
+</li>
+<li>
+<p><a href="/raspberrypi-ssh"><strong>Enable SSH</strong></a> - So you can execute Terminal commands from your main dev machine.</p>
+</li>
+<li>
+<p><a href="/raspberrypi-expand-file-system"><strong>Expand File System</strong></a> - So you have space to install all the dependencies you’ll need later.</p>
+</li>
+<li>
+<p><strong>Update Raspbian</strong> - To get all the latest packages.</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade -y</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Optional: <a href="/raspberrypi-file-share"><strong>Create File Share</strong></a> - This enables you to easily transfer files from your dev machine to the Pi.</p>
+</li>
+<li>
+<p>Optional: <a href="/raspberrypi-remote-desktop"><strong>Setup Remote Desktop</strong></a> - If you want to remote into your Pi from your dev machine.</p>
+</li>
+</ol>
 
         </div>
         <footer>

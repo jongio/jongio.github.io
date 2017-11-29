@@ -188,12 +188,12 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="external">Hanselman</a> on this one. My error wasn’t exactly the same as what he described, but close. Through some searching I found his post, implemented the new browser files and the issue was resolved. Thanks Hanselman! </p>
+            <p>I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="external">Hanselman</a> on this one. My error wasn’t exactly the same as what he described, but close. Through some searching I found his post, implemented the new browser files and the issue was resolved. Thanks Hanselman!</p>
 <p>Everything worked fine in IE10 Compatibility Mode and all other browsers, just not IE10. I was getting errors like:</p>
 <blockquote>
-<p>_”‘Page<em>ClientValidate’ is null or undefined not a function object””</em> </p>
+<p><em>“‘Page_ClientValidate’ is null or undefined not a function object”&quot;</em></p>
 </blockquote>
-<p>You can read more on <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="external">his post</a>, but the short of it is that ASP.NET uses files on the server to determine which browser the user is using. They obviously didn’t account for IE10.</p>
+<p>You can read more on <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="external">his post</a>, but the short of it is that <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> uses files on the server to determine which browser the user is using. They obviously didn’t account for IE10.</p>
 <p>Jon</p>
 
         </div>

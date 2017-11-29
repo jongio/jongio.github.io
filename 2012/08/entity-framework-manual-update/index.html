@@ -8,17 +8,17 @@
     
         <meta name="keywords" content="c#,howto,dev" />
     
-    <meta name="description" content="The ADO.NET Entity Framework.aspx) is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years">
+    <meta name="description" content="The ADO.NET Entity Framework is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to manually update your Entity Framework model classes when they get out of sync with your database">
 <meta property="og:url" content="http://blog.jongallant.com/2012/08/entity-framework-manual-update/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="The ADO.NET Entity Framework.aspx) is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years">
+<meta property="og:description" content="The ADO.NET Entity Framework is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/5c9ad7bd69d6_ABCB/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to manually update your Entity Framework model classes when they get out of sync with your database">
-<meta name="twitter:description" content="The ADO.NET Entity Framework.aspx) is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years">
+<meta name="twitter:description" content="The ADO.NET Entity Framework is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/5c9ad7bd69d6_ABCB/image.png">
     
 
@@ -190,7 +190,7 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The <a href="http://msdn.microsoft.com/en-us/library/bb399572(v=vs.110" target="_blank" rel="external">ADO.NET Entity Framework</a>.aspx) is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO EF is the best one I’ve used yet.</p>
+            <p>The <a href="http://msdn.microsoft.com/en-us/library/bb399572(v=vs.110).aspx" target="_blank" rel="external">ADO.NET Entity Framework</a> is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO EF is the best one I’ve used yet.</p>
 <p>Well, I should say it is awesome MOST of the time. The biggest beef I have with it is that the models can get out of sync with the database and saving the EDMX file and running the “Update Model from Database…” feature doesn’t work.</p>
 <p><img src="/images/blog/5c9ad7bd69d6_ABCB/image.png" alt=""></p>
 <p><em>(The Update Model from Database option doesn’t update the object model and class files)</em></p>
@@ -215,7 +215,7 @@ ga('send', 'pageview');
 <p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_11.png" alt=""></p>
 <p>But I still didn’t have the Foo class in my object model:</p>
 <p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_12.png" alt=""></p>
-<p>So I selected the “Run Custom Tool” on the “ConfSpeakers.Context.tt” file:</p>
+<p>So I selected the “Run Custom Tool” on the “<a href="http://ConfSpeakers.Context.tt" target="_blank" rel="external">ConfSpeakers.Context.tt</a>” file:</p>
 <p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_13.png" alt=""></p>
 <p>And that generated the correct object model:</p>
 <p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_14.png" alt=""></p>

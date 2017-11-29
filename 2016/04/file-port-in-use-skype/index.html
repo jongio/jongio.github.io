@@ -198,9 +198,9 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project.</p>
 <p>This line of code:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;gt; this.startup.Configuration(appBuilder, this.config));</div></pre></td></tr></table></figure>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.serverHandle = WebApp.Start(<span class="keyword">this</span>.listeningAddress, appBuilder =&amp;gt; <span class="keyword">this</span>.startup.Configuration(appBuilder, <span class="keyword">this</span>.config));</span><br></pre></td></tr></table></figure>
 <p>Was throwing this exception:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Message=The process cannot access the file because it is being used by another process</div></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">Message=The <span class="built_in">process</span> cannot access <span class="keyword">the</span> <span class="built_in">file</span> because <span class="keyword">it</span> is being used <span class="keyword">by</span> another <span class="built_in">process</span></span><br></pre></td></tr></table></figure>
 <p>Luckily, I remembered that I ran into this same issue before and didn’t disable this when I rebuilt my machine. By default, Skype uses port 80 and 443. You, as a developer, should disable that. Uncheck this box under Tools—&gt; Options –&gt; Advanced –&gt; Connection: “Use port 80 and 443 for additional incoming connections”.</p>
 <p>[<img src="/images/blog/21bb50b5bf43_10686/2016-04-25_thumb.png" alt="2016-04-25" title="2016-04-25"></p>
 <p>Jon</p>

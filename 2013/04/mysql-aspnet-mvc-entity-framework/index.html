@@ -195,34 +195,34 @@ ga('send', 'pageview');
 <p>1. <a href="http://dev.mysql.com/downloads/installer/" target="_blank" rel="external">Download &amp; Install MySQL</a> (Includes MySQL Server, Workbench and Visual Studio Connector)</p>
 <blockquote>
 <p>I did a Full Install (not Developer default) and configured as a Development Machine.</p>
-<p>MySQL Workbench will launch when it is complete: </p>
+<p>MySQL Workbench will launch when it is complete:</p>
 <p><img src="/images/blog/a2dc565e58e1_557C/image.png" alt=""></p>
-<p>Read <a href="http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial.html" target="_blank" rel="external">this</a> if you have issues getting MySQL running. </p>
+<p>Read <a href="http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial.html" target="_blank" rel="external">this</a> if you have issues getting MySQL running.</p>
 </blockquote>
 <p><strong>CREATE THE DATABASE</strong></p>
 <p>2. Click “Create a new EER Model”</p>
 <p>3. That will launch the Model Editor</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_3.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_3.png" alt=""></p>
 </blockquote>
 <p>4. Click the plus icon over to the right of “Physical Schemata” to create a new database. Name it “Company”</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_4.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_4.png" alt=""></p>
 </blockquote>
 <p>5. Double-click “Add Table”</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_5.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_5.png" alt=""></p>
 </blockquote>
 <p>6. Create a new Employee table like so.</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_6.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_6.png" alt=""></p>
 </blockquote>
 <p>7. Click Save.</p>
 <p>8. Go to <strong>Database –&gt; Forward Engineer</strong> to push your changes to the MySQL instance. Read <a href="http://dev.mysql.com/doc/workbench/en/wb-getting-started-tutorial-creating-a-model.html" target="_blank" rel="external">this</a> if you are having issues here.</p>
 <p><strong>CONNECT TO DATABASE</strong></p>
 <p>9. In Visual Studio, Open Server Explorer and create a new connection to your Employee MySQL database. This is what my Add Connection dialog looks like:</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_7.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_7.png" alt=""></p>
 </blockquote>
 <p><strong>CREATE MVC APPLICATION</strong></p>
 <p>10. Create a new MVC application in Visual Studio. I used the Internet Application template.</p>
@@ -231,30 +231,30 @@ ga('send', 'pageview');
 <blockquote>
 <p><img src="/images/blog/a2dc565e58e1_557C/image_8.png" alt="">       &gt; I selected Yes, include the sensitive data in the connection string. Because it’s a quick sample.</p>
 <p><img src="/images/blog/a2dc565e58e1_557C/image_9.png" alt=""></p>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_10.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_10.png" alt=""></p>
 </blockquote>
 <p>That will create a new EDMX, just make sure you save AND BUILD it once the diagram opens.</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_11.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_11.png" alt=""></p>
 </blockquote>
 <p><strong>CREATE MVC CONTROLLER</strong></p>
 <p>12. Add a new controller with the MVC template and EF. Right click on “Controllers” folder and select “Add –&gt; Controller”</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_12.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_12.png" alt=""></p>
 </blockquote>
 <p><strong>RUN THE APPLICATION</strong></p>
 <p>13. Hit F5 and change URL to /employee (i.e. <a href="http://localhost:45171/employee" target="_blank" rel="external">http://localhost:45171/employee</a>)</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_13.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_13.png" alt=""></p>
 </blockquote>
 <p><strong>CREATE A NEW EMPLOYEE</strong></p>
 <p>14. Click “Create New”. Enter a Name. Click Create</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_14.png" alt=""> </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_14.png" alt=""></p>
 </blockquote>
 <p>Nice. We now have end to end MySQL, EF and MVC.</p>
 <blockquote>
-<p><img src="/images/blog/a2dc565e58e1_557C/image_15.png" alt="">    </p>
+<p><img src="/images/blog/a2dc565e58e1_557C/image_15.png" alt=""></p>
 </blockquote>
 <p>Jon</p>
 

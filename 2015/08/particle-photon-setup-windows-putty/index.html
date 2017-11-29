@@ -191,41 +191,48 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>This post is all about just getting your <a href="https://store.particle.io/?product=particle-photon" target="_blank" rel="external">Photon</a> connected to WiFi with Windows. Particle has some slick <a href="https://docs.particle.io/guide/getting-started/tinker/photon/" target="_blank" rel="external">iOS and Android apps</a> to help you connect your Photons to Wifi and associate them with your account. But they unfortunately don’t have a Windows Phone version yet. I’ve been working with them a lot lately and doing sessions at the Microsoft Garage. Not surprisingly, a lot of those folks do not have iPhones or Android devices – so they have to use either the Serial or the Node.js particle-cli method to setup their Photons. I normally prefer Node.js, but I found Serial with PuTTY to be easy enough and more familiar to devs that aren’t versed in Node.js and npm.</p>
-<h2 id="Install-PuTTY"><a href="#Install-PuTTY" class="headerlink" title="Install PuTTY"></a>Install PuTTY</h2><p>We will be using PuTTY (a Telnet/SSH client) to connect to the Photon to setup WiFi and get the Photon Id. </p>
-<p>1. Go to the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank" rel="external">PuTTY download page</a> and download the putty.exe file. I personally put utilities like this in c:\utils and then add c:\utils to my PATH environment variables. That way I don’t have to edit my PATH every time I download a new utility. </p>
+<h2 id="install-putty"><a class="header-anchor" href="#install-putty"></a>Install PuTTY</h2>
+<p>We will be using PuTTY (a Telnet/SSH client) to connect to the Photon to setup WiFi and get the Photon Id.</p>
+<p>1. Go to the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank" rel="external">PuTTY download page</a> and download the putty.exe file. I personally put utilities like this in c:\utils and then add c:\utils to my PATH environment variables. That way I don’t have to edit my PATH every time I download a new utility.</p>
 <p>The direct link to the putty file I used is: <a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe" title="http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe" target="_blank" rel="external">http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe</a></p>
-<h2 id="Put-Photon-in-Listening-Mode"><a href="#Put-Photon-in-Listening-Mode" class="headerlink" title="Put Photon in Listening Mode"></a>Put Photon in Listening Mode</h2><p>We need to get the Photon in Listening mode (flashing blue) to configure it. (You can learn about the other Photon modes <a href="https://docs.particle.io/guide/getting-started/modes/photon/" target="_blank" rel="external">here</a>)</p>
+<h2 id="put-photon-in-listening-mode"><a class="header-anchor" href="#put-photon-in-listening-mode"></a>Put Photon in Listening Mode</h2>
+<p>We need to get the Photon in Listening mode (flashing blue) to configure it. (You can learn about the other Photon modes <a href="https://docs.particle.io/guide/getting-started/modes/photon/" target="_blank" rel="external">here</a>)</p>
 <p>1. Plug Photon into your computer’s USB port.</p>
 <p>2. Is your Photon flashing blue? If so, move on to next step. If not, then hold down the Setup button until the LED flashes blue. If you can’t get it to flash blue then hit the Reset key and try again.</p>
-<p><iframe width="300" height="300" src="https://vine.co/v/eZUH7WaWjMT/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
-<h2 id="Connect-to-Photon"><a href="#Connect-to-Photon" class="headerlink" title="Connect to Photon"></a>Connect to Photon</h2><p>1. Open Device Manager and find your Photon under <strong>Ports (COM &amp; LPT)</strong>. Make note of the COM port it is assigned to. In my case it is COM4.</p>
+<iframe width="300" height="300" src="https://vine.co/v/eZUH7WaWjMT/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
+<h2 id="connect-to-photon"><a class="header-anchor" href="#connect-to-photon"></a>Connect to Photon</h2>
+<p>1. Open Device Manager and find your Photon under <strong>Ports (COM &amp; LPT)</strong>. Make note of the COM port it is assigned to. In my case it is COM4.</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image.png" alt=""></p>
 <p>2. Open PuTTY</p>
-<p>  a) Select the <strong>Serial</strong> radio button</p>
-<p>  b) Enter COM4 (or whatever port your Photon is assign to) into the <strong>Serial line </strong>text box</p>
-<p>  c) Keep <strong>Speed</strong> at 9600</p>
-<p>  d) Click Open</p>
-<p> <img src="/images/blog/bc265f25356b_E8CD/image_3.png" alt=""></p>
+<p>a) Select the <strong>Serial</strong> radio button</p>
+<p>b) Enter COM4 (or whatever port your Photon is assign to) into the **Serial line **text box</p>
+<p>c) Keep <strong>Speed</strong> at 9600</p>
+<p>d) Click Open</p>
+<p><img src="/images/blog/bc265f25356b_E8CD/image_3.png" alt=""></p>
 <p>3. You should now see what looks like Command Prompt. This is the Serial monitor session and looks like this:</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_4.png" alt=""></p>
-<h2 id="Get-Photon-Id"><a href="#Get-Photon-Id" class="headerlink" title="Get Photon Id"></a>Get Photon Id</h2><p>We will need to the Photon Id later when we connect it to your Particle Account.</p>
+<h2 id="get-photon-id"><a class="header-anchor" href="#get-photon-id"></a>Get Photon Id</h2>
+<p>We will need to the Photon Id later when we connect it to your Particle Account.</p>
 <p>1. From within the PuTTY session, hit the “i” key on your keyboard – this will print your Photon Id. Copy it over into Notepad. You will need it later.</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_5.png" alt=""></p>
-<h2 id="Setup-Photon-WiFi"><a href="#Setup-Photon-WiFi" class="headerlink" title="Setup Photon WiFi"></a>Setup Photon WiFi</h2><p>1. From within the PuTTY session, hit the “w” key on your keyboard – this will initiate the WiFi setup process.</p>
+<h2 id="setup-photon-wifi"><a class="header-anchor" href="#setup-photon-wifi"></a>Setup Photon WiFi</h2>
+<p>1. From within the PuTTY session, hit the “w” key on your keyboard – this will initiate the WiFi setup process.</p>
 <p>2. Enter your SSID</p>
 <p>3. Select your Security Type</p>
 <p>4. Enter your Password</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_6.png" alt=""></p>
 <p>Your Photon should reboot and will be in Connected mode (Pulsing cyan aka breathing cyan)</p>
-<p><iframe width="300" height="300" src="https://vine.co/v/eZUg2ZjVpn7/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
+<iframe width="300" height="300" src="https://vine.co/v/eZUg2ZjVpn7/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
 <p>At this point you should have:</p>
 <p>a) Photon Id in Notepad</p>
 <p>b) Photon is connected to WiFi</p>
 <p>c) Photon is in Connected Mode (breathing cyan)</p>
 <p>If you do not have those three things, then scroll back up and find out what you missed.</p>
-<h2 id="Create-a-Particle-Account"><a href="#Create-a-Particle-Account" class="headerlink" title="Create a Particle Account"></a><span class="wlWriterPreserve"></span>Create a Particle Account</h2><p>Now that your Photon is configured let’s create a Particle account and associate the Photon with your account.</p>
+<h2 id="span-class-wlwriterpreserve-span-create-a-particle-account"><a class="header-anchor" href="#span-class-wlwriterpreserve-span-create-a-particle-account"></a><span class="wlWriterPreserve"></span>Create a Particle Account</h2>
+<p>Now that your Photon is configured let’s create a Particle account and associate the Photon with your account.</p>
 <p>1. Create a <a href="https://build.particle.io/signup" target="_blank" rel="external">new Particle Account here</a> or use one that you already have.</p>
-<h2 id="Add-Photon-to-Particle-Account"><a href="#Add-Photon-to-Particle-Account" class="headerlink" title="Add Photon to Particle Account"></a>Add Photon to Particle Account</h2><p>1. Go to <a href="https://build.particle.io/" target="_blank" rel="external">Particle Build</a> (the online cloud IDE)</p>
+<h2 id="add-photon-to-particle-account"><a class="header-anchor" href="#add-photon-to-particle-account"></a>Add Photon to Particle Account</h2>
+<p>1. Go to <a href="https://build.particle.io/" target="_blank" rel="external">Particle Build</a> (the online cloud IDE)</p>
 <p>2. Click on the “Devices” icon in the lower left rail. It looks like a target.</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_7.png" alt=""></p>
 <p>3. Click the “ADD NEW DEVICE” button and copy your Photon Id from Notepad into the box and click the “CLAIM A DEVICE” button.</p>
@@ -236,13 +243,15 @@ ga('send', 'pageview');
 <p><img src="/images/blog/bc265f25356b_E8CD/image_10.png" alt=""></p>
 <p>If you want to deploy to the device right away, then click the star to the left of it to set it to the device to flash to (You can flash one at a time through the cloud IDE). Once you do that you’ll see your device in the Photons list like this:</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_11.png" alt=""></p>
-<h2 id="Get-Particle-Access-Token"><a href="#Get-Particle-Access-Token" class="headerlink" title="Get Particle Access Token"></a>Get Particle Access Token</h2><p>All of the APIs and apps that use your Photon will require an Access Token. You’ll want to copy this over to Notepad so you can use it later.</p>
+<h2 id="get-particle-access-token"><a class="header-anchor" href="#get-particle-access-token"></a>Get Particle Access Token</h2>
+<p>All of the APIs and apps that use your Photon will require an Access Token. You’ll want to copy this over to Notepad so you can use it later.</p>
 <p>1. Go to <a href="https://build.particle.io/" target="_blank" rel="external">Particle Build</a> (the online cloud IDE)</p>
 <p>2. Click on the Settings icon in the lower left rail</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_12.png" alt=""></p>
 <p>3. Copy the Access Token over to Notepad. You will need it later when you call APIs that require it.</p>
 <p><img src="/images/blog/bc265f25356b_E8CD/image_13.png" alt=""></p>
-<h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><p>That’s how you get your Photon setup with Windows using PuTTY. </p>
+<h2 id="next"><a class="header-anchor" href="#next"></a>Next</h2>
+<p>That’s how you get your Photon setup with Windows using PuTTY.</p>
 <p>From here, you can deploy your own app to your Photon or try building my <a href="http://blog.jongallant.com/2015/08/beakn-skype-particle-photon.html">“Skype for Business Status Light”</a></p>
 <p>Make on!</p>
 <p>Jon</p>

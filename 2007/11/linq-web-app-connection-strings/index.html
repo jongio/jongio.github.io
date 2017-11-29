@@ -190,34 +190,78 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>It’s usually a good idea to seperate Biz Layer Objects and Data Access Objects into seperate assemblies, but when you do that and use LINQ to SQL (.dbml) files the DataContext object default ctor uses the Settings file that is automattically generated as the default connection string instead of the configuration file connectionString setting.</p>
 <p>When you drag a database object to the dbml file an app.config file is created, but there isn’t an option anywhere in properties to actually use it. We really don’t want to have to manage connection strings in multiple places and when dev’n a class library it’s usually best to leave that up to the client of the class library especially if you own dev of both projects. (not considering service interface here)</p>
-<p>Here’s what I recommend to simplify the connection string management, </p>
-<p>1) Create the dbml file in the class library project and drag a database object onto the design surface.</p>
-<p>2) Find the default parameterless ctor for the DataContext something like this and remove it.<br><code>
-</code></p>
-<p><div mce_keep="true"><br></div>`<span style="color: blue; font-size: small;"><br></span><span style="color: blue; font-size: small;">public</span><span style="font-size: small;"> DataClasses1DataContext() : </span><br><span style="font-size: small;"><br></span><br><span style="color: blue; font-size: small;">base</span><span style="font-size: small;">(</span><span style="color: blue; font-size: small;">global</span><span style="font-size: small;">::LINQConnStringLib.Properties.</span><span style="color: #2b91af; font-size: small;">Settings</span><span style="font-size: small;">.Default.ConnectionString, mappingSource)</span><br><span style="font-size: small;"><br></span><br><span style="font-size: small;">{</span><br><span style="font-size: small;"><br>OnCreated();</span></p>
+<p>Here’s what I recommend to simplify the connection string management,</p>
+<ol>
+<li>
+<p>Create the dbml file in the class library project and drag a database object onto the design surface.</p>
+</li>
+<li>
+<p>Find the default parameterless ctor for the DataContext something like this and remove it.<br>
+<code></code></p>
+</li>
+</ol>
+<div mce_keep="true">
+</div>`<span style="color: blue; font-size: small;">
+</span><span style="color: blue; font-size: small;">public</span><span style="font-size: small;"> DataClasses1DataContext() : </span>
+<span style="font-size: small;">
+</span>
+<span style="color: blue; font-size: small;">base</span><span style="font-size: small;">(</span><span style="color: blue; font-size: small;">global</span><span style="font-size: small;">::LINQConnStringLib.Properties.</span><span style="color: #2b91af; font-size: small;">Settings</span><span style="font-size: small;">.Default.ConnectionString, mappingSource)</span>
+<span style="font-size: small;">
+</span>
+<span style="font-size: small;">{</span>
+<span style="font-size: small;">
+OnCreated();
+<p>}</p></span><p></p>
+<div mce_keep="true">
+</div>`
+<div mce_keep="true">3) Add a reference to the System.Configuration DLL.</div>
+<div mce_keep="true">4) Create a new CS file to hold the Data Context partial class that will contain the default ctor and the following code to it (replacing class name and conn string name for your project)</div>`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: blue; font-size: small;">public</span><span style="font-size: small;"> </span><span style="color: blue; font-size: small;">partial</span><span style="font-size: small;"> </span><span style="color: blue; font-size: small;">class</span><span style="font-size: small;"> </span><span style="color: #2b91af; font-size: small;">DataClasses1DataContext</span>`
+`<span style="font-size: small;">
+</span>`
+`<span style="font-size: small;">{</span>`
+`<span style="font-size: small;">
+</span><span style="font-size: small;"></span><span style="color: blue; font-size: small;">public</span><span style="font-size: small;"> DataClasses1DataContext() : </span><span style="color: blue; font-size: small;">base</span><span style="font-size: small;"> (</span><span style="color: #2b91af; font-size: small;">ConfigurationManager</span><span style="font-size: small;">.ConnectionStrings[</span><span style="color: #a31515; font-size: small;">"ConnectionString"<span style="font-size: small;">].ConnectionString)</span>
+<span style="font-size: small;">
+</span>
+<span style="font-size: small;">{</span>
+<span style="font-size: small;">
+OnCreated();
 <p>}</p>
-<p><div mce_keep="true"><br></div>`</p>
-<p><div mce_keep="true">3) Add a reference to the System.Configuration DLL.</div></p>
-<p><div mce_keep="true">4) Create a new CS file to hold the Data Context partial class that will contain the default ctor and the following code to it (replacing class name and conn string name for your project)</div><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;public&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;partial&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;class&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: #2b91af; font-size: small;&quot;&gt;DataClasses1DataContext&lt;/span&gt;</code><br><code>&lt;span style=&quot;font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;font-size: small;&quot;&gt;{&lt;/span&gt;</code><br>`<span style="font-size: small;"><br></span><span style="font-size: small;"></span><span style="color: blue; font-size: small;">public</span><span style="font-size: small;"> DataClasses1DataContext() : </span><span style="color: blue; font-size: small;">base</span><span style="font-size: small;"> (</span><span style="color: #2b91af; font-size: small;">ConfigurationManager</span><span style="font-size: small;">.ConnectionStrings[</span><span style="color: #a31515; font-size: small;">“ConnectionString”<span style="font-size: small;">].ConnectionString)</span><br><span style="font-size: small;"><br></span><br><span style="font-size: small;">{</span><br><span style="font-size: small;"><br>OnCreated();</span></span></p>
-<p>}</p>
-<p>}`</p>
-<p><div mce_keep="true">5) Add the connection string to your application configuration file.</div><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #a31515; font-size: small;&quot;&gt;configuration&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;gt;&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #a31515; font-size: small;&quot;&gt;connectionStrings&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;gt;&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&quot;color: #a31515; font-size: small;&quot;&gt;add&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt; &lt;/span&gt;&lt;span style=&quot;color: red; font-size: small;&quot;&gt;name&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt;&quot;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;ConnectionString&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt;&quot;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: red; font-size: small;&quot;&gt;connectionString&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt;&quot;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt;&quot;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: red; font-size: small;&quot;&gt;providerName&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt;&quot;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;System.Data.SqlClient&lt;/span&gt;&lt;span style=&quot;font-size: small;&quot;&gt;&quot;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt; /&amp;gt;&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&lt;span style=&quot;color: #a31515; font-size: small;&quot;&gt;&amp;lt;/connectionStrings&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;
-&lt;/span&gt;&lt;/span&gt;</code><br><code>&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&lt;span style=&quot;color: #a31515; font-size: small;&quot;&gt;&amp;lt;/configuration&lt;/span&gt;&lt;span style=&quot;color: blue; font-size: small;&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;</code></p>
-<p><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;"><br></span></span></p>
-<p><div mce_keep="true"><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">6) Delete the settings file if you don’t need it. It will be created again if you add new objects to the dbml file so I just leave it there.</span></span></div><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;"><br></span></span></p>
-<p><div mce_keep="true"><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">7) Right click on the DBML file design surface and chose properties. Select “none” for the Connection property. That way the default ctor won’t be created in the generated file.</span></span></div><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;"></span></span></p>
-<p><div mce_keep="true">The down side to this approach is that you have to set the Connection property to none after you add new objects to the dbml file, but it’s not as bad as having to manage the connection string in multiple places.</div></p>
-<p><div mce_keep="true"><br></div></p>
-<p><div mce_keep="true">Hope this helps,</div><br>Jon<br></p>
-
+<p>}</p></span>`<p></p>
+<div mce_keep="true">5) Add the connection string to your application configuration file.</div>`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: blue; font-size: small;">&lt;</span><span style="color: #a31515; font-size: small;">configuration</span><span style="color: blue; font-size: small;">&gt;</span>`
+`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: blue; font-size: small;">&lt;</span><span style="color: #a31515; font-size: small;">connectionStrings</span><span style="color: blue; font-size: small;">&gt;</span>`
+`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: blue; font-size: small;">&lt;</span><span style="color: #a31515; font-size: small;">add</span><span style="color: blue; font-size: small;"> </span><span style="color: red; font-size: small;">name</span><span style="color: blue; font-size: small;">=</span><span style="font-size: small;">"<span style="color: blue; font-size: small;">ConnectionString</span><span style="font-size: small;">"`
+`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: red; font-size: small;">connectionString</span><span style="color: blue; font-size: small;">=</span><span style="font-size: small;">"<span style="color: blue; font-size: small;">x</span><span style="font-size: small;">"`
+`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: red; font-size: small;">providerName</span><span style="color: blue; font-size: small;">=</span><span style="font-size: small;">"<span style="color: blue; font-size: small;">System.Data.SqlClient</span><span style="font-size: small;">"<span style="color: blue; font-size: small;"> /&gt;</span>`
+`<span style="color: blue; font-size: small;">
+</span>`
+`<span style="color: blue; font-size: small;"><span style="color: #a31515; font-size: small;">&lt;/connectionStrings</span><span style="color: blue; font-size: small;">&gt;</span></span>`
+`<span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">
+</span></span>`
+`<span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;"><span style="color: #a31515; font-size: small;">&lt;/configuration</span><span style="color: blue; font-size: small;">&gt;</span></span></span>`
+<p><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;"><br>
+</span></span></p>
+<div mce_keep="true"><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">6) Delete the settings file if you don't need it. It will be created again if you add new objects to the dbml file so I just leave it there.</span></span></div><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">
+</span></span>
+<div mce_keep="true"><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">7) Right click on the DBML file design surface and chose properties. Select "none" for the Connection property. That way the default ctor won't be created in the generated file.</span></span></div><span style="color: blue; font-size: small;"><span style="color: blue; font-size: small;">
+<div mce_keep="true">The down side to this approach is that you have to set the Connection property to none after you add new objects to the dbml file, but it's not as bad as having to manage the connection string in multiple places.</div>
+<div mce_keep="true">
+</div>
+<div mce_keep="true">Hope this helps,</div>
+Jon
+</span></span></span></span></span></span></span></span></span>
         </div>
         <footer>
         </footer>

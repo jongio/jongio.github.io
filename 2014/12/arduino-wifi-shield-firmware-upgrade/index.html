@@ -8,20 +8,20 @@
     
         <meta name="keywords" content="iot,howto" />
     
-    <meta name="description" content="It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time. 
-Here are the original steps: http://arduino.cc/en/Hacking/W">
+    <meta name="description" content="It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time.
+Here are the original steps: http://arduino.cc/en/Hacking/Wi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How Upgrade Arduino WiFi Shield Firmware on Windows">
 <meta property="og:url" content="http://blog.jongallant.com/2014/12/arduino-wifi-shield-firmware-upgrade/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time. 
-Here are the original steps: http://arduino.cc/en/Hacking/W">
+<meta property="og:description" content="It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time.
+Here are the original steps: http://arduino.cc/en/Hacking/Wi">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/53efb8bd936e_137DD/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Upgrade Arduino WiFi Shield Firmware on Windows">
-<meta name="twitter:description" content="It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time. 
-Here are the original steps: http://arduino.cc/en/Hacking/W">
+<meta name="twitter:description" content="It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time.
+Here are the original steps: http://arduino.cc/en/Hacking/Wi">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/53efb8bd936e_137DD/image.png">
     
 
@@ -193,11 +193,11 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time. </p>
+            <p>It took me a few mins to get the exact steps figured out to upgrade the firmware of the Arduino Wifi Shield. Hope this saves you some time.</p>
 <p>Here are the original steps: <a href="http://arduino.cc/en/Hacking/WiFiShieldFirmwareUpgrading" title="http://arduino.cc/en/Hacking/WiFiShieldFirmwareUpgrading" target="_blank" rel="external">http://arduino.cc/en/Hacking/WiFiShieldFirmwareUpgrading</a></p>
 <p>Here are my steps (for Windows)</p>
 <p>1. Download and Install Flip: <a href="http://www.atmel.com/tools/FLIP.aspx" title="http://www.atmel.com/tools/FLIP.aspx" target="_blank" rel="external">http://www.atmel.com/tools/FLIP.aspx</a></p>
-<p>2. Check if you have the WiFi Shield Drivers here: “C:\Program Files (x86)\Arduino\hardware\arduino\firmwares\wifishield\”. If you don’t then download and install the Arduino IDE : <a href="http://arduino.cc/en/main/software" title="http://arduino.cc/en/main/software" target="_blank" rel="external">http://arduino.cc/en/main/software</a></p>
+<p>2. Check if you have the WiFi Shield Drivers here: “C:\Program Files (x86)\Arduino\hardware\arduino\firmwares\wifishield”. If you don’t then download and install the Arduino IDE : <a href="http://arduino.cc/en/main/software" title="http://arduino.cc/en/main/software" target="_blank" rel="external">http://arduino.cc/en/main/software</a></p>
 <p>3. Connect the J3 Jumper – It’s the only jumper on the shield. I have circled it in the image below:</p>
 <p><img src="/images/blog/53efb8bd936e_137DD/image.png" alt=""></p>
 <p>4. Disconnect the Wifi Shield from any Arduino and connect the shield to your computer via the mini-usb port.</p>
@@ -205,10 +205,10 @@ ga('send', 'pageview');
 <p>6. Open command prompt (as admin)</p>
 <p>7. Navigate to Flip/bin here: C:\Program Files (x86)\Atmel\Flip 3.4.7\bin</p>
 <p>8. Execute this command and let it finish</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer &quot;C:\Program Files (x86)\Arduino\hardware\arduino\firmwares\wifishield\binary\wifi_dnld.elf&quot; program verify start reset 0</div></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer "C:<span class="symbol">\P</span>rogram Files (x86)<span class="symbol">\A</span>rduino<span class="symbol">\h</span>ardware<span class="symbol">\a</span>rduino<span class="symbol">\f</span>irmwares<span class="symbol">\w</span>ifishield<span class="symbol">\b</span>inary<span class="symbol">\w</span>ifi_dnld.elf" program verify start reset 0</span><br></pre></td></tr></table></figure>
 <p>If you get this error: “atlibusbdfu.dll not found” then go back up to Step 5 and install the drivers.</p>
 <p>9. Execute this command and let it finish</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer &quot;C:\Program Files (x86)\Arduino\hardware\arduino\firmwares\wifishield\binary\wifiHD.elf&quot; program verify start reset 0</div></pre></td></tr></table></figure>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer "C:<span class="symbol">\P</span>rogram Files (x86)<span class="symbol">\A</span>rduino<span class="symbol">\h</span>ardware<span class="symbol">\a</span>rduino<span class="symbol">\f</span>irmwares<span class="symbol">\w</span>ifishield<span class="symbol">\b</span>inary<span class="symbol">\w</span>ifiHD.elf" program verify start reset 0</span><br></pre></td></tr></table></figure>
 <p>10. Remove the J3 Jumper and unplug the mini-usb cable.</p>
 <p>11. Connect the shield to an Arduino. Connect the Arduino to your computer.</p>
 <p>12. See if you can scan Wifi networks using scripts from here: <a href="http://arduino.cc/en/Guide/ArduinoWiFiShield" title="http://arduino.cc/en/Guide/ArduinoWiFiShield" target="_blank" rel="external">http://arduino.cc/en/Guide/ArduinoWiFiShield</a></p>

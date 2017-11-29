@@ -190,14 +190,20 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>As you can imagine, we have many Power BI internal test environments and all Microsofties get redirected to an internal pre-release version of Power BI so we can test the latest features and provide feedback.  It’s great setup, but sometimes I need to just hit app.powerbi.com as a customer would and not be redirected to the internal version.  We have a bunch of test users to do so, but I wanted to have a more controlled user directory so I could handout credentials to partners and customers to allow them to test features against app.powerbi.com.</p>
+            <p>As you can imagine, we have many Power BI internal test environments and all Microsofties get redirected to an internal pre-release version of Power BI so we can test the latest features and provide feedback.  It’s great setup, but sometimes I need to just hit <a href="http://app.powerbi.com" target="_blank" rel="external">app.powerbi.com</a> as a customer would and not be redirected to the internal version.  We have a bunch of test users to do so, but I wanted to have a more controlled user directory so I could handout credentials to partners and customers to allow them to test features against <a href="http://app.powerbi.com" target="_blank" rel="external">app.powerbi.com</a>.</p>
 <p>You can set this up for free in Azure by using an Azure Active Directory and then use Office 365 to assign a Power BI Subscription to your users.</p>
 <p>Here’s how I got everything setup:</p>
-<h2 id="Create-Azure-Subscription"><a href="#Create-Azure-Subscription" class="headerlink" title="Create Azure Subscription"></a>Create Azure Subscription</h2><p>You are going to need an Azure Subscription to create an Azure Active Directory (AAD) and add users. You can get a <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="external">free trial here</a>.  </p>
-<h2 id="Create-Azure-Active-Directory"><a href="#Create-Azure-Active-Directory" class="headerlink" title="Create Azure Active Directory"></a>Create Azure Active Directory</h2><p>1. Go to the <a href="https://portal.azure.com/#create/Microsoft.AzureActiveDirectory" target="_blank" rel="external">Azure Portal</a> and create a new Azure Active Directory. AAD pricing information can be found <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory/" target="_blank" rel="external">here</a>.<br><img src="000014.png" alt=""></p>
+<h2 id="create-azure-subscription"><a class="header-anchor" href="#create-azure-subscription"></a>Create Azure Subscription</h2>
+<p>You are going to need an Azure Subscription to create an Azure Active Directory (AAD) and add users. You can get a <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="external">free trial here</a>.</p>
+<h2 id="create-azure-active-directory"><a class="header-anchor" href="#create-azure-active-directory"></a>Create Azure Active Directory</h2>
+<p>1. Go to the <a href="https://portal.azure.com/#create/Microsoft.AzureActiveDirectory" target="_blank" rel="external">Azure Portal</a> and create a new Azure Active Directory. AAD pricing information can be found <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory/" target="_blank" rel="external">here</a>.<br>
+<img src="000014.png" alt=""></p>
 <p><img src="000021.png" alt=""></p>
-<p>2. Click on the “Click here” link to manage your directory. You will be redirected to the AAD management page.<br><img src="000022.png" alt=""><br><img src="000025.png" alt=""></p>
-<h2 id="Add-Users"><a href="#Add-Users" class="headerlink" title="Add Users"></a>Add Users</h2><p>3. Click “Add User” and select “Global Administrator” as the “Directory role”</p>
+<p>2. Click on the “Click here” link to manage your directory. You will be redirected to the AAD management page.<br>
+<img src="000022.png" alt=""><br>
+<img src="000025.png" alt=""></p>
+<h2 id="add-users"><a class="header-anchor" href="#add-users"></a>Add Users</h2>
+<p>3. Click “Add User” and select “Global Administrator” as the “Directory role”</p>
 <blockquote>
 <p>Make sure you select “Global Administrator”</p>
 </blockquote>
@@ -206,30 +212,44 @@ ga('send', 'pageview');
 <blockquote>
 <p>Make sure you view and save the password for this account.  You will need it in a minute.</p>
 </blockquote>
-<h2 id="Purchase-Power-BI-free-Licenses"><a href="#Purchase-Power-BI-free-Licenses" class="headerlink" title="Purchase Power BI (free) Licenses"></a>Purchase Power BI (free) Licenses</h2><p>4. Open a Browser using “In-Private” or “Incognito” mode.</p>
+<h2 id="purchase-power-bi-free-licenses"><a class="header-anchor" href="#purchase-power-bi-free-licenses"></a>Purchase Power BI (free) Licenses</h2>
+<p>4. Open a Browser using “In-Private” or “Incognito” mode.</p>
 <blockquote>
 <p>Make sure the browser is in “In-Private” or “Incognito” mode so you can login with the right account.</p>
 </blockquote>
 <p>5. Go to the <a href="https://portal.office.com/admin/default.aspx" target="_blank" rel="external">Office 365 Admin Portal</a> and login with the Global Administrator account you created earlier.</p>
 <p>You will be prompted to change the password.</p>
 <p>This is where you will assign the Power BI license to the user you just created.</p>
-<p>6. Click Billing -&gt; Subscriptions in the left hand nav.<br><img src="000028.png" alt=""></p>
-<p>7. Click the Add Subscriptions button.<br><img src="000029.png" alt=""></p>
-<p>8. Find “Power BI (free)” in the list and then click “Buy now”<br><img src="000031.png" alt=""></p>
-<p>9. Click “Checkout now”<br><img src="000032.png" alt=""></p>
+<p>6. Click Billing -&gt; Subscriptions in the left hand nav.<br>
+<img src="000028.png" alt=""></p>
+<p>7. Click the Add Subscriptions button.<br>
+<img src="000029.png" alt=""></p>
+<p>8. Find “Power BI (free)” in the list and then click “Buy now”<br>
+<img src="000031.png" alt=""></p>
+<p>9. Click “Checkout now”<br>
+<img src="000032.png" alt=""></p>
 <p>10. Go through the Checkout process and click “Go to Admin Home” when done.</p>
 <blockquote>
 <p>I selected the “Invoice” option and didn’t have to enter credit card information.</p>
 </blockquote>
-<p><img src="000046.png" alt=""><br><img src="000034.png" alt=""><br><img src="000047.png" alt=""><br><img src="000036.png" alt=""></p>
-<h2 id="Create-Users"><a href="#Create-Users" class="headerlink" title="Create Users"></a>Create Users</h2><blockquote>
+<p><img src="000046.png" alt=""><br>
+<img src="000034.png" alt=""><br>
+<img src="000047.png" alt=""><br>
+<img src="000036.png" alt=""></p>
+<h2 id="create-users"><a class="header-anchor" href="#create-users"></a>Create Users</h2>
+<blockquote>
 <p>If you already have the users created, then click on Users, check the user checkbox and then add the license.</p>
 </blockquote>
-<p>11. Click Users -&gt; Add a user<br><img src="000048.png" alt=""></p>
-<p>12. Enter your desired user information and toggle the Power BI license.<br><img src="000049.png" alt=""></p>
-<p>13. You will then see that the user was created and you will be given the option to send the password to them via email.<br><img src="000050.png" alt=""></p>
-<h2 id="Login-to-Power-BI"><a href="#Login-to-Power-BI" class="headerlink" title="Login to Power BI"></a>Login to Power BI</h2><p>14. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">Power BI</a> and login as that user.</p>
-<p>You will now see the Power BI portal and you’ll stay on app.powerbi.com.<br><img src="000043.png" alt=""></p>
+<p>11. Click Users -&gt; Add a user<br>
+<img src="000048.png" alt=""></p>
+<p>12. Enter your desired user information and toggle the Power BI license.<br>
+<img src="000049.png" alt=""></p>
+<p>13. You will then see that the user was created and you will be given the option to send the password to them via email.<br>
+<img src="000050.png" alt=""></p>
+<h2 id="login-to-power-bi"><a class="header-anchor" href="#login-to-power-bi"></a>Login to Power BI</h2>
+<p>14. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">Power BI</a> and login as that user.</p>
+<p>You will now see the Power BI portal and you’ll stay on <a href="http://app.powerbi.com" target="_blank" rel="external">app.powerbi.com</a>.<br>
+<img src="000043.png" alt=""></p>
 <p>Jon</p>
 
         </div>

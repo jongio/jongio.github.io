@@ -193,45 +193,23 @@ ga('send', 'pageview');
             <p>The Power BI team just released v1.2 of the Custom Visuals SDK. With this version you now need to reference d3 v3.5.5 yourself. d3 v4 does not work yet. I’m working with the team to get a v4 compat and sample together, but for now you can only use v3.5.5.</p>
 <p>You can follow along with the steps below or follow along on this video:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tADs-T-S_f8" frameborder="0" allowfullscreen></iframe>
-
-
-
 <p>1. Setup your Custom Viz dev env: <a href="http://blog.jongallant.com/2016/09/powerbi-custom-visual-dev.html" title="http://blog.jongallant.com/2016/09/powerbi-custom-visual-dev.html">http://blog.jongallant.com/2016/09/powerbi-custom-visual-dev.html</a></p>
 <p>2. Create a new visual</p>
 <script src="https://gist.github.com/jonbgallant/ac9135fcedcaaaa32fe85cbf9d0cf3ab.js"></script>
-
-
-
 <p>3. Install typings <a href="https://github.com/typings/typings" title="https://github.com/typings/typings" target="_blank" rel="external">https://github.com/typings/typings</a></p>
 <script src="https://gist.github.com/jonbgallant/92d2f6344d2ddc4cc90a407e826064fc.js"></script>
-
-
-
 <p>4. Add d3 v3.5.5</p>
 <script src="https://gist.github.com/jonbgallant/6677b95a05c655664391d13ea0f18fb9.js"></script>
-
-
 <p>5. Add d3 typing</p>
 <script src="https://gist.github.com/jonbgallant/1b976f6020e23679ed3d36cf350d4f12.js"></script>
-
-
-
 <p>6. Add files to tsconfig.json</p>
 <script src="https://gist.github.com/jonbgallant/51b7dd3afbae54e7fefb922ff828a940.js"></script>
-
 <p>7. Add d3 reference to pbiviz.json to externalJS array</p>
 <script src="https://gist.github.com/jonbgallant/0a6a93047e2a9830efa0518688ea6c69.js"></script>
-
 <p>8. Copy this code to src/visual.ts</p>
 <script src="https://gist.github.com/jonbgallant/99494592e71ff34ad9ae586b99d3f929.js"></script>
-
-
-
 <p>9. Start pbiviz dev server</p>
 <script src="https://gist.github.com/jonbgallant/034b6052f2962b3c5acaf3026bbdb288.js"></script>
-
-
-
 <p><img src="/images/blog/26c01965b05f_627C/image.png" alt=""></p>
 <p>10. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a> and add development visual to a report. You should see a green circle.</p>
 <p><img src="/images/blog/26c01965b05f_627C/image_3.png" alt=""></p>

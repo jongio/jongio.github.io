@@ -9,21 +9,24 @@
         <meta name="keywords" content="visual studio" />
     
     <meta name="description" content="I was running the following post-build scripts in VS2013…
-$(FrameworkDir)\installutil.exe /u &amp;quot;$(TargetPath)&amp;quot;$(FrameworkDir)\installutil.exe &amp;quot;$(TargetPath)&amp;quot;
-and was getting this err">
+$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
+and was getting this error…
+&quot;System.Security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[object Object]">
 <meta property="og:url" content="http://blog.jongallant.com/2014/11/solution-to-systemsecuritysecurityexcep/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was running the following post-build scripts in VS2013…
-$(FrameworkDir)\installutil.exe /u &amp;quot;$(TargetPath)&amp;quot;$(FrameworkDir)\installutil.exe &amp;quot;$(TargetPath)&amp;quot;
-and was getting this err">
+$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
+and was getting this error…
+&quot;System.Security">
 <meta property="og:updated_time" content="2016-12-27T06:51:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[object Object]">
 <meta name="twitter:description" content="I was running the following post-build scripts in VS2013…
-$(FrameworkDir)\installutil.exe /u &amp;quot;$(TargetPath)&amp;quot;$(FrameworkDir)\installutil.exe &amp;quot;$(TargetPath)&amp;quot;
-and was getting this err">
+$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
+and was getting this error…
+&quot;System.Security">
     
 
     
@@ -195,9 +198,9 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>I was running the following post-build scripts in VS2013…</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;</div><div class="line">$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(FrameworkDir)\installutil.exe /u <span class="string">"<span class="variable">$(TargetPath)</span>"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">(FrameworkDir)\installutil.exe <span class="string">"<span class="variable">$(TargetPath)</span>"</span></span></span><br></pre></td></tr></table></figure>
 <p>and was getting this error…</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&quot;System.Security.SecurityException: The source was not found, but some or all event logs could not be searched. Inaccessible logs: Security.&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight mizar"><table><tr><td class="code"><pre><span class="line">"System.Security.SecurityException: The source was <span class="keyword">not</span> found, but some <span class="keyword">or</span> all event logs could <span class="keyword">not</span> <span class="keyword">be</span> searched. Inaccessible logs: Security."</span><br></pre></td></tr></table></figure>
 <p>Turns out I just needed to <strong>open VS as admin</strong>. Easy solution that took too long to figure out. Hope this helps.</p>
 
         </div>

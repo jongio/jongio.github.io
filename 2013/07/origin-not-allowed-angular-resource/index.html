@@ -9,25 +9,28 @@
         <meta name="keywords" content="angularjs" />
     
     <meta name="description" content="I just spent way to much time trying to figure out why I kept getting this error:
-Origin is not allowed by Access-Control-Allow-Origin. 
+
+Origin is not allowed by Access-Control-Allow-Origin.
 Here’s the code snippet:
-var resource = $resource(&amp;apos;http://">
+var resource = $resource(&apos;http://local">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to: "Origin is not allowed by Access-Control-Allow-Origin." with AngularJS and ngResource ($resource)">
 <meta property="og:url" content="http://blog.jongallant.com/2013/07/origin-not-allowed-angular-resource/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I just spent way to much time trying to figure out why I kept getting this error:
-Origin is not allowed by Access-Control-Allow-Origin. 
+
+Origin is not allowed by Access-Control-Allow-Origin.
 Here’s the code snippet:
-var resource = $resource(&amp;apos;http://">
+var resource = $resource(&apos;http://local">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/Solution-to_14C14/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to: "Origin is not allowed by Access-Control-Allow-Origin." with AngularJS and ngResource ($resource)">
 <meta name="twitter:description" content="I just spent way to much time trying to figure out why I kept getting this error:
-Origin is not allowed by Access-Control-Allow-Origin. 
+
+Origin is not allowed by Access-Control-Allow-Origin.
 Here’s the code snippet:
-var resource = $resource(&amp;apos;http://">
+var resource = $resource(&apos;http://local">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/Solution-to_14C14/image.png">
     
 
@@ -199,12 +202,13 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent way to much time trying to figure out why I kept getting this error:<br><img src="/images/blog/Solution-to_14C14/image.png" alt=""></p>
-<p><em>Origin is not allowed by Access-Control-Allow-Origin.</em> </p>
+            <p>I just spent way to much time trying to figure out why I kept getting this error:<br>
+<img src="/images/blog/Solution-to_14C14/image.png" alt=""></p>
+<p><em>Origin is not allowed by Access-Control-Allow-Origin.</em></p>
 <p>Here’s the code snippet:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var resource = $resource(&apos;http://localhost:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</span><br></pre></td></tr></table></figure>
 <p>After a lot of digging I discovered that you need to escape the port when using $resource. <a href="https://github.com/angular/angular.js/issues/1243" target="_blank" rel="external">Here’s the issue thread on github</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var resource = $resource(&apos;http://localhost\\:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost\\:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</span><br></pre></td></tr></table></figure>
 <p>Add those two slashes before the port and the error goes away.</p>
 <p>Hope I just saved you hours of pain.</p>
 <p>Jon</p>

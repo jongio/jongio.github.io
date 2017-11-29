@@ -17,7 +17,7 @@ You can change it via editing text files or th">
 <meta property="og:description" content="One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is raspberrypi.
 You can change it via editing text files or th">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/000316.png">
-<meta property="og:updated_time" content="2017-11-16T17:57:57.000Z">
+<meta property="og:updated_time" content="2017-11-16T17:57:57.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Change Raspberry Pi (Raspbian) Hostname">
 <meta name="twitter:description" content="One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is raspberrypi.
@@ -195,25 +195,29 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name is <code>raspberrypi</code>.</p>
 <p>You can change it via editing text files or the UI.</p>
-<h2 id="Via-Terminal-or-SSH"><a href="#Via-Terminal-or-SSH" class="headerlink" title="Via Terminal or SSH"></a>Via Terminal or SSH</h2><p>You can use the <code>hostnamectl set-hostname [name]</code> command, but that <strong>does not update /etc/hosts</strong> and causes issues with Docker and other networking services.  </p>
+<h2 id="via-terminal-or-ssh"><a class="header-anchor" href="#via-terminal-or-ssh"></a>Via Terminal or SSH</h2>
+<p>You can use the <code>hostnamectl set-hostname [name]</code> command, but that <strong>does not update /etc/hosts</strong> and causes issues with Docker and other networking services.</p>
 <p>I prefer to update /etc/hostname and /etc/hosts manually:</p>
 <p>1. <strong>Change /etc/hostname</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hostname</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo nano <span class="regexp">/etc/</span>hostname</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Change raspberrypi to your desired hostname</li>
 <li>Hit CTRL+O and then ENTER to Save</li>
 <li>Hit CTRL+X to Exit</li>
 </ul>
 <p><img src="000318.png" alt=""></p>
-<p>2. <strong>Change /etc/hosts</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hosts</div></pre></td></tr></table></figure></p>
+<p>2. <strong>Change /etc/hosts</strong></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo nano <span class="regexp">/etc/</span>hosts</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Change raspberrypi to your desired hostname</li>
 <li>Hit CTRL+O and then ENTER to Save</li>
 <li>Hit CTRL+X to Exit</li>
 </ul>
 <p><img src="000316.png" alt=""></p>
-<p>3. <strong>Reboot</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure></p>
-<h2 id="Via-Interface"><a href="#Via-Interface" class="headerlink" title="Via Interface"></a>Via Interface</h2><p>You can also change the hostname via the Raspbian UI:</p>
+<p>3. <strong>Reboot</strong></p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo reboot</span></span><br></pre></td></tr></table></figure>
+<h2 id="via-interface"><a class="header-anchor" href="#via-interface"></a>Via Interface</h2>
+<p>You can also change the hostname via the Raspbian UI:</p>
 <p>1. Go to Raspberry Pi Configuration -&gt; System and set a unique hostname and click OK.</p>
 <p><img src="000254.png" alt=""></p>
 <p>2. Click Yes to reboot the Pi</p>

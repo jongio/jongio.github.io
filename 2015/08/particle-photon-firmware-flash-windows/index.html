@@ -9,22 +9,28 @@
         <meta name="keywords" content="howto" />
     
     <meta name="description" content="1. Plug Photon into laptop via USB
-1a. Go ahead and install the Particle Photon driver now: http://bit.ly/photon-driver 
-2. Put Photon into DFU mode.     a) Hold down both Setup and Reset buttons">
+1a. Go ahead and install the Particle Photon driver now: http://bit.ly/photon-driver
+2. Put Photon into DFU mode.
+a) Hold down both Setup and Reset buttons
+b) Releas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Flash the Latest Firmware to Particle Photon using Windows">
 <meta property="og:url" content="http://blog.jongallant.com/2015/08/particle-photon-firmware-flash-windows/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="1. Plug Photon into laptop via USB
-1a. Go ahead and install the Particle Photon driver now: http://bit.ly/photon-driver 
-2. Put Photon into DFU mode.     a) Hold down both Setup and Reset buttons">
+1a. Go ahead and install the Particle Photon driver now: http://bit.ly/photon-driver
+2. Put Photon into DFU mode.
+a) Hold down both Setup and Reset buttons
+b) Releas">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/ca6e74fa906b_C3F2/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Flash the Latest Firmware to Particle Photon using Windows">
 <meta name="twitter:description" content="1. Plug Photon into laptop via USB
-1a. Go ahead and install the Particle Photon driver now: http://bit.ly/photon-driver 
-2. Put Photon into DFU mode.     a) Hold down both Setup and Reset buttons">
+1a. Go ahead and install the Particle Photon driver now: http://bit.ly/photon-driver
+2. Put Photon into DFU mode.
+a) Hold down both Setup and Reset buttons
+b) Releas">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/ca6e74fa906b_C3F2/image.png">
     
 
@@ -197,9 +203,12 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>1. Plug Photon into laptop via USB</p>
-<p>1a. Go ahead and install the Particle Photon driver now: <a href="http://bit.ly/photon-driver" target="_blank" rel="external">http://bit.ly/photon-driver</a> </p>
-<p>2. Put Photon into DFU mode.<br>     a) Hold down both Setup and Reset buttons<br>     b) Release the Reset button (Keep Setup Button pressed)<br>     c) Let go of the setup button when it flashes yellow. The Photon will keep flashing yellow when it is in DFU mode.</p>
-<p><iframe width="300" height="300" src="https://vine.co/v/eZUgeu0r639/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
+<p>1a. Go ahead and install the Particle Photon driver now: <a href="http://bit.ly/photon-driver" target="_blank" rel="external">http://bit.ly/photon-driver</a></p>
+<p>2. Put Photon into DFU mode.<br>
+a) Hold down both Setup and Reset buttons<br>
+b) Release the Reset button (Keep Setup Button pressed)<br>
+c) Let go of the setup button when it flashes yellow. The Photon will keep flashing yellow when it is in DFU mode.</p>
+<iframe width="300" height="300" src="https://vine.co/v/eZUgeu0r639/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
 <p>You will see the Photon in DFU mode in Device Manager</p>
 <p><img src="/images/blog/ca6e74fa906b_C3F2/image.png" alt=""></p>
 <p>4. Download and unzip all the tar files in <a href="http://dfu-util.sourceforge.net/releases/dfu-util-0.8-binaries.tar.xz" target="_blank" rel="external">dfu-util</a> using <a href="http://www.7-zip.org/" target="_blank" rel="external">7-zip</a>. Add the win32-mingw32 folder to your PATH environment variable.</p>
@@ -209,9 +218,8 @@ ga('send', 'pageview');
 <p><a href="https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin" title="https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin" target="_blank" rel="external">https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin</a></p>
 <p><a href="https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin" title="https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin" target="_blank" rel="external">https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin</a></p>
 <p>There’s a good chance the firmware will have updated since the time this post was created, so just modify the version number above 0.4.7 with the firmware version you want to flash.</p>
-<p>7. Download this <a href="https://gist.githubusercontent.com/jonbgallant/4ac59884183611790ea7/raw/a9a213477a1314731a1a65932bf556c75f12fa1c/photonflash.cmd" target="_blank" rel="external">photonflash.cmd</a> (right-click, Save Target as..) file to the same folder you have the bin files from the previous step. There’s a good chance that Particle has a released a new version of the firmware before I have a chance to update my script. Feel free to check this url for the latest: <a href="https://github.com/spark/firmware/releases" title="https://github.com/spark/firmware/releases" target="_blank" rel="external">https://github.com/spark/firmware/releases</a>  This post uses 0.4.7</p>
+<p>7. Download this <a href="https://gist.githubusercontent.com/jonbgallant/4ac59884183611790ea7/raw/a9a213477a1314731a1a65932bf556c75f12fa1c/photonflash.cmd" target="_blank" rel="external">photonflash.cmd</a> (right-click, Save Target as…) file to the same folder you have the bin files from the previous step. There’s a good chance that Particle has a released a new version of the firmware before I have a chance to update my script. Feel free to check this url for the latest: <a href="https://github.com/spark/firmware/releases" title="https://github.com/spark/firmware/releases" target="_blank" rel="external">https://github.com/spark/firmware/releases</a>  This post uses 0.4.7</p>
 <script src="https://gist.github.com/jonbgallant/4ac59884183611790ea7.js"></script>
-
 <p>8. Open a Command prompt. Navigate to the folder you put the photonflash.cmd file in and execute it.</p>
 <p>Your output will look something like this:</p>
 <p><img src="/images/blog/ca6e74fa906b_C3F2/image_5.png" alt=""></p>

@@ -9,30 +9,39 @@
         <meta name="keywords" content="" />
     
     <meta name="description" content="Lets say you have this xml:
-Blog Content 
 
+
+Blog Content
+ 
+ 
 And you are using an XmlDataSource to run it through a repeater.
 You can easily get the attributes like so: &amp;lt;%#Eval(“Date”)%&amp;gt;
-To get the innerText (the">
+To get the innerText">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution: How to get the InnerText value of a node when using XmlDataSource">
 <meta property="og:url" content="http://blog.jongallant.com/2007/02/xmldatasource-innertext/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Lets say you have this xml:
-Blog Content 
 
+
+Blog Content
+ 
+ 
 And you are using an XmlDataSource to run it through a repeater.
 You can easily get the attributes like so: &amp;lt;%#Eval(“Date”)%&amp;gt;
-To get the innerText (the">
+To get the innerText">
 <meta property="og:updated_time" content="2016-12-27T04:57:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution: How to get the InnerText value of a node when using XmlDataSource">
 <meta name="twitter:description" content="Lets say you have this xml:
-Blog Content 
 
+
+Blog Content
+ 
+ 
 And you are using an XmlDataSource to run it through a repeater.
 You can easily get the attributes like so: &amp;lt;%#Eval(“Date”)%&amp;gt;
-To get the innerText (the">
+To get the innerText">
     
 
     
@@ -202,11 +211,14 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>Lets say you have this xml:</p>
-<blog><br><br><blogpost date="2/21/2006" title="Blog Title"><br><br>Blog Content<br><br></blogpost><br><br></blog> 
-
+<blog>
+<blogpost date="2/21/2006" title="Blog Title">
+<p>Blog Content</p>
+</blogpost> 
+</blog> 
 <p>And you are using an XmlDataSource to run it through a repeater.</p>
 <p>You can easily get the attributes like so: &lt;%#Eval(“Date”)%&gt;</p>
-<p>To get the innerText (the blog content) one option is to use the XPath operator like so: &lt;%# XPath(“.”) %&gt;</p>
+<p>To get the innerText (the blog content) one option is to use the XPath operator like so: &lt;%# XPath(&quot;.&quot;) %&gt;</p>
 
         </div>
         <footer>

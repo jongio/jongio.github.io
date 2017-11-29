@@ -188,10 +188,11 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>If you get this exception when loading a CSAdmin web service it is likely that the AppPool’s identity does not have access to the MSCS_Admin database. Give the identity access to the databases and you should be good.</p>
 <p>System.Web.Services.Protocols.SoapException: An error occurred creating the configuration section handler for CommerceServer/catalogWebService: Failed to get the connection string of the product catalog resource for the specified site. (C:\WebSites\CSAdmin\CatalogWebService\web.config line 51) —&gt; Microsoft.CommerceServer.ServerFaultException: An error occurred creating the configuration section handler for CommerceServer/catalogWebService: Failed to get the connection string of the product catalog resource for the specified site. (C:\WebSites\CSAdmin\CatalogWebService\web.config line 51)</p>
-<p>   — End of inner exception stack trace —</p>
-<p>   at Microsoft.CommerceServer.Catalog.Internal.WebServiceUtility.PropagateOrLogException(Exception except)<br>   at Microsoft.CommerceServer.Catalog.Internal.WebServiceUtility.Initialize()</p>
-<p>   at Microsoft.CommerceServer.Catalog.Internal.WebServiceUtility.get_CatalogExecutionContext()</p>
-<p>   at Microsoft.CommerceServer.Catalog.WebService.CatalogWebService..ctor()</p>
+<p>— End of inner exception stack trace —</p>
+<p>at Microsoft.CommerceServer.Catalog.Internal.WebServiceUtility.PropagateOrLogException(Exception except)<br>
+at Microsoft.CommerceServer.Catalog.Internal.WebServiceUtility.Initialize()</p>
+<p>at Microsoft.CommerceServer.Catalog.Internal.WebServiceUtility.get_CatalogExecutionContext()</p>
+<p>at Microsoft.CommerceServer.Catalog.WebService.CatalogWebService…ctor()</p>
 
         </div>
         <footer>

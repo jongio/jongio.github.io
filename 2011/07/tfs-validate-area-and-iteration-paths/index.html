@@ -8,26 +8,29 @@
     
         <meta name="keywords" content="howto,tfs" />
     
-    <meta name="description" content="0) Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration
+    <meta name="description" content="Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration
+
 0.1) Create a new query:
 
-0.2) Select the AreaId and IterationId c">
+0.2) Select the AreaId and IterationId co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Validate Area & Iteration Paths in TFS">
 <meta property="og:url" content="http://blog.jongallant.com/2011/07/tfs-validate-area-and-iteration-paths/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="0) Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration
+<meta property="og:description" content="Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration
+
 0.1) Create a new query:
 
-0.2) Select the AreaId and IterationId c">
+0.2) Select the AreaId and IterationId co">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/6064.image_5F00_thumb_5F00_342A4F25.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Validate Area & Iteration Paths in TFS">
-<meta name="twitter:description" content="0) Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration
+<meta name="twitter:description" content="Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration
+
 0.1) Create a new query:
 
-0.2) Select the AreaId and IterationId c">
+0.2) Select the AreaId and IterationId co">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/6064.image_5F00_thumb_5F00_342A4F25.png">
     
 
@@ -199,27 +202,51 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>0) Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration</p>
+            <ol start="0">
+<li>Run a TFS query to find the AreaId and IterationId that you don’t want to allow. In my case it was 489 for both Area and Iteration</li>
+</ol>
 <p>0.1) Create a new query:</p>
 <p><img src="/images/blog/6064.image_5F00_thumb_5F00_342A4F25.png" alt=""></p>
 <p>0.2) Select the AreaId and IterationId columns</p>
 <p><img src="/images/blog/2337.image_5F00_thumb_5F00_3EE7A67A.png" alt=""></p>
 <p>0.3) Run query. Record both the AreaId and IterationId.</p>
 <p><img src="/images/blog/6545.image_5F00_thumb_5F00_0C83D2FB.png" alt=""></p>
-<p>1) Export the Work Item using the <a href="http://visualstudiogallery.msdn.microsoft.com/c255a1e4-04ba-4f68-8f4e-cd473d6b971f" target="_blank" rel="external">TFS Power Tools</a>. Tools-&gt;Process Editor-&gt;Work Item Types –&gt; Export WIT</p>
+<ol>
+<li>Export the Work Item using the <a href="http://visualstudiogallery.msdn.microsoft.com/c255a1e4-04ba-4f68-8f4e-cd473d6b971f" target="_blank" rel="external">TFS Power Tools</a>. Tools-&gt;Process Editor-&gt;Work Item Types –&gt; Export WIT</li>
+</ol>
 <p><img src="/images/blog/6457.image_5F00_thumb_5F00_1336DC7E.png" alt=""></p>
-<p>2) Select the Type you want to validate:</p>
+<ol start="2">
+<li>Select the Type you want to validate:</li>
+</ol>
 <p><img src="/images/blog/4807.image_5F00_thumb_5F00_4BE1868B.png" alt=""></p>
-<p>3) Save it locally:</p>
+<ol start="3">
+<li>Save it locally:</li>
+</ol>
 <p><img src="/images/blog/6052.image_5F00_thumb_5F00_1D8800DE.png" alt=""></p>
-<p>4) Open in Notepad</p>
-<p>5) Scroll down to the end of the field definitions: (I like to put at the end, but you can put where ever you want to)</p>
-<p>6) Paste the following snippet right after the last FIELD definition. REPLACE 489 with your own number.</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">FIELD</span> <span class="attr">name</span>=<span class="string">"Work Item Iteration"</span> <span class="attr">refname</span>=<span class="string">"Custom.WorkItemIteration"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">HELPTEXT</span>&gt;</span>Hidden field used to prevent users from setting improper iteration path values <span class="tag">&lt;/<span class="name">HELPTEXT</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Valid Path"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">WHEN</span> <span class="attr">field</span>=<span class="string">"System.IterationId"</span> <span class="attr">value</span>=<span class="string">"489"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">WHEN</span>&gt;</span></div><div class="line">  </div><div class="line">   <span class="tag">&lt;<span class="name">PROHIBITEDVALUES</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">LISTITEM</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">PROHIBITEDVALUES</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">FIELD</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">FIELD</span> <span class="attr">name</span>=<span class="string">"Work Item Area"</span> <span class="attr">refname</span>=<span class="string">"Custom.WorkItemArea"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">HELPTEXT</span>&gt;</span>Hidden field used to prevent users from setting improper area path values.HELPTEXT&gt;</div><div class="line">   <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Valid Path"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">WHEN</span> <span class="attr">field</span>=<span class="string">"System.AreaId"</span> <span class="attr">value</span>=<span class="string">"489"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">WHEN</span>&gt;</span></div><div class="line">  </div><div class="line">   <span class="tag">&lt;<span class="name">PROHIBITEDVALUES</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">LISTITEM</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">PROHIBITEDVALUES</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">FIELD</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>7) Save the file.</p>
-<p>8) Import the modified file into TFS using the Power Tools:</p>
+<ol start="4">
+<li>
+<p>Open in Notepad</p>
+</li>
+<li>
+<p>Scroll down to the end of the field definitions: (I like to put at the end, but you can put where ever you want to)</p>
+</li>
+<li>
+<p>Paste the following snippet right after the last FIELD definition. REPLACE 489 with your own number.</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FIELD</span> <span class="attr">name</span>=<span class="string">"Work Item Iteration"</span> <span class="attr">refname</span>=<span class="string">"Custom.WorkItemIteration"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">HELPTEXT</span>&gt;</span>Hidden field used to prevent users from setting improper iteration path values <span class="tag">&lt;/<span class="name">HELPTEXT</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Valid Path"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">WHEN</span> <span class="attr">field</span>=<span class="string">"System.IterationId"</span> <span class="attr">value</span>=<span class="string">"489"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">WHEN</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">   <span class="tag">&lt;<span class="name">PROHIBITEDVALUES</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LISTITEM</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">PROHIBITEDVALUES</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FIELD</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">FIELD</span> <span class="attr">name</span>=<span class="string">"Work Item Area"</span> <span class="attr">refname</span>=<span class="string">"Custom.WorkItemArea"</span> <span class="attr">type</span>=<span class="string">"String"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">HELPTEXT</span>&gt;</span>Hidden field used to prevent users from setting improper area path values.HELPTEXT&gt;</span><br><span class="line">   <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Valid Path"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">WHEN</span> <span class="attr">field</span>=<span class="string">"System.AreaId"</span> <span class="attr">value</span>=<span class="string">"489"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">COPY</span> <span class="attr">from</span>=<span class="string">"value"</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">WHEN</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">   <span class="tag">&lt;<span class="name">PROHIBITEDVALUES</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LISTITEM</span> <span class="attr">value</span>=<span class="string">"Project Root"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">PROHIBITEDVALUES</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">FIELD</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>
+<p>Save the file.</p>
+</li>
+<li>
+<p>Import the modified file into TFS using the Power Tools:</p>
+</li>
+</ol>
 <p><img src="/images/blog/8611.image_5F00_thumb_5F00_041FFDA4.png" alt=""></p>
-<p>9) Select your file and Project. Click OK. </p>
+<ol start="9">
+<li>Select your file and Project. Click OK.</li>
+</ol>
 <p><img src="/images/blog/2656.image_5F00_thumb_5F00_51BC2A24.png" alt=""></p>
 <p>HTH,</p>
 <p>Jon</p>

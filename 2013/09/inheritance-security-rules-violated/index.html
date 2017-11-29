@@ -8,16 +8,19 @@
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.Search your whol">
+    <meta name="description" content="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.
+Search your who">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to: Inheritance security rules violated by type: 'System.Web.Mvc.MvcWebRazorHostFactory'. Derived types must either match the security accessibility of the base type or be less accessible.">
 <meta property="og:url" content="http://blog.jongallant.com/2013/09/inheritance-security-rules-violated/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.Search your whol">
+<meta property="og:description" content="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.
+Search your who">
 <meta property="og:updated_time" content="2016-12-28T07:37:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to: Inheritance security rules violated by type: 'System.Web.Mvc.MvcWebRazorHostFactory'. Derived types must either match the security accessibility of the base type or be less accessible.">
-<meta name="twitter:description" content="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.Search your whol">
+<meta name="twitter:description" content="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.
+Search your who">
     
 
     
@@ -186,9 +189,11 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h4 id="Inheritance-security-rules-violated-by-type-‘System-Web-Mvc-MvcWebRazorHostFactory’-Derived-types-must-either-match-the-security-accessibility-of-the-base-type-or-be-less-accessible"><a href="#Inheritance-security-rules-violated-by-type-‘System-Web-Mvc-MvcWebRazorHostFactory’-Derived-types-must-either-match-the-security-accessibility-of-the-base-type-or-be-less-accessible" class="headerlink" title="Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible."></a><em>Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.</em></h4><p>Search your whole solution for references to MvcWebRazorHostFactory<br><figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Change it to: </p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></div></pre></td></tr></table></figure>
+            <h4 id="inheritance-security-rules-violated-by-type-system-web-mvc-mvcwebrazorhostfactory-derived-types-must-either-match-the-security-accessibility-of-the-base-type-or-be-less-accessible"><a class="header-anchor" href="#inheritance-security-rules-violated-by-type-system-web-mvc-mvcwebrazorhostfactory-derived-types-must-either-match-the-security-accessibility-of-the-base-type-or-be-less-accessible"></a><em>Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.</em></h4>
+<p>Search your whole solution for references to MvcWebRazorHostFactory</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Change it to:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

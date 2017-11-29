@@ -9,19 +9,22 @@
         <meta name="keywords" content="howto,nodejs" />
     
     <meta name="description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here.
-Put Photon in Listening Mode1. Plug Photon into your computer">
+Put Photon in Listening Mode
+1. Plug Photon into your compute">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Setup a Particle Photon with Node.js">
 <meta property="og:url" content="http://blog.jongallant.com/2015/08/particle-photon-setup-nodejs/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here.
-Put Photon in Listening Mode1. Plug Photon into your computer">
+Put Photon in Listening Mode
+1. Plug Photon into your compute">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/6d56fbfccda3_9D69/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Setup a Particle Photon with Node.js">
 <meta name="twitter:description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here.
-Put Photon in Listening Mode1. Plug Photon into your computer">
+Put Photon in Listening Mode
+1. Plug Photon into your compute">
 <meta name="twitter:image" content="http://blog.jongallant.com/images/blog/6d56fbfccda3_9D69/image.png">
     
 
@@ -194,32 +197,46 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY <a href="http://blog.jongallant.com/2015/08/particle-photon-setup-windows-putty.html">here</a>.</p>
-<h2 id="Put-Photon-in-Listening-Mode"><a href="#Put-Photon-in-Listening-Mode" class="headerlink" title="Put Photon in Listening Mode"></a>Put Photon in Listening Mode</h2><p>1. Plug Photon into your computer’s USB port.</p><p>2. Is your Photon flashing blue? If so, move on to next step. If not, then hold down the Setup button until the LED flashes blue. If you can’t get it to flash blue then hit the Reset key and try again.</p><p><iframe width="300" height="300" src="https://vine.co/v/eZUH7WaWjMT/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
-<h2 id="Create-Particle-Account"><a href="#Create-Particle-Account" class="headerlink" title="Create Particle Account"></a>Create Particle Account</h2><p></p><p>1. Create a <a href="https://build.particle.io/signup" target="_blank" rel="external">new Particle Account here</a> or use one that you already have.</p>
-<h2 id="Setup-Node"><a href="#Setup-Node" class="headerlink" title="Setup Node"></a>Setup Node</h2><p></p><p>1. Install <a href="https://nodejs.org/" target="_blank" rel="external">Node.js</a>. Make sure you include Node.js in your PATH during install.</p>
-<p>2. Install the particle-cli Node.js package. Open a command prompt<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm install -g particle-cli</div></pre></td></tr></table></figure></p>
-<h2 id="Connect-Photon-to-WiFi-Network"><a href="#Connect-Photon-to-WiFi-Network" class="headerlink" title="Connect Photon to WiFi Network"></a>Connect Photon to WiFi Network</h2><p>1. Enter the following command into the command prompt and enter your WiFi SSID and Password<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">particle setup wifi</div></pre></td></tr></table></figure></p>
+<h2 id="put-photon-in-listening-mode"><a class="header-anchor" href="#put-photon-in-listening-mode"></a>Put Photon in Listening Mode</h2>
+<p>1. Plug Photon into your computer’s USB port.</p><p>2. Is your Photon flashing blue? If so, move on to next step. If not, then hold down the Setup button until the LED flashes blue. If you can’t get it to flash blue then hit the Reset key and try again.</p><p><iframe width="300" height="300" src="https://vine.co/v/eZUH7WaWjMT/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
+<h2 id="create-particle-account"><a class="header-anchor" href="#create-particle-account"></a>Create Particle Account</h2>
+<p>1\. Create a [new Particle Account here](https://build.particle.io/signup) or use one that you already have.
+</p><h2 id="setup-node"><a class="header-anchor" href="#setup-node"></a>Setup Node</h2>
+<p>1\. Install [Node.js](https://nodejs.org/). Make sure you include Node.js in your PATH during install.
+</p><p>2. Install the particle-cli Node.js package. Open a command prompt</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">npm install -g particle-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure>
+<h2 id="connect-photon-to-wifi-network"><a class="header-anchor" href="#connect-photon-to-wifi-network"></a>Connect Photon to WiFi Network</h2>
+<p>1. Enter the following command into the command prompt and enter your WiFi SSID and Password</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">particle <span class="built_in">setup</span> wifi</span><br></pre></td></tr></table></figure>
 <p>If all goes well, you will see a message that looks like this:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image.png" alt=""></p>
 <p>If your Photon is not pulsing cyan (aka breathing cyan) then try this step over again.</p>
-<h2 id="Get-Photon-Id"><a href="#Get-Photon-Id" class="headerlink" title="Get Photon Id"></a>Get Photon Id</h2><p>1. Enter the following command into the command prompt<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">particle identify</div></pre></td></tr></table></figure></p>
+<h2 id="get-photon-id"><a class="header-anchor" href="#get-photon-id"></a>Get Photon Id</h2>
+<p>1. Enter the following command into the command prompt</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">particle identify</span></span><br></pre></td></tr></table></figure>
 <p>That will print out your Photon’s unique id to the console.</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_3.png" alt=""></p>
 <p>You will need that later, so copy it over into Notepad.</p>
-<h2 id="Login-to-Particle"><a href="#Login-to-Particle" class="headerlink" title="Login to Particle"></a>Login to Particle</h2><p>1. Enter the following command into the command prompt<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">particle login</div></pre></td></tr></table></figure></p>
+<h2 id="login-to-particle"><a class="header-anchor" href="#login-to-particle"></a>Login to Particle</h2>
+<p>1. Enter the following command into the command prompt</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">particle login</span></span><br></pre></td></tr></table></figure>
 <p>It will prompt you to enter your Particle account email and password. Please do so.</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_4.png" alt=""></p>
-<h2 id="Add-Photon-to-your-Particle-Account"><a href="#Add-Photon-to-your-Particle-Account" class="headerlink" title="Add Photon to your Particle Account"></a>Add Photon to your Particle Account</h2><p>Your Photon must be breathing cyan before you attempt this step. If it isn’t, then follow the WiFi steps above.</p>
-<p>1. Enter the following command into the command prompt<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">particle device add [your photon id from above]</div></pre></td></tr></table></figure></p>
+<h2 id="add-photon-to-your-particle-account"><a class="header-anchor" href="#add-photon-to-your-particle-account"></a>Add Photon to your Particle Account</h2>
+<p>Your Photon must be breathing cyan before you attempt this step. If it isn’t, then follow the WiFi steps above.</p>
+<p>1. Enter the following command into the command prompt</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">particle device add [your photon <span class="built_in">id</span> <span class="keyword">from</span> <span class="keyword">above</span>]</span><br></pre></td></tr></table></figure>
 <p>If all goes well you will see a message like this:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_5.png" alt=""></p>
-<h2 id="Get-Particle-Access-Token"><a href="#Get-Particle-Access-Token" class="headerlink" title="Get Particle Access Token"></a>Get Particle Access Token</h2><p>You will need an access token to call any of the Particle APIs.</p>
-<p>1. Execute the following command into the command prompt<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">particle token list</div></pre></td></tr></table></figure></p>
+<h2 id="get-particle-access-token"><a class="header-anchor" href="#get-particle-access-token"></a>Get Particle Access Token</h2>
+<p>You will need an access token to call any of the Particle APIs.</p>
+<p>1. Execute the following command into the command prompt</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">particle <span class="keyword">token</span> <span class="keyword">list</span></span><br></pre></td></tr></table></figure>
 <p>2. Enter your credentials and find the token that doesn’t have an expiration date:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_6.png" alt=""></p>
 <p>3. Copy that access token to Notepad. You’ll need it later when you call the Particle APIs.</p>
-<h2 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h2><p></p><p>That’s how you get your Photon setup with Windows using Node.js</p><p>From here, you can deploy your own app to your Photon or try building my <a href="http://blog.jongallant.com/2015/08/beakn-skype-particle-photon.html">“Skype for Business Status Light”</a></p><p>Make on!</p><p>Jon</p>
-
+<h2 id="next"><a class="header-anchor" href="#next"></a>Next</h2>
+<p>That's how you get your Photon setup with Windows using Node.js</p><p>From here, you can deploy your own app to your Photon or try building my ["Skype for Business Status Light"](http://blog.jongallant.com/2015/08/beakn-skype-particle-photon.html)</p><p>Make on!</p><p>Jon</p>
         </div>
         <footer>
         </footer>

@@ -193,8 +193,8 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p><em>Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.</em></p>
 <p>UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been fixed in 1.2.0RC2. <a href="http://code.angularjs.org/1.2.0-rc.2/" target="_blank" rel="external">http://code.angularjs.org/1.2.0-rc.2/</a></p>
-<p>You might see this error when you try to bind an external resource, such as vimeo, youtube, etc. This is a new security measure in 1.2.0. To resolve just add the following line to your AngularJS configProvider. </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$sceDelegateProvider.resourceUrlWhitelist([&apos;^(?:http(?:s)?:\/\/)?(?:[^\.]+\.)?\(vimeo|youtube)\.com(/.*)?$&apos;, &apos;self&apos;]);</div></pre></td></tr></table></figure>
+<p>You might see this error when you try to bind an external resource, such as vimeo, youtube, etc. This is a new security measure in 1.2.0. To resolve just add the following line to your AngularJS configProvider.</p>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">$sceDelegateProvider.resourceUrlWhitelist</span>(['^(?:http(?:s)?:<span class="symbol">\/</span><span class="symbol">\/</span>)?(?:[^<span class="symbol">\.</span>]+<span class="symbol">\.</span>)?<span class="symbol">\(</span>vimeo|youtube)<span class="symbol">\.</span>com(/.*)?$', 'self']);</span><br></pre></td></tr></table></figure>
 <p>This says that vimeo, youtube and self (aka localhost) are okay to make outbound calls from AngularJS.</p>
 
         </div>

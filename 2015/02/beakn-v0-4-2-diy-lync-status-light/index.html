@@ -14,10 +14,12 @@
 <meta property="og:url" content="http://blog.jongallant.com/2015/02/beakn-v0-4-2-diy-lync-status-light/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="beakn is a Lync status light that I’ve been building for last couple of months. I tweeted a quick drawing of beakn v0.5, which will include a rechargeable battery and David Washington was quick to res">
+<meta property="og:image" content="http://blog.jongallant.com/images/blog/629fe5f5ad1f_7754/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.4.2 - Lync Status Light - Now with easy to edit config settings and  reset light on start support.">
 <meta name="twitter:description" content="beakn is a Lync status light that I’ve been building for last couple of months. I tweeted a quick drawing of beakn v0.5, which will include a rechargeable battery and David Washington was quick to res">
+<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/629fe5f5ad1f_7754/image.png">
     
 
     
@@ -190,28 +192,25 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>beakn is a Lync status light that I’ve been building for last couple of months. I <a href="https://twitter.com/jongallant/status/566786927500599296" target="_blank" rel="external">tweeted a quick drawing of beakn v0.5</a>, which will include a rechargeable battery and <a href="https://twitter.com/dwcares" target="_blank" rel="external">David Washington</a> was <a href="https://twitter.com/dwcares/status/566788055986499585" target="_blank" rel="external">quick to respond</a> with a couple of feature requests.</p>
 <blockquote>
-<p><a href="https://twitter.com/jongallant" target="_blank" rel="external">@jongallant</a> <a href="https://twitter.com/spark_io" target="_blank" rel="external">@spark_io</a> feature requests: 1) cloud registration. No client app 2) get status on reset 3) inductive charging :)<br>— David Washington (@dwcares) <a href="https://twitter.com/dwcares/status/566788055986499585" target="_blank" rel="external">February 15, 2015</a></p>
+<p><a href="https://twitter.com/jongallant" target="_blank" rel="external">@jongallant</a> <a href="https://twitter.com/spark_io" target="_blank" rel="external">@spark_io</a> feature requests: 1) cloud registration. No client app 2) get status on reset 3) inductive charging :)<br>
+— David Washington (@dwcares) <a href="https://twitter.com/dwcares/status/566788055986499585" target="_blank" rel="external">February 15, 2015</a></p>
 </blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>Great ideas!  I've been wanting to do all of them for a while…that tweet pushed me to start investigating the Lync REST endpoint for cloud registration and inductive charging is probably a v2 feature, but #2 "get status on reset" is totally doable – so I just implemented it and released beakn [v0.4.2](https://github.com/jonbgallant/beakn/releases/tag/v0.4.2).
-
-Here's what is new in v0.4.2
-
-*   beakn.exe now listens for the Spark "reset" event and sets the light to the current color. Before this you would have to toggle your status. Now it just works after your Spark is reset. For this change I used [EventSource4Net](https://github.com/erizet/EventSource4Net) and modified my fork of [SharpSpark](https://github.com/jonbgallant/SharpSpark/commit/ab4b84ee4fe003d507e3156fa3120a41cef02bfe).
-*   I moved Spark Device Id and Access Token from beakn.exe.config to Properties.Settings and added a simple two textbox UI. Before this you would have to open Notepad as Admin and edit beakn.exe.config directly.
-
-![](/images/blog/629fe5f5ad1f_7754/image.png)
-
-*   I added a new "quick and dirty" beakn icon.[![windows-icon](/images/blog/629fe5f5ad1f_7754/windows-icon_thumb.png "windows-icon")
-
-The best way to get everything setup is to follow the steps from this post: [How to Build a Lync Status Light in Minutes with a Spark Core](http://blog.jongallant.com/2015/02/beakn-lync-status-light-in-minutes.html)
-
-beakn v0.5 is coming very soon! Follow me on twitter for updates.
-
-[
-Follow @jongallant
-](https://twitter.com/jongallant)
+<p>Here’s what is new in v0.4.2</p>
+<ul>
+<li>beakn.exe now listens for the Spark “reset” event and sets the light to the current color. Before this you would have to toggle your status. Now it just works after your Spark is reset. For this change I used <a href="https://github.com/erizet/EventSource4Net" target="_blank" rel="external">EventSource4Net</a> and modified my fork of <a href="https://github.com/jonbgallant/SharpSpark/commit/ab4b84ee4fe003d507e3156fa3120a41cef02bfe" target="_blank" rel="external">SharpSpark</a>.</li>
+<li>I moved Spark Device Id and Access Token from beakn.exe.config to Properties.Settings and added a simple two textbox UI. Before this you would have to open Notepad as Admin and edit beakn.exe.config directly.</li>
+</ul>
+<p><img src="/images/blog/629fe5f5ad1f_7754/image.png" alt=""></p>
+<ul>
+<li>I added a new “quick and dirty” beakn icon.[<img src="/images/blog/629fe5f5ad1f_7754/windows-icon_thumb.png" alt="windows-icon" title="windows-icon"></li>
+</ul>
+<p>The best way to get everything setup is to follow the steps from this post: <a href="http://blog.jongallant.com/2015/02/beakn-lync-status-light-in-minutes.html">How to Build a Lync Status Light in Minutes with a Spark Core</a></p>
+<p>beakn v0.5 is coming very soon! Follow me on twitter for updates.</p>
+<p><a href="https://twitter.com/jongallant" target="_blank" rel="external"><br>
+Follow @jongallant<br>
+</a></p>
 <script>window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));</script>
-
 <p>Enjoy!</p>
 <p>Jon</p>
 

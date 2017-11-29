@@ -8,18 +8,18 @@
     
         <meta name="keywords" content="c#,asp.net" />
     
-    <meta name="description" content="I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.
+    <meta name="description" content="I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.
 I started my coding with a PageMet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to "is null or not an object" error with ScriptService">
 <meta property="og:url" content="http://blog.jongallant.com/2007/03/is-null-or-not-object-scriptservice/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.
+<meta property="og:description" content="I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.
 I started my coding with a PageMet">
 <meta property="og:updated_time" content="2016-12-26T00:20:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to "is null or not an object" error with ScriptService">
-<meta name="twitter:description" content="I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.
+<meta name="twitter:description" content="I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.
 I started my coding with a PageMet">
     
 
@@ -191,8 +191,8 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.</p>
-<p>I started my coding with a PageMethods implementation, but moved to a ScriptReference implementation because I need to call the service from within a user control, which is not supported.  During that conversion I left the “static” keyword in the method declaration.  Making the method static prevents the service from being registered, hence the error.</p>
+            <p>I just spent the last few hours trying to track down why I kept getting an “is null or not an object” error when setting up a service with a ScriptService attribute.</p>
+<p>I started my coding with a PageMethods implementation, but moved to a ScriptReference implementation because I need to call the service from within a user control, which is not supported.  During that conversion I left the “static” keyword in the method declaration.  Making the method static prevents the service from being registered, hence the error.</p>
 <p>Actually, the script tag was rendered with jsdebug, but the only thing inside of the tag was a “1” and not the web service client class registration.</p>
 <p>Removing the static keyword solved the issue.</p>
 <p>I hope this helps</p>

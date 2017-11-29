@@ -188,14 +188,10 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The SqlXml datatype constructor only accepts a Stream or XmlReader, if you have an XmlDocument in memory (go with stream if you have it) then you can easily convert to a SqlXml compatible stream with the XmlNodeReader class. </p>
+            <p>The SqlXml datatype constructor only accepts a Stream or XmlReader, if you have an XmlDocument in memory (go with stream if you have it) then you can easily convert to a SqlXml compatible stream with the XmlNodeReader class.</p>
 <p>XmlNodeReader implements IDisposable, so wrap it in a using or try/catch.</p>
 <p>For example:</p>
-<p><code>XmlDocument xml = new XmlDocument(); 
-using (XmlNodeReader xnr = new XmlNodeReader(xml)) 
-{ 
-SqlXml sx = new SqlXml(xnr); 
-}</code> </p>
+<p><code>XmlDocument xml = new XmlDocument(); using (XmlNodeReader xnr = new XmlNodeReader(xml)) { SqlXml sx = new SqlXml(xnr); }</code></p>
 
         </div>
         <footer>

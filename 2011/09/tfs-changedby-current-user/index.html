@@ -192,35 +192,85 @@ ga('send', 'pageview');
 <p><img src="/images/blog/0755.image_5F00_thumb_5F00_4B861A98.png" alt=""></p>
 <p>This is happening because the work item is put into Edit mode when it is opened and that includes setting the System.ChangedBy field to currentuser. I talked with the TFS Work Item here and they have logged a bug.</p>
 <p>Here’s the workaround I’m using.</p>
-<p>1) Install the <a href="http://www.bing.com/search?setmkt=en-US&amp;q=tfs+power+tools" target="_blank" rel="external">TFS Power Tools.</a></p>
-<p>2) Open the Work Item Template from Tools –&gt; Process Editor –&gt;Work Item Types –&gt; Open WIT from Server</p>
+<ol>
+<li>
+<p>Install the <a href="http://www.bing.com/search?setmkt=en-US&amp;q=tfs+power+tools" target="_blank" rel="external">TFS Power Tools.</a></p>
+</li>
+<li>
+<p>Open the Work Item Template from Tools –&gt; Process Editor –&gt;Work Item Types –&gt; Open WIT from Server</p>
+</li>
+</ol>
 <p><img src="/images/blog/8780.image_5F00_thumb_5F00_002676D4.png" alt=""></p>
-<p>3) Select the Work Item Type you want to update</p>
+<ol start="3">
+<li>Select the Work Item Type you want to update</li>
+</ol>
 <p><img src="/images/blog/5164.image_5F00_thumb_5F00_1FD5509C.png" alt=""></p>
-<p>4) In the Fields tab click New</p>
+<ol start="4">
+<li>In the Fields tab click New</li>
+</ol>
 <p><img src="/images/blog/3005.image_5F00_thumb_5F00_3F842A64.png" alt=""></p>
-<p>5) Enter the following information:</p>
-<p>Name: LastChangedBy<br>Type: String<br>Reference Name: YourOwnNamespace.LastChangedBy<br>Help Text: Whatever you want to put in here<br>Reportable: Dimension</p>
+<ol start="5">
+<li>Enter the following information:</li>
+</ol>
+<p>Name: LastChangedBy<br>
+Type: String<br>
+Reference Name: YourOwnNamespace.LastChangedBy<br>
+Help Text: Whatever you want to put in here<br>
+Reportable: Dimension</p>
 <p><img src="/images/blog/5460.image_5F00_thumb_5F00_3145B174.png" alt=""></p>
-<p>6) Click the Rules tab</p>
-<p>7) Click the New button:</p>
-<p>8) Select COPY. Click OK</p>
+<ol start="6">
+<li>
+<p>Click the Rules tab</p>
+</li>
+<li>
+<p>Click the New button:</p>
+</li>
+<li>
+<p>Select COPY. Click OK</p>
+</li>
+</ol>
 <p><img src="/images/blog/6153.image_5F00_thumb_5F00_0A0B683F.png" alt=""></p>
-<p>9) Set the following values:</p>
-<p>From: field<br>Field: System.ChangedBy</p>
+<ol start="9">
+<li>Set the following values:</li>
+</ol>
+<p>From: field<br>
+Field: System.ChangedBy</p>
 <p><img src="/images/blog/8204.image_5F00_thumb_5F00_10BE71C2.png" alt=""></p>
-<p>10) Click OK</p>
-<p>11) Click the Layout tab</p>
-<p>12) Click on the Changed By field in your Layout tree.</p>
-<p>13) Over in the details pane to the right, change the “Field Name” property to YourOwnNamespace.LastChangedBy.</p>
+<ol start="10">
+<li>
+<p>Click OK</p>
+</li>
+<li>
+<p>Click the Layout tab</p>
+</li>
+<li>
+<p>Click on the Changed By field in your Layout tree.</p>
+</li>
+<li>
+<p>Over in the details pane to the right, change the “Field Name” property to YourOwnNamespace.LastChangedBy.</p>
+</li>
+</ol>
 <p><img src="/images/blog/8875.image_5F00_thumb_5F00_650DA7C5.png" alt=""></p>
-<p>14) Save the WIT.</p>
-<p>15) Click the Refresh button in Team Explorer</p>
+<ol start="14">
+<li>
+<p>Save the WIT.</p>
+</li>
+<li>
+<p>Click the Refresh button in Team Explorer</p>
+</li>
+</ol>
 <p><img src="/images/blog/8284.image_5F00_thumb_5F00_3DD35E90.png" alt=""></p>
-<p>16) Close all your open documents, bugs, queries, etc. There is a local cache that won’t reflect the changes unless you close and reopen.</p>
-<p>17) Open up a bug and see that Changed By now equals the last person that changed the bug.</p>
+<ol start="16">
+<li>
+<p>Close all your open documents, bugs, queries, etc. There is a local cache that won’t reflect the changes unless you close and reopen.</p>
+</li>
+<li>
+<p>Open up a bug and see that Changed By now equals the last person that changed the bug.</p>
+</li>
+</ol>
 <p><img src="/images/blog/0777.image_5F00_thumb_5F00_7D9D4515.png" alt=""></p>
-<p>Hope this helps,<br>Jon</p>
+<p>Hope this helps,<br>
+Jon</p>
 
         </div>
         <footer>

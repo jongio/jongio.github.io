@@ -8,22 +8,22 @@
     
         <meta name="keywords" content="azure,howto" />
     
-    <meta name="description" content="I just spent way too much time getting AppInsights working in an Azure WebJob. 
+    <meta name="description" content="I just spent way too much time getting AppInsights working in an Azure WebJob.
 Here are a couple of tips:
-1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azu">
+1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Setup Application Insights in an Azure WebJob">
 <meta property="og:url" content="http://blog.jongallant.com/2016/02/azure-webjob-appinsights/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob. 
+<meta property="og:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob.
 Here are a couple of tips:
-1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azu">
+1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
 <meta property="og:updated_time" content="2016-12-27T04:57:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Setup Application Insights in an Azure WebJob">
-<meta name="twitter:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob. 
+<meta name="twitter:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob.
 Here are a couple of tips:
-1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azu">
+1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
     
 
     
@@ -194,16 +194,15 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent way too much time getting AppInsights working in an Azure WebJob. </p>
+            <p>I just spent way too much time getting AppInsights working in an Azure WebJob.</p>
 <p>Here are a couple of tips:</p>
 <p>1. Make sure you are using the right InstrumentationKey. Go here to find out how: <a href="https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/" title="https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/" target="_blank" rel="external">https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/</a></p>
-<p>2. Make sure you programmatically set your InstrumentationKey (Also store it in Azure app settings in case you need to change it.<br>  <script src="https://gist.github.com/jonbgallant/9f38b214a41891989f61.js"></script></p>
+<p>2. Make sure you programmatically set your InstrumentationKey (Also store it in Azure app settings in case you need to change it.</p>
+  <script src="https://gist.github.com/jonbgallant/9f38b214a41891989f61.js"></script>
 <p>3. Make sure you call Flush after you write any events</p>
 <script src="https://gist.github.com/jonbgallant/f7d32d0131e9bcf9249e.js"></script>
-
 <p>4. Install the following Nuget packages</p>
 <script src="https://gist.github.com/jonbgallant/17f0e5967a07996c7a42.js"></script>
-
 <p>5. Make sure you do not have an &lt;InstrumentationKey&gt; element in your ApplicationInsights.config file</p>
 
         </div>

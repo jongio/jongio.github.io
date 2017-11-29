@@ -192,14 +192,16 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>You have a model that has a property of type List<t>. You write a view and your first inclination is to create a cshtml file called List.cshtml, but that doesn’t work. There’s a trick and it has to do with the way List&lt;Tis expressed as a type in reflection form.</t></p>
 <p>You can see this by calling GetType().Name on a List<tobject></tobject></p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">List&lt;<span class="keyword">string</span>&gt; strings = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;();</div><div class="line">Console.WriteLine(strings.GetType().Name);</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">List&lt;<span class="keyword">string</span>&gt; strings = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;();</span><br><span class="line">Console.WriteLine(strings.GetType().Name);</span><br></pre></td></tr></table></figure>
 <p><img src="/images/blog/f4404b5bad30_DE9C/image.png" alt=""></p>
 <p>As you can see, the reflected name is List`1, NOT List.</p>
-<p>MVC (by default) will try to map the property to List`1.cshmlt, not List.cshtml. </p>
+<p>MVC (by default) will try to map the property to List`1.cshmlt, not List.cshtml.</p>
 <p>So you have two options.</p>
-<h2 id="1-Name-your-DisplayTemplate-List-1-cshtml-and-let-MVC-automatically-resolve-the-property-template"><a href="#1-Name-your-DisplayTemplate-List-1-cshtml-and-let-MVC-automatically-resolve-the-property-template" class="headerlink" title="1. Name your DisplayTemplate List`1.cshtml and let MVC automatically resolve the property template"></a>1. Name your DisplayTemplate List`1.cshtml and let MVC automatically resolve the property template</h2><p>@Html.DisplayFor(m =&gt; ss.Items); </p>
+<h2 id="1-name-your-displaytemplate-list-1-cshtml-and-let-mvc-automatically-resolve-the-property-template"><a class="header-anchor" href="#1-name-your-displaytemplate-list-1-cshtml-and-let-mvc-automatically-resolve-the-property-template"></a>1. Name your DisplayTemplate List`1.cshtml and let MVC automatically resolve the property template</h2>
+<p>@Html.DisplayFor(m =&gt; ss.Items);</p>
 <p><img src="/images/blog/f4404b5bad30_DE9C/image_3.png" alt=""></p>
-<h2 id="2-Specify-a-Template-Name-when-calling-DisplayFor"><a href="#2-Specify-a-Template-Name-when-calling-DisplayFor" class="headerlink" title="2. Specify a Template Name when calling DisplayFor"></a>2. Specify a Template Name when calling DisplayFor</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">@Html.DisplayFor(m =&gt; ss.Items, <span class="string">"Items"</span>);</div></pre></td></tr></table></figure>
+<h2 id="2-specify-a-template-name-when-calling-displayfor"><a class="header-anchor" href="#2-specify-a-template-name-when-calling-displayfor"></a>2. Specify a Template Name when calling DisplayFor</h2>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">@Html.DisplayFor(m =&gt; ss.Items, <span class="string">"Items"</span>);</span><br></pre></td></tr></table></figure>
 <p><img src="/images/blog/f4404b5bad30_DE9C/image_4.png" alt=""></p>
 <p>When you reference the @model in the view use either IList or List<object> or if you know the type at design time then just use that i.e. List<yourobject></yourobject></object></p>
 <p>My preference is to use option #2 because you’ll likely have many other classes that use List&lt;Tand you’ll likely want to specify a different display template for each of them.</p>

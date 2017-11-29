@@ -207,33 +207,33 @@ ga('send', 'pageview');
 <p>e. Select Repair</p>
 <p><img src="/images/blog/3821.image_5F00_thumb_5F00_0CF70114.png" alt=""></p>
 <p>f. Go through the rest of the prompts.</p>
-<p>g. Open Visual Studio and try to access Office components again. </p>
-<p><strong>See if that fixed your problem. If not move onto next step.</strong>  </p>
+<p>g. Open Visual Studio and try to access Office components again.</p>
+<p><strong>See if that fixed your problem. If not move onto next step.</strong></p>
 </blockquote>
 <p><strong>2. Re-install Office Tools</strong></p>
 <blockquote>
 <p>If the above Repair didn’t work then try the same steps as above but select Uninstall instead of Repair.</p>
 <p>Reinstall after the uninstall is complete.</p>
 <p>You can reinstall from this link: <a href="http://www.microsoft.com/download/en/details.aspx?id=20479" target="_blank" rel="external">http://www.microsoft.com/download/en/details.aspx?id=20479</a></p>
-<p><strong>See if that fixed your problem. If not move onto next step.</strong>  </p>
+<p><strong>See if that fixed your problem. If not move onto next step.</strong></p>
 </blockquote>
 <p><strong>3. Re-register the DLL</strong></p>
 <blockquote>
 <p>Open up a CMD prompt and go to the folder that has the TFSOfficeAdd-in.dll and run this command:</p>
 <p>regsvr32 TFSOfficeAdd-in.dll</p>
-<p>It was in this folder on my machine: </p>
+<p>It was in this folder on my machine:</p>
 <p>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies</p>
-<p><strong>See if that fixed your problem. If not move onto next step.</strong>  </p>
+<p><strong>See if that fixed your problem. If not move onto next step.</strong></p>
 </blockquote>
 <p><strong>4. Enable the Plug-in in Excel – do this if the Team tab is missing in Excel</strong></p>
 <blockquote>
 <p>a. Open Excel</p>
 <p>b. Click File-&gt;Options-&gt;Add-Ins</p>
-<p>c. Select Com Add-ins from the Manage dropdown: </p>
+<p>c. Select Com Add-ins from the Manage dropdown:</p>
 <p><img src="/images/blog/0020.image_5F00_thumb_5F00_50CB356B.png" alt=""></p>
 <p>d. Click Go</p>
 <p>e. Check the Team Foundation Add-In box and click Ok. Move onto the next step if you don’t see the Team Foundation Add-In item.</p>
-<p><img src="/images/blog/3326.image_5F00_thumb_5F00_577E3EEE.png" alt="">    &gt; <strong>See if that fixed your problem. If not move onto next step.</strong>  </p>
+<p><img src="/images/blog/3326.image_5F00_thumb_5F00_577E3EEE.png" alt="">    &gt; <strong>See if that fixed your problem. If not move onto next step.</strong></p>
 </blockquote>
 <p><strong>5. Reconfigure the Team Foundation Add-In</strong></p>
 <blockquote>
@@ -242,7 +242,7 @@ ga('send', 'pageview');
 <p>c. Click the Add button</p>
 <p>d. Find the TFSOfficeAdd-in.dll file on your computer, mine was here: C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies</p>
 <p>e. Make sure the Team Foundation Add-In box is checked and click Ok.</p>
-<p>f. You should now see the Team tab.    </p>
+<p>f. You should now see the Team tab.</p>
 </blockquote>
 <p>Not sure what to tell you if none of the above steps fixed your problem.</p>
 <p>Jon</p>

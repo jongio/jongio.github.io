@@ -10,21 +10,24 @@
     
     <meta name="description" content="It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.
 You can execute the following commands over SSH or Remote Desktop.
-Install Dockercurl -sSL https:/">
+Install Docker
+curl -sSL https:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Run Docker on Raspberry Pi">
 <meta property="og:url" content="http://blog.jongallant.com/2017/09/raspberrypi-docker/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.
 You can execute the following commands over SSH or Remote Desktop.
-Install Dockercurl -sSL https:/">
+Install Docker
+curl -sSL https:">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-docker/000285.png">
-<meta property="og:updated_time" content="2017-11-13T03:58:35.000Z">
+<meta property="og:updated_time" content="2017-11-13T03:58:35.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Run Docker on Raspberry Pi">
 <meta name="twitter:description" content="It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.
 You can execute the following commands over SSH or Remote Desktop.
-Install Dockercurl -sSL https:/">
+Install Docker
+curl -sSL https:">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/09/raspberrypi-docker/000285.png">
     
 
@@ -198,10 +201,14 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.</p>
 <p>You can execute the following commands over <a href="/raspberrypi-ssh">SSH</a> or <a href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">Remote Desktop</a>.</p>
-<h2 id="Install-Docker"><a href="#Install-Docker" class="headerlink" title="Install Docker"></a>Install Docker</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl -sSL https://get.docker.com | sudo -E sh</div></pre></td></tr></table></figure>
-<h2 id="Give-pi-User-Permission-to-Run-Docker"><a href="#Give-pi-User-Permission-to-Run-Docker" class="headerlink" title="Give pi User Permission to Run Docker"></a>Give pi User Permission to Run Docker</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo usermod -aG docker pi</div></pre></td></tr></table></figure>
-<h2 id="Reboot"><a href="#Reboot" class="headerlink" title="Reboot"></a>Reboot</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure>
-<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">docker run hello-world</div></pre></td></tr></table></figure>
+<h2 id="install-docker"><a class="header-anchor" href="#install-docker"></a>Install Docker</h2>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -sSL http<span class="variable">s:</span>//<span class="built_in">get</span>.docker.<span class="keyword">com</span> | sudo -E <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<h2 id="give-pi-user-permission-to-run-docker"><a class="header-anchor" href="#give-pi-user-permission-to-run-docker"></a>Give pi User Permission to Run Docker</h2>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="literal">pi</span></span><br></pre></td></tr></table></figure>
+<h2 id="reboot"><a class="header-anchor" href="#reboot"></a>Reboot</h2>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo reboot</span></span><br></pre></td></tr></table></figure>
+<h2 id="test"><a class="header-anchor" href="#test"></a>Test</h2>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> hello-world</span></span><br></pre></td></tr></table></figure>
 <p><img src="000285.png" alt=""></p>
 <p>You now have Docker running on your Pi</p>
 

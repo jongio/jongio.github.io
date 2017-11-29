@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="We often need to share database connection strings, system account passwords and whatnot with our team members. People typically put the secret in a DRM’d email, but that’s not secure enough and you c">
 <meta property="og:image" content="http://blog.jongallant.com/2017/02/azure-key-vault-explorer/000075.png">
-<meta property="og:updated_time" content="2017-02-24T02:39:25.000Z">
+<meta property="og:updated_time" content="2017-02-24T02:39:25.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Securely Share Secrets with Azure Key Vault and Azure Key Vault Explorer">
 <meta name="twitter:description" content="We often need to share database connection strings, system account passwords and whatnot with our team members. People typically put the secret in a DRM’d email, but that’s not secure enough and you c">
@@ -192,9 +192,11 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
             <p>We often need to share database connection strings, system account passwords and whatnot with our team members. People typically put the secret in a DRM’d email, but that’s not secure enough and you can’t copy and paste them.  There’s a better way with <a href="https://azure.microsoft.com/en-us/services/key-vault/" target="_blank" rel="external">Azure Key Vault</a> and <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="external">Azure Key Vault Explorer</a>.</p>
 <p>Here’s how to get it all setup.</p>
-<h2 id="Create-Azure-Key-Vault"><a href="#Create-Azure-Key-Vault" class="headerlink" title="Create Azure Key Vault"></a>Create Azure Key Vault</h2><p>Go to the <a href="https://portal.azure.com/#create/Microsoft.KeyVault" target="_blank" rel="external">Azure Portal</a> and create an Azure Key Vault</p>
+<h2 id="create-azure-key-vault"><a class="header-anchor" href="#create-azure-key-vault"></a>Create Azure Key Vault</h2>
+<p>Go to the <a href="https://portal.azure.com/#create/Microsoft.KeyVault" target="_blank" rel="external">Azure Portal</a> and create an Azure Key Vault</p>
 <p><img src="000074.png" alt=""></p>
-<h2 id="Add-Team-Members-to-Azure-Key-Vault"><a href="#Add-Team-Members-to-Azure-Key-Vault" class="headerlink" title="Add Team Members to Azure Key Vault"></a>Add Team Members to Azure Key Vault</h2><p>I tried adding a security group here, but it appears that this only works if you add each user individually.</p>
+<h2 id="add-team-members-to-azure-key-vault"><a class="header-anchor" href="#add-team-members-to-azure-key-vault"></a>Add Team Members to Azure Key Vault</h2>
+<p>I tried adding a security group here, but it appears that this only works if you add each user individually.</p>
 <p>1. Go to the newly created vault and select “Access Control (IAM)” and then click the Add button.</p>
 <p><img src="000075.png" alt=""></p>
 <p>2. Select “Key Vault Contributor” role</p>
@@ -204,16 +206,23 @@ ga('send', 'pageview');
 <blockquote>
 <p>Repeat that for every team member you want to have access to your secrets.</p>
 </blockquote>
-<h2 id="Download-Azure-Key-Vault-Explorer"><a href="#Download-Azure-Key-Vault-Explorer" class="headerlink" title="Download Azure Key Vault Explorer"></a>Download Azure Key Vault Explorer</h2><p>You could manage your secrets via the portal, but I’ve found that the <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="external">Azure Key Vault Explorer</a> requires less clicks to get to the secrets. I’m a fan of less clicks.</p>
+<h2 id="download-azure-key-vault-explorer"><a class="header-anchor" href="#download-azure-key-vault-explorer"></a>Download Azure Key Vault Explorer</h2>
+<p>You could manage your secrets via the portal, but I’ve found that the <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="external">Azure Key Vault Explorer</a> requires less clicks to get to the secrets. I’m a fan of less clicks.</p>
 <p>Download the <a href="https://aka.ms/ve" target="_blank" rel="external">Azure Key Vault Explorer</a>. You can read more about it <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="external">here</a>.</p>
-<h2 id="Connect-Vault-Explorer-to-Azure-Subscription"><a href="#Connect-Vault-Explorer-to-Azure-Subscription" class="headerlink" title="Connect Vault Explorer to Azure Subscription"></a>Connect Vault Explorer to Azure Subscription</h2><p>In Vault Explorer, select “Pick vault from Subscription”</p>
+<h2 id="connect-vault-explorer-to-azure-subscription"><a class="header-anchor" href="#connect-vault-explorer-to-azure-subscription"></a>Connect Vault Explorer to Azure Subscription</h2>
+<p>In Vault Explorer, select “Pick vault from Subscription”</p>
 <p><img src="000078.png" alt=""></p>
-<h2 id="Select-the-Key-Vault"><a href="#Select-the-Key-Vault" class="headerlink" title="Select the Key Vault"></a>Select the Key Vault</h2><p>Sign in, select your subscription and select your vault and click OK.</p>
+<h2 id="select-the-key-vault"><a class="header-anchor" href="#select-the-key-vault"></a>Select the Key Vault</h2>
+<p>Sign in, select your subscription and select your vault and click OK.</p>
 <p><img src="000080.png" alt=""></p>
-<h2 id="Add-Secret-to-Azure-Key-Vault"><a href="#Add-Secret-to-Azure-Key-Vault" class="headerlink" title="Add Secret to Azure Key Vault"></a>Add Secret to Azure Key Vault</h2><p>1. Click on Add -&gt; Secret<br><img src="000073.png" alt=""></p>
-<p>2. Enter your secret info and click OK<br><img src="000082.png" alt=""></p>
-<h2 id="View-the-Secrets"><a href="#View-the-Secrets" class="headerlink" title="View the Secrets"></a>View the Secrets</h2><p>You, and all the people you gave permissions to, will now be able to view the secret.</p>
-<p><img src="000083.png" alt=""> </p>
+<h2 id="add-secret-to-azure-key-vault"><a class="header-anchor" href="#add-secret-to-azure-key-vault"></a>Add Secret to Azure Key Vault</h2>
+<p>1. Click on Add -&gt; Secret<br>
+<img src="000073.png" alt=""></p>
+<p>2. Enter your secret info and click OK<br>
+<img src="000082.png" alt=""></p>
+<h2 id="view-the-secrets"><a class="header-anchor" href="#view-the-secrets"></a>View the Secrets</h2>
+<p>You, and all the people you gave permissions to, will now be able to view the secret.</p>
+<p><img src="000083.png" alt=""></p>
 
         </div>
         <footer>

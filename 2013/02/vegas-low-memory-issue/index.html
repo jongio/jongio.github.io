@@ -190,24 +190,24 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I got this error today in <a href="http://www.amazon.com/gp/product/B008MIMIY8/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B008MIMIY8&amp;linkCode=as2&amp;tag=blogjg-20" target="_blank" rel="external">Sony Movie Studio Platinum Suite</a> when I tried to render a video file.<img src="http://www.assoc-amazon.com/e/ir?t=blogjg-20&amp;l=as2&amp;o=1&amp;a=B008MIMIY8" alt="">  &gt; </p><p><em>An error occurred while creating the media file …. The system is low on memory. You may be able to reduce memory usage by closing other applications.</em> </p>
+            <p>I got this error today in <a href="http://www.amazon.com/gp/product/B008MIMIY8/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B008MIMIY8&amp;linkCode=as2&amp;tag=blogjg-20" target="_blank" rel="external">Sony Movie Studio Platinum Suite</a> when I tried to render a video file.<img src="http://www.assoc-amazon.com/e/ir?t=blogjg-20&amp;l=as2&amp;o=1&amp;a=B008MIMIY8" alt="">  &gt; </p><p><em>An error occurred while creating the media file …. The system is low on memory. You may be able to reduce memory usage by closing other applications.</em></p>
 <p><img src="/images/blog/a5398cafde13_6889/image.png" alt=""></p>
 <p>The real problem is that Vegas is a 32bit application and therefore is only allowed 2GB of RAM. Rendering video files requires much more than that. (Good discussion on SOF here: <a href="http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system" title="http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system" target="_blank" rel="external">http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system</a>)</p>
 <p>You need to modify the CF header of the Vegas executable to allow it to consume more than 2GB of RAM. This process is documented in detail on creativecow here: <a href="http://forums.creativecow.net/thread/24/910691" title="http://forums.creativecow.net/thread/24/910691" target="_blank" rel="external">http://forums.creativecow.net/thread/24/910691</a></p>
 <p>Here’s how I did it:</p>
-<p>1. Download and install CFFExplorer.exe. </p>
+<p>1. Download and install CFFExplorer.exe.</p>
 <blockquote>
 <p>a) Go to <a href="http://www.ntcore.com/exsuite.php" title="http://www.ntcore.com/exsuite.php" target="_blank" rel="external">http://www.ntcore.com/exsuite.php</a></p>
 <p>b) Click on the “Download the Explorer Suite” link in the upper right hand corner of the page:</p>
 <p><img src="/images/blog/a5398cafde13_6889/image_3.png" alt=""></p>
-<p>c) Install it </p>
+<p>c) Install it</p>
 </blockquote>
 <p>2. Open CFFExplorer.exe <strong>as Administrator, make sure you open as administrator otherwise you won’t be able to save the file.</strong></p>
 <p>3. Open the Vegas file. Mine was here: C:\Program Files (x86)\Sony\Vegas Movie Studio HD Platinum 10.0\VegasMovieStudioPE100.exe. You should backup the original file just in case you need to revert later.</p>
 <p><img src="/images/blog/a5398cafde13_6889/image_4.png" alt=""></p>
 <p>4. In the left hand pane, click on File Header and then in the right pane, click on “Click here”</p>
 <blockquote>
-<p><img src="/images/blog/a5398cafde13_6889/image_5.png" alt=""> </p>
+<p><img src="/images/blog/a5398cafde13_6889/image_5.png" alt=""></p>
 </blockquote>
 <p>5. Check the “App can handle &gt;2gb address space” checkbox and click OK.</p>
 <p><img src="/images/blog/a5398cafde13_6889/image_6.png" alt=""></p>

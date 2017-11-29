@@ -8,16 +8,16 @@
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="My team is implementing a custom Commerce Server 2007 (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to">
+    <meta name="description" content="My team is implementing a custom Commerce Server 2007 (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to properly unregister a Commerce Server pipeline component">
 <meta property="og:url" content="http://blog.jongallant.com/2006/06/unregister-cs-pipeline/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="My team is implementing a custom Commerce Server 2007 (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to">
+<meta property="og:description" content="My team is implementing a custom Commerce Server 2007 (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to">
 <meta property="og:updated_time" content="2016-12-27T04:57:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to properly unregister a Commerce Server pipeline component">
-<meta name="twitter:description" content="My team is implementing a custom Commerce Server 2007 (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to">
+<meta name="twitter:description" content="My team is implementing a custom Commerce Server 2007 (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to">
     
 
     
@@ -186,10 +186,12 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>My team is implementing a custom <a href="http://www.microsoft.com/commerceserver/default.mspx" target="_blank" rel="external">Commerce Server 2007</a> (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to remove from the pipeline pcf file.</p>
+            <p>My team is implementing a custom <a href="http://www.microsoft.com/commerceserver/default.mspx" target="_blank" rel="external">Commerce Server 2007</a> (which just RTM’d last week btw) and I had to remove a custom pipeline from the stack.  I removed all references from the registry, but forgot to remove from the pipeline pcf file.</p>
 <p>Here’s the error I was getting when trying to load aspx pages.</p>
 <blockquote>
-<p><em>Component Execution failed for component[0x1]  hr: 0x80040154<br>CLSID: {EEA3A080-B399-11DA-A94D-0800200C9A66}<br>Could not create Component .  This may be a component registration issue.</em></p>
+<p><em>Component Execution failed for component[0x1]  hr: 0x80040154<br>
+CLSID: {EEA3A080-B399-11DA-A94D-0800200C9A66}<br>
+Could not create Component .  This may be a component registration issue.</em></p>
 </blockquote>
 <p>All you need to do to fix this is open up the pcf file in the pipeline editor, delete the reference to the pipeline, recycle IIS and you are good to go.</p>
 <p>You could also clean up your registry with regasm, but it is not required.</p>

@@ -11,7 +11,8 @@
     <meta name="description" content="Here’s how to get all setup with AAD access tokens in Postman.
 Step-by-Step Walkthrough Video
 
-Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Directory, then click Prope">
+Get Azure Active Directory Id
+1. Go to the Azure Portal, click on Azure Active Directory, then click Prop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Use Azure Active Directory (AAD) Access Tokens in Postman">
 <meta property="og:url" content="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/index.html">
@@ -19,15 +20,17 @@ Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Di
 <meta property="og:description" content="Here’s how to get all setup with AAD access tokens in Postman.
 Step-by-Step Walkthrough Video
 
-Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Directory, then click Prope">
+Get Azure Active Directory Id
+1. Go to the Azure Portal, click on Azure Active Directory, then click Prop">
 <meta property="og:image" content="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/000042.png">
-<meta property="og:updated_time" content="2017-10-17T05:51:13.000Z">
+<meta property="og:updated_time" content="2017-10-17T05:52:54.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use Azure Active Directory (AAD) Access Tokens in Postman">
 <meta name="twitter:description" content="Here’s how to get all setup with AAD access tokens in Postman.
 Step-by-Step Walkthrough Video
 
-Get Azure Active Directory Id1. Go to the Azure Portal, click on Azure Active Directory, then click Prope">
+Get Azure Active Directory Id
+1. Go to the Azure Portal, click on Azure Active Directory, then click Prop">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/000042.png">
     
 
@@ -200,14 +203,16 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here’s how to get all setup with AAD access tokens in <a href="http://getpostman.com" target="_blank" rel="external">Postman</a>.</p>
-<h2 id="Step-by-Step-Walkthrough-Video"><a href="#Step-by-Step-Walkthrough-Video" class="headerlink" title="Step-by-Step Walkthrough Video"></a>Step-by-Step Walkthrough Video</h2><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/ujzrq8Fg9Gc?rel=0?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
-
-<h2 id="Get-Azure-Active-Directory-Id"><a href="#Get-Azure-Active-Directory-Id" class="headerlink" title="Get Azure Active Directory Id"></a>Get Azure Active Directory Id</h2><p>1. Go to the Azure Portal, click on Azure Active Directory, then click Properties.</p>
+<h2 id="step-by-step-walkthrough-video"><a class="header-anchor" href="#step-by-step-walkthrough-video"></a>Step-by-Step Walkthrough Video</h2>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/ujzrq8Fg9Gc?rel=0?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<h2 id="get-azure-active-directory-id"><a class="header-anchor" href="#get-azure-active-directory-id"></a>Get Azure Active Directory Id</h2>
+<p>1. Go to the Azure Portal, click on Azure Active Directory, then click Properties.</p>
 <p><img src="000034.png" alt=""></p>
 <blockquote>
 <p>Copy “Directory ID” to a temp location - this will be your <strong>“tenantId”</strong></p>
 </blockquote>
-<h2 id="Create-an-Azure-Active-Directory-App"><a href="#Create-an-Azure-Active-Directory-App" class="headerlink" title="Create an Azure Active Directory App"></a>Create an Azure Active Directory App</h2><p>1. Go to Azure Portal and click on Azure Active Directory, then click on App registrations, then click Add.</p>
+<h2 id="create-an-azure-active-directory-app"><a class="header-anchor" href="#create-an-azure-active-directory-app"></a>Create an Azure Active Directory App</h2>
+<p>1. Go to Azure Portal and click on Azure Active Directory, then click on App registrations, then click Add.</p>
 <p><img src="000026.png" alt=""></p>
 <p><img src="000027.png" alt=""></p>
 <p>2. Enter name, select “Web app / API” type and enter anything into Redirect URI (I entered <code>http://localhost</code>), click Create.</p>
@@ -225,7 +230,8 @@ ga('send', 'pageview');
 <p>Copy this key to a temp location. - this will be your <strong>“clientSecret”</strong></p>
 </blockquote>
 <p><img src="000032.png" alt=""></p>
-<h2 id="Give-Azure-Active-Directory-App-Permission-to-Azure-Subscription"><a href="#Give-Azure-Active-Directory-App-Permission-to-Azure-Subscription" class="headerlink" title="Give Azure Active Directory App Permission to Azure Subscription"></a>Give Azure Active Directory App Permission to Azure Subscription</h2><p>1. Go to Azure Portal, click Subscriptions, then click on the Subscription that contains the assets you want to access with the App. For example, I need to use the access token to access IoT Hubs, so I’ll click on the Subscription that contains those IoT Hubs.</p>
+<h2 id="give-azure-active-directory-app-permission-to-azure-subscription"><a class="header-anchor" href="#give-azure-active-directory-app-permission-to-azure-subscription"></a>Give Azure Active Directory App Permission to Azure Subscription</h2>
+<p>1. Go to Azure Portal, click Subscriptions, then click on the Subscription that contains the assets you want to access with the App. For example, I need to use the access token to access IoT Hubs, so I’ll click on the Subscription that contains those IoT Hubs.</p>
 <p>2. Click on Access control (IAM) and then click Add</p>
 <p><img src="000046.png" alt=""></p>
 <p>3. Select the “Contributor” role</p>
@@ -234,33 +240,38 @@ ga('send', 'pageview');
 <p><img src="000049.png" alt=""></p>
 <p>You will then see the app listed as a user.</p>
 <p><img src="000050.png" alt=""></p>
-<h2 id="Create-Postman-Request"><a href="#Create-Postman-Request" class="headerlink" title="Create Postman Request"></a>Create Postman Request</h2><p>1. Open Postman Desktop app (<a href="http://getpostman.com" target="_blank" rel="external">http://getpostman.com</a>)</p>
+<h2 id="create-postman-request"><a class="header-anchor" href="#create-postman-request"></a>Create Postman Request</h2>
+<p>1. Open Postman Desktop app (<a href="http://getpostman.com" target="_blank" rel="external">http://getpostman.com</a>)</p>
 <p>2. Set up a new Environment by clicking on the gears icon in the upper right, then enter the following keys using the values you copied to a temp location earlier.</p>
 <p><img src="000035.png" alt=""></p>
 <p>3. Select that Environment in the Environment dropdown</p>
 <p><img src="000036.png" alt=""></p>
 <p>4. Enter the following url into the textbox and select POST</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://login.microsoftonline.com/&#123;&#123;tenantId&#125;&#125;/oauth2/token</div></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>login.microsoftonline.com<span class="regexp">/&#123;&#123;tenantId&#125;&#125;/</span>oauth2<span class="regexp">/token</span></span><br></pre></td></tr></table></figure>
 <p><img src="000037.png" alt=""></p>
 <p>5. Click on the “Body” tab, select “x-www-form-urlencoded” and enter the following 4 values:</p>
 <p><img src="000038.png" alt=""></p>
-<p>grant_type: client_credentials<br>client_id: {{clientId}}<br>client_secret: {{clientSecret}}<br>resource: <a href="https://management.azure.com/" target="_blank" rel="external">https://management.azure.com/</a> </p>
+<p>grant_type: client_credentials<br>
+client_id: {{clientId}}<br>
+client_secret: {{clientSecret}}<br>
+resource: <a href="https://management.azure.com/" target="_blank" rel="external">https://management.azure.com/</a></p>
 <p>6. Click on the Headers tab and make sure Content-Type header is there and is equal to application/x-www-form-urlencoded</p>
 <p><img src="000039.png" alt=""></p>
 <p>7. Click on the Tests tab and enter the following code to save the access_token returned to an Environment variable.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(responseBody);</div><div class="line">postman.setEnvironmentVariable(<span class="string">"bearerToken"</span>, json.access_token);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(responseBody);</span><br><span class="line">postman.setEnvironmentVariable(<span class="string">"bearerToken"</span>, json.access_token);</span><br></pre></td></tr></table></figure>
 <p><img src="000040.png" alt=""></p>
 <p>8. Click “Send” and you will now see the response output.</p>
 <p><img src="000042.png" alt=""></p>
 <p>If you get the following error, that means you didn’t give the AAD app permissions to your subscription.  Please see above for instructions on how to do that.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;error&quot;: &#123;</div><div class="line">    &quot;code&quot;: &quot;AuthorizationFailed&quot;,</div><div class="line">    &quot;message&quot;: &quot;The client &apos;&apos; with object id &apos;&apos; does not have authorization to perform action &apos;Microsoft.Devices/IotHubs/read&apos; over scope &apos;/subscriptions//resourceGroups/jongrg/providers/Microsoft.Devices/IotHubs/jongiothub&apos;.&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"error"</span>: &#123;</span><br><span class="line">    <span class="attr">"code"</span>: <span class="string">"AuthorizationFailed"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"The client '' with object id '' does not have authorization to perform action 'Microsoft.Devices/IotHubs/read' over scope '/subscriptions//resourceGroups/jongrg/providers/Microsoft.Devices/IotHubs/jongiothub'."</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>9. Click on the “Eye” icon in the upper right and you will now see the “bearerToken” environment variable saved and ready for use in subsequent requests.</p>
 <p><img src="000044.png" alt=""></p>
-<h2 id="Use-Token-in-Subsequent-Requests"><a href="#Use-Token-in-Subsequent-Requests" class="headerlink" title="Use Token in Subsequent Requests"></a>Use Token in Subsequent Requests</h2><p>Now that you have the token stored in an environment variable you can use it as a bearer token.  </p>
+<h2 id="use-token-in-subsequent-requests"><a class="header-anchor" href="#use-token-in-subsequent-requests"></a>Use Token in Subsequent Requests</h2>
+<p>Now that you have the token stored in an environment variable you can use it as a bearer token.</p>
 <p>To get the variable just use this code:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">postman.getEnvironmentVariable(<span class="string">"bearerToken"</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">postman.getEnvironmentVariable(<span class="string">"bearerToken"</span>);</span><br></pre></td></tr></table></figure>
 <p>Or double curlys like so:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;&#123;bearerToken&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;&#123;bearerToken&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>Here’s an example how to use the bearerToken in the Authorization header</p>
 <p><img src="000045.png" alt=""></p>
 <p>Jon</p>

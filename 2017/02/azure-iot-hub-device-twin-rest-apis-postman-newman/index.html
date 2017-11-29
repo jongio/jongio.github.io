@@ -195,15 +195,20 @@ ga('send', 'pageview');
 <p>A few days ago I forwarded the documentation over to the customer and they struggled with trying to figure out how to use the APIs. There’s a lot missing from the docs and it is mostly generated from comments. My recommendation back to the Azure IoT team is going to be to use Apiary and provide very clear and concise code samples for common scenarios. Many customers have to use the REST APIs because of the memory constrained devices and they want complete control over the interation with IoT Hub - REST APIs should be treated as first class citizens and Postman/Newman/Apiary help do so.</p>
 <p>Given that I needed to resolve this customer issue right away, I could not take the time to update the documentation, but wanted to get them the help they needed ASAP.  This is the perfect use case for Postman/Newman. So, I jumped into Postman, created a new collection, wrote a pre-request script to generate a SAS token and then demonstrated how to use the APIs. I then used Newman to script the test runs from the command line.</p>
 <p>This post will bring you through how I did that. We will go through how to GET a Device Twin document as well as PATCH it to include a desired property.</p>
-<h2 id="Get-Postman"><a href="#Get-Postman" class="headerlink" title="Get Postman"></a>Get Postman</h2><ul>
+<h2 id="get-postman"><a class="header-anchor" href="#get-postman"></a>Get Postman</h2>
+<ul>
 <li>Download Postman from <a href="http://getpostman.com" target="_blank" rel="external">http://getpostman.com</a> (I’m using Windows, but feel free to use whatever version works for you.)</li>
 </ul>
 <p><img src="000051.png" alt=""></p>
-<h2 id="Create-a-New-Postman-Collection"><a href="#Create-a-New-Postman-Collection" class="headerlink" title="Create a New Postman Collection"></a>Create a New Postman Collection</h2><p>Postman allows you to organize your REST API calls into collections and then share those collections.</p>
-<p>I created a collection called “Azure IoT Hub Device Twins”<br><img src="000052.png" alt=""></p>
-<h2 id="Setup-Postman-Environment"><a href="#Setup-Postman-Environment" class="headerlink" title="Setup Postman Environment"></a>Setup Postman Environment</h2><p>Postman allows you to setup environments that allow you to set and get global variables. This is where we are going to set the variables we need for these calls.</p>
+<h2 id="create-a-new-postman-collection"><a class="header-anchor" href="#create-a-new-postman-collection"></a>Create a New Postman Collection</h2>
+<p>Postman allows you to organize your REST API calls into collections and then share those collections.</p>
+<p>I created a collection called “Azure IoT Hub Device Twins”<br>
+<img src="000052.png" alt=""></p>
+<h2 id="setup-postman-environment"><a class="header-anchor" href="#setup-postman-environment"></a>Setup Postman Environment</h2>
+<p>Postman allows you to setup environments that allow you to set and get global variables. This is where we are going to set the variables we need for these calls.</p>
 <ul>
-<li>Click on the eye icon in the upper right.<br><img src="000054.png" alt=""></li>
+<li>Click on the eye icon in the upper right.<br>
+<img src="000054.png" alt=""></li>
 </ul>
 <p><img src="000055.png" alt=""></p>
 <p>There you will see that you can configure the variables you need for your script.  In the Device Twin case, you need to set the following:</p>
@@ -215,10 +220,11 @@ ga('send', 'pageview');
 <li>policyName - The access policy to use - set to iothubowner for Device Twin scenario</li>
 <li>deviceName - The second step of this script PATCHES the device twin metadata, it will use this name. Enter anything you want.</li>
 </ul>
-<h2 id="Add-Pre-request-Script-to-Generate-SAS-Token"><a href="#Add-Pre-request-Script-to-Generate-SAS-Token" class="headerlink" title="Add Pre-request Script to Generate SAS Token"></a>Add Pre-request Script to Generate SAS Token</h2><p>Azure IoT Hub requires you to supply an Authorization header when you call the REST endpoints. You can read more about the requirements for that token on the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="external">IoT Hub Security Guide</a>.</p>
-<p>The Authorization header has the following format: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">SharedAccessSignature sr=jongiothub.azure-devices.net&amp;sig=ZiyjB%2FWuGrG43%2BkfuE07w3iC6em8eluH918%2Bi1F46Uo%3D&amp;se=1486605666&amp;skn=iothubowner</div></pre></td></tr></table></figure>
-<p>The parameters are: </p>
+<h2 id="add-pre-request-script-to-generate-sas-token"><a class="header-anchor" href="#add-pre-request-script-to-generate-sas-token"></a>Add Pre-request Script to Generate SAS Token</h2>
+<p>Azure IoT Hub requires you to supply an Authorization header when you call the REST endpoints. You can read more about the requirements for that token on the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="external">IoT Hub Security Guide</a>.</p>
+<p>The Authorization header has the following format:</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">SharedAccessSignature sr=jongiothub.azure-devices.net&amp;sig=ZiyjB<span class="symbol">%2</span>FWuGrG<span class="number">43</span><span class="symbol">%2</span>BkfuE<span class="number">07</span>w<span class="number">3</span>iC<span class="number">6</span>em<span class="number">8</span>eluH<span class="number">918</span><span class="symbol">%2</span>B<span class="keyword">i1</span>F<span class="number">46</span>Uo<span class="symbol">%3</span>D&amp;se=<span class="number">1486605666</span>&amp;skn=iothubowner</span><br></pre></td></tr></table></figure>
+<p>The parameters are:</p>
 <ul>
 <li>sr - The resource uri</li>
 <li>sig - The URI encoded base64 encoded signature</li>
@@ -226,54 +232,75 @@ ga('send', 'pageview');
 <li>skn - The policy name</li>
 </ul>
 <p>We are going to use the Postman Pre-request Script feature to generate the token.</p>
-<p>You’ll notice that that under the URI, there’s a Pre-request script tab.<br><img src="000056.png" alt=""></p>
+<p>You’ll notice that that under the URI, there’s a Pre-request script tab.<br>
+<img src="000056.png" alt=""></p>
 <ul>
 <li>Click that tab and enter the following code to generate the SAS token and put it in a Postman global variable. You can read the comments to try to decipher how each component is generated.</li>
 </ul>
 <script src="https://gist.github.com/jonbgallant/76e577162e85f0110abc2743458d4771.js"></script>
-
-
-<h2 id="Add-API-Calls"><a href="#Add-API-Calls" class="headerlink" title="Add API Calls"></a>Add API Calls</h2><p>The Postman main development area allows you to enter URIs, parameters, headers, Pre-request scripts and Tests.</p>
+<h2 id="add-api-calls"><a class="header-anchor" href="#add-api-calls"></a>Add API Calls</h2>
+<p>The Postman main development area allows you to enter URIs, parameters, headers, Pre-request scripts and Tests.</p>
 <p>For the first example we are going to start with the “GET Device Twin” call, which just gets the device twin (cloud representation of the device metadata).</p>
 <p><img src="000053.png" alt=""></p>
-<p>The URI to get the device twin is in the following format: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://&#123;&#123;hubName&#125;&#125;.azure-devices.net/twins/&#123;&#123;deviceId&#125;&#125;?api-version=2016-11-14</div></pre></td></tr></table></figure>
+<p>The URI to get the device twin is in the following format:</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">https://&#123;&#123;hubName&#125;&#125;.azure-devices.net/twins/&#123;&#123;deviceId&#125;&#125;?api-version=<span class="number">2016</span>-<span class="number">11</span>-<span class="number">14</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Notice that Postman uses a double-curly syntax for variables.</p>
 </blockquote>
 <p>With every Azure IoT Hub API call you need to include the api-version and Authorization header.  You can read more about IoT Hub security <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="external">here</a>. The <strong>api-version</strong> is pretty straight forward and you can get the most recent version that you should use from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/#common-parameters-and-headers" target="_blank" rel="external">Common parameters and headers</a> page. The <strong>Authorization</strong> header is a Shared Access Signature that follows very strict, but not very well documented requirements. You can read more about that above.</p>
-<h3 id="Add-GET-Device-Twin-Call"><a href="#Add-GET-Device-Twin-Call" class="headerlink" title="Add GET Device Twin Call"></a>Add GET Device Twin Call</h3><p>1. Enter the URI, in this case: https://.azure-devices.net/twins/?api-version=2016-11-14<br>2. Add ‘Authorization’ header and set the value to {{token}} - that tells Postman to read that value from the global variables you just set in your Pre-request script.<br>3. Click on the “Tests” tab and enter the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tests[&quot;Body matches string&quot;] = responseBody.has(postman.getGlobalVariable(&quot;deviceId&quot;));</div></pre></td></tr></table></figure>
+<h3 id="add-get-device-twin-call"><a class="header-anchor" href="#add-get-device-twin-call"></a>Add GET Device Twin Call</h3>
+<p>1. Enter the URI, in this case: https://.azure-devices.net/twins/?api-version=2016-11-14<br>
+2. Add ‘Authorization’ header and set the value to {{token}} - that tells Postman to read that value from the global variables you just set in your Pre-request script.<br>
+3. Click on the “Tests” tab and enter the following:</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">tests[<span class="string">"Body matches string"</span>] = responseBody.has(postman.getGlobalVariable(<span class="string">"deviceId"</span>))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 <p><img src="000058.png" alt=""></p>
 <p>This test will pass if it finds the deviceId that is stored in the global variable.</p>
-<p>3. Click Send and view the output.  It will look something like this:<br><img src="000057.png" alt=""></p>
-<p>And you will see that the tests pass:<br><img src="000059.png" alt=""></p>
-<h2 id="Add-PATCH-Device-Twin-Call"><a href="#Add-PATCH-Device-Twin-Call" class="headerlink" title="Add PATCH Device Twin Call"></a>Add PATCH Device Twin Call</h2><p>1. Create a new call by clicking the + sign tab. You can also duplicate the GET call, but remove the Pre-request script if you do that.<br><img src="000060.png" alt=""></p>
-<p>2. The URI is the same as the GET call<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://&#123;&#123;hubName&#125;&#125;.azure-devices.net/twins/&#123;&#123;deviceId&#125;&#125;?api-version=2016-11-14</div></pre></td></tr></table></figure></p>
-<p>3. Select “PATCH” verb.<br><img src="000061.png" alt=""></p>
-<p>4. Set the Authorization and Content-Type headers<br><img src="000063.png" alt=""></p>
+<p>3. Click Send and view the output.  It will look something like this:<br>
+<img src="000057.png" alt=""></p>
+<p>And you will see that the tests pass:<br>
+<img src="000059.png" alt=""></p>
+<h2 id="add-patch-device-twin-call"><a class="header-anchor" href="#add-patch-device-twin-call"></a>Add PATCH Device Twin Call</h2>
+<p>1. Create a new call by clicking the + sign tab. You can also duplicate the GET call, but remove the Pre-request script if you do that.<br>
+<img src="000060.png" alt=""></p>
+<p>2. The URI is the same as the GET call</p>
+<figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">https://&#123;&#123;hubName&#125;&#125;.azure-devices.net/twins/&#123;&#123;deviceId&#125;&#125;?api-version=<span class="number">2016</span>-<span class="number">11</span>-<span class="number">14</span></span><br></pre></td></tr></table></figure>
+<p>3. Select “PATCH” verb.<br>
+<img src="000061.png" alt=""></p>
+<p>4. Set the Authorization and Content-Type headers<br>
+<img src="000063.png" alt=""></p>
 <p>5. Set the body to the following:</p>
 <script src="https://gist.github.com/jonbgallant/4fd1a5d78beb24e1b2db3b729cad039d.js"></script>
-
-<p>6. Create the following test:<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">tests[&quot;Body matches string&quot;] = responseBody.has(postman.getGlobalVariable(&quot;deviceName&quot;));</div></pre></td></tr></table></figure></p>
+<p>6. Create the following test:</p>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">tests[<span class="string">"Body matches string"</span>] = responseBody.has(postman.getGlobalVariable(<span class="string">"deviceName"</span>))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 <p>7. Click send and you should now see the deviceName property in the JSON result.</p>
 <p><img src="000065.png" alt=""></p>
-<p>And your Test should pass:<br><img src="000066.png" alt=""></p>
-<h2 id="Run-the-Tests-in-Postman-Collection-Runner"><a href="#Run-the-Tests-in-Postman-Collection-Runner" class="headerlink" title="Run the Tests in Postman Collection Runner"></a>Run the Tests in Postman Collection Runner</h2><p>Postman includes an app that allows you to run all the tests in a collection at once.</p>
-<p>1. Click on the toggle arrow next to the collection name and click Run<br><img src="000067.png" alt=""></p>
-<p>2. That will bring up the Collection Runner, Click Start Run after selecting your Collection<br><img src="000068.png" alt=""></p>
-<p>3. Your tests will run and you’ll see pass/fail for all of them.<br><img src="000069.png" alt=""></p>
-<h2 id="Run-the-Tests-in-Newman"><a href="#Run-the-Tests-in-Newman" class="headerlink" title="Run the Tests in Newman"></a>Run the Tests in Newman</h2><p>Newman is Postman’s Node.js serverside Collection execution engine.  It takes in a Collection definition a reference to the global variables and then executes the job. </p>
-<p>1. Install Newman<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g newman</div></pre></td></tr></table></figure></p>
+<p>And your Test should pass:<br>
+<img src="000066.png" alt=""></p>
+<h2 id="run-the-tests-in-postman-collection-runner"><a class="header-anchor" href="#run-the-tests-in-postman-collection-runner"></a>Run the Tests in Postman Collection Runner</h2>
+<p>Postman includes an app that allows you to run all the tests in a collection at once.</p>
+<p>1. Click on the toggle arrow next to the collection name and click Run<br>
+<img src="000067.png" alt=""></p>
+<p>2. That will bring up the Collection Runner, Click Start Run after selecting your Collection<br>
+<img src="000068.png" alt=""></p>
+<p>3. Your tests will run and you’ll see pass/fail for all of them.<br>
+<img src="000069.png" alt=""></p>
+<h2 id="run-the-tests-in-newman"><a class="header-anchor" href="#run-the-tests-in-newman"></a>Run the Tests in Newman</h2>
+<p>Newman is Postman’s Node.js serverside Collection execution engine.  It takes in a Collection definition a reference to the global variables and then executes the job.</p>
+<p>1. Install Newman</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> -g newman</span><br></pre></td></tr></table></figure>
 <p>2. Download the Postman Collection File</p>
-<p>Expand the Collection Toggle, click the … button, then Click Export and save that file to your machine.<br><img src="000071.png" alt=""></p>
-<p>3. Download the Global Variables File. Go back to your Environments, click Edit, then click the “Download as JSON” button.<br><img src="000072.png" alt=""><br><img src="000070.png" alt=""></p>
+<p>Expand the Collection Toggle, click the … button, then Click Export and save that file to your machine.<br>
+<img src="000071.png" alt=""></p>
+<p>3. Download the Global Variables File. Go back to your Environments, click Edit, then click the “Download as JSON” button.<br>
+<img src="000072.png" alt=""><br>
+<img src="000070.png" alt=""></p>
 <p>4. Open CMD and run the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">newman run &quot;Azure IoT Hub Device Twins.postman_collection.json&quot; -g globals.postman_globals.json</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">newman</span> <span class="selector-tag">run</span> "<span class="selector-tag">Azure</span> <span class="selector-tag">IoT</span> <span class="selector-tag">Hub</span> <span class="selector-tag">Device</span> <span class="selector-tag">Twins</span><span class="selector-class">.postman_collection</span><span class="selector-class">.json</span>" <span class="selector-tag">-g</span> <span class="selector-tag">globals</span><span class="selector-class">.postman_globals</span><span class="selector-class">.json</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Change the file names to match the file names you downloaded earlier.</p>
 </blockquote>
-<p>You will then see the following output showing that the tests have passed.<br><img src="000073.png" alt=""></p>
+<p>You will then see the following output showing that the tests have passed.<br>
+<img src="000073.png" alt=""></p>
 <p>I hope this posts helps you get started with Postman/Newman as well as the Azure IoT Hub Device Twin REST APIs.</p>
 <p>Jon</p>
 
