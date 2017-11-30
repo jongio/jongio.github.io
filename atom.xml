@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jongallant.com/"/>
-  <updated>2017-11-29T15:07:46.388Z</updated>
+  <updated>2017-11-30T08:06:11.587Z</updated>
   <id>http://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure REST APIs with Postman in 2 Minutes</title>
+    <link href="http://blog.jongallant.com/2017/11/azure-rest-apis-postman/"/>
+    <id>http://blog.jongallant.com/2017/11/azure-rest-apis-postman/</id>
+    <published>2017-11-29T19:55:12.000Z</published>
+    <updated>2017-11-30T08:06:11.587Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/rest/api/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Azure REST APIs&lt;/a&gt; require a Bearer Token Authorizat
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
+    
+      <category term="rest" scheme="http://blog.jongallant.com/tags/rest/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure IoT Edge: How to Set Force No Passwords in Config</title>
@@ -589,31 +615,6 @@ My team is hiring developers in the high-scale data space that have experience b
       <category term="rest" scheme="http://blog.jongallant.com/tags/rest/"/>
     
       <category term="vsts" scheme="http://blog.jongallant.com/tags/vsts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Host Jenkins on Azure</title>
-    <link href="http://blog.jongallant.com/2017/04/jenkins-on-azure/"/>
-    <id>http://blog.jongallant.com/2017/04/jenkins-on-azure/</id>
-    <published>2017-04-05T18:51:13.000Z</published>
-    <updated>2017-06-29T16:54:45.399Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;6/29/17 Update: There’s a new Azure Solution Template for Jenkins here: &lt;a href=&quot;https://azure.microsoft.com/en-us/blog/anno
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="ci" scheme="http://blog.jongallant.com/tags/ci/"/>
     
   </entry>
   

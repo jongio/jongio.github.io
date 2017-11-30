@@ -101,6 +101,13 @@
   border-radius: 3px;
   border: 1px solid #ddd;
 }
+.article-tag-list {
+  list-style: none;
+}
+.article-entry ol li ol {
+  padding-left: 20px;
+  list-style: lower-alpha inside;
+}
 html,
 body,
 div,
@@ -1051,7 +1058,8 @@ a.article-title:hover {
 .article-entry ol {
   list-style: decimal inside;
 }
-.article-entry ol li p {
+.article-entry ol li p,
+.article-entry ul li p {
   display: inline;
 }
 .article-entry li ul {
@@ -1087,7 +1095,7 @@ a.article-title:hover {
   quote: none;
   margin: 20px 0px 20px 0px;
   position: relative;
-  padding: 20px;
+  padding: 15px;
   border-left: 10px solid #28405c;
   border-top: 1px solid #000;
   border-right: 1px solid #000;
