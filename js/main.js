@@ -16,7 +16,7 @@
                 $(this).after('<span class="caption">' + this.alt + '</span>');
             }
 
-            $(this).wrap('<a href="' + this.src + '" title="' + this.alt + '" class="gallery-item"></a>');
+            //$(this).wrap('<a href="' + this.src + '" title="' + this.alt + '" class="gallery-item"></a>');
         });
 
     });
