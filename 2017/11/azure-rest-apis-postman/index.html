@@ -8,17 +8,17 @@
     
         <meta name="keywords" content="azure,postman,rest" />
     
-    <meta name="description" content="Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will hopefu">
+    <meta name="description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure REST APIs with Postman in 2 Minutes">
 <meta property="og:url" content="http://blog.jongallant.com/2017/11/azure-rest-apis-postman/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will hopefu">
+<meta property="og:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/azure-rest-apis-postman/20.png">
-<meta property="og:updated_time" content="2017-11-30T08:06:11.587Z">
+<meta property="og:updated_time" content="2017-12-01T06:10:41.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure REST APIs with Postman in 2 Minutes">
-<meta name="twitter:description" content="Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will hopefu">
+<meta name="twitter:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/11/azure-rest-apis-postman/20.png">
     
 
@@ -190,8 +190,8 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="https://docs.microsoft.com/en-us/rest/api/" target="_blank" rel="external">Azure REST APIs</a> require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will hopefully solve that for you.</p>
-<p>We’ll first create an Azure Active Directory Service Principal and then use it in Postman to generate a Bearer Token and call a Azure REST API.</p>
+            <p>The <a href="https://docs.microsoft.com/en-us/rest/api/" target="_blank" rel="external">Azure REST APIs</a> require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will hopefully solve that for you.</p>
+<p>We’ll first create an <strong>Azure Active Directory Service Principal</strong> and use it in <a href="http://getpostman.com" target="_blank" rel="external"><strong>Postman</strong></a> to generate a <strong>Bearer Token</strong> and then call the <strong>Azure REST APIs</strong>.</p>
 <h2 id="azure-setup"><a class="header-anchor" href="#azure-setup"></a>Azure Setup</h2>
 <blockquote>
 <p>Note that the below configuration uses the default Service Principal configuration values. In a production application you are going to want to configure the Service Principal to be constrained to specific areas of your Azure resources.  You can find more about the configuration options <a href="https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest" target="_blank" rel="external">here</a>.</p>
@@ -201,73 +201,67 @@ ga('send', 'pageview');
 <h5 id="3-login-to-cli"><a class="header-anchor" href="#3-login-to-cli"></a>3. Login to CLI</h5>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az login</span><br></pre></td></tr></table></figure>
 <p><img src="00.png" alt=""></p>
+<ul>
+<li>Go to <a href="http://aka.ms/devicelogin" target="_blank" rel="external">http://aka.ms/devicelogin</a> and enter the code show in the console.</li>
+</ul>
 <h5 id="4-set-active-subscription"><a class="header-anchor" href="#4-set-active-subscription"></a>4. Set Active Subscription</h5>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az account <span class="built_in">set</span> --subscription <span class="string">"your subscription name or id"</span></span><br></pre></td></tr></table></figure>
 <p><img src="01.png" alt=""></p>
 <h5 id="5-create-service-principal"><a class="header-anchor" href="#5-create-service-principal"></a>5. Create Service Principal</h5>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az ad sp create-for-rbac -n <span class="string">"your service principal name"</span></span><br></pre></td></tr></table></figure>
-<p><img src="02.png" alt=""><br>
-You can read more about Service Principals <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects" target="_blank" rel="external">here</a>.</p>
+<p><img src="02.png" alt=""></p>
+<blockquote>
+<p>Copy this output to a temp location, you will need the values in a minute.</p>
+</blockquote>
+<h6 id="service-principal-password-reset"><a class="header-anchor" href="#service-principal-password-reset"></a>Service Principal Password Reset</h6>
+<p>You can execute the following command if you ever need to reset your Service Principal password.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az ad sp reset-credentials --name <span class="string">"your service principal name"</span></span><br></pre></td></tr></table></figure>
+<p>You can read more about Service Principals <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects" target="_blank" rel="external">here</a>.</p>
 <h2 id="postman-setup"><a class="header-anchor" href="#postman-setup"></a>Postman Setup</h2>
-<p>We are now going to use Postman to execute a REST call to get the Bearer Token and another to Get Resource Groups.  I have provided settings files for you located <a href="https://github.com/jonbgallant/azure-iot-rest/tree/master/postman/azure-rest" target="_blank" rel="external">here</a>.</p>
+<p>We are now going to use Postman to execute a REST call to get the Bearer Token and another to Get Resource Groups.</p>
 <h5 id="1-install-postman"><a class="header-anchor" href="#1-install-postman"></a>1. Install <a href="http://getpostman.com" target="_blank" rel="external">Postman</a></h5>
-<h5 id="2-import-azure-rest-postman-collection"><a class="header-anchor" href="#2-import-azure-rest-postman-collection"></a>2. Import Azure REST Postman Collection</h5>
-<p>Postman supports the concept of a “collection”, which is a group of requests.  I exported my Azure REST collection so you can easily import it.</p>
-<ul>
-<li>Click on the Import button</li>
-</ul>
-<p><img src="15.png" alt=""></p>
-<p>That will bring up this dialog:</p>
-<p><img src="16.png" alt=""></p>
-<ul>
-<li>Click the Import From Link tab.</li>
-<li>Enter the following URI and click Import</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://raw.githubusercontent.com/jonbgallant/azure-iot-rest/master/postman/azure-rest/Azure%20REST.postman_collection.json</span><br></pre></td></tr></table></figure>
-<p>This will create a new collection that has two requests: Get AAD Token and Get Resource Groups.</p>
+<h5 id="2-close-postman"><a class="header-anchor" href="#2-close-postman"></a>2. Close Postman</h5>
+<blockquote>
+<p>The next step only works if Postman is closed.  Please close Postman now.</p>
+</blockquote>
+<h5 id="3-click-run-in-postman"><a class="header-anchor" href="#3-click-run-in-postman"></a>3. Click “Run in Postman”</h5>
+<p>Click this button:</p>
+<p><a href="https://app.getpostman.com/run-collection/41b9fa3b957c297f283d#?env%5BAzure%20REST%5D=W3siZW5hYmxlZCI6dHJ1ZSwia2V5IjoidGVuYW50SWQiLCJ2YWx1ZSI6IiIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJjbGllbnRJZCIsInZhbHVlIjoiIiwidHlwZSI6InRleHQifSx7ImVuYWJsZWQiOnRydWUsImtleSI6ImNsaWVudFNlY3JldCIsInZhbHVlIjoiIiwidHlwZSI6InRleHQifSx7ImVuYWJsZWQiOnRydWUsImtleSI6InJlc291cmNlIiwidmFsdWUiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsInR5cGUiOiJ0ZXh0In0seyJlbmFibGVkIjp0cnVlLCJrZXkiOiJzdWJzY3JpcHRpb25JZCIsInZhbHVlIjoiIiwidHlwZSI6InRleHQifV0=" target="_blank" rel="external"><img src="https://run.pstmn.io/button.svg" alt=""></a></p>
+<p>This will open your browser and present you with two options.  Select the best option for you under “Open with…”  On Windows select “Open with…Postman for Windows”</p>
+<p><img src="27.png" alt=""></p>
+<h5 id="4-inspect-requests"><a class="header-anchor" href="#4-inspect-requests"></a>4. Inspect Requests</h5>
+<p>You will notice that there is a new collection in Postman called “Azure REST”.  Take a few minutes to inspect the requests and get familiar with them.</p>
 <p><img src="18.png" alt=""></p>
-<h6 id="get-aad-token"><a class="header-anchor" href="#get-aad-token"></a>Get AAD Token</h6>
+<h6 id="get-aad-token-request"><a class="header-anchor" href="#get-aad-token-request"></a>Get AAD Token Request</h6>
 <p>This request will POST to <code>https://login.microsoftonline.com//oauth2/token</code> with our Service Principal settings and then, in the “Tests” will set a Postman Global Variable called <code>bearerToken</code> to the <code>access_token</code> in the response.</p>
 <p><img src="20.png" alt=""></p>
 <p><img src="22.png" alt=""></p>
-<h6 id="get-resource-groups"><a class="header-anchor" href="#get-resource-groups"></a>Get Resource Groups</h6>
+<h6 id="get-resource-groups-request"><a class="header-anchor" href="#get-resource-groups-request"></a>Get Resource Groups Request</h6>
 <p>This request will GET <code>https://management.azure.com/subscriptions//resourcegroups?api-version=2017-05-10</code> with an Authorization header set to the Bearer Token we just requested with ‘Get AAD Token’.</p>
 <p><img src="21.png" alt=""></p>
-<h5 id="3-import-azure-rest-postman-environment"><a class="header-anchor" href="#3-import-azure-rest-postman-environment"></a>3. Import Azure REST Postman Environment</h5>
-<p>Postman supports the concept of an “environment”, which is a collection of settings for your requests.  We will import my environment template and then populate it with our Service Principal values.</p>
+<h5 id="5-set-environment-variables"><a class="header-anchor" href="#5-set-environment-variables"></a>5. Set Environment Variables</h5>
+<p>When you clicked on the “Run in Postman” button Postman also created an Environment for you called “Azure REST”.  You will now set your Service Principal settings in the Environment to be used in the requests.</p>
 <ul>
-<li>Download <a href="https://raw.githubusercontent.com/jonbgallant/azure-iot-rest/master/postman/azure-rest/Azure%20REST.postman_environment.json" target="_blank" rel="external">this environment file</a>. Once the page loads, just right-click and Save As…</li>
+<li>Click on the gear icon in the upper right hand corner of Postman and select Manage Environments.</li>
 </ul>
+<p><img src="04.png" alt=""></p>
 <ul>
-<li>
-<p>Click on the gear icon in the upper right hand corner of Postman and select “Manage Environments”<br>
-<img src="04.png" alt=""></p>
-</li>
-<li>
-<p>Click the Import button<br>
-<img src="19.png" alt=""></p>
-</li>
-<li>
-<p>Select Azure REST.postman_environment.json file you just downloaded.</p>
-</li>
+<li>Click on the <code>Azure REST</code> Environment and you will see all the required settings.</li>
 </ul>
-<p>Once the Environment is imported, you will see the following dialog:</p>
-<p><img src="23.png" alt=""></p>
+<p><img src="30.png" alt=""></p>
 <ul>
-<li>Enter your Service Principal values into the Value textboxes. Here’s how the values map from the Service Principal</li>
+<li>Enter all your settings from the Service Principal we created earlier.  Here’s how they map:</li>
 </ul>
-<p>tenantId = tenant<br>
-clientId = appId<br>
-clientSecret = password</p>
-<p>It will look like this when you are done:</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">tenant = tenantId</span><br><span class="line">appId = clientId</span><br><span class="line">password = clientSecret</span><br><span class="line">subscriptionId is the same</span><br></pre></td></tr></table></figure>
+<p>When you are done it will look like this with all the values filled in:</p>
 <p><img src="24.png" alt=""></p>
-<ul>
-<li>Click Update and then exit the Environment Manager.</li>
-</ul>
+<p>Make sure that the <code>Azure REST</code> Environment is selected in the Environment dropdown in the upper right hand corner of Postman.</p>
+<p><img src="31.png" alt=""></p>
+<p>We are now ready to execute the requests!</p>
 <h5 id="4-execute-get-aad-token-request"><a class="header-anchor" href="#4-execute-get-aad-token-request"></a>4. Execute Get AAD Token Request</h5>
-<p>Now we will execute the Get AAD Token request to get our Bearer Token and put it in a Postman global variable.</p>
+<p>First, we will execute the Get AAD Token request to get our Bearer Token and put it in a Postman global variable.</p>
 <ul>
-<li>Open the Get AAD Token request and click the Send button.</li>
+<li>Open the Get AAD Token request and click the <strong>Send</strong> button.</li>
 </ul>
 <p>You will see the following output:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">    <span class="string">"token_type"</span>: <span class="string">"Bearer"</span>,</span><br><span class="line">    <span class="string">"expires_in"</span>: <span class="string">"3599"</span>,</span><br><span class="line">    <span class="string">"ext_expires_in"</span>: <span class="string">"0"</span>,</span><br><span class="line">    <span class="string">"expires_on"</span>: <span class="string">"1512031433"</span>,</span><br><span class="line">    <span class="string">"not_before"</span>: <span class="string">"1512027533"</span>,</span><br><span class="line">    <span class="string">"resource"</span>: <span class="string">"https://management.azure.com/"</span>,</span><br><span class="line">    <span class="string">"access_token"</span>: <span class="string">"eyJ0eXAiOiJKV...tS-OmwIfRw"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
