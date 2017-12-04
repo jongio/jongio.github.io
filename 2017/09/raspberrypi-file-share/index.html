@@ -17,7 +17,7 @@ Create a File S">
 <meta property="og:description" content="As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.  Here’s how to create a file share with Samba.
 Create a File S">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-file-share/000274.png">
-<meta property="og:updated_time" content="2017-11-16T22:22:47.716Z">
+<meta property="og:updated_time" content="2017-12-04T22:58:49.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Access Raspberry Pi Files via a Samba File Share">
 <meta name="twitter:description" content="As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.  Here’s how to create a file share with Samba.
@@ -196,24 +196,24 @@ ga('send', 'pageview');
             <p>As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.  Here’s how to create a file share with <a href="https://www.samba.org/" target="_blank" rel="external">Samba</a>.</p>
 <h2 id="create-a-file-share"><a class="header-anchor" href="#create-a-file-share"></a>Create a File Share</h2>
 <p>This allows you to access your Raspberry Pi files from your desktop machine.</p>
-<h3 id="1-run-update"><a class="header-anchor" href="#1-run-update"></a>1. Run Update</h3>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt<span class="built_in"> upgrade </span>-y</span><br></pre></td></tr></table></figure>
-<h3 id="2-install-samba"><a class="header-anchor" href="#2-install-samba"></a>2. Install Samba</h3>
+<h3 id="run-update"><a class="header-anchor" href="#run-update"></a>Run Update</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br></pre></td></tr></table></figure>
+<h3 id="install-samba"><a class="header-anchor" href="#install-samba"></a>Install Samba</h3>
 <p>Open Terminal and run the following:</p>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> -y samba</span><br></pre></td></tr></table></figure>
-<h3 id="3-configure-samba"><a class="header-anchor" href="#3-configure-samba"></a>3. Configure Samba</h3>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">sudo nano <span class="regexp">/etc/</span>samba<span class="regexp">/smb.conf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install -y samba</span><br></pre></td></tr></table></figure>
+<h3 id="configure-samba"><a class="header-anchor" href="#configure-samba"></a>Configure Samba</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano /etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
 <h4 id="configure-network-name"><a class="header-anchor" href="#configure-network-name"></a>Configure Network Name</h4>
 <p>Scroll down to the Global Settings section:</p>
 <ul>
 <li>Set workgroup to the name of your workgroup or domain name</li>
 <li>Change ‘wins support’ from ‘no’ to ‘yes’</li>
 </ul>
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">[<span class="built_in">global</span>]</span><br><span class="line">   workgroup = WORKGROUP</span><br><span class="line">   wins support = <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">   workgroup = WORKGROUP</span><br><span class="line">   wins support = yes</span><br></pre></td></tr></table></figure>
 <p><img src="000256.png" alt=""></p>
 <h4 id="configure-file-share"><a class="header-anchor" href="#configure-file-share"></a>Configure File Share</h4>
 <p>Scroll down to the bottom of the /etc/samba/smb.conf file and paste in the following:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">[pishare]</span><br><span class="line">  <span class="attribute">comment</span>=pishare</span><br><span class="line">  <span class="attribute">path</span>=/home/pi/</span><br><span class="line">  <span class="attribute">browseable</span>=<span class="literal">yes</span></span><br><span class="line">  <span class="attribute">writeable</span>=<span class="literal">yes</span></span><br><span class="line">  only <span class="attribute">guest</span>=<span class="literal">no</span></span><br><span class="line">  create <span class="attribute">mask</span>=0777</span><br><span class="line">  directory <span class="attribute">mask</span>=0777</span><br><span class="line">  <span class="attribute">public</span>=<span class="literal">no</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[pishare]</span><br><span class="line">  comment=pishare</span><br><span class="line">  path=/home/pi/</span><br><span class="line">  browseable=yes</span><br><span class="line">  writeable=yes</span><br><span class="line">  only guest=no</span><br><span class="line">  create mask=0777</span><br><span class="line">  directory mask=0777</span><br><span class="line">  public=no</span><br></pre></td></tr></table></figure>
 <p><img src="000258.png" alt=""></p>
 <blockquote>
 <p>This will share your entire home directory. If you’d like to limit access to a subdirectory, just create a directory and change the ‘path’ variable.</p>
@@ -221,22 +221,22 @@ ga('send', 'pageview');
 <h4 id="save-smb-conf"><a class="header-anchor" href="#save-smb-conf"></a>Save smb.conf</h4>
 <p>Hit CTRL+O and then ENTER to save the file.<br>
 Then Hit CTRL+X to exit nano.</p>
-<h3 id="4-set-file-share-password"><a class="header-anchor" href="#4-set-file-share-password"></a>4. Set File Share Password</h3>
+<h3 id="set-file-share-password"><a class="header-anchor" href="#set-file-share-password"></a>Set File Share Password</h3>
 <p>Open Terminal and execute the following to set the Samba password for the ‘pi’ user.</p>
 <blockquote>
 <p>This password can be different than the regular Pi user password.</p>
 </blockquote>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -<span class="keyword">a</span> <span class="literal">pi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo smbpasswd -a pi</span><br></pre></td></tr></table></figure>
 <p>You’ll need to enter the password twice.</p>
 <p>Restart the samba service.</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">sudo<span class="built_in"> service </span>smbd restart</span><br></pre></td></tr></table></figure>
-<h3 id="5-access-pi-file-share-from-windows"><a class="header-anchor" href="#5-access-pi-file-share-from-windows"></a>5. Access Pi File Share from Windows</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service smbd restart</span><br></pre></td></tr></table></figure>
+<h3 id="access-pi-file-share-from-windows"><a class="header-anchor" href="#access-pi-file-share-from-windows"></a>Access Pi File Share from Windows</h3>
 <p>You can now access the file share you just created on your desktop machine</p>
 <ul>
 <li>Open Windows Explorer, type in your Pi hostname and you will see the share</li>
 </ul>
 <p><img src="000264.png" alt=""></p>
-<h3 id="6-map-network-drive-to-share"><a class="header-anchor" href="#6-map-network-drive-to-share"></a>6. Map Network Drive to Share</h3>
+<h3 id="map-network-drive-to-share"><a class="header-anchor" href="#map-network-drive-to-share"></a>Map Network Drive to Share</h3>
 <p>I like to do this so I can easily access the files without having to type in the Hostname everytime.</p>
 <ul>
 <li>Right click on ‘This PC’ in Windows Explorer and select ‘Map network drive…’</li>

@@ -8,17 +8,38 @@
     
         <meta name="keywords" content="raspberrypi" />
     
-    <meta name="description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
+    <meta name="description" content="Here are the steps I take to setup a Raspberry Pi for development:
+
+Get Raspberry Pi and Peripherals
+
+Raspberry Pi 3 Model B
+7&amp;quot; Touchscreen Display
+SmartiPi Touchscreen Display Stand
+USB Keyboard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Raspberry Pi Setup - A Getting Started Guide for Raspberry Pi Development">
 <meta property="og:url" content="http://blog.jongallant.com/2017/11/raspberrypi-setup/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
+<meta property="og:description" content="Here are the steps I take to setup a Raspberry Pi for development:
+
+Get Raspberry Pi and Peripherals
+
+Raspberry Pi 3 Model B
+7&amp;quot; Touchscreen Display
+SmartiPi Touchscreen Display Stand
+USB Keyboard">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/raspberrypi-setup/rpi.png">
-<meta property="og:updated_time" content="2017-12-04T09:25:56.721Z">
+<meta property="og:updated_time" content="2017-12-04T22:15:07.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspberry Pi Setup - A Getting Started Guide for Raspberry Pi Development">
-<meta name="twitter:description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
+<meta name="twitter:description" content="Here are the steps I take to setup a Raspberry Pi for development:
+
+Get Raspberry Pi and Peripherals
+
+Raspberry Pi 3 Model B
+7&amp;quot; Touchscreen Display
+SmartiPi Touchscreen Display Stand
+USB Keyboard">
 <meta name="twitter:image" content="http://blog.jongallant.com/2017/11/raspberrypi-setup/rpi.png">
     
 
@@ -190,52 +211,28 @@ ga('send', 'pageview');
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-start into Raspberry Pi development setup.</p>
+            <p>Here are the steps I take to setup a Raspberry Pi for development:</p>
 <ol>
-<li>
-<p><a href="/raspberrypi-install-raspbian"><strong>Install Raspbian</strong></a>- Flash Raspbian to an SD card.</p>
-</li>
-<li>
-<p><a href="/raspberrypi-change-hostname"><strong>Change Hostname</strong></a> - So you don’t have naming conflicts with other machines on your network.</p>
-</li>
-<li>
-<p><a href="/raspberrypi-change-password"><strong>Change Password</strong></a> - So you don’t get hacked.</p>
-</li>
-<li>
-<p><a href="/raspberrypi-change-keyboard-layout"><strong>Change Keyboard Layout</strong></a> - So your keyboard keys are layed out to your region.</p>
-</li>
-<li>
-<p><strong>Connect to Internet</strong> via <a href="https://www.raspberrypi.org/documentation/configuration/wireless/desktop.md" target="_blank" rel="external">Raspbian Desktop</a> or <a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md" target="_blank" rel="external">CLI</a></p>
+<li><strong>Get Raspberry Pi and Peripherals</strong>
 <ul>
-<li>Make sure you <code>sudo reboot</code> after configuring the network.</li>
+<li><a href="https://www.adafruit.com/product/3055" target="_blank" rel="external">Raspberry Pi 3 Model B</a></li>
+<li><a href="https://www.adafruit.com/product/2718" target="_blank" rel="external">7&quot; Touchscreen Display</a></li>
+<li><a href="https://www.adafruit.com/product/3187" target="_blank" rel="external">SmartiPi Touchscreen Display Stand</a></li>
+<li><a href="https://www.adafruit.com/product/1736" target="_blank" rel="external">USB Keyboard</a></li>
+<li><a href="https://www.adafruit.com/product/2693" target="_blank" rel="external">MicroSD Card - 16GB / Class 10</a></li>
+<li><a href="https://www.adafruit.com/product/1994" target="_blank" rel="external">Power Supply - 5V/2A</a></li>
+<li><a href="https://www.adafruit.com/product/592" target="_blank" rel="external">USB Cable - A/MicroB</a></li>
 </ul>
 </li>
-<li>
-<p><a href="/raspberrypi-ssh"><strong>Enable SSH</strong></a> - So you can execute Terminal commands from your main dev machine.</p>
-</li>
-<li>
-<p><a href="/raspberrypi-expand-file-system"><strong>Expand File System</strong></a> - So you have space to install all the dependencies you’ll need later.</p>
-</li>
-<li>
-<p><strong>Update Raspbian</strong> - To get all the latest packages.<br>
-<strong>To update existing packages already installed on Raspbian</strong></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt-get upgrade -y</span><br></pre></td></tr></table></figure>
-<p><strong>To update to the latest version of Raspbian</strong></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt-get full-upgrade -y</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>Install Git</strong></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git -y</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Optional: <a href="/raspberrypi-file-share"><strong>Create File Share</strong></a> - This enables you to easily transfer files from your dev machine to the Pi.</p>
-</li>
-<li>
-<p>Optional: <a href="/raspberrypi-remote-desktop"><strong>Setup Remote Desktop</strong></a> - If you want to remote into your Pi from your dev machine.</p>
-</li>
-<li>
-<p>Optional: <a href="https://mremoteng.org/download" target="_blank" rel="external"><strong>Install mRemoteNG</strong></a> - Install this on your dev machine so you can easily SSH into your Pi.</p>
-</li>
+<li><a href="/raspberrypi-install-raspbian"><strong>Install Raspbian</strong></a> - Flash Raspbian to a MicroSD card.</li>
+<li><a href="/raspberrypi-ssh"><strong>Enable SSH</strong></a> - So you can execute Terminal commands from your main dev machine.</li>
+<li><a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md" target="_blank" rel="external"><strong>Connect to Internet</strong></a> via <a href="https://www.raspberrypi.org/documentation/configuration/wireless/desktop.md" target="_blank" rel="external">Desktop</a> or <a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md" target="_blank" rel="external">CLI</a></li>
+<li><a href="/raspberrypi-change-hostname"><strong>Change Hostname</strong></a> - So you don’t have naming conflicts with other machines on your network.</li>
+<li><a href="/raspberrypi-change-password"><strong>Change Password</strong></a> - So you don’t get hacked.</li>
+<li><a href="/raspberrypi-change-keyboard-layout"><strong>Change Keyboard Layout</strong></a> - So your keyboard keys are layed out for your region.</li>
+<li><a href="/raspberrypi-expand-file-system"><strong>Expand File System</strong></a> - So you have space to install all the dependencies you’ll need later.</li>
+<li><a href="/raspberrypi-file-share"><strong>Create File Share</strong></a> - This enables you to easily transfer files from your dev machine to the Pi.</li>
+<li><a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="external"><strong>Setup Remote Desktop</strong></a> - If you want to remote desktop into your Pi from your dev machine.</li>
 </ol>
 
         </div>

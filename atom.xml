@@ -142,12 +142,12 @@
     <link href="http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/"/>
     <id>http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/</id>
     <published>2017-11-16T14:03:37.000Z</published>
-    <updated>2017-12-04T07:04:33.371Z</updated>
+    <updated>2017-12-04T22:21:46.527Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:&lt;/p&gt;
-&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;tabl
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;
     
     </summary>
     
@@ -210,7 +210,7 @@
     <link href="http://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/"/>
     <id>http://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/</id>
     <published>2017-11-16T06:55:56.000Z</published>
-    <updated>2017-12-04T06:54:10.356Z</updated>
+    <updated>2017-12-04T22:20:24.510Z</updated>
     
     <summary type="html">
     
@@ -277,11 +277,15 @@
     <link href="http://blog.jongallant.com/2017/11/raspberrypi-setup/"/>
     <id>http://blog.jongallant.com/2017/11/raspberrypi-setup/</id>
     <published>2017-11-12T08:07:02.000Z</published>
-    <updated>2017-12-04T09:25:56.721Z</updated>
+    <updated>2017-12-04T22:15:07.827Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatab
+      &lt;p&gt;Here are the steps I take to setup a Raspberry Pi for development:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Get Raspberry Pi and Peripherals&lt;/strong&gt;
+&lt;ul&gt;
+&lt;l
     
     </summary>
     
@@ -299,7 +303,7 @@
     <link href="http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/"/>
     <id>http://blog.jongallant.com/2017/11/raspberrypi-change-hostname/</id>
     <published>2017-11-12T07:01:54.000Z</published>
-    <updated>2017-11-16T17:57:57.457Z</updated>
+    <updated>2017-12-04T22:22:06.992Z</updated>
     
     <summary type="html">
     
@@ -442,7 +446,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-change-password/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-change-password/</id>
     <published>2017-09-14T23:19:03.000Z</published>
-    <updated>2017-09-15T06:34:59.140Z</updated>
+    <updated>2017-12-04T22:21:31.508Z</updated>
     
     <summary type="html">
     
@@ -466,7 +470,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-ssh/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-ssh/</id>
     <published>2017-09-14T23:07:01.000Z</published>
-    <updated>2017-12-04T06:40:41.815Z</updated>
+    <updated>2017-12-04T22:19:50.672Z</updated>
     
     <summary type="html">
     
@@ -490,7 +494,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-docker/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-docker/</id>
     <published>2017-09-14T13:57:01.000Z</published>
-    <updated>2017-11-13T03:58:35.938Z</updated>
+    <updated>2017-12-04T22:21:20.320Z</updated>
     
     <summary type="html">
     
@@ -506,9 +510,9 @@ My team is hiring developers in the high-scale data space that have experience b
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
-    
       <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+      <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
     
   </entry>
   
@@ -517,7 +521,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-file-share/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-file-share/</id>
     <published>2017-09-14T05:35:51.000Z</published>
-    <updated>2017-11-16T22:22:47.716Z</updated>
+    <updated>2017-12-04T22:58:49.379Z</updated>
     
     <summary type="html">
     
@@ -541,12 +545,11 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="http://blog.jongallant.com/2017/09/raspberrypi-remote-desktop/"/>
     <id>http://blog.jongallant.com/2017/09/raspberrypi-remote-desktop/</id>
     <published>2017-09-12T11:59:11.000Z</published>
-    <updated>2017-11-13T03:57:01.334Z</updated>
+    <updated>2017-12-04T22:18:02.260Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;With the Stretch release, Raspbian now comes with RealVNC, here’s how to get it setup.&lt;/p&gt;
-&lt;p&gt;1. Download &lt;a href=&quot;https://www.raspberryp
+      &lt;p&gt;I’ve cleared out this post because the Raspberry Pi documentation site now has docs updated for Stretch.  You can find the Raspberry Pi R
     
     </summary>
     

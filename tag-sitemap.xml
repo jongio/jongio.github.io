@@ -240,13 +240,6 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/nodejs/</loc>
-        <lastmod>2017-11-13T03:57:03.537Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/microsoft/</loc>
         <lastmod>2017-11-16T20:27:05.778Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -282,22 +275,8 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/howto/</loc>
-        <lastmod>2017-11-20T21:50:03.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/edge/</loc>
         <lastmod>2017-11-29T15:07:46.388Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/docker/</loc>
-        <lastmod>2017-11-29T15:16:43.003Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -331,15 +310,36 @@
     </url>
 
     <url>
+        <loc>http://blog.jongallant.com/tags/howto/</loc>
+        <lastmod>2017-12-04T22:20:07.157Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/nodejs/</loc>
+        <lastmod>2017-12-04T22:20:07.157Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/docker/</loc>
+        <lastmod>2017-12-04T22:21:20.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://blog.jongallant.com/tags/iot/</loc>
-        <lastmod>2017-12-04T06:40:41.815Z</lastmod>
+        <lastmod>2017-12-04T22:58:49.379Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
-        <lastmod>2017-12-04T09:25:56.721Z</lastmod>
+        <lastmod>2017-12-04T22:58:49.379Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
