@@ -23,7 +23,7 @@ Enable SSH
 Via Pi Terminal
 su">
 <meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-ssh/000287.png">
-<meta property="og:updated_time" content="2017-11-16T22:13:47.112Z">
+<meta property="og:updated_time" content="2017-12-04T06:40:41.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to SSH into a Raspberry Pi">
 <meta name="twitter:description" content="You will often want to execute commands over SSH instead of having to Remote Desktop or access your Pi via a monitor and keyboard.
@@ -229,15 +229,28 @@ ga('send', 'pageview');
 <li>Click ‘Interfaces’ and Enable SSH, Click OK</li>
 </ul>
 <p><img src="000287.png" alt=""></p>
-<h2 id="install-putty-on-desktop"><a class="header-anchor" href="#install-putty-on-desktop"></a>Install Putty on Desktop</h2>
-<p>I use Putty as my SSH client. Download and install it from: <a href="http://www.putty.org/" target="_blank" rel="external">http://www.putty.org/</a></p>
 <h2 id="create-ssh-connection"><a class="header-anchor" href="#create-ssh-connection"></a>Create SSH Connection</h2>
+<p>You have a bunch of different options for connecting to your Pi over SSH.  I’ve used Putty for a while, but have switched to mRemoteNG because it helps me manage many SSH windows and different device configurations in a tabbed environment.</p>
+<blockquote>
+<p>In the examples below, replace ‘pi’ with your username if you changed it and replace ‘raspberrypi’ with your hostname if you change it - or just use your Pi’s ip address which you can find by executing <code>ifconfig</code>. If you cannot find your Pi by hostname, then you’ll need to follow <a href="/raspberrypi-remote-desktop/">these steps</a> to configure Samba so your hostname appears on your network.</p>
+</blockquote>
+<h3 id="mremoteng"><a class="header-anchor" href="#mremoteng"></a>mRemoteNG</h3>
+<p>I mention Putty below, but it wasn’t scaling for me as I had to go about managing multiple SSH windows to multiple devices. I found <a href="https://mremoteng.org" target="_blank" rel="external">mRemoteNG</a>, an app that lets you easily manage SSH sessions on your development machine, and I’m really liking it so far.</p>
+<p>You can install mRemoteNG <a href="https://mremoteng.org/download" target="_blank" rel="external">here</a>.</p>
+<p><img src="35.png" alt=""></p>
+<h4 id="create-ssh-connection-v2"><a class="header-anchor" href="#create-ssh-connection-v2"></a>Create SSH Connection</h4>
+<ul>
+<li>Click New Connection, select SSH version 2, enter your hostname (or ip), username, password and then double click to open the connection.</li>
+</ul>
+<p><img src="38.png" alt=""></p>
+<p>You will now be connected to your Pi vs SSH:<br>
+<img src="39.png" alt=""></p>
+<h3 id="putty"><a class="header-anchor" href="#putty"></a>Putty</h3>
+<p>Putty is decent, but like I mentioned above it doesn’t scale well when you need to manage multiple devices.</p>
+<p>You can install Putty <a href="http://www.putty.org/" target="_blank" rel="external">here</a>.</p>
+<h4 id="create-ssh-connection-v3"><a class="header-anchor" href="#create-ssh-connection-v3"></a>Create SSH Connection</h4>
 <p>Open a command prompt and execute the following:</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">putty</span><span class="selector-class">.exe</span> <span class="selector-tag">-ssh</span> <span class="selector-tag">pi</span>@<span class="keyword">raspberrypi</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Replace ‘pi’ with your username if you changed it and replace ‘raspberrypi’ with your hostname if you change it.</p>
-</blockquote>
-<p>If you cannot find your Pi by hostname, then you’ll need to follow <a href="/raspberrypi-remote-desktop/">these steps</a> to configure Samba so your hostname appears on your network.</p>
 <p>You will now be connected to your Pi over SSH.</p>
 <p><img src="000291.png" alt=""></p>
 

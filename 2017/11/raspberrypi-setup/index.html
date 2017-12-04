@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
 <meta property="og:image" content="http://blog.jongallant.com/2017/11/raspberrypi-setup/rpi.png">
-<meta property="og:updated_time" content="2017-11-29T15:05:52.432Z">
+<meta property="og:updated_time" content="2017-12-04T06:23:40.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspberry Pi Setup - A Getting Started Guide for Raspberry Pi Development">
 <meta name="twitter:description" content="Here are the steps I take whenever I’m setting up a Raspberry Pi from a fresh Raspbian image.  It took me a while to this into a repeatable pattern, so I thought I’d share for others who want a jump-s">
@@ -217,14 +217,26 @@ ga('send', 'pageview');
 <p><a href="/raspberrypi-expand-file-system"><strong>Expand File System</strong></a> - So you have space to install all the dependencies you’ll need later.</p>
 </li>
 <li>
-<p><strong>Update Raspbian</strong> - To get all the latest packages.</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade -y</span><br></pre></td></tr></table></figure>
+<p><strong>Update Raspbian</strong> - To get all the latest packages.<br>
+<strong>To update to the latest version of Raspbian</strong></p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt-get upgrade -y</span><br></pre></td></tr></table></figure>
+<p><strong>To update existing packages already installed on Raspbian</strong></p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt-get full-upgrade -y</span><br></pre></td></tr></table></figure>
+<p>Run the following to see the difference between the above two options:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>Install Git</strong></p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install git -y</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>Optional: <a href="/raspberrypi-file-share"><strong>Create File Share</strong></a> - This enables you to easily transfer files from your dev machine to the Pi.</p>
 </li>
 <li>
 <p>Optional: <a href="/raspberrypi-remote-desktop"><strong>Setup Remote Desktop</strong></a> - If you want to remote into your Pi from your dev machine.</p>
+</li>
+<li>
+<p>Optional: <a href="https://mremoteng.org/download" target="_blank" rel="external"><strong>Install mRemoteNG</strong></a> - Install this on your dev machine so you can easily SSH into your Pi.</p>
 </li>
 </ol>
 

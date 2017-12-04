@@ -303,20 +303,6 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
-        <lastmod>2017-11-29T15:28:23.252Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/iot/</loc>
-        <lastmod>2017-11-29T18:19:15.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/python/</loc>
         <lastmod>2017-11-29T18:19:15.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -340,6 +326,20 @@
     <url>
         <loc>http://blog.jongallant.com/tags/rest/</loc>
         <lastmod>2017-12-02T00:30:01.960Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/iot/</loc>
+        <lastmod>2017-12-04T06:40:41.815Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
+        <lastmod>2017-12-04T06:40:41.815Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
