@@ -3,32 +3,32 @@
 <head>
     <meta charset="utf-8">
     
-    <title>How to Run Docker on Raspberry Pi | Jon Gallant</title>
+    <title>How to Change Raspberry Pi Keyboard Layout | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="iot,docker,raspberrypi" />
+        <meta name="keywords" content="raspberrypi" />
     
-    <meta name="description" content="It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.
-You can execute the following commands over SSH or Remote Desktop.
-Install Docker
-curl -sSL https:">
+    <meta name="description" content="The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:
+sudo nano /etc/default/keyboard
+Change XKBLAYOUT=&amp;quot;gb&amp;quot; to XKBLAYOUT=&amp;quot;us&amp;quot;.
+sudo reboot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Run Docker on Raspberry Pi">
-<meta property="og:url" content="http://blog.jongallant.com/2017/09/raspberrypi-docker/index.html">
+<meta property="og:title" content="How to Change Raspberry Pi Keyboard Layout">
+<meta property="og:url" content="http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.
-You can execute the following commands over SSH or Remote Desktop.
-Install Docker
-curl -sSL https:">
-<meta property="og:image" content="http://blog.jongallant.com/2017/09/raspberrypi-docker/000285.png">
-<meta property="og:updated_time" content="2017-11-13T03:58:35.938Z">
+<meta property="og:description" content="The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:
+sudo nano /etc/default/keyboard
+Change XKBLAYOUT=&amp;quot;gb&amp;quot; to XKBLAYOUT=&amp;quot;us&amp;quot;.
+sudo reboot">
+<meta property="og:image" content="http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/rpi.png">
+<meta property="og:updated_time" content="2017-12-04T07:04:33.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Run Docker on Raspberry Pi">
-<meta name="twitter:description" content="It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.
-You can execute the following commands over SSH or Remote Desktop.
-Install Docker
-curl -sSL https:">
-<meta name="twitter:image" content="http://blog.jongallant.com/2017/09/raspberrypi-docker/000285.png">
+<meta name="twitter:title" content="How to Change Raspberry Pi Keyboard Layout">
+<meta name="twitter:description" content="The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:
+sudo nano /etc/default/keyboard
+Change XKBLAYOUT=&amp;quot;gb&amp;quot; to XKBLAYOUT=&amp;quot;us&amp;quot;.
+sudo reboot">
+<meta name="twitter:image" content="http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/rpi.png">
     
 
     
@@ -172,14 +172,14 @@ ga('send', 'pageview');
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script></div>
-                            <article id="post-raspberrypi-docker" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-raspberrypi-change-keyboard-layout" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        How to Run Docker on Raspberry Pi
+        How to Change Raspberry Pi Keyboard Layout
         </h1>
     
 
@@ -188,29 +188,23 @@ ga('send', 'pageview');
         
             <div class="article-subtitle">
                 
-<a href="/2017/09/raspberrypi-docker/" class="article-date">
-    <time datetime="2017-09-14T13:57:01.000Z" itemprop="datePublished">2017-09-14</time>
+<a href="/2017/11/raspberrypi-change-keyboard-layout/" class="article-date">
+    <time datetime="2017-11-16T14:03:37.000Z" itemprop="datePublished">2017-11-16</time>
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/">raspberrypi</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/">raspberrypi</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.</p>
-<p>You can execute the following commands over <a href="/raspberrypi-ssh">SSH</a> or <a href="http://blog.jongallant.com/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">Remote Desktop</a>.</p>
-<h2 id="install-docker"><a class="header-anchor" href="#install-docker"></a>Install Docker</h2>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">curl -sSL http<span class="variable">s:</span>//<span class="built_in">get</span>.docker.<span class="keyword">com</span> | sudo -E <span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-<h2 id="give-pi-user-permission-to-run-docker"><a class="header-anchor" href="#give-pi-user-permission-to-run-docker"></a>Give pi User Permission to Run Docker</h2>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker <span class="literal">pi</span></span><br></pre></td></tr></table></figure>
-<h2 id="reboot"><a class="header-anchor" href="#reboot"></a>Reboot</h2>
+            <p>The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">sudo nano <span class="regexp">/etc/</span><span class="keyword">default</span><span class="regexp">/keyboard</span></span><br></pre></td></tr></table></figure>
+<p>Change <code>XKBLAYOUT=&quot;gb&quot;</code> to <code>XKBLAYOUT=&quot;us&quot;</code>.</p>
 <figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo reboot</span></span><br></pre></td></tr></table></figure>
-<h2 id="test"><a class="header-anchor" href="#test"></a>Test</h2>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> hello-world</span></span><br></pre></td></tr></table></figure>
-<p><img src="000285.png" alt=""></p>
-<p>You now have Docker running on your Pi</p>
+<p>Hit CTRL+O, Hit Enter, Hit CTRL+X to Close</p>
+<p>Jon</p>
 
         </div>
         <footer>
@@ -256,7 +250,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2017/09/raspberrypi-docker/';
+    var disqus_url = 'http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/';
     
     (function() {
     var dsq = document.createElement('script');

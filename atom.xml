@@ -138,6 +138,29 @@
   </entry>
   
   <entry>
+    <title>How to Change Raspberry Pi Keyboard Layout</title>
+    <link href="http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/"/>
+    <id>http://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/</id>
+    <published>2017-11-16T14:03:37.000Z</published>
+    <updated>2017-12-04T07:04:33.371Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:&lt;/p&gt;
+&lt;figure class=&quot;highlight gradle&quot;&gt;&lt;tabl
+    
+    </summary>
+    
+      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="http://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Azure IoT Edge on Raspberry Pi</title>
     <link href="http://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/"/>
     <id>http://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/</id>
@@ -483,9 +506,9 @@ My team is hiring developers in the high-scale data space that have experience b
     
       <category term="iot" scheme="http://blog.jongallant.com/tags/iot/"/>
     
-      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
-    
       <category term="docker" scheme="http://blog.jongallant.com/tags/docker/"/>
+    
+      <category term="raspberrypi" scheme="http://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
@@ -587,34 +610,6 @@ My team is hiring developers in the high-scale data space that have experience b
       <category term="avro" scheme="http://blog.jongallant.com/tags/avro/"/>
     
       <category term="asa" scheme="http://blog.jongallant.com/tags/asa/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Execute Postman Collections in your Continuous Integration Pipeline with Visual Studio Team Services (VSTS) and newman</title>
-    <link href="http://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/"/>
-    <id>http://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/</id>
-    <published>2017-04-26T12:07:05.000Z</published>
-    <updated>2017-04-26T21:54:21.127Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I’ve been doing a lot with &lt;a href=&quot;http://getpostman.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Postman&lt;/a&gt; lately and have been &lt;a href=&quot;http:
-    
-    </summary>
-    
-      <category term="Tech" scheme="http://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="http://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="http://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="postman" scheme="http://blog.jongallant.com/tags/postman/"/>
-    
-      <category term="rest" scheme="http://blog.jongallant.com/tags/rest/"/>
-    
-      <category term="vsts" scheme="http://blog.jongallant.com/tags/vsts/"/>
     
   </entry>
   
