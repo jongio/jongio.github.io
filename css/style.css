@@ -108,6 +108,10 @@
   padding-left: 20px;
   list-style: lower-alpha inside;
 }
+.widget ul,
+.social-links {
+  list-style: none;
+}
 html,
 body,
 div,
