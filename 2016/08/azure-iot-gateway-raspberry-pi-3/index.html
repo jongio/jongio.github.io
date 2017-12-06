@@ -17,7 +17,7 @@ Individual IoT devices will connect to t">
 <meta property="og:description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.
 Individual IoT devices will connect to t">
 <meta property="og:image" content="http://blog.jongallant.com/images/blog/533c87e4ef7b_9338/image.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:updated_time" content="2017-12-06T20:40:59.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Run the Azure IoT Field Gateway on a Raspberry Pi 3">
 <meta name="twitter:description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.
@@ -216,19 +216,19 @@ Individual IoT devices will connect to t">
 <p>If you are using TightVNC, on the Pi, open the web browser and go to <a href="http://bit.ly/azuregatewaypi" target="_blank" rel="external">http://bit.ly/azuregatewaypi</a> – that will redirect you to this page on your Pi, so you can easily copy and paste the following commands.</p>
 <p>If you are using SSH, then just execute the commands below in your SSH window.</p>
 <h2 id="install-packages"><a class="header-anchor" href="#install-packages"></a>Install Packages</h2>
-<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install curl build-essential libcurl4-openssl-<span class="built_in">dev</span> git cmake libssl-<span class="built_in">dev</span> uuid-<span class="built_in">dev</span> valgrind libglib2<span class="number">.0</span>-<span class="built_in">dev</span>`</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev`</span><br></pre></td></tr></table></figure>
 <h2 id="clone-the-azure-iot-field-gateway-repo"><a class="header-anchor" href="#clone-the-azure-iot-field-gateway-repo"></a>Clone the Azure IoT Field Gateway Repo</h2>
 <p>You can clone into any directly you want. I usually put everything in a /code folder.</p>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">--recursive</span> https://github.com/Azure/azure-iot-gateway-sdk.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/Azure/azure-iot-gateway-sdk.git</span><br></pre></td></tr></table></figure>
 <h2 id="checkout-the-develop-branch"><a class="header-anchor" href="#checkout-the-develop-branch"></a>Checkout the Develop Branch</h2>
 <p>This is the branch that contains a fix that allows the Gateway to be built on the Pi</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">git checkout develop</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout develop</span><br></pre></td></tr></table></figure>
 <h2 id="init-submodules"><a class="header-anchor" href="#init-submodules"></a>Init Submodules</h2>
 <p>I like to execute this command after I checkout a branch to be sure I have the latest submodule bits that correspond to my current branch.</p>
-<figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">git</span> <span class="comment">submodule</span> <span class="comment">update</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">init</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">recursive</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
 <h2 id="run-build-sh"><a class="header-anchor" href="#run-build-sh"></a>Run <a href="http://Build.sh" target="_blank" rel="external">Build.sh</a></h2>
 <p>Change to the /tools directory and excute ./build.sh</p>
-<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> tools</span><br><span class="line"><span class="string">./build.sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
 <p>This will take a while. Come back in 30 mins or so.</p>
 <h2 id="test-failures"><a class="header-anchor" href="#test-failures"></a>Test Failures</h2>
 <p>You will likely see these test failures, which are known issues reported <a href="https://github.com/Azure/azure-iot-sdks/issues/556" target="_blank" rel="external">here on GitHub</a>. The e2e tests fail because we didn’t setup the IoT Hub connection. That’ll be the topic of a different blog post.</p>
@@ -244,11 +244,11 @@ Individual IoT devices will connect to t">
 <p>Errors while running CTest</p>
 <h2 id="copy-json-settings-file-to-build-folder"><a class="header-anchor" href="#copy-json-settings-file-to-build-folder"></a>Copy JSON Settings File to Build Folder</h2>
 <p>From the root of the repo run this command to copy the sample JSON settings file to the build output folder.</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cp .<span class="regexp">/samples/</span>hello_world<span class="regexp">/src/</span>hello_world_lin.json .<span class="regexp">/build/</span>samples<span class="regexp">/hello_world/</span>hello_world_lin.json`</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp ./samples/hello_world/src/hello_world_lin.json ./build/samples/hello_world/hello_world_lin.json`</span><br></pre></td></tr></table></figure>
 <h2 id="run-hello-world-sample"><a class="header-anchor" href="#run-hello-world-sample"></a>Run Hello_World_Sample</h2>
 <p>Change to the /build folder</p>
 <p>Run the following command to start the sample.</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">.<span class="regexp">/samples/</span>hello_world<span class="regexp">/hello_world_sample ./</span>samples<span class="regexp">/hello_world/</span>hello_world_lin.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./samples/hello_world/hello_world_sample ./samples/hello_world/hello_world_lin.json</span><br></pre></td></tr></table></figure>
 <p>You should now see this output.</p>
 <p><img src="/images/blog/533c87e4ef7b_9338/image_3.png" alt=""></p>
 <p>This sample writes an entry to the /build/log.txt file. If you open that file you will see the entries. From the /build folder just enter “vi log.txt” to view the file.</p>

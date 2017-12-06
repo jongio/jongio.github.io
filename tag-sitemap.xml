@@ -170,20 +170,6 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/avro/</loc>
-        <lastmod>2017-05-05T06:36:37.663Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/asa/</loc>
-        <lastmod>2017-05-05T06:36:37.663Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/powerbi/</loc>
         <lastmod>2017-05-05T17:15:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -193,20 +179,6 @@
     <url>
         <loc>http://blog.jongallant.com/tags/beakn/</loc>
         <lastmod>2017-05-08T00:31:17.587Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/dev/</loc>
-        <lastmod>2017-05-30T23:20:53.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/azureiot/</loc>
-        <lastmod>2017-05-30T23:20:53.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -275,43 +247,8 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/python/</loc>
-        <lastmod>2017-11-29T18:19:15.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/howto/</loc>
-        <lastmod>2017-12-04T22:20:07.157Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/nodejs/</loc>
         <lastmod>2017-12-04T22:20:07.157Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/docker/</loc>
-        <lastmod>2017-12-04T22:21:20.320Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/iot/</loc>
-        <lastmod>2017-12-04T22:58:49.379Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
-        <lastmod>2017-12-05T06:51:43.354Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -324,22 +261,85 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/azure/</loc>
+        <loc>http://blog.jongallant.com/tags/aad/</loc>
         <lastmod>2017-12-06T17:05:04.172Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/docker/</loc>
+        <lastmod>2017-12-06T20:36:01.886Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/raspberrypi/</loc>
+        <lastmod>2017-12-06T20:40:59.635Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/python/</loc>
+        <lastmod>2017-12-06T20:40:59.635Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/howto/</loc>
+        <lastmod>2017-12-06T20:40:59.654Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/avro/</loc>
+        <lastmod>2017-12-06T20:40:59.662Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/asa/</loc>
+        <lastmod>2017-12-06T20:40:59.662Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.jongallant.com/tags/postman/</loc>
-        <lastmod>2017-12-06T17:05:04.172Z</lastmod>
+        <lastmod>2017-12-06T20:40:59.670Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/aad/</loc>
-        <lastmod>2017-12-06T17:05:04.172Z</lastmod>
+        <loc>http://blog.jongallant.com/tags/azure/</loc>
+        <lastmod>2017-12-06T20:40:59.673Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/iot/</loc>
+        <lastmod>2017-12-06T20:40:59.673Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/dev/</loc>
+        <lastmod>2017-12-06T20:40:59.673Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/azureiot/</loc>
+        <lastmod>2017-12-06T20:40:59.673Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
 <meta property="og:image" content="http://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/000119.png">
-<meta property="og:updated_time" content="2017-04-26T21:32:27.939Z">
+<meta property="og:updated_time" content="2017-12-06T20:40:59.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
 <meta name="twitter:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
@@ -320,10 +320,10 @@
 <h2 id="run-postman-collection-via-newman"><a class="header-anchor" href="#run-postman-collection-via-newman"></a>Run Postman Collection via Newman</h2>
 <p><a href="https://github.com/postmanlabs/newman" target="_blank" rel="external">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
 <p>For example, the following will execute a Postman Collection with a given set of Environment variables.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">newman</span> <span class="selector-tag">run</span> <span class="selector-tag">postman-collection</span><span class="selector-class">.json</span> <span class="selector-tag">-e</span> <span class="selector-tag">environment-variables</span><span class="selector-class">.json</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run postman-collection.json -e environment-variables.json</span><br></pre></td></tr></table></figure>
 <p>Here’s how to run the Azure IoT Hub collection with Newman.</p>
 <p>0. Install Newman</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> -g newman</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g newman</span><br></pre></td></tr></table></figure>
 <p>1. Export the Postman Collection</p>
 <p><img src="000124.png" alt=""></p>
 <p><img src="000125.png" alt=""></p>
@@ -333,7 +333,7 @@
 <p><img src="000127.png" alt=""></p>
 <p><img src="000128.png" alt=""></p>
 <p>3. Open a CMD and execute the following command:</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">newman</span> <span class="selector-tag">run</span> "<span class="selector-tag">Azure</span> <span class="selector-tag">IoT</span> <span class="selector-tag">Hub</span><span class="selector-class">.postman_collection</span><span class="selector-class">.json</span>" <span class="selector-tag">-e</span> "<span class="selector-tag">Azure</span> <span class="selector-tag">IoT</span> <span class="selector-tag">Hub</span><span class="selector-class">.postman_environment</span><span class="selector-class">.json</span>"</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run <span class="string">"Azure IoT Hub.postman_collection.json"</span> -e <span class="string">"Azure IoT Hub.postman_environment.json"</span></span><br></pre></td></tr></table></figure>
 <p>You will see the following when the run completes</p>
 <p><img src="000129.png" alt=""></p>
 <blockquote>
