@@ -226,13 +226,6 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/aad/</loc>
-        <lastmod>2017-10-17T05:51:13.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://blog.jongallant.com/tags/dotnet/</loc>
         <lastmod>2017-11-08T21:52:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -324,22 +317,29 @@
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/azure/</loc>
+        <loc>http://blog.jongallant.com/tags/rest/</loc>
         <lastmod>2017-12-05T14:35:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.jongallant.com/tags/azure/</loc>
+        <lastmod>2017-12-06T04:17:13.410Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.jongallant.com/tags/postman/</loc>
-        <lastmod>2017-12-05T14:35:37.000Z</lastmod>
+        <lastmod>2017-12-06T04:17:13.410Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://blog.jongallant.com/tags/rest/</loc>
-        <lastmod>2017-12-05T14:35:37.000Z</lastmod>
+        <loc>http://blog.jongallant.com/tags/aad/</loc>
+        <lastmod>2017-12-06T04:17:13.410Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
