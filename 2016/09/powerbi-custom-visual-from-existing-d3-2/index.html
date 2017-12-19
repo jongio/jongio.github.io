@@ -13,19 +13,19 @@
 This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 vi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings">
-<meta property="og:url" content="http://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2/index.html">
+<meta property="og:url" content="https://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
 –
 This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 vi">
-<meta property="og:image" content="http://blog.jongallant.com/images/blog/53494a0089db_D4F8/image.png">
-<meta property="og:updated_time" content="2017-01-20T22:16:38.000Z">
+<meta property="og:image" content="https://blog.jongallant.com/images/blog/53494a0089db_D4F8/image.png">
+<meta property="og:updated_time" content="2017-12-19T02:20:11.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings">
 <meta name="twitter:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
 –
 This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 vi">
-<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/53494a0089db_D4F8/image.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/blog/53494a0089db_D4F8/image.png">
     
 
     
@@ -199,10 +199,10 @@ This is a continuation of my attempt at creating a Power BI Custom Visual from a
         <div class="article-entry" itemprop="articleBody">
             <p><span style="font-size: large;">UPDATE: The Liquid Fill Gauge visual is now available to download from the <a href="https://app.powerbi.com/visuals/show/PBI_CV_94E55AB3_5D45_4B62_A49D_19E2109AA028" target="_blank" rel="external">Power BI Custom Visual Gallery</a>!</span><br>
 <span style="font-size: large;">–</span><br>
-This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 visual I found on GitHub. In this post I’m going to focus on the “capabilities” of the visual. Here’s the previous post: <a href="http://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual</a>. It’s a liquidFillGauge that was originally created by <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Curtis Bratton</a>.</p>
+This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 visual I found on GitHub. In this post I’m going to focus on the “capabilities” of the visual. Here’s the previous post: <a href="https://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual</a>. It’s a liquidFillGauge that was originally created by <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Curtis Bratton</a>.</p>
 <p>This is Part 2 of the series, here are the other posts:</p>
-<p>1. <a href="http://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing</a></p>
-<p>3. <a href="http://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
+<p>1. <a href="https://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing</a></p>
+<p>3. <a href="https://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
 <p>You can install this visual from the GitHub releases page <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases" target="_blank" rel="external">here</a>. I’ll put in the <a href="http://visuals.powerbi.com/" target="_blank" rel="external">Power BI Visual Gallery</a> once the visual is complete.</p>
 <p>I found <a href="https://github.com/Microsoft/PowerBI-visuals/blob/master/Tutorial/DataBinding.md" target="_blank" rel="external">this page</a> helpful when looking into Power BI Custom Visual Data Roles.</p>
 <p>Here’s what the Liquid Fill Gauge looks like in Power BI.</p>
@@ -217,7 +217,7 @@ This is a continuation of my attempt at creating a Power BI Custom Visual from a
 <p>And if you just use that you’ll see this:<br>
 <img src="/images/blog/53494a0089db_D4F8/image_4.png" alt=""><br>
 What you need to do is define a dataViewMappings object that tells the visual how to represent the dataRoles in the dataView. Again, this is a super simple visual right now, so all we need to do is map the single value. I’ve seen examples where “role” is equal to “Values”, but removing it doesn’t seem to impact anything, so I’m leaving it as an empty string.</p>
-<p>You’ll also need to add the “object” property, I explain that in <a href="http://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">Part 3</a>.</p>
+<p>You’ll also need to add the “object” property, I explain that in <a href="https://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">Part 3</a>.</p>
 <p>Open capabilities.json and add this code:</p>
 <script src="https://gist.github.com/jonbgallant/6b4a4cc023252152a9864ab762814177.js"></script>
 <p>Your visualization pane should now look like this:<br>
@@ -225,7 +225,7 @@ What you need to do is define a dataViewMappings object that tells the visual ho
 <p>And your format property pane will look like this:</p>
 <div class="separator" style="clear: both; text-align: center;">![](/images/blog/2016-12-05 22_13_06-Power BI.png)
 <p>The resulting visual is the same as the original. We just now have cleaner data and format panes….and less code.</p>
-<p>Keep following along in <a href="http://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">Part 3</a>…<br>
+<p>Keep following along in <a href="https://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">Part 3</a>…<br>
 Jon</p>
 </div>
         </div>
@@ -365,7 +365,7 @@ Jon</p>
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
+                    <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
@@ -380,7 +380,7 @@ Jon</p>
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2/';
+    var disqus_url = 'https://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2/';
     
     (function() {
     var dsq = document.createElement('script');

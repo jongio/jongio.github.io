@@ -11,15 +11,15 @@
     <meta name="description" content="I’m working on a “maker experience” project called beakn. It’s a Lync status light that lights up red, yellow or green based on your Lync status. beakn v0.1 was all about getting it working without it">
 <meta property="og:type" content="article">
 <meta property="og:title" content="beakn v0.2 : DIY Lync Status Light with an Arduino or Netduino, Ping Pong Ball and a Cardboard Box - Now Cloud Driven with MQTT">
-<meta property="og:url" content="http://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light/index.html">
+<meta property="og:url" content="https://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on a “maker experience” project called beakn. It’s a Lync status light that lights up red, yellow or green based on your Lync status. beakn v0.1 was all about getting it working without it">
-<meta property="og:image" content="http://blog.jongallant.com/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg">
-<meta property="og:updated_time" content="2016-12-28T08:16:18.000Z">
+<meta property="og:image" content="https://blog.jongallant.com/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg">
+<meta property="og:updated_time" content="2017-12-19T02:20:11.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.2 : DIY Lync Status Light with an Arduino or Netduino, Ping Pong Ball and a Cardboard Box - Now Cloud Driven with MQTT">
 <meta name="twitter:description" content="I’m working on a “maker experience” project called beakn. It’s a Lync status light that lights up red, yellow or green based on your Lync status. beakn v0.1 was all about getting it working without it">
-<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg">
     
 
     
@@ -191,10 +191,10 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="/images/blog/054bc659d506_E402/IMG_1827.jpg"><img src="/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg" alt="IMG_1827" title="IMG_1827"></a>I’m working on a “maker experience” project called beakn. It’s a Lync status light that lights up red, yellow or green based on your Lync status. <a href="http://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a> was all about getting it working without it being too complex – so I opted for using the USB connection from my computer to the Arduino and then send Serial commands over that connection to tell the Arduino what LED to light up. My ultimate goal of the project is to get into the shoes of a maker and see what it takes to take a product from inception to proof of concept to prototype and finally to production. The end product will be a completely wireless Lync status light that you place anywhere in your office, home or oil rig.</p>
+            <p><a href="/images/blog/054bc659d506_E402/IMG_1827.jpg"><img src="/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg" alt="IMG_1827" title="IMG_1827"></a>I’m working on a “maker experience” project called beakn. It’s a Lync status light that lights up red, yellow or green based on your Lync status. <a href="https://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a> was all about getting it working without it being too complex – so I opted for using the USB connection from my computer to the Arduino and then send Serial commands over that connection to tell the Arduino what LED to light up. My ultimate goal of the project is to get into the shoes of a maker and see what it takes to take a product from inception to proof of concept to prototype and finally to production. The end product will be a completely wireless Lync status light that you place anywhere in your office, home or oil rig.</p>
 <p>beakn v0.2 gets us one step closer by introducing Ethernet and <a href="http://mqtt.org/" target="_blank" rel="external">MQTT</a> (Message Queue Telemetry Transport), which is VERY light weight pub-sub messaging protocol for IoT devices (<a href="http://en.wikipedia.org/wiki/MQTT" target="_blank" rel="external">wikipedia</a>). I spent a lot of time working with the Arduino WiFi shield as well, but I couldn’t get it stabilized in time for the v0.2 release. Also in that process I realized that WiFi is probably out of the picture because of the setup and config that is involved – you have to get the SSID and Password into the sketch and upload it via the IDE, which isn’t something I want my early adopters to have to do. I will likely end up going with a gateway device connected to Ethernet that listens for MQTT events and sends commands to the beakn via Bluetooth LE or Xbee. That was a rat hole I didn’t want to go down for this version. Also, with regard to power, I want it to run on battery – the problem is that the Uno and the WiFi shield together won’t run for very long on a 9V. I dug into what it would take to power the beakn, but didn’t get too far. I’m thinking I’m going to have to deal with that in the prototype phase…I still consider this to be in the proof of concept phase. Prototype will move away from Arduino and onto getting individual microcontrollers, surface mount LEDs, power management and a 3D printed enclosure.</p>
 <p>This entire project is available on GitHub here: <a href="https://github.com/jonbgallant/beakn/" title="https://github.com/jonbgallant/beakn/" target="_blank" rel="external">https://github.com/jonbgallant/beakn/</a></p>
-<p>If you are new to beakn it might be a good idea for you to read through the <a href="http://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1 post</a></p>
+<p>If you are new to beakn it might be a good idea for you to read through the <a href="https://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1 post</a></p>
 <p><strong>Here are some pictures of the v0.2 build</strong></p>
 <p><a href="/images/blog/054bc659d506_E402/IMG_1830.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1830_thumb.jpg" alt="IMG_1830" title="IMG_1830"></strong></a><a href="/images/blog/054bc659d506_E402/IMG_1829.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1829_thumb.jpg" alt="IMG_1829" title="IMG_1829"></strong></a><a href="/images/blog/054bc659d506_E402/IMG_1832.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1832_thumb.jpg" alt="IMG_1832" title="IMG_1832"></strong></a><a href="/images/blog/054bc659d506_E402/IMG_1834.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1834_thumb.jpg" alt="IMG_1834" title="IMG_1834"></strong></a></p>
 <p><strong>The design includes:</strong></p>
@@ -218,7 +218,7 @@
 </ul>
 <p>As a C#/JavaScript developer it was a big relief to work with the Netduino. It’s nice to be back in Visual Studio and C# and it was great that the M2Mqtt library was available. I didn’t get the Serial version working on Netduino, but that’s not important at this stage because of my wireless goal. I’m going to keep prototyping with the Arduino to see what is possible, but as a long time Microsoft developer the Netduino is definitely preferred. Being able to use nuGet is sweet too.</p>
 <p>Here’s what you need to do to build this yourself:</p>
-<p>**1. Follow the hardware instructions for **<a href="http://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html"><strong>beakn v0.1</strong></a></p>
+<p>**1. Follow the hardware instructions for **<a href="https://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html"><strong>beakn v0.1</strong></a></p>
 <ul>
 <li>Carve out a little more space in the back of the box for Ethernet and Power</li>
 </ul>
@@ -397,7 +397,7 @@
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
+                    <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
@@ -412,7 +412,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light/';
+    var disqus_url = 'https://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light/';
     
     (function() {
     var dsq = document.createElement('script');

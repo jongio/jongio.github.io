@@ -12,17 +12,17 @@
 Here’s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use the Azure IoT Hub File Upload API with Python">
-<meta property="og:url" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/index.html">
+<meta property="og:url" content="https://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
 Here’s">
-<meta property="og:image" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
-<meta property="og:updated_time" content="2017-12-06T20:40:59.635Z">
+<meta property="og:image" content="https://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
+<meta property="og:updated_time" content="2017-12-19T02:20:11.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to use the Azure IoT Hub File Upload API with Python">
 <meta name="twitter:description" content="I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the File Upload API. It took us a while to figure it out and ran into a bunch of issues.
 Here’s">
-<meta name="twitter:image" content="http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/000055.png">
     
 
     
@@ -264,14 +264,14 @@ Here’s">
 3. You didn’t click Save on the File Upload Blob. Make sure the File Upload pane has your Storage container listed.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_step3 Line:649 HTTP code was 400</span><br><span class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_Impl Line:843 IoTHubClient_LL_UploadToBlob_step3 failed</span><br><span class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client.c Func:uploadingThread Line:1500 unable to IoTHubClient_LL_UploadToBlob</span><br><span class="line">Blob upload confirmation[1001] received <span class="keyword">for</span> message with result = ERROR</span><br><span class="line">    Total calls confirmed: 1</span><br></pre></td></tr></table></figure>
 <h3 id="3-httpapi-executerequest-line-552-curl-easy-perform-failed-out-of-memory"><a class="header-anchor" href="#3-httpapi-executerequest-line-552-curl-easy-perform-failed-out-of-memory"></a>3. HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory</h3>
-<p>This is due to a bug in the Azure IoT Python SDK.  The issue is being tracked on GitHub <a href="https://github.com/Azure/azure-iot-sdk-python/issues/80" target="_blank" rel="external">here</a>.  In the meantime, you can use the sample code found here: <a href="http://github.com/jongallant/azure-iot-rest" target="_blank" rel="external">http://github.com/jongallant/azure-iot-rest</a>. You will find a Python sample that shows you how to upload files via the Azure IoT REST APIs.</p>
+<p>This is due to a bug in the Azure IoT Python SDK.  The issue is being tracked on GitHub <a href="https://github.com/Azure/azure-iot-sdk-python/issues/80" target="_blank" rel="external">here</a>.  In the meantime, you can use the sample code found here: <a href="https://github.com/jongallant/azure-iot-rest" target="_blank" rel="external">https://github.com/jongallant/azure-iot-rest</a>. You will find a Python sample that shows you how to upload files via the Azure IoT REST APIs.</p>
 <h3 id="4-importerror-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-no-such-file-or-directory"><a class="header-anchor" href="#4-importerror-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-no-such-file-or-directory"></a>4. ImportError: libboost_python-py27.so.1.55.0: cannot open shared object file: No such file or directory</h3>
 <p>This is due to the SDK being built with references that you don’t currently have on your machine.  <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#installs-needed-to-compile-the-sdks-for-python-from-souce-code" target="_blank" rel="external">Follow the instructions here</a> to build the SDK on the machine you will be running it on.  I got it work on a Raspberry Pi 3 / Stretch.</p>
 <blockquote>
 <p>Make sure you use the --recursive flag when you clone.</p>
 </blockquote>
 <h2 id="view-the-file"><a class="header-anchor" href="#view-the-file"></a>View The File</h2>
-<p>You can use <a href="http://storageexplorer.com/" target="_blank" rel="external">Azure Storage Explorer</a> to view the uploaded file.</p>
+<p>You can use <a href="https://storageexplorer.com/" target="_blank" rel="external">Azure Storage Explorer</a> to view the uploaded file.</p>
 <p>If you go to the storage account that you associated with IoT Hub in Azure Portal, you’ll see an Open in Storage Explorer button.</p>
 <p><img src="000048.png" alt=""></p>
 <p>Drill down to your container and you’ll see your file.<br>
@@ -422,7 +422,7 @@ Here’s">
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
+                    <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
@@ -437,7 +437,7 @@ Here’s">
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/';
+    var disqus_url = 'https://blog.jongallant.com/2017/01/azure-iot-hub-file-upload-python/';
     
     (function() {
     var dsq = document.createElement('script');

@@ -11,15 +11,15 @@
     <meta name="description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Do I always have to call Dispose() on my DbContext objects? Nope">
-<meta property="og:url" content="http://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/index.html">
+<meta property="og:url" content="https://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
-<meta property="og:image" content="http://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:image" content="https://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
+<meta property="og:updated_time" content="2017-12-19T02:20:11.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Do I always have to call Dispose() on my DbContext objects? Nope">
 <meta name="twitter:description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
-<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
     
 
     
@@ -191,7 +191,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Like I mentioned in my post “<a href="http://blog.jongallant.com/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a href="http://romiller.com/" target="_blank" rel="external">Rowan Miller</a> and <a href="http://blogs.msdn.com/diego/" target="_blank" rel="external">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
+            <p>Like I mentioned in my post “<a href="https://blog.jongallant.com/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a href="http://romiller.com/" target="_blank" rel="external">Rowan Miller</a> and <a href="http://blogs.msdn.com/diego/" target="_blank" rel="external">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
 <p><em>**“Should I always call Dispose() on my DbContext objects?”  **</em></p>
 <p>Before I talked with the devs on the EF team my answer was always a resounding “of course!”. But it’s not true with DbContext. You don’t need to be religious about calling Dispose on your DbContext objects. Even though it does implement IDisposable, it only implements it so you can call Dispose as a safeguard in some special cases. By default DbContext automatically manages the connection for you. Read to the end to hear the full story and see what the EF devs had to say about it.</p>
 <p><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png" alt=""></p>
@@ -356,7 +356,7 @@
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
+                    <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
@@ -371,7 +371,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/';
+    var disqus_url = 'https://blog.jongallant.com/2012/10/do-i-have-to-call-dispose-on-dbcontext/';
     
     (function() {
     var dsq = document.createElement('script');

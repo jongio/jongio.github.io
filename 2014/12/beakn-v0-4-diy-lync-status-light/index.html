@@ -11,15 +11,15 @@
     <meta name="description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
 <meta property="og:type" content="article">
 <meta property="og:title" content="beakn v0.4 - DIY Lync Status Light with Spark Core, WiFi, Batteries, SMD LEDs, On/Off Switch, Ping pong ball and a Cardboard Box">
-<meta property="og:url" content="http://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/index.html">
+<meta property="og:url" content="https://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
-<meta property="og:image" content="http://blog.jongallant.com/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:image" content="https://blog.jongallant.com/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg">
+<meta property="og:updated_time" content="2017-12-19T02:20:11.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.4 - DIY Lync Status Light with Spark Core, WiFi, Batteries, SMD LEDs, On/Off Switch, Ping pong ball and a Cardboard Box">
 <meta name="twitter:description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
-<meta name="twitter:image" content="http://blog.jongallant.com/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg">
     
 
     
@@ -191,7 +191,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="/images/blog/1291b2b0c337_C70/P-1335.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg" alt="P-1335" title="P-1335"></a>Over the past couple of weeks I’ve been working on a Lync Status light called “<a href="http://blog.jongallant.com/search/label/beakn">beakn</a>”. I <a href="http://blog.jongallant.com/2014/11/iot-devs-needed.html">joined the Windows IoT Maker team</a> not too long ago and have been immersing myself in the Maker space – I’ve been constantly thinking about how to connect everything to the internet and thinking about ways to build products myself. beakn started with an idea of building a completely wireless Lync Status light that I could put anywhere. The concept is simple. It’s a small hardware device that has LEDs that change to the color of your current Lync status. Red, Yellow, Green. I want to be able to have one at home and one at work and would like to stick it on the outside of my office door so people can see my status as they walk by. To achieve that it needs to be wireless – no USB, no ethernet and no power cables. <a href="http://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a> focused on getting it working with USB and Arduino and executed serial commands. <a href="http://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light.html">beakn v0.2</a> focused on getting it working with ethernet and Arduino/Netduino. <a href="http://blog.jongallant.com/2014/12/beakn-v0-3-diy-lync-status-light.html">beakn v0.3</a> focused on getting it working with RaspberryPi, C# with Mono and with v0.4&lt; I have achieved my goal of a completely wireless solution with Spark Core WiFi and batteries.</p>
+            <p><a href="/images/blog/1291b2b0c337_C70/P-1335.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg" alt="P-1335" title="P-1335"></a>Over the past couple of weeks I’ve been working on a Lync Status light called “<a href="https://blog.jongallant.com/search/label/beakn">beakn</a>”. I <a href="https://blog.jongallant.com/2014/11/iot-devs-needed.html">joined the Windows IoT Maker team</a> not too long ago and have been immersing myself in the Maker space – I’ve been constantly thinking about how to connect everything to the internet and thinking about ways to build products myself. beakn started with an idea of building a completely wireless Lync Status light that I could put anywhere. The concept is simple. It’s a small hardware device that has LEDs that change to the color of your current Lync status. Red, Yellow, Green. I want to be able to have one at home and one at work and would like to stick it on the outside of my office door so people can see my status as they walk by. To achieve that it needs to be wireless – no USB, no ethernet and no power cables. <a href="https://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a> focused on getting it working with USB and Arduino and executed serial commands. <a href="https://blog.jongallant.com/2014/12/beakn-v0-2-diy-lync-status-light.html">beakn v0.2</a> focused on getting it working with ethernet and Arduino/Netduino. <a href="https://blog.jongallant.com/2014/12/beakn-v0-3-diy-lync-status-light.html">beakn v0.3</a> focused on getting it working with RaspberryPi, C# with Mono and with v0.4&lt; I have achieved my goal of a completely wireless solution with Spark Core WiFi and batteries.</p>
 <p>Even though I now work with a team of people who know hardware and the Maker space way better than I do, I resisted the temptation to ask them for too much help. I started with searching the internet and took it one step at a time. I started with Arduino because that is what I had heard of, then Netduino and RaspberryPi. It’s been fun getting exposed to all the different types of boards, but the Spark Core is BY FAR the best experience I have had on this project. For my simple scenario the user experience far exceeds what is provided by Arduino and RaspberryPi out of the box. Spark Core has plenty of pins to connect my LEDS and has WiFi that doesn’t require any extra libraries. (Arduino UNO requires a WiFi shield and WiFi glue code). Spark Core also has a very simple cloud api that allows me to communicate with my device via HTTP. With my other solution I had to rely on an MQTT server – which logically just adds another piece to be concerned about.</p>
 <blockquote>
 <p>Aside: The WiFi network at Microsoft is WPA2-Enterprise which isn’t support by most of the micro-controller development boards, like RaspberryPi and Arduino. The Intel Edison was the only one that I found to support it. v0.4 will only work with the WiFi protocols that Spark Core supports, which is are simple home network security like WPA/WPA2 or WEP. See their <a href="http://docs.spark.io/troubleshooting/" target="_blank" rel="external">troubleshooting guide</a> if you run into issues. I developed this on my home network and will need to use a hotspot at work or switch to Edison.</p>
@@ -444,7 +444,7 @@
             <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
             <div class="credit">
                 <h1 class="logo-wrap">
-                    <a href="/" class="logo"></a>
+                    <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy; 2017 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
@@ -459,7 +459,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'http://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/';
+    var disqus_url = 'https://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/';
     
     (function() {
     var dsq = document.createElement('script');
