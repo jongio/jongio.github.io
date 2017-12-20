@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2017-12-19T22:22:26.987Z</updated>
+  <updated>2017-12-20T00:51:17.635Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Workaround: Azure IoT Python SDK Error: curl_easy_perform() failed: Out of memory</title>
+    <link href="https://blog.jongallant.com/2017/12/azure-iot-sdk-curl-issue/"/>
+    <id>https://blog.jongallant.com/2017/12/azure-iot-sdk-curl-issue/</id>
+    <published>2017-12-19T16:20:44.000Z</published>
+    <updated>2017-12-20T00:51:17.635Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A bunch of people have reported the following issue with the Azure IoT Python SDK:&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td clas
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure REST APIs with Postman in 2 Minutes</title>
@@ -594,34 +621,6 @@ My team is hiring developers in the high-scale data space that have experience b
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use Apache Avro Compression with Azure IoT, Azure Stream Analytics, and Node.js</title>
-    <link href="https://blog.jongallant.com/2017/05/azure-iot-stream-analytics-avro-nodejs/"/>
-    <id>https://blog.jongallant.com/2017/05/azure-iot-stream-analytics-avro-nodejs/</id>
-    <published>2017-05-03T21:32:50.000Z</published>
-    <updated>2017-12-19T22:21:55.401Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I was recently working with a customer that uses &lt;a href=&quot;https://avro.apache.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Apache Avro&lt;/a&gt; compre
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="avro" scheme="https://blog.jongallant.com/tags/avro/"/>
-    
-      <category term="asa" scheme="https://blog.jongallant.com/tags/asa/"/>
     
   </entry>
   
