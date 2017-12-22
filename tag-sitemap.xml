@@ -100,13 +100,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/dotnet/</loc>
-        <lastmod>2017-11-08T21:52:48.029Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/jobs/</loc>
         <lastmod>2017-11-16T20:27:05.778Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -303,14 +296,14 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/azureiotedge/</loc>
+        <loc>https://blog.jongallant.com/tags/edge/</loc>
         <lastmod>2017-12-19T22:25:51.713Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/edge/</loc>
+        <loc>https://blog.jongallant.com/tags/azureiotedge/</loc>
         <lastmod>2017-12-19T22:25:51.713Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -346,7 +339,21 @@
 
     <url>
         <loc>https://blog.jongallant.com/tags/python/</loc>
-        <lastmod>2017-12-20T02:15:24.335Z</lastmod>
+        <lastmod>2017-12-22T22:17:29.206Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/dotnet/</loc>
+        <lastmod>2017-12-22T22:17:29.206Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/tox/</loc>
+        <lastmod>2017-12-22T22:17:29.206Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
