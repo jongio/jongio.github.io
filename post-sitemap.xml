@@ -7,8 +7,24 @@
     </url>
 
     <url>
+        <loc>https://blog.jongallant.com/2018/01/python-lessons-learned/</loc>
+        <lastmod>2018-01-04T08:27:41.968Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/</loc>
-        <lastmod>2017-12-22T22:17:29.206Z</lastmod>
+        <lastmod>2017-12-30T16:20:50.177Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2016/06/azure-iot-hub-traffic-monitor/</loc>
+        <lastmod>2017-12-30T16:19:23.752Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -159,14 +175,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2016/06/azure-iot-hub-traffic-monitor/</loc>
-        <lastmod>2017-12-19T22:22:14.045Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2017/05/azure-iot-stream-analytics-avro-nodejs/</loc>
         <lastmod>2017-12-19T22:21:55.401Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -231,23 +239,15 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-3/</loc>
-        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-4/</loc>
-        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-2/</loc>
+        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-3/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -263,7 +263,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-6/</loc>
+        <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-4/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -272,6 +272,14 @@
 
     <url>
         <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-7/</loc>
+        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2015/01/3d-modeling-software-maker-part-6/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -295,7 +303,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/07/angularjs-webapi-ef-crud-grid-v2/</loc>
+        <loc>https://blog.jongallant.com/2013/08/angularjs-webapi-crud-grid-v3-directive/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -303,7 +311,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/08/angularjs-webapi-crud-grid-v3-directive/</loc>
+        <loc>https://blog.jongallant.com/2013/07/angularjs-webapi-ef-crud-grid-v2/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -359,14 +367,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2015/01/beakn-v0-4-1-diy-lync-status-light/</loc>
-        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2014/12/beakn-v0-3-diy-lync-status-light/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -375,7 +375,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/</loc>
+        <loc>https://blog.jongallant.com/2015/01/beakn-v0-4-1-diy-lync-status-light/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -384,6 +384,14 @@
 
     <url>
         <loc>https://blog.jongallant.com/2015/02/beakn-v0-4-2-diy-lync-status-light/</loc>
+        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -423,7 +431,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/</loc>
+        <loc>https://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-2-0/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -431,7 +439,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-2-0/</loc>
+        <loc>https://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -519,14 +527,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/07/how-to-get-job-at-microsoft/</loc>
-        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -535,7 +535,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/10/intel-ivybridge-ultrabook-deeper-look/</loc>
+        <loc>https://blog.jongallant.com/2012/07/how-to-get-job-at-microsoft/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -544,6 +544,14 @@
 
     <url>
         <loc>https://blog.jongallant.com/2012/12/intel-ivybridge-ultrabook-dev-machine/</loc>
+        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2012/10/intel-ivybridge-ultrabook-deeper-look/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -567,23 +575,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2014/03/microsoft-dev-contractors-needed/</loc>
-        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2013/05/microsoft-career-model/</loc>
-        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/2016/01/microsoft-logo-fusion360/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -599,7 +591,15 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/09/microsoftie-perk-10-free-hardware/</loc>
+        <loc>https://blog.jongallant.com/2014/03/microsoft-dev-contractors-needed/</loc>
+        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2016/01/microsoft-logo-fusion360/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -615,7 +615,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-2-exec-communication/</loc>
+        <loc>https://blog.jongallant.com/2012/09/microsoftie-perk-10-free-hardware/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -623,7 +623,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-5-free-msft-cert-exams/</loc>
+        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-2-exec-communication/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -639,7 +639,15 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-8-free-gym-membership/</loc>
+        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-5-free-msft-cert-exams/</loc>
+        <lastmod>2017-12-19T02:20:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-7-microsoft-library/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -655,7 +663,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-7-microsoft-library/</loc>
+        <loc>https://blog.jongallant.com/2012/08/microsoftie-perk-8-free-gym-membership/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -711,7 +719,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2015/10/particle-photon-lcd-setup/</loc>
+        <loc>https://blog.jongallant.com/2015/08/particle-photon-mac-address/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -719,7 +727,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2015/08/particle-photon-mac-address/</loc>
+        <loc>https://blog.jongallant.com/2015/10/particle-photon-lcd-setup/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -759,7 +767,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2014/12/power-over-ethernet/</loc>
+        <loc>https://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -767,7 +775,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/</loc>
+        <loc>https://blog.jongallant.com/2014/12/power-over-ethernet/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -799,7 +807,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/</loc>
+        <loc>https://blog.jongallant.com/2015/09/powerbi-hiring-devs/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -807,7 +815,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2015/09/powerbi-hiring-devs/</loc>
+        <loc>https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -839,7 +847,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/09/upgrade-lion-from-leopard-snow-leopard/</loc>
+        <loc>https://blog.jongallant.com/2012/09/upgrade-from-leopard-to-snow-leopard/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -847,7 +855,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/09/upgrade-from-leopard-to-snow-leopard/</loc>
+        <loc>https://blog.jongallant.com/2012/09/upgrade-lion-from-leopard-snow-leopard/</loc>
         <lastmod>2017-12-19T02:20:11.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1463,6 +1471,14 @@
     </url>
 
     <url>
+        <loc>https://blog.jongallant.com/2013/06/visio-shape-lock-protection-layers/</loc>
+        <lastmod>2016-12-29T03:37:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://blog.jongallant.com/2012/07/visual-studio-2012-close-all-documents/</loc>
         <lastmod>2016-12-29T03:37:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1471,7 +1487,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/06/visio-shape-lock-protection-layers/</loc>
+        <loc>https://blog.jongallant.com/2012/07/visual-studio-extension-update-button/</loc>
         <lastmod>2016-12-29T03:37:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1488,14 +1504,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/2011/03/visual-studio-search-and-replace-regex/</loc>
-        <lastmod>2016-12-29T03:37:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/2012/07/visual-studio-extension-update-button/</loc>
         <lastmod>2016-12-29T03:37:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1543,6 +1551,14 @@
     </url>
 
     <url>
+        <loc>https://blog.jongallant.com/2013/09/windows-81-targus-acp71-asus-ux31a/</loc>
+        <lastmod>2016-12-29T03:37:02.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://blog.jongallant.com/2011/03/windows-explorer-raw-x64/</loc>
         <lastmod>2016-12-29T03:37:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1552,14 +1568,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/2012/11/windows-media-player-overdrive-error/</loc>
-        <lastmod>2016-12-29T03:37:02.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/2013/09/windows-81-targus-acp71-asus-ux31a/</loc>
         <lastmod>2016-12-29T03:37:02.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1599,7 +1607,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2011/07/tfs-validate-area-and-iteration-paths/</loc>
+        <loc>https://blog.jongallant.com/2012/01/tfs-quickly-open-new-query-form/</loc>
         <lastmod>2016-12-29T03:37:01.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1607,7 +1615,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/01/tfs-quickly-open-new-query-form/</loc>
+        <loc>https://blog.jongallant.com/2011/07/tfs-validate-area-and-iteration-paths/</loc>
         <lastmod>2016-12-29T03:37:01.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1647,14 +1655,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2014/03/adobe-reader-ink-tabtip-exe/</loc>
-        <lastmod>2016-12-29T03:37:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2015/08/amazon-change-wish-list-name/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1663,7 +1663,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/09/angularjs-crud-grid-v4/</loc>
+        <loc>https://blog.jongallant.com/2014/03/adobe-reader-ink-tabtip-exe/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1695,7 +1695,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/10/angularjs-crud-grid-v7-lookup-tables/</loc>
+        <loc>https://blog.jongallant.com/2013/09/angularjs-crud-grid-v4/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1712,6 +1712,14 @@
 
     <url>
         <loc>https://blog.jongallant.com/2014/12/arduino-wifi-shield-firmware-upgrade/</loc>
+        <lastmod>2016-12-29T03:37:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2013/10/angularjs-crud-grid-v7-lookup-tables/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1751,7 +1759,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/06/borrow-audiobooks-from-library-iphone/</loc>
+        <loc>https://blog.jongallant.com/2013/08/bootswatch-mvc/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1759,7 +1767,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/08/bootswatch-mvc/</loc>
+        <loc>https://blog.jongallant.com/2012/06/borrow-audiobooks-from-library-iphone/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1879,7 +1887,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/02/gnutls-error-53-error-push-function/</loc>
+        <loc>https://blog.jongallant.com/2012/06/gmail-inline-images-from-clipboard/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -1887,7 +1895,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/06/gmail-inline-images-from-clipboard/</loc>
+        <loc>https://blog.jongallant.com/2013/02/gnutls-error-53-error-push-function/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2047,7 +2055,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2016/07/openlivewriter-dropbox/</loc>
+        <loc>https://blog.jongallant.com/2012/08/nuget-dont-clear-search-textbox/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2055,7 +2063,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/08/nuget-dont-clear-search-textbox/</loc>
+        <loc>https://blog.jongallant.com/2016/07/openlivewriter-dropbox/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2103,7 +2111,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2011/10/photosync-error/</loc>
+        <loc>https://blog.jongallant.com/2013/05/pluralsight-playback-speed/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2111,7 +2119,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/05/pluralsight-playback-speed/</loc>
+        <loc>https://blog.jongallant.com/2011/10/photosync-error/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2144,6 +2152,14 @@
 
     <url>
         <loc>https://blog.jongallant.com/2012/01/remote-assembly-load/</loc>
+        <lastmod>2016-12-29T03:37:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2016/08/rpi3-no-bluetooth-adapter-found/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2200,14 +2216,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/2016/02/solution-port-443-is-in-use/</loc>
-        <lastmod>2016-12-29T03:37:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/2016/08/rpi3-no-bluetooth-adapter-found/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2311,7 +2319,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/06/tfs-cannot-delete-field-referenced/</loc>
+        <loc>https://blog.jongallant.com/2011/09/tfs-bulk-updates/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2327,7 +2335,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2011/09/tfs-bulk-updates/</loc>
+        <loc>https://blog.jongallant.com/2012/06/tfs-cannot-delete-field-referenced/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2343,7 +2351,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2011/12/tfs-easy-changeset-details/</loc>
+        <loc>https://blog.jongallant.com/2012/06/tfs-how-to-update-read-only-fields/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2351,7 +2359,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/06/tfs-how-to-update-read-only-fields/</loc>
+        <loc>https://blog.jongallant.com/2011/12/tfs-easy-changeset-details/</loc>
         <lastmod>2016-12-29T03:37:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2983,7 +2991,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2009/05/format-of-initialization-string/</loc>
+        <loc>https://blog.jongallant.com/2013/01/fitocracy-delete-account/</loc>
         <lastmod>2016-12-27T16:00:57.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -2991,7 +2999,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2013/01/fitocracy-delete-account/</loc>
+        <loc>https://blog.jongallant.com/2009/05/format-of-initialization-string/</loc>
         <lastmod>2016-12-27T16:00:57.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3207,14 +3215,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2009/06/how-to-create-new-category-in-outlook/</loc>
-        <lastmod>2016-12-27T15:51:35.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/2011/03/how-to-turn-off-sony-ic-recorder/</loc>
         <lastmod>2016-12-27T15:51:35.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -3232,6 +3232,14 @@
 
     <url>
         <loc>https://blog.jongallant.com/2013/03/ie10-pageclientvalidate/</loc>
+        <lastmod>2016-12-27T15:51:35.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/2009/06/how-to-create-new-category-in-outlook/</loc>
         <lastmod>2016-12-27T15:51:35.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3279,7 +3287,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2011/07/modify-tfs-query-with-c/</loc>
+        <loc>https://blog.jongallant.com/2009/04/mobile-web-design-book-references/</loc>
         <lastmod>2016-12-27T15:51:35.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3287,7 +3295,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2009/04/mobile-web-design-book-references/</loc>
+        <loc>https://blog.jongallant.com/2011/07/modify-tfs-query-with-c/</loc>
         <lastmod>2016-12-27T15:51:35.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3559,7 +3567,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2008/03/skydrive-5-gb-free/</loc>
+        <loc>https://blog.jongallant.com/2006/11/slow-jerky-cursor-on-virtual-machine/</loc>
         <lastmod>2016-12-27T06:12:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3567,7 +3575,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2006/11/slow-jerky-cursor-on-virtual-machine/</loc>
+        <loc>https://blog.jongallant.com/2008/03/skydrive-5-gb-free/</loc>
         <lastmod>2016-12-27T06:12:45.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3815,7 +3823,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2007/03/wpfe-server-deploy/</loc>
+        <loc>https://blog.jongallant.com/2012/01/wpf-datagrid-not-showing-items/</loc>
         <lastmod>2016-12-26T00:20:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -3823,7 +3831,7 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/2012/01/wpf-datagrid-not-showing-items/</loc>
+        <loc>https://blog.jongallant.com/2007/03/wpfe-server-deploy/</loc>
         <lastmod>2016-12-26T00:20:10.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
