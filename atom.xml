@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2017-12-30T16:20:50.177Z</updated>
+  <updated>2018-01-04T14:22:16.582Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python Lessons Learned. Read This Before You Start Building a Distributable Python Package</title>
+    <link href="https://blog.jongallant.com/2018/01/python-lessons-learned/"/>
+    <id>https://blog.jongallant.com/2018/01/python-lessons-learned/</id>
+    <published>2018-01-04T06:14:25.000Z</published>
+    <updated>2018-01-04T14:22:16.582Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I just published my first official distributable &lt;a href=&quot;https://pypi.python.org/pypi/azure-iot-edge-dev-tool&quot; target=&quot;_blank&quot; rel=&quot;exte
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to &#39;Value cannot be null. Parameter name: path1&#39; with dotnet and tox</title>
@@ -589,30 +611,6 @@ My team is hiring developers in the high-scale data space that have experience b
     <summary type="html">
     
       &lt;p&gt;As part of your normal Raspberry Pi dev workflow you’re going to want to access the files of the Raspberry Pi from your host dev machine.
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Remote Desktop into Raspberry Pi with RealVNC</title>
-    <link href="https://blog.jongallant.com/2017/09/raspberrypi-remote-desktop/"/>
-    <id>https://blog.jongallant.com/2017/09/raspberrypi-remote-desktop/</id>
-    <published>2017-09-12T11:59:11.000Z</published>
-    <updated>2017-12-04T22:18:02.260Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;I’ve cleared out this post because the Raspberry Pi documentation site now has docs updated for Stretch.  You can find the Raspberry Pi R
     
     </summary>
     
