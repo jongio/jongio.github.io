@@ -948,7 +948,7 @@ code {
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   background-size: 100% 100%;
-  background-image: url("images/thumb-default.png");
+  background-image: url("/images/logo.png");
 }
 .article-summary .article-summary-inner .article-title {
   margin-bottom: 10px;
