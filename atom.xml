@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-01-08T17:14:00.786Z</updated>
+  <updated>2018-01-12T16:54:20.728Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -16,11 +16,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Azure IoT Edge on Windows Subsystem for Linux (WSL)</title>
+    <link href="https://blog.jongallant.com/2018/01/azure-iot-edge-wsl/"/>
+    <id>https://blog.jongallant.com/2018/01/azure-iot-edge-wsl/</id>
+    <published>2018-01-10T13:32:15.000Z</published>
+    <updated>2018-01-12T16:54:20.728Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;If you try to run the Azure IoT Edge Runtime or the &lt;a href=&quot;https://aka.ms/iotedgedev&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Azure IoT Edge Dev
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
+    
+      <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Azure Functions v2 Now Uses ASP.NET Core Configuration and No Longer Supports ConfigurationManager</title>
     <link href="https://blog.jongallant.com/2018/01/azure-function-config/"/>
     <id>https://blog.jongallant.com/2018/01/azure-function-config/</id>
     <published>2018-01-06T06:56:32.000Z</published>
-    <updated>2018-01-08T17:14:00.786Z</updated>
+    <updated>2018-01-08T17:14:00.000Z</updated>
     
     <summary type="html">
     
@@ -46,7 +72,7 @@
     <link href="https://blog.jongallant.com/2018/01/python-lessons-learned/"/>
     <id>https://blog.jongallant.com/2018/01/python-lessons-learned/</id>
     <published>2018-01-04T06:14:25.000Z</published>
-    <updated>2018-01-04T15:10:57.000Z</updated>
+    <updated>2018-01-04T15:10:57.097Z</updated>
     
     <summary type="html">
     
@@ -68,7 +94,7 @@
     <link href="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/"/>
     <id>https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/</id>
     <published>2017-12-22T13:39:50.000Z</published>
-    <updated>2017-12-30T16:20:50.000Z</updated>
+    <updated>2017-12-30T16:20:50.177Z</updated>
     
     <summary type="html">
     
@@ -95,7 +121,7 @@
     <link href="https://blog.jongallant.com/2017/12/azure-iot-sdk-curl-issue/"/>
     <id>https://blog.jongallant.com/2017/12/azure-iot-sdk-curl-issue/</id>
     <published>2017-12-19T16:20:44.000Z</published>
-    <updated>2017-12-20T02:15:24.000Z</updated>
+    <updated>2017-12-20T02:15:24.335Z</updated>
     
     <summary type="html">
     
@@ -122,7 +148,7 @@
     <link href="https://blog.jongallant.com/2017/11/azure-rest-apis-postman/"/>
     <id>https://blog.jongallant.com/2017/11/azure-rest-apis-postman/</id>
     <published>2017-11-29T19:55:12.000Z</published>
-    <updated>2017-12-19T22:22:26.000Z</updated>
+    <updated>2017-12-19T22:22:26.987Z</updated>
     
     <summary type="html">
     
@@ -148,7 +174,7 @@
     <link href="https://blog.jongallant.com/2017/11/azure-iot-edge-config-file-force-no-passwords-msg/"/>
     <id>https://blog.jongallant.com/2017/11/azure-iot-edge-config-file-force-no-passwords-msg/</id>
     <published>2017-11-28T10:31:44.000Z</published>
-    <updated>2017-12-19T22:25:51.000Z</updated>
+    <updated>2017-12-19T22:25:51.713Z</updated>
     
     <summary type="html">
     
@@ -165,9 +191,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -176,7 +202,7 @@
     <link href="https://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/"/>
     <id>https://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/</id>
     <published>2017-11-21T06:02:47.000Z</published>
-    <updated>2017-12-19T22:18:54.000Z</updated>
+    <updated>2017-12-19T22:18:54.849Z</updated>
     
     <summary type="html">
     
@@ -193,9 +219,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
     
   </entry>
   
@@ -204,7 +230,7 @@
     <link href="https://blog.jongallant.com/2017/11/iphone6-slow-ios11/"/>
     <id>https://blog.jongallant.com/2017/11/iphone6-slow-ios11/</id>
     <published>2017-11-17T12:56:44.000Z</published>
-    <updated>2017-11-17T21:45:51.000Z</updated>
+    <updated>2017-11-17T21:45:51.480Z</updated>
     
     <summary type="html">
     
@@ -226,7 +252,7 @@
     <link href="https://blog.jongallant.com/2017/11/outlook-hangs-when-opening-appointment/"/>
     <id>https://blog.jongallant.com/2017/11/outlook-hangs-when-opening-appointment/</id>
     <published>2017-11-17T10:48:48.000Z</published>
-    <updated>2017-11-17T19:22:33.000Z</updated>
+    <updated>2017-11-17T19:22:33.788Z</updated>
     
     <summary type="html">
     
@@ -248,7 +274,7 @@
     <link href="https://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/"/>
     <id>https://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/</id>
     <published>2017-11-16T14:03:37.000Z</published>
-    <updated>2017-12-04T22:21:46.000Z</updated>
+    <updated>2017-12-04T22:21:46.527Z</updated>
     
     <summary type="html">
     
@@ -271,7 +297,7 @@
     <link href="https://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/"/>
     <id>https://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/</id>
     <published>2017-11-16T12:00:00.000Z</published>
-    <updated>2017-12-19T22:21:01.000Z</updated>
+    <updated>2017-12-19T22:21:01.505Z</updated>
     
     <summary type="html">
     
@@ -300,7 +326,7 @@
     <link href="https://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/"/>
     <id>https://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/</id>
     <published>2017-11-16T09:24:25.000Z</published>
-    <updated>2017-11-29T15:28:23.000Z</updated>
+    <updated>2017-11-29T15:28:23.252Z</updated>
     
     <summary type="html">
     
@@ -322,7 +348,7 @@
     <link href="https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/"/>
     <id>https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/</id>
     <published>2017-11-16T06:55:56.000Z</published>
-    <updated>2017-12-05T06:46:04.000Z</updated>
+    <updated>2017-12-05T06:46:04.566Z</updated>
     
     <summary type="html">
     
@@ -344,7 +370,7 @@
     <link href="https://blog.jongallant.com/2017/11/ssh-into-docker-vm-windows/"/>
     <id>https://blog.jongallant.com/2017/11/ssh-into-docker-vm-windows/</id>
     <published>2017-11-15T06:14:08.000Z</published>
-    <updated>2017-11-15T14:57:37.000Z</updated>
+    <updated>2017-11-15T14:57:37.927Z</updated>
     
     <summary type="html">
     
@@ -366,7 +392,7 @@
     <link href="https://blog.jongallant.com/2017/11/delete-docker-container-log-files/"/>
     <id>https://blog.jongallant.com/2017/11/delete-docker-container-log-files/</id>
     <published>2017-11-15T06:05:34.000Z</published>
-    <updated>2017-12-19T02:20:11.267Z</updated>
+    <updated>2017-12-19T02:20:11.000Z</updated>
     
     <summary type="html">
     
@@ -389,7 +415,7 @@
     <link href="https://blog.jongallant.com/2017/11/raspberrypi-setup/"/>
     <id>https://blog.jongallant.com/2017/11/raspberrypi-setup/</id>
     <published>2017-11-12T08:07:02.000Z</published>
-    <updated>2017-12-05T06:51:43.000Z</updated>
+    <updated>2017-12-05T06:51:43.354Z</updated>
     
     <summary type="html">
     
@@ -414,7 +440,7 @@
     <link href="https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/"/>
     <id>https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/</id>
     <published>2017-11-12T07:01:54.000Z</published>
-    <updated>2017-12-04T22:22:06.000Z</updated>
+    <updated>2017-12-04T22:22:06.992Z</updated>
     
     <summary type="html">
     
@@ -438,7 +464,7 @@
     <link href="https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/"/>
     <id>https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/</id>
     <published>2017-11-08T06:55:44.000Z</published>
-    <updated>2017-11-08T21:52:48.000Z</updated>
+    <updated>2017-11-08T21:52:48.029Z</updated>
     
     <summary type="html">
     
@@ -464,12 +490,13 @@
     <link href="https://blog.jongallant.com/2017/11/from-tile-to-trackr/"/>
     <id>https://blog.jongallant.com/2017/11/from-tile-to-trackr/</id>
     <published>2017-11-08T06:08:52.000Z</published>
-    <updated>2017-11-13T03:56:12.000Z</updated>
+    <updated>2018-01-10T21:31:22.000Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;trackr.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I just made the switch from &lt;a href=&quot;https://www.thetileapp.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tile
+&lt;p&gt;&lt;strong&gt;Update: 1/8/18:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://support.thetrackr.com/hc/en-us/articles/115
     
     </summary>
     
@@ -487,7 +514,7 @@
     <link href="https://blog.jongallant.com/2017/11/microsoft-hiring-high-scale-data-services-developers/"/>
     <id>https://blog.jongallant.com/2017/11/microsoft-hiring-high-scale-data-services-developers/</id>
     <published>2017-11-01T13:22:04.000Z</published>
-    <updated>2017-11-16T20:27:05.000Z</updated>
+    <updated>2017-11-16T20:27:05.778Z</updated>
     
     <summary type="html">
     
@@ -512,7 +539,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="https://blog.jongallant.com/2017/09/unknown-shorthand-flag/"/>
     <id>https://blog.jongallant.com/2017/09/unknown-shorthand-flag/</id>
     <published>2017-09-17T21:28:42.000Z</published>
-    <updated>2017-09-18T04:55:28.000Z</updated>
+    <updated>2017-09-18T04:55:28.278Z</updated>
     
     <summary type="html">
     
@@ -534,7 +561,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="https://blog.jongallant.com/2017/09/dotnet-core-console-app-create-exe-instead-of-dll/"/>
     <id>https://blog.jongallant.com/2017/09/dotnet-core-console-app-create-exe-instead-of-dll/</id>
     <published>2017-09-15T14:48:10.000Z</published>
-    <updated>2017-09-15T22:03:32.000Z</updated>
+    <updated>2017-09-15T22:03:32.633Z</updated>
     
     <summary type="html">
     
@@ -557,7 +584,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="https://blog.jongallant.com/2017/09/raspberrypi-change-password/"/>
     <id>https://blog.jongallant.com/2017/09/raspberrypi-change-password/</id>
     <published>2017-09-14T23:19:03.000Z</published>
-    <updated>2017-12-04T22:21:31.000Z</updated>
+    <updated>2017-12-04T22:21:31.508Z</updated>
     
     <summary type="html">
     
@@ -581,7 +608,7 @@ My team is hiring developers in the high-scale data space that have experience b
     <link href="https://blog.jongallant.com/2017/09/raspberrypi-ssh/"/>
     <id>https://blog.jongallant.com/2017/09/raspberrypi-ssh/</id>
     <published>2017-09-14T23:07:01.000Z</published>
-    <updated>2017-12-04T22:19:50.000Z</updated>
+    <updated>2017-12-04T22:19:50.672Z</updated>
     
     <summary type="html">
     
@@ -595,33 +622,6 @@ My team is hiring developers in the high-scale data space that have experience b
     
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Run Docker on Raspberry Pi</title>
-    <link href="https://blog.jongallant.com/2017/09/raspberrypi-docker/"/>
-    <id>https://blog.jongallant.com/2017/09/raspberrypi-docker/</id>
-    <published>2017-09-14T13:57:01.000Z</published>
-    <updated>2017-12-19T02:20:11.424Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.&lt;/p&gt;
-&lt;p&gt;You can execute the followin
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
     
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
