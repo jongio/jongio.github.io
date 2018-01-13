@@ -19,7 +19,7 @@ The purpose of this post is to show you how to take an existing open source d3 v
 
 The purpose of this post is to show you how to take an existing open source d3 visual and c">
 <meta property="og:image" content="https://raw.githubusercontent.com/jonbgallant/PowerBI-visuals-liquidFillGauge/master/assets/thumbnail.png">
-<meta property="og:updated_time" content="2017-12-19T02:20:11.000Z">
+<meta property="og:updated_time" content="2018-01-13T15:54:08.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing">
 <meta name="twitter:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
@@ -206,10 +206,10 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <p>This is Part 1 of the series, here are the other posts:</p>
 </blockquote>
 <blockquote>
-<p>2. <a href="https://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings</a></p>
+<p>2. <a href="/2016/09/powerbi-custom-visual-from-existing-d3-2.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings</a></p>
 </blockquote>
 <blockquote>
-<p>3. <a href="https://blog.jongallant.com/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
+<p>3. <a href="/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
 </blockquote>
 <p>You can download the visual and use within your reports here: <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases/" title="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases/" target="_blank" rel="external">https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases/</a><br>
 <img src="https://raw.githubusercontent.com/jonbgallant/PowerBI-visuals-liquidFillGauge/master/assets/thumbnail.png" alt=""></p>
@@ -217,7 +217,7 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <p>I walk through each step below – feel free to skim through it, use it as a reference or follow along step-by-step.</p>
 </blockquote>
 <h3 id="setup-power-bi-custom-visual-dev-environment"><a class="header-anchor" href="#setup-power-bi-custom-visual-dev-environment"></a>Setup Power BI Custom Visual Dev Environment</h3>
-<p>1. Follow the instructions here to get your dev env setup: <a href="https://blog.jongallant.com/2016/09/powerbi-custom-visual-dev.html" title="https://blog.jongallant.com/2016/09/powerbi-custom-visual-dev.html">https://blog.jongallant.com/2016/09/powerbi-custom-visual-dev.html</a></p>
+<p>1. Follow the instructions here to get your dev env setup: <a href="/2016/09/powerbi-custom-visual-dev.html" title="/2016/09/powerbi-custom-visual-dev.html">/2016/09/powerbi-custom-visual-dev.html</a></p>
 <h2 id="clone-repo"><a class="header-anchor" href="#clone-repo"></a>Clone Repo</h2>
 <p>You can complete this exercise without cloning the repo, but if you want to get all the code and easily copy and paste, then you’ll want to clone.</p>
 <script src="https://gist.github.com/jonbgallant/62ad919b9609349b73f9fa161ea97ec9.js"></script>
@@ -231,7 +231,7 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <h2 id="reference-d3-typings"><a class="header-anchor" href="#reference-d3-typings"></a>Reference d3 Typings</h2>
 <p>You create Custom Visuals using TypeScript and d3, but d3 isn’t referenced by default in the new Custom Visual SDK. Here’s How to get it installed and referenced so TypeScript can see it.</p>
 <blockquote>
-<p>Go to this post for instructions on how to add d3 to your visual and then come back here:  <a href="https://blog.jongallant.com/2016/11/pbiviz-12-d3-35-reference.html">https://blog.jongallant.com/2016/11/pbiviz-12-d3-35-reference.html</a></p>
+<p>Go to this post for instructions on how to add d3 to your visual and then come back here:  <a href="/2016/11/pbiviz-12-d3-35-reference.html">/2016/11/pbiviz-12-d3-35-reference.html</a></p>
 </blockquote>
 <h2 id="add-liquidfillgauge-js-file"><a class="header-anchor" href="#add-liquidfillgauge-js-file"></a>Add liquidFillGauge.js File</h2>
 <p>1. Create a file in the “src” folder called “liquidFillGauge.js”.<br>

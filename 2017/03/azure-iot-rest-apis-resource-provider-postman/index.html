@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/000119.png">
-<meta property="og:updated_time" content="2017-12-19T22:22:16.554Z">
+<meta property="og:updated_time" content="2018-01-13T15:54:08.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
 <meta name="twitter:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
@@ -191,7 +191,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: <a href="https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/">How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman</a>. Since then, I’ve really been turned on to the idea that Postman and Newman are excellent tools for communicating proper REST API usage to customers and not just a REST execution utility. Not only does it show you everything you need to execute the calls, it actually provides you with a mechanism to execute them from within Postman App or on the server via Newman.  You, as an API creator, want to limit the amount of friction your customers have to go through to use your APIs. Especially with APIs that require authentication or SAS/SigV4 token generation code, like Azure and AWS do.</p>
+            <p>I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: <a href="/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/">How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman</a>. Since then, I’ve really been turned on to the idea that Postman and Newman are excellent tools for communicating proper REST API usage to customers and not just a REST execution utility. Not only does it show you everything you need to execute the calls, it actually provides you with a mechanism to execute them from within Postman App or on the server via Newman.  You, as an API creator, want to limit the amount of friction your customers have to go through to use your APIs. Especially with APIs that require authentication or SAS/SigV4 token generation code, like Azure and AWS do.</p>
 <p>I think there is great value in being able to point your customers to a Postman Collection URL that allows them to quickly execute all of your APIs and start using them with very little ramp up.</p>
 <blockquote>
 <p>Click the following “Run with Postman” image if you want to skip right to the Azure IoT REST APIs Postman Collection</p>
@@ -243,7 +243,7 @@
 <p>Copy your <strong>Subscription Id</strong>, which is a GUID, to the <strong>subscriptionId</strong> Postman Environment variable.</p>
 </blockquote>
 <h3 id="2-create-azure-active-directory-aad-app"><a class="header-anchor" href="#2-create-azure-active-directory-aad-app"></a>2. Create Azure Active Directory (AAD) App</h3>
-<p>You will need an AAD app to call any of the Resource Provider REST APIs. Please follow this blog post to create your AAD app: <a href="https://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a>.</p>
+<p>You will need an AAD app to call any of the Resource Provider REST APIs. Please follow this blog post to create your AAD app: <a href="/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a>.</p>
 <p>When you come back to this post, you will have the following variables.</p>
 <ul>
 <li><strong>clientId</strong></li>

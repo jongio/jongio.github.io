@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png">
-<meta property="og:updated_time" content="2017-12-19T02:20:11.000Z">
+<meta property="og:updated_time" content="2018-01-13T15:54:08.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Do I always have to call Dispose() on my DbContext objects? Nope">
 <meta name="twitter:description" content="Like I mentioned in my post “Microsoftie Perk #9 – Access to product team devs”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that pe">
@@ -191,7 +191,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Like I mentioned in my post “<a href="https://blog.jongallant.com/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a href="http://romiller.com/" target="_blank" rel="external">Rowan Miller</a> and <a href="http://blogs.msdn.com/diego/" target="_blank" rel="external">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
+            <p>Like I mentioned in my post “<a href="/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>”, it is awesome to be able to ping the guys who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a href="http://romiller.com/" target="_blank" rel="external">Rowan Miller</a> and <a href="http://blogs.msdn.com/diego/" target="_blank" rel="external">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
 <p><em>**“Should I always call Dispose() on my DbContext objects?”  **</em></p>
 <p>Before I talked with the devs on the EF team my answer was always a resounding “of course!”. But it’s not true with DbContext. You don’t need to be religious about calling Dispose on your DbContext objects. Even though it does implement IDisposable, it only implements it so you can call Dispose as a safeguard in some special cases. By default DbContext automatically manages the connection for you. Read to the end to hear the full story and see what the EF devs had to say about it.</p>
 <p><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png" alt=""></p>

@@ -21,7 +21,7 @@ Microsoft ASP.NET Web API (RTM) references Newtonsoft.Json (&amp;gt;= 4.5.6) (AK
 Twitterizer 2 references Newtonsoft.Json (=4.5.5)
 You can’t have both Newtonsoft.Json (&amp;gt;= 4.5.6) AND">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/5b4ba5fe39de_542C/image.png">
-<meta property="og:updated_time" content="2017-12-19T02:20:11.000Z">
+<meta property="og:updated_time" content="2018-01-13T15:54:08.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jon Gallant">
 <meta name="twitter:description" content="Problem
@@ -196,7 +196,7 @@ You can’t have both Newtonsoft.Json (&amp;gt;= 4.5.6) AND">
 <p>You can’t have both Newtonsoft.Json (&gt;= 4.5.6) AND Newtonsoft.Json (=4.5.5) NuGet packages installed in the same project.</p>
 <p>That means you CAN’T have WebApi and Twitterizer in the same project.</p>
 <h3 id="solution"><a class="header-anchor" href="#solution"></a>Solution</h3>
-<p>You could create separate projects like I mentioned in <a href="https://blog.jongallant.com/2012/08/newtonsoft-version-twitterizer-webapi.html">this post</a> or you can get the Twitterizer source from GitHub, change the <a href="http://Json.net" target="_blank" rel="external">Json.net</a> reference, compile it and then reference that Twitterizer2.dll from your project instead of using the NuGet package. Here’s how to do the that:</p>
+<p>You could create separate projects like I mentioned in <a href="/2012/08/newtonsoft-version-twitterizer-webapi.html">this post</a> or you can get the Twitterizer source from GitHub, change the <a href="http://Json.net" target="_blank" rel="external">Json.net</a> reference, compile it and then reference that Twitterizer2.dll from your project instead of using the NuGet package. Here’s how to do the that:</p>
 <p>Keep in mind:</p>
 <ul>
 <li>Use this at your own risk. I haven’t tested it fully, but it seems to work alright after a couple of smoke tests.</li>
