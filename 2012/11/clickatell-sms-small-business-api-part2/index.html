@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to integrate Clickatell&#39;s SMS Small Business API into a .NET application | Jon Gallant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="review" />
+    
+    <meta name="description" content="This is the second post in a two part series on integrating SMS functionality into an application. In the first post, “A high-level look into Clickatell’s new SMS Small Business API”, I focused on th">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to integrate Clickatell's SMS Small Business API into a .NET application">
+<meta property="og:url" content="https://blog.jongallant.com/2012/11/clickatell-sms-small-business-api-part2/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="This is the second post in a two part series on integrating SMS functionality into an application. In the first post, “A high-level look into Clickatell’s new SMS Small Business API”, I focused on th">
+<meta property="og:image" content="https://blog.jongallant.com/images/blog/How-to-integrate-Clickat.NET-application_1267/image.png">
+<meta property="og:updated_time" content="2018-01-13T15:54:08.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to integrate Clickatell's SMS Small Business API into a .NET application">
+<meta name="twitter:description" content="This is the second post in a two part series on integrating SMS functionality into an application. In the first post, “A high-level look into Clickatell’s new SMS Small Business API”, I focused on th">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/blog/How-to-integrate-Clickat.NET-application_1267/image.png">
+    
+
+    
+        <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+</head>
+
+
+    <body>
+        <div id="wrap">
+            <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">tech.leadership.music.coffee</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+                <div class="container">
+                    <div class="main-body container-inner">
+                        <div class="main-body-inner">
+                            <section id="main">
+                                
+                                    <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                                        
+                                            <div class="main-body-content">
+                                                <div class="banner-ad">
+                                                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                                    <!-- banner -->
+                                                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="8838481977" data-ad-format="auto"></ins>
+                                                    <script>
+                                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                                    </script>
+                                                </div>
+                                                <article id="post-clickatell-sms-small-business-api-part2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to integrate Clickatell&#39;s SMS Small Business API into a .NET application
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2012/11/clickatell-sms-small-business-api-part2/" class="article-date">
+    <time datetime="2012-11-01T01:47:00.000Z" itemprop="datePublished">2012-11-01</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/review/">review</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>This is the second post in a two part series on integrating SMS functionality into an application. In the first post, “<a href="/2012/11/clickatell-sms-small-business-api-part1.html">A high-level look into Clickatell’s new SMS Small Business API</a>”, I focused on the analysis I did into Clickatell’s Small Business API. This post focuses on the options available and technical details for integrating the API into your application.</p>
+</blockquote>
+<hr>
+<p>There are many options available for integrating <a href="http://americas.clickatell.com/solutions/small-business-api/" target="_blank" rel="external">Clickatell’s Small Business API</a> into your application and Clickatell’s <a href="http://www.clickatell.com/apis-scripts/" target="_blank" rel="external">APIs &amp; Scripts</a> page has all the info you need to get started. All of the specifications for all the protocols are available on their “<a href="http://www.clickatell.com/help-support/developers-central/" target="_blank" rel="external">Developer’s Central</a>” page.<br>
+The protocols available are: HTTP/S, XML, SOAP and COM object. There are other protocols listed on that page, like FTP and SMTP, but they don’t apply to the Small Business API. They have sample scripts available for PhP, VBScript, C#, <a href="http://VB.NET" target="_blank" rel="external">VB.NET</a>, Cold Fusion and Oracle and there are third party libraries available for Java, Perl, Ruby and Applescript.</p>
+<h1>WHAT PROTOCOLS ARE AVAILABLE?</h1>
+<h3 id="http"><a class="header-anchor" href="#http"></a>HTTP:</h3>
+<p>The HTTP option is pretty straightforward. Just pass your api_id, user, password, to and text to the /http/sendmsg endpoint and it will return a status and guid for the message.</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">http:<span class="regexp">//</span>api.clickatell.com<span class="regexp">/http/</span>sendmsg?api_id=xxxx&amp;amp;user=xxxx&amp;amp;password=xxxx&amp;amp;to=xxxx&amp;amp;text=xxxx</span><br></pre></td></tr></table></figure>
+<h3 id="xml"><a class="header-anchor" href="#xml"></a>XML:</h3>
+<p>This is very similar to the HTTP endpoint, but instead of passing the data as individual querystring parameters you pass one “data” parameter with xml.<br>
+The only reason I’d want to use XML instead of HTTP is if I have some client serialization code that already spits out XML. Otherwise, HTTP is more intuitive and requires less bandwidth.</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">http://api.clickatell.com/xml/xml?data=<span class="tag">&lt;<span class="name">clickAPI</span>&gt;</span><span class="tag">&lt;<span class="name">sendMsg</span>&gt;</span><span class="tag">&lt;<span class="name">api_id</span>&gt;</span>1<span class="tag">&lt;/<span class="name">api_id</span>&gt;</span><span class="tag">&lt;<span class="name">user</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">user</span>&gt;</span><span class="tag">&lt;<span class="name">password</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">password</span>&gt;</span><span class="tag">&lt;<span class="name">to</span>&gt;</span>448311234567<span class="tag">&lt;/<span class="name">to</span>&gt;</span><span class="tag">&lt;<span class="name">text</span>&gt;</span>Meet me outside<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;<span class="name">from</span>&gt;</span>me<span class="tag">&lt;/<span class="name">from</span>&gt;</span><span class="tag">&lt;/<span class="name">sendMsg</span>&gt;</span><span class="tag">&lt;/<span class="name">clickAPI</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="soap"><a class="header-anchor" href="#soap"></a>SOAP:</h3>
+<p>It looks complex, but this message is dynamically generated from the WSDL proxy.</p>
+ <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"> <span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"ISO-8859-1"</span><span class="meta">?&gt;</span></span> <span class="tag">&lt;<span class="name">SOAP-ENV:Envelope</span> <span class="attr">SOAP-ENV:encodingStyle</span>=<span class="string">"http://schemas.xmlsoap.org/soap/encoding/"</span> <span class="attr">xmlns:SOAP-ENV</span>=<span class="string">"http://schemas.xmlsoap.org/soap/envelope/"</span> <span class="attr">xmlns:xsd</span>=<span class="string">"http://www.w3.org/2001/XMLSchema"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:SOAP-ENC</span>=<span class="string">"http://schemas.xmlsoap.org/soap/encoding/"</span> <span class="attr">xmlns:tns</span>=<span class="string">"soap.clickatell.com"</span>&gt;</span> <span class="tag">&lt;<span class="name">SOAP-ENV:Body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tns:sendmsg</span> <span class="attr">xmlns:tns</span>=<span class="string">"soap.clickatell.com"</span>&gt;</span> <span class="tag">&lt;<span class="name">session_id</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>/&gt;</span> <span class="tag">&lt;<span class="name">api_id</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>&gt;</span>1234<span class="tag">&lt;/<span class="name">api_id</span>&gt;</span> <span class="tag">&lt;<span class="name">user</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">user</span>&gt;</span> <span class="tag">&lt;<span class="name">password</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">to</span> <span class="attr">xsi:type</span>=<span class="string">"SOAP-ENC:Array"</span> <span class="attr">SOAP-ENC:arrayType</span>=<span class="string">"xsd:string[2]"</span>&gt;</span> <span class="tag">&lt;<span class="name">item</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>&gt;</span>2799912345<span class="tag">&lt;/<span class="name">item</span>&gt;</span> <span class="tag">&lt;<span class="name">item</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>&gt;</span>27999123134<span class="tag">&lt;/<span class="name">item</span>&gt;</span> <span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">from</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>&gt;</span>me<span class="tag">&lt;/<span class="name">from</span>&gt;</span> <span class="tag">&lt;<span class="name">text</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>&gt;</span>Initial test message<span class="tag">&lt;/<span class="name">text</span>&gt;</span> <span class="tag">&lt;<span class="name">concat</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">deliv_ack</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">callback</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">deliv_time</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">max_credits</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:float"</span>/&gt;</span> <span class="tag">&lt;<span class="name">req_feat</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">queue</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">escalate</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">mo</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">cliMsgId</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>/&gt;</span> <span class="tag">&lt;<span class="name">unicode</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;<span class="name">msg_type</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>/&gt;</span> <span class="tag">&lt;<span class="name">udh</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>/&gt;</span> <span class="tag">&lt;<span class="name">data</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:string"</span>/&gt;</span> <span class="tag">&lt;<span class="name">validity</span> <span class="attr">xsi:nil</span>=<span class="string">"true"</span> <span class="attr">xsi:type</span>=<span class="string">"xsd:int"</span>/&gt;</span> <span class="tag">&lt;/<span class="name">tns:sendmsg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">SOAP-ENV:Body</span>&gt;</span> <span class="tag">&lt;/<span class="name">SOAP-ENV:Envelope</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="com"><a class="header-anchor" href="#com"></a>COM:</h3>
+<p>The COM option will be a good one to choose if you have legacy software that runs in a COM world. You could obviously get it to work with modern technologies, but you still have DLL HELL to consider. You have to register the DLL, create an INTEROP and go from there. I haven’t looked at COM in so long, but I still have nightmares about it.</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">oSMS<span class="selector-class">.SendSimpleSMS</span> API_ID, <span class="string">"username"</span>, <span class="string">"password"</span>, <span class="string">"278…"</span>, <span class="string">"My first SMS"</span></span><br></pre></td></tr></table></figure>
+<h1>WHICH PROTOCOL SHOULD I CHOOSE?</h1>
+<p>If you are using Java, Perl, Ruby or Applescript then the clear winner is to use one of the 3<sup>rd</sup> party libraries that you can find on the <a href="http://www.clickatell.com/apis-scripts/scripts/" target="_blank" rel="external">Scripts</a> page.<br>
+Nothing for .NET. Yes, they do have examples on how one would call their API using C#, but that is just code to issue a WebRequest.<br>
+My recommendation for Clickatell is to create a .NET library and get it up on NuGet.<br>
+So, as it stands right now, if you are using .NET then you are left with these options:</p>
+<ol>
+<li>HTTP or XML  </li><li>Write your own .NET 3<sup>rd</sup> Party Library  </li><li>COM  </li><li>SOAP</li>
+</ol>
+<h3 id="http-or-xml"><a class="header-anchor" href="#http-or-xml"></a>HTTP or XML</h3>
+<p>If you use HTTP or XML then you have to write your own code to process the response. Yes, Clickatell did a nice job telling you what all the responses would be in their <a href="http://www.clickatell.com/downloads/http/Clickatell_HTTP.pdf" target="_blank" rel="external">HTTP</a> and <a href="http://www.clickatell.com/downloads/xml/Clickatell_XML.pdf" target="_blank" rel="external">XML</a> documentation, but you are probably like me and don’t have the time to write the code to process all the responses. Here’s what a typical response looks like:<br>
+<img src="/images/blog/How-to-integrate-Clickat.NET-application_1267/image.png" alt=""><br>
+If you just need a very simple “fire and forget” SMS notification implementation and don’t care if it fails or succeeds then this is the best way to go. This is also a great option if you want to create an SMS from script. My recommendation for Clickatell on this one is to at least return the response as JSON so they are easily consumable from script.</p>
+<h3 id="write-your-own-net-3-sup-rd-sup-party-library"><a class="header-anchor" href="#write-your-own-net-3-sup-rd-sup-party-library"></a>WRITE YOUR OWN .NET 3<sup>RD</sup> PARTY LIBRARY</h3>
+<p>Just like the HTTP or XML option you are left to write a ton of code to wrap one of the protocols. This would be a big undertaking…more than I would expect any of my readers to implement. If you do decide to go this route, then start copying from the <a href="http://smsj.sourceforge.net/" target="_blank" rel="external">Java</a> 3<sup>rd</sup> party library.</p>
+<h3 id="com-v2"><a class="header-anchor" href="#com-v2"></a>COM</h3>
+<p>Like most of you out there I got bit by COM in the late 90s so I try to avoid it like the plague. But, if that is your preference then go for it. Just be warned that you’ll need to be concerned with DLL registration and trust levels. The DLL might require full trust, something that isn’t supported in most shared hosting environments.<br>
+They provide an MSI that installs the DLLs for you, but again installing an MSI in a shared hosting environment probably isn’t supported.</p>
+<h3 id="soap-v2"><a class="header-anchor" href="#soap-v2"></a>SOAP</h3>
+<p>It’s heavy, big and complex, but given all the other options currently available I think SOAP is probably the best option for .NET developers, because…<br>
+1. You can create a proxy that behaves like your own 3<sup>rd</sup> party library<br>
+2. You don’t have to write an HTTP endpoint wrapper WebRequest code<br>
+3. You don’t have to deal with COM and DLL hell.<br>
+You still have to process all the response codes, but you’ll have to do that with any of the options.</p>
+<h1>How to USE THE SOAP ENDPOINT IN A .NET APPLICATION</h1>
+<p>1. Open your app and add a service reference<br>
+<img src="/images/blog/How-to-integrate-Clickat.NET-application_1267/image_3.png" alt=""><br>
+2. Enter the Clickatell SOAP URL<br>
+<a href="http://api.clickatell.com/soap/webservice.php?WSDL" target="_blank" rel="external">http://api.clickatell.com/soap/webservice.php?WSDL</a><br>
+<img src="/images/blog/How-to-integrate-Clickat.NET-application_1267/image_4.png" alt=""><br>
+3. Click “Go”. Enter a Namespace and click OK.<br>
+That will generate your C# proxy and give you a class called PushServerWSPortTypeClient. You’ll use this class for all your SMS needs.<br>
+<img src="/images/blog/How-to-integrate-Clickat.NET-application_1267/image_5.png" alt=""></p>
+<p>4. Add a using statement: (This will be different for your app)</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> ClickatellSample.<span class="built_in">Console</span>.ClickatellProxy;</span><br></pre></td></tr></table></figure>
+<p>5. Instaniate a new PushServerWSPortTypeClient class:</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">var<span class="built_in"> client </span>= new PushServerWSPortTypeClient();</span><br></pre></td></tr></table></figure>
+<p>6. Call the auth method to get a session Id;</p>
+<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> authResponse = client.auth([app_id], <span class="string">"[username]"</span>, <span class="string">"[password]"</span>); </span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">string</span>.IsNullOrWhiteSpace(authResponse)</span><br><span class="line"></span><br><span class="line">&amp;&amp; authResponse.StartsWith(<span class="string">"OK"</span>))</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//authResponse = "OK: [sessionId]"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//authResponse is prefixed with an OK status code and then the sessionId so you need to parse it out</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colonIndex = authResponse.IndexOf(<span class="string">":"</span>, StringComparison.Ordinal);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (colonIndex != <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sessionId = authResponse.Substring(colonIndex + <span class="number">2</span>); <span class="comment">// Add two to trim the colon and the space after it ": "</span></span><br></pre></td></tr></table></figure>
+<p>7. Call the sendmsg method to send the SMS.</p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">var responses = client.sendmsg( </span><br><span class="line">sessionId, [app_id],<span class="string">"[username]"</span>,<span class="string">"[password]"</span>, new <span class="type">string</span>[] &#123; <span class="string">"[to]"</span> &#125;,<span class="string">"[from]"</span>,<span class="string">"Test SMS"</span>,</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="type">string</span>.Empty,<span class="number">0</span>,<span class="type">string</span>.Empty,<span class="type">string</span>.Empty,<span class="type">string</span>.Empty,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">foreach (var response in responses)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//response = "ID: [unique id of sms]"</span></span><br><span class="line"></span><br><span class="line">System.Console.WriteLine(response);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here’s the complete code sample:</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> client = new PushServerWSPortTypeClient(); </span><br><span class="line"><span class="keyword">var</span> authResponse = client.auth(123456, <span class="string">"[username]"</span>, "[password]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!string.IsNullOrWhiteSpace(authResponse) &amp;&amp; authResponse.StartsWith(<span class="string">"OK"</span>))</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//authResponse = "OK: [sessionId]" </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//authResponse is prefixed with an OK status code and then the sessionId so you need to parse it out </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> colonIndex = authResponse.IndexOf(<span class="string">":"</span>, StringComparison.Ordinal); </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (colonIndex != -1) </span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> sessionId = authResponse.Substring(colonIndex + 2); <span class="comment">// Add two to trim the colon and the space after it ": " </span></span><br><span class="line"></span><br><span class="line">    System.Console.WriteLine(sessionId); </span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> responses = client.sendmsg( </span><br><span class="line"></span><br><span class="line">        sessionId, 123456, <span class="string">"[username]"</span>, <span class="string">"[password]"</span>, new string[] &#123; <span class="string">"[to]"</span> &#125;,<span class="string">"[from]"</span>,<span class="string">"Test SMS"</span>, </span><br><span class="line"></span><br><span class="line">        0,0,0,0,0,0,0,0,0,string.Empty,0,string.Empty,string.Empty,string.Empty,0); </span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> response <span class="keyword">in</span> responses) </span><br><span class="line"></span><br><span class="line">    &#123; </span><br><span class="line"></span><br><span class="line">        <span class="comment">//response = "ID: [unique id of sms]" </span></span><br><span class="line"></span><br><span class="line">        System.Console.WriteLine(response); </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>FINAL THOUGHTS</h1>
+<p>Clickatell’s Small Business API is great if you want to integrate simple SMS functionality into your application. A simple HTTP request is all you need to send an SMS.</p>
+<p>They are behind the times when it comes to integrating SMS into a .NET application, but you can get HTTP/XML to work with WebRequest or you can create proxies to the COM or SOAP endpoints. I found out through using the endpoints that all of them require you to parse the response, i.e. “OK: [sessionId]”. This is obviously the result of the service being around for a very long time because modern day HTTP endpoints would return a JSON response that looks something like this “{status:‘ok’, sessionId:’[sessionId]}” and the SOAP endpoint would return a strongly typed object. This leaves a lot of work for developers because we have to account for every possible response and parse it appropriately. I was hoping the SOAP endpoint would deal with that for me, but it doesn’t.</p>
+<p>Here’s what I recommend they do to make their service more appealing to .NET developers.</p>
+<ol>
+<li>Create a .NET library</li><li>Put that library up on NuGet so it is easy to install and update</li><li>Parse all the response messages into strongly typed objects and enums.</li><li>Simplify the API. As you can see in my sample above the “sendmsg” method takes 22 parameters, all but 3 are optional.</li>
+</ol>
+<p>I hope this SMS series gave you the information you need to get started with integrating SMS into your application and saved you some time.</p>
+<p>Jon</p>
+<p>_Disclosure of Material Connection: I received one or more of the products or services mentioned above for free in the hope that I would mention it on my blog. Regardless, I only recommend products or services I use personally and believe my readers will enjoy. I am disclosing this in accordance with the <em><a href="http://www.access.gpo.gov/nara/cfr/waisidx_03/16cfr255_03.html" target="_blank" rel="external"><em>Federal Trade Commission’s 16 CFR, Part 255: &quot;Guides Concerning the Use of Endorsements and Testimonials in Advertising.</em></a></em>&quot; _</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                                            </div>
+                                            <div style="width:64%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="728x90" data-zone="ros"
+                                                data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+                            </section>
+                            <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+                
+                    <li>
+                        <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant" target="_blank">
+                            <i class="icon fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    
+                        
+                
+                    <li>
+                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+                        
+                
+                    <li>
+                        <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant" target="_blank">
+                            <i class="icon fa fa-rss"></i>
+                        </a>
+                    </li>
+                    
+                        
+                
+                    <li>
+                        <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant" target="_blank">
+                            <i class="icon fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                    
+                        
+                
+                    <li>
+                        <a class="social-tooltip" title="youtube" href="https://www.youtube.com/channel/UCcEFb5apnJUMC7npvsoozTQ" target="_blank">
+                            <i class="icon fa fa-youtube"></i>
+                        </a>
+                    </li>
+                    
+                        
+        </ul>
+    </div>
+    
+        
+    <nav id="article-nav">
+        
+            <a href="/2012/11/build2012-speakers/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">
+                    newer
+                </strong>
+                <p class="article-nav-title">
+                    
+                        Build 2012 Speaker Blogs, Twitter, Facebook, Google+ &amp; LinkedIn Accounts
+                            
+                </p>
+                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+
+            </a>
+            
+                
+                    <a href="/2012/11/clickatell-sms-small-business-api-part1/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            A High-Level Look into Clickatell&#39;s New SMS Small Business API
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+            
+
+                <div class="widgets-container">
+                    
+                        
+                            <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+                                
+                            <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                
+                                <div style="width:88%;margin:auto;" data-type="ad" data-publisher="lqm.jongallant.site" data-format="300x250" data-zone="ros" data-tags="iot%2cangularjs%2cjavascript%2cnode%2cazureiot%2cazure%2cpowerbi%2cseattle%2cdeveloper%2cmicrosoft%2ctutorials"></div>
+
+                                
+                                    
+
+                                        <div class="rail-ad">
+                                            <!-- rail -->
+                                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="7222147978" data-ad-format="auto"></ins>
+                                            <script>
+                                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                            </script>
+                                        </div>
+                </div>
+
+</aside>
+                        </div>
+                    </div>
+                </div>
+                <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy; 2018 Jon Gallant</p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+                    
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2012/11/clickatell-sms-small-business-api-part2/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+        </div>
+
+        <script type='text/javascript'>
+            function _dmBootstrap(file) {
+                var _dma = document.createElement('script');
+                _dma.type = 'text/javascript';
+                _dma.async = true;
+                _dma.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + file;
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(_dma);
+            }
+            function _dmFollowup(file) { if (typeof DMAds === 'undefined') _dmBootstrap('cdn2.DeveloperMedia.com/a.min.js'); }
+            (function () { _dmBootstrap('cdn1.DeveloperMedia.com/a.min.js'); setTimeout(_dmFollowup, 2000); })();
+        </script>
+    </body>
+
+    </html>

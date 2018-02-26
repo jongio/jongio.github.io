@@ -1095,6 +1095,7 @@ a.article-title:hover {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  table-layout: fixed;
 }
 .article-entry th {
   font-weight: 600;
@@ -1103,7 +1104,8 @@ a.article-title:hover {
 }
 .article-entry td {
   border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  padding: 10px 10px;
+  vertical-align: top;
 }
 .article-entry blockquote {
   color: #000;

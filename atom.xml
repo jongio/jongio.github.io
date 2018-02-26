@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-01-12T16:54:20.000Z</updated>
+  <updated>2018-02-26T20:18:16.877Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure CLI: How to Supress Output When Running Commands</title>
+    <link href="https://blog.jongallant.com/2018/02/azure-cli-suppress-output/"/>
+    <id>https://blog.jongallant.com/2018/02/azure-cli-suppress-output/</id>
+    <published>2018-02-26T21:15:07.000Z</published>
+    <updated>2018-02-26T20:18:16.877Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;By default, when you run &lt;code&gt;az login&lt;/code&gt;, it will output the subscriptions associated with your account.&lt;/p&gt;
+&lt;p&gt;There’s no way to t
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure IoT Edge on Windows Subsystem for Linux (WSL)</title>
@@ -589,30 +614,6 @@ My team is hiring developers in the high-scale data space that have experience b
     <summary type="html">
     
       &lt;p&gt;You’ll want to make sure you don’t leave the default ‘pi’ user’s password to the default ‘raspberry’ setting.  Here’s how to change it.&lt;/
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to SSH into a Raspberry Pi</title>
-    <link href="https://blog.jongallant.com/2017/09/raspberrypi-ssh/"/>
-    <id>https://blog.jongallant.com/2017/09/raspberrypi-ssh/</id>
-    <published>2017-09-14T23:07:01.000Z</published>
-    <updated>2017-12-04T22:19:50.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;You will often want to execute commands over SSH instead of having to &lt;a href=&quot;/raspberrypi-remote-desktop&quot;&gt;Remote Desktop&lt;/a&gt; or access 
     
     </summary>
     
