@@ -205,13 +205,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/c/</loc>
-        <lastmod>2018-01-13T15:54:08.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/3dprinting/</loc>
         <lastmod>2018-01-13T15:54:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -226,14 +219,14 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/powerbi/</loc>
+        <loc>https://blog.jongallant.com/tags/rest/</loc>
         <lastmod>2018-01-13T15:54:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/rest/</loc>
+        <loc>https://blog.jongallant.com/tags/powerbi/</loc>
         <lastmod>2018-01-13T15:54:08.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -366,20 +359,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/microsoft/</loc>
-        <lastmod>2018-05-02T19:50:48.568Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/management/</loc>
-        <lastmod>2018-05-02T19:50:48.568Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/azure/</loc>
         <lastmod>2018-05-02T20:29:07.608Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -389,6 +368,27 @@
     <url>
         <loc>https://blog.jongallant.com/tags/cli/</loc>
         <lastmod>2018-05-02T20:29:07.608Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/microsoft/</loc>
+        <lastmod>2018-05-02T22:07:40.814Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/management/</loc>
+        <lastmod>2018-05-02T22:07:40.814Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/c/</loc>
+        <lastmod>2018-05-02T22:07:40.834Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
