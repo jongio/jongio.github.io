@@ -17,7 +17,7 @@ For the pu">
 <meta property="og:description" content="Starting with version 1.5 of the Power BI Custom Visuals SDK, we now have the ability to create “slicer” visuals, which are visuals that can filter data in other visuals on the same report.
 For the pu">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/powerbi-custom-slicer/vizpane.png">
-<meta property="og:updated_time" content="2017-03-07T19:05:07.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:40.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Slicer with the Power BI Custom Visual SDK">
 <meta name="twitter:description" content="Starting with version 1.5 of the Power BI Custom Visuals SDK, we now have the ability to create “slicer” visuals, which are visuals that can filter data in other visuals on the same report.
@@ -195,13 +195,13 @@ For the pu">
         
         <div class="article-entry" itemprop="articleBody">
             <p>Starting with version 1.5 of the <a href="https://github.com/Microsoft/PowerBI-visuals-tools" target="_blank" rel="external">Power BI Custom Visuals SDK</a>, we now have the ability to create “slicer” visuals, which are visuals that can filter data in other visuals on the same report.</p>
-<p>For the purposes of this blog post, we are going to create a very simple radio button control to demonstrate the components needed to create a slicer. I also created a much more sophisticated “Range Slider” control that you can find here: <a href="https://github.com/jonbgallant/PowerBI-visuals-rangeSlider" target="_blank" rel="external">PowerBI-visuals-rangeSlider</a></p>
+<p>For the purposes of this blog post, we are going to create a very simple radio button control to demonstrate the components needed to create a slicer. I also created a much more sophisticated “Range Slider” control that you can find here: <a href="https://github.com/jongio/PowerBI-visuals-rangeSlider" target="_blank" rel="external">PowerBI-visuals-rangeSlider</a></p>
 <p>See my <a href="http://bit.ly/pbicustomviz" target="_blank" rel="external">How to Get Started with Power BI Custom Visuals</a> for general custom visual development tutorials.</p>
 <blockquote>
-<p>You can download the source for this visual here: <a href="https://github.com/jonbgallant/PowerBI-visuals-radioSlicer" target="_blank" rel="external">PowerBI-visuals-radioSlicer</a></p>
+<p>You can download the source for this visual here: <a href="https://github.com/jongio/PowerBI-visuals-radioSlicer" target="_blank" rel="external">PowerBI-visuals-radioSlicer</a></p>
 </blockquote>
 <blockquote>
-<p>You can download the visual to use in reports here: <a href="https://github.com/jonbgallant/PowerBI-visuals-radioSlicer/raw/master/radioSlicer/dist/radioSlicer.pbiviz" target="_blank" rel="external">Download Radio Slicer</a></p>
+<p>You can download the visual to use in reports here: <a href="https://github.com/jongio/PowerBI-visuals-radioSlicer/raw/master/radioSlicer/dist/radioSlicer.pbiviz" target="_blank" rel="external">Download Radio Slicer</a></p>
 </blockquote>
 <p>Here’s what this custom visual will look like when you are done with this tutorial.</p>
 <p><img src="reportview.png" alt=""></p>
@@ -230,7 +230,7 @@ For the pu">
 </tr>
 </tbody>
 </table>
-<p>You can use Power BI Desktop, Excel, Streaming Datasets, SQL or whatever you prefer.  I’ve provided an <a href="https://github.com/jonbgallant/PowerBI-visuals-radioSlicer/raw/master/assets/data.xlsx" target="_blank" rel="external">excel spreadsheet here</a> that you can use.  Just import it into Power BI using the web interface, or use Power BI Desktop and Publish it to the web.</p>
+<p>You can use Power BI Desktop, Excel, Streaming Datasets, SQL or whatever you prefer.  I’ve provided an <a href="https://github.com/jongio/PowerBI-visuals-radioSlicer/raw/master/assets/data.xlsx" target="_blank" rel="external">excel spreadsheet here</a> that you can use.  Just import it into Power BI using the web interface, or use Power BI Desktop and Publish it to the web.</p>
 <h2 id="step-1-create-visual-pbiviz-new"><a class="header-anchor" href="#step-1-create-visual-pbiviz-new"></a>Step 1: Create Visual: pbiviz new</h2>
 <p>If you have no idea what pbiviz new means, then see my <a href="http://bit.ly/pbicustomviz" target="_blank" rel="external">How to Get Started with Power BI Custom Visuals</a> for general custom visual development tutorials.</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pbiviz <span class="keyword">new</span> radioSlicer</span><br></pre></td></tr></table></figure>
@@ -243,7 +243,7 @@ For the pu">
 <li>Adds the “General-&gt;filter” format property which allows this visual to participate in filtering capabilities.</li>
 <li>Adds a “top” number so we get the max categories allowed by Power BI. Right now that number is 30k categories max, but I set to 100000 for fun.</li>
 </ul>
-<script src="https://gist.github.com/jonbgallant/7a288cb2fdc8a43c1407852ed2043044.js"></script>
+<script src="https://gist.github.com/jongio/7a288cb2fdc8a43c1407852ed2043044.js"></script>
 <h2 id="step-3-create-code-visual-ts"><a class="header-anchor" href="#step-3-create-code-visual-ts"></a>Step 3: Create Code: visual.ts</h2>
 <p>The meat of the visual lives in visual.ts.  Rather than explain each piece individually, I’m including the full code file below with bullets that describe what is going on.</p>
 <p>1. Instantiate an ISelectionManager object in constructor<br>
@@ -254,7 +254,7 @@ For the pu">
 <blockquote>
 <p>Note: You can only filter on categories, not values, and you are limited to 30k categories.</p>
 </blockquote>
-<script src="https://gist.github.com/jonbgallant/9d250e330c176669317794117b34e7a5.js"></script>
+<script src="https://gist.github.com/jongio/9d250e330c176669317794117b34e7a5.js"></script>
 <h2 id="step-4-package-pbiviz-package"><a class="header-anchor" href="#step-4-package-pbiviz-package"></a>Step 4: Package: pbiviz package</h2>
 <p>Run the following command to package the visual and share it as a pbiviz file.</p>
 <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">pbiviz <span class="class"><span class="keyword">package</span></span></span><br></pre></td></tr></table></figure>
@@ -300,7 +300,7 @@ For the pu">
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

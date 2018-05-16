@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/fb131b200a2c_5773/image.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:45.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Convert a Stateless Azure Service Fabric Service to a Stateful Service">
 <meta name="twitter:description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
@@ -192,7 +192,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new stateless service and another stateful service and diff’d them. I’m sharing in case someone else needs to do the same.</p>
-<p>You can see everything you need to do in this commit: <a href="https://github.com/jonbgallant/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" title="https://github.com/jonbgallant/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" target="_blank" rel="external">https://github.com/jonbgallant/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
+<p>You can see everything you need to do in this commit: <a href="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" title="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" target="_blank" rel="external">https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
 <p>Or you can follow along below…</p>
 <h2 id="mysolution-myservice-myservice-cs"><a class="header-anchor" href="#mysolution-myservice-myservice-cs"></a>MySolution/MyService/MyService.cs</h2>
 <h3 id="add-microsoft-servicefabric-data-collections-namespace"><a class="header-anchor" href="#add-microsoft-servicefabric-data-collections-namespace"></a>Add Microsoft.ServiceFabric.Data.Collections namespace</h3>
@@ -263,7 +263,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

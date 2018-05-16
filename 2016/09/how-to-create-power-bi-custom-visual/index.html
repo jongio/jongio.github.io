@@ -19,7 +19,7 @@ The purpose of this post is to show you how to take an existing open source d3 v
 
 The purpose of this post is to show you how to take an existing open source d3 visual and c">
 <meta property="og:image" content="https://raw.githubusercontent.com/jonbgallant/PowerBI-visuals-liquidFillGauge/master/assets/thumbnail.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:38.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing">
 <meta name="twitter:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
@@ -201,7 +201,7 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <p>UPDATE: The Liquid Fill Gauge visual is now available to download from the <a href="https://app.powerbi.com/visuals/show/PBI_CV_94E55AB3_5D45_4B62_A49D_19E2109AA028" target="_blank" rel="external">Power BI Custom Visual Gallery</a>!</p>
 </blockquote>
 <p>The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it.</p>
-<p>I’ve been digging into the new <a href="https://github.com/microsoft/powerbi-visuals-tools" target="_blank" rel="external">Power BI Custom Visual SDK</a> and just created my first visual called <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">Liquid Fill Gauge</a>. It’s a circle gauge that represents a percentage value. All it does at the moment is display the value and nothing is configurable. I will continue to push new features as I finish them. It is based off of <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Curtis Bratton</a>’s <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Liquid Fill Gauge</a>.</p>
+<p>I’ve been digging into the new <a href="https://github.com/microsoft/powerbi-visuals-tools" target="_blank" rel="external">Power BI Custom Visual SDK</a> and just created my first visual called <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">Liquid Fill Gauge</a>. It’s a circle gauge that represents a percentage value. All it does at the moment is display the value and nothing is configurable. I will continue to push new features as I finish them. It is based off of <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Curtis Bratton</a>’s <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Liquid Fill Gauge</a>.</p>
 <blockquote>
 <p>This is Part 1 of the series, here are the other posts:</p>
 </blockquote>
@@ -211,7 +211,7 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <blockquote>
 <p>3. <a href="/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
 </blockquote>
-<p>You can download the visual and use within your reports here: <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases/" title="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases/" target="_blank" rel="external">https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases/</a><br>
+<p>You can download the visual and use within your reports here: <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/" title="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/" target="_blank" rel="external">https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/</a><br>
 <img src="https://raw.githubusercontent.com/jonbgallant/PowerBI-visuals-liquidFillGauge/master/assets/thumbnail.png" alt=""></p>
 <blockquote>
 <p>I walk through each step below – feel free to skim through it, use it as a reference or follow along step-by-step.</p>
@@ -220,12 +220,12 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <p>1. Follow the instructions here to get your dev env setup: <a href="/2016/09/powerbi-custom-visual-dev.html" title="/2016/09/powerbi-custom-visual-dev.html">/2016/09/powerbi-custom-visual-dev.html</a></p>
 <h2 id="clone-repo"><a class="header-anchor" href="#clone-repo"></a>Clone Repo</h2>
 <p>You can complete this exercise without cloning the repo, but if you want to get all the code and easily copy and paste, then you’ll want to clone.</p>
-<script src="https://gist.github.com/jonbgallant/62ad919b9609349b73f9fa161ea97ec9.js"></script>
+<script src="https://gist.github.com/jongio/62ad919b9609349b73f9fa161ea97ec9.js"></script>
 <h2 id="open-code"><a class="header-anchor" href="#open-code"></a>Open Code</h2>
 <p>I use <a href="http://code.visualstudio.com/" target="_blank" rel="external">VS Code</a>, but feel free to use any editor.</p>
 <h2 id="create-custom-visual"><a class="header-anchor" href="#create-custom-visual"></a>Create Custom Visual</h2>
 <p>This uses the new SDK to create a custom visual template.</p>
-<script src="https://gist.github.com/jonbgallant/3208252605ba09dabf10e7e55a239a1e.js"></script>
+<script src="https://gist.github.com/jongio/3208252605ba09dabf10e7e55a239a1e.js"></script>
 <p>This is what the dir structure looks like in VS Code.</p>
 <p><img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb3.png" alt="image_thumb3" title="image_thumb3"></p>
 <h2 id="reference-d3-typings"><a class="header-anchor" href="#reference-d3-typings"></a>Reference d3 Typings</h2>
@@ -242,35 +242,35 @@ The purpose of this post is to show you how to take an existing open source d3 v
 <ul>
 <li>PowerBI puts all Custom Visuals in IFRAMEs so the clip-path needs to reference the absolute url of the page like so:</li>
 </ul>
-<script src="https://gist.github.com/jonbgallant/b33fea7fa07be8ad358b9301f464a6e7.js"></script>
+<script src="https://gist.github.com/jongio/b33fea7fa07be8ad358b9301f464a6e7.js"></script>
 <ul>
 <li>Once I deployed my visual to <a href="http://PowerBI.com" target="_blank" rel="external">PowerBI.com</a> I ran into another IFRAME issue that required me to pass in the d3 selection instance, versus doing the d3.select inside the visual. Instead of passing in elementId, I pass in a reference to the svg element</li>
 </ul>
-<script src="https://gist.github.com/jonbgallant/5feda8ea55d44170fbbfb10e9ad6414b.js"></script>
+<script src="https://gist.github.com/jongio/5feda8ea55d44170fbbfb10e9ad6414b.js"></script>
 <h2 id="add-typescript-definition-file"><a class="header-anchor" href="#add-typescript-definition-file"></a>Add TypeScript Definition File</h2>
 <p>The premise of this exercise is to take an existing d3 visual and easily turn it into a custom visual without having to rewrite the entire thing in TypeScript. What I would like to do is clone the existing visual and reference it from my visual.ts file. In order to do that, I need to make the visual file visible in TypeScript. You could define all of the methods and come up with a more sophisticated definition file, but I’ve found that the following works great.</p>
 <p>1. Create a new file in the “src” folder called “liquidFillGauge.d.ts” and add the following code to it.</p>
-<script src="https://gist.github.com/jonbgallant/4d18962fd69c800520328bdcd8e78d69.js"></script>
+<script src="https://gist.github.com/jongio/4d18962fd69c800520328bdcd8e78d69.js"></script>
 <h2 id="add-liquidfillgauge-files-to-tsconfig-json"><a class="header-anchor" href="#add-liquidfillgauge-files-to-tsconfig-json"></a>Add liquidFillGauge files to tsconfig.json</h2>
 <p>1. Open tsconfig.json and add references to the liquidFillGauge.js and liquidFillGauge.d.ts files.</p>
-<script src="https://gist.github.com/jonbgallant/139a55548676ed79236212f122ce0b54.js"></script>
+<script src="https://gist.github.com/jongio/139a55548676ed79236212f122ce0b54.js"></script>
 <h2 id="add-liquidfillgauge-to-visual-ts"><a class="header-anchor" href="#add-liquidfillgauge-to-visual-ts"></a>Add liquidFillGauge to visual.ts</h2>
 <p>The final step is to add code to the visual.ts file that will call the liquidFillGauge methods and create the visual.</p>
 <p>1. Open visual.ts and copy the following code into it.</p>
 <ul>
 <li>Notice the amd-dependency line at the top. This maps the TypeScript type definition to the visual.ts file so we can call loadLiquidFileGage that is in the liquidFillGauge file.</li>
-<li>I added another local variable to hold a reference to the gauge and then either call loadLiquidFillGauge for the first load or call this.gauge.update for subsequent calls.<script src="https://gist.github.com/jonbgallant/111e9248c03c97cd64b6c0082241d2c6.js"></script></li>
+<li>I added another local variable to hold a reference to the gauge and then either call loadLiquidFillGauge for the first load or call this.gauge.update for subsequent calls.<script src="https://gist.github.com/jongio/111e9248c03c97cd64b6c0082241d2c6.js"></script></li>
 </ul>
 <h2 id="test-on-powerbi-com"><a class="header-anchor" href="#test-on-powerbi-com"></a>Test on <a href="http://PowerBI.com" target="_blank" rel="external">PowerBI.com</a></h2>
 <p>1. Start your local server</p>
-<script src="https://gist.github.com/jonbgallant/ae1916aea0446adfad0ba2e884793575.js"></script>
+<script src="https://gist.github.com/jongio/ae1916aea0446adfad0ba2e884793575.js"></script>
 <p>2. Go to <a href="http://app.powerbi.com/" target="_blank" rel="external">http://app.powerbi.com</a><br>
 3. Create a report that uses your visual<br>
 4. Map a data value to the “Measure Data” field. I’m using the Month column in the Dates table in the Customer Profitability Sample dataset.<br>
 <img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb11.png" alt="image_thumb11" title="image_thumb11"><br>
 5. You should then see your custom visual rendered.</p>
 <p><img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb13.png" alt="image_thumb13" title="image_thumb13"></p>
-<p>If you do not see it, then compare your code to the code in this <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">GitHub repo</a> and fix anything that is different.</p>
+<p>If you do not see it, then compare your code to the code in this <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">GitHub repo</a> and fix anything that is different.</p>
 <p>–<br>
 Hope this gets you on your way to creating your own visuals.<br>
 Jon</p>
@@ -314,7 +314,7 @@ Jon</p>
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

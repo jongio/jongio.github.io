@@ -19,7 +19,7 @@ For PowerBI-Fiddler, I wanted to re-use the J">
 Re-use Default Fiddler Inspectors
 For PowerBI-Fiddler, I wanted to re-use the J">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/8eabae91e1ff_D2C8/image_3.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:33.579Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fiddler Extension Development Tips">
 <meta name="twitter:description" content="I recently created a custom Fiddler extension called PowerBIFiddler. Here are a few tricks that I learned along the way.
@@ -197,9 +197,9 @@ For PowerBI-Fiddler, I wanted to re-use the J">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I recently created a custom <a href="http://www.telerik.com/fiddler" target="_blank" rel="external">Fiddler</a> extension called <a href="https://github.com/jonbgallant/PowerBIFiddler" target="_blank" rel="external">PowerBIFiddler</a>. Here are a few tricks that I learned along the way.</p>
+            <p>I recently created a custom <a href="http://www.telerik.com/fiddler" target="_blank" rel="external">Fiddler</a> extension called <a href="https://github.com/jongio/PowerBIFiddler" target="_blank" rel="external">PowerBIFiddler</a>. Here are a few tricks that I learned along the way.</p>
 <h2 id="re-use-default-fiddler-inspectors"><a class="header-anchor" href="#re-use-default-fiddler-inspectors"></a><strong>Re-use Default Fiddler Inspectors</strong></h2>
-<p>For PowerBI-Fiddler, I wanted to re-use the JSONResponseViewer that Fiddler uses for their “JSON” inspector. I used <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="external">JustDecompile</a> to decompile Fiddler.exe and discovered that the default inspectors are located in this DLL: C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll. The JSONResponseViewer is sealed, so you have to use a composition pattern instead of inheritance. You can see an example here: <a href="https://github.com/jonbgallant/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" title="https://github.com/jonbgallant/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" target="_blank" rel="external">https://github.com/jonbgallant/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs</a></p>
+<p>For PowerBI-Fiddler, I wanted to re-use the JSONResponseViewer that Fiddler uses for their “JSON” inspector. I used <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="external">JustDecompile</a> to decompile Fiddler.exe and discovered that the default inspectors are located in this DLL: C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll. The JSONResponseViewer is sealed, so you have to use a composition pattern instead of inheritance. You can see an example here: <a href="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" title="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" target="_blank" rel="external">https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs</a></p>
 <p><img src="/images/blog/8eabae91e1ff_D2C8/image_3.png" alt=""></p>
 <h2 id="inspector-loading"><a class="header-anchor" href="#inspector-loading"></a><strong>Inspector loading</strong></h2>
 <p>Fiddler searches %userprofile%\Documents\Fiddler2\Inspectors and C:\Program Files (x86)\Fiddler2\Inspectors for Inspectors when it launches. You’ll want to copy your custom Inspectors into either of those folders. I setup the following Post-build event to automatically copy the DLL over after each build.</p>
@@ -259,7 +259,7 @@ For PowerBI-Fiddler, I wanted to re-use the J">
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

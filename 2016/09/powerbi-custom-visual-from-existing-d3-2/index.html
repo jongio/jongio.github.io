@@ -19,7 +19,7 @@ This is a continuation of my attempt at creating a Power BI Custom Visual from a
 –
 This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 vi">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/53494a0089db_D4F8/image.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:41.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings">
 <meta name="twitter:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
@@ -203,7 +203,7 @@ This is a continuation of my attempt at creating a Power BI Custom Visual from a
 <p>This is Part 2 of the series, here are the other posts:</p>
 <p>1. <a href="/2016/09/how-to-create-power-bi-custom-visual.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing</a></p>
 <p>3. <a href="/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
-<p>You can install this visual from the GitHub releases page <a href="https://github.com/jonbgallant/PowerBI-visuals-liquidFillGauge/releases" target="_blank" rel="external">here</a>. I’ll put in the <a href="http://visuals.powerbi.com/" target="_blank" rel="external">Power BI Visual Gallery</a> once the visual is complete.</p>
+<p>You can install this visual from the GitHub releases page <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases" target="_blank" rel="external">here</a>. I’ll put in the <a href="http://visuals.powerbi.com/" target="_blank" rel="external">Power BI Visual Gallery</a> once the visual is complete.</p>
 <p>I found <a href="https://github.com/Microsoft/PowerBI-visuals/blob/master/Tutorial/DataBinding.md" target="_blank" rel="external">this page</a> helpful when looking into Power BI Custom Visual Data Roles.</p>
 <p>Here’s what the Liquid Fill Gauge looks like in Power BI.</p>
 <p><img src="/images/blog/53494a0089db_D4F8/image.png" alt=""></p>
@@ -211,15 +211,15 @@ This is a continuation of my attempt at creating a Power BI Custom Visual from a
 <p>In the case of the liquidFillGauge, we really only need to assign one value at this point - the fill percentage. The first version of the visual used the default capabilities.json file that comes with the template when created via “pbiviz new visualName”.</p>
 <p>The default capabilities comes with two dataRoles “Grouping” and “Measure” like so:<br>
 <img src="/images/blog/53494a0089db_D4F8/image_3.png" alt=""></p>
-<script src="https://gist.github.com/jonbgallant/75f312fa9cc27ea0780e805a3a600127.js"></script>
+<script src="https://gist.github.com/jongio/75f312fa9cc27ea0780e805a3a600127.js"></script>
 <p>Since we only need a single value (at the moment, but we might need more in the future). We can remove the Grouping field and change the name, like so:</p>
-<script src="https://gist.github.com/jonbgallant/c7ebf8116b1420035437051c933f3f46.js"></script>
+<script src="https://gist.github.com/jongio/c7ebf8116b1420035437051c933f3f46.js"></script>
 <p>And if you just use that you’ll see this:<br>
 <img src="/images/blog/53494a0089db_D4F8/image_4.png" alt=""><br>
 What you need to do is define a dataViewMappings object that tells the visual how to represent the dataRoles in the dataView. Again, this is a super simple visual right now, so all we need to do is map the single value. I’ve seen examples where “role” is equal to “Values”, but removing it doesn’t seem to impact anything, so I’m leaving it as an empty string.</p>
 <p>You’ll also need to add the “object” property, I explain that in <a href="/2016/10/powerbi-custom-visual-from-existing-d3-3.html">Part 3</a>.</p>
 <p>Open capabilities.json and add this code:</p>
-<script src="https://gist.github.com/jonbgallant/6b4a4cc023252152a9864ab762814177.js"></script>
+<script src="https://gist.github.com/jongio/6b4a4cc023252152a9864ab762814177.js"></script>
 <p>Your visualization pane should now look like this:<br>
 <img src="/images/blog/53494a0089db_D4F8/image_5.png" alt=""></p>
 <p>And your format property pane will look like this:</p>
@@ -267,7 +267,7 @@ Jon</p>
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

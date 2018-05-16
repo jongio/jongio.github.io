@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="beakn is a Lync status light that I’ve been building for last couple of months. I tweeted a quick drawing of beakn v0.5, which will include a rechargeable battery and David Washington was quick to res">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/629fe5f5ad1f_7754/image.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:31.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.4.2 - Lync Status Light - Now with easy to edit config settings and  reset light on start support.">
 <meta name="twitter:description" content="beakn is a Lync status light that I’ve been building for last couple of months. I tweeted a quick drawing of beakn v0.5, which will include a rechargeable battery and David Washington was quick to res">
@@ -196,10 +196,10 @@
 <p><a href="https://twitter.com/jongallant" target="_blank" rel="external">@jongallant</a> <a href="https://twitter.com/spark_io" target="_blank" rel="external">@spark_io</a> feature requests: 1) cloud registration. No client app 2) get status on reset 3) inductive charging :)<br>
 — David Washington (@dwcares) <a href="https://twitter.com/dwcares/status/566788055986499585" target="_blank" rel="external">February 15, 2015</a></p>
 </blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>Great ideas!  I've been wanting to do all of them for a while…that tweet pushed me to start investigating the Lync REST endpoint for cloud registration and inductive charging is probably a v2 feature, but #2 "get status on reset" is totally doable – so I just implemented it and released beakn [v0.4.2](https://github.com/jonbgallant/beakn/releases/tag/v0.4.2).
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>Great ideas!  I've been wanting to do all of them for a while…that tweet pushed me to start investigating the Lync REST endpoint for cloud registration and inductive charging is probably a v2 feature, but #2 "get status on reset" is totally doable – so I just implemented it and released beakn [v0.4.2](https://github.com/jongio/beakn/releases/tag/v0.4.2).
 <p>Here’s what is new in v0.4.2</p>
 <ul>
-<li>beakn.exe now listens for the Spark “reset” event and sets the light to the current color. Before this you would have to toggle your status. Now it just works after your Spark is reset. For this change I used <a href="https://github.com/erizet/EventSource4Net" target="_blank" rel="external">EventSource4Net</a> and modified my fork of <a href="https://github.com/jonbgallant/SharpSpark/commit/ab4b84ee4fe003d507e3156fa3120a41cef02bfe" target="_blank" rel="external">SharpSpark</a>.</li>
+<li>beakn.exe now listens for the Spark “reset” event and sets the light to the current color. Before this you would have to toggle your status. Now it just works after your Spark is reset. For this change I used <a href="https://github.com/erizet/EventSource4Net" target="_blank" rel="external">EventSource4Net</a> and modified my fork of <a href="https://github.com/jongio/SharpSpark/commit/ab4b84ee4fe003d507e3156fa3120a41cef02bfe" target="_blank" rel="external">SharpSpark</a>.</li>
 <li>I moved Spark Device Id and Access Token from beakn.exe.config to Properties.Settings and added a simple two textbox UI. Before this you would have to open Notepad as Admin and edit beakn.exe.config directly.</li>
 </ul>
 <p><img src="/images/blog/629fe5f5ad1f_7754/image.png" alt=""></p>
@@ -254,7 +254,7 @@ Follow @jongallant<br>
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

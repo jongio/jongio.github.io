@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="UPDATE 7/30/2013: I modified the code to use $resource instead of $http. Go to my new post “V2 of my AngularJS, WebAPI CRUD Grid - Now using $resource instead of $http and deployed a LIVE DEMO to Azur">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/53d7f9fc4f70_10652/image.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:20.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS CRUD Grid v1: How to build a CRUD Grid with AngularJS, WebAPI,  Bootstrap, Font Awesome and Toastr">
 <meta name="twitter:description" content="UPDATE 7/30/2013: I modified the code to use $resource instead of $http. Go to my new post “V2 of my AngularJS, WebAPI CRUD Grid - Now using $resource instead of $http and deployed a LIVE DEMO to Azur">
@@ -191,12 +191,12 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>UPDATE 7/30/2013: I modified the code to use $resource instead of $http. Go to my new post <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html">“V2 of my AngularJS, WebAPI CRUD Grid - Now using $resource instead of $http and deployed a LIVE DEMO to Azure!”</a> for all the details. You can still access the $http code here: <a href="https://github.com/jonbgallant/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1" target="_blank" rel="external">https://github.com/jonbgallant/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1</a></p>
+            <p>UPDATE 7/30/2013: I modified the code to use $resource instead of $http. Go to my new post <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html">“V2 of my AngularJS, WebAPI CRUD Grid - Now using $resource instead of $http and deployed a LIVE DEMO to Azure!”</a> for all the details. You can still access the $http code here: <a href="https://github.com/jongio/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1" target="_blank" rel="external">https://github.com/jongio/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1</a></p>
 <p>Here’s how I built a quick single entity CRUD grid with <a href="http://angularjs.org/" target="_blank" rel="external">AngularJS</a>, <a href="http://www.asp.net/web-api" target="_blank" rel="external">WebAPI</a>, <a href="http://www.asp.net/entity-framework" target="_blank" rel="external">Entity Framework</a>, <a href="http://twitter.github.io/bootstrap/" target="_blank" rel="external">Bootstrap</a>, <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="external">Font Awesome</a> &amp; <a href="https://github.com/CodeSeven/toastr" target="_blank" rel="external">Toastr</a>. I spent a more time than I should have getting this all wired up, so I thought I’d share the code to save you some time. It’s not perfect – but should be a good starting point for you.</p>
 <p>Here’s what the grid looks like.</p>
 <p><img src="/images/blog/53d7f9fc4f70_10652/image.png" alt=""></p>
 <p><strong>THE CODE</strong></p>
-<p>All the code is on GitHub here: <a href="https://github.com/jonbgallant/AngularJS-WebApi-EF/" target="_blank" rel="external">https://github.com/jonbgallant/AngularJS-WebApi-EF/</a></p>
+<p>All the code is on GitHub here: <a href="https://github.com/jongio/AngularJS-WebApi-EF/" target="_blank" rel="external">https://github.com/jongio/AngularJS-WebApi-EF/</a></p>
 <p><strong>The $http methods that call WebAPI</strong></p>
 <p>You could also do this with <a href="http://docs.angularjs.org/api/ngResource.$resource" target="_blank" rel="external">$resource</a> or <a href="https://github.com/mgonto/restangular" target="_blank" rel="external">Restangular</a>, but I just stuck with <a href="http://docs.angularjs.org/api/ng.$http" target="_blank" rel="external">$http</a> for this example because it is easier to grok.</p>
 <p>Each of the methods below perform $http actions and return a promise.</p>
@@ -247,7 +247,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
 <meta property="og:image" content="https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/000069.png">
-<meta property="og:updated_time" content="2017-12-19T22:21:01.506Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:24.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman">
 <meta name="twitter:description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
@@ -238,7 +238,7 @@
 <ul>
 <li>Click that tab and enter the following code to generate the SAS token and put it in a Postman global variable. You can read the comments to try to decipher how each component is generated.</li>
 </ul>
-<script src="https://gist.github.com/jonbgallant/76e577162e85f0110abc2743458d4771.js"></script>
+<script src="https://gist.github.com/jongio/76e577162e85f0110abc2743458d4771.js"></script>
 <h2 id="add-api-calls"><a class="header-anchor" href="#add-api-calls"></a>Add API Calls</h2>
 <p>The Postman main development area allows you to enter URIs, parameters, headers, Pre-request scripts and Tests.</p>
 <p>For the first example we are going to start with the “GET Device Twin” call, which just gets the device twin (cloud representation of the device metadata).</p>
@@ -270,7 +270,7 @@
 <p>4. Set the Authorization and Content-Type headers<br>
 <img src="000063.png" alt=""></p>
 <p>5. Set the body to the following:</p>
-<script src="https://gist.github.com/jonbgallant/4fd1a5d78beb24e1b2db3b729cad039d.js"></script>
+<script src="https://gist.github.com/jongio/4fd1a5d78beb24e1b2db3b729cad039d.js"></script>
 <p>6. Create the following test:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tests[<span class="string">"Body matches string"</span>] = responseBody.has(postman.getGlobalVariable(<span class="string">"deviceName"</span>));</span><br></pre></td></tr></table></figure>
 <p>7. Click send and you should now see the deviceName property in the JSON result.</p>
@@ -344,7 +344,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

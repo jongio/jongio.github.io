@@ -21,7 +21,7 @@ Here’s the exception we are dealing with:
 
 can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/5a6d0d23da10_6745/image.png">
-<meta property="og:updated_time" content="2016-12-29T03:36:59.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:40.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to "can't be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?" when creating an Azure WebJob">
 <meta name="twitter:description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same.
@@ -205,9 +205,9 @@ can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
 <p><img src="/images/blog/5a6d0d23da10_6745/image.png" alt=""><br>
 can’t be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?</p>
 <p>I got this error when I was creating an on-demand WebJob. It should have take a few minutes to write the entire job, but the error message led me down a path and I put my blinders onto visibility issues. Based on the message, I spent a bunch of time researching Azure WebJobs attributes to no avail. I then broke the problem down by creating a new WebJob with only a few lines of code:</p>
-<script src="https://gist.github.com/jonbgallant/4d8364f49f49e2ae087f.js"></script>
+<script src="https://gist.github.com/jongio/4d8364f49f49e2ae087f.js"></script>
 <p>and I still got the issue.  So I then did a line-by-line diff of a WebJob that was working and discovered that, by default, the WebJob VS template does not make the class public. So, I added the public keyword to the Program class and it fixed it.  Here’s the code that will work:</p>
-<script src="https://gist.github.com/jonbgallant/b144e4877b4cbd03c5e5.js"></script>
+<script src="https://gist.github.com/jongio/b144e4877b4cbd03c5e5.js"></script>
 <p>It’s amazing how one little word can cause so much delay in a project.</p>
 <p>Jon</p>
 
@@ -250,7 +250,7 @@ can’t be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attri
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

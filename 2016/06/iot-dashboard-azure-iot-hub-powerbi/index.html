@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/481dd41dcc5e_EBDD/image.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:39.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Build a Real-Time IoT Dashboard with Azure IoT Hub, Azure Stream Analytics and Power BI">
 <meta name="twitter:description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
@@ -196,7 +196,7 @@
 <p><img src="/images/blog/481dd41dcc5e_EBDD/image.png" alt=""></p>
 <ul>
 <li><strong>Azure IoT Hub</strong> will be setup with the new Azure Portal <a href="https://portal.azure.com/" title="https://portal.azure.com" target="_blank" rel="external">https://portal.azure.com</a></li>
-<li><strong>IoT Device Code</strong> is on GitHub here <a href="https://github.com/jonbgallant/UWPIoTDevice" title="https://github.com/jonbgallant/UWPIoTDevice" target="_blank" rel="external">https://github.com/jonbgallant/UWPIoTDevice</a></li>
+<li><strong>IoT Device Code</strong> is on GitHub here <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="external">https://github.com/jongio/UWPIoTDevice</a></li>
 <li><strong>Azure Stream Analytics</strong> will be setup with the old Azure Portal <a href="https://manage.windowsazure.com" title="https://manage.windowsazure.com" target="_blank" rel="external">https://manage.windowsazure.com</a> (Stream Analytics is in the new portal, but it doesn’t have Power BI output yet)</li>
 <li><strong>Power BI</strong> dashboard will be setup at <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a></li>
 </ul>
@@ -207,7 +207,7 @@
 <h1>IoT Device Code</h1>
 <p>This is the code that will run on the emulated IoT Device. It will write random JSON Serialized messages to your IoT Hub. The data model is simple a single “Participant” class with “Position” and “Count” properties.</p>
 <figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Participant</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">int</span> Position &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">int</span> Count &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>1. Clone this repo: <a href="https://github.com/jonbgallant/UWPIoTDevice" title="https://github.com/jonbgallant/UWPIoTDevice" target="_blank" rel="external">https://github.com/jonbgallant/UWPIoTDevice</a></p>
+<p>1. Clone this repo: <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="external">https://github.com/jongio/UWPIoTDevice</a></p>
 <p>2. Open the DeviceKey.txt file and paste in your device connection string from the Azure Portal. (I don’t do much UWP dev and couldn’t quickly figure out how they want us to store config settings like this, so I just dropped it in a text file. LMK if you know a better way to manage config settings)</p>
 <p>3. Compile and move onto next step.</p>
 <h1>Azure Stream Analytics</h1>
@@ -222,7 +222,7 @@
 <p><img src="/images/blog/481dd41dcc5e_EBDD/image_6.png" alt=""></p>
 <p><img src="/images/blog/481dd41dcc5e_EBDD/image_7.png" alt=""></p>
 <p>5. Write a query that connects your IoT Hub input to your Power BI output.</p>
- <script src="https://gist.github.com/jonbgallant/aa30af73d1e324ad1bb6fe27cbe181e7.js"></script> 
+ <script src="https://gist.github.com/jongio/aa30af73d1e324ad1bb6fe27cbe181e7.js"></script> 
 <p>6. Click the Save button.</p>
 <p>7. Start the Stream Analytics job.</p>
 <h1>Power BI</h1>
@@ -289,7 +289,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Part of my new job is to fully understand the process a maker goes through when developing their ideas into products. There’s no better way to do that than to build something. I believe that to truly">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/ef55af178d49_C2E0/IMG_1677.jpg">
-<meta property="og:updated_time" content="2017-05-08T00:31:17.587Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:28.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.1 : DIY Lync Status Light with an Arduino, Ping Pong Ball and a Cardboard Box">
 <meta name="twitter:description" content="Part of my new job is to fully understand the process a maker goes through when developing their ideas into products. There’s no better way to do that than to build something. I believe that to truly">
@@ -262,15 +262,15 @@
 <h4 id="desktop-app"><a class="header-anchor" href="#desktop-app"></a>Desktop App</h4>
 <p><img src="/images/blog/ef55af178d49_C2E0/image_3.png" alt=""></p>
 <p>You will need a desktop application that uses the <a href="http://msdn.microsoft.com/en-us/library/office/jj933215%28v=office.15%29.aspx" target="_blank" rel="external">Lync SDK</a> to listen for Lync events and <a href="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="external">Command Messenger</a> to communicate with the Arduino. This is a Windows Form application that doesn’t have a UI. It’s a form, not a Windows service because it needs to run under the context of the currently logged in user and a Windows Service is machine level.</p>
-<p>You can install this app from GitHub here: <a href="https://github.com/jonbgallant/beakn/releases/tag/v0.1" title="https://github.com/jonbgallant/beakn/releases/tag/v0.1" target="_blank" rel="external">https://github.com/jonbgallant/beakn/releases/tag/v0.1</a>. Click the beakn-0.1.msi green button and install.</p>
-<p>Or you can get the source and build it yourself: <a href="https://github.com/jonbgallant/beakn/tree/master/desktop" title="https://github.com/jonbgallant/beakn/tree/master/desktop" target="_blank" rel="external">https://github.com/jonbgallant/beakn/tree/master/desktop</a> (that is the latest code) if you want to download the code as of v0.1 then use this link and click the “source code” button. <a href="https://github.com/jonbgallant/beakn/releases/tag/v0.1" title="https://github.com/jonbgallant/beakn/releases/tag/v0.1" target="_blank" rel="external">https://github.com/jonbgallant/beakn/releases/tag/v0.1</a></p>
+<p>You can install this app from GitHub here: <a href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="external">https://github.com/jongio/beakn/releases/tag/v0.1</a>. Click the beakn-0.1.msi green button and install.</p>
+<p>Or you can get the source and build it yourself: <a href="https://github.com/jongio/beakn/tree/master/desktop" title="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="external">https://github.com/jongio/beakn/tree/master/desktop</a> (that is the latest code) if you want to download the code as of v0.1 then use this link and click the “source code” button. <a href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="external">https://github.com/jongio/beakn/releases/tag/v0.1</a></p>
 <p>The default COM port is COM3. Check Device Manager to see what COM port your Arduino is on and adjust the beakn.exe.config file to match that.</p>
 <p><img src="/images/blog/ef55af178d49_C2E0/port_thumb.png" alt=""></p>
-<p>The meat of the app is in <a href="https://github.com/jonbgallant/beakn/blob/master/desktop/beakn/beakn/Protocol/Serial.cs" target="_blank" rel="external">Serial.cs</a>. Serial.cs uses CmdMessenger to initiate and communicate with the Arduino. Controller.cs uses the Lync SDK to handle Lync status change events</p>
-<p>I also created a wrapper around the Lync SDK called lyncx, which you can find the source for here: <a href="https://github.com/jonbgallant/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" title="https://github.com/jonbgallant/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" target="_blank" rel="external">https://github.com/jonbgallant/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs</a></p>
+<p>The meat of the app is in <a href="https://github.com/jongio/beakn/blob/master/desktop/beakn/beakn/Protocol/Serial.cs" target="_blank" rel="external">Serial.cs</a>. Serial.cs uses CmdMessenger to initiate and communicate with the Arduino. Controller.cs uses the Lync SDK to handle Lync status change events</p>
+<p>I also created a wrapper around the Lync SDK called lyncx, which you can find the source for here: <a href="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" title="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" target="_blank" rel="external">https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs</a></p>
 <h4 id="arduino-sketch"><a class="header-anchor" href="#arduino-sketch"></a>Arduino Sketch</h4>
 <p><img src="/images/blog/ef55af178d49_C2E0/image_4.png" alt=""></p>
-<p>You will need an Arduino sketch to receive the serial command and turn the appropriate LED. You can download the Arduino sketch here: <a href="https://github.com/jonbgallant/beakn/tree/master/arduino/beakn.arduino.digital.sketch" title="https://github.com/jonbgallant/beakn/tree/master/arduino/beakn.arduino.digital.sketch" target="_blank" rel="external">https://github.com/jonbgallant/beakn/tree/master/arduino/beakn.arduino.digital.sketch</a>.</p>
+<p>You will need an Arduino sketch to receive the serial command and turn the appropriate LED. You can download the Arduino sketch here: <a href="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" title="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" target="_blank" rel="external">https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch</a>.</p>
 <p>Open it in your Arduino IDE and upload it to your Arduino. You will need to have the CmdMessenger.h file in your Arduino libraries folder (C:\Program Files (x86)\Arduino\libraries\CmdMessenger), which you can get here: <a href="https://github.com/thijse/Arduino-CmdMessenger" title="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="external">https://github.com/thijse/Arduino-CmdMessenger</a></p>
 <p>The “loop” of the sketch listens for serial events and uses the readStringArg method of CmdMessenger to get the current availability status and then calls analogWrite to set the colors of each of the ping. I’m using analogWrite instead of digitialWrite here because I will use an RGB LED in a future version.</p>
 <h3 id="test-it-out"><a class="header-anchor" href="#test-it-out"></a>Test it out</h3>
@@ -320,7 +320,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

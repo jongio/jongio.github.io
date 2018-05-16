@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here are some short and sweet instructions for setting up your Raspberry Pi for Node.js dev and creating a base image that can be used over and over again. Many of the steps below are taken from the a">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/6743deaa595b_69EB/image_15.png">
-<meta property="og:updated_time" content="2017-12-04T22:20:07.157Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:43.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Raspberry Pi (Raspbian) Base Image for Node.js Development">
 <meta name="twitter:description" content="Here are some short and sweet instructions for setting up your Raspberry Pi for Node.js dev and creating a base image that can be used over and over again. Many of the steps below are taken from the a">
@@ -212,9 +212,9 @@
 <h2 id="4-setup-wifi"><a class="header-anchor" href="#4-setup-wifi"></a>4. Setup Wifi</h2>
 <p>Click on Wifi icon in top right. Select your network.</p>
 <h2 id="5-install-raspbian-updates"><a class="header-anchor" href="#5-install-raspbian-updates"></a>5. Install Raspbian Updates</h2>
-<script src="https://gist.github.com/jonbgallant/32e11482b5f4847413cd479548689a3f.js"></script>
+<script src="https://gist.github.com/jongio/32e11482b5f4847413cd479548689a3f.js"></script>
 <h2 id="6-enable-remote-access"><a class="header-anchor" href="#6-enable-remote-access"></a>6. Enable Remote Access</h2>
-<script src="https://gist.github.com/jonbgallant/d56700b4d6972a8ce71f232e475ba2a9.js"></script>
+<script src="https://gist.github.com/jongio/d56700b4d6972a8ce71f232e475ba2a9.js"></script>
 <h2 id="6-5-rename-your-pi"><a class="header-anchor" href="#6-5-rename-your-pi"></a>6.5 Rename your PI</h2>
 <p>Give it a unique name in Raspberry Pi Config - do this now or you will have issues later.</p>
 <p><img src="/images/blog/6743deaa595b_69EB/image_6.png" alt=""></p>
@@ -245,7 +245,7 @@
 </ul>
 <h2 id="8-setup-windows-file-share"><a class="header-anchor" href="#8-setup-windows-file-share"></a>8. Setup Windows File Share</h2>
 <p>Run to set a file share and password for samba that you will use to connect via Windows.</p>
-<script src="https://gist.github.com/jonbgallant/d41a6b562a235f5ea9683cc31a3228bf.js"></script>
+<script src="https://gist.github.com/jongio/d41a6b562a235f5ea9683cc31a3228bf.js"></script>
 <p><strong>Map Network Drive to \rpi1\PiShare</strong><br>
 <img src="/images/blog/6743deaa595b_69EB/image_11.png" alt=""></p>
 <p><strong>Enter Creds</strong><br>
@@ -253,20 +253,20 @@
 <p><strong>Create a directory called “code” to put your code in.</strong><br>
 <img src="/images/blog/6743deaa595b_69EB/image_13.png" alt=""></p>
 <h2 id="9-install-node-js"><a class="header-anchor" href="#9-install-node-js"></a>9. Install Node.js</h2>
-<script src="https://gist.github.com/jonbgallant/ac21356083a65096f6ea4204fa5d01a9.js"></script>
+<script src="https://gist.github.com/jongio/ac21356083a65096f6ea4204fa5d01a9.js"></script>
 <h2 id="10-configure-npm-to-run-without-sudo"><a class="header-anchor" href="#10-configure-npm-to-run-without-sudo"></a>10. Configure npm to run without sudo</h2>
 <p>This moves your npm global node_modules folder to /home/pi/.npm-packages/lib/ and allows you to install packages without using “sudo”</p>
-<script src="https://gist.github.com/jonbgallant/38b691659d0e985c8da99a7556f515d0.js"></script>
+<script src="https://gist.github.com/jongio/38b691659d0e985c8da99a7556f515d0.js"></script>
 <ul>
 <li>Hit enter when it asks you for home directory</li>
 <li>Type “y” and hit enter when it asks you to update bashrc/zshrc files</li>
 </ul>
 <h2 id="11-install-packages"><a class="header-anchor" href="#11-install-packages"></a>11. Install Packages</h2>
 <p>Here are the packages I need at the moment. Yours will be different. Remove/add as you see fit. Ignore any node-gyp issues.</p>
-<script src="https://gist.github.com/jonbgallant/52f55f49372c2ffd80a30b160cf53479.js"></script>
+<script src="https://gist.github.com/jongio/52f55f49372c2ffd80a30b160cf53479.js"></script>
 <h2 id="12-configure-packages"><a class="header-anchor" href="#12-configure-packages"></a>12. Configure Packages</h2>
 <p>The “noble” package doesn’t run without “sudo” by default. Here’s how to configure to allow you to run without sudo. Instructions from <a href="https://github.com/sandeepmistry/noble#running-on-linux" target="_blank" rel="external">here</a>. You don’t need to do this step if you don’t install noble.</p>
-<script src="https://gist.github.com/jonbgallant/76b4f0a82d82621d8298eea09722a8ef.js"></script>
+<script src="https://gist.github.com/jongio/76b4f0a82d82621d8298eea09722a8ef.js"></script>
 <h2 id="13-create-raspberry-pi-base-image"><a class="header-anchor" href="#13-create-raspberry-pi-base-image"></a>13. Create Raspberry Pi Base Image</h2>
 <p>Now that you have all the settings the way you want them, you can use Win32 Disk Imager to write it to disk, so you can use this as a base image for future Raspberry Pis.<br>
 <img src="/images/blog/6743deaa595b_69EB/image_14.png" alt=""></p>
@@ -315,7 +315,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

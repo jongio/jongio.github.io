@@ -6,7 +6,7 @@
     <title>Azure IoT Edge: How to Set Force No Passwords in Config | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="azure,iot,azureiotedge,edge" />
+        <meta name="keywords" content="azure,iot,edge,azureiotedge" />
     
     <meta name="description" content="When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run iotedgectl setup with the --config-file option and don’t want to force passwords with the --auto-ce">
 <meta property="og:type" content="article">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run iotedgectl setup with the --config-file option and don’t want to force passwords with the --auto-ce">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-iot-edge-config-file-force-no-passwords-msg/01.png">
-<meta property="og:updated_time" content="2017-12-19T22:25:51.713Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:23.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure IoT Edge: How to Set Force No Passwords in Config">
 <meta name="twitter:description" content="When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run iotedgectl setup with the --config-file option and don’t want to force passwords with the --auto-ce">
@@ -197,7 +197,7 @@
 <p>The message doesn’t tell you exactly what you need to do to get around this.</p>
 <p>Here’s what you need to do:</p>
 <ol>
-<li>Open your config file. See example <a href="https://github.com/jonbgallant/azure-iot-edge-config/blob/master/config/runtimeconfig.json" target="_blank" rel="external">here</a></li>
+<li>Open your config file. See example <a href="https://github.com/jongio/azure-iot-edge-config/blob/master/config/runtimeconfig.json" target="_blank" rel="external">here</a></li>
 <li>Find the <code>security.certificates.selfSigned.forceNoPasswords</code> setting and set it to <code>true</code></li>
 <li>Re-run <code>iotedgectl setup</code></li>
 </ol>
@@ -241,7 +241,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>

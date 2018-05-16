@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently asked to help build a “Range Slider” Power BI Custom Visual that simply filters a report based on the slider value. Unfortunately “filtering” is not currently supported in the new Power">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/000009.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:42.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API">
 <meta name="twitter:description" content="I was recently asked to help build a “Range Slider” Power BI Custom Visual that simply filters a report based on the slider value. Unfortunately “filtering” is not currently supported in the new Power">
@@ -193,11 +193,11 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I was recently asked to help build a “Range Slider” Power BI Custom Visual that simply filters a report based on the slider value. Unfortunately “filtering” is not currently supported in the new <a href="https://github.com/Microsoft/PowerBI-visuals-tools" target="_blank" rel="external">Power BI Custom Visual SDK</a>, but should be in the next couple of months.</p>
 <p>Since this customer is already using <a href="https://azure.microsoft.com/en-us/services/power-bi-embedded/" target="_blank" rel="external">Power BI Embedded</a>, I suggested that they use the new <a href="https://powerbi.microsoft.com/en-us/blog/intro-pbi-js-api/" target="_blank" rel="external">Power BI Embedded JavaScript API</a> to send filter commands from the hosting webpage to the embedded Power BI report.</p>
-<p>It wasn’t as easy as it should be to get this implemented.  There’s the new <a href="https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html" target="_blank" rel="external">demo site</a>, that helped with syntax, but it doesn’t allow you to change the filters.  <em>I hacked a version together that does allow you to edit the filter text, but uses JavaScript eval(), so the PR was denied, but the code still works. You can find my fork here: <a href="https://github.com/jonbgallant/PowerBI-JavaScript" target="_blank" rel="external">jonbgallant / PowerBI-JavaScript</a>.</em></p>
-<p>You can find all of the working code from this walkthrough here: <a href="https://github.com/jonbgallant/powerbi-embedded-javascript-api-range-slider-filter" target="_blank" rel="external">jonbgallant / powerbi-embedded-javascript-api-range-slider-filter</a>.</p>
+<p>It wasn’t as easy as it should be to get this implemented.  There’s the new <a href="https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html" target="_blank" rel="external">demo site</a>, that helped with syntax, but it doesn’t allow you to change the filters.  <em>I hacked a version together that does allow you to edit the filter text, but uses JavaScript eval(), so the PR was denied, but the code still works. You can find my fork here: <a href="https://github.com/jongio/PowerBI-JavaScript" target="_blank" rel="external">jonbgallant / PowerBI-JavaScript</a>.</em></p>
+<p>You can find all of the working code from this walkthrough here: <a href="https://github.com/jongio/powerbi-embedded-javascript-api-range-slider-filter" target="_blank" rel="external">jonbgallant / powerbi-embedded-javascript-api-range-slider-filter</a>.</p>
 <h2 id="create-report-in-power-bi-desktop"><a class="header-anchor" href="#create-report-in-power-bi-desktop"></a>Create Report in Power BI Desktop</h2>
 <p>The first thing you are going to want to do is create a Power BI report using <a href="https://powerbi.microsoft.com/en-us/desktop/" target="_blank" rel="external">Power BI Desktop</a> that you can later embed and filter.  For this example, we are going to use a very simple table.</p>
-<p>You can download this sample pbix from GitHub here: <a href="https://github.com/jonbgallant/powerbi-embedded-javascript-api-range-slider-filter/blob/master/powerbi-embedded-sample.pbix" target="_blank" rel="external">powerbi-embedded-sample.pbix</a></p>
+<p>You can download this sample pbix from GitHub here: <a href="https://github.com/jongio/powerbi-embedded-javascript-api-range-slider-filter/blob/master/powerbi-embedded-sample.pbix" target="_blank" rel="external">powerbi-embedded-sample.pbix</a></p>
 <p><img src="000002.png" alt=""></p>
 <p>I added a simple pie chart<br>
 <img src="000007.png" alt=""></p>
@@ -361,7 +361,7 @@
                         
                 
                     <li>
-                        <a class="social-tooltip" title="github" href="https://github.com/jonbgallant" target="_blank">
+                        <a class="social-tooltip" title="github" href="https://github.com/jongio" target="_blank">
                             <i class="icon fa fa-github"></i>
                         </a>
                     </li>
