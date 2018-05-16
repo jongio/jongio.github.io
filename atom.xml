@@ -97,11 +97,11 @@
     <link href="https://blog.jongallant.com/2018/01/python-lessons-learned/"/>
     <id>https://blog.jongallant.com/2018/01/python-lessons-learned/</id>
     <published>2018-01-04T06:14:25.000Z</published>
-    <updated>2018-05-16T20:38:12.460Z</updated>
+    <updated>2018-05-16T20:52:33.108Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;I just published my first official distributable &lt;a href=&quot;https://pypi.python.org/pypi/azure-iot-edge-dev-tool&quot; target=&quot;_blank&quot; rel=&quot;exte
+      &lt;p&gt;I just published my first official distributable &lt;a href=&quot;https://pypi.python.org/pypi/iotedgedev&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Python 
     
     </summary>
     
@@ -216,9 +216,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
     
   </entry>
   
@@ -244,9 +244,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   

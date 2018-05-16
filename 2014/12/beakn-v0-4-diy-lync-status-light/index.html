@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/1291b2b0c337_C70/P-1335_thumb.jpg">
-<meta property="og:updated_time" content="2018-05-16T20:39:31.863Z">
+<meta property="og:updated_time" content="2018-05-16T20:53:17.282Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.4 - DIY Lync Status Light with Spark Core, WiFi, Batteries, SMD LEDs, On/Off Switch, Ping pong ball and a Cardboard Box">
 <meta name="twitter:description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
@@ -300,7 +300,7 @@
 <p>This is the code that sits on your Spark Core. It is going to set the appropriate LED color. You will notice that there is a call to “Spark.function(“setStatus”, setStatus);” That is a method included in the Spark Core development experience. It sets up the setStatus function as a function that can be called via HTTP with their Cloud API. Amazingly simple. This functionality was much more code in my previous versions because I had to talk to MQTT servers directly.</p>
 <p>You can get the code in two ways:</p>
 <p>1. Search the Spark libraries for “beakn”. <a href="http://spark.io" target="_blank" rel="external">http://spark.io</a>, Libraries, search for beakn. Directly use the beakn-sparkcore.ino example file.</p>
-<p>2. Go to the beakn-sparkcore GitHub repository and copy the code to the Spark Core IDE and deploy to your device. <a href="https://raw.githubusercontent.com/jonbgallant/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" title="https://raw.githubusercontent.com/jonbgallant/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" target="_blank" rel="external">https://raw.githubusercontent.com/jonbgallant/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino</a></p>
+<p>2. Go to the beakn-sparkcore GitHub repository and copy the code to the Spark Core IDE and deploy to your device. <a href="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" title="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" target="_blank" rel="external">https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino</a></p>
 <h2 id="fire-it-up"><a class="header-anchor" href="#fire-it-up"></a>Fire it up</h2>
 <p>Turn on your beakn using your toggle switch. It will flash red, yellow and then green when it starts up. After that you’ll need to change your Lync status to get it initialized. (I’m researching ways to automatically pull the latest status – for now just toggle).</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1335_3.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1335_thumb_3.jpg" alt="P-1335" title="P-1335"></a></p>

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/23994ddf1868_10F1E/image_thumb.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:30.659Z">
+<meta property="og:updated_time" content="2018-05-16T20:54:22.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box">
 <meta name="twitter:description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
@@ -205,7 +205,7 @@
 7. Tape the Spark Core to the bottom of the box top.</p>
 <p><a href="/images/blog/23994ddf1868_10F1E/P-997_thumb1.jpg"><img src="/images/blog/23994ddf1868_10F1E/P-997_thumb1_thumb.jpg" alt="P-997_thumb[1]" title="P-997_thumb[1]"></a><a href="/images/blog/23994ddf1868_10F1E/P-1003_thumb1.jpg"><img src="/images/blog/23994ddf1868_10F1E/P-1003_thumb1_thumb.jpg" alt="P-1003_thumb[1]" title="P-1003_thumb[1]"></a><br>
 8. Flash the following code to the Spark via the Cloud IDE.</p>
-<script src="http://gist-it.appspot.com/github/jonbgallant/beakn-sparkcore/blob/master/firmware/examples/beakn-sparkcore-onboard-led.ino"></script>
+<script src="http://gist-it.appspot.com/github/jongio/beakn-sparkcore/blob/master/firmware/examples/beakn-sparkcore-onboard-led.ino"></script>
 <p>9. Install the beakn Windows application. It’s an app that runs in the background and calls the Spark Core function setStatus when your Lync status changes.</p>
 <blockquote>
 <p>To install the desktop app you can:</p><p>1. Get the source, build it and run it: <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="external">https://github.com/jongio/beakn/tree/master/desktop</a></p><p>2. Install via the v0.4 MSI: <a href="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi" target="_blank" rel="external">https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi</a></p><p>After you install it you are going to need to modify the config to use your Spark Core keys.</p><p>1. If beakn.exe is running you’ll need to stop it.</p><p>2. Open notepad as Admin open beakn.exe.config</p><p>3. Change the Protocol setting to “SparkCore&quot;</p><p>4. Change the AccessToken and DeviceId to the IDs you get from <a href="http://Spark.io" target="_blank" rel="external">Spark.io</a></p><p>    &lt;add key=“SparkCoreAccessToken” value=”&quot;/&gt; // <a href="http://spark.io/" target="_blank" rel="external">http://spark.io</a> – click on settings in lower left<br>
