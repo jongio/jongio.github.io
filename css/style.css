@@ -220,7 +220,7 @@ body,
 }
 body {
   background: #fff;
-  font: 11px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 11px 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-text-size-adjust: 100%;
 }
 code {
@@ -532,12 +532,12 @@ code {
   border: none !important;
   outline: none !important;
   background: none !important;
-  line-height: 1.5em;
+  line-height: 27px;
   -webkit-transition: 0.2s ease-in;
   -moz-transition: 0.2s ease-in;
   -ms-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
-  font: 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 16px 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: rgba(255,255,255,0.7);
 }
 .search-form-input:focus,
@@ -712,7 +712,7 @@ code {
   margin-bottom: 6px;
 }
 .widget {
-  line-height: 1.5em;
+  line-height: 27px;
   word-wrap: break-word;
   font-size: 0.9em;
   color: #777;
@@ -844,8 +844,8 @@ code {
   overflow: hidden;
 }
 .article-meta {
-  height: 1.5em;
-  line-height: 1.5em;
+  height: 27px;
+  line-height: 27px;
   overflow: hidden;
 }
 .article-meta:before,
@@ -968,9 +968,9 @@ code {
   position: relative;
   color: #aaa;
   font-size: 13px;
-  line-height: 1.5em;
+  line-height: 27px;
   overflow: hidden;
-  height: 6em;
+  height: 108px;
 }
 .article-summary:hover .thumbnail .thumbnail-image {
   opacity: 0.7;
@@ -1033,8 +1033,8 @@ a.article-title:hover {
 }
 .article-entry {
   color: #24292e;
-  font-size: 14px;
-  line-height: 1.5em;
+  font-size: 16px;
+  line-height: 27px;
 }
 .article-entry:before,
 .article-entry:after {
@@ -1046,7 +1046,7 @@ a.article-title:hover {
 }
 .article-entry p,
 .article-entry table {
-  margin: 1.5em 0;
+  margin: 27px 0;
 }
 .article-entry h1,
 .article-entry h2,
@@ -1122,8 +1122,8 @@ a.article-title:hover {
 }
 .article-entry blockquote footer {
   font-size: 11px;
-  margin: 1.5em 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 27px 0;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -1217,7 +1217,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 14px 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   padding: 0 15px;
   color: #24292e;
   outline: none;
@@ -1321,7 +1321,7 @@ a.article-title:hover {
   background: #000;
   position: relative;
   text-align: center;
-  margin: 1.5em 0;
+  margin: 27px 0;
 }
 .article-gallery .gallery-item {
   display: none;
@@ -1419,7 +1419,7 @@ a.article-title:hover {
   -moz-transition: color 0.2s;
   -ms-transition: color 0.2s;
   transition: color 0.2s;
-  line-height: 1.5em;
+  line-height: 27px;
 }
 .archive-article-title:hover {
   color: #28405c;
@@ -1498,7 +1498,7 @@ a.article-title:hover {
   background: #17191d;
   margin-top: 60px;
   color: #aaa;
-  line-height: 1.5em;
+  line-height: 27px;
 }
 #footer a {
   color: #ccc;
