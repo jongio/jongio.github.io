@@ -8,18 +8,22 @@
     
         <meta name="keywords" content="powerbi,nodejs" />
     
-    <meta name="description" content="Power BI recently released their new Custom Visual SDK. If you were exposed to the old SDK you will quickly realize how much better this one is. Here’s a quickstart guide that should have your Custom">
+    <meta name="description" content="I have removed the content of this post because the Power BI team created the following dev environment setup page:
+Power BI Documentation: Use developer tools to create custom visuals
+Jon">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Power BI Custom Visual Dev Environment Setup Quickstart">
 <meta property="og:url" content="https://blog.jongallant.com/2016/09/powerbi-custom-visual-dev/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Power BI recently released their new Custom Visual SDK. If you were exposed to the old SDK you will quickly realize how much better this one is. Here’s a quickstart guide that should have your Custom">
-<meta property="og:image" content="https://blog.jongallant.com/images/blog/de95492d9558_12521/image.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:41.172Z">
+<meta property="og:description" content="I have removed the content of this post because the Power BI team created the following dev environment setup page:
+Power BI Documentation: Use developer tools to create custom visuals
+Jon">
+<meta property="og:updated_time" content="2018-07-24T14:16:00.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Power BI Custom Visual Dev Environment Setup Quickstart">
-<meta name="twitter:description" content="Power BI recently released their new Custom Visual SDK. If you were exposed to the old SDK you will quickly realize how much better this one is. Here’s a quickstart guide that should have your Custom">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/blog/de95492d9558_12521/image.png">
+<meta name="twitter:description" content="I have removed the content of this post because the Power BI team created the following dev environment setup page:
+Power BI Documentation: Use developer tools to create custom visuals
+Jon">
     
 
     
@@ -35,6 +39,7 @@
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
     
@@ -191,44 +196,8 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Power BI recently released their new Custom Visual SDK. If you were exposed to the old SDK you will quickly realize how much better this one is. Here’s a quickstart guide that should have your Custom Visual dev environment up and running in a few minutes.</p>
-<p><strong>Related Links</strong></p>
-<ul>
-<li>Release Announcement: <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-custom-visuals-developer-tools-hit-v1/" title="https://powerbi.microsoft.com/en-us/blog/power-bi-custom-visuals-developer-tools-hit-v1/" target="_blank" rel="external">https://powerbi.microsoft.com/en-us/blog/power-bi-custom-visuals-developer-tools-hit-v1/</a></li>
-<li>SDK: <a href="https://github.com/Microsoft/PowerBI-visuals-tools" title="https://github.com/Microsoft/PowerBI-visuals-tools" target="_blank" rel="external">https://github.com/Microsoft/PowerBI-visuals-tools</a></li>
-<li>Docs: <a href="https://github.com/Microsoft/PowerBI-visuals" title="https://github.com/Microsoft/PowerBI-visuals" target="_blank" rel="external">https://github.com/Microsoft/PowerBI-visuals</a></li>
-<li>Sample: <a href="https://github.com/Microsoft/PowerBI-visuals-sampleBarChart" title="https://github.com/Microsoft/PowerBI-visuals-sampleBarChart" target="_blank" rel="external">https://github.com/Microsoft/PowerBI-visuals-sampleBarChart</a></li>
-<li>Visuals Gallery: <a href="http://visuals.powerbi.com" target="_blank" rel="external">http://visuals.powerbi.com</a></li>
-</ul>
-<h2 id="0-install-node-js"><a class="header-anchor" href="#0-install-node-js"></a>0. Install Node.js</h2>
-<p><a href="http://nodejs.org" target="_blank" rel="external">http://nodejs.org</a></p>
-<h2 id="1-install-sdk"><a class="header-anchor" href="#1-install-sdk"></a>1. Install SDK</h2>
-<script src="https://gist.github.com/jongio/84819f7b4bad6b6e5697f8649920a59f.js"></script>
-<h2 id="2-install-local-cert"><a class="header-anchor" href="#2-install-local-cert"></a>2. Install Local Cert</h2>
-<p>Allows you to surface your visual to PowerBI as you develop it. Full instructions <a href="https://github.com/Microsoft/PowerBI-visuals/blob/master/tools/CertificateSetup.md" target="_blank" rel="external">here</a>.</p>
-<script src="https://gist.github.com/jongio/fa69597fc2f2bfa7c3820bc5be988658.js"></script>
-<ul>
-<li>Current User --&gt; Trusted Root Certification Authorities</li>
-</ul>
-<h2 id="3-enable-developer-visual"><a class="header-anchor" href="#3-enable-developer-visual"></a>3. Enable Developer Visual</h2>
-<p>Go here: <a href="https://app.powerbi.com/groups/me/settings/general/plugins" title="https://msit.powerbi.com/groups/me/settings/general/plugins" target="_blank" rel="external">https://app.powerbi.com/groups/me/settings/general/plugins</a></p>
-<p>Check “Enable developer visual for testing”</p>
-<p><img src="/images/blog/de95492d9558_12521/image.png" alt=""></p>
-<h2 id="4-create-test-visual"><a class="header-anchor" href="#4-create-test-visual"></a>4. Create Test Visual</h2>
-<script src="https://gist.github.com/jongio/ac9135fcedcaaaa32fe85cbf9d0cf3ab.js"></script>
-<p><img src="/images/blog/de95492d9558_12521/image_3.png" alt=""></p>
-<p><img src="/images/blog/de95492d9558_12521/image_4.png" alt=""></p>
-<h2 id="5-start-local-visual-dev-server"><a class="header-anchor" href="#5-start-local-visual-dev-server"></a>5. Start Local Visual Dev Server</h2>
-<script src="https://gist.github.com/jongio/5ca6794c222d3409e2c994faae3ce302.js"></script>
-<p><img src="/images/blog/de95492d9558_12521/image_5.png" alt=""></p>
-<h2 id="6-test-on-powerbi-com"><a class="header-anchor" href="#6-test-on-powerbi-com"></a>6. Test on <a href="http://PowerBI.com" target="_blank" rel="external">PowerBI.com</a></h2>
-<p>Go to <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a></p>
-<p>Open any Dataset and click on the new Developer Visual icon in the Visualizations pane</p>
-<p><img src="/images/blog/de95492d9558_12521/image_6.png" alt=""></p>
-<p>You should then see the custom visual render</p>
-<p><img src="/images/blog/de95492d9558_12521/image_7.png" alt=""></p>
-<p>Troubleshooting/debugging tips are <a href="https://github.com/Microsoft/PowerBI-visuals/blob/master/tools/usage.md#debugging" target="_blank" rel="external">here</a> and <a href="https://github.com/Microsoft/PowerBI-visuals/blob/master/tools/debugging.md" target="_blank" rel="external">here</a> if you don’t see your visual.</p>
-<p>More Power BI dev posts to come soon.</p>
+            <p>I have removed the content of this post because the Power BI team created the following dev environment setup page:</p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="external">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <p>Jon</p>
 
         </div>

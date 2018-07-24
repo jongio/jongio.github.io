@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The Power BI team just released v1.2 of the Custom Visuals SDK. With this version you now need to reference d3 v3.5.5 yourself. d3 v4 does not work yet. I’m working with the team to get a v4 compat an">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/26c01965b05f_627C/image.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:40.768Z">
+<meta property="og:updated_time" content="2018-07-24T16:30:15.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Add d3@v3.5.5 Reference to a Power BI Custom Visual (SDK v1.2)">
 <meta name="twitter:description" content="The Power BI team just released v1.2 of the Custom Visuals SDK. With this version you now need to reference d3 v3.5.5 yourself. d3 v4 does not work yet. I’m working with the team to get a v4 compat an">
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 
     <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
     
@@ -194,7 +195,7 @@
             <p>The Power BI team just released v1.2 of the Custom Visuals SDK. With this version you now need to reference d3 v3.5.5 yourself. d3 v4 does not work yet. I’m working with the team to get a v4 compat and sample together, but for now you can only use v3.5.5.</p>
 <p>You can follow along with the steps below or follow along on this video:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tADs-T-S_f8" frameborder="0" allowfullscreen></iframe>
-<p>1. Setup your Custom Viz dev env: <a href="/2016/09/powerbi-custom-visual-dev.html" title="/2016/09/powerbi-custom-visual-dev.html">/2016/09/powerbi-custom-visual-dev.html</a></p>
+<p>1. Setup your Custom Viz dev env: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="external">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <p>2. Create a new visual</p>
 <script src="https://gist.github.com/jongio/ac9135fcedcaaaa32fe85cbf9d0cf3ab.js"></script>
 <p>3. Install typings <a href="https://github.com/typings/typings" title="https://github.com/typings/typings" target="_blank" rel="external">https://github.com/typings/typings</a></p>
@@ -204,15 +205,23 @@
 <p>5. Add d3 typing</p>
 <script src="https://gist.github.com/jongio/1b976f6020e23679ed3d36cf350d4f12.js"></script>
 <p>6. Add files to tsconfig.json</p>
+<p>Add <code>&quot;typings/index.d.ts&quot;</code> to tsconfig.json</p>
 <script src="https://gist.github.com/jongio/51b7dd3afbae54e7fefb922ff828a940.js"></script>
 <p>7. Add d3 reference to pbiviz.json to externalJS array</p>
+<p>Add <code>&quot;node_modules/d3/d3.min.js&quot;</code> to pbiviz.json</p>
 <script src="https://gist.github.com/jongio/0a6a93047e2a9830efa0518688ea6c69.js"></script>
 <p>8. Copy this code to src/visual.ts</p>
 <script src="https://gist.github.com/jongio/99494592e71ff34ad9ae586b99d3f929.js"></script>
 <p>9. Start pbiviz dev server</p>
 <script src="https://gist.github.com/jongio/034b6052f2962b3c5acaf3026bbdb288.js"></script>
 <p><img src="/images/blog/26c01965b05f_627C/image.png" alt=""></p>
-<p>10. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a> and add development visual to a report. You should see a green circle.</p>
+<p>10. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a>.</p>
+<p>11. Enable Developer Settings</p>
+<p>See this page for instructions on enabling the Developer visual in Power BI.</p>
+<p><a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="external">Power BI Documentation: Use developer tools to create custom visuals</a></p>
+<p>12. Create a Report</p>
+<p>13. Click the Custom Visual Icon.</p>
+<p>14. You should now see your d3 visual.</p>
 <p><img src="/images/blog/26c01965b05f_627C/image_3.png" alt=""></p>
 
         </div>
