@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-05-02T20:29:07.608Z</updated>
+  <updated>2018-07-27T17:13:46.942Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Where to Find Your SpectraView II Serial Number</title>
+    <link href="https://blog.jongallant.com/2018/07/spectraview-serial-number/"/>
+    <id>https://blog.jongallant.com/2018/07/spectraview-serial-number/</id>
+    <published>2018-07-27T10:01:20.000Z</published>
+    <updated>2018-07-27T17:13:46.942Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;When you launch SpectraView II for the first time it will ask you for a serial number:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;000368.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;“Enter
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Azure CLI: How to Supress Command Output</title>
@@ -216,9 +238,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -244,9 +266,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
     
   </entry>
   
@@ -601,30 +623,6 @@ My team is hiring developers in the high-scale data space that have experience b
     
     
       <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Change Your Raspberry Pi Password</title>
-    <link href="https://blog.jongallant.com/2017/09/raspberrypi-change-password/"/>
-    <id>https://blog.jongallant.com/2017/09/raspberrypi-change-password/</id>
-    <published>2017-09-14T23:19:03.000Z</published>
-    <updated>2017-12-04T22:21:31.508Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;You’ll want to make sure you don’t leave the default ‘pi’ user’s password to the default ‘raspberry’ setting.  Here’s how to change it.&lt;/
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
