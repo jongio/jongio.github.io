@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-rest-apis-postman/AzurePostman2min.png">
-<meta property="og:updated_time" content="2017-12-19T22:22:26.987Z">
+<meta property="og:updated_time" content="2017-12-19T22:22:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure REST APIs with Postman in 2 Minutes">
 <meta name="twitter:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
@@ -203,23 +203,23 @@
 <p>The Azure CLI is written in Python, so you’ll need Python to execute any of the CLI commands.</p>
 <h5 id="2-install-azure-cli-2-0"><a class="header-anchor" href="#2-install-azure-cli-2-0"></a>2. Install <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="external">Azure CLI 2.0</a></h5>
 <h5 id="3-login-to-cli"><a class="header-anchor" href="#3-login-to-cli"></a>3. Login to CLI</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az login</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az login</div></pre></td></tr></table></figure>
 <p><img src="00.png" alt=""></p>
 <ul>
 <li>Go to <a href="http://aka.ms/devicelogin" target="_blank" rel="external">http://aka.ms/devicelogin</a> and enter the code show in the console.</li>
 </ul>
 <h5 id="4-set-active-subscription"><a class="header-anchor" href="#4-set-active-subscription"></a>4. Set Active Subscription</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az account <span class="built_in">set</span> --subscription <span class="string">"your subscription name or id"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az account <span class="built_in">set</span> --subscription <span class="string">"your subscription name or id"</span></div></pre></td></tr></table></figure>
 <p><img src="01.png" alt=""></p>
 <h5 id="5-create-service-principal"><a class="header-anchor" href="#5-create-service-principal"></a>5. Create Service Principal</h5>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az ad sp create-for-rbac -n <span class="string">"your service principal name"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az ad sp create-for-rbac -n <span class="string">"your service principal name"</span></div></pre></td></tr></table></figure>
 <p><img src="02.png" alt=""></p>
 <blockquote>
 <p>Copy this output to a temp location, you will need the values in a minute.</p>
 </blockquote>
 <h6 id="service-principal-password-reset"><a class="header-anchor" href="#service-principal-password-reset"></a>Service Principal Password Reset</h6>
 <p>You can execute the following command if you ever need to reset your Service Principal password.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">az ad sp reset-credentials --name <span class="string">"your service principal name"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az ad sp reset-credentials --name <span class="string">"your service principal name"</span></div></pre></td></tr></table></figure>
 <p>You can read more about Service Principals <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects" target="_blank" rel="external">here</a>.</p>
 <h2 id="postman-setup"><a class="header-anchor" href="#postman-setup"></a>Postman Setup</h2>
 <p>We are now going to use Postman to execute a REST call to get the Bearer Token and another to Get Resource Groups.</p>
@@ -256,7 +256,7 @@
 <ul>
 <li>Enter all your settings from the Service Principal we created earlier.  Here’s how they map:</li>
 </ul>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">tenant = tenantId</span><br><span class="line">appId = clientId</span><br><span class="line">password = clientSecret</span><br><span class="line">subscriptionId is the same</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">tenant</span> = tenantId</div><div class="line"><span class="attribute">appId</span> = clientId</div><div class="line"><span class="attribute">password</span> = clientSecret</div><div class="line">subscriptionId is the same</div></pre></td></tr></table></figure>
 <p>When you are done it will look like this with all the values filled in:</p>
 <p><img src="24.png" alt=""></p>
 <p>Make sure that the <code>Azure REST</code> Environment is selected in the Environment dropdown in the upper right hand corner of Postman.</p>
@@ -268,17 +268,17 @@
 <li>Open the Get AAD Token request and click the <strong>Send</strong> button.</li>
 </ul>
 <p>You will see the following output:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">    <span class="string">"token_type"</span>: <span class="string">"Bearer"</span>,</span><br><span class="line">    <span class="string">"expires_in"</span>: <span class="string">"3599"</span>,</span><br><span class="line">    <span class="string">"ext_expires_in"</span>: <span class="string">"0"</span>,</span><br><span class="line">    <span class="string">"expires_on"</span>: <span class="string">"1512031433"</span>,</span><br><span class="line">    <span class="string">"not_before"</span>: <span class="string">"1512027533"</span>,</span><br><span class="line">    <span class="string">"resource"</span>: <span class="string">"https://management.azure.com/"</span>,</span><br><span class="line">    <span class="string">"access_token"</span>: <span class="string">"eyJ0eXAiOiJKV...tS-OmwIfRw"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"> &#123;</div><div class="line">    <span class="string">"token_type"</span>: <span class="string">"Bearer"</span>,</div><div class="line">    <span class="string">"expires_in"</span>: <span class="string">"3599"</span>,</div><div class="line">    <span class="string">"ext_expires_in"</span>: <span class="string">"0"</span>,</div><div class="line">    <span class="string">"expires_on"</span>: <span class="string">"1512031433"</span>,</div><div class="line">    <span class="string">"not_before"</span>: <span class="string">"1512027533"</span>,</div><div class="line">    <span class="string">"resource"</span>: <span class="string">"https://management.azure.com/"</span>,</div><div class="line">    <span class="string">"access_token"</span>: <span class="string">"eyJ0eXAiOiJKV...tS-OmwIfRw"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="25.png" alt=""></p>
 <p>The <code>access_token</code> property is now stored a global variable, which was set in the “Tests” tab.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm.globals.set(<span class="string">"bearerToken"</span>, pm.response.json().access_token);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">pm.globals.set(<span class="string">"bearerToken"</span>, pm.response.json().access_token);</div></pre></td></tr></table></figure>
 <h5 id="5-execute-get-resource-groups-request"><a class="header-anchor" href="#5-execute-get-resource-groups-request"></a>5. Execute Get Resource Groups Request</h5>
 <p>We’ll now execute any Azure REST API with that Bearer Token. Just as an exercise, we’ll execute the Get Resource Groups request.</p>
 <ul>
 <li>Open the Get Resource Groups request and click the Send button.</li>
 </ul>
 <p>You will see the following output:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"value"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"id"</span>: <span class="string">"/subscriptions/.../resourceGroups/cloud-shell-storage-westus"</span>,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"cloud-shell-storage-westus"</span>,</span><br><span class="line">            <span class="string">"location"</span>: <span class="string">"westus"</span>,</span><br><span class="line">            <span class="string">"properties"</span>: &#123;</span><br><span class="line">                <span class="string">"provisioningState"</span>: <span class="string">"Succeeded"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"value"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"id"</span>: <span class="string">"/subscriptions/.../resourceGroups/cloud-shell-storage-westus"</span>,</div><div class="line">            <span class="string">"name"</span>: <span class="string">"cloud-shell-storage-westus"</span>,</div><div class="line">            <span class="string">"location"</span>: <span class="string">"westus"</span>,</div><div class="line">            <span class="string">"properties"</span>: &#123;</div><div class="line">                <span class="string">"provisioningState"</span>: <span class="string">"Succeeded"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="26.png" alt=""></p>
 <p>That’s all there is to it. Now you can go an explore all of the Azure REST APIs and use this same method to generate the required Bearer Token Authorization header.</p>
 <p>Please let me know if you run in to any issues.</p>

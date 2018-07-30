@@ -199,7 +199,7 @@
 3. Reference the SevenZipSharp DLLs in your project<br>
 4. Change your projects target platform to x86 or x64 (depending on what platform you are using). Properties, Build—&gt;Target Platform.<br>
 5. Add these 3 lines of code to your project.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">SevenZipExtractor.SetLibraryPath(<span class="string">@"C:\Program Files\7-Zip\7z.dll"</span>);</span><br><span class="line"><span class="comment">// If this path doesn't exist then find 7z.dll on your machine and point to that.</span></span><br><span class="line"> </span><br><span class="line">SevenZipExtractor zip = <span class="keyword">new</span> SevenZipExtractor(<span class="string">"path to xsn"</span>);</span><br><span class="line">zip.ExtractArchive(<span class="string">"path to folder you want to decompress to"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">SevenZipExtractor.SetLibraryPath(<span class="string">@"C:\Program Files\7-Zip\7z.dll"</span>);</div><div class="line"><span class="comment">// If this path doesn't exist then find 7z.dll on your machine and point to that.</span></div><div class="line"> </div><div class="line">SevenZipExtractor zip = <span class="keyword">new</span> SevenZipExtractor(<span class="string">"path to xsn"</span>);</div><div class="line">zip.ExtractArchive(<span class="string">"path to folder you want to decompress to"</span>);</div></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

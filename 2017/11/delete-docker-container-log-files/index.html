@@ -212,7 +212,7 @@ Get Docker File Location
 <blockquote>
 <p>Your docker log file path should be /var/lib/docker, but if it isn’t, then change it in the command below.</p>
 </blockquote>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line">find /var/<span class="class"><span class="keyword">lib</span>/<span class="title">docker</span>/<span class="title">containers</span>/ -<span class="title">type</span> <span class="title">f</span> -<span class="title">name</span> "*.<span class="title">log</span>" -<span class="title">delete</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight crystal"><table><tr><td class="code"><pre><div class="line">find /var/<span class="class"><span class="keyword">lib</span>/<span class="title">docker</span>/<span class="title">containers</span>/ -<span class="title">type</span> <span class="title">f</span> -<span class="title">name</span> "*.<span class="title">log</span>" -<span class="title">delete</span></span></div></pre></td></tr></table></figure>
 <p><img src="000330.png" alt=""><br>
 Thanks to Stefan Foulis for originally posting this code here: <a href="https://gist.github.com/stefanfoulis/604ea00fd66eea03607b" target="_blank" rel="external">https://gist.github.com/stefanfoulis/604ea00fd66eea03607b</a></p>
 <p><strong>Troubleshooting</strong></p>

@@ -208,9 +208,9 @@ var resource = $resource(&apos;http://local">
 <img src="/images/blog/Solution-to_14C14/image.png" alt=""></p>
 <p><em>Origin is not allowed by Access-Control-Allow-Origin.</em></p>
 <p>Here’s the code snippet:</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</div></pre></td></tr></table></figure>
 <p>After a lot of digging I discovered that you need to escape the port when using $resource. <a href="https://github.com/angular/angular.js/issues/1243" target="_blank" rel="external">Here’s the issue thread on github</a></p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost\\:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost\\:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</div></pre></td></tr></table></figure>
 <p>Add those two slashes before the port and the error goes away.</p>
 <p>Hope I just saved you hours of pain.</p>
 <p>Jon</p>

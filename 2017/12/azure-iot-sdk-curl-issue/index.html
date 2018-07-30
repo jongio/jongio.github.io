@@ -17,7 +17,7 @@ azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteReq
 <meta property="og:description" content="A bunch of people have reported the following issue with the Azure IoT Python SDK:
 azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() fai">
 <meta property="og:image" content="https://blog.jongallant.com/2017/12/azure-iot-sdk-curl-issue/01.png">
-<meta property="og:updated_time" content="2017-12-20T02:15:24.335Z">
+<meta property="og:updated_time" content="2017-12-20T02:15:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Workaround: Azure IoT Python SDK Error: curl_easy_perform() failed: Out of memory">
 <meta name="twitter:description" content="A bunch of people have reported the following issue with the Azure IoT Python SDK:
@@ -196,14 +196,14 @@ azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteReq
         
         <div class="article-entry" itemprop="articleBody">
             <p>A bunch of people have reported the following issue with the Azure IoT Python SDK:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory</div></pre></td></tr></table></figure>
 <p>Here’s a workaround:</p>
 <blockquote>
 <p>Please do not go to production with this workaround as it has not been fully tested.  The Azure IoT team will release a permanent fix soon.</p>
 </blockquote>
 <h2 id="linux"><a class="header-anchor" href="#linux"></a>Linux</h2>
 <p>From the <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#compile-the-python-modules-1" target="_blank" rel="external">Python Dev Box Setup Page</a> you’ll get to the “Compile the Python Modules” step. Right after you run <code>./setup.sh</code>, you’ll need to remove <code>openssl</code> and replace it with <code>gnutls</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> build_all/linux</span><br><span class="line"></span><br><span class="line">./setup.sh</span><br><span class="line"></span><br><span class="line">sudo apt remove libcurl4-openssl-dev</span><br><span class="line">sudo apt install libcurl4-gnutls-dev</span><br><span class="line"></span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> build_all/linux</div><div class="line"></div><div class="line">./setup.sh</div><div class="line"></div><div class="line">sudo apt remove libcurl4-openssl-dev</div><div class="line">sudo apt install libcurl4-gnutls-dev</div><div class="line"></div><div class="line">./build.sh</div></pre></td></tr></table></figure>
 <p>You will then be able to run any of the samples by following the instructions <a href="https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples" target="_blank" rel="external">here</a>.</p>
 <h2 id="mac"><a class="header-anchor" href="#mac"></a>Mac</h2>
 <p>We don’t have a workaround at this time. A permanent fix should be rolled out soon. Please let me know if you find a workaround to swap out openssl for gnutls.</p>

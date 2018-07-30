@@ -204,13 +204,13 @@ curl -sSL https:">
             <p>It is very easy to get Docker running on a Raspberry Pi.  Here’s a barebones post to get you started.</p>
 <p>You can execute the following commands over <a href="/raspberrypi-ssh">SSH</a> or <a href="/2017/09/raspberrypi-raspbian-stretch-remote-desktop-realvnc/">Remote Desktop</a>.</p>
 <h2 id="install-docker"><a class="header-anchor" href="#install-docker"></a>Install Docker</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sSL https://get.docker.com | sudo -E sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">curl <span class="_">-s</span>SL https://get.docker.com | sudo -E sh</div></pre></td></tr></table></figure>
 <h2 id="give-pi-user-permission-to-run-docker"><a class="header-anchor" href="#give-pi-user-permission-to-run-docker"></a>Give pi User Permission to Run Docker</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo usermod -aG docker pi</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo usermod <span class="_">-a</span>G docker pi</div></pre></td></tr></table></figure>
 <h2 id="reboot"><a class="header-anchor" href="#reboot"></a>Reboot</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure>
 <h2 id="test"><a class="header-anchor" href="#test"></a>Test</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker run hello-world</div></pre></td></tr></table></figure>
 <p><img src="000285.png" alt=""></p>
 <p>You now have Docker running on your Pi</p>
 

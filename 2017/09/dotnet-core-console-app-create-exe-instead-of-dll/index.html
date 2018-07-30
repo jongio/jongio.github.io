@@ -21,7 +21,7 @@ If you execute this:
 dotnet new console -n App
 And then execute a build">
 <meta property="og:image" content="https://blog.jongallant.com/2017/09/dotnet-core-console-app-create-exe-instead-of-dll/000296.png">
-<meta property="og:updated_time" content="2017-09-15T22:03:32.633Z">
+<meta property="og:updated_time" content="2017-09-15T22:03:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a .NET Core CLI Console App as an EXE Instead of a DLL">
 <meta name="twitter:description" content="You may have just discovered that when you create a console app using the .NET Core CLI tools it only produces a DLL by default.
@@ -203,13 +203,13 @@ And then execute a build">
         <div class="article-entry" itemprop="articleBody">
             <p>You may have just discovered that when you create a console app using the .NET Core CLI tools it only produces a DLL by default.</p>
 <p>If you execute this:</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">dotnet new<span class="built_in"> console </span>-n App</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">dotnet <span class="keyword">new</span> <span class="built_in">console</span> -n App</div></pre></td></tr></table></figure>
 <p>And then execute a build</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">dotnet build</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">dotnet build</span></div></pre></td></tr></table></figure>
 <p>You will get this output:</p>
 <p><img src="000294.png" alt=""></p>
 <p>It took me a while to figure this out, but in order to generate an EXE instead of a DLL, you need to pass a ‘runtime’ to the build command, like this:</p>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">dotnet</span> <span class="keyword">build </span>-r win10-x64</span><br></pre></td></tr></table></figure>
+<figure class="highlight armasm"><table><tr><td class="code"><pre><div class="line"><span class="symbol">dotnet</span> <span class="keyword">build </span>-r win10-x64</div></pre></td></tr></table></figure>
 <p>Which will produce an EXE:</p>
 <p><img src="000296.png" alt=""></p>
 <p>List of valid runtimes (RIDs) can be found here: <a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#using-rids" target="_blank" rel="external">https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#using-rids</a></p>

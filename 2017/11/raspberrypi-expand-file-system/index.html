@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="By default Raspberry Pi does not allocate enough of your SD card for it to be usable.  Out of the box, if you run sudo apt upgrade, you’ll get a message saying that you don’t have enough disk space.">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/000334.png">
-<meta property="og:updated_time" content="2017-11-29T15:28:23.252Z">
+<meta property="og:updated_time" content="2017-11-29T15:28:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Increase Disk Space Allocation on Raspberry Pi">
 <meta name="twitter:description" content="By default Raspberry Pi does not allocate enough of your SD card for it to be usable.  Out of the box, if you run sudo apt upgrade, you’ll get a message saying that you don’t have enough disk space.">
@@ -194,7 +194,7 @@
         <div class="article-entry" itemprop="articleBody">
             <p>By default Raspberry Pi does not allocate enough of your SD card for it to be usable.  Out of the box, if you run <code>sudo apt upgrade</code>, you’ll get a message saying that you don’t have enough disk space.  Here’s how to free up more.</p>
 <p>Open Terminal or <a href="/raspberrypi-ssh">SSH</a> and execute the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo raspi-config --expand-rootfs</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo raspi-config --expand-rootfs</div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
 <p>You might see an error message when running this, but I’ve ignore it and have had no issues.</p>
 <p><img src="000336.png" alt=""></p>
 <p>You’ll find more details on this resize process <a href="https://elinux.org/RPi_Resize_Flash_Partitions" target="_blank" rel="external">here</a>.</p>

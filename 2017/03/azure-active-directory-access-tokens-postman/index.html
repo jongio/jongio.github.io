@@ -21,7 +21,7 @@ Step-by-Step Walkthrough Vide">
 Here’s how to get all setup with AAD access tokens in Postman.
 Step-by-Step Walkthrough Vide">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/azure-active-directory-access-tokens-postman/000042.png">
-<meta property="og:updated_time" content="2017-12-19T22:18:36.148Z">
+<meta property="og:updated_time" content="2017-12-19T22:18:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use Azure Active Directory (AAD) Access Tokens in Postman">
 <meta name="twitter:description" content="Update: 12/5/2017: I blogged a much faster way to do this here: Azure REST APIs with Postman in 2 Minutes
@@ -249,7 +249,7 @@ Step-by-Step Walkthrough Vide">
 <p>3. Select that Environment in the Environment dropdown</p>
 <p><img src="000036.png" alt=""></p>
 <p>4. Enter the following url into the textbox and select POST</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>login.microsoftonline.com<span class="regexp">/&#123;&#123;tenantId&#125;&#125;/</span>oauth2<span class="regexp">/token</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">https:<span class="regexp">//</span>login.microsoftonline.com<span class="regexp">/&#123;&#123;tenantId&#125;&#125;/</span>oauth2<span class="regexp">/token</span></div></pre></td></tr></table></figure>
 <p><img src="000037.png" alt=""></p>
 <p>5. Click on the “Body” tab, select “x-www-form-urlencoded” and enter the following 4 values:</p>
 <p><img src="000038.png" alt=""></p>
@@ -260,20 +260,20 @@ resource: <a href="https://management.azure.com/" target="_blank" rel="external"
 <p>6. Click on the Headers tab and make sure Content-Type header is there and is equal to application/x-www-form-urlencoded</p>
 <p><img src="000039.png" alt=""></p>
 <p>7. Click on the Tests tab and enter the following code to save the access_token returned to an Environment variable.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(responseBody);</span><br><span class="line">postman.setEnvironmentVariable(<span class="string">"bearerToken"</span>, json.access_token);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.parse(responseBody);</div><div class="line">postman.setEnvironmentVariable(<span class="string">"bearerToken"</span>, json.access_token);</div></pre></td></tr></table></figure>
 <p><img src="000040.png" alt=""></p>
 <p>8. Click “Send” and you will now see the response output.</p>
 <p><img src="000042.png" alt=""></p>
 <p>If you get the following error, that means you didn’t give the AAD app permissions to your subscription.  Please see above for instructions on how to do that.</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"error"</span>: &#123;</span><br><span class="line">    <span class="attr">"code"</span>: <span class="string">"AuthorizationFailed"</span>,</span><br><span class="line">    <span class="attr">"message"</span>: <span class="string">"The client '' with object id '' does not have authorization to perform action 'Microsoft.Devices/IotHubs/read' over scope '/subscriptions//resourceGroups/jongrg/providers/Microsoft.Devices/IotHubs/jongiothub'."</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"error"</span>: &#123;</div><div class="line">    <span class="attr">"code"</span>: <span class="string">"AuthorizationFailed"</span>,</div><div class="line">    <span class="attr">"message"</span>: <span class="string">"The client '' with object id '' does not have authorization to perform action 'Microsoft.Devices/IotHubs/read' over scope '/subscriptions//resourceGroups/jongrg/providers/Microsoft.Devices/IotHubs/jongiothub'."</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>9. Click on the “Eye” icon in the upper right and you will now see the “bearerToken” environment variable saved and ready for use in subsequent requests.</p>
 <p><img src="000044.png" alt=""></p>
 <h2 id="use-token-in-subsequent-requests"><a class="header-anchor" href="#use-token-in-subsequent-requests"></a>Use Token in Subsequent Requests</h2>
 <p>Now that you have the token stored in an environment variable you can use it as a bearer token.</p>
 <p>To get the variable just use this code:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">postman.getEnvironmentVariable(<span class="string">"bearerToken"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">postman.getEnvironmentVariable(<span class="string">"bearerToken"</span>);</div></pre></td></tr></table></figure>
 <p>Or double curlys like so:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;&#123;bearerToken&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;&#123;bearerToken&#125;&#125;</div></pre></td></tr></table></figure>
 <p>Here’s an example how to use the bearerToken in the Authorization header</p>
 <p><img src="000045.png" alt=""></p>
 <p>Jon</p>

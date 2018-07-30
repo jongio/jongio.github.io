@@ -23,7 +23,7 @@ This docker command will remove all containers, even if they are running.
 docker rm $(docker ps -a -q) -f
 If you ru">
 <meta property="og:image" content="https://blog.jongallant.com/2017/09/unknown-shorthand-flag/000298.png">
-<meta property="og:updated_time" content="2017-09-18T04:55:28.278Z">
+<meta property="og:updated_time" content="2017-09-18T04:55:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to "unknown shorthand flag a in -a" When Trying to Remove Docker Containers">
 <meta name="twitter:description" content="This docker command will remove all stopped containers.
@@ -205,11 +205,11 @@ If you ru">
         
         <div class="article-entry" itemprop="articleBody">
             <p><a href="https://docs.docker.com/engine/reference/commandline/rm/#remove-all-stopped-containers" target="_blank" rel="external">This docker command</a> will remove all stopped containers.</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">docker rm $<span class="comment">(docker ps -a -q)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><div class="line">docker rm $<span class="comment">(docker ps -a -q)</span></div></pre></td></tr></table></figure>
 <p>This docker command will remove all containers, even if they are running.</p>
-<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">docker rm $<span class="comment">(docker ps -a -q)</span> -f</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">docker rm $(docker ps <span class="_">-a</span> -q) <span class="_">-f</span></div></pre></td></tr></table></figure>
 <p>If you run this command in a regular Windows Command prompt you will get the following output:</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">C:\&gt;docker rm $(docker ps -<span class="selector-tag">a</span> -q)</span><br><span class="line">unknown shorthand flag: <span class="string">'a'</span> <span class="keyword">in</span> -a</span><br><span class="line">See <span class="string">'docker rm --help'</span>.</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">C:\&gt;docker rm $(docker ps -<span class="selector-tag">a</span> -q)</div><div class="line">unknown shorthand flag: <span class="string">'a'</span> <span class="keyword">in</span> -<span class="selector-tag">a</span></div><div class="line">See <span class="string">'docker rm --help'</span>.</div></pre></td></tr></table></figure>
 <p><img src="000298.png" alt=""></p>
 <p>The solution is to run this command in a PowerShell terminal or the Docker QuickStart Terminal.</p>
 <p><img src="000300.png" alt=""><br>

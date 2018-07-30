@@ -21,7 +21,7 @@ Here’s what you have to do:
 Sample Code:
 https://github.c">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/78f1010e2b42_EDC0/image.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:32.379Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Integrate a Bootswatch Theme into an ASP.NET Mvc App">
 <meta name="twitter:description" content="Bootswatch is nice. Free themes for Bootstrap. Integrating into an MVC app turned out to be a little more involved than I thought it would be.
@@ -206,9 +206,9 @@ https://github.c">
 <p>1. Install <strong>Web Essentials</strong> – compiles LESS into CSS<br>
 <a href="http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6" title="http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6" target="_blank" rel="external">http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6</a></p>
 <p>2. Install <strong>Bootstrap</strong> NuGet Package:</p>
-<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">PM&gt; Install-<span class="keyword">Package</span> <span class="title">Twitter.Bootstrap</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="code"><pre><div class="line">PM&gt; Install-<span class="keyword">Package</span> <span class="title">Twitter.Bootstrap</span></div></pre></td></tr></table></figure>
 <p>3. Install <strong>Bootstrap for MVC</strong> NuGet Package:</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">PM&gt; Install-Package Twitter<span class="selector-class">.Bootstrap</span><span class="selector-class">.Mvc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">PM&gt; Install-Package Twitter<span class="selector-class">.Bootstrap</span><span class="selector-class">.Mvc</span></div></pre></td></tr></table></figure>
 <p>4. Add the Bootstrap <strong>mixins.less</strong> to ~/Content/</p>
 <p><a href="https://raw.github.com/twbs/bootstrap/v2.3.2/less/mixins.less" title="https://raw.github.com/twbs/bootstrap/v2.3.2/less/mixins.less" target="_blank" rel="external">https://raw.github.com/twbs/bootstrap/v2.3.2/less/mixins.less</a></p>
 <p>5. Add the <strong>variables.less</strong> and <strong>bootswatch.less</strong> from your bootswatch theme to ~/Content/<br>
@@ -216,14 +216,14 @@ https://github.c">
 <p><img src="/images/blog/78f1010e2b42_EDC0/image.png" alt=""></p>
 <p>6. Add the following <strong>imports</strong> to your mixins.less and bootswatch.less files</p>
 <p><strong>mixins.less</strong></p>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Mixins</span></span><br><span class="line"><span class="comment">// -------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"variables"</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Flatness by Jenil (www.jgog.in)</span></span><br><span class="line"><span class="comment">// Bootswatch 2.3.2</span></span><br><span class="line"><span class="comment">// -----------------------------------------------------</span></span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"mixins"</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">"variables"</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Mixins</span></div><div class="line"><span class="comment">// -------------------------------------------------</span></div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">"variables"</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Flatness by Jenil (www.jgog.in)</span></div><div class="line"><span class="comment">// Bootswatch 2.3.2</span></div><div class="line"><span class="comment">// -----------------------------------------------------</span></div><div class="line"></div><div class="line">@<span class="keyword">import</span> <span class="string">"mixins"</span>;</div><div class="line">@<span class="keyword">import</span> <span class="string">"variables"</span>;</div></pre></td></tr></table></figure>
 <p>7. Save those less files and Web Essentials will compile them to CSS<br>
 <img src="/images/blog/78f1010e2b42_EDC0/image_3.png" alt=""></p>
 <p>8. Add <strong>bootswatch.css</strong> to your bootstrap bundle in ~/App_Start/BootstrapBundleConfig.cs</p>
-<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">BundleTable.Bundles.Add(new </span>StyleBundle(<span class="string">"~/Content/bootstrap"</span>)<span class="meta">.Include</span>(<span class="string">"~/Content/bootstrap.css"</span>, <span class="string">"~/Content/bootstrap-responsive.css"</span>, <span class="string">"~/Content/bootswatch.css"</span>))<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><div class="line"><span class="keyword">BundleTable.Bundles.Add(new </span>StyleBundle(<span class="string">"~/Content/bootstrap"</span>)<span class="meta">.Include</span>(<span class="string">"~/Content/bootstrap.css"</span>, <span class="string">"~/Content/bootstrap-responsive.css"</span>, <span class="string">"~/Content/bootswatch.css"</span>))<span class="comment">;</span></div></pre></td></tr></table></figure>
 <p>9. Add the <strong>bootstrap bundle</strong> to _Layout.cshtml</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">Styles</span>.<span class="keyword">Render</span>("~/<span class="keyword">Content</span>/<span class="keyword">bootstrap</span>")</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line">@<span class="keyword">Styles</span>.<span class="keyword">Render</span>("~/<span class="keyword">Content</span>/<span class="keyword">bootstrap</span>")</div></pre></td></tr></table></figure>
 <p>That’s it. Here’s what my test looks like:</p>
 <p><img src="/images/blog/78f1010e2b42_EDC0/image_4.png" alt=""></p>
 

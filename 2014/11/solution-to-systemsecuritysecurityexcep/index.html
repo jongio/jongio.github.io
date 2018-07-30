@@ -200,9 +200,9 @@ and was getting this error…
         
         <div class="article-entry" itemprop="articleBody">
             <p>I was running the following post-build scripts in VS2013…</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(FrameworkDir)\installutil.exe /u <span class="string">"<span class="variable">$(TargetPath)</span>"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">(FrameworkDir)\installutil.exe <span class="string">"<span class="variable">$(TargetPath)</span>"</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nsis"><table><tr><td class="code"><pre><div class="line"><span class="variable">$(FrameworkDir)</span>\installutil.exe /u <span class="string">"<span class="variable">$(TargetPath)</span>"</span></div><div class="line"><span class="variable">$(FrameworkDir)</span>\installutil.exe <span class="string">"<span class="variable">$(TargetPath)</span>"</span></div></pre></td></tr></table></figure>
 <p>and was getting this error…</p>
-<figure class="highlight mizar"><table><tr><td class="code"><pre><span class="line">"System.Security.SecurityException: The source was <span class="keyword">not</span> found, but some <span class="keyword">or</span> all event logs could <span class="keyword">not</span> <span class="keyword">be</span> searched. Inaccessible logs: Security."</span><br></pre></td></tr></table></figure>
+<figure class="highlight mizar"><table><tr><td class="code"><pre><div class="line">"System.Security.SecurityException: The source was <span class="keyword">not</span> found, but some <span class="keyword">or</span> all event logs could <span class="keyword">not</span> <span class="keyword">be</span> searched. Inaccessible logs: Security."</div></pre></td></tr></table></figure>
 <p>Turns out I just needed to <strong>open VS as admin</strong>. Easy solution that took too long to figure out. Hope this helps.</p>
 
         </div>

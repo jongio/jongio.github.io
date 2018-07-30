@@ -17,7 +17,7 @@ For the pu">
 <meta property="og:description" content="Starting with version 1.5 of the Power BI Custom Visuals SDK, we now have the ability to create “slicer” visuals, which are visuals that can filter data in other visuals on the same report.
 For the pu">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/powerbi-custom-slicer/vizpane.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:40.966Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Slicer with the Power BI Custom Visual SDK">
 <meta name="twitter:description" content="Starting with version 1.5 of the Power BI Custom Visuals SDK, we now have the ability to create “slicer” visuals, which are visuals that can filter data in other visuals on the same report.
@@ -234,7 +234,7 @@ For the pu">
 <p>You can use Power BI Desktop, Excel, Streaming Datasets, SQL or whatever you prefer.  I’ve provided an <a href="https://github.com/jongio/PowerBI-visuals-radioSlicer/raw/master/assets/data.xlsx" target="_blank" rel="external">excel spreadsheet here</a> that you can use.  Just import it into Power BI using the web interface, or use Power BI Desktop and Publish it to the web.</p>
 <h2 id="step-1-create-visual-pbiviz-new"><a class="header-anchor" href="#step-1-create-visual-pbiviz-new"></a>Step 1: Create Visual: pbiviz new</h2>
 <p>If you have no idea what pbiviz new means, then see my <a href="http://bit.ly/pbicustomviz" target="_blank" rel="external">How to Get Started with Power BI Custom Visuals</a> for general custom visual development tutorials.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pbiviz <span class="keyword">new</span> radioSlicer</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">pbiviz <span class="keyword">new</span> radioSlicer</div></pre></td></tr></table></figure>
 <p>Open this folder in <a href="https://code.visualstudio.com" target="_blank" rel="external">VS Code</a> or your preferred IDE.</p>
 <h2 id="step-2-update-settings-capabilities-json"><a class="header-anchor" href="#step-2-update-settings-capabilities-json"></a>Step 2: Update Settings: capabilities.json</h2>
 <p>Open capabilities.json and add replace its contents with the following json.</p>
@@ -258,7 +258,7 @@ For the pu">
 <script src="https://gist.github.com/jongio/9d250e330c176669317794117b34e7a5.js"></script>
 <h2 id="step-4-package-pbiviz-package"><a class="header-anchor" href="#step-4-package-pbiviz-package"></a>Step 4: Package: pbiviz package</h2>
 <p>Run the following command to package the visual and share it as a pbiviz file.</p>
-<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">pbiviz <span class="class"><span class="keyword">package</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><div class="line">pbiviz <span class="class"><span class="keyword">package</span></span></div></pre></td></tr></table></figure>
 <p>Hopefully this post helps you get started building slicer visuals.</p>
 <p>Jon</p>
 

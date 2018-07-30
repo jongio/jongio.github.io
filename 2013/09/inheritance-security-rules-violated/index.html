@@ -193,9 +193,9 @@ Search your who">
         <div class="article-entry" itemprop="articleBody">
             <h4 id="inheritance-security-rules-violated-by-type-system-web-mvc-mvcwebrazorhostfactory-derived-types-must-either-match-the-security-accessibility-of-the-base-type-or-be-less-accessible"><a class="header-anchor" href="#inheritance-security-rules-violated-by-type-system-web-mvc-mvcwebrazorhostfactory-derived-types-must-either-match-the-security-accessibility-of-the-base-type-or-be-less-accessible"></a><em>Inheritance security rules violated by type: ‘System.Web.Mvc.MvcWebRazorHostFactory’. Derived types must either match the security accessibility of the base type or be less accessible.</em></h4>
 <p>Search your whole solution for references to MvcWebRazorHostFactory</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <p>Change it to:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">host</span> <span class="attr">factoryType</span>=<span class="string">"System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35"</span> /&gt;</span></div></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

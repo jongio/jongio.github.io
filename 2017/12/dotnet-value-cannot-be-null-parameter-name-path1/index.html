@@ -17,7 +17,7 @@ C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be 
 <meta property="og:description" content="When running Python unit tests with tox, you might see the following errors:
 C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
 <meta property="og:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
-<meta property="og:updated_time" content="2017-12-30T16:20:50.177Z">
+<meta property="og:updated_time" content="2017-12-30T16:20:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to 'Value cannot be null. Parameter name: path1' with dotnet and tox">
 <meta name="twitter:description" content="When running Python unit tests with tox, you might see the following errors:
@@ -196,11 +196,11 @@ C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be 
         
         <div class="article-entry" itemprop="articleBody">
             <p>When running Python unit tests with tox, you might see the following errors:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. </span><br><span class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.ArgumentNullException: Value cannot be null.</span><br><span class="line">Parameter name: path1</span><br><span class="line">   at System.IO.Path.Combine(String path1, String path2)</span><br><span class="line">   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()</span><br><span class="line">   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)</span><br><span class="line">   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)</span><br><span class="line">   at Microsoft.DotNet.Cli.Program.Main(String[] args)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. </div><div class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">System.ArgumentNullException: Value cannot be null.</div><div class="line">Parameter name: path1</div><div class="line">   at System.IO.Path.Combine(String path1, String path2)</div><div class="line">   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()</div><div class="line">   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)</div><div class="line">   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)</div><div class="line">   at Microsoft.DotNet.Cli.Program.Main(String[] args)</div></pre></td></tr></table></figure>
 <p>That is happening because all environment variables are not passed to tox by default.</p>
 <p>Open <code>tox.ini</code> and add the <code>passenv = APPDATA ProgramFiles USERPROFILE</code> line:</p>
-<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">[testenv]</span><br><span class="line">setenv =</span><br><span class="line">    PYTHONPATH = &#123;toxinidir&#125;</span><br><span class="line"></span><br><span class="line">commands = </span><br><span class="line">    python setup.py test</span><br><span class="line"></span><br><span class="line">passenv = APPDATA ProgramFiles USERPROFILE</span><br></pre></td></tr></table></figure>
+<figure class="highlight nix"><table><tr><td class="code"><pre><div class="line">[testenv]</div><div class="line"><span class="attr">setenv</span> =</div><div class="line">    <span class="attr">PYTHONPATH</span> = &#123;toxinidir&#125;</div><div class="line"></div><div class="line"><span class="attr">commands</span> = </div><div class="line">    python setup.py test</div><div class="line"></div><div class="line"><span class="attr">passenv</span> = APPDATA ProgramFiles USERPROFILE</div></pre></td></tr></table></figure>
 <p>Rerun <code>tox</code> and you should be good.</p>
 
         </div>

@@ -206,34 +206,34 @@ Put Photon in Listening Mode
 </p><h2 id="setup-node"><a class="header-anchor" href="#setup-node"></a>Setup Node</h2>
 <p>1\. Install [Node.js](https://nodejs.org/). Make sure you include Node.js in your PATH during install.
 </p><p>2. Install the particle-cli Node.js package. Open a command prompt</p>
-<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line">npm install -g particle-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><div class="line">npm install -g particle-<span class="keyword">cli</span></div></pre></td></tr></table></figure>
 <h2 id="connect-photon-to-wifi-network"><a class="header-anchor" href="#connect-photon-to-wifi-network"></a>Connect Photon to WiFi Network</h2>
 <p>1. Enter the following command into the command prompt and enter your WiFi SSID and Password</p>
-<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">particle <span class="built_in">setup</span> wifi</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><div class="line">particle <span class="built_in">setup</span> wifi</div></pre></td></tr></table></figure>
 <p>If all goes well, you will see a message that looks like this:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image.png" alt=""></p>
 <p>If your Photon is not pulsing cyan (aka breathing cyan) then try this step over again.</p>
 <h2 id="get-photon-id"><a class="header-anchor" href="#get-photon-id"></a>Get Photon Id</h2>
 <p>1. Enter the following command into the command prompt</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">particle identify</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">particle identify</span></div></pre></td></tr></table></figure>
 <p>That will print out your Photon’s unique id to the console.</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_3.png" alt=""></p>
 <p>You will need that later, so copy it over into Notepad.</p>
 <h2 id="login-to-particle"><a class="header-anchor" href="#login-to-particle"></a>Login to Particle</h2>
 <p>1. Enter the following command into the command prompt</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">particle login</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">particle login</span></div></pre></td></tr></table></figure>
 <p>It will prompt you to enter your Particle account email and password. Please do so.</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_4.png" alt=""></p>
 <h2 id="add-photon-to-your-particle-account"><a class="header-anchor" href="#add-photon-to-your-particle-account"></a>Add Photon to your Particle Account</h2>
 <p>Your Photon must be breathing cyan before you attempt this step. If it isn’t, then follow the WiFi steps above.</p>
 <p>1. Enter the following command into the command prompt</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">particle device add [your photon <span class="built_in">id</span> <span class="keyword">from</span> <span class="keyword">above</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">particle device add [your photon <span class="built_in">id</span> <span class="keyword">from</span> <span class="keyword">above</span>]</div></pre></td></tr></table></figure>
 <p>If all goes well you will see a message like this:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_5.png" alt=""></p>
 <h2 id="get-particle-access-token"><a class="header-anchor" href="#get-particle-access-token"></a>Get Particle Access Token</h2>
 <p>You will need an access token to call any of the Particle APIs.</p>
 <p>1. Execute the following command into the command prompt</p>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">particle <span class="keyword">token</span> <span class="keyword">list</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="code"><pre><div class="line">particle <span class="keyword">token</span> <span class="keyword">list</span></div></pre></td></tr></table></figure>
 <p>2. Enter your credentials and find the token that doesn’t have an expiration date:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_6.png" alt=""></p>
 <p>3. Copy that access token to Notepad. You’ll need it later when you call the Particle APIs.</p>

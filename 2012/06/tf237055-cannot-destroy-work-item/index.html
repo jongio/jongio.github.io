@@ -196,19 +196,19 @@ TF237055: You cannot destroy a work item type that is bein">
         
         <div class="article-entry" itemprop="articleBody">
             <p>You’ll often see TF237055 when you try to call destroywitd on a type that is currently assigned to a category. Here’s how to get around that.</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">TF237055: You cannot destroy a work item<span class="built_in"> type </span>that is being used. Verify that the work item<span class="built_in"> type </span>is <span class="keyword">not</span> being used <span class="keyword">in</span> any categories. Operation failed.</span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">TF237055: You cannot destroy a work <span class="built_in">item</span> type <span class="keyword">that</span> <span class="keyword">is</span> being used. Verify <span class="keyword">that</span> <span class="keyword">the</span> work <span class="built_in">item</span> type <span class="keyword">is</span> <span class="keyword">not</span> being used <span class="keyword">in</span> any categories. Operation failed.</div></pre></td></tr></table></figure>
 <p>You need to export your categories, remove the reference to that type and then import the updated categories.</p>
 <p><strong>1. Export the categories to a local file.</strong></p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">witadmin exportcategories <span class="regexp">/collection:[url] /</span><span class="string">p:</span><span class="string">"[project]"</span> /<span class="string">f:</span><span class="string">C:</span>\categories.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">witadmin exportcategories <span class="regexp">/collection:[url] /</span><span class="string">p:</span><span class="string">"[project]"</span> /<span class="string">f:</span><span class="string">C:</span>\categories.xml</div></pre></td></tr></table></figure>
 <p><strong>2. Remove the reference to the type in the categories file</strong></p>
 <p>(categories with Scenario type referenced – This is the type I was trying to remove)<br>
 <img src="/images/blog/TF237055-cannot-destroy-work-item_D1E8/image.png" alt=""></p>
 <p>(categories with the Scenario type removed – Just deleted that line, but your file may have other references to your type so make sure you remove all references)</p>
 <p><img src="/images/blog/TF237055-cannot-destroy-work-item_D1E8/image_3.png" alt=""></p>
 <p><strong>3. Import the categories file back into TFS</strong></p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">witadmin importcategories <span class="regexp">/collection:[url] /</span><span class="string">p:</span><span class="string">"[project]"</span> /<span class="string">f:</span><span class="string">C:</span>\categories.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">witadmin importcategories <span class="regexp">/collection:[url] /</span><span class="string">p:</span><span class="string">"[project]"</span> /<span class="string">f:</span><span class="string">C:</span>\categories.xml</div></pre></td></tr></table></figure>
 <p><strong>3. Rerun destroywitd</strong></p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">witadmin destroywitd <span class="regexp">/collection:[url] /</span><span class="string">p:</span><span class="string">"[project]"</span> /<span class="string">n:</span><span class="string">"[type]"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><div class="line">witadmin destroywitd <span class="regexp">/collection:[url] /</span><span class="string">p:</span><span class="string">"[project]"</span> /<span class="string">n:</span><span class="string">"[type]"</span></div></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>

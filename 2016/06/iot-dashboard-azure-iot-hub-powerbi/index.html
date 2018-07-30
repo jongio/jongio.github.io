@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/481dd41dcc5e_EBDD/image.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:39.708Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Build a Real-Time IoT Dashboard with Azure IoT Hub, Azure Stream Analytics and Power BI">
 <meta name="twitter:description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
@@ -207,7 +207,7 @@
 <p>Now, let’s modify the device code to write more than a simple string to the IoT Hub.</p>
 <h1>IoT Device Code</h1>
 <p>This is the code that will run on the emulated IoT Device. It will write random JSON Serialized messages to your IoT Hub. The data model is simple a single “Participant” class with “Position” and “Count” properties.</p>
-<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Participant</span></span><br><span class="line">&#123;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">int</span> Position &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">int</span> Count &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Participant</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">public</span> <span class="keyword">int</span> Position &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">     <span class="keyword">public</span> <span class="keyword">int</span> Count &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>1. Clone this repo: <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="external">https://github.com/jongio/UWPIoTDevice</a></p>
 <p>2. Open the DeviceKey.txt file and paste in your device connection string from the Azure Portal. (I don’t do much UWP dev and couldn’t quickly figure out how they want us to store config settings like this, so I just dropped it in a text file. LMK if you know a better way to manage config settings)</p>
 <p>3. Compile and move onto next step.</p>

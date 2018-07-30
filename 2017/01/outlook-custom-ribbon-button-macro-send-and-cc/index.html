@@ -205,7 +205,7 @@
 <blockquote>
 <p>Replace <enter your="" email="" here=""> with the email that you want to Cc.</enter></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Public Sub CcAndSend()</span><br><span class="line"></span><br><span class="line">Dim mail As Outlook.MailItem</span><br><span class="line">Set mail = Application.ActiveInspector.CurrentItem</span><br><span class="line"></span><br><span class="line">mail.cc = mail.cc &amp; &quot;;&lt;enter your email here&gt;&quot;</span><br><span class="line"></span><br><span class="line">mail.Send</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">Public Sub CcAndSend()</div><div class="line"></div><div class="line">Dim mail As Outlook.MailItem</div><div class="line">Set mail = Application.ActiveInspector.CurrentItem</div><div class="line"></div><div class="line">mail.cc = mail.cc &amp; &quot;;&lt;enter your email here&gt;&quot;</div><div class="line"></div><div class="line">mail.Send</div><div class="line"></div><div class="line">End Sub</div></pre></td></tr></table></figure>
 <p><img src="000012.png" alt=""></p>
 <h2 id="add-button-to-ribbon"><a class="header-anchor" href="#add-button-to-ribbon"></a>Add Button to Ribbon</h2>
 <p>1. Open a New Email Message -&gt; Right Click on Ribbon -&gt; Select Customize Ribbon</p>

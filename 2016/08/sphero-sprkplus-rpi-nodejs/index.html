@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
 <meta property="og:image" content="https://images/blog/-na.ssl-images-amazon.com/images/blog//I/913XYU1VtjL._SX522_.jpg">
-<meta property="og:updated_time" content="2018-05-16T20:39:43.716Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js">
 <meta name="twitter:description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
@@ -206,9 +206,9 @@
 <p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" title="http://www.tightvnc.com/download.php" target="_blank" rel="external">http://www.tightvnc.com/download.php</a></p>
 <p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" title="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="external">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
 <p>Use the following to start VNC Server on your RPI3</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">vncserver</span> <span class="selector-pseudo">:1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">vncserver</span> <span class="selector-pseudo">:1</span></div></pre></td></tr></table></figure>
 <p>Use the following to get your RPI3 IP Address.</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">hostname -I</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">hostname -I</span></div></pre></td></tr></table></figure>
 <h2 id="none"><a class="header-anchor" href="#none"></a><img src="/images/blog/d15999e44a95_CFB4/image_3.png" alt=""></h2>
 <p>Then use that IP when connecting from your desktop</p>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_4.png" alt=""></p>
@@ -222,16 +222,16 @@
 <p><img src="/images/blog/d15999e44a95_CFB4/image_8.png" alt=""></p>
 <h2 id="get-sprk-ble-address"><a class="header-anchor" href="#get-sprk-ble-address"></a>Get SPRK+ BLE Address</h2>
 <p>Run this in Terminal</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">bluetoothctl</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">bluetoothctl</span></div></pre></td></tr></table></figure>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_9.png" alt=""></p>
 <p>Copy the SPRK+ BLE Address. You will need it later.</p>
 <h2 id="install-node-js-on-rpi3"><a class="header-anchor" href="#install-node-js-on-rpi3"></a>Install Node.js on RPI3</h2>
 <p>Follow instructions in <a href="/2016/08/install-nodejs-raspbian.html">this blog post</a> to get Node.js onto the RPI3</p>
 <h2 id="install-sphero-sdk"><a class="header-anchor" href="#install-sphero-sdk"></a>Install Sphero SDK</h2>
-<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">sudo npm <span class="keyword">install</span> sphero</span><br><span class="line">sudo npm <span class="keyword">install</span> noble</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><div class="line">sudo npm <span class="keyword">install</span> sphero</div><div class="line">sudo npm <span class="keyword">install</span> noble</div></pre></td></tr></table></figure>
 <p>You can ignore any errors you get with the noble install</p>
 <h2 id="create-node-js-file"><a class="header-anchor" href="#create-node-js-file"></a>Create Node.js File</h2>
-<figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> sphero</span><br><span class="line"><span class="built_in">cd</span> sphero</span><br><span class="line">touch sphero.js</span><br><span class="line">leafpad sphero.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight dos"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~</div><div class="line"><span class="built_in">mkdir</span> sphero</div><div class="line"><span class="built_in">cd</span> sphero</div><div class="line">touch sphero.js</div><div class="line">leafpad sphero.js</div></pre></td></tr></table></figure>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_10.png" alt=""></p>
 <h2 id="copy-code-to-node-js-file"><a class="header-anchor" href="#copy-code-to-node-js-file"></a>Copy Code to Node.js File</h2>
 <script src="https://gist.github.com/jongio/0f354313489ccd7a138df3c902d00cdb.js"></script>
@@ -239,7 +239,7 @@
 <p>Open the sphero.js file and change the BLE Address to your SPRK+ BLE Address</p>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_11.png" alt=""></p>
 <h2 id="run-and-watch-with-delight"><a class="header-anchor" href="#run-and-watch-with-delight"></a>Run and Watch with Delight!</h2>
-<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">sudo <span class="keyword">node</span> <span class="title">sphero</span>.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><div class="line">sudo <span class="keyword">node</span> <span class="title">sphero</span>.js</div></pre></td></tr></table></figure>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/jrO-nhmAC_I" frameborder="0" allowfullscreen></iframe>
         </div>
         <footer>
