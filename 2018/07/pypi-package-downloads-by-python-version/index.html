@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
 <meta property="og:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
-<meta property="og:updated_time" content="2018-07-30T18:15:06.600Z">
+<meta property="og:updated_time" content="2018-07-31T20:05:19.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How To View Number of PyPi Package Downloads by Python Version">
 <meta name="twitter:description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
@@ -251,7 +251,10 @@ If you see “Unable to find dataset the-psf:pypi”, then that means you probab
 <li>View Results<br>
 <img src="000008.png" alt=""></li>
 </ol>
-<p>As you can see there are a large number of ‘null’ downloads.  I’m not sure what that means. LMK if you do.</p>
+<blockquote>
+<p>From <a href="https://langui.sh/2016/12/09/data-driven-decisions/" target="_blank" rel="external">https://langui.sh/2016/12/09/data-driven-decisions/</a><br>
+null = downloads from PyPI using clients that do not support sending the statistics we’re querying against. This can be an older version of pip or alternate clients. You also see 341 downloads from 1.17, which is…who knows! When making maintenance decisions you should factor these unknowns as you feel appropriate.</p>
+</blockquote>
 <h1>The following sites were helpful</h1>
 <ul>
 <li><a href="https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python%20Community%20Insights.ipynb" target="_blank" rel="external">https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python Community Insights.ipynb</a></li>
@@ -260,6 +263,7 @@ If you see “Unable to find dataset the-psf:pypi”, then that means you probab
 <li><a href="https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage" target="_blank" rel="external">https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage</a></li>
 <li><a href="https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project" target="_blank" rel="external">https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project</a></li>
 <li><a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="external">https://packaging.python.org/guides/analyzing-pypi-package-downloads/</a></li>
+<li><a href="https://langui.sh/2016/12/09/data-driven-decisions/" target="_blank" rel="external">https://langui.sh/2016/12/09/data-driven-decisions/</a></li>
 </ul>
 <p>Hope this helps you out.</p>
 <p>Jon</p>
