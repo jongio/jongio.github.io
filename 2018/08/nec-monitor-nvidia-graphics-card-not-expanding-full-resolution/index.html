@@ -3,23 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>How To View Number of PyPi Package Downloads by Python Version | Jon Gallant</title>
+    <title>How to Fix NEC Monitor with NVIDIA Graphics Card that Won&#39;t Expand to Full Resolution | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="python" />
+        <meta name="keywords" content="howto" />
     
-    <meta name="description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
+    <meta name="description" content="My main monitor is a NEC PA322UHD and my secondary is a NEC EA275UHD.  I set them both up on a new computer with a NVIDIA GeForce 745, the PA322 on DisplayPort and the EA275 on HDMI.
+The EA275UHD’s re">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How To View Number of PyPi Package Downloads by Python Version">
-<meta property="og:url" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/index.html">
+<meta property="og:title" content="How to Fix NEC Monitor with NVIDIA Graphics Card that Won't Expand to Full Resolution">
+<meta property="og:url" content="https://blog.jongallant.com/2018/08/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
-<meta property="og:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
-<meta property="og:updated_time" content="2018-07-31T20:05:19.706Z">
+<meta property="og:description" content="My main monitor is a NEC PA322UHD and my secondary is a NEC EA275UHD.  I set them both up on a new computer with a NVIDIA GeForce 745, the PA322 on DisplayPort and the EA275 on HDMI.
+The EA275UHD’s re">
+<meta property="og:image" content="https://blog.jongallant.com/2018/01/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/monitor.jpeg">
+<meta property="og:updated_time" content="2018-08-17T14:20:00.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How To View Number of PyPi Package Downloads by Python Version">
-<meta name="twitter:description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
-<meta name="twitter:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
+<meta name="twitter:title" content="How to Fix NEC Monitor with NVIDIA Graphics Card that Won't Expand to Full Resolution">
+<meta name="twitter:description" content="My main monitor is a NEC PA322UHD and my secondary is a NEC EA275UHD.  I set them both up on a new computer with a NVIDIA GeForce 745, the PA322 on DisplayPort and the EA275 on HDMI.
+The EA275UHD’s re">
+<meta name="twitter:image" content="https://blog.jongallant.com/2018/01/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/monitor.jpeg">
     
 
     
@@ -165,14 +168,14 @@
                                                         (adsbygoogle = window.adsbygoogle || []).push({});
                                                     </script>
                                                 </div>
-                                                <article id="post-pypi-package-downloads-by-python-version" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                                                <article id="post-nec-monitor-nvidia-graphics-card-not-expanding-full-resolution" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        How To View Number of PyPi Package Downloads by Python Version
+        How to Fix NEC Monitor with NVIDIA Graphics Card that Won&#39;t Expand to Full Resolution
         </h1>
     
 
@@ -181,90 +184,29 @@
         
             <div class="article-subtitle">
                 
-<a href="/2018/07/pypi-package-downloads-by-python-version/" class="article-date">
-    <time datetime="2018-07-30T09:50:30.000Z" itemprop="datePublished">2018-07-30</time>
+<a href="/2018/08/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/" class="article-date">
+    <time datetime="2018-08-17T07:02:07.000Z" itemprop="datePublished">2018-08-17</time>
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that question is “Yes!”.  But, why not make it a data-driven decision? You may be in a position to only ship with a Python 3 version and require that your users use Python 3.x+.  If you are, then great!, do that.  If not, then you’ll probably want to see how many users have downloaded your package with 2 and then make your decision.</p>
-<p>It took me a few mins to figure out how to get this data. Hope this helps you out.</p>
-<h1>What I learned</h1>
-<ol>
-<li>PyPi does not give you this data.</li>
-<li>Google BigQuery does here: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="external">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
-<li>You need to sign up for Google Cloud Platform, Create a Project, and Enable BigQuery API for that project to run BigQuery API queries.</li>
-<li>BigQuery API free allowance only allows you to run the following query a couple of times before hitting limit. So use it wisely.</li>
-</ol>
-<h1>How to run the query</h1>
-<ol>
-<li>Go to: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="external">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
-<li>Sign In</li>
-<li>Accept Terms<br>
-<img src="000012.png" alt=""><br>
-<img src="000013.png" alt=""></li>
-<li>Create Project<br>
-<img src="000014.png" alt=""></li>
-<li>Accept More Terms<br>
-<img src="000015.png" alt=""></li>
-<li>Click “Create Project”<br>
-<img src="000016.png" alt=""></li>
-<li>Enter Project Name, Click Create<br>
-<img src="000017.png" alt=""></li>
-<li>View Notification for Creating Project<br>
-<img src="000018.png" alt=""></li>
-<li>Refresh Page</li>
-<li>Click on Project<br>
-<img src="000019.png" alt=""></li>
-<li>Click Hamburger Icon, hover over API &amp; Services, Click Dashboard<br>
-<img src="000021.png" alt=""></li>
-<li>Click “View All” link to the right<br>
-<img src="000022.png" alt=""></li>
-<li>Search for ‘big’<br>
-<img src="000023.png" alt=""></li>
-<li>Click on BigQuery API<br>
-<img src="000024.png" alt=""></li>
-<li>Click “Enable” button<br>
-<img src="000026.png" alt=""></li>
-<li>Go to: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="external">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a><br>
-If you see “Unable to find dataset the-psf:pypi”, then that means you probably haven’t BigQuery API. See above for how to enable that.<br>
-<img src="000011.png" alt=""></li>
-<li>Click “Compose Query”<br>
-<img src="000004.png" alt=""></li>
-<li>Copy and Paste this query into New Query</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">  REGEXP_EXTRACT(details.python, r<span class="string">"[0-9]+\.[0-9]+"</span>) <span class="keyword">AS</span> python_version,</div><div class="line">  <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> downloads</div><div class="line"><span class="keyword">FROM</span> <span class="string">`the-psf.pypi.downloads*`</span></div><div class="line"><span class="keyword">WHERE</span> file.project=<span class="string">"iotedgedev"</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> python_version</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> downloads <span class="keyword">DESC</span></div></pre></td></tr></table></figure>
-<p><img src="000005.png" alt=""></p>
-<ol>
-<li>Change ‘iotedgedev’ to the name of your PyPi Package</li>
-<li>Click “Show Options”<br>
-<img src="000010.png" alt=""></li>
-<li>Uncheck “Use Legacy SQL”<br>
-<img src="000007.png" alt=""></li>
-<li>Click “Run Query”<br>
-<img src="000009.png" alt=""></li>
-<li>View Results<br>
-<img src="000008.png" alt=""></li>
-</ol>
-<blockquote>
-<p>From <a href="https://langui.sh/2016/12/09/data-driven-decisions/" target="_blank" rel="external">https://langui.sh/2016/12/09/data-driven-decisions/</a><br>
-null = downloads from PyPI using clients that do not support sending the statistics we’re querying against. This can be an older version of pip or alternate clients. You also see 341 downloads from 1.17, which is…who knows! When making maintenance decisions you should factor these unknowns as you feel appropriate.</p>
-</blockquote>
-<h1>The following sites were helpful</h1>
-<ul>
-<li><a href="https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python%20Community%20Insights.ipynb" target="_blank" rel="external">https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python Community Insights.ipynb</a></li>
-<li><a href="https://kirankoduru.github.io/python/pypi-stats.html" target="_blank" rel="external">https://kirankoduru.github.io/python/pypi-stats.html</a></li>
-<li><a href="https://stackoverflow.com/questions/38102317/why-pypi-doesnt-show-download-stats-anymore" target="_blank" rel="external">https://stackoverflow.com/questions/38102317/why-pypi-doesnt-show-download-stats-anymore</a></li>
-<li><a href="https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage" target="_blank" rel="external">https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage</a></li>
-<li><a href="https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project" target="_blank" rel="external">https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project</a></li>
-<li><a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="external">https://packaging.python.org/guides/analyzing-pypi-package-downloads/</a></li>
-<li><a href="https://langui.sh/2016/12/09/data-driven-decisions/" target="_blank" rel="external">https://langui.sh/2016/12/09/data-driven-decisions/</a></li>
-</ul>
+            <p>My main monitor is a NEC PA322UHD and my secondary is a NEC EA275UHD.  I set them both up on a new computer with a NVIDIA GeForce 745, the PA322 on DisplayPort and the EA275 on HDMI.</p>
+<p>The EA275UHD’s resolution would not go above 1920x2160 - even though I had the resolution set to 3840x2160 in Windows - so it looked scrunched vertically, like this:</p>
+<p><img src="monitor.jpeg" alt=""></p>
+<p>I messed around with monitor settings for a while and nothing worked.</p>
+<p>I installed the latest NEC drivers and that didn’t help.</p>
+<p>I then opened the NVIDIA control panel and saw that all settings where the same.</p>
+<p>I then found this screen:</p>
+<p>“Adjust Desktop Size and Position”</p>
+<p><img src="000004.png" alt=""></p>
+<p>For the heck of it, I selected the “Full Screen” radio button, under “Apply the following settings”, clicked Apply, which flashed the monitors and <strong>it worked!  The monitor now expands to the full resolution.</strong></p>
+<p>What is interesting, is I then switched it back to the first option, “Aspect Ratio” and clicked Apply, and it also kept the full resolution.</p>
+<p>Seems like a bug in the NVidia Control Panel.</p>
 <p>Hope this helps you out.</p>
 <p>Jon</p>
 
@@ -343,26 +285,13 @@ null = downloads from PyPI using clients that do not support sending the statist
         
     <nav id="article-nav">
         
-            <a href="/2018/08/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        How to Fix NEC Monitor with NVIDIA Graphics Card that Won&#39;t Expand to Full Resolution
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2018/07/spectraview-serial-number/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2018/07/pypi-package-downloads-by-python-version/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Where to Find Your SpectraView II Serial Number
+                            How To View Number of PyPi Package Downloads by Python Version
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -420,7 +349,7 @@ null = downloads from PyPI using clients that do not support sending the statist
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/';
+    var disqus_url = 'https://blog.jongallant.com/2018/08/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/';
     
     (function() {
     var dsq = document.createElement('script');

@@ -359,13 +359,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/howto/</loc>
-        <lastmod>2018-07-24T17:29:13.395Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/dev/</loc>
         <lastmod>2018-07-24T17:29:13.395Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -389,6 +382,13 @@
     <url>
         <loc>https://blog.jongallant.com/tags/python/</loc>
         <lastmod>2018-07-31T20:05:19.706Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/howto/</loc>
+        <lastmod>2018-08-17T14:20:00.535Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
