@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-08-17T15:09:48.605Z</updated>
+  <updated>2018-09-21T17:04:16.261Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution: Cannot remove entries from nonexistent file easy-install.pth</title>
+    <link href="https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/"/>
+    <id>https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/</id>
+    <published>2018-09-21T09:49:12.000Z</published>
+    <updated>2018-09-21T17:04:16.261Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I got this the other day while doing a pip install:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Cannot remove entries from nonexistent file c:\python36\lib\site-package
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Bugs" scheme="https://blog.jongallant.com/category/Tech/Bugs/"/>
+    
+    
+      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Fix NEC Monitor with NVIDIA Graphics Card that Won&#39;t Expand to Full Resolution</title>
@@ -597,31 +620,6 @@
     
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Microsoft is Hiring High-Scale Data Services Developers</title>
-    <link href="https://blog.jongallant.com/2017/11/microsoft-hiring-high-scale-data-services-developers/"/>
-    <id>https://blog.jongallant.com/2017/11/microsoft-hiring-high-scale-data-services-developers/</id>
-    <published>2017-11-01T13:22:04.000Z</published>
-    <updated>2017-11-16T20:27:05.778Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-My team is hiring developers in the high-scale data space that have experience building data and analytics p
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Jobs" scheme="https://blog.jongallant.com/category/Tech/Jobs/"/>
-    
-    
-      <category term="microsoft" scheme="https://blog.jongallant.com/tags/microsoft/"/>
-    
-      <category term="jobs" scheme="https://blog.jongallant.com/tags/jobs/"/>
     
   </entry>
   
