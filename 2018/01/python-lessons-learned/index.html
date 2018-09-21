@@ -8,17 +8,17 @@
     
         <meta name="keywords" content="python" />
     
-    <meta name="description" content="I just published my first official distributable Python package to PyPi, which makes it available to install via pip install.  It’s called Azure IoT Edge Dev Tool (PyPi, GitHub, Video) and helps IoT E">
+    <meta name="description" content="I just published my first official distributable Python package to PyPI, which makes it available to install via pip install.  It’s called Azure IoT Edge Dev Tool (PyPI, GitHub, Video) and helps IoT E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Lessons Learned. Read This Before You Start Building a Distributable Python Package">
 <meta property="og:url" content="https://blog.jongallant.com/2018/01/python-lessons-learned/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just published my first official distributable Python package to PyPi, which makes it available to install via pip install.  It’s called Azure IoT Edge Dev Tool (PyPi, GitHub, Video) and helps IoT E">
+<meta property="og:description" content="I just published my first official distributable Python package to PyPI, which makes it available to install via pip install.  It’s called Azure IoT Edge Dev Tool (PyPI, GitHub, Video) and helps IoT E">
 <meta property="og:image" content="https://blog.jongallant.com/2018/01/python-lessons-learned/python.png">
-<meta property="og:updated_time" content="2018-05-16T20:52:33.108Z">
+<meta property="og:updated_time" content="2018-09-21T04:09:40.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Lessons Learned. Read This Before You Start Building a Distributable Python Package">
-<meta name="twitter:description" content="I just published my first official distributable Python package to PyPi, which makes it available to install via pip install.  It’s called Azure IoT Edge Dev Tool (PyPi, GitHub, Video) and helps IoT E">
+<meta name="twitter:description" content="I just published my first official distributable Python package to PyPI, which makes it available to install via pip install.  It’s called Azure IoT Edge Dev Tool (PyPI, GitHub, Video) and helps IoT E">
 <meta name="twitter:image" content="https://blog.jongallant.com/2018/01/python-lessons-learned/python.png">
     
 
@@ -192,7 +192,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just published my first official distributable <a href="https://pypi.python.org/pypi/iotedgedev" target="_blank" rel="external">Python package to PyPi</a>, which makes it available to install via <code>pip install</code>.  It’s called <strong>Azure IoT Edge Dev Tool</strong> (<a href="https://pypi.python.org/pypi/iotedgedev" target="_blank" rel="external">PyPi</a>, <a href="https://github.com/azure/iotedgedev" target="_blank" rel="external">GitHub</a>, <a href="https://www.youtube.com/watch?v=lcDFX8PXqUQ" target="_blank" rel="external">Video</a>) and helps IoT Edge developers with inner loop dev tasks (dev, test, debug, build, push, release). This post is less about the actual pip package and more about my experience building and distributing one.</p>
+            <p>I just published my first official distributable <a href="https://pypi.python.org/pypi/iotedgedev" target="_blank" rel="external">Python package to PyPI</a>, which makes it available to install via <code>pip install</code>.  It’s called <strong>Azure IoT Edge Dev Tool</strong> (<a href="https://pypi.python.org/pypi/iotedgedev" target="_blank" rel="external">PyPI</a>, <a href="https://github.com/azure/iotedgedev" target="_blank" rel="external">GitHub</a>, <a href="https://www.youtube.com/watch?v=lcDFX8PXqUQ" target="_blank" rel="external">Video</a>) and helps IoT Edge developers with inner loop dev tasks (dev, test, debug, build, push, release). This post is less about the actual pip package and more about my experience building and distributing one.</p>
 <p>Coding in Python is easy. Distributing it as a Python package is hard.  5% of the effort is coding. 95% of the effort goes into figuring out how to distribute the thing.  I spent so many hours struggling through this on my own that I had to share to hopefully save you some ticks.</p>
 <p>Let’s jump right in.</p>
 <h2 id="python-version-2-or-3"><a class="header-anchor" href="#python-version-2-or-3"></a>Python Version 2 or 3</h2>
@@ -206,21 +206,23 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">pip install -U cookiecutter</div><div class="line">cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git</div></pre></td></tr></table></figure>
 <p><img src="03.png" alt=""></p>
 <h3 id="project-name"><a class="header-anchor" href="#project-name"></a>Project Name</h3>
-<p>I wanted to use <code>iotedgedev</code> as my PyPi name and GitHub repo, but I wanted <code>iotedgedev</code> to by the command line name.  The way I did that was by creating the project with the name <code>iotedgedev</code>, but then I made these changes:</p>
+<p>I wanted to use <code>iotedgedev</code> as my PyPI name <strong>and</strong> GitHub repo and I also wanted <code>iotedgedev</code> to be the command line name. The cookiecutter template didn’t allow that directly so I had to make a few manual edits.  I created a project named <code>iotedgedev</code> and then made these changes:</p>
 <ol>
 <li>In <code>setup.py</code> changed <code>setup(name=&quot;iotedgedev&quot;)</code></li>
 <li>In <code>.travis.yml</code> and <code>travis_pypi_setup.py</code> changed <code>iotedgedev</code> to <code>iotedgedev</code></li>
 </ol>
+<h3 id="reserve-your-project-name-on-both-pypi-test-and-pypi-production-environments"><a class="header-anchor" href="#reserve-your-project-name-on-both-pypi-test-and-pypi-production-environments"></a>Reserve Your Project Name on both PyPI Test and PyPI Production Environments</h3>
+<p>PyPI Test(<a href="https://test.pypi.org" target="_blank" rel="external">https://test.pypi.org</a>) and PyPI Production(<a href="https://pypi.org" target="_blank" rel="external">https://pypi.org</a>) have different backends, so you need to register your project name with both of them.  Do this immediately after you decide on a name, because someone could register it or you could run into an issue like I did, where I was getting a ]403 because someone already registered the name against the PyPI Test environment](<a href="https://github.com/pypa/warehouse/issues/4607" target="_blank" rel="external">https://github.com/pypa/warehouse/issues/4607</a>).  PyPI was able to resolve the issue - but you might not be able to.  Reserve your names.</p>
 <h2 id="testing-tox-and-unittest"><a class="header-anchor" href="#testing-tox-and-unittest"></a>Testing: Tox and unittest</h2>
 <p>The template I chose uses <a href="https://pypi.python.org/pypi/tox" target="_blank" rel="external">Tox</a> and <a href="https://docs.python.org/2/library/unittest.html" target="_blank" rel="external">unittest</a> (not pytest) so I just went with that.  The tests are in the tests folder and were pretty straight forward to write.  Granted, I only did a few simple tests and might switch to pytest at a later time if need be, but for my case unittest worked fine.</p>
 <p>Tox is configured in the <code>tox.ini</code> file.  You can set it up to run your code against any Python version and linters such as flake.</p>
 <p>When you want to run your tests, you simply navigate to your root and execute <code>tox</code>.</p>
 <h2 id="install-package-locally-with-editable-installs"><a class="header-anchor" href="#install-package-locally-with-editable-installs"></a>Install Package Locally with Editable Installs</h2>
-<p>When I first started, I was using full commands such as <code>python edge.py runtime --setup --start</code>, but then I discovered <a href="https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs" target="_blank" rel="external">“Editable Installs”</a>, which will install a package from a local or github source without having to have it on PyPi</p>
+<p>When I first started, I was using full commands such as <code>python edge.py runtime --setup --start</code>, but then I discovered <a href="https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs" target="_blank" rel="external">“Editable Installs”</a>, which will install a package from a local or github source without having to have it on PyPI</p>
 <p>So, I ran <code>pip install -e .</code> from the root of my project and <code>iotedgedev</code> is now available.</p>
 <p>This is super helpful because I can just edit my code and when I go back to the command prompt, iotedgedev commands are all up-to-date without any other installs required.</p>
-<h2 id="package-distribution-pypi"><a class="header-anchor" href="#package-distribution-pypi"></a>Package Distribution: PyPi</h2>
-<p>After you have coded your project, you are going to want to upload it to <a href="https://testpypi.python.org/pypi" target="_blank" rel="external">PyPi test environment</a> to test it out first and then, when ready, upload it to the <a href="https://pypi.python.org/pypi" target="_blank" rel="external">PyPi production environment</a>.</p>
+<h2 id="package-distribution-pypi"><a class="header-anchor" href="#package-distribution-pypi"></a>Package Distribution: PyPI</h2>
+<p>After you have coded your project, you are going to want to upload it to <a href="https://testpypi.python.org/pypi" target="_blank" rel="external">PyPI test environment</a> to test it out first and then, when ready, upload it to the <a href="https://pypi.python.org/pypi" target="_blank" rel="external">PyPI production environment</a>.</p>
 <h3 id="setuptools-not-distutils"><a class="header-anchor" href="#setuptools-not-distutils"></a>Setuptools, not distutils</h3>
 <p>The Cookiecutter project I used included setuptools configuration. After a quick search, I discovered that’s the preferred route, so I just went with it.</p>
 <h3 id="wheel-not-egg"><a class="header-anchor" href="#wheel-not-egg"></a>Wheel, not egg</h3>
@@ -251,6 +253,10 @@
 </blockquote>
 </li>
 </ol>
+<h3 id="store-pypi-settings-in-pypirc"><a class="header-anchor" href="#store-pypi-settings-in-pypirc"></a>Store PyPI Settings in .pypirc</h3>
+<p>Store your PyPI settings in a .pypirc file in the root of your project, which looks something like this:</p>
+<figure class="highlight nix"><table><tr><td class="code"><pre><div class="line">[distutils]</div><div class="line"><span class="attr">index-servers</span> =</div><div class="line">  pypi</div><div class="line">  pypitest</div><div class="line"></div><div class="line">[pypi]</div><div class="line"><span class="attr">repository=https://pypi.python.org/pypi</span></div><div class="line"><span class="attr">username=yourusername</span></div><div class="line"><span class="attr">password=</span></div><div class="line"></div><div class="line">[pypitest]</div><div class="line"><span class="attr">repository=https://test.pypi.org/legacy/</span></div><div class="line"><span class="attr">username=yourusername</span></div><div class="line"><span class="attr">password=</span></div></pre></td></tr></table></figure>
+<p>That way when you call <code>twine upload -r pypi ...</code> it will use the repository, username and password in the file instead of typing it every time you push to PyPI.</p>
 <h3 id="test-pip-install"><a class="header-anchor" href="#test-pip-install"></a>Test Pip Install</h3>
 <p>When you run pip install it will point to production by default, you need to pass <code>--no-cache-dir</code>, <code>--index-url</code> and an <code>--extra-index-url</code> for it to ignore local packages, point to the test env, and use the production env for project dependencies.</p>
 <figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">pip --<span class="keyword">no</span>-cache-dir install --<span class="built_in">index</span>-url http<span class="variable">s:</span>//test.pypi.org/simple/ iotedgedev --extra-<span class="built_in">index</span>-url http<span class="variable">s:</span>//pypi.org/simple</div></pre></td></tr></table></figure>
@@ -273,8 +279,8 @@
 <p>My script makes a bunch of out of process calls to things like <code>dotnet</code>, <code>docker</code> and <code>iotedgectl</code>.  I toyed around with a bunch of ways to do this and finally landed on subprocess.Popen because I could get both the status code and the result (print statements) from the call.  I wrapped mine in a method like this:</p>
 <figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">def exe_proc(self, params, shell=False):</div><div class="line">       proc = subprocess.Popen(</div><div class="line">           params, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=shell)</div><div class="line"></div><div class="line">       stdout_data, stderr_data = proc.communicate()</div><div class="line">       <span class="keyword">if</span> stdout_data != <span class="string">""</span>:</div><div class="line">           self.output.procout(self.decode(stdout_data))</div><div class="line"></div><div class="line">       <span class="keyword">if</span> proc.returncode != <span class="number">0</span>:</div><div class="line">           self.output.error(self.decode(stderr_data))</div><div class="line">           sys.<span class="keyword">exit</span>()</div></pre></td></tr></table></figure>
 <p><a href="https://github.com/azure/iotedgedev/blob/master/iotedgedev/iotedgedev.py#L96" target="_blank" rel="external">https://github.com/azure/iotedgedev/blob/master/iotedgedev/iotedgedev.py#L96</a></p>
-<h2 id="pypi-readme"><a class="header-anchor" href="#pypi-readme"></a>PyPi Readme</h2>
-<p>PyPi does not natively support Markdown, although the website says it does, after many hours of trying I could not get it to work.  They do support RST and there are ways to convert Markdown to RST - but nothing was working for me. The Markdown to RST converter I was using <code>pyandoc</code> was not generating valid RST and I was not interested in maintaining two versions (Markdown &amp; RST) of my Readme. If this project was officially supported by Microsoft, then I would have figured it out, but this is a proof-of-concept project, so I decided to abandon the PyPi readme in favor of GitHub markdown and then linked to GitHub from PyPi.</p>
+<h2 id="pypi-readme"><a class="header-anchor" href="#pypi-readme"></a>PyPI Readme</h2>
+<p>PyPI does not natively support Markdown, although the website says it does, after many hours of trying I could not get it to work.  They do support RST and there are ways to convert Markdown to RST - but nothing was working for me. The Markdown to RST converter I was using <code>pyandoc</code> was not generating valid RST and I was not interested in maintaining two versions (Markdown &amp; RST) of my Readme. If this project was officially supported by Microsoft, then I would have figured it out, but this is a proof-of-concept project, so I decided to abandon the PyPI readme in favor of GitHub markdown and then linked to GitHub from PyPI.</p>
 <p>See link to github in this image:</p>
 <p><img src="04.png" alt=""></p>
 <h2 id="environment-variables-python-dotenv"><a class="header-anchor" href="#environment-variables-python-dotenv"></a>Environment Variables: Python-DotEnv</h2>

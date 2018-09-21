@@ -17,7 +17,7 @@ Here’s how to get it running on Raspberry Pi with Raspbian Stretch or Stretch 
 <meta property="og:description" content="Azure IoT Edge Public Preview was just announced at Microsoft Connect.
 Here’s how to get it running on Raspberry Pi with Raspbian Stretch or Stretch Lite. Raspbian Jessie should work as well, but I h">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/000338.png">
-<meta property="og:updated_time" content="2017-12-19T22:21:01.505Z">
+<meta property="og:updated_time" content="2018-09-20T19:34:39.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure IoT Edge on Raspberry Pi">
 <meta name="twitter:description" content="Azure IoT Edge Public Preview was just announced at Microsoft Connect.
@@ -213,7 +213,7 @@ Here’s how to get it running on Raspberry Pi with Raspbian Stretch or Stretch 
 <p>If you do not have either of those, then you can install with the following command:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><div class="line">sudo apt install python-pip -y</div></pre></td></tr></table></figure>
 <p>3. <strong>Upgrade Setup Tools</strong><br>
-You will find the Azure IoT Edge Runtime on pypi <a href="https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl" target="_blank" rel="external">here</a>, which has the Raspbian specific steps, which I’ve included here as well.  I’ve asked the team to include these steps in the <a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux" target="_blank" rel="external">Linux setup tutorial guide</a>. This issue is being tracked on GitHub <a href="https://github.com/Azure/iot-edge/issues/419" target="_blank" rel="external">here</a>.</p>
+You will find the Azure IoT Edge Runtime on PyPI <a href="https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl" target="_blank" rel="external">here</a>, which has the Raspbian specific steps, which I’ve included here as well.  I’ve asked the team to include these steps in the <a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux" target="_blank" rel="external">Linux setup tutorial guide</a>. This issue is being tracked on GitHub <a href="https://github.com/Azure/iot-edge/issues/419" target="_blank" rel="external">here</a>.</p>
 <p>Open a Terminal and run the following:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo pip install --upgrade setuptools pip</div><div class="line">sudo apt install python2.7-dev libffi-dev libssl-dev -y</div></pre></td></tr></table></figure>
 <p>3. <a href="/raspberrypi-docker"><strong>Install Docker</strong></a> - The Azure IoT Edge Runtime runs as a container and each module is a container, so Docker is required.</p>

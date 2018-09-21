@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>How To View Number of PyPi Package Downloads by Python Version | Jon Gallant</title>
+    <title>How To View Number of PyPI Package Downloads by Python Version | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="python" />
     
     <meta name="description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How To View Number of PyPi Package Downloads by Python Version">
+<meta property="og:title" content="How To View Number of PyPI Package Downloads by Python Version">
 <meta property="og:url" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
 <meta property="og:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
-<meta property="og:updated_time" content="2018-07-31T20:05:19.706Z">
+<meta property="og:updated_time" content="2018-09-21T04:09:28.681Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How To View Number of PyPi Package Downloads by Python Version">
+<meta name="twitter:title" content="How To View Number of PyPI Package Downloads by Python Version">
 <meta name="twitter:description" content="Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that">
 <meta name="twitter:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
     
@@ -172,7 +172,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        How To View Number of PyPi Package Downloads by Python Version
+        How To View Number of PyPI Package Downloads by Python Version
         </h1>
     
 
@@ -196,7 +196,7 @@
 <p>It took me a few mins to figure out how to get this data. Hope this helps you out.</p>
 <h1>What I learned</h1>
 <ol>
-<li>PyPi does not give you this data.</li>
+<li>PyPI does not give you this data.</li>
 <li>Google BigQuery does here: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="external">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
 <li>You need to sign up for Google Cloud Platform, Create a Project, and Enable BigQuery API for that project to run BigQuery API queries.</li>
 <li>BigQuery API free allowance only allows you to run the following query a couple of times before hitting limit. So use it wisely.</li>
@@ -241,7 +241,7 @@ If you see “Unable to find dataset the-psf:pypi”, then that means you probab
 <figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">  REGEXP_EXTRACT(details.python, r<span class="string">"[0-9]+\.[0-9]+"</span>) <span class="keyword">AS</span> python_version,</div><div class="line">  <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> downloads</div><div class="line"><span class="keyword">FROM</span> <span class="string">`the-psf.pypi.downloads*`</span></div><div class="line"><span class="keyword">WHERE</span> file.project=<span class="string">"iotedgedev"</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> python_version</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> downloads <span class="keyword">DESC</span></div></pre></td></tr></table></figure>
 <p><img src="000005.png" alt=""></p>
 <ol>
-<li>Change ‘iotedgedev’ to the name of your PyPi Package</li>
+<li>Change ‘iotedgedev’ to the name of your PyPI Package</li>
 <li>Click “Show Options”<br>
 <img src="000010.png" alt=""></li>
 <li>Uncheck “Use Legacy SQL”<br>
