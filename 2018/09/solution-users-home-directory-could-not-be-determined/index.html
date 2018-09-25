@@ -3,29 +3,29 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Solution: Cannot remove entries from nonexistent file easy-install.pth | Jon Gallant</title>
+    <title>Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use. | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="python" />
+        <meta name="keywords" content="azuredevops" />
     
-    <meta name="description" content="I got this the other day while doing a pip install:
-Cannot remove entries from nonexistent file c:\python36\lib\site-packages\easy-install.pth
-I searched around a bit and couldn’t find a solution. --i">
+    <meta name="description" content="In Azure DevOps, got this:
+The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
+As a workaround, add the DOTNET_CLI_HOME v">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution: Cannot remove entries from nonexistent file easy-install.pth">
-<meta property="og:url" content="https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/index.html">
+<meta property="og:title" content="Solution - The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.">
+<meta property="og:url" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I got this the other day while doing a pip install:
-Cannot remove entries from nonexistent file c:\python36\lib\site-packages\easy-install.pth
-I searched around a bit and couldn’t find a solution. --i">
-<meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/000004.png">
-<meta property="og:updated_time" content="2018-09-21T17:04:16.261Z">
+<meta property="og:description" content="In Azure DevOps, got this:
+The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
+As a workaround, add the DOTNET_CLI_HOME v">
+<meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000007.png">
+<meta property="og:updated_time" content="2018-09-25T21:38:01.640Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution: Cannot remove entries from nonexistent file easy-install.pth">
-<meta name="twitter:description" content="I got this the other day while doing a pip install:
-Cannot remove entries from nonexistent file c:\python36\lib\site-packages\easy-install.pth
-I searched around a bit and couldn’t find a solution. --i">
-<meta name="twitter:image" content="https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/000004.png">
+<meta name="twitter:title" content="Solution - The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.">
+<meta name="twitter:description" content="In Azure DevOps, got this:
+The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
+As a workaround, add the DOTNET_CLI_HOME v">
+<meta name="twitter:image" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000007.png">
     
 
     
@@ -171,14 +171,14 @@ I searched around a bit and couldn’t find a solution. --i">
                                                         (adsbygoogle = window.adsbygoogle || []).push({});
                                                     </script>
                                                 </div>
-                                                <article id="post-solution-cannot-remove-entries-from-nonexistent-file-easy-install" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                                                <article id="post-solution-users-home-directory-could-not-be-determined" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution: Cannot remove entries from nonexistent file easy-install.pth
+        Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.
         </h1>
     
 
@@ -187,25 +187,24 @@ I searched around a bit and couldn’t find a solution. --i">
         
             <div class="article-subtitle">
                 
-<a href="/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/" class="article-date">
-    <time datetime="2018-09-21T09:49:12.000Z" itemprop="datePublished">2018-09-21</time>
+<a href="/2018/09/solution-users-home-directory-could-not-be-determined/" class="article-date">
+    <time datetime="2018-09-25T14:29:16.000Z" itemprop="datePublished">2018-09-25</time>
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azuredevops/">azuredevops</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I got this the other day while doing a pip install:</p>
-<p><code>Cannot remove entries from nonexistent file c:\python36\lib\site-packages\easy-install.pth</code></p>
-<p>I searched around a bit and couldn’t find a solution. <code>--ignore-installed</code> didn’t work for me.</p>
-<p>Then I actually read the error message and realized that pip was looking for a file that wasn’t there.</p>
-<p>I just created the file as an empty file, i.e.: <code>touch c:\python36\lib\site-packages\easy-install.pth</code> and the error went away.</p>
-<p>Not sure how I got in that state, but that fixed it, so moving on.</p>
-<p>Hope this helps,<br>
-Jon</p>
+            <p>In Azure DevOps, got this:</p>
+<p><code>The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.</code></p>
+<p>As a workaround, add the DOTNET_CLI_HOME variable to the Build definition.</p>
+<p><img src="000005.png" alt=""></p>
+<p>And if you are using Tox, make sure you add DOTNET_CLI_HOME to your tox.ini file’s passenv setting, so tox receives the variable:</p>
+<p><code>passenv = APPDATA ProgramFiles USERPROFILE PROGRAMDATA DOTENV_FILE LOCALAPPDATA DOTNET_CLI_HOME</code></p>
+<p>Jon</p>
 
         </div>
         <footer>
@@ -282,26 +281,13 @@ Jon</p>
         
     <nav id="article-nav">
         
-            <a href="/2018/09/solution-users-home-directory-could-not-be-determined/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2018/08/nec-monitor-nvidia-graphics-card-not-expanding-full-resolution/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            How to Fix NEC Monitor with NVIDIA Graphics Card that Won&#39;t Expand to Full Resolution
+                            Solution: Cannot remove entries from nonexistent file easy-install.pth
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -359,7 +345,7 @@ Jon</p>
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/';
+    var disqus_url = 'https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/';
     
     (function() {
     var dsq = document.createElement('script');

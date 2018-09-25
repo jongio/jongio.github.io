@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-09-21T17:04:16.261Z</updated>
+  <updated>2018-09-25T21:38:01.640Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.</title>
+    <link href="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/"/>
+    <id>https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/</id>
+    <published>2018-09-25T14:29:16.000Z</published>
+    <updated>2018-09-25T21:38:01.640Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;In Azure DevOps, got this:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Bugs" scheme="https://blog.jongallant.com/category/Tech/Bugs/"/>
+    
+    
+      <category term="azuredevops" scheme="https://blog.jongallant.com/tags/azuredevops/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution: Cannot remove entries from nonexistent file easy-install.pth</title>
@@ -596,30 +619,6 @@
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
       <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Why I Switched from Tile to Trackr</title>
-    <link href="https://blog.jongallant.com/2017/11/from-tile-to-trackr/"/>
-    <id>https://blog.jongallant.com/2017/11/from-tile-to-trackr/</id>
-    <published>2017-11-08T06:08:52.000Z</published>
-    <updated>2018-01-10T21:31:22.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;trackr.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update: 1/8/18:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://support.thetrackr.com/hc/en-us/articles/115
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Reviews" scheme="https://blog.jongallant.com/category/Tech/Reviews/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
   </entry>
   
