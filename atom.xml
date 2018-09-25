@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-09-25T21:38:01.640Z</updated>
+  <updated>2018-09-25T22:54:48.758Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()</title>
+    <link href="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/"/>
+    <id>https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/</id>
+    <published>2018-09-25T15:48:30.000Z</published>
+    <updated>2018-09-25T22:54:48.758Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;In Azure DevOps, got this error:&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;2018-09-25T21:24:4
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Bugs" scheme="https://blog.jongallant.com/category/Tech/Bugs/"/>
+    
+    
+      <category term="azuredevops" scheme="https://blog.jongallant.com/tags/azuredevops/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.</title>
@@ -593,32 +616,6 @@
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>.NET Core SDK Not Supported on ARM</title>
-    <link href="https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/"/>
-    <id>https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/</id>
-    <published>2017-11-08T06:55:44.000Z</published>
-    <updated>2017-11-08T21:52:48.029Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The .NET Core &lt;strong&gt;SDK&lt;/strong&gt; is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is &lt;strong&gt;not&lt;/
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-      <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
     
   </entry>
   

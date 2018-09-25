@@ -3,29 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use. | Jon Gallant</title>
+    <title>Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir() | Jon Gallant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="azuredevops" />
     
-    <meta name="description" content="In Azure DevOps, got this:
-The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
-As a workaround, add the DOTNET_CLI_HOME v">
+    <meta name="description" content="In Azure DevOps, got this error:
+2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.2018-09-25T21:24:45.2791049Z Parameter name: paths2018-09-25T21:24:45.2804472Z    at System.IO.Path.Com">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution - The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.">
-<meta property="og:url" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/index.html">
+<meta property="og:title" content="Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()">
+<meta property="og:url" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="In Azure DevOps, got this:
-The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
-As a workaround, add the DOTNET_CLI_HOME v">
-<meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000007.png">
-<meta property="og:updated_time" content="2018-09-25T21:38:01.640Z">
+<meta property="og:description" content="In Azure DevOps, got this error:
+2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.2018-09-25T21:24:45.2791049Z Parameter name: paths2018-09-25T21:24:45.2804472Z    at System.IO.Path.Com">
+<meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/000009.png">
+<meta property="og:updated_time" content="2018-09-25T22:54:48.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution - The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.">
-<meta name="twitter:description" content="In Azure DevOps, got this:
-The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
-As a workaround, add the DOTNET_CLI_HOME v">
-<meta name="twitter:image" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000007.png">
+<meta name="twitter:title" content="Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()">
+<meta name="twitter:description" content="In Azure DevOps, got this error:
+2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.2018-09-25T21:24:45.2791049Z Parameter name: paths2018-09-25T21:24:45.2804472Z    at System.IO.Path.Com">
+<meta name="twitter:image" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/000009.png">
     
 
     
@@ -171,14 +168,14 @@ As a workaround, add the DOTNET_CLI_HOME v">
                                                         (adsbygoogle = window.adsbygoogle || []).push({});
                                                     </script>
                                                 </div>
-                                                <article id="post-solution-users-home-directory-could-not-be-determined" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                                                <article id="post-solution-value-cannot-be-null-dotnet-templateengine" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.
+        Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()
         </h1>
     
 
@@ -187,8 +184,8 @@ As a workaround, add the DOTNET_CLI_HOME v">
         
             <div class="article-subtitle">
                 
-<a href="/2018/09/solution-users-home-directory-could-not-be-determined/" class="article-date">
-    <time datetime="2018-09-25T14:29:16.000Z" itemprop="datePublished">2018-09-25</time>
+<a href="/2018/09/solution-value-cannot-be-null-dotnet-templateengine/" class="article-date">
+    <time datetime="2018-09-25T15:48:30.000Z" itemprop="datePublished">2018-09-25</time>
 </a>
 
                 
@@ -198,12 +195,15 @@ As a workaround, add the DOTNET_CLI_HOME v">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In Azure DevOps, got this:</p>
-<p><code>The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.</code></p>
-<p>As a workaround, add the DOTNET_CLI_HOME variable to the Build definition.</p>
-<p><img src="000005.png" alt=""></p>
-<p>And if you are using Tox, make sure you add DOTNET_CLI_HOME to your tox.ini file’s passenv setting, so tox receives the variable:</p>
-<p><code>passenv = APPDATA ProgramFiles USERPROFILE PROGRAMDATA DOTENV_FILE LOCALAPPDATA DOTNET_CLI_HOME</code></p>
+            <p>In Azure DevOps, got this error:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.</div><div class="line">2018-09-25T21:24:45.2791049Z Parameter name: paths</div><div class="line">2018-09-25T21:24:45.2804472Z    at System.IO.Path.Combine(String[] paths)</div><div class="line">2018-09-25T21:24:45.2818339Z    at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()</div><div class="line">2018-09-25T21:24:45.2832030Z    at Microsoft.TemplateEngine.Edge.Paths.UserPaths.get_AliasesFile()</div><div class="line">2018-09-25T21:24:45.2845669Z    at Microsoft.TemplateEngine.Edge.Settings.AliasRegistry.EnsureLoaded()</div><div class="line">2018-09-25T21:24:45.2859343Z    at Microsoft.TemplateEngine.Edge.Settings.AliasRegistry.TryExpandCommandAliases(IReadOnlyList`1 inputTokens, IReadOnlyList`1&amp; expandedInputTokens)</div><div class="line">2018-09-25T21:24:45.2874783Z    at Microsoft.TemplateEngine.Cli.AliasSupport.TryExpandAliases(INewCommandInput <span class="built_in">command</span>Input, AliasRegistry <span class="built_in">alias</span>Registry)</div><div class="line">2018-09-25T21:24:45.2888665Z    at Microsoft.TemplateEngine.Cli.AliasSupport.CoordinateAliasExpansion(INewCommandInput <span class="built_in">command</span>Input, AliasRegistry <span class="built_in">alias</span>Registry, ITelemetryLogger telemetryLogger)</div><div class="line">2018-09-25T21:24:45.2902455Z    at Microsoft.TemplateEngine.Cli.New3Command.ExecuteAsync()</div><div class="line">2018-09-25T21:24:45.2915947Z    at Microsoft.TemplateEngine.Cli.CommandParsing.NewCommandInputCli.&lt;&gt;c__DisplayClass19_0.&lt;&lt;OnExecute&gt;b__0&gt;d.MoveNext()</div></pre></td></tr></table></figure>
+<p>Tracked it down to this line of code:<br>
+<a href="https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60" target="_blank" rel="external">https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60</a></p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">string profileDir</span> = _parent.Environment.GetEnvironmentVariable(isWindows</div><div class="line">                            ? <span class="string">"USERPROFILE"</span></div><div class="line">                            : <span class="string">"HOME"</span>);</div></pre></td></tr></table></figure>
+<p>Which assumes that either USERPROFILE or HOME will be set.</p>
+<p>I’m running tox in my Azure DevOps build from a Linux agent and wasn’t passing HOME in passenv.</p>
+<p>Add HOME to passenv in your tox.ini and this error should go away.</p>
+<p><code>passenv = APPDATA ProgramFiles USERPROFILE PROGRAMDATA DOTENV_FILE LOCALAPPDATA DOTNET_CLI_HOME HOME</code></p>
 <p>Jon</p>
 
         </div>
@@ -281,26 +281,13 @@ As a workaround, add the DOTNET_CLI_HOME v">
         
     <nav id="article-nav">
         
-            <a href="/2018/09/solution-value-cannot-be-null-dotnet-templateengine/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2018/09/solution-users-home-directory-could-not-be-determined/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Solution: Cannot remove entries from nonexistent file easy-install.pth
+                            Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -358,7 +345,7 @@ As a workaround, add the DOTNET_CLI_HOME v">
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/';
+    var disqus_url = 'https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/';
     
     (function() {
     var dsq = document.createElement('script');
