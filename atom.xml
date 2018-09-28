@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-09-25T22:54:48.758Z</updated>
+  <updated>2018-09-28T17:11:50.584Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant</title>
+    <link href="https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/"/>
+    <id>https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/</id>
+    <published>2018-09-28T09:30:11.000Z</published>
+    <updated>2018-09-28T17:11:50.584Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;remove-yourself-from-an-azure-subscription&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#remove-yourself-from-an-azure-subscription&quot;&gt;&lt;/a&gt;Remove Y
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tutorial" scheme="https://blog.jongallant.com/category/Tech/Tutorial/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="howto" scheme="https://blog.jongallant.com/tags/howto/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()</title>
@@ -590,30 +614,6 @@
     
       <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Change Raspberry Pi (Raspbian) Hostname</title>
-    <link href="https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/"/>
-    <id>https://blog.jongallant.com/2017/11/raspberrypi-change-hostname/</id>
-    <published>2017-11-12T07:01:54.000Z</published>
-    <updated>2017-12-04T22:22:06.992Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;One of the first things you’ll want to do on a Raspberry Pi is change the hostname to something unique on your network.  The default name
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
