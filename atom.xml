@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-09-28T17:11:50.584Z</updated>
+  <updated>2018-10-19T05:27:52.301Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Proactive Mentorship</title>
+    <link href="https://blog.jongallant.com/2018/10/proactive-mentorship/"/>
+    <id>https://blog.jongallant.com/2018/10/proactive-mentorship/</id>
+    <published>2018-10-18T22:06:56.000Z</published>
+    <updated>2018-10-19T05:27:52.301Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The concept of proactive mentorship is all about encouraging both mentees and mentors to be assertive in asking for and offering help.&lt;/p
+    
+    </summary>
+    
+      <category term="Leadership" scheme="https://blog.jongallant.com/category/Leadership/"/>
+    
+      <category term="Proactive Mentorship" scheme="https://blog.jongallant.com/category/Leadership/Proactive-Mentorship/"/>
+    
+    
+      <category term="management" scheme="https://blog.jongallant.com/tags/management/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant</title>
@@ -375,9 +397,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -403,9 +425,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
     
   </entry>
   
@@ -591,31 +613,6 @@
     
     
       <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Raspberry Pi Setup - A Getting Started Guide for Raspberry Pi Development</title>
-    <link href="https://blog.jongallant.com/2017/11/raspberrypi-setup/"/>
-    <id>https://blog.jongallant.com/2017/11/raspberrypi-setup/</id>
-    <published>2017-11-12T08:07:02.000Z</published>
-    <updated>2017-12-05T06:51:43.354Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Here are the steps I take to setup a Raspberry Pi for development:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Get Raspberry Pi and Peripherals&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
