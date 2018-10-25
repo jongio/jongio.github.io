@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2018-10-19T05:27:52.301Z</updated>
+  <updated>2018-10-25T05:33:47.547Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Update Firmware on Dremel Idea Builder 3D Printer (3D20)</title>
+    <link href="https://blog.jongallant.com/2018/10/dremel-3dprinter-3d20-firmware-update/"/>
+    <id>https://blog.jongallant.com/2018/10/dremel-3dprinter-3d20-firmware-update/</id>
+    <published>2018-10-24T22:20:16.000Z</published>
+    <updated>2018-10-25T05:33:47.547Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;Go to Firmware Page &lt;a href=&quot;https://digilab.dremel.com/3D-Support&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://digilab.dremel.com/3D-Su
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="3dprinting" scheme="https://blog.jongallant.com/tags/3dprinting/"/>
+    
+  </entry>
   
   <entry>
     <title>Proactive Mentorship</title>
@@ -397,9 +420,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
     
   </entry>
   
@@ -521,9 +544,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -581,29 +604,6 @@
     <summary type="html">
     
       &lt;p&gt;On Windows, Docker runs in a VM called MobyLinuxVM, but you cannot login to that VM via Hyper-V Manager. We aren’t technically going to S
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Delete Docker Container Log Files (Windows or Linux)</title>
-    <link href="https://blog.jongallant.com/2017/11/delete-docker-container-log-files/"/>
-    <id>https://blog.jongallant.com/2017/11/delete-docker-container-log-files/</id>
-    <published>2017-11-15T06:05:34.000Z</published>
-    <updated>2018-01-13T15:54:08.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Here’s how to delete your Docker container log files.&lt;/p&gt;
-&lt;h2 id=&quot;get-docker-file-location&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#get-docker-fi
     
     </summary>
     
