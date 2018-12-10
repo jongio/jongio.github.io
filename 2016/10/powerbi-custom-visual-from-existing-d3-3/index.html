@@ -19,7 +19,7 @@ In this series, we are creating a Power BI Custom Visual from an OSS d3 visualiz
 –
 In this series, we are creating a Power BI Custom Visual from an OSS d3 visualization I fou">
 <meta property="og:image" content="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/raw/master/assets/thumbnail.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:41.610Z">
+<meta property="og:updated_time" content="2018-12-10T21:24:28.170Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties">
 <meta name="twitter:description" content="UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
@@ -227,7 +227,7 @@ The first child of the objects properties is the “property group”. In this e
 Each property has a displayName, description and type. (There are other properties as well, but we won’t get into that here). In the example below, you can see that a “color” is fill-&gt;solid-&gt;color:true. I’ve also included a numeric and bool sample<br>
 <img src="/images/blog/bc08eaa5957e_C044/image_5.png" alt=""></p>
 <blockquote>
-<p>ISSUE: Do not use “textSize” as a property key as is appears to be a reserved key by Power BI and it will always render the “text size” slider that defaults to a min value of 8. See <a href="https://github.com/Microsoft/PowerBI-visuals-core/issues/484" target="_blank" rel="external">this issue</a> for updates on that.</p>
+<p>ISSUE: Do not use “textSize” as a property key as is appears to be a reserved key by Power BI and it will always render the “text size” slider that defaults to a min value of 8. See <a href="https://github.com/Microsoft/PowerBI-visuals/issues/484" target="_blank" rel="external">this issue</a> for updates on that.</p>
 </blockquote>
 <p>Here’s how that renders:<br>
 <img src="/images/blog/bc08eaa5957e_C044/image_6.png" alt=""><br>
@@ -249,7 +249,7 @@ Add <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/blob/mast
 <p>Power BI recommends using TypeScript definitions and the visualTransform method for doing what I do here, but I didn’t want to take on anymore overhead than necessary and I wanted to try to do the least amount of code to do the conversion from an existing visual to a Power BI one.<br>
 So, I just reused the settings object that was included with the original liquidFillGauge and am using the “getValue” method from objectEnumerationUtility.js.</p>
 <blockquote>
-<p>ISSUE: Power BI does not correctly update the options.type property when a “Style” object is changed. I’ll be able to remove some of the compare code when they fix <a href="https://github.com/Microsoft/PowerBI-visuals-core/issues/485" target="_blank" rel="external">this bug</a>.</p>
+<p>ISSUE: Power BI does not correctly update the options.type property when a “Style” object is changed. I’ll be able to remove some of the compare code when they fix <a href="https://github.com/Microsoft/PowerBI-visuals/issues/485" target="_blank" rel="external">this bug</a>.</p>
 </blockquote>
 <p>I created a “getSettings” method that populates the settings object. You just pass in the metadata.object property, propertyGroup key, property key, default value and in some cases a maxValue. Take notice of how I deal with “color” based properties. I use the “Fill” type, wrap the default value in a json object and then call solid.color to get the value into the settings object. You won’t need to do it this way if you are creating from scratch and use the recommended ViewModel approach. I wanted to use the settings object as is and it uses hex, so that’s why I have to do that conversion.</p>
 <script src="https://gist.github.com/jongio/1d0bb8283729e459d69204e53706a563.js"></script>
