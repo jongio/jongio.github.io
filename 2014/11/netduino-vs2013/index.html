@@ -19,7 +19,7 @@
 .NET Micro Framework and VS2013 Setup
 0. Close VS20">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/netduinoplus2_thumb.jpg">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:updated_time" content="2018-12-10T22:15:50.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to get setup with Netduino and Visual Studio 2013">
 <meta name="twitter:description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time.
@@ -204,7 +204,7 @@
 <h2 id="net-micro-framework-and-vs2013-setup"><a class="header-anchor" href="#net-micro-framework-and-vs2013-setup"></a>.NET Micro Framework and VS2013 Setup</h2>
 <p>0. Close VS2013 for good measure.</p>
 <p>1. Uninstall any .NET Micro Framework versions that you currently have installed.</p>
-<p>2. Install “.NET Micro Framework V4.3 SDK-R2-Beta” from here: <a href="https://netmf.codeplex.com/releases/view/133285" title="https://netmf.codeplex.com/releases/view/133285" target="_blank" rel="external">https://netmf.codeplex.com/releases/view/133285</a></p>
+<p>2. Install “.NET Micro Framework V4.3 SDK-R2-Beta” from here: <a href="http://netmf.github.io" target="_blank" rel="external">http://netmf.github.io</a></p>
 <ul>
 <li>Click “Combined ZIP bundle of all files” – that will download a zip</li>
 <li>Open that zip and install MicroFrameworkSDK.msi (I chose the “Complete” install option)</li>
@@ -212,19 +212,16 @@
 </ul>
 <p><img src="/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/image.png" alt=""></p>
 <p>3. Uninstall any Netduino SDKs that you have installed.</p>
-<p>4. Install this experimental version of the Netduino SDK <a href="http://www.netduino.com/downloads/forums/netduinosdk_vs2013_experimental.exe" title="http://www.netduino.com/downloads/forums/netduinosdk_vs2013_experimental.exe" target="_blank" rel="external">http://www.netduino.com/downloads/forums/netduinosdk_vs2013_experimental.exe</a></p>
+<p>4. Install this experimental version of the Netduino SDK</p>
 <h2 id="netduino-setup"><a class="header-anchor" href="#netduino-setup"></a>Netduino Setup</h2>
-<p>1. Create an account on <a href="http://Netduino.com" target="_blank" rel="external">Netduino.com</a> <a href="http://forums.netduino.com/index.php?app=core&amp;module=global&amp;section=register" title="http://forums.netduino.com/index.php?app=core&amp;module=global&amp;section=register" target="_blank" rel="external">http://forums.netduino.com/index.php?app=core&amp;module=global&amp;section=register</a>. This allows you to download the firmware.</p>
-<p>2. Download the Netduino Firmware update here: <a href="http://forums.netduino.com/index.php?app=core&amp;module=attach&amp;section=attach&amp;attach_id=3167" title="http://forums.netduino.com/index.php?app=core&amp;module=attach&amp;section=attach&amp;attach_id=3167" target="_blank" rel="external">http://forums.netduino.com/index.php?app=core&amp;module=attach&amp;section=attach&amp;attach_id=3167</a>. You might get a “Sorry, you don’t have permission for that!” error. Just login and try again.</p>
+<p>1. Create an account on <a href="http://Netduino.com" target="_blank" rel="external">Netduino.com</a>. This allows you to download the firmware.</p>
+<p>2. Download the Netduino Firmware update. You might get a “Sorry, you don’t have permission for that!” error. Just login and try again.</p>
 <p>3. Flash the Netduino Firmware:</p>
-<p><a href="http://www.netduino.com/downloads/forums/netduinosdk_vs2013_experimental.exe" title="http://www.netduino.com/downloads/forums/netduinosdk_vs2013_experimental.exe" target="_blank" rel="external"><br>
-</a></p>
-<blockquote>
 <p>how to flash this firmware</p>
 <p>1. Detach your Netduino from your computer to turn it off.</p>
 <p>2. Press and hold your Netduino’s pushbutton while plugging it in via USB; this will put it in bootloader mode. You know it’s in bootloader mode when the LED light is lit.</p>
 <p>3. Run the attached Netduino Update tool. (From Step #2 above)<br>
-a. If your device does not appear, install the <a href="http://www.netduino.com/downloads/dfusedemo_3.0.3.zip" target="_blank" rel="external">STDFU drivers + tools v3.0.3</a>.<br>
+a. If your device does not appear, install the STDFU drivers + tools v3.0.3.<br>
 b. If your device appears as “STM Device in DFU Mode”, click on “Options”, select your board type from the Product selection box and close the Options window.</p>
 <p><img src="/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/image_3.png" alt=""></p>
 <p>4. Select the checkbox next to your device and press “Upgrade”</p>
@@ -240,7 +237,6 @@ how to find your current version of Netduino firmware</li>
 <p>4. In the Device section at top, select USB instead of Serial. Your Netduino should appear in the drop-down; if not, select it.</p>
 <p>5. Select the Target menu &gt; Device Capabilities option.</p>
 <p>6. In the output box, find the “SolutionReleaseInfo.solutionVersion” value. This is your firmware version.</p>
-</blockquote>
 <p>Your Device Capabilities output should be something like this:</p>
 <p>Assembly: mscorlib (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Native (4.3.1.0)</p>
@@ -253,7 +249,6 @@ how to find your current version of Netduino firmware</li>
 <p>Assembly: Microsoft.SPOT.Hardware.PWM (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Hardware.Usb (4.3.1.0)</p>
 <p>Assembly: SecretLab</p>
-<p>Some of this info is from this Netduino Forums post here <a href="http://forums.netduino.com/index.php?/topic/10479-netduino-plus-2-firmware-v431/?p=56353" title="http://forums.netduino.com/index.php?/topic/10479-netduino-plus-2-firmware-v431/?p=56353" target="_blank" rel="external">http://forums.netduino.com/index.php?/topic/10479-netduino-plus-2-firmware-v431/?p=56353</a>.</p>
 <p>Jon</p>
 
         </div>

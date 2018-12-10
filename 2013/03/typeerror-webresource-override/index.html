@@ -25,7 +25,7 @@ There has been a known issue with Firefox an">
 “TypeError: Cannot read property ‘length’ of undefined”
 There has been a known issue with Firefox an">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/Solution-to-TypeError_57B3/image.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:02.000Z">
+<meta property="og:updated_time" content="2018-12-10T22:20:37.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to "TypeError: m[5] is undefined", "TypeError: Cannot read property length of undefined" and How to Override JavaScript in ASP.NET WebResource.axd files">
 <meta name="twitter:description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.
@@ -212,7 +212,7 @@ There has been a known issue with Firefox an">
 <p><em>“TypeError: m[5] is undefined”</em></p>
 <p><img src="/images/blog/Solution-to-TypeError_57B3/image_3.png" alt=""></p>
 <p><em>“TypeError: Cannot read property ‘length’ of undefined”</em></p>
-<p>There has been a known issue with Firefox and Chrome when you combine RegularExpressionValidators and RequiredFieldValidators. It’s been around since 2009, but no one has addressed the issue. Here’s the bug report on <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> forums: <a href="http://forums.asp.net/t/1417973.aspx" title="http://forums.asp.net/t/1417973.aspx" target="_blank" rel="external">http://forums.asp.net/t/1417973.aspx</a> and here’s the bug report filed to Mozilla for the FF issue <a href="https://bugzilla.mozilla.org/show_bug.cgi/attachment.cgi?id=512979" title="https://bugzilla.mozilla.org/show_bug.cgi/attachment.cgi?id=512979" target="_blank" rel="external">https://bugzilla.mozilla.org/show_bug.cgi/attachment.cgi?id=512979</a>. Neither of them have a solution.</p>
+<p>There has been a known issue with Firefox and Chrome when you combine RegularExpressionValidators and RequiredFieldValidators. It’s been around since 2009, but no one has addressed the issue. Here’s the bug report on <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> forums: <a href="http://forums.asp.net/t/1417973.aspx" title="http://forums.asp.net/t/1417973.aspx" target="_blank" rel="external">http://forums.asp.net/t/1417973.aspx</a> and here’s the bug report filed to Mozilla for the FF issue. Neither of them have a solution.</p>
 <p>I narrowed it down to these lines of code in WebResource.axd – the one with the Validator control JavaScript that starts with</p>
 <p>var Page_ValidationVer = “125”;</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (m != <span class="literal">null</span> &amp;amp;&amp;amp; (m[<span class="number">2</span>].length == <span class="number">4</span> || val.dateorder == <span class="string">"ymd"</span>)) &#123;</div><div class="line">  year = (m[<span class="number">5</span>].length == <span class="number">4</span>) ? m[<span class="number">5</span>] : GetFullYear(<span class="built_in">parseInt</span>(m[<span class="number">6</span>], <span class="number">10</span>))</div></pre></td></tr></table></figure>

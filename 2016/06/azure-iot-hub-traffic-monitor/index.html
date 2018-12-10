@@ -9,22 +9,31 @@
         <meta name="keywords" content="azure,iot,howto" />
     
     <meta name="description" content="You have a couple different options to monitor your incoming and outgoing Azure IoT Hub traffic.
-Desktop App
-On Windows machines, you can use the Azure IoT Hub Device Explorer utility. Under the Data">
+Azure CLI IoT Extension
+See this ref for more info:
+
+https://aka.ms/iotcli
+https://docs.microsoft.com/e">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Monitor Azure IoT Hub Traffic">
 <meta property="og:url" content="https://blog.jongallant.com/2016/06/azure-iot-hub-traffic-monitor/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You have a couple different options to monitor your incoming and outgoing Azure IoT Hub traffic.
-Desktop App
-On Windows machines, you can use the Azure IoT Hub Device Explorer utility. Under the Data">
+Azure CLI IoT Extension
+See this ref for more info:
+
+https://aka.ms/iotcli
+https://docs.microsoft.com/e">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/azure-iot-hub-traffic-monitor_946/image.png">
-<meta property="og:updated_time" content="2017-12-30T16:19:23.752Z">
+<meta property="og:updated_time" content="2018-12-10T22:12:38.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Monitor Azure IoT Hub Traffic">
 <meta name="twitter:description" content="You have a couple different options to monitor your incoming and outgoing Azure IoT Hub traffic.
-Desktop App
-On Windows machines, you can use the Azure IoT Hub Device Explorer utility. Under the Data">
+Azure CLI IoT Extension
+See this ref for more info:
+
+https://aka.ms/iotcli
+https://docs.microsoft.com/e">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/blog/azure-iot-hub-traffic-monitor_946/image.png">
     
 
@@ -199,11 +208,17 @@ On Windows machines, you can use the Azure IoT Hub Device Explorer utility. Unde
         
         <div class="article-entry" itemprop="articleBody">
             <p>You have a couple different options to monitor your incoming and outgoing Azure IoT Hub traffic.</p>
+<h1>Azure CLI IoT Extension</h1>
+<p>See this ref for more info:</p>
+<ul>
+<li><a href="https://aka.ms/iotcli" target="_blank" rel="external">https://aka.ms/iotcli</a></li>
+<li><a href="https://docs.microsoft.com/en-us/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events" target="_blank" rel="external">https://docs.microsoft.com/en-us/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events</a></li>
+</ul>
 <h1>Desktop App</h1>
-<p>On Windows machines, you can use the <a href="https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md" target="_blank" rel="external">Azure IoT Hub Device Explorer utility</a>. Under the Data tab, select your device, click Monitor and you’ll start to see messages in the Event Hub Data</p>
+<p>On Windows machines, you can use the <a href="https://aka.ms/aziotdevexp" target="_blank" rel="external">Azure IoT Hub Device Explorer utility</a>. Under the Data tab, select your device, click Monitor and you’ll start to see messages in the Event Hub Data</p>
 <p><img src="/images/blog/azure-iot-hub-traffic-monitor_946/image.png" alt=""></p>
-<h1>Node</h1>
-<p>You can also use the <a href="https://github.com/Azure/azure-iot-sdks/blob/master/tools/iothub-explorer/readme.md" target="_blank" rel="external">iothub-explorer npm package</a>.</p>
+<h1>Node [Deprecated]</h1>
+<p>You can also use the iothub-explorer npm package.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install -g iothub-explorer@latest</div></pre></td></tr></table></figure>
 <p>and then</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">iothub-explorer --login hubconnectionstring monitor-events deviceid</div></pre></td></tr></table></figure>

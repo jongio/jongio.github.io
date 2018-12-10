@@ -17,7 +17,7 @@ Individual IoT devices will connect to t">
 <meta property="og:description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.
 Individual IoT devices will connect to t">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/533c87e4ef7b_9338/image.png">
-<meta property="og:updated_time" content="2017-12-19T22:21:01.527Z">
+<meta property="og:updated_time" content="2018-12-10T22:08:36.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Run the Azure IoT Field Gateway on a Raspberry Pi 3">
 <meta name="twitter:description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.
@@ -211,7 +211,7 @@ Individual IoT devices will connect to t">
 <h2 id="get-raspberry-pi-ready"><a class="header-anchor" href="#get-raspberry-pi-ready"></a>Get Raspberry Pi Ready</h2>
 <p>Plug in HDMI monitor, keyboard, mouse and Ethernet cable (you can also use Wifi instead)</p>
 <h2 id="configure-remote-access-to-pi"><a class="header-anchor" href="#configure-remote-access-to-pi"></a>Configure Remote Access to Pi</h2>
-<p>TightVNC allows you to remote desktop into the Raspberry Pi from your Windows desktop. This step is optional. You could also just use the monitor, mouse and keyboard that is connected to the Pi, but that gets old quick. There are other options here, but I’ve found TightVNC to be the most reliable when you just need to connect to the Pi from the same wireless network. If the Pi is on a difference network, then use <a href="https://www.raspberrypi.org/documentation/remote-access/access-over-Internet/internetaccess.md" target="_blank" rel="external">Weaved</a>.</p>
+<p>TightVNC allows you to remote desktop into the Raspberry Pi from your Windows desktop. This step is optional. You could also just use the monitor, mouse and keyboard that is connected to the Pi, but that gets old quick. There are other options here, but I’ve found TightVNC to be the most reliable when you just need to connect to the Pi from the same wireless network. If the Pi is on a difference network, then use Weaved.</p>
 <p>All your remote options are located here: <a href="https://www.raspberrypi.org/documentation/remote-access/" title="https://www.raspberrypi.org/documentation/remote-access/" target="_blank" rel="external">https://www.raspberrypi.org/documentation/remote-access/</a>. Feel free to use one that best suits your needs. SSH with Putty is a good option if you don’t need to access the desktop.</p>
 <h2 id="go-to-azure-iot-field-gateway-sdk-github-page"><a class="header-anchor" href="#go-to-azure-iot-field-gateway-sdk-github-page"></a>Go to Azure IoT Field Gateway SDK GitHub Page</h2>
 <p>If you are using TightVNC, on the Pi, open the web browser and go to <a href="http://bit.ly/azuregatewaypi" target="_blank" rel="external">http://bit.ly/azuregatewaypi</a> – that will redirect you to this page on your Pi, so you can easily copy and paste the following commands.</p>
@@ -228,11 +228,11 @@ Individual IoT devices will connect to t">
 <p>I like to execute this command after I checkout a branch to be sure I have the latest submodule bits that correspond to my current branch.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git submodule update --init --recursive</div></pre></td></tr></table></figure>
 <h2 id="run-build-sh"><a class="header-anchor" href="#run-build-sh"></a>Run <a href="http://Build.sh" target="_blank" rel="external">Build.sh</a></h2>
-<p>Change to the /tools directory and excute ./build.sh</p>
+<p>Change to the /tools directory and excute <a href="http://build.sh" target="_blank" rel="external">build.sh</a></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> tools</div><div class="line">./build.sh</div></pre></td></tr></table></figure>
 <p>This will take a while. Come back in 30 mins or so.</p>
 <h2 id="test-failures"><a class="header-anchor" href="#test-failures"></a>Test Failures</h2>
-<p>You will likely see these test failures, which are known issues reported <a href="https://github.com/Azure/azure-iot-sdks/issues/556" target="_blank" rel="external">here on GitHub</a>. The e2e tests fail because we didn’t setup the IoT Hub connection. That’ll be the topic of a different blog post.</p>
+<p>You will likely see these test failures, which are known issues reported on GitHub. The e2e tests fail because we didn’t setup the IoT Hub connection. That’ll be the topic of a different blog post.</p>
 <p>The following tests FAILED:<br>
 27 - constbuffer_unittests (Failed)<br>
 34 - httpapiex_unittests (Failed)<br>
@@ -258,15 +258,10 @@ Individual IoT devices will connect to t">
 <h3 id="you-now-have-the-azure-iot-gateway-running-on-a-raspberry-pi-3"><a class="header-anchor" href="#you-now-have-the-azure-iot-gateway-running-on-a-raspberry-pi-3"></a>You now have the Azure IoT Gateway Running on a Raspberry Pi 3!</h3>
 </blockquote>
 <h2 id="error-when-stopped"><a class="header-anchor" href="#error-when-stopped"></a>Error When Stopped</h2>
-<p>You might see this error when you stop the gateway – it appears that you can ignore it because it is still writing data to the log file. I have reported the issue on <a href="https://github.com/Azure/azure-iot-gateway-sdk/issues/19" target="_blank" rel="external">GitHub</a>, which was resolved 8/13/2016.</p>
+<p>You might see this error when you stop the gateway – it appears that you can ignore it because it is still writing data to the log file.</p>
 <blockquote>
 <p>Error: Time:Fri Aug  5 19:41:42 2016 File:/home/pi/code/azure-iot-gateway-sdk/deps/azure-c-shared-utility/src/consolelogger.c Func:consolelogger_log Line:31 byte array is not a gateway message serialization</p>
 </blockquote>
-<h2 id="references"><a class="header-anchor" href="#references"></a>References</h2>
-<ul>
-<li>Azure IoT Field Gateway SDK: <a href="https://github.com/Azure/azure-iot-gateway-sdk" title="https://github.com/Azure/azure-iot-gateway-sdk" target="_blank" rel="external">https://github.com/Azure/azure-iot-gateway-sdk</a></li>
-<li>Good Design Overview: <a href="https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/getting_started.md" title="https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/getting_started.md" target="_blank" rel="external">https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/getting_started.md</a></li>
-</ul>
 <p>Jon</p>
 
         </div>
