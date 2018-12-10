@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The Bing API to Azure Marketplace migration doc is a great resource for learning how to call the new Azure">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/b02f9479d675_6082/image.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:updated_time" content="2018-12-10T12:03:58.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to call the new Azure Marketplace Bing Search API using C#">
 <meta name="twitter:description" content="It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The Bing API to Azure Marketplace migration doc is a great resource for learning how to call the new Azure">
@@ -192,27 +192,26 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>It took me more than 2 minutes (too long!) to figure out how to call the new <a href="https://datamarket.azure.com/dataset/5BA839F1-12CE-4CCE-BF57-A49D98D29A44" target="_blank" rel="external">Bing search API.</a> The <a href="http://go.microsoft.com/fwlink/?LinkID=248077" target="_blank" rel="external">Bing API to Azure Marketplace migration doc</a> is a great resource for learning how to call the new Azure Marketplace. Here’s a quick code post to get you going.</p>
+            <p>It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The <a href="http://go.microsoft.com/fwlink/?LinkID=248077" target="_blank" rel="external">Bing API to Azure Marketplace migration doc</a> is a great resource for learning how to call the new Azure Marketplace.</p>
+<p>Here’s a quick code-post to get you going.</p>
 <h2 id="1-get-a-bing-api-azure-marketplace-key"><a class="header-anchor" href="#1-get-a-bing-api-azure-marketplace-key"></a>1. Get a Bing API Azure Marketplace Key</h2>
-<blockquote>
-<p>a) Go to <a href="https://datamarket.azure.com/dataset/5BA839F1-12CE-4CCE-BF57-A49D98D29A44" title="https://datamarket.azure.com/dataset/5BA839F1-12CE-4CCE-BF57-A49D98D29A44" target="_blank" rel="external">Bing API Azure Marketplace page</a></p>
-<p>b) Sign up for a plan. There is a free option if you have less than 5,000 transactions a month</p>
-<p><img src="/images/blog/b02f9479d675_6082/image.png" alt=""> &gt; c) Go back to the <a href="https://datamarket.azure.com/dataset/5BA839F1-12CE-4CCE-BF57-A49D98D29A44" target="_blank" rel="external">Bing API Azure Marketplace Page</a> and click “Explore this DataSet” or just click this link: <a href="https://datamarket.azure.com/dataset/explore/5ba839f1-12ce-4cce-bf57-a49d98d29a44" title="https://datamarket.azure.com/dataset/explore/5ba839f1-12ce-4cce-bf57-a49d98d29a44" target="_blank" rel="external">https://datamarket.azure.com/dataset/explore/5ba839f1-12ce-4cce-bf57-a49d98d29a44</a></p>
-<p><img src="/images/blog/b02f9479d675_6082/image_3.png" alt="">d) Click the “Show” link next to Primary Account Key in the header.</p>
-<p><img src="/images/blog/b02f9479d675_6082/image_4.png" alt=""> e) Copy your key for later use</p>
-</blockquote>
+<p>a) Go to Bing API Azure Marketplace page<br>
+b) Sign up for a plan. There is a free option if you have less than 5,000 transactions a month</p>
+<p><img src="/images/blog/b02f9479d675_6082/image.png" alt=""></p>
+<p>c) Go back to the Bing API Azure Marketplace Page and click “Explore this DataSet”.</p>
+<p><img src="/images/blog/b02f9479d675_6082/image_3.png" alt=""></p>
+<p>d) Click the “Show” link next to Primary Account Key in the header.</p>
+<p><img src="/images/blog/b02f9479d675_6082/image_4.png" alt=""></p>
+<p>e) Copy your key for later use</p>
 <h2 id="2-download-the-c-proxy-file"><a class="header-anchor" href="#2-download-the-c-proxy-file"></a>2. Download the C# proxy file</h2>
-<p>It will be awesome once this is in NuGet, but for now you just have to get the proxy file manually.</p>
-<blockquote>
-<p>a) Go back to the <a href="https://datamarket.azure.com/dataset/5BA839F1-12CE-4CCE-BF57-A49D98D29A44" target="_blank" rel="external">Bing API Azure Marketplace Page</a></p>
-<p>b) Click the <a href="https://datamarket.azure.com/dataset/explore/getproxy/5ba839f1-12ce-4cce-bf57-a49d98d29a44" target="_blank" rel="external">“.NET C# Class Library”</a> link you’ll find right below the plan options:</p>
-<p><img src="/images/blog/b02f9479d675_6082/image_5.png" alt=""> &gt; c) That will prompt you to download the proxy file. Save it to a location on your computer.</p>
-</blockquote>
+<p>It will be awesome once this is in NuGet, but for now you just have to get the proxy file manually.<br>
+a) Go back to the Bing API Azure Marketplace Page</p>
+<p>b) Click the “.NET C# Class Library” link you’ll find right below the plan options:</p>
+<p><img src="/images/blog/b02f9479d675_6082/image_5.png" alt=""></p>
+<p>c) That will prompt you to download the proxy file. Save it to a location on your computer.</p>
 <p><img src="/images/blog/b02f9479d675_6082/image_6.png" alt=""></p>
 <h2 id="3-add-the-proxy-file-to-your-project"><a class="header-anchor" href="#3-add-the-proxy-file-to-your-project"></a>3. Add the proxy file to your project</h2>
-<blockquote>
 <p>a) In Visual Studio, right click on your project and select Add –&gt; Existing Item and add the c# file you just downloaded.</p>
-</blockquote>
 <h2 id="4-reference-system-data-services-client-dll"><a class="header-anchor" href="#4-reference-system-data-services-client-dll"></a>4. Reference System.Data.Services.Client dll</h2>
 <p>The proxy file uses System.Data.Services.Client, so you need to reference that.</p>
 <p><img src="/images/blog/b02f9479d675_6082/image_7.png" alt=""></p>
