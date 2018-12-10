@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/000119.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:24.772Z">
+<meta property="og:updated_time" content="2018-12-10T12:33:03.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
 <meta name="twitter:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
@@ -207,7 +207,7 @@
     ));
   }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
 </script>
-<p>From my experience with Azure IoT Device Twin REST APIs, I thought it would be great to do the same thing for the entire Azure IoT REST API surface. I’m a huge fan of starting small and showing incremental progress, so with this post, I’m going to show you how I got the entire <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource" target="_blank" rel="external">Azure IoT Resource Provider REST API</a> surface working in Postman and Newman. The Resource Provider REST APIs allow you to manage IoT Hubs as an Azure Resource via the Azure Resource Manager APIs.  The official Swagger for the Resource Provider APIs can be found here: <a href="https://github.com/Azure/azure-rest-api-specs/blob/master/arm-iothub/2016-02-03/swagger/iothub.json" target="_blank" rel="external">Azure IoT Hub Resource Provider Swagger</a>.</p>
+<p>From my experience with Azure IoT Device Twin REST APIs, I thought it would be great to do the same thing for the entire Azure IoT REST API surface. I’m a huge fan of starting small and showing incremental progress, so with this post, I’m going to show you how I got the entire <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource" target="_blank" rel="external">Azure IoT Resource Provider REST API</a> surface working in Postman and Newman. The Resource Provider REST APIs allow you to manage IoT Hubs as an Azure Resource via the Azure Resource Manager APIs.  The official Swagger for the Resource Provider APIs can be found here: <a href="https://github.com/Azure/azure-rest-api-specs/blob/129d712131beef11c2c184b64de0edf1f9c62c17/specification/iothub/resource-manager/Microsoft.Devices/stable/2017-07-01/iothub.json" target="_blank" rel="external">Azure IoT Hub Resource Provider Swagger</a>.</p>
 <p>I’ve written this blog post with two audiences in mind:</p>
 <p><strong>1. View Only</strong>: You want to learn how to use the Azure IoT Resource Provider REST APIs but don’t want to setup all the Azure resources required to execute the requests.</p>
 <blockquote>
@@ -220,7 +220,7 @@
 <h2 id="install-postman"><a class="header-anchor" href="#install-postman"></a>Install Postman</h2>
 <p>With either approach below, you will need to install Postman, which you can do here: <a href="http://getpostman.com" target="_blank" rel="external">Install Postman</a>.  I use the Desktop version, but the Chrome version should work fine as well.</p>
 <h2 id="option-1-view-requests-only"><a class="header-anchor" href="#option-1-view-requests-only"></a>Option 1: View Requests Only</h2>
-<p>If all you want to do is view the requests in Postman without executing anything, then jump to the <a href="#Open-Postman-Collection">Open Postman Collection</a> section below.  You can also view the Postman documentation here: <a href="https://documenter.getpostman.com/collection/view/61247-b4255873-3a93-415d-213d-c4494a190839" target="_blank" rel="external">Azure IoT Hub Postman Documentation</a>.</p>
+<p>If all you want to do is view the requests in Postman without executing anything, then jump to the <a href="#Open-Postman-Collection">Open Postman Collection</a> section below.</p>
 <h2 id="option-2-view-and-execute-requests"><a class="header-anchor" href="#option-2-view-and-execute-requests"></a>Option 2: View and Execute Requests</h2>
 <p>If you want to view the requests <strong>and execute</strong> them against your Azure Subscription, then you will need to do the following.</p>
 <h2 id="set-postman-environment-variables"><a class="header-anchor" href="#set-postman-environment-variables"></a>Set Postman Environment Variables</h2>

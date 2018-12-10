@@ -163,13 +163,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/microsoftie-perks/</loc>
-        <lastmod>2018-01-19T08:07:35.195Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/cli/</loc>
         <lastmod>2018-05-02T20:29:07.608Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -205,34 +198,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/avro/</loc>
-        <lastmod>2018-05-16T20:39:25.427Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/asa/</loc>
-        <lastmod>2018-05-16T20:39:25.427Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/postman/</loc>
-        <lastmod>2018-05-16T20:39:25.993Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/rest/</loc>
-        <lastmod>2018-05-16T20:39:25.993Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/visual-studio/</loc>
         <lastmod>2018-05-16T20:39:33.579Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -249,13 +214,6 @@
     <url>
         <loc>https://blog.jongallant.com/tags/sql/</loc>
         <lastmod>2018-05-16T20:39:42.505Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/docker/</loc>
-        <lastmod>2018-05-16T20:39:44.527Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -296,13 +254,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/raspberrypi/</loc>
-        <lastmod>2018-09-20T19:34:39.619Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/azuredevops/</loc>
         <lastmod>2018-09-25T22:54:48.758Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -324,50 +275,8 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/3dmodeling/</loc>
-        <lastmod>2018-12-10T08:53:49.380Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/3dprinting/</loc>
-        <lastmod>2018-12-10T08:53:49.380Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/microsoft/</loc>
-        <lastmod>2018-12-10T08:56:46.300Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/iot/</loc>
-        <lastmod>2018-12-10T11:55:31.562Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/beakn/</loc>
         <lastmod>2018-12-10T11:55:31.562Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/azure/</loc>
-        <lastmod>2018-12-10T12:03:58.462Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/review/</loc>
-        <lastmod>2018-12-10T12:08:44.014Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -387,15 +296,106 @@
     </url>
 
     <url>
+        <loc>https://blog.jongallant.com/tags/avro/</loc>
+        <lastmod>2018-12-10T12:29:16.303Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/asa/</loc>
+        <lastmod>2018-12-10T12:29:16.303Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/postman/</loc>
+        <lastmod>2018-12-10T12:40:40.895Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/rest/</loc>
+        <lastmod>2018-12-10T12:40:40.895Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/3dmodeling/</loc>
+        <lastmod>2018-12-10T12:48:13.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/3dprinting/</loc>
+        <lastmod>2018-12-10T12:48:13.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/review/</loc>
+        <lastmod>2018-12-10T12:48:13.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/docker/</loc>
+        <lastmod>2018-12-10T12:50:40.135Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/raspberrypi/</loc>
+        <lastmod>2018-12-10T12:50:41.369Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://blog.jongallant.com/tags/howto/</loc>
-        <lastmod>2018-12-10T12:11:50.944Z</lastmod>
+        <lastmod>2018-12-10T12:54:21.838Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/iot/</loc>
+        <lastmod>2018-12-10T12:55:24.256Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/azure/</loc>
+        <lastmod>2018-12-10T13:00:48.787Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://blog.jongallant.com/tags/dev/</loc>
-        <lastmod>2018-12-10T12:11:50.944Z</lastmod>
+        <lastmod>2018-12-10T13:00:48.787Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/microsoft/</loc>
+        <lastmod>2018-12-10T13:00:48.787Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/microsoftie-perks/</loc>
+        <lastmod>2018-12-10T13:00:48.787Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

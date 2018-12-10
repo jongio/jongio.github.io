@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m continuing to build out “beakn” my DIY Lync Status light. This is what I’m calling a “maker experience” project. I want to know what a maker goes through to build things so I’m building it with as">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/bdbd95e2151d_B728/P-737_thumb.jpg">
-<meta property="og:updated_time" content="2018-05-16T20:39:30.072Z">
+<meta property="og:updated_time" content="2018-12-10T12:55:24.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.3 : DIY Lync Status Light with a RaspberryPi, .NET, Mono and MQTT">
 <meta name="twitter:description" content="I’m continuing to build out “beakn” my DIY Lync Status light. This is what I’m calling a “maker experience” project. I want to know what a maker goes through to build things so I’m building it with as">
@@ -199,7 +199,7 @@
 </ul>
 <p><a href="/images/blog/bdbd95e2151d_B728/P-729.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-729_thumb.jpg" alt="P-729" title="P-729"></a><a href="/images/blog/bdbd95e2151d_B728/P-731.jpg"><img src="/images/blog/bdbd95e2151d_B728/P-731_thumb.jpg" alt="P-731" title="P-731"><br>
 </a></p>
-<p>Up until a few days ago I didn’t realize (or it didn’t click) that we could run .NET applications on RaspberryPi. I’ve heard about Mono, but haven’t really have a chance to play with it enough for it to sink in. MS Open Tech released <a href="http://connectthedots.io" target="_blank" rel="external">ConnectTheDots.io</a> (a site to help people get up and going with IoT devices and Azure) this week and in that they have a <a href="https://github.com/MSOpenTech/connectthedots/tree/master/Devices/RaspberryPiGateway" target="_blank" rel="external">RaspberryPiGateway</a> – which uses a .NET console app and Mono. I saw that. It clicked - and of course I had to give it a try for beakn, which led to this post.</p>
+<p>Up until a few days ago I didn’t realize (or it didn’t click) that we could run .NET applications on RaspberryPi. I’ve heard about Mono, but haven’t really have a chance to play with it enough for it to sink in. MS Open Tech released <a href="http://connectthedots.io" target="_blank" rel="external">ConnectTheDots.io</a> (a site to help people get up and going with IoT devices and Azure) this week and in that they have a RaspberryPiGateway – which uses a .NET console app and Mono. I saw that. It clicked - and of course I had to give it a try for beakn, which led to this post.</p>
 <p>I just did a post on “<a href="/2014/12/dotnet-raspberrypi-mono.html">How to run .NET on RaspberryPi with Mono</a>”, so start there to see how things work and then come back to build the beakn. I also recommend that you read through the v0.1 and v0.2 posts before moving on so you can see how we got to this point.</p>
 <p>The “beakn” has three main components</p>
 <p>1. A Windows desktop application that sends messages to an MQTT broker when your Lync status changes</p>
