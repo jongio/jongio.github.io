@@ -177,13 +177,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/nodejs/</loc>
-        <lastmod>2018-07-24T17:29:13.395Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/azureiotedge/</loc>
         <lastmod>2018-09-20T19:34:39.619Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -247,29 +240,8 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/3dmodeling/</loc>
-        <lastmod>2018-12-10T12:48:13.191Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/3dprinting/</loc>
-        <lastmod>2018-12-10T12:48:13.191Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/docker/</loc>
         <lastmod>2018-12-10T12:50:40.135Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/raspberrypi/</loc>
-        <lastmod>2018-12-10T12:50:41.369Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -324,13 +296,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/dev/</loc>
-        <lastmod>2018-12-10T22:30:29.735Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/c/</loc>
         <lastmod>2018-12-10T22:35:33.959Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -345,13 +310,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/review/</loc>
-        <lastmod>2018-12-11T01:29:12.117Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/bluetooth/</loc>
         <lastmod>2018-12-11T01:29:12.117Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -360,13 +318,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/tags/azure/</loc>
-        <lastmod>2018-12-11T01:31:43.280Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/iot/</loc>
         <lastmod>2018-12-11T01:31:43.280Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -389,6 +340,55 @@
     <url>
         <loc>https://blog.jongallant.com/tags/angularjs/</loc>
         <lastmod>2018-12-11T01:33:26.323Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/nodejs/</loc>
+        <lastmod>2018-12-11T02:17:31.430Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/dev/</loc>
+        <lastmod>2018-12-11T02:17:31.484Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/iot/</loc>
+        <lastmod>2018-12-11T02:21:49.462Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/raspberrypi/</loc>
+        <lastmod>2018-12-11T02:21:49.462Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/3dmodeling/</loc>
+        <lastmod>2018-12-11T02:22:56.268Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/3dprinting/</loc>
+        <lastmod>2018-12-11T02:22:56.268Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/review/</loc>
+        <lastmod>2018-12-11T02:22:56.268Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
