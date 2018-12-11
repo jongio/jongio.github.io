@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently working with a customer that uses Apache Avro compression and discovered that there isn’t a great example out there that shows you how to send Avro compressed messages through the IoT p">
 <meta property="og:image" content="https://blog.jongallant.com/2017/05/azure-iot-stream-analytics-avro-nodejs/000188.png">
-<meta property="og:updated_time" content="2018-12-10T12:29:16.303Z">
+<meta property="og:updated_time" content="2018-12-11T02:49:05.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to use Apache Avro Compression with Azure IoT, Azure Stream Analytics, and Node.js">
 <meta name="twitter:description" content="I was recently working with a customer that uses Apache Avro compression and discovered that there isn’t a great example out there that shows you how to send Avro compressed messages through the IoT p">
@@ -217,17 +217,13 @@
 <h3 id="get-iot-hub-connection-string"><a class="header-anchor" href="#get-iot-hub-connection-string"></a>Get IoT Hub Connection String</h3>
 <p>Execute the following command to get the connection string for the IoT Hub you just created.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az iot hub show-connection-string --hub-name [your IoT Hub name]</div></pre></td></tr></table></figure>
-<blockquote>
 <p>Copy that connection string to a safe place. You will need it later.</p>
-</blockquote>
 <h3 id="create-iot-hub-device"><a class="header-anchor" href="#create-iot-hub-device"></a>Create IoT Hub Device</h3>
 <p>Execute the following command to create a new IoT Hub device.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az iot device create --hub-name [your IoT Hub name] --device-id [your IoT Hub device name]</div></pre></td></tr></table></figure>
 <h3 id="get-device-connection-string"><a class="header-anchor" href="#get-device-connection-string"></a>Get Device Connection String</h3>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az iot device show-connection-string --hub-name [your IoT Hub name] --device-id [your IoT Hub device name]</div></pre></td></tr></table></figure>
-<blockquote>
 <p>Copy that device’s connection string to a safe place. You will need it later.</p>
-</blockquote>
 <h3 id="create-iot-hub-consumer-group"><a class="header-anchor" href="#create-iot-hub-consumer-group"></a>Create IoT Hub Consumer Group</h3>
 <p>You will need a new IoT Hub consumer group when you configure ASA later.  Let’s create it now with the following command:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">az iot hub consumer-group create --hub-name [your IoT Hub name] --name avrocg</div></pre></td></tr></table></figure>
@@ -266,14 +262,10 @@
 <p>The script uses following npm packages: <a href="https://www.npmjs.com/package/avsc" target="_blank" rel="external">avsc</a>, <a href="https://www.npmjs.com/package/memory-streams" target="_blank" rel="external">memory-streams</a>, <a href="https://www.npmjs.com/package/azure-iot-device" target="_blank" rel="external">azure-iot-device</a> and <a href="https://www.npmjs.com/package/azure-iot-device-amqp" target="_blank" rel="external">azure-iot-device-amqp</a>.</p>
 <p>With Avro, you can embed the payload schema into the Avro Container file.  In this repo, we have a file called <code>schema.avsc</code>, which looks like this:</p>
 <figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"telemetry"</span>,</div><div class="line">    <span class="attr">"type"</span>: <span class="string">"record"</span>,</div><div class="line">    <span class="attr">"fields"</span>: [</div><div class="line">        &#123; <span class="attr">"name"</span>: <span class="string">"deviceId"</span>, <span class="attr">"type"</span>: <span class="string">"string"</span> &#125;,</div><div class="line">        &#123; <span class="attr">"name"</span>: <span class="string">"windSpeed"</span>, <span class="attr">"type"</span>: <span class="string">"float"</span> &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
 <p>In fact, ASA requires the schema to be embedded into the message payload.</p>
-</blockquote>
 <p>This file Avro type is loaded via the parse method like this:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> type = avro.parse(__dirname + <span class="string">'/schema.avsc'</span>);</div></pre></td></tr></table></figure>
-<blockquote>
 <p>At the moment, ASA does not support ENUMs in your Avro schema. Convert the ENUM to string if you are having issues.  I will update this post when that has been resolved.</p>
-</blockquote>
 <p>The meat of the code is as follows:</p>
 <ul>
 <li>Instantiate a BlockEncoder with deflate codec</li>
@@ -294,7 +286,6 @@
 <li><a href="https://github.com/mtth/avsc/issues/75" target="_blank" rel="external">Rotate stream into google cloud storage #75</a></li>
 <li><a href="https://github.com/mtth/avsc/issues/17" target="_blank" rel="external">BlockEncoder produces invalid avro format? #17</a></li>
 <li><a href="https://github.com/miguno/avro-cli-examples" target="_blank" rel="external">avro-cli-examples</a></li>
-<li><a href="http://mirrors.ibiblio.org/apache/avro/avro-1.8.1/java/avro-tools-1.8.1.jar" target="_blank" rel="external">avro tools</a></li>
 </ul>
 <h2 id="azure-blob-storage"><a class="header-anchor" href="#azure-blob-storage"></a>Azure Blob Storage</h2>
 <p>For this contrived exercise, we’re going to configure a Blob Storage account that ASA sends all messages to.  Let’s create the account and then wire up ASA.</p>
@@ -308,18 +299,14 @@
 <h3 id="wire-up-iot-hub-input"><a class="header-anchor" href="#wire-up-iot-hub-input"></a>Wire Up IoT Hub Input</h3>
 <p>1. Go to the ASA job you just created and click on Inputs.<br>
 <img src="000181.png" alt=""></p>
-<blockquote>
-<p>Something to be aware of, ASA does not allow you to test the input with a physical Avro container file, like it does with JSON/CSV. The only way to test Avro is to send the message to the ASA Input and view the logs if you have issues. The logs are not that helpful as all it says is the file is invalid.  You can also use the <a href="http://mirrors.ibiblio.org/apache/avro/avro-1.8.1/java/avro-tools-1.8.1.jar" target="_blank" rel="external">avro tools</a> to help you diagnose Avro issues.</p>
-</blockquote>
+<p>Something to be aware of, ASA does not allow you to test the input with a physical Avro container file, like it does with JSON/CSV. The only way to test Avro is to send the message to the ASA Input and view the logs if you have issues. The logs are not that helpful as all it says is the file is invalid.</p>
 <p>2. Click Add and create a new Input</p>
 <p><img src="000182.png" alt=""></p>
-<blockquote>
 <p>There are two bugs in the Azure Portal on this screen:</p>
 <ul>
 <li>You can’t select Avro using your mouse. You must use your keyboard arrows in the “Event Serialization Format” dropdown.</li>
 <li>You can’t use $Default consumer group. Use the consumer group you created earlier, I called mine avrocg.</li>
 </ul>
-</blockquote>
 <h3 id="wire-up-blob-storage-output"><a class="header-anchor" href="#wire-up-blob-storage-output"></a>Wire Up Blob Storage Output</h3>
 <p>3. Click on Outputs, click Add and create a new Input</p>
 <p><img src="000183.png" alt=""></p>
@@ -331,18 +318,14 @@
 <p>4. Click on Query, then enter the following query into the query text box.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">SELECT</div><div class="line">    *</div><div class="line">INTO</div><div class="line">    avrooutput</div><div class="line">FROM</div><div class="line">    avroinput</div></pre></td></tr></table></figure>
 <p><img src="000184.png" alt=""></p>
-<blockquote>
 <p>This query is intentionally simple because this post is about wiring everything up and not sophisticated ASA queries.</p>
-</blockquote>
 <p>5. Click Save</p>
 <h3 id="start-asa-job"><a class="header-anchor" href="#start-asa-job"></a>Start ASA Job</h3>
 <p>Click ‘Overview’, then click Start</p>
 <p><img src="000185.png" alt=""></p>
 <p>Once the ASA job is started, you will see the following monitoring visual in the Azure Portal.</p>
 <p><img src="000186.png" alt=""></p>
-<blockquote>
 <p>If you have any issues, please refer to the Activity log tab to see if any messages are being logged.</p>
-</blockquote>
 <h2 id="view-blob-storage-messages"><a class="header-anchor" href="#view-blob-storage-messages"></a>View Blob Storage Messages</h2>
 <p>We’ll now use the <a href="http://storageexplorer.com/" target="_blank" rel="external">Azure Storage Explorer</a> to inspect the JSON messages that have been stored in Blob Storage.</p>
 <p>1. Open Azure Storage Explorer, sign-in and navigate to the Blob Storage account you created earlier. Expand the Blob Containers node. Click on ‘avros’ and you will see a JSON file in the right pane.</p>
