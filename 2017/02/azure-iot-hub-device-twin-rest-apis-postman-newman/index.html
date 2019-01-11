@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
 <meta property="og:image" content="https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/000069.png">
-<meta property="og:updated_time" content="2018-12-10T12:40:40.895Z">
+<meta property="og:updated_time" content="2019-01-06T07:37:04.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman">
 <meta name="twitter:description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
@@ -249,14 +249,14 @@
 <p>For the first example we are going to start with the “GET Device Twin” call, which just gets the device twin (cloud representation of the device metadata).</p>
 <p><img src="000053.png" alt=""></p>
 <p>The URI to get the device twin is in the following format:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">https://&#123;&#123;hubName&#125;&#125;.azure-devices.net/twins/&#123;&#123;deviceId&#125;&#125;?api-version=2016-11-14</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">https://&#123;%raw%&#125;&#123;&#123;hubName&#125;&#125;&#123;%endraw%&#125;.azure-devices.net/twins/&#123;%raw%&#125;&#123;&#123;deviceId&#125;&#125;&#123;%endraw%&#125;?api-version=2016-11-14</div></pre></td></tr></table></figure>
 <blockquote>
 <p>Notice that Postman uses a double-curly syntax for variables.</p>
 </blockquote>
 <p>With every Azure IoT Hub API call you need to include the api-version and Authorization header.  You can read more about IoT Hub security <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="external">here</a>. The <strong>api-version</strong> is pretty straight forward and you can get the most recent version that you should use from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/#common-parameters-and-headers" target="_blank" rel="external">Common parameters and headers</a> page. The <strong>Authorization</strong> header is a Shared Access Signature that follows very strict, but not very well documented requirements. You can read more about that above.</p>
 <h3 id="add-get-device-twin-call"><a class="header-anchor" href="#add-get-device-twin-call"></a>Add GET Device Twin Call</h3>
-<p>1. Enter the URI, in this case: https://.azure-devices.net/twins/?api-version=2016-11-14<br>
-2. Add ‘Authorization’ header and set the value to {{token}} - that tells Postman to read that value from the global variables you just set in your Pre-request script.<br>
+<p>1. Enter the URI, in this case: <code>https://{{hubName}}.azure-devices.net/twins/{{deviceId}}?api-version=2016-11-14</code><br>
+2. Add ‘Authorization’ header and set the value to <code>{{token}}</code> - that tells Postman to read that value from the global variables you just set in your Pre-request script.<br>
 3. Click on the “Tests” tab and enter the following:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">tests[<span class="string">"Body matches string"</span>] = responseBody.has(postman.getGlobalVariable(<span class="string">"deviceId"</span>));</div></pre></td></tr></table></figure>
 <p><img src="000058.png" alt=""></p>
@@ -449,7 +449,7 @@
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

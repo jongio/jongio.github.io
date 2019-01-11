@@ -27,7 +27,7 @@ When using LoadFrom:
 Assembly a1 = Assembly.LoadFrom(file);
 I got this error. Could not load">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="og:updated_time" content="2019-01-06T07:44:52.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to load a remote assembly using Assembly.Load">
 <meta name="twitter:description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.
@@ -207,13 +207,13 @@ I got this error. Could not load">
         <div class="article-entry" itemprop="articleBody">
             <p>If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.</p>
 <p>When using LoadFrom:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Assembly a1 = Assembly.LoadFrom(file);</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">Assembly a1 = Assembly.LoadFrom(file);</div></pre></td></tr></table></figure>
 <p>I got this error. Could not load file or assembly or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x80131515)</p>
 <p><img src="/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png" alt=""></p>
 <p>I figured I could copy it locally, but knew there must be a better way. So I scoured the interwebs and found this post on StackOverflow:</p>
 <p><a href="http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep" target="_blank" rel="external">http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep</a></p>
 <p>Which basically tells us to use Assembly.Load instead of Assembly.LoadFrom. Here’s the code that works:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Assembly a2 = Assembly.Load(File.ReadAllBytes(file));</div></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">Assembly a2 = Assembly.Load(File.ReadAllBytes(file));</div></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>
@@ -355,7 +355,7 @@ I got this error. Could not load">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

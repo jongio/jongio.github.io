@@ -200,8 +200,8 @@ ERROR: Could not login to Container Regis">
         
         <div class="article-entry" itemprop="articleBody">
             <p>If you try to run the Azure IoT Edge Runtime or the <a href="https://aka.ms/iotedgedev" target="_blank" rel="external">Azure IoT Edge Dev Tool</a> on <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank" rel="external">Windows Subsystem for Linux (WSL)</a>, then you will run into the following errors:</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><div class="line"><span class="keyword">ERROR: </span>Could not login to Container Registry. Please verify your credentials in CONTAINER_REGISTRY_ environment variables. </div><div class="line">If you are using WSL, then please set DOCKER_HOST Environment Variable. See the projects readme for full instructions.</div></pre></td></tr></table></figure>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><div class="line">('Connection aborted.', error(2, 'No such file or directory'))</div><div class="line"><span class="keyword">ERROR: </span>Could not connect to docker daemon.</div><div class="line"><span class="keyword">ERROR: </span>Docker is unavailable</div><div class="line">CRITICAL: IoT Edge dependency not available: docker</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ERROR: Could not login to Container Registry. Please verify your credentials in CONTAINER_REGISTRY_ environment variables. </div><div class="line">If you are using WSL, then please set DOCKER_HOST Environment Variable. See the projects readme for full instructions.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">(&apos;Connection aborted.&apos;, error(2, &apos;No such file or directory&apos;))</div><div class="line">ERROR: Could not connect to docker daemon.</div><div class="line">ERROR: Docker is unavailable</div><div class="line">CRITICAL: IoT Edge dependency not available: docker</div></pre></td></tr></table></figure>
 <p>Here’s how to fix that:</p>
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/k5ZtTmHgs_8?rel=0&amp;ecver=2" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 <ol>
@@ -213,7 +213,7 @@ ERROR: Could not login to Container Regis">
 </li>
 <li>
 <p>Execute the following in a Bash terminal. This will make <code>docker</code> available in your Bash terminal.</p>
- <figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">echo <span class="string">"PATH=\"$PATH:$HOME/bin:$HOME/.local/bin:/mnt/c/Program\ Files/Docker/Docker/resources/bin\""</span> &gt;&gt; ~/<span class="selector-class">.bashrc</span></div><div class="line">echo <span class="string">"alias docker=docker.exe"</span> &gt;&gt; ~/<span class="selector-class">.bashrc</span></div><div class="line">echo <span class="string">"alias docker-machine=docker-machine.exe"</span> &gt;&gt; ~/<span class="selector-class">.bashrc</span></div><div class="line">echo <span class="string">"alias docker-compose=docker-compose.exe"</span> &gt;&gt; ~/<span class="selector-class">.bashrc</span></div><div class="line">echo <span class="string">"export DOCKER_HOST='tcp://localhost:2375'"</span> &gt;&gt; ~/<span class="selector-class">.bashrc</span></div><div class="line">source ~/<span class="selector-class">.bashrc</span></div><div class="line"></div><div class="line">sudo sh -c <span class="string">"echo Defaults  env_keep += \"DOCKER_HOST\" &gt;&gt; /etc/sudoers.d/docker"</span></div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">echo &quot;PATH=\&quot;$PATH:$HOME/bin:$HOME/.local/bin:/mnt/c/Program\ Files/Docker/Docker/resources/bin\&quot;&quot; &gt;&gt; ~/.bashrc</div><div class="line">echo &quot;alias docker=docker.exe&quot; &gt;&gt; ~/.bashrc</div><div class="line">echo &quot;alias docker-machine=docker-machine.exe&quot; &gt;&gt; ~/.bashrc</div><div class="line">echo &quot;alias docker-compose=docker-compose.exe&quot; &gt;&gt; ~/.bashrc</div><div class="line">echo &quot;export DOCKER_HOST=&apos;tcp://localhost:2375&apos;&quot; &gt;&gt; ~/.bashrc</div><div class="line">source ~/.bashrc</div><div class="line"></div><div class="line">sudo sh -c &quot;echo Defaults  env_keep += \&quot;DOCKER_HOST\&quot; &gt;&gt; /etc/sudoers.d/docker&quot;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>This will add Docker to your PATH, create aliases for the docker*.exe files and create a sudoers file so you don’t have to pass -E into the command every time you run it.</p>
@@ -359,7 +359,7 @@ ERROR: Could not login to Container Regis">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

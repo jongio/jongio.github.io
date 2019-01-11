@@ -211,10 +211,10 @@ Here are the original steps: http://arduino.cc/en/Hacking/Wi">
 <p>6. Open command prompt (as admin)</p>
 <p>7. Navigate to Flip/bin here: C:\Program Files (x86)\Atmel\Flip 3.4.7\bin</p>
 <p>8. Execute this command and let it finish</p>
-<figure class="highlight taggerscript"><table><tr><td class="code"><pre><div class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer "C:<span class="symbol">\P</span>rogram Files (x86)<span class="symbol">\A</span>rduino<span class="symbol">\h</span>ardware<span class="symbol">\a</span>rduino<span class="symbol">\f</span>irmwares<span class="symbol">\w</span>ifishield<span class="symbol">\b</span>inary<span class="symbol">\w</span>ifi_dnld.elf" program verify start reset 0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer &quot;C:\Program Files (x86)\Arduino\hardware\arduino\firmwares\wifishield\binary\wifi_dnld.elf&quot; program verify start reset 0</div></pre></td></tr></table></figure>
 <p>If you get this error: “atlibusbdfu.dll not found” then go back up to Step 5 and install the drivers.</p>
 <p>9. Execute this command and let it finish</p>
-<figure class="highlight taggerscript"><table><tr><td class="code"><pre><div class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer "C:<span class="symbol">\P</span>rogram Files (x86)<span class="symbol">\A</span>rduino<span class="symbol">\h</span>ardware<span class="symbol">\a</span>rduino<span class="symbol">\f</span>irmwares<span class="symbol">\w</span>ifishield<span class="symbol">\b</span>inary<span class="symbol">\w</span>ifiHD.elf" program verify start reset 0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">batchisp.exe -device AT32UC3A1256 -hardware usb -operation erase f memory flash blankcheck loadbuffer &quot;C:\Program Files (x86)\Arduino\hardware\arduino\firmwares\wifishield\binary\wifiHD.elf&quot; program verify start reset 0</div></pre></td></tr></table></figure>
 <p>10. Remove the J3 Jumper and unplug the mini-usb cable.</p>
 <p>11. Connect the shield to an Arduino. Connect the Arduino to your computer.</p>
 <p>12. See if you can scan Wifi networks using scripts from here: <a href="http://arduino.cc/en/Guide/ArduinoWiFiShield" title="http://arduino.cc/en/Guide/ArduinoWiFiShield" target="_blank" rel="external">http://arduino.cc/en/Guide/ArduinoWiFiShield</a></p>
@@ -359,7 +359,7 @@ Here are the original steps: http://arduino.cc/en/Hacking/Wi">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

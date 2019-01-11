@@ -198,9 +198,9 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Some HTTP requests are long running and instead of asking users to wait for the long running operation to complete, they will return a “request status URI” that, when requested, will return a running/success/failure message.</p>
 <p>For example, when you create a new Azure IoT Hub via this request:</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line"><span class="symbol">https:</span>/<span class="regexp">/management.azure.com/subscriptions</span><span class="regexp">/:subscriptionId/resource</span>Groups/<span class="symbol">:resourceGroupName/providers/Microsoft</span>.Devices/IotHubs/<span class="symbol">:resourceName?api-version=</span>&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
 <p>It will return an Azure-AsyncOperation header with the following URI:</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><div class="line">https:<span class="regexp">//m</span>anagement.azure.com<span class="regexp">/subscriptions/</span>f9766876-e50b-<span class="number">006</span>f-<span class="number">9</span>ad3-<span class="number">5</span>afb7bb8cf45<span class="regexp">/resourceGroups/</span>jongtrash<span class="regexp">/providers/</span>Microsoft.Devices<span class="regexp">/IotHubs/</span>jongiothubtest2<span class="regexp">/operationResults/</span>NzRkNDQ3NGUtN2NmNS00YWLWIyZGEtNTMxZjEwYzJjNWI4?api-version=<span class="number">2016</span>-<span class="number">02</span>-<span class="number">03</span>&amp;asyncinfo</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/f9766876-e50b-006f-9ad3-5afb7bb8cf45/resourceGroups/jongtrash/providers/Microsoft.Devices/IotHubs/jongiothubtest2/operationResults/NzRkNDQ3NGUtN2NmNS00YWLWIyZGEtNTMxZjEwYzJjNWI4?api-version=2016-02-03&amp;asyncinfo</div></pre></td></tr></table></figure>
 <p>Which will have a payload like this when still running:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"status"</span>: <span class="string">"Running"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Or this when the IoT Hub has been created:</p>
@@ -213,7 +213,7 @@
 <h2 id="create-a-delay-request"><a class="header-anchor" href="#create-a-delay-request"></a>Create a “Delay” Request</h2>
 <p>This will create a Postman timeout that doesn’t chew up your CPU.</p>
 <h3 id="uri"><a class="header-anchor" href="#uri"></a>URI</h3>
-<figure class="highlight vim"><table><tr><td class="code"><pre><div class="line">http<span class="variable">s:</span>//<span class="keyword">echo</span>.getpostman.<span class="keyword">com</span>/delay/&#123;&#123;delay&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://echo.getpostman.com/delay/&#123;&#123;delay&#125;&#125;</div></pre></td></tr></table></figure>
 <p>“delay” is the number of minutes to delay before the next execution.</p>
 <h3 id="tests"><a class="header-anchor" href="#tests"></a>Tests</h3>
 <p>After the request is delayed it will execute this “test” which checks to see if there’s a “nextRequest” environment variable and then calls the “setNextRequest” method to execute it.</p>
@@ -221,7 +221,7 @@
 <h2 id="create-long-running-http-request"><a class="header-anchor" href="#create-long-running-http-request"></a>Create Long Running HTTP request</h2>
 <h3 id="uri-v2"><a class="header-anchor" href="#uri-v2"></a>URI</h3>
 <p><img src="000130.png" alt=""></p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line"><span class="symbol">https:</span>/<span class="regexp">/management.azure.com/subscriptions</span><span class="regexp">/:subscriptionId/resource</span>Groups/<span class="symbol">:resourceGroupName/providers/Microsoft</span>.Devices/IotHubs/<span class="symbol">:resourceName?api-version=</span>&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
 <h3 id="headers"><a class="header-anchor" href="#headers"></a>Headers</h3>
 <p><img src="000131.png" alt=""></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Authorization:Bearer &#123;&#123;bearerToken&#125;&#125;</div><div class="line">Content-Type:application/json</div></pre></td></tr></table></figure>
@@ -393,7 +393,7 @@
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

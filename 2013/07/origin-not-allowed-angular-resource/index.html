@@ -18,7 +18,7 @@
 
 Origin is not allowed by Access-Control-Allow-Origin.
 Here’s the code snippet:
-var resource = $resource(&apos;http://local">
+var resource = $resource(&amp;apos;http://">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to: "Origin is not allowed by Access-Control-Allow-Origin." with AngularJS and ngResource ($resource)">
 <meta property="og:url" content="https://blog.jongallant.com/2013/07/origin-not-allowed-angular-resource/index.html">
@@ -27,7 +27,7 @@ var resource = $resource(&apos;http://local">
 
 Origin is not allowed by Access-Control-Allow-Origin.
 Here’s the code snippet:
-var resource = $resource(&apos;http://local">
+var resource = $resource(&amp;apos;http://">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/Solution-to_14C14/image.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -36,7 +36,7 @@ var resource = $resource(&apos;http://local">
 
 Origin is not allowed by Access-Control-Allow-Origin.
 Here’s the code snippet:
-var resource = $resource(&apos;http://local">
+var resource = $resource(&amp;apos;http://">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/blog/Solution-to_14C14/image.png">
     
 
@@ -212,9 +212,9 @@ var resource = $resource(&apos;http://local">
 <img src="/images/blog/Solution-to_14C14/image.png" alt=""></p>
 <p><em>Origin is not allowed by Access-Control-Allow-Origin.</em></p>
 <p>Here’s the code snippet:</p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var resource = $resource(&apos;http://localhost:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);</div></pre></td></tr></table></figure>
 <p>After a lot of digging I discovered that you need to escape the port when using $resource. <a href="https://github.com/angular/angular.js/issues/1243" target="_blank" rel="external">Here’s the issue thread on github</a></p>
-<figure class="highlight ebnf"><table><tr><td class="code"><pre><div class="line"><span class="attribute">var resource</span> = $resource(<span class="string">'http://localhost\\:17482/api/x/:id'</span>, &#123; id: <span class="string">'@id'</span> &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var resource = $resource(&apos;http://localhost\\:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);</div></pre></td></tr></table></figure>
 <p>Add those two slashes before the port and the error goes away.</p>
 <p>Hope I just saved you hours of pain.</p>
 <p>Jon</p>
@@ -358,7 +358,7 @@ var resource = $resource(&apos;http://local">
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

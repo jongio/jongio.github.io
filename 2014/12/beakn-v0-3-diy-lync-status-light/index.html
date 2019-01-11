@@ -246,16 +246,16 @@
 <h2 id="step-4-modify-the-raspberrypi-beakn-exe-config-file"><a class="header-anchor" href="#step-4-modify-the-raspberrypi-beakn-exe-config-file"></a>Step 4: Modify the RaspberryPi beakn.exe.config file</h2>
 <p>Open the config file and change the MqttPairingCode to the same code you used in Step 2 above. You can do this directly on the Pi with “sudo nano beakn.exe.config” or you can do on desktop and copy over.</p>
 <h2 id="step-5-run-the-raspberrypi-beakn-exe-using-this-command"><a class="header-anchor" href="#step-5-run-the-raspberrypi-beakn-exe-using-this-command"></a>Step 5: Run the RaspberryPi beakn.exe using this command.</h2>
-<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-tag">sudo</span> <span class="selector-tag">mono</span> <span class="selector-tag">beakn</span><span class="selector-class">.exe</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo mono beakn.exe</div></pre></td></tr></table></figure>
 <p>You should see something like this:</p>
 <p><img src="/images/blog/bdbd95e2151d_B728/image.png" alt=""></p>
 <h2 id="step-6-make-raspberrypi-beakn-automatically-start"><a class="header-anchor" href="#step-6-make-raspberrypi-beakn-automatically-start"></a>Step 6: Make RaspberryPi beakn automatically start</h2>
 <p>Linux uses /etc/rc.local to list projects that automatically start when the Pi is started.</p>
 <p>This link was helpful: <a href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs" target="_blank" rel="external">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs</a></p>
 <p>Open rc.local to edit.</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/rc.<span class="keyword">local</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/rc.local</div></pre></td></tr></table></figure>
 <p>Add this line, your path to beakn.exe is where you copied it to – likely different than below.</p>
-<figure class="highlight dts"><table><tr><td class="code"><pre><div class="line">sudo mono <span class="meta-keyword">/home/</span>pi<span class="meta-keyword">/beakn/</span>beakn.exe <span class="variable">&amp;amp</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo mono /home/pi/beakn/beakn.exe &amp;amp;</div></pre></td></tr></table></figure>
 <p>That’s it! You should now see your beakn change color when your Lync status changes.</p>
 <p>Jon</p>
 
@@ -398,7 +398,7 @@
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

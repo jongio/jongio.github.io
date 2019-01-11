@@ -204,7 +204,7 @@ C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be 
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">System.ArgumentNullException: Value cannot be null.</div><div class="line">Parameter name: path1</div><div class="line">   at System.IO.Path.Combine(String path1, String path2)</div><div class="line">   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()</div><div class="line">   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)</div><div class="line">   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)</div><div class="line">   at Microsoft.DotNet.Cli.Program.Main(String[] args)</div></pre></td></tr></table></figure>
 <p>That is happening because all environment variables are not passed to tox by default.</p>
 <p>Open <code>tox.ini</code> and add the <code>passenv = APPDATA ProgramFiles USERPROFILE</code> line:</p>
-<figure class="highlight nix"><table><tr><td class="code"><pre><div class="line">[testenv]</div><div class="line"><span class="attr">setenv</span> =</div><div class="line">    <span class="attr">PYTHONPATH</span> = &#123;toxinidir&#125;</div><div class="line"></div><div class="line"><span class="attr">commands</span> = </div><div class="line">    python setup.py test</div><div class="line"></div><div class="line"><span class="attr">passenv</span> = APPDATA ProgramFiles USERPROFILE</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[testenv]</div><div class="line">setenv =</div><div class="line">    PYTHONPATH = &#123;toxinidir&#125;</div><div class="line"></div><div class="line">commands = </div><div class="line">    python setup.py test</div><div class="line"></div><div class="line">passenv = APPDATA ProgramFiles USERPROFILE</div></pre></td></tr></table></figure>
 <p>Rerun <code>tox</code> and you should be good.</p>
 
         </div>
@@ -346,7 +346,7 @@ C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be 
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

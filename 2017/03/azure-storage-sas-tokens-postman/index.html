@@ -207,7 +207,7 @@
 1. HTTP POST JSON payload to /exportDevices<br>
 2. API creates a job that exports Azure IoT Device Metadata to an Azure Storage blob.</p>
 <p>The format of the REST API is as follows:</p>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line"><span class="symbol">https:</span>/<span class="regexp">/management.azure.com/subscriptions</span><span class="regexp">/:subscriptionId/resource</span>Groups/<span class="symbol">:resourceGroupName/providers/Microsoft</span>.Devices/IotHubs/<span class="symbol">:resourceName/exportDevices?api-version=</span>&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
 <p>The format of the JSON payload is as follows:</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line"> <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://azurestorageaccount.blob.core.windows.net/container?azureStorageSasTokenQueryString"</span>,</div><div class="line"> <span class="string">"excludeKeys"</span>: <span class="string">"false"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>As you can see from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource#IotHubResource_ExportDevices" target="_blank" rel="external">Export Devices API docs</a> that JSON format is not actually documented and it doesn’t tell you that you need to provide a container and a SAS Token QueryString. Through some interweb sleuthing, I was able to find this page: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices" target="_blank" rel="external">Azure IoT Device Management in Bulk</a> - where I discovered that the exportBlobContainerUri had to have a SAS Token QueryString.</p>
@@ -228,7 +228,7 @@
 <h3 id="1-open-postman-and-setup-the-aad-token"><a class="header-anchor" href="#1-open-postman-and-setup-the-aad-token"></a>1. Open Postman and setup the AAD Token</h3>
 <p>As described in this blog post: <a href="/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a></p>
 <h3 id="2-create-a-new-postman-request-and-copy-the-following-url-into-the-url-textbox"><a class="header-anchor" href="#2-create-a-new-postman-request-and-copy-the-following-url-into-the-url-textbox"></a>2. Create a new Postman request and copy the following URL into the URL textbox</h3>
-<figure class="highlight elixir"><table><tr><td class="code"><pre><div class="line"><span class="symbol">https:</span>/<span class="regexp">/management.azure.com/subscriptions</span><span class="regexp">/:subscriptionId/resource</span>Groups/<span class="symbol">:resourceGroupName/providers/Microsoft</span>.Devices/IotHubs/<span class="symbol">:resourceName/exportDevices?api-version=</span>&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
 <p><img src="000094.png" alt=""></p>
 <h3 id="3-copy-the-azure-storage-sas-postman-js-file-to-the-pre-request-script-sandbox"><a class="header-anchor" href="#3-copy-the-azure-storage-sas-postman-js-file-to-the-pre-request-script-sandbox"></a>3. Copy the <a href="https://github.com/jongio/azure-sas-tokens-postman/blob/master/azure-storage/azure-storage-sas-postman.js" target="_blank" rel="external">azure-storage-sas-postman.js</a> file to the Pre-request Script sandbox.</h3>
 <p><img src="000102.png" alt=""></p>
@@ -272,7 +272,7 @@ tenantId:72f988bf-86f1-41af-91ab-2d7cd011db47</p>
 <h2 id="newman-postman-collection-runner-on-server"><a class="header-anchor" href="#newman-postman-collection-runner-on-server"></a>Newman Postman Collection Runner (on Server)</h2>
 <p>You can then fully automate your REST API tests with <a href="https://www.npmjs.com/package/newman" target="_blank" rel="external">newman</a> on the server.</p>
 <p>This command:</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><div class="line">newman <span class="keyword">run</span><span class="bash"> <span class="string">"Blog Samples.postman_collection.json"</span> <span class="_">-e</span> <span class="string">"Blog Samples.postman_environment.json"</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">newman run &quot;Blog Samples.postman_collection.json&quot; -e &quot;Blog Samples.postman_environment.json&quot;</div></pre></td></tr></table></figure>
 <p>Will execute all your requests in the collection and give you a pass/fail output like this:</p>
 <p><img src="000105.png" alt=""></p>
 <p>Like I mentioned before, I’m not quite done with the Azure IoT REST in Postman project, but I will continue to blog after I reach each milestone.</p>
@@ -417,7 +417,7 @@ tenantId:72f988bf-86f1-41af-91ab-2d7cd011db47</p>
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

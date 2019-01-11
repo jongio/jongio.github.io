@@ -242,7 +242,7 @@ If you see “Unable to find dataset the-psf:pypi”, then that means you probab
 <img src="000004.png" alt=""></li>
 <li>Copy and Paste this query into New Query</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">  REGEXP_EXTRACT(details.python, r<span class="string">"[0-9]+\.[0-9]+"</span>) <span class="keyword">AS</span> python_version,</div><div class="line">  <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> downloads</div><div class="line"><span class="keyword">FROM</span> <span class="string">`the-psf.pypi.downloads*`</span></div><div class="line"><span class="keyword">WHERE</span> file.project=<span class="string">"iotedgedev"</span></div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> python_version</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> downloads <span class="keyword">DESC</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">SELECT</div><div class="line">  REGEXP_EXTRACT(details.python, r&quot;[0-9]+\.[0-9]+&quot;) AS python_version,</div><div class="line">  COUNT(*) AS downloads</div><div class="line">FROM `the-psf.pypi.downloads*`</div><div class="line">WHERE file.project=&quot;iotedgedev&quot;</div><div class="line">GROUP BY python_version</div><div class="line">ORDER BY downloads DESC</div></pre></td></tr></table></figure>
 <p><img src="000005.png" alt=""></p>
 <ol>
 <li>Change ‘iotedgedev’ to the name of your PyPI Package</li>
@@ -411,7 +411,7 @@ null = downloads from PyPI using clients that do not support sending the statist
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

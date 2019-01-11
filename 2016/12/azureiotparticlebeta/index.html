@@ -215,7 +215,7 @@
 <p><img src="azureiotparticlebeta_05.png" alt=""></p>
 <p>6. Then implement code for your Particle device to <a href="https://docs.particle.io/reference/firmware/photon/#particle-publish-" target="_blank" rel="external">publish</a> and <a href="https://docs.particle.io/reference/firmware/photon/#particle-subscribe-" target="_blank" rel="external">subscribe</a> to events.</p>
 <p>It can be as simple as the following to publish an event named “temp”</p>
-<figure class="highlight lasso"><table><tr><td class="code"><pre><div class="line"><span class="literal">void</span> <span class="keyword">loop</span>() &#123;</div><div class="line">  <span class="comment">// Get some data</span></div><div class="line">  <span class="built_in">String</span> <span class="built_in">data</span> = <span class="built_in">String</span>(<span class="number">10</span>);</div><div class="line">  <span class="comment">// Trigger the integration</span></div><div class="line">  Particle.publish(<span class="string">"temp"</span>, <span class="built_in">data</span>, <span class="keyword">PRIVATE</span>);</div><div class="line">  <span class="comment">// Wait 60 seconds</span></div><div class="line">  delay(<span class="number">60000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">void loop() &#123;</div><div class="line">  // Get some data</div><div class="line">  String data = String(10);</div><div class="line">  // Trigger the integration</div><div class="line">  Particle.publish(&quot;temp&quot;, data, PRIVATE);</div><div class="line">  // Wait 60 seconds</div><div class="line">  delay(60000);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>7. You will start to see messages flowing into Particle via the Particle Console log and <a href="https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer" target="_blank" rel="external">Azure IoT Device Explorer</a></p>
 <p><img src="azureiotparticlebeta_06.png" alt=""></p>
 <h2 id="provide-feedback"><a class="header-anchor" href="#provide-feedback"></a>Provide Feedback</h2>
@@ -363,7 +363,7 @@
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             

@@ -226,51 +226,51 @@
 <p><a href="/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-2-0">How to Create a Power BI Embedded Workspace Collection with the new Azure Command Line Interface (CLI) 2.0</a></p>
 <h3 id="install-the-power-bi-cli"><a class="header-anchor" href="#install-the-power-bi-cli"></a>Install the Power BI CLI</h3>
 <p>You just created the Workspace Collection, now we’ll create the Workspaces in that collection.</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> -g powerbi-cli</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g powerbi-cli</div></pre></td></tr></table></figure>
 <h3 id="create-power-bi-workspace"><a class="header-anchor" href="#create-power-bi-workspace"></a>Create Power BI Workspace</h3>
-<figure class="highlight dsconfig"><table><tr><td class="code"><pre><div class="line"><span class="string">powerbi </span><span class="built_in">create-workspace</span> -c <span class="string">pbiejssample </span>-k <span class="string">vq+</span><span class="string">0LR5JIod/</span><span class="string">7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/</span><span class="string">sHmxz7nJC+</span><span class="string">w2YOSixDA=</span>=</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">powerbi create-workspace -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==</div></pre></td></tr></table></figure>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll then see the workspace Id:</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><div class="line">[ powerbi ] Workspace created: d66d8e42-b92a<span class="string">-4576</span><span class="string">-9072</span>-fbaafb872ae7</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ powerbi ] Workspace created: d66d8e42-b92a-4576-9072-fbaafb872ae7</div></pre></td></tr></table></figure>
 <h3 id="get-workspaces"><a class="header-anchor" href="#get-workspaces"></a>Get Workspaces</h3>
 <p>You could also use the get-workspaces command to get the workspace Id.</p>
-<figure class="highlight dsconfig"><table><tr><td class="code"><pre><div class="line"><span class="string">powerbi </span><span class="built_in">get-workspaces</span> -c <span class="string">pbiejssample </span>-k <span class="string">vq+</span><span class="string">0LR5JIod/</span><span class="string">7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/</span><span class="string">sHmxz7nJC+</span><span class="string">w2YOSixDA=</span>=</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">powerbi get-workspaces -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==</div></pre></td></tr></table></figure>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll then see the workspaces in the provided collection</p>
-<figure class="highlight accesslog"><table><tr><td class="code"><pre><div class="line"><span class="string">[ powerbi ]</span> ================================================</div><div class="line"><span class="string">[ powerbi ]</span> Gettings workspaces for Collection: pbiejssample</div><div class="line"><span class="string">[ powerbi ]</span> ================================================</div><div class="line"><span class="string">[ powerbi ]</span> d66d8e42-b92a-<span class="number">4576</span>-<span class="number">9072</span>-fbaafb872ae7</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ powerbi ] ================================================</div><div class="line">[ powerbi ] Gettings workspaces for Collection: pbiejssample</div><div class="line">[ powerbi ] ================================================</div><div class="line">[ powerbi ] d66d8e42-b92a-4576-9072-fbaafb872ae7</div></pre></td></tr></table></figure>
 <p>Copy that workspace Id to Notepad.</p>
 <h3 id="import-report-into-workspace"><a class="header-anchor" href="#import-report-into-workspace"></a>Import Report Into Workspace</h3>
 <p>Use the import command to add the report you created earlier to the workspace you just created. You’ll need to pass in collection, accesskey, workspace id, name and the path to the pbix file.</p>
-<figure class="highlight lsl"><table><tr><td class="code"><pre><div class="line">powerbi import -c pbiejssample -k vq+<span class="number">0</span>LR5JIod/<span class="number">7</span>ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a<span class="number">-4576</span><span class="number">-9072</span>-fbaafb872ae7 -n <span class="string">"Sample Data"</span> -f powerbi-embedded-sample.pbix</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">powerbi import -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -n &quot;Sample Data&quot; -f powerbi-embedded-sample.pbix</div></pre></td></tr></table></figure>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 <li>Replace -w with the workspace Id</li>
 </ul>
 <p>You’ll then see the success message</p>
-<figure class="highlight pf"><table><tr><td class="code"><pre><div class="line">[ powerbi ] Importing powerbi-embedded-sample.pbix <span class="keyword">to</span> workspace: d66d8e42-b92a-<span class="number">4576</span>-<span class="number">9072</span>-fbaafb872ae7</div><div class="line">[ powerbi ] File uploaded successfully</div><div class="line">[ powerbi ] Import ID: c0dfa1c9-cc24-<span class="number">4330</span>-b215-<span class="number">5</span>d5e57cb39c7</div><div class="line">[ powerbi ] Checking import <span class="keyword">state</span>: Publishing</div><div class="line">[ powerbi ] Checking import <span class="keyword">state</span>: Succeeded</div><div class="line">[ powerbi ] Import succeeded</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ powerbi ] Importing powerbi-embedded-sample.pbix to workspace: d66d8e42-b92a-4576-9072-fbaafb872ae7</div><div class="line">[ powerbi ] File uploaded successfully</div><div class="line">[ powerbi ] Import ID: c0dfa1c9-cc24-4330-b215-5d5e57cb39c7</div><div class="line">[ powerbi ] Checking import state: Publishing</div><div class="line">[ powerbi ] Checking import state: Succeeded</div><div class="line">[ powerbi ] Import succeeded</div></pre></td></tr></table></figure>
 <blockquote>
 <p>Do not confuse Import ID above with the Report ID. They aren’t the same thing.</p>
 </blockquote>
 <h3 id="get-report-id"><a class="header-anchor" href="#get-report-id"></a>Get Report ID</h3>
 <p>Now that you have the report added to the Workspace, you need to get the report Id.</p>
-<figure class="highlight dsconfig"><table><tr><td class="code"><pre><div class="line"><span class="string">powerbi </span><span class="built_in">get-reports</span> -c <span class="string">pbiejssample </span>-k <span class="string">vq+</span><span class="string">0LR5JIod/</span><span class="string">7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/</span><span class="string">sHmxz7nJC+</span><span class="string">w2YOSixDA=</span>= -w <span class="string">d66d8e42-b92a-</span><span class="string">4576-9072-</span><span class="string">fbaafb872ae7</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">powerbi get-reports -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7</div></pre></td></tr></table></figure>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll see the reports with Ids outputted</p>
-<figure class="highlight subunit"><table><tr><td class="code"><pre><div class="line">[ powerbi ] =========================================</div><div class="line">[ powerbi ] Gettings reports for Collection: d66d8e42-b92a<span class="string">-4576</span><span class="string">-9072</span>-fbaafb872ae7</div><div class="line">[ powerbi ] =========================================</div><div class="line">[ powerbi ] ID: 4964a947<span class="string">-857</span>f<span class="string">-4</span>c14<span class="string">-914</span>d-c66e1c5713cd | Name: Sample Data</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ powerbi ] =========================================</div><div class="line">[ powerbi ] Gettings reports for Collection: d66d8e42-b92a-4576-9072-fbaafb872ae7</div><div class="line">[ powerbi ] =========================================</div><div class="line">[ powerbi ] ID: 4964a947-857f-4c14-914d-c66e1c5713cd | Name: Sample Data</div></pre></td></tr></table></figure>
 <p>Save that report Id to Notepad.</p>
 <h3 id="get-embed-token"><a class="header-anchor" href="#get-embed-token"></a>Get Embed Token</h3>
 <p>You will need this token to embed a report into an HTML page.  In production scenarios you will generate this in real-time after you have authenticated your user.</p>
-<figure class="highlight dsconfig"><table><tr><td class="code"><pre><div class="line"><span class="string">powerbi </span><span class="built_in">create-embed-token</span> -c <span class="string">pbiejssample </span>-k <span class="string">vq+</span><span class="string">0LR5JIod/</span><span class="string">7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/</span><span class="string">sHmxz7nJC+</span><span class="string">w2YOSixDA=</span>= -w <span class="string">d66d8e42-b92a-</span><span class="string">4576-9072-</span><span class="string">fbaafb872ae7 </span>-r <span class="string">4964a947-857f-</span><span class="string">4c14-914d-</span><span class="string">c66e1c5713cd</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">powerbi create-embed-token -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -r 4964a947-857f-4c14-914d-c66e1c5713cd</div></pre></td></tr></table></figure>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
@@ -278,7 +278,7 @@
 <li>Replace -r with the report Id</li>
 </ul>
 <p>That will output the embed token. Copy it to Notepad.</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-attr">[ powerbi ]</span> <span class="selector-tag">Embed</span> <span class="selector-tag">Token</span>:  <span class="selector-tag">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><span class="selector-class">.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ</span><span class="selector-class">._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[ powerbi ] Embed Token:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY</div></pre></td></tr></table></figure>
 <blockquote>
 <p>If at any point you get a permission denied or content doesn’t exist error, just rerun the create-embed-token command and use the new one that is created.  I think it expires in 20 minutes by default.</p>
 </blockquote>
@@ -286,7 +286,7 @@
 <h2 id="create-webpage-to-host-power-bi-report"><a class="header-anchor" href="#create-webpage-to-host-power-bi-report"></a>Create Webpage to Host Power BI Report</h2>
 <h3 id="install-the-power-bi-client-side-javascript-api"><a class="header-anchor" href="#install-the-power-bi-client-side-javascript-api"></a>Install the Power BI Client Side JavaScript API</h3>
 <p>Find a good directory on your computer to create the website and install the powerbi-client npm package.</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> powerbi-client --save</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i powerbi-client --save</div></pre></td></tr></table></figure>
 <h3 id="create-a-webpage-that-contains-the-following-code"><a class="header-anchor" href="#create-a-webpage-that-contains-the-following-code"></a>Create a Webpage that contains the following code.</h3>
 <ul>
 <li>Replace embedToken value with the embed token you created earlier.</li>
@@ -303,7 +303,7 @@
 <li>You called powerbi.embed to bind the report to the div.</li>
 </ul>
 <p>You should now see your report embedded into the webpage.  You can use http-server to serve the current folder from localhost.</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><div class="line">npm <span class="selector-tag">i</span> -g http-server</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g http-server</div></pre></td></tr></table></figure>
 <p><img src="000008.png" alt=""></p>
 <h2 id="filter-report-with-range-slider"><a class="header-anchor" href="#filter-report-with-range-slider"></a>Filter Report with Range Slider</h2>
 <p>We are now going to filter the report with a <a href="https://jqueryui.com/slider/" target="_blank" rel="external">jQuery UI Slider control</a>.</p>
@@ -466,7 +466,7 @@
                 <h1 class="logo-wrap">
                     <a href="/" class="logo-n"></a>
                 </h1>
-                <p>&copy; 2018 Jon Gallant</p>
+                <p>&copy; 2019 Jon Gallant</p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
             </div>
             
