@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2019-01-12T02:37:22.098Z</updated>
+  <updated>2019-01-14T01:53:28.278Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My New Snowboard Gear for 2019: Everything I Learned While Searching for a New Snowboard and Bindings</title>
+    <link href="https://blog.jongallant.com/2019/01/snowboard-gear/"/>
+    <id>https://blog.jongallant.com/2019/01/snowboard-gear/</id>
+    <published>2019-01-13T17:45:00.000Z</published>
+    <updated>2019-01-14T01:53:28.278Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;banner.png&quot; alt=&quot;All of My Snowboarding Gear&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been snowboarding off-and-on for over 25 years but have never owned 
+    
+    </summary>
+    
+      <category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/"/>
+    
+    
+      <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
+    
+      <category term="snowboarding" scheme="https://blog.jongallant.com/tags/snowboarding/"/>
+    
+  </entry>
   
   <entry>
     <title>Helping Colorblind Folks Distinguish Between Text and Hyperlinks in Chrome</title>
@@ -446,9 +469,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
     
   </entry>
   
@@ -474,9 +497,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -586,28 +609,6 @@
     <summary type="html">
     
       &lt;p&gt;By default Raspberry Pi does not allocate enough of your SD card for it to be usable.  Out of the box, if you run &lt;code&gt;sudo apt upgrade&lt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Install Raspbian on Raspberry Pi</title>
-    <link href="https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/"/>
-    <id>https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/</id>
-    <published>2017-11-16T06:55:56.000Z</published>
-    <updated>2017-12-05T06:46:04.566Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Rasp
     
     </summary>
     
