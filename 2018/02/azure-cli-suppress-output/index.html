@@ -14,22 +14,22 @@
     
     <meta name="keywords" content="azure,cli" />
     
-    <meta name="description" content="By default, when you run az login, it will output the subscriptions associated with your account.
-There’s no way to tell the Azure CLI to suppress output.
-If you don’t want it to print subscriptions,">
+    <meta name="description" content="Update
+As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output.
+You can review the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure CLI: How to Supress Command Output">
 <meta property="og:url" content="https://blog.jongallant.com/2018/02/azure-cli-suppress-output/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="By default, when you run az login, it will output the subscriptions associated with your account.
-There’s no way to tell the Azure CLI to suppress output.
-If you don’t want it to print subscriptions,">
-<meta property="og:updated_time" content="2018-05-02T20:29:07.608Z">
+<meta property="og:description" content="Update
+As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output.
+You can review the">
+<meta property="og:updated_time" content="2019-01-17T00:02:50.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure CLI: How to Supress Command Output">
-<meta name="twitter:description" content="By default, when you run az login, it will output the subscriptions associated with your account.
-There’s no way to tell the Azure CLI to suppress output.
-If you don’t want it to print subscriptions,">
+<meta name="twitter:description" content="Update
+As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output.
+You can review the">
     
 
     
@@ -200,11 +200,19 @@ If you don’t want it to print subscriptions,">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>By default, when you run <code>az login</code>, it will output the subscriptions associated with your account.</p>
-<p>There’s no way to tell the Azure CLI to suppress output.</p>
-<p>If you don’t want it to print subscriptions, then use this hack:</p>
-<p><code>az login --query &quot;[?n]|[0]&quot;</code></p>
-<p>I’ve asked the CLI team to provide a “-o none” option and that request is being tracked here: <a href="https://github.com/Azure/azure-cli/issues/5667" target="_blank" rel="external">https://github.com/Azure/azure-cli/issues/5667</a></p>
+            <h2 id="update"><a class="header-anchor" href="#update"></a>Update</h2>
+<p>As of Azure CLI version 2.0.55 that was <a href="https://docs.microsoft.com/en-us/cli/azure/release-notes-azure-cli?view=azure-cli-latest#january-15-2018" target="_blank" rel="external">released on 01/15/2019</a>, the <code>--output</code> param now supports <code>none</code>.  So you can just use: <code>az [command] --output none</code> to suppress CLI output.</p>
+<p>You can review the PR that implemented the <code>none</code> option here: <a href="https://github.com/Azure/azure-cli/pull/8198/files" target="_blank" rel="external">https://github.com/Azure/azure-cli/pull/8198/files</a></p>
+<h2 id="original-post"><a class="header-anchor" href="#original-post"></a>Original Post</h2>
+<p>By default, when you run an Azure CLI command, <code>az [command]</code>, it will usually have an output…but sometimes you want to suppress the output.</p>
+<p>There’s no way to tell the Azure CLI to suppress output - the <code>--output</code> param supports json,jsonc,table,tsv,yaml.</p>
+<p>If you don’t want it to print any output, then you can use the following command…</p>
+<p>** NEW **<br>
+<code>az [command] --output none</code></p>
+<p>** OLD **<br>
+<code>az [command] --query &quot;[?n]|[0]&quot;</code></p>
+<p>I’ve asked the CLI team to provide a <code>-o none</code> option and that request is being tracked here: <a href="https://github.com/Azure/azure-cli/issues/5667" target="_blank" rel="external">https://github.com/Azure/azure-cli/issues/5667</a></p>
+<p>Jon</p>
 
         </div>
         <footer>
