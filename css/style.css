@@ -847,6 +847,7 @@ code {
   height: 27px;
   line-height: 27px;
   overflow: hidden;
+  font-size: 16px;
 }
 .article-meta:before,
 .article-meta:after {
@@ -858,14 +859,14 @@ code {
 }
 .article-meta p {
   float: left;
-  color: #bbb;
 }
 .article-meta .category {
   text-transform: uppercase;
+  float: right;
 }
 .article-meta .category a,
 .article-meta .category i {
-  margin-right: 6px;
+  margin-left: 6px;
 }
 .article-row {
   width: 100%;
@@ -958,6 +959,20 @@ code {
   word-wrap: break-word;
 }
 .article-summary .article-summary-inner .article-title a {
+  -webkit-transition: color 0.3s ease-in;
+  -moz-transition: color 0.3s ease-in;
+  -ms-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+  color: #444;
+}
+.article-summary .article-summary-inner .article-title-slim {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5em;
+  word-wrap: break-word;
+}
+.article-summary .article-summary-inner .article-title-slim a {
   -webkit-transition: color 0.3s ease-in;
   -moz-transition: color 0.3s ease-in;
   -ms-transition: color 0.3s ease-in;
@@ -1381,7 +1396,7 @@ a.article-title:hover {
 }
 .archive-year-wrap {
   padding: 18px 30px 17px;
-  font-size: 13px;
+  font-size: 31px;
   color: #353a3f;
   border-bottom: 1px solid #eee;
 }
