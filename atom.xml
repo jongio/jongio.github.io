@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2019-01-14T01:53:28.278Z</updated>
+  <updated>2019-01-21T08:02:40.038Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to &#39;The level of the video being input to the display is not correct and the calibration is unable to continue. The video signal appears to be configured for an HDTV and not for a display monitor. Please check the video adapter settings and make sure that they are not configured for an HDTV.&#39;</title>
+    <link href="https://blog.jongallant.com/2019/01/nec-monitors-spectraview-nvidia-hdtv-error/"/>
+    <id>https://blog.jongallant.com/2019/01/nec-monitors-spectraview-nvidia-hdtv-error/</id>
+    <published>2019-01-20T22:58:00.000Z</published>
+    <updated>2019-01-21T08:02:40.038Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I have a NVIDIA GeForce GTX 745 graphics card, which has one DisplayPort and one HDMI port.  My NEC PA322UHD is connected via DisplayPort
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="nvidia" scheme="https://blog.jongallant.com/tags/nvidia/"/>
+    
+      <category term="nec" scheme="https://blog.jongallant.com/tags/nec/"/>
+    
+  </entry>
   
   <entry>
     <title>My New Snowboard Gear for 2019: Everything I Learned While Searching for a New Snowboard and Bindings</title>
@@ -594,28 +618,6 @@
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Increase Disk Space Allocation on Raspberry Pi</title>
-    <link href="https://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/"/>
-    <id>https://blog.jongallant.com/2017/11/raspberrypi-expand-file-system/</id>
-    <published>2017-11-16T09:24:25.000Z</published>
-    <updated>2017-11-29T15:28:23.252Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;By default Raspberry Pi does not allocate enough of your SD card for it to be usable.  Out of the box, if you run &lt;code&gt;sudo apt upgrade&lt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
     
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     

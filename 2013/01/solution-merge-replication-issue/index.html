@@ -6,7 +6,7 @@
     
     <title>
         
-        Solution: A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table … when IDENTITY_INSERT is set to OFF. |
+        Solution: A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table ... when IDENTITY_INSERT is set to OFF. |
         
         Jon Gallant
     </title>
@@ -15,18 +15,18 @@
     <meta name="keywords" content="dev,sql" />
     
     <meta name="description" content="I just got this error when doing Merge Replication on a SQL Server 2005 environment:
-A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert">
+A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot ins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution: A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table … when IDENTITY_INSERT is set to OFF.">
+<meta property="og:title" content="Solution: A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table ... when IDENTITY_INSERT is set to OFF.">
 <meta property="og:url" content="https://blog.jongallant.com/2013/01/solution-merge-replication-issue/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I just got this error when doing Merge Replication on a SQL Server 2005 environment:
-A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert">
-<meta property="og:updated_time" content="2016-12-28T07:24:32.000Z">
+A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot ins">
+<meta property="og:updated_time" content="2019-01-21T07:58:46.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution: A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table … when IDENTITY_INSERT is set to OFF.">
+<meta name="twitter:title" content="Solution: A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table ... when IDENTITY_INSERT is set to OFF.">
 <meta name="twitter:description" content="I just got this error when doing Merge Replication on a SQL Server 2005 environment:
-A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert">
+A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot ins">
     
 
     
@@ -177,7 +177,7 @@ A row insert at … could not be propagated to …. This failure can be caused b
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution: A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table … when IDENTITY_INSERT is set to OFF.
+        Solution: A row insert at ... could not be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table ... when IDENTITY_INSERT is set to OFF.
         </h1>
     
 
@@ -198,10 +198,10 @@ A row insert at … could not be propagated to …. This failure can be caused b
         
         <div class="article-entry" itemprop="articleBody">
             <p>I just got this error when doing Merge Replication on a SQL Server 2005 environment:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">A row insert at … could not be propagated to …. This failure can be caused by a constraint violation. Cannot insert explicit value for identity column in table … when IDENTITY_INSERT is set to OFF.</div></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><div class="line">A row insert <span class="built_in">at</span> ... could <span class="keyword">not</span> be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value <span class="keyword">for</span> identity column <span class="keyword">in</span> table ... when IDENTITY_INSERT is <span class="built_in">set</span> to OFF.</div></pre></td></tr></table></figure>
 <p>The error appeared when I tried to replicate a record inserted at the Publisher to the Subscriber. The Subscribers were built from backups, not snapshots. Apparently when you do that the NOT FOR REPLICATION flag is automatically set to No. In order for the Publisher-&gt;Subscriber scenario to work, that flag needs to be set to Yes.</p>
 <p>You could manually do that for all tables with IDENTITY columns, or you could run this script.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">EXEC sp_msforeachtable @command1 = &apos;</div><div class="line">declare @int int</div><div class="line"></div><div class="line">set @int = object_id(&quot;?&quot;)</div><div class="line"></div><div class="line">EXEC sys.sp_identitycolumnforreplication @int, 1</div><div class="line"></div><div class="line">PRINT &quot;?&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">EXEC sp_msforeachtable @command1 = '</div><div class="line"><span class="keyword">declare</span> @<span class="built_in">int</span> <span class="built_in">int</span></div><div class="line"></div><div class="line"><span class="keyword">set</span> @<span class="built_in">int</span> = object_id(<span class="string">"?"</span>)</div><div class="line"></div><div class="line">EXEC sys.sp_identitycolumnforreplication @<span class="built_in">int</span>, <span class="number">1</span></div><div class="line"></div><div class="line">PRINT <span class="string">"?"</span></div></pre></td></tr></table></figure>
 <p>That will set all NOT FOR REPLICATION flags to Yes and will print out the list of tables it looped through.</p>
 <p>You may also get this error if the same flag is set to No for Triggers or other objects.</p>
 <p>Hope this saves you some time</p>
