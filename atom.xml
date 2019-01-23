@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2019-01-21T08:02:40.038Z</updated>
+  <updated>2019-01-23T20:01:55.370Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Create a Microsoft ToDo Task from a Liked Tweet using IFTTT</title>
+    <link href="https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/"/>
+    <id>https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/</id>
+    <published>2019-01-23T06:28:07.000Z</published>
+    <updated>2019-01-23T20:01:55.370Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I only “like” tweets that I want to follow up on. For example, when someone tweets a new podcast I’ll “like” it as a reminder to listen t
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="productivity" scheme="https://blog.jongallant.com/tags/productivity/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to &#39;The level of the video being input to the display is not correct and the calibration is unable to continue. The video signal appears to be configured for an HDTV and not for a display monitor. Please check the video adapter settings and make sure that they are not configured for an HDTV.&#39;</title>
@@ -589,35 +611,6 @@
     
       <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Azure IoT Edge on Raspberry Pi</title>
-    <link href="https://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/"/>
-    <id>https://blog.jongallant.com/2017/11/azure-iot-edge-raspberrypi/</id>
-    <published>2017-11-16T12:00:00.000Z</published>
-    <updated>2018-09-20T19:34:39.619Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;000338.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://azure.microsoft.com/en-us/services/iot-edge/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Azure 
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
       <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
