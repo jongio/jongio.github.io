@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2019-01-23T20:29:49.027Z</updated>
+  <updated>2019-01-25T07:16:01.847Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -16,11 +16,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>How to Create a Microsoft ToDo Task from a Liked Tweet using IFTTT</title>
+    <title>How to Create a Microsoft To-Do Task from a Tweet using the iOS Share Menu and IFTTT</title>
+    <link href="https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/"/>
+    <id>https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/</id>
+    <published>2019-01-24T21:32:14.000Z</published>
+    <updated>2019-01-25T07:16:01.847Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;One way to keep track of tweets that you want to follow up on is to “like” them to review at a later time.  I posted my method for that h
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="productivity" scheme="https://blog.jongallant.com/tags/productivity/"/>
+    
+      <category term="todo" scheme="https://blog.jongallant.com/tags/todo/"/>
+    
+      <category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/"/>
+    
+      <category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to Create a Microsoft To-Do Task from a Liked Tweet using IFTTT</title>
     <link href="https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/"/>
     <id>https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/</id>
     <published>2019-01-23T06:28:07.000Z</published>
-    <updated>2019-01-23T20:29:49.027Z</updated>
+    <updated>2019-01-25T07:08:02.394Z</updated>
     
     <summary type="html">
     
@@ -34,6 +62,12 @@
     
     
       <category term="productivity" scheme="https://blog.jongallant.com/tags/productivity/"/>
+    
+      <category term="todo" scheme="https://blog.jongallant.com/tags/todo/"/>
+    
+      <category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/"/>
+    
+      <category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/"/>
     
   </entry>
   
@@ -515,9 +549,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
     
   </entry>
   
@@ -543,9 +577,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -590,29 +624,6 @@
     
     
       <category term="outlook" scheme="https://blog.jongallant.com/tags/outlook/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Change Raspberry Pi Keyboard Layout</title>
-    <link href="https://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/"/>
-    <id>https://blog.jongallant.com/2017/11/raspberrypi-change-keyboard-layout/</id>
-    <published>2017-11-16T14:03:37.000Z</published>
-    <updated>2017-12-04T22:21:46.527Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The default Raspberry Pi keyboard layout is “gb”. You can change to US by doing the following:&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="raspberrypi" scheme="https://blog.jongallant.com/tags/raspberrypi/"/>
     
   </entry>
   
