@@ -381,10 +381,7 @@ code {
 }
 #header-title .subtitle {
   font-size: 16px;
-  font-style: italic;
-  line-height: 108px;
   color: #17191d;
-  text-shadow: 0 1px rgba(0,0,0,0.2);
 }
 .nav-container .nav-icon,
 .nav-container .nav-container-inner #main-nav .main-nav-list-item .main-nav-list-link {
@@ -772,7 +769,7 @@ code {
   background-position: center;
 }
 #recent-post li .item-thumbnail .thumbnail .thumbnail-none {
-  background-image: url("images/thumb-default-small.png");
+  background-image: url("images/logo_thumb_512.png");
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   background-size: 100% 100%;
@@ -949,7 +946,7 @@ code {
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   background-size: 100% 100%;
-  background-image: url("/images/logo.png");
+  background-image: url("/images/logo_thumb_1024.png");
 }
 .article-summary .article-summary-inner .article-title {
   margin-bottom: 10px;

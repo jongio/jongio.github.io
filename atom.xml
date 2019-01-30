@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Jon Gallant</title>
-  <subtitle>tech.leadership.music.coffee</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
@@ -575,9 +575,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
+    
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   
@@ -603,9 +603,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
     
   </entry>
   
