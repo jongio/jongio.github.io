@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2019-01-26T06:34:07.734Z</updated>
+  <updated>2019-02-01T01:22:53.034Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop&#39;s value.</title>
+    <link href="https://blog.jongallant.com/2019/01/vuejs-avoid-mutating-error/"/>
+    <id>https://blog.jongallant.com/2019/01/vuejs-avoid-mutating-error/</id>
+    <published>2019-01-31T17:07:26.000Z</published>
+    <updated>2019-02-01T01:22:53.034Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;000049.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+Working on a Vue.js and TypeScript project.&lt;/p&gt;
+&lt;p&gt;I had this:&lt;/p&gt;
+&lt;figure class=&quot;highlight typescript&quot;
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/"/>
+    
+      <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
+    
+      <category term="web" scheme="https://blog.jongallant.com/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to Vue.js Not Binding Complex View Model Objects</title>
@@ -35,9 +64,9 @@
     
       <category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/"/>
     
-      <category term="web" scheme="https://blog.jongallant.com/tags/web/"/>
-    
       <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
+    
+      <category term="web" scheme="https://blog.jongallant.com/tags/web/"/>
     
   </entry>
   
@@ -46,7 +75,7 @@
     <link href="https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/"/>
     <id>https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/</id>
     <published>2019-01-24T21:32:14.000Z</published>
-    <updated>2019-01-25T08:35:38.383Z</updated>
+    <updated>2019-01-31T22:04:21.074Z</updated>
     
     <summary type="html">
     
@@ -575,9 +604,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
-    
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
+    
+      <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
     
   </entry>
   
@@ -603,31 +632,9 @@
     
       <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
     
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
-    
       <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Solution to Slow iPhone 6 with iOS 11</title>
-    <link href="https://blog.jongallant.com/2017/11/iphone6-slow-ios11/"/>
-    <id>https://blog.jongallant.com/2017/11/iphone6-slow-ios11/</id>
-    <published>2017-11-17T12:56:44.000Z</published>
-    <updated>2017-11-17T21:45:51.480Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;My iPhone 6 Plus was so slow it was unusable. Each tap would take 2-3 seconds and everything was sluggish.  I deleted all apps I wasn’t u
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="iphone" scheme="https://blog.jongallant.com/tags/iphone/"/>
+      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   

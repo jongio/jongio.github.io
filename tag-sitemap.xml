@@ -177,13 +177,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/powerbi/</loc>
-        <lastmod>2018-12-10T21:24:28.170Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/asp-net/</loc>
         <lastmod>2018-12-10T22:35:33.959Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -207,13 +200,6 @@
     <url>
         <loc>https://blog.jongallant.com/tags/angularjs/</loc>
         <lastmod>2018-12-11T01:33:26.323Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/nodejs/</loc>
-        <lastmod>2018-12-11T02:17:31.430Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -359,13 +345,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/dev/</loc>
-        <lastmod>2019-01-21T07:58:46.900Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/sql/</loc>
         <lastmod>2019-01-21T07:58:46.900Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -387,69 +366,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/productivity/</loc>
-        <lastmod>2019-01-25T08:35:38.383Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/todo/</loc>
-        <lastmod>2019-01-25T08:35:38.383Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/twitter/</loc>
-        <lastmod>2019-01-25T08:35:38.383Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/ifttt/</loc>
-        <lastmod>2019-01-25T08:35:38.383Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/javascript/</loc>
-        <lastmod>2019-01-26T06:34:07.734Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/web/</loc>
-        <lastmod>2019-01-26T06:34:07.734Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/vuejs/</loc>
-        <lastmod>2019-01-26T06:34:07.734Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/microsoft/</loc>
-        <lastmod>2019-01-30T07:39:40.039Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/management/</loc>
-        <lastmod>2019-01-30T07:39:40.039Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/azure/</loc>
         <lastmod>2019-01-30T19:14:46.447Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -466,6 +382,90 @@
     <url>
         <loc>https://blog.jongallant.com/tags/rest/</loc>
         <lastmod>2019-01-30T19:14:46.447Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/dev/</loc>
+        <lastmod>2019-01-31T22:02:32.482Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/powerbi/</loc>
+        <lastmod>2019-01-31T22:02:32.482Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/nodejs/</loc>
+        <lastmod>2019-01-31T22:02:32.482Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/productivity/</loc>
+        <lastmod>2019-01-31T22:04:21.074Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/todo/</loc>
+        <lastmod>2019-01-31T22:04:21.074Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/twitter/</loc>
+        <lastmod>2019-01-31T22:04:21.074Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/ifttt/</loc>
+        <lastmod>2019-01-31T22:04:21.074Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/microsoft/</loc>
+        <lastmod>2019-01-31T22:05:55.222Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/management/</loc>
+        <lastmod>2019-01-31T22:05:55.222Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/javascript/</loc>
+        <lastmod>2019-02-01T01:22:53.034Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/vuejs/</loc>
+        <lastmod>2019-02-01T01:22:53.034Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/web/</loc>
+        <lastmod>2019-02-01T01:22:53.034Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
