@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2019-02-01T01:22:53.034Z</updated>
+  <updated>2019-02-05T07:24:16.779Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How I Resolved Vue.js, VSCode, Vetur, Prettyhtml, and Prettier Formatting and ES Lint Issues</title>
+    <link href="https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/"/>
+    <id>https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/</id>
+    <published>2019-02-04T09:56:45.000Z</published>
+    <updated>2019-02-05T07:24:16.779Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;I spent way too much time this weekend debugging Vue.js - Vetur - Prettyhtml - Prettier - Beautify - Eslint issues.&lt;/p&gt;
+&lt;p&gt;Here’s what I 
+    
+    </summary>
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/"/>
+    
+      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
+    
+      <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
+    
+      <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop&#39;s value.</title>
@@ -607,34 +636,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
       <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
       <category term="edge" scheme="https://blog.jongallant.com/tags/edge/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Azure IoT Edge with Azure Container Registry</title>
-    <link href="https://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/"/>
-    <id>https://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/</id>
-    <published>2017-11-21T06:02:47.000Z</published>
-    <updated>2018-05-16T20:39:22.525Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially suppor
-    
-    </summary>
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="iot" scheme="https://blog.jongallant.com/tags/iot/"/>
-    
-      <category term="docker" scheme="https://blog.jongallant.com/tags/docker/"/>
-    
-      <category term="azureiotedge" scheme="https://blog.jongallant.com/tags/azureiotedge/"/>
     
   </entry>
   

@@ -23,13 +23,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/vscode/</loc>
-        <lastmod>2017-02-07T07:34:54.948Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/phone/</loc>
         <lastmod>2017-02-24T01:12:27.353Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -156,13 +149,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/python/</loc>
-        <lastmod>2018-12-10T08:44:36.797Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/beakn/</loc>
         <lastmod>2018-12-10T11:55:31.562Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -268,13 +254,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/iot/</loc>
-        <lastmod>2019-01-06T07:40:08.190Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/visual-studio/</loc>
         <lastmod>2019-01-06T07:40:08.190Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -290,13 +269,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/tags/c/</loc>
-        <lastmod>2019-01-06T07:44:52.451Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/howto/</loc>
         <lastmod>2019-01-06T07:44:52.451Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -345,13 +317,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/sql/</loc>
-        <lastmod>2019-01-21T07:58:46.900Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/nvidia/</loc>
         <lastmod>2019-01-21T08:02:40.038Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -366,13 +331,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/azure/</loc>
-        <lastmod>2019-01-30T19:14:46.447Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/postman/</loc>
         <lastmod>2019-01-30T19:14:46.447Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -382,13 +340,6 @@
     <url>
         <loc>https://blog.jongallant.com/tags/rest/</loc>
         <lastmod>2019-01-30T19:14:46.447Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/dev/</loc>
-        <lastmod>2019-01-31T22:02:32.482Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -450,22 +401,78 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/javascript/</loc>
+        <loc>https://blog.jongallant.com/tags/web/</loc>
         <lastmod>2019-02-01T01:22:53.034Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/azure/</loc>
+        <lastmod>2019-02-05T06:48:15.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/iot/</loc>
+        <lastmod>2019-02-05T06:48:15.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/howto/</loc>
+        <lastmod>2019-02-05T06:48:15.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/dev/</loc>
+        <lastmod>2019-02-05T06:48:15.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/python/</loc>
+        <lastmod>2019-02-05T06:48:15.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/sql/</loc>
+        <lastmod>2019-02-05T06:48:15.852Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/javascript/</loc>
+        <lastmod>2019-02-05T07:24:16.779Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/vscode/</loc>
+        <lastmod>2019-02-05T07:24:16.779Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://blog.jongallant.com/tags/vuejs/</loc>
-        <lastmod>2019-02-01T01:22:53.034Z</lastmod>
+        <lastmod>2019-02-05T07:24:16.779Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/web/</loc>
-        <lastmod>2019-02-01T01:22:53.034Z</lastmod>
+        <loc>https://blog.jongallant.com/tags/webdev/</loc>
+        <lastmod>2019-02-05T07:24:16.779Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
