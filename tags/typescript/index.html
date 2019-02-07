@@ -6,29 +6,23 @@
     
     <title>
         
-        Solution to Vue.js Not Binding Complex View Model Objects |
+        Tag: typescript |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="javascript,vuejs,web" />
-    
-    <meta name="description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.
-For example, with this code, I define data: { vm: {} }, but don’t">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Vue.js Not Binding Complex View Model Objects">
-<meta property="og:url" content="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/index.html">
+    <meta name="description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jon Gallant">
+<meta property="og:url" content="https://blog.jongallant.com/tags/typescript/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.
-For example, with this code, I define data: { vm: {} }, but don’t">
-<meta property="og:image" content="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/000046.png">
-<meta property="og:updated_time" content="2019-01-26T06:34:07.734Z">
+<meta property="og:description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
+<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to Vue.js Not Binding Complex View Model Objects">
-<meta name="twitter:description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.
-For example, with this code, I define data: { vm: {} }, but don’t">
-<meta name="twitter:image" content="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/000046.png">
+<meta name="twitter:title" content="Jon Gallant">
+<meta name="twitter:description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -159,7 +153,7 @@ For example, with this code, I define data: { vm: {} }, but don’t">
                                     <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    <i class="icon fa fa-tag"></i>Tag: <em>typescript</em>
     </h1>
 </div>
 
@@ -173,61 +167,76 @@ For example, with this code, I define data: { vm: {} }, but don’t">
                                                         (adsbygoogle = window.adsbygoogle || []).push({});
                                                     </script>
                                                 </div>
-                                                <article id="post-vuejs-data-not-binding" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                                                
+
+
+
+
+
+<section class="archives-wrap">
+    
+    <div class="archive-year-wrap">
+        <a href="/archives/2019" class="archive-year"><i class="icon fa fa-calendar-o"></i>
+            2019</a>
+    </div>
+    
+    <div class="archives">
         
-            <header class="article-header">
-                
+        
+        
+        <div class="article-row">
+            
+            <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2019/02/experimental-decorators-vs-code-error/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2019/02/experimental-decorators-vs-code-error/000054.png)" alt="Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning." class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="date"><time datetime="2019-02-06T16:06:23.000Z" itemprop="datePublished">
+                    2019-02-06</time></p>
+            <p class="category">
+                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
+            </p>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        Solution to Vue.js Not Binding Complex View Model Objects
+        <a href="/2019/02/experimental-decorators-vs-code-error/">Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning.</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-subtitle">
-                
-<a href="/2019/01/vuejs-data-not-binding/" class="article-date">
-    <time datetime="2019-01-25T22:14:21.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
+        <p class="article-excerpt">
+            With this code:
+@Componentexport default class CategoryRating extends Vue &#123;  @Prop(&#123;default: &#123;&#125;&#125;) category: any;
+I kept getting this VS Code error:
 
-                
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <p>I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.</p>
-<p>For example, with this code, I define <code>data: { vm: {} }</code>, but don’t have the <code>items</code> property and then later set the <code>items</code> property in the <code>mounted</code> function.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">            <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">vm</span>: &#123;&#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>.vm.items = [&#123;</div><div class="line">                    <span class="string">"key"</span>: <span class="string">"key1"</span></div><div class="line">                &#125;];</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><img src="000044.png" alt="'Without items rendered'"><br>
-You can see that the items are not rendered, but they do appear in the Vue data model.</p>
-<p>It took me a while to figure this out, but when you define “data”, you have to specify the entire schema of the object. It will not work with dynamic objects - at least not to my current knowledge. LMK if there’s a way.</p>
-<p>So, I updated my code, like this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">            <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">vm</span>: &#123;</div><div class="line">                    <span class="attr">items</span>: []</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>.vm.items = [&#123;</div><div class="line">                    <span class="string">"key"</span>: <span class="string">"key1"</span></div><div class="line">                &#125;];</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><img src="000045.png" alt="'With items rendered'"></p>
-<p>And, as you can see the “items” property is now bound and rendered.</p>
-<p>I burned a at least an hour on this today. I hope I save that time for you with this post.</p>
-<p>Jon</p>
-
-        </div>
-        <footer>
-        </footer>
+Experimental support for d
+        </p>
     </div>
 </article>
-
-    <section id="comments">
-    
+            
+        </div>
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+        
     </div>
-
-    
-    </section>
+</section>
 
 
                                             </div>
@@ -285,37 +294,6 @@ You can see that the items are not rendered, but they do appear in the Vue data 
         </ul>
     </div>
     
-        
-    <nav id="article-nav">
-        
-            <a href="/2019/01/vuejs-avoid-mutating-error/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Solution to Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop&#39;s value.
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
-                
-                    <a href="/2019/01/twitter-share-microsoft-todo-with-ifttt/" id="article-nav-older" class="article-nav-link-wrap">
-                        <strong class="article-nav-caption">
-                            older
-                        </strong>
-                        <p class="article-nav-title">
-                            How to Create a Microsoft To-Do Task from a Tweet using the iOS Share Menu and IFTTT
-                        </p>
-                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-
-                    </a>
-                    
-    </nav>
-    
-            
 
                 <div class="widgets-container">
                     
@@ -368,13 +346,11 @@ You can see that the items are not rendered, but they do appear in the Vue data 
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2019/01/vuejs-data-not-binding/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
