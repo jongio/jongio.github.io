@@ -289,8 +289,6 @@ code {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-box-shadow: rgba(0,0,0,0.098) 0px 1px 1px 0px;
-  box-shadow: rgba(0,0,0,0.098) 0px 1px 1px 0px;
   padding-right: 340px;
 }
 .main-body-inner:before,
@@ -343,6 +341,7 @@ code {
 }
 .banner-ad {
   padding-top: 10px;
+  text-align: center;
 }
 #header {
   background: #fff;
@@ -870,7 +869,6 @@ code {
   float: left;
   position: relative;
   padding: 30px 0px 0px 30px;
-  border-bottom: 1px solid #eee;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -903,7 +901,6 @@ code {
   position: relative;
   margin-bottom: 1em;
   padding-bottom: 47.11%;
-  border: 1px solid #aeaeae;
 }
 .article-summary .article-summary-inner .thumbnail .comment-counter {
   right: 0;
