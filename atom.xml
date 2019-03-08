@@ -6,11 +6,47 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2019-02-21T16:37:54.621Z</updated>
+	<updated>2019-03-08T07:48:17.211Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
 	
+	
+	
+	<entry>
+		<title>Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option.</title>
+		<link href="https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/" />
+		<id>https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/</id>
+		<published>2019-03-07T23:27:42.000Z</published>
+		<updated>2019-03-08T07:48:17.211Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I’m building a recursive Vue.js component and ran into this error:&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Unknown custom element: &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Categories&lt;/span&gt;&amp;gt;&lt;/span&gt; - did you register the
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/" />
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="typescript" scheme="https://blog.jongallant.com/tags/typescript/" />
+		
+		<category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/" />
+		
+	</entry>
 	
 	
 	<entry>
@@ -634,36 +670,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		
 		
 		<category term="python" scheme="https://blog.jongallant.com/tags/python/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>Where to Find Your SpectraView II Serial Number</title>
-		<link href="https://blog.jongallant.com/2018/07/spectraview-serial-number/" />
-		<id>https://blog.jongallant.com/2018/07/spectraview-serial-number/</id>
-		<published>2018-07-27T10:01:20.000Z</published>
-		<updated>2018-12-10T12:20:08.718Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;p&gt;When you launch SpectraView II for the first time it will ask you for a serial number:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2018/07/spectraview-serial-number/000368.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;“Enter the serial number you received with software”&lt;/p&gt;
-&lt;p&gt;I could not find the number on the sensor box - so I contacted NEC support and got this
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
-		
 		
 	</entry>
 	
