@@ -6,11 +6,45 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2019-03-08T07:48:17.211Z</updated>
+	<updated>2019-03-29T23:21:54.552Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
 	
+	
+	
+	<entry>
+		<title>Solution to Postman Collection Created as Read only</title>
+		<link href="https://blog.jongallant.com/2019/03/postman-collection-readonly/" />
+		<id>https://blog.jongallant.com/2019/03/postman-collection-readonly/</id>
+		<published>2019-03-29T16:05:10.000Z</published>
+		<updated>2019-03-29T23:21:54.552Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/03/postman-collection-readonly/000070.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I did a bunch of Googling and Githubbing to no avail.&lt;/p&gt;
+&lt;p&gt;I happened to go to my accounts profile page and noticed this at
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="postman" scheme="https://blog.jongallant.com/tags/postman/" />
+		
+		<category term="rest" scheme="https://blog.jongallant.com/tags/rest/" />
+		
+	</entry>
 	
 	
 	<entry>
@@ -641,35 +675,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		
 		
 		<category term="howto" scheme="https://blog.jongallant.com/tags/howto/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>How To View Number of PyPI Package Downloads by Python Version</title>
-		<link href="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/" />
-		<id>https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/</id>
-		<published>2018-07-30T09:50:30.000Z</published>
-		<updated>2018-09-21T04:09:28.681Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;p&gt;Building Python packages that support both Python 2 and 3 is time consuming and at some point you are going to ask the question “Can I just build this thing for Python 3?” Ideally, the answer to that question is “Yes!”.  But, why not make it a data-driven decision? You may be in a position to
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
-		
-		
-		<category term="python" scheme="https://blog.jongallant.com/tags/python/" />
 		
 	</entry>
 	

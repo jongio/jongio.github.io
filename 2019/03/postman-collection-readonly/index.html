@@ -6,29 +6,35 @@
     
     <title>
         
-        Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option. |
+        Solution to Postman Collection Created as Read only |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="javascript,vuejs,typescript,webdev" />
+    <meta name="keywords" content="postman,rest" />
     
-    <meta name="description" content="I’m building a recursive Vue.js component and ran into this error:
-Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the component correctly? For recursive components, make sure to provide">
+    <meta name="description" content="I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.
+
+I did a bunch of Googling and Githubbing to no avail.
+I happened to go to">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option.">
-<meta property="og:url" content="https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/index.html">
+<meta property="og:title" content="Solution to Postman Collection Created as Read only">
+<meta property="og:url" content="https://blog.jongallant.com/2019/03/postman-collection-readonly/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m building a recursive Vue.js component and ran into this error:
-Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the component correctly? For recursive components, make sure to provide">
-<meta property="og:image" content="https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/000063.png">
-<meta property="og:updated_time" content="2019-03-08T07:48:17.211Z">
+<meta property="og:description" content="I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.
+
+I did a bunch of Googling and Githubbing to no avail.
+I happened to go to">
+<meta property="og:image" content="https://blog.jongallant.com/2019/03/postman-collection-readonly/000075.png">
+<meta property="og:updated_time" content="2019-03-29T23:21:54.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option.">
-<meta name="twitter:description" content="I’m building a recursive Vue.js component and ran into this error:
-Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the component correctly? For recursive components, make sure to provide">
-<meta name="twitter:image" content="https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/000063.png">
+<meta name="twitter:title" content="Solution to Postman Collection Created as Read only">
+<meta name="twitter:description" content="I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.
+
+I did a bunch of Googling and Githubbing to no avail.
+I happened to go to">
+<meta name="twitter:image" content="https://blog.jongallant.com/2019/03/postman-collection-readonly/000075.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -174,14 +180,14 @@ Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the compon
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-vuejs-unknown-custom-element" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-postman-collection-readonly" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option.
+        Solution to Postman Collection Created as Read only
         </h1>
     
 
@@ -190,27 +196,28 @@ Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the compon
         
             <div class="article-subtitle">
                 
-<a href="/2019/03/vuejs-unknown-custom-element/" class="article-date">
-    <time datetime="2019-03-07T23:27:42.000Z" itemprop="datePublished">2019-03-07</time>
+<a href="/2019/03/postman-collection-readonly/" class="article-date">
+    <time datetime="2019-03-29T16:05:10.000Z" itemprop="datePublished">2019-03-29</time>
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webdev/">webdev</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/">rest</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m building a recursive Vue.js component and ran into this error:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Unknown custom element: <span class="xml"><span class="tag">&lt;<span class="name">Categories</span>&gt;</span> - did you register the component correctly? For recursive components, make sure to provide the "name" option.</span></div></pre></td></tr></table></figure>
-<p><img src="000063.png" alt=""></p>
-<p>My @Component registration looked like this:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">  <span class="attr">components</span>: &#123;</div><div class="line">    RatingBar,</div><div class="line">    Items,</div><div class="line">    Categories</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>The solution is super-simple, but non-obvious.</p>
-<p>You just need to add a name property like so:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Categories'</span>,</div><div class="line">  <span class="attr">components</span>: &#123;</div><div class="line">    RatingBar,</div><div class="line">    Items,</div><div class="line">    Categories</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>And the problem is solved.</p>
-<p>Hope this helps.</p>
+            <p>I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.</p>
+<p><img src="000070.png" alt=""></p>
+<p>I did a bunch of Googling and Githubbing to no avail.</p>
+<p>I happened to go to my accounts profile page and noticed this at the top.  A message that my email address had not been verified.</p>
+<p><img src="000069.png" alt=""></p>
+<p>I had a hunch that the collections were being created as read only because I was using a non-verified account.</p>
+<p>I verified the email address.</p>
+<p>I created a new collection…and boom it wasn’t read only.</p>
+<p><img src="000071.png" alt=""></p>
+<p>So, if you create a collection and it is read-only, then make sure your profile is activated.</p>
+<p>I filed a bug with Postman here: <a href="https://github.com/postmanlabs/postman-app-support/issues/6187" target="_blank" rel="external">https://github.com/postmanlabs/postman-app-support/issues/6187</a></p>
 <p>Jon</p>
 
         </div>
@@ -292,26 +299,13 @@ Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the compon
     
     <nav id="article-nav">
         
-            <a href="/2019/03/postman-collection-readonly/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Solution to Postman Collection Created as Read only
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2019/02/how-i-saved-31-percent-on-insurance-and-other-insurance-tips/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2019/03/vuejs-unknown-custom-element/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            How I Saved 31% on Insurance...and Other Insurance Tips
+                            Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option.
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -389,7 +383,7 @@ Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the compon
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/';
+    var disqus_url = 'https://blog.jongallant.com/2019/03/postman-collection-readonly/';
     
     (function() {
     var dsq = document.createElement('script');
