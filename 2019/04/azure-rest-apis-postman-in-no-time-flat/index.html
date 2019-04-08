@@ -35,7 +35,7 @@ Azure Cloud Shell - https://shell.azure.com
 Create Postman Collection
 Let’s create a Postman Col">
 <meta property="og:image" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/000095.png">
-<meta property="og:updated_time" content="2019-04-06T21:33:22.919Z">
+<meta property="og:updated_time" content="2019-04-08T23:16:06.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Call the Azure REST APIs with Postman In No Time Flat">
 <meta name="twitter:description" content="This post will show you the fastest way to call the Azure REST APIs using Postman.
@@ -248,8 +248,11 @@ Let’s create a Postman Col">
 <ol>
 <li>Create the following variables.  We’ll add the variable values in the next section, so keep this form open.</li>
 </ol>
+<blockquote>
+<p>Make sure you add the variable values to the <strong>CURRENT VALUE</strong> column NOT the Initial Value column.</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">clientId</div><div class="line">clientSecret</div><div class="line">tenantId</div><div class="line">subscriptionId</div><div class="line">resource: https://management.azure.com/</div></pre></td></tr></table></figure>
-<p><img src="000093.png" alt=""></p>
+<p><img src="000102.png" alt=""></p>
 <p>Keep the “Create Collection” dialog open and continue to the next step.</p>
 <h2 id="get-azure-variables"><a class="header-anchor" href="#get-azure-variables"></a>Get Azure Variables</h2>
 <ol>
@@ -265,12 +268,12 @@ Let’s create a Postman Col">
 <p>Make sure you change <code>sp1</code> with a unique name.</p>
 </blockquote>
 <p><code>az ad sp create-for-rbac -n &quot;sp1&quot;</code></p>
-<p><img src="000078.png" alt=""></p>
+<p><img src="000099.png" alt=""></p>
 <ol start="3">
 <li>Copy the outputed variables to Postman Collection variables</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">clientId = appId</div><div class="line">clientSecret = password</div><div class="line">tenantId = tenant</div></pre></td></tr></table></figure>
-<p><img src="000081-1.png" alt=""></p>
+<p><img src="000100.png" alt=""></p>
 <ol start="4">
 <li>Get Subscription Id</li>
 </ol>
@@ -281,7 +284,7 @@ Let’s create a Postman Col">
 <li>Copy the outputed Subscription Id to Postman Collection Variables tab</li>
 </ol>
 <p>At this point your variables tab should look like this - with every variable filled out.</p>
-<p><img src="000081.png" alt=""></p>
+<p><img src="000101.png" alt=""></p>
 <h2 id="finish-creating-collection"><a class="header-anchor" href="#finish-creating-collection"></a>Finish Creating Collection</h2>
 <ol>
 <li>Click the ‘Create’ Button on the Postman Collection form.</li>
