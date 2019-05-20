@@ -6,11 +6,40 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2019-04-08T23:16:06.376Z</updated>
+	<updated>2019-05-20T21:51:30.248Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
 	
+	
+	
+	<entry>
+		<title>I&#39;m Hiring Devs</title>
+		<link href="https://blog.jongallant.com/2019/05/hiring-devs/" />
+		<id>https://blog.jongallant.com/2019/05/hiring-devs/</id>
+		<published>2019-05-20T11:41:33.000Z</published>
+		<updated>2019-05-20T21:51:30.248Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;This is my 20th year as a software engineer and 15th year at Microsoft. I started in 1999 and worked in startups for 5 years. I then spent the next 12 years at Microosft shipping products and services for Bing, Power BI, IoT, MSN, MSDN, and Windows. 3 years ago I joined Commercial Software
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Jobs" scheme="https://blog.jongallant.com/category/Tech/Jobs/" />
+		
+		
+		<category term="jobs" scheme="https://blog.jongallant.com/tags/jobs/" />
+		
+	</entry>
 	
 	
 	<entry>
@@ -650,38 +679,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		
 		
 		<category term="azuredevops" scheme="https://blog.jongallant.com/tags/azuredevops/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>Solution: Cannot remove entries from nonexistent file easy-install.pth</title>
-		<link href="https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/" />
-		<id>https://blog.jongallant.com/2018/09/solution-cannot-remove-entries-from-nonexistent-file-easy-install/</id>
-		<published>2018-09-21T09:49:12.000Z</published>
-		<updated>2018-09-21T17:04:16.261Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;p&gt;I got this the other day while doing a pip install:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Cannot remove entries from nonexistent file c:\python36\lib\site-packages\easy-install.pth&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;I searched around a bit and couldn’t find a solution. &lt;code&gt;--ignore-installed&lt;/code&gt; didn’t work for me.&lt;/p&gt;
-&lt;p&gt;Then I
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Bugs" scheme="https://blog.jongallant.com/category/Tech/Bugs/" />
-		
-		
-		<category term="python" scheme="https://blog.jongallant.com/tags/python/" />
 		
 	</entry>
 	
