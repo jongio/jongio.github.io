@@ -216,23 +216,39 @@ I have not tested to see if three.js actually works on powerbi.com, but this is 
 </blockquote>
 <p>1. Setup your dev environment by following the instructions in this post: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="external">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <p>2. Create visual and navigate to the new directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pbiviz new threejstest</div><div class="line">cd threejstest</div></pre></td></tr></table></figure>
+pbiviz new threejstest
+cd threejstest
 <p>3. Install three.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i three --save</div></pre></td></tr></table></figure>
+npm i three --save
 <p>4. Install typings</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g typings</div></pre></td></tr></table></figure>
+npm i -g typings
 <p>5. Install three typings</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">typings install dt~three --save --global</div></pre></td></tr></table></figure>
+typings install dt~three --save --global
 <p>6. Open in VS Code (or any editor)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">code .</div></pre></td></tr></table></figure>
+code .
 <p>7. Open tsconfig.json and add references to the three.js files</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"compilerOptions"</span>: &#123;</div><div class="line">    <span class="attr">"allowJs"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"target"</span>: <span class="string">"ES5"</span>,</div><div class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"out"</span>: <span class="string">"./.tmp/build/visual.js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"files"</span>: [</div><div class="line">    <span class="string">".api/v1.4.0/PowerBI-visuals.d.ts"</span>,</div><div class="line">    <span class="string">"node_modules/three/build/three.js"</span>,</div><div class="line">    <span class="string">"typings/index.d.ts"</span>,</div><div class="line">    <span class="string">"src/visual.ts"</span></div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+  <span class="attr">"compilerOptions"</span>: &#123;
+    <span class="attr">"allowJs"</span>: <span class="literal">true</span>,
+    <span class="attr">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,
+    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,
+    <span class="attr">"target"</span>: <span class="string">"ES5"</span>,
+    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,
+    <span class="attr">"out"</span>: <span class="string">"./.tmp/build/visual.js"</span>
+  &#125;,
+  <span class="attr">"files"</span>: [
+    <span class="string">".api/v1.4.0/PowerBI-visuals.d.ts"</span>,
+    <span class="string">"node_modules/three/build/three.js"</span>,
+    <span class="string">"typings/index.d.ts"</span>,
+    <span class="string">"src/visual.ts"</span>
+  ]
+&#125;
 <p>8. Add three.d.ts to /src folder and copy this code to that file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">declare var three: any;</div></pre></td></tr></table></figure>
+declare var three: any;
 <p>9. Open src/visual.ts and add this line to the top of the file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/// &lt;amd-dependency path=&apos;three&apos;&gt;</div></pre></td></tr></table></figure>
+/// &lt;amd-dependency path=&apos;three&apos;&gt;
 <p>10. Instantiate a new THREE.Scene(); object in your constructor</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">let scene = new THREE.Scene();</div></pre></td></tr></table></figure>
+let scene = new THREE.Scene();
 <p><img src="000009.png" alt=""></p>
 
         </div>

@@ -207,15 +207,27 @@
             <p>I use <a href="https://github.com/git-ftp/git-ftp" target="_blank" rel="external">git-ftp</a> to deploy my <a href="http://hexo.io" target="_blank" rel="external">hexo</a> blog from a git repo to an FTP site.  Getting it setup on Windows was non-trivial.  Here’s how I got it working.</p>
 <p>1. Install Chocolatey <a href="https://chocolatey.org/install" target="_blank" rel="external">https://chocolatey.org/install</a></p>
 <p>2. Install git</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">choco install git</div></pre></td></tr></table></figure>
+choco install git
 <p>3. Install cygwin</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">choco install cygwin</div></pre></td></tr></table></figure>
+choco install cygwin
 <p><img src="000023.png" alt=""></p>
 <blockquote>
 <p>Run this twice if it fails the first time. Here’s how it failed for me.</p>
 </blockquote>
 <p><img src="000024.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ERROR: Running [&quot;C:\Users\jong\AppData\Local\Temp\Cygwin\2.6.1\setup-x86_64.exe&quot; --quiet-mode --site http://mirrors.kernel.org/sourceware/cygwin/ --packages default --root C:\tools\cygwin --local-package-dir C:\tools\cygwin --no-desktop ] was not successful. Exit code was &apos;1&apos;. See log for possible error messages.</div><div class="line">Environment Vars (like PATH) have changed. Close/reopen your shell to</div><div class="line"> see the changes (or in powershell/cmd.exe just type `refreshenv`).</div><div class="line">The install of cygwin was NOT successful.</div><div class="line">Error while running &apos;C:\ProgramData\chocolatey\lib\Cygwin\tools\chocolateyInstall.ps1&apos;.</div><div class="line"> See log for details.</div><div class="line"></div><div class="line">Chocolatey installed 1/2 packages. 1 packages failed.</div><div class="line"> See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).</div><div class="line"></div><div class="line">Failures</div><div class="line"> - cygwin (exited 1) - Error while running &apos;C:\ProgramData\chocolatey\lib\Cygwin\tools\chocolateyInstall.ps1&apos;.</div><div class="line"> See log for details.</div></pre></td></tr></table></figure>
+ERROR: Running [&quot;C:\Users\jong\AppData\Local\Temp\Cygwin\2.6.1\setup-x86_64.exe&quot; --quiet-mode --site http://mirrors.kernel.org/sourceware/cygwin/ --packages default --root C:\tools\cygwin --local-package-dir C:\tools\cygwin --no-desktop ] was not successful. Exit code was &apos;1&apos;. See log for possible error messages.
+Environment Vars (like PATH) have changed. Close/reopen your shell to
+ see the changes (or in powershell/cmd.exe just type `refreshenv`).
+The install of cygwin was NOT successful.
+Error while running &apos;C:\ProgramData\chocolatey\lib\Cygwin\tools\chocolateyInstall.ps1&apos;.
+ See log for details.
+
+Chocolatey installed 1/2 packages. 1 packages failed.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+
+Failures
+ - cygwin (exited 1) - Error while running &apos;C:\ProgramData\chocolatey\lib\Cygwin\tools\chocolateyInstall.ps1&apos;.
+ See log for details.
 <blockquote>
 <p>If you get this error: “Please ensure you have Cygwin installed” then follow the steps <a href="https://github.com/chocolatey/chocolatey-coreteampackages/issues/176#issuecomment-212939458" target="_blank" rel="external">here</a></p>
 </blockquote>
@@ -224,23 +236,23 @@
 <p>If you can’t get cygwin to install, then just install it directly from the cygwin website here: <a href="https://cygwin.com/install.html" target="_blank" rel="external">https://cygwin.com/install.html</a></p>
 </blockquote>
 <p>4. Install cyg-get</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">choco install cyg-get</div></pre></td></tr></table></figure>
+choco install cyg-get
 <p>5. Install cyg-get curl package</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cyg-get curl</div></pre></td></tr></table></figure>
+cyg-get curl
 <p>6. Open Cygwin Terminal</p>
 <p>7. Get git-ftp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curl https://raw.githubusercontent.com/git-ftp/git-ftp/develop/git-ftp &gt; /bin/git-ftp</div></pre></td></tr></table></figure>
+curl https://raw.githubusercontent.com/git-ftp/git-ftp/develop/git-ftp &gt; /bin/git-ftp
 <p>8. Make git-ftp Executable</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">chmod +x /bin/git-ftp</div></pre></td></tr></table></figure>
+chmod +x /bin/git-ftp
 <p>9. Run git-ftp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git ftp</div></pre></td></tr></table></figure>
+git ftp
 <p>You will see the following output.<br>
 <img src="000026.png" alt=""></p>
 <p>10. Add cygwin to Windows PATH Environment Variable</p>
 <p>So you can execute cygwin command from a Windows Command Prompt, open up Environment variables and add this to your path.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">C:\tools\cygwin\bin</div></pre></td></tr></table></figure>
+C:\tools\cygwin\bin
 <p>11. Open a Windows Command Prompt and run git ftp</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git ftp</div></pre></td></tr></table></figure>
+git ftp
 <p>Once again, you will see the output, but this time from Windows instead of the cygwin Terminal.<br>
 <img src="000028.png" alt=""></p>
 <p>See the <a href="https://github.com/git-ftp/git-ftp/" target="_blank" rel="external">git-ftp GitHub repo</a> for usage instructions.</p>

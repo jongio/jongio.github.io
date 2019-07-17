@@ -210,7 +210,9 @@ For PowerBI-Fiddler, I wanted to re-use the J">
 <p><img src="/images/blog/8eabae91e1ff_D2C8/image_3.png" alt=""></p>
 <h2 id="inspector-loading"><a class="header-anchor" href="#inspector-loading"></a><strong>Inspector loading</strong></h2>
 <p>Fiddler searches %userprofile%\Documents\Fiddler2\Inspectors and C:\Program Files (x86)\Fiddler2\Inspectors for Inspectors when it launches. You’ll want to copy your custom Inspectors into either of those folders. I setup the following Post-build event to automatically copy the DLL over after each build.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">mkdir &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;</div><div class="line">copy &quot;$(TargetPath)&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\$(TargetFilename)&quot;</div><div class="line">copy &quot;Newtonsoft.Json.dll&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;</div></pre></td></tr></table></figure>
+mkdir &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;
+copy &quot;$(TargetPath)&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\$(TargetFilename)&quot;
+copy &quot;Newtonsoft.Json.dll&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;
 <p><img src="/images/blog/8eabae91e1ff_D2C8/image_4.png" alt=""></p>
 <h2 id="debugging"><a class="header-anchor" href="#debugging"></a><strong>Debugging</strong></h2>
 <p>To get F5 debugging, you’ll want to set your Start Action to Fiddler.exe, like this:</p>

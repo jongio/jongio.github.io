@@ -202,10 +202,17 @@ A row insert at ... could not be propagated to ... This failure can be caused by
         
         <div class="article-entry" itemprop="articleBody">
             <p>I just got this error when doing Merge Replication on a SQL Server 2005 environment:</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><div class="line">A row insert <span class="built_in">at</span> ... could <span class="keyword">not</span> be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value <span class="keyword">for</span> identity column <span class="keyword">in</span> table ... when IDENTITY_INSERT is <span class="built_in">set</span> to OFF.</div></pre></td></tr></table></figure>
+A row insert <span class="built_in">at</span> ... could <span class="keyword">not</span> be propagated to ... This failure can be caused by a constraint violation. Cannot insert explicit value <span class="keyword">for</span> identity column <span class="keyword">in</span> table ... when IDENTITY_INSERT is <span class="built_in">set</span> to OFF.
 <p>The error appeared when I tried to replicate a record inserted at the Publisher to the Subscriber. The Subscribers were built from backups, not snapshots. Apparently when you do that the NOT FOR REPLICATION flag is automatically set to No. In order for the Publisher-&gt;Subscriber scenario to work, that flag needs to be set to Yes.</p>
 <p>You could manually do that for all tables with IDENTITY columns, or you could run this script.</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">EXEC sp_msforeachtable @command1 = '</div><div class="line"><span class="keyword">declare</span> @<span class="built_in">int</span> <span class="built_in">int</span></div><div class="line"></div><div class="line"><span class="keyword">set</span> @<span class="built_in">int</span> = object_id(<span class="string">"?"</span>)</div><div class="line"></div><div class="line">EXEC sys.sp_identitycolumnforreplication @<span class="built_in">int</span>, <span class="number">1</span></div><div class="line"></div><div class="line">PRINT <span class="string">"?"</span></div></pre></td></tr></table></figure>
+EXEC sp_msforeachtable @command1 = '
+<span class="keyword">declare</span> @<span class="built_in">int</span> <span class="built_in">int</span>
+
+<span class="keyword">set</span> @<span class="built_in">int</span> = object_id(<span class="string">"?"</span>)
+
+EXEC sys.sp_identitycolumnforreplication @<span class="built_in">int</span>, <span class="number">1</span>
+
+PRINT <span class="string">"?"</span>
 <p>That will set all NOT FOR REPLICATION flags to Yes and will print out the list of tables it looped through.</p>
 <p>You may also get this error if the same flag is set to No for Triggers or other objects.</p>
 <p>Hope this saves you some time</p>

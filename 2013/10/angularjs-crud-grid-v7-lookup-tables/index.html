@@ -219,13 +219,29 @@ Lookup tables: You can now specify that a column">
 <p><img src="/images/blog/angularjs-crud-grid-v7_A732/image.png" alt=""></p>
 <p>The most interesting thing about this release is the use of $broadcast and $on to push events from one directive to another. That way when I update data in the Place table that is immediately reflected in the Person table’s Place dropdown.</p>
 <p>I get a reference to the document scope:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> $docScope = angular.element(<span class="built_in">document</span>).scope();</div></pre></td></tr></table></figure>
+<span class="keyword">var</span> $docScope = angular.element(<span class="built_in">document</span>).scope();
 <p>Then issue a broadcast call after data has been updated. I pass $broadcast the table name so that my other directives don’t refresh all lookup tables.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> successCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e, cb</span>) </span>&#123;</div><div class="line">    notificationFactory.success();</div><div class="line">    $docScope.$broadcast(<span class="string">'lookupDataCh ange'</span>, [$attrs.table]);</div><div class="line">    $scope.getData(cb);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<span class="keyword">var</span> successCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e, cb</span>) </span>&#123;
+    notificationFactory.success();
+    $docScope.$broadcast(<span class="string">'lookupDataCh ange'</span>, [$attrs.table]);
+    $scope.getData(cb);
+&#125;;
 <p>I then listen for the ‘lookupDataChange’ event and refresh the lookup data:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">$scope.$on(<span class="string">'lookupDataChange'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">scope,  table</span>) </span>&#123;</div><div class="line">    $scope.resetLookupData(table[<span class="number">0</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+$scope.$on(<span class="string">'lookupDataChange'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">scope,  table</span>) </span>&#123;
+    $scope.resetLookupData(table[<span class="number">0</span>]);
+&#125;);
 <p>You define the lookup attributes for the column in the directive element:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">lookup</div><div class="line">&#123;</div><div class="line">    <span class="attr">table</span>:<span class="string">'name of the table you want to pull data from'</span>,</div><div class="line">    <span class="attr">key</span>: <span class="string">'the column that you want to use as your select key'</span>,</div><div class="line">    <span class="attr">value</span>: <span class="string">'the column that you want to use as the select display text'</span>,</div><div class="line">    orderBy</div><div class="line">    &#123;</div><div class="line">        <span class="attr">field</span>: <span class="string">'the field to sort by'</span>,</div><div class="line">        <span class="attr">asc</span>: <span class="string">'true|false - the direction to sort by'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+lookup
+&#123;
+    <span class="attr">table</span>:<span class="string">'name of the table you want to pull data from'</span>,
+    <span class="attr">key</span>: <span class="string">'the column that you want to use as your select key'</span>,
+    <span class="attr">value</span>: <span class="string">'the column that you want to use as the select display text'</span>,
+    orderBy
+    &#123;
+        <span class="attr">field</span>: <span class="string">'the field to sort by'</span>,
+        <span class="attr">asc</span>: <span class="string">'true|false - the direction to sort by'</span>
+    &#125;
+&#125;
 <p>See Index.html for a working example.</p>
 <p>I’m happy with the way this turned out. I hope you are too.</p>
 <p>Jon</p>

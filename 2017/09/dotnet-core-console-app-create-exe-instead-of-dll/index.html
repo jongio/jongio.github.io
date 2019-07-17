@@ -209,13 +209,13 @@ And then execute a build">
         <div class="article-entry" itemprop="articleBody">
             <p>You may have just discovered that when you create a console app using the .NET Core CLI tools it only produces a DLL by default.</p>
 <p>If you execute this:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dotnet new console -n App</div></pre></td></tr></table></figure>
+dotnet new console -n App
 <p>And then execute a build</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dotnet build</div></pre></td></tr></table></figure>
+dotnet build
 <p>You will get this output:</p>
 <p><img src="000294.png" alt=""></p>
 <p>It took me a while to figure this out, but in order to generate an EXE instead of a DLL, you need to pass a ‘runtime’ to the build command, like this:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dotnet build -r win10-x64</div></pre></td></tr></table></figure>
+dotnet build -r win10-x64
 <p>Which will produce an EXE:</p>
 <p><img src="000296.png" alt=""></p>
 <p>List of valid runtimes (RIDs) can be found here: <a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#using-rids" target="_blank" rel="external">https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#using-rids</a></p>

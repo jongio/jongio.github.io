@@ -214,9 +214,9 @@ var resource = $resource(&amp;apos;http://">
 <img src="/images/blog/Solution-to_14C14/image.png" alt=""></p>
 <p><em>Origin is not allowed by Access-Control-Allow-Origin.</em></p>
 <p>Here’s the code snippet:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var resource = $resource(&apos;http://localhost:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);</div></pre></td></tr></table></figure>
+var resource = $resource(&apos;http://localhost:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);
 <p>After a lot of digging I discovered that you need to escape the port when using $resource. <a href="https://github.com/angular/angular.js/issues/1243" target="_blank" rel="external">Here’s the issue thread on github</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var resource = $resource(&apos;http://localhost\\:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);</div></pre></td></tr></table></figure>
+var resource = $resource(&apos;http://localhost\\:17482/api/x/:id&apos;, &#123; id: &apos;@id&apos; &#125;);
 <p>Add those two slashes before the port and the error goes away.</p>
 <p>Hope I just saved you hours of pain.</p>
 <p>Jon</p>

@@ -204,9 +204,9 @@ Then yo">
             <p>By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: <em>You tried to assign the Null value to a variable that is not a Variant data type.</em></p>
 <p>Then you need to remove that default parameter.</p>
 <p>This is what Visual Studio adds by default:</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerId], [PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?, ?)<span class="string">"</span></div></pre></td></tr></table></figure>
+InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerId], [PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?, ?)<span class="string">"</span>
 <p>Remove the primary key like so</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><div class="line">InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?)<span class="string">"</span></div></pre></td></tr></table></figure>
+InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?)<span class="string">"</span>
         </div>
         <footer>
         </footer>

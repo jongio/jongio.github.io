@@ -205,23 +205,33 @@ Create a File S">
 <h2 id="create-a-file-share"><a class="header-anchor" href="#create-a-file-share"></a>Create a File Share</h2>
 <p>This allows you to access your Raspberry Pi files from your desktop machine.</p>
 <h3 id="run-update"><a class="header-anchor" href="#run-update"></a>Run Update</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</div></pre></td></tr></table></figure>
+sudo apt update &amp;&amp; sudo apt full-upgrade -y
 <h3 id="install-samba"><a class="header-anchor" href="#install-samba"></a>Install Samba</h3>
 <p>Open Terminal and run the following:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt install -y samba</div></pre></td></tr></table></figure>
+sudo apt install -y samba
 <h3 id="configure-samba"><a class="header-anchor" href="#configure-samba"></a>Configure Samba</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/samba/smb.conf</div></pre></td></tr></table></figure>
+sudo nano /etc/samba/smb.conf
 <h4 id="configure-network-name"><a class="header-anchor" href="#configure-network-name"></a>Configure Network Name</h4>
 <p>Scroll down to the Global Settings section:</p>
 <ul>
 <li>Set workgroup to the name of your workgroup or domain name</li>
 <li>Change ‘wins support’ from ‘no’ to ‘yes’</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[global]</div><div class="line">   workgroup = WORKGROUP</div><div class="line">   wins support = yes</div></pre></td></tr></table></figure>
+[global]
+   workgroup = WORKGROUP
+   wins support = yes
 <p><img src="000256.png" alt=""></p>
 <h4 id="configure-file-share"><a class="header-anchor" href="#configure-file-share"></a>Configure File Share</h4>
 <p>Scroll down to the bottom of the /etc/samba/smb.conf file and paste in the following:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[pishare]</div><div class="line">  comment=pishare</div><div class="line">  path=/home/pi/</div><div class="line">  browseable=yes</div><div class="line">  writeable=yes</div><div class="line">  only guest=no</div><div class="line">  create mask=0777</div><div class="line">  directory mask=0777</div><div class="line">  public=no</div></pre></td></tr></table></figure>
+[pishare]
+  comment=pishare
+  path=/home/pi/
+  browseable=yes
+  writeable=yes
+  only guest=no
+  create mask=0777
+  directory mask=0777
+  public=no
 <p><img src="000258.png" alt=""></p>
 <blockquote>
 <p>This will share your entire home directory. If you’d like to limit access to a subdirectory, just create a directory and change the ‘path’ variable.</p>
@@ -234,10 +244,10 @@ Then Hit CTRL+X to exit nano.</p>
 <blockquote>
 <p>This password can be different than the regular Pi user password.</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo smbpasswd <span class="_">-a</span> pi</div></pre></td></tr></table></figure>
+sudo smbpasswd -a pi
 <p>You’ll need to enter the password twice.</p>
 <p>Restart the samba service.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo service smbd restart</div></pre></td></tr></table></figure>
+sudo service smbd restart
 <h3 id="access-pi-file-share-from-windows"><a class="header-anchor" href="#access-pi-file-share-from-windows"></a>Access Pi File Share from Windows</h3>
 <p>You can now access the file share you just created on your desktop machine</p>
 <ul>

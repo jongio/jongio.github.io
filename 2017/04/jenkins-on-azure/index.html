@@ -250,7 +250,7 @@ Here’s how to get Jenkins on Azu">
 <blockquote>
 <p>You can connect via command line using the following command. This will open the secure channel as well.</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">putty.exe -ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117</div></pre></td></tr></table></figure>
+putty.exe -ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117
 <h4 id="option-2-putty-ui"><a class="header-anchor" href="#option-2-putty-ui"></a>Option 2: Putty UI</h4>
 <p>1. Enter the Jenkins VM Public IP, enter a name ‘jenkinsvm’ and then click Save.</p>
 <p><img src="000054.png" alt=""></p>
@@ -268,23 +268,76 @@ Here’s how to get Jenkins on Azu">
 <p><img src="000057.png" alt=""></p>
 <p>7. Login using the username and password you used to create the Jenkins VM.</p>
 <p>You will see an output like the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">login as: jongadmin</div><div class="line">jongadmin@40.83.216.117&apos;s password:</div><div class="line">Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-53-generic x86_64)</div><div class="line"></div><div class="line"> * Documentation:  https://help.ubuntu.com/</div><div class="line"></div><div class="line">  System information as of Thu Apr  6 21:23:30 UTC 2017</div><div class="line"></div><div class="line">  System load:  0.0               Processes:           138</div><div class="line">  Usage of /:   7.6% of 28.80GB   Users logged in:     0</div><div class="line">  Memory usage: 15%               IP address for eth0: 10.0.0.4</div><div class="line">  Swap usage:   0%</div><div class="line"></div><div class="line">  Graph this data and manage this system at:</div><div class="line">    https://landscape.canonical.com/</div><div class="line"></div><div class="line">  Get cloud support with Ubuntu Advantage Cloud Guest:</div><div class="line">    http://www.ubuntu.com/business/services/cloud</div><div class="line"></div><div class="line">93 packages can be updated.</div><div class="line">61 updates are security updates.</div><div class="line"></div><div class="line">Your Hardware Enablement Stack (HWE) is supported until April 2019.</div><div class="line"></div><div class="line">Last login: Thu Apr  6 21:23:30 2017 from 167.220.1.142</div><div class="line">jongadmin@jenkinsVM:~$</div></pre></td></tr></table></figure>
+login as: jongadmin
+jongadmin@40.83.216.117&apos;s password:
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-53-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Thu Apr  6 21:23:30 UTC 2017
+
+  System load:  0.0               Processes:           138
+  Usage of /:   7.6% of 28.80GB   Users logged in:     0
+  Memory usage: 15%               IP address for eth0: 10.0.0.4
+  Swap usage:   0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+93 packages can be updated.
+61 updates are security updates.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2019.
+
+Last login: Thu Apr  6 21:23:30 2017 from 167.220.1.142
+jongadmin@jenkinsVM:~$
 <h3 id="connect-via-bash"><a class="header-anchor" href="#connect-via-bash"></a>Connect via bash</h3>
 <p>1. Open a bash command prompt and run the following command:</p>
 <blockquote>
 <p>Replace jongadmin with the username you created the Jenkins VM with. Replace 40.83.216.117 with your Jenkins VM IP Address</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117</div></pre></td></tr></table></figure>
+ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117
 <p>See my <a href="/2016/08/linux-on-windows/">blog post here</a>, for instructions on how to run bash on Windows.</p>
 <p>This will create an ssh connection and create a secure tunnel to port 8080 (the Jenkins Admin app)</p>
 <p>2. Enter yes and hit enter if you see the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">jong@JONGHPDESKTOP:/mnt/c/Windows/System32$ ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117</div><div class="line">The authenticity of host &apos;40.83.216.117 (40.83.216.117)&apos; can&apos;t be established.</div><div class="line">ECDSA key fingerprint is 02:25:0e:74:b1:01:e6:f1:96:73:7b:b6:42:dd:c4:e0.</div><div class="line">Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure>
+jong@JONGHPDESKTOP:/mnt/c/Windows/System32$ ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117
+The authenticity of host &apos;40.83.216.117 (40.83.216.117)&apos; can&apos;t be established.
+ECDSA key fingerprint is 02:25:0e:74:b1:01:e6:f1:96:73:7b:b6:42:dd:c4:e0.
+Are you sure you want to continue connecting (yes/no)?
 <p>You will see an output similar to the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">jong@JONGHPDESKTOP:~$ ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117</div><div class="line">jongadmin@40.83.216.117&apos;s password:</div><div class="line">Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-53-generic x86_64)</div><div class="line"></div><div class="line"> * Documentation:  https://help.ubuntu.com/</div><div class="line"></div><div class="line">  System information as of Thu Apr  6 21:22:42 UTC 2017</div><div class="line"></div><div class="line">  System load:  0.0               Processes:           137</div><div class="line">  Usage of /:   7.6% of 28.80GB   Users logged in:     0</div><div class="line">  Memory usage: 15%               IP address for eth0: 10.0.0.4</div><div class="line">  Swap usage:   0%</div><div class="line"></div><div class="line">  Graph this data and manage this system at:</div><div class="line">    https://landscape.canonical.com/</div><div class="line"></div><div class="line">  Get cloud support with Ubuntu Advantage Cloud Guest:</div><div class="line">    http://www.ubuntu.com/business/services/cloud</div><div class="line"></div><div class="line">93 packages can be updated.</div><div class="line">61 updates are security updates.</div><div class="line"></div><div class="line">Your Hardware Enablement Stack (HWE) is supported until April 2019.</div><div class="line"></div><div class="line">Last login: Thu Apr  6 21:22:42 2017 from 167.220.1.142</div><div class="line">jongadmin@jenkinsVM:~$</div></pre></td></tr></table></figure>
+jong@JONGHPDESKTOP:~$ ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117
+jongadmin@40.83.216.117&apos;s password:
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-53-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Thu Apr  6 21:22:42 UTC 2017
+
+  System load:  0.0               Processes:           137
+  Usage of /:   7.6% of 28.80GB   Users logged in:     0
+  Memory usage: 15%               IP address for eth0: 10.0.0.4
+  Swap usage:   0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+93 packages can be updated.
+61 updates are security updates.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2019.
+
+Last login: Thu Apr  6 21:22:42 2017 from 167.220.1.142
+jongadmin@jenkinsVM:~$
 <h2 id="get-temp-admin-password-via-ssh"><a class="header-anchor" href="#get-temp-admin-password-via-ssh"></a>Get Temp Admin Password via SSH</h2>
 <p>The next step is to connect to the Jenkins Admin app, but we first need to get the temp password that is stored on the VM.</p>
 <p>1. In SSH terminal, enter the following command to get the temp admin password</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo cat /var/lib/jenkins/secrets/initialAdminPassword</div></pre></td></tr></table></figure>
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 <p><img src="000147.png" alt=""></p>
 <p>2. Copy that password to your clipboard.</p>
 <h2 id="launch-jenkins-admin-app"><a class="header-anchor" href="#launch-jenkins-admin-app"></a>Launch Jenkins Admin App</h2>

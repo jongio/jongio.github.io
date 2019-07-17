@@ -15,19 +15,28 @@
     <meta name="keywords" content="howto,angularjs" />
     
     <meta name="description" content="@itsananderson and I just spent way too long trying to get Restangular running. Here’s what worked for us:
-&amp;lt;!doctype html &amp;gt;&amp;lt;html ng-app=&quot;app&quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;title&amp;gt;Restangular&amp;lt;/t">
+&amp;lt;!doctype html &amp;gt;
+&amp;lt;html ng-app=&quot;app&quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Restangular&amp;lt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Restangular–A complete sample to get you up and running">
 <meta property="og:url" content="https://blog.jongallant.com/2013/05/angularjs-restangular-sample/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="@itsananderson and I just spent way too long trying to get Restangular running. Here’s what worked for us:
-&amp;lt;!doctype html &amp;gt;&amp;lt;html ng-app=&quot;app&quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;title&amp;gt;Restangular&amp;lt;/t">
+&amp;lt;!doctype html &amp;gt;
+&amp;lt;html ng-app=&quot;app&quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Restangular&amp;lt">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T15:51:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Restangular–A complete sample to get you up and running">
 <meta name="twitter:description" content="@itsananderson and I just spent way too long trying to get Restangular running. Here’s what worked for us:
-&amp;lt;!doctype html &amp;gt;&amp;lt;html ng-app=&quot;app&quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;title&amp;gt;Restangular&amp;lt;/t">
+&amp;lt;!doctype html &amp;gt;
+&amp;lt;html ng-app=&quot;app&quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Restangular&amp;lt">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
@@ -202,7 +211,35 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><a href="https://twitter.com/itsananderson" target="_blank" rel="external">@itsananderson</a> and I just spent way too long trying to get <a href="https://github.com/mgonto/restangular" target="_blank" rel="external">Restangular</a> running. Here’s what worked for us:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html &gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Restangular<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/angular-resource.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/underscore.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://cdn.jsdelivr.net/restangular/latest/restangular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"IndexCtrl"</span> <span class="attr">ng-cloak</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-repeat</span>=<span class="string">"person in people"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, [<span class="string">'restangular'</span>])</div><div class="line">            .config(<span class="function"><span class="keyword">function</span>(<span class="params">RestangularProvider</span>) </span>&#123;</div><div class="line">                RestangularProvider.setBaseUrl(<span class="string">'/api'</span>);</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">        app.controller(<span class="string">'IndexCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, Restangular</span>) </span>&#123;</div><div class="line">            $scope.people = Restangular.all(<span class="string">'person'</span>).getList();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<span class="meta">&lt;!doctype html &gt;</span>
+<span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Restangular<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/angular.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/angular-resource.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/underscore.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://cdn.jsdelivr.net/restangular/latest/restangular.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+<span class="tag">&lt;<span class="name">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"IndexCtrl"</span> <span class="attr">ng-cloak</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">ul</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-repeat</span>=<span class="string">"person in people"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
+        <span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, [<span class="string">'restangular'</span>])
+            .config(<span class="function"><span class="keyword">function</span>(<span class="params">RestangularProvider</span>) </span>&#123;
+                RestangularProvider.setBaseUrl(<span class="string">'/api'</span>);
+            &#125;);
+
+        app.controller(<span class="string">'IndexCtrl'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope, Restangular</span>) </span>&#123;
+            $scope.people = Restangular.all(<span class="string">'person'</span>).getList();
+        &#125;);
+
+    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
         </div>
         <footer>
         </footer>

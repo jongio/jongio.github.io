@@ -212,9 +212,9 @@ https://github.c">
 <p>1. Install <strong>Web Essentials</strong> – compiles LESS into CSS<br>
 <a href="http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6" title="http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6" target="_blank" rel="external">http://visualstudiogallery.msdn.microsoft.com/07d54d12-7133-4e15-becb-6f451ea3bea6</a></p>
 <p>2. Install <strong>Bootstrap</strong> NuGet Package:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PM&gt; Install-Package Twitter.Bootstrap</div></pre></td></tr></table></figure>
+PM&gt; Install-Package Twitter.Bootstrap
 <p>3. Install <strong>Bootstrap for MVC</strong> NuGet Package:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">PM&gt; Install-Package Twitter.Bootstrap.Mvc</div></pre></td></tr></table></figure>
+PM&gt; Install-Package Twitter.Bootstrap.Mvc
 <p>4. Add the Bootstrap <strong>mixins.less</strong> to ~/Content/</p>
 <p><a href="https://raw.github.com/twbs/bootstrap/v2.3.2/less/mixins.less" title="https://raw.github.com/twbs/bootstrap/v2.3.2/less/mixins.less" target="_blank" rel="external">https://raw.github.com/twbs/bootstrap/v2.3.2/less/mixins.less</a></p>
 <p>5. Add the <strong>variables.less</strong> and <strong>bootswatch.less</strong> from your bootswatch theme to ~/Content/<br>
@@ -222,14 +222,22 @@ https://github.c">
 <p><img src="/images/blog/78f1010e2b42_EDC0/image.png" alt=""></p>
 <p>6. Add the following <strong>imports</strong> to your mixins.less and bootswatch.less files</p>
 <p><strong>mixins.less</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Mixins</div><div class="line">// -------------------------------------------------</div><div class="line"></div><div class="line">@import &quot;variables&quot;;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// Flatness by Jenil (www.jgog.in)</div><div class="line">// Bootswatch 2.3.2</div><div class="line">// -----------------------------------------------------</div><div class="line"></div><div class="line">@import &quot;mixins&quot;;</div><div class="line">@import &quot;variables&quot;;</div></pre></td></tr></table></figure>
+// Mixins
+// -------------------------------------------------
+
+@import &quot;variables&quot;;
+// Flatness by Jenil (www.jgog.in)
+// Bootswatch 2.3.2
+// -----------------------------------------------------
+
+@import &quot;mixins&quot;;
+@import &quot;variables&quot;;
 <p>7. Save those less files and Web Essentials will compile them to CSS<br>
 <img src="/images/blog/78f1010e2b42_EDC0/image_3.png" alt=""></p>
 <p>8. Add <strong>bootswatch.css</strong> to your bootstrap bundle in ~/App_Start/BootstrapBundleConfig.cs</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">BundleTable.Bundles.Add(new StyleBundle(&quot;~/Content/bootstrap&quot;).Include(&quot;~/Content/bootstrap.css&quot;, &quot;~/Content/bootstrap-responsive.css&quot;, &quot;~/Content/bootswatch.css&quot;));</div></pre></td></tr></table></figure>
+BundleTable.Bundles.Add(new StyleBundle(&quot;~/Content/bootstrap&quot;).Include(&quot;~/Content/bootstrap.css&quot;, &quot;~/Content/bootstrap-responsive.css&quot;, &quot;~/Content/bootswatch.css&quot;));
 <p>9. Add the <strong>bootstrap bundle</strong> to _Layout.cshtml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@Styles.Render(&quot;~/Content/bootstrap&quot;)</div></pre></td></tr></table></figure>
+@Styles.Render(&quot;~/Content/bootstrap&quot;)
 <p>That’s it. Here’s what my test looks like:</p>
 <p><img src="/images/blog/78f1010e2b42_EDC0/image_4.png" alt=""></p>
 

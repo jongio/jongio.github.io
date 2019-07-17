@@ -212,7 +212,7 @@
 <p>3. Clone the repo. Click ‘Code’ tab, click the project, and then click the Clone link in the upper right to find the clone URI.</p>
 <p><img src="000154.png" alt=""></p>
 <p><img src="000155.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone [your vsts project clone uri]</div></pre></td></tr></table></figure>
+git clone [your vsts project clone uri]
 <h2 id="export-postman-collection-and-environment-variables"><a class="header-anchor" href="#export-postman-collection-and-environment-variables"></a>Export Postman Collection and Environment Variables</h2>
 <p>You will commit your Postman collection definition file and environment variables to VSTS.  You will be committing secrets to source control, but in this case I could not find a good workaround for this because Postman expects a local file for Environment variables. You can control permissions to this repo if you are concerned with the secrets getting exposed - or maybe get Azure Key Vault or Blob Storage into your build process.</p>
 <blockquote>
@@ -228,7 +228,9 @@
 <h2 id="push-file-to-vsts-project"><a class="header-anchor" href="#push-file-to-vsts-project"></a>Push File to VSTS Project</h2>
 <p>You now need to push the Postman Collection and Environment Variables file to VSTS, so the build process can pick them up.</p>
 <p>Execute the following from the repo root:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &quot;Init commit&quot;</div><div class="line">git push</div></pre></td></tr></table></figure>
+git add .
+git commit -m &quot;Init commit&quot;
+git push
 <p>You can verify that your files have been pushed to the repo via <a href="http://visualstudio.com" target="_blank" rel="external">visualstudio.com</a></p>
 <p><img src="000163.png" alt=""></p>
 <h2 id="create-vsts-build-definition"><a class="header-anchor" href="#create-vsts-build-definition"></a>Create VSTS Build Definition</h2>
@@ -246,7 +248,7 @@
 <p><img src="000168.png" alt=""></p>
 <p><img src="000169.png" alt=""></p>
 <p>6. Select “Run newman” in the built task list and enter the following into the “arguments” textbox.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">run $(Build.SourcesDirectory)\iot.json -e $(Build.SourcesDirectory)\env.json</div></pre></td></tr></table></figure>
+run $(Build.SourcesDirectory)\iot.json -e $(Build.SourcesDirectory)\env.json
 <p><img src="000170.png" alt=""></p>
 <blockquote>
 <p>The first argument is the Postman Collection file and the second argument (-e) is the Environment Variables file.</p>
@@ -267,7 +269,13 @@
 <p><img src="000174.png" alt=""></p>
 <p>The request returns a 500 and the test is looking for a 200.</p>
 <h3 id="postman-test-code"><a class="header-anchor" href="#postman-test-code"></a>Postman Test Code</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var responseJSON;</div><div class="line">try &#123;</div><div class="line">    responseJSON = JSON.parse(responseBody); </div><div class="line">    tests[&quot;Status equals 200&quot;] = responseJSON.status === 200;</div><div class="line">&#125;</div><div class="line">catch (e) &#123; &#125;</div><div class="line">tests[&quot;Body contains status&quot;] = responseBody.has(&quot;status&quot;);</div></pre></td></tr></table></figure>
+var responseJSON;
+try &#123;
+    responseJSON = JSON.parse(responseBody); 
+    tests[&quot;Status equals 200&quot;] = responseJSON.status === 200;
+&#125;
+catch (e) &#123; &#125;
+tests[&quot;Body contains status&quot;] = responseBody.has(&quot;status&quot;);
 <h2 id="conclusion"><a class="header-anchor" href="#conclusion"></a>Conclusion</h2>
 <p>So that’s it. You now have a source controlled Postman collection that is part of your CI process and setup to run on a schedule to suit your needs.</p>
 <p>My next post will wrap up everything I’ve learned with Postman and my pitch for using it as an “Executable Documentation” engine.</p>

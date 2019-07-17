@@ -202,26 +202,26 @@
 <p>For now, here’s how to create a Power BI Workspace Collection (and get Access Keys) via the <a href="https://docs.microsoft.com/en-us/azure/xplat-cli-install" target="_blank" rel="external">Azure CLI 1.0</a>.</p>
 <h2 id="1-install-the-azure-cli"><a class="header-anchor" href="#1-install-the-azure-cli"></a>1. Install the Azure CLI</h2>
 <p>Open a command prompt and execute the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i -g azure-cli</div></pre></td></tr></table></figure>
+npm i -g azure-cli
 <h2 id="2-login-to-azure-cli"><a class="header-anchor" href="#2-login-to-azure-cli"></a>2. Login to Azure CLI</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure login</div></pre></td></tr></table></figure>
+azure login
 <p>That will output a URL and a code to enter there.</p>
 <p><strong>To sign in, use a web browser to open the page <a href="https://aka.ms/devicelogin" target="_blank" rel="external">https://aka.ms/devicelogin</a> and enter the code B3L4ZYLGA to authenticate.</strong></p>
 <p>Go back to your command line and you will now see this:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    login command OK</div></pre></td></tr></table></figure>
+info:    login command OK
 <h2 id="3-set-current-azure-subscription"><a class="header-anchor" href="#3-set-current-azure-subscription"></a>3. Set Current Azure Subscription</h2>
 <p>By default, the first Azure Subscription returned is the one that all future actions will be taken on.  You can find your subscription list by executing the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure account list</div></pre></td></tr></table></figure>
+azure account list
 <p>Find the Id of the Subscription you want to work with and then execute the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure account set &#123;id&#125;</div></pre></td></tr></table></figure>
+azure account set &#123;id&#125;
 <p>You will see the following output:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    account set command OK</div></pre></td></tr></table></figure>
+info:    account set command OK
 <h2 id="4-create-azure-resource-group"><a class="header-anchor" href="#4-create-azure-resource-group"></a>4. Create Azure Resource Group</h2>
 <p>You can either create a new resource group or use an existing one. To create a new one, execute the following:</p>
 <blockquote>
 <p>Replace jong-rg1 with your desired resource group name</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure group create jong-rg1 westus</div></pre></td></tr></table></figure>
+azure group create jong-rg1 westus
 <h2 id="5-create-power-bi-workspace-collection"><a class="header-anchor" href="#5-create-power-bi-workspace-collection"></a>5. Create Power BI Workspace Collection</h2>
 <p>Enter the following:</p>
 <blockquote>
@@ -229,17 +229,31 @@
 Replace jong-pbie4 with your desired Power BI Workspace Collection name<br>
 Replace westus with your desired location</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure powerbi create jong-rg1 jong-pbie4 westus</div></pre></td></tr></table></figure>
+azure powerbi create jong-rg1 jong-pbie4 westus
 <p>You will see the following output:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    Executing command powerbi create</div><div class="line">+ Creating workspace collection: jong-pbie4</div><div class="line">info:    WorkspaceCollection created:</div><div class="line">data:    Property  Value</div><div class="line">data:    --------  ----------</div><div class="line">data:    name      jong-pbie4</div><div class="line">data:    location  West US</div><div class="line">data:    tags      null</div><div class="line">info:    powerbi create command OK</div></pre></td></tr></table></figure>
+info:    Executing command powerbi create
++ Creating workspace collection: jong-pbie4
+info:    WorkspaceCollection created:
+data:    Property  Value
+data:    --------  ----------
+data:    name      jong-pbie4
+data:    location  West US
+data:    tags      null
+info:    powerbi create command OK
 <h2 id="6-get-access-keys"><a class="header-anchor" href="#6-get-access-keys"></a>6. Get Access Keys</h2>
 <blockquote>
 <p>Replace jong-rg1 with your resource group name<br>
 Replace jong-pbie4 with your Workspace Collection name</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">azure powerbi keys list jong-rg1 jong-pbie4</div></pre></td></tr></table></figure>
+azure powerbi keys list jong-rg1 jong-pbie4
 <p>You will see the following output.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">info:    Executing command powerbi keys list</div><div class="line">+ Getting workspace collection access keys...</div><div class="line">data:    Name              Key</div><div class="line">data:    ----------------  ----------------------------------------------------------------------------------------</div><div class="line">data:    key1 (Primary)    1bCTtlodCxqivFexuaHpKX37jqvHJr2cGbeXmXtwfNOxgG8blGoAxSLhlBpr4UwrbSNDfOiw6+4HvWjmIcLqA==</div><div class="line">data:    key2 (Secondary)  yRLu57/T67nsAPbt4AuypDu78Gvi4PNitEOGrXaVAg/hYxK7tksAOnLCIegsM1VryzTf4qL2pxcwVCJLA6Dpw==</div><div class="line">info:    powerbi keys list command OK</div></pre></td></tr></table></figure>
+info:    Executing command powerbi keys list
++ Getting workspace collection access keys...
+data:    Name              Key
+data:    ----------------  ----------------------------------------------------------------------------------------
+data:    key1 (Primary)    1bCTtlodCxqivFexuaHpKX37jqvHJr2cGbeXmXtwfNOxgG8blGoAxSLhlBpr4UwrbSNDfOiw6+4HvWjmIcLqA==
+data:    key2 (Secondary)  yRLu57/T67nsAPbt4AuypDu78Gvi4PNitEOGrXaVAg/hYxK7tksAOnLCIegsM1VryzTf4qL2pxcwVCJLA6Dpw==
+info:    powerbi keys list command OK
 <p>When you go to the Azure Portal, you will now see your newly created Power BI Workspace Collection.</p>
 <p><img src="000025.png" alt=""></p>
 <p>Now that you have your Workspace Collection and Access Keys, you can follow along with my <a href="/2017/01/powerbi-embedded-javascript-api-range-slider-filter/">How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API</a> to learn how to use your keys to embed a Power BI report into your application.</p>

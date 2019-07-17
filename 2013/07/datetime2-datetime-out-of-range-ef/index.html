@@ -208,7 +208,8 @@ Add the DatabaseGenerated attribute if you are using EF Code First:
             <p>Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.</p>
 <p><img src="/images/blog/Solution-to-The-conversion-of-a-datetime_EB/image.png" alt=""></p>
 <p>Add the DatabaseGenerated attribute if you are using EF Code First:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">[DatabaseGenerated(DatabaseGeneratedOption.Computed)]</div><div class="line"><span class="keyword">public</span> Nullable&amp;lt;System.DateTime&amp;gt; Created &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div></pre></td></tr></table></figure>
+[<span class="meta">DatabaseGenerated(DatabaseGeneratedOption.Computed)</span>]
+<span class="keyword">public</span> Nullable&amp;lt;System.DateTime&amp;gt; Created &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
         </div>
         <footer>
         </footer>

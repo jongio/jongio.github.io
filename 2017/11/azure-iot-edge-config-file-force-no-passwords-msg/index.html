@@ -12,7 +12,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,iot,edge,azureiotedge" />
+    <meta name="keywords" content="azure,iot,azureiotedge,edge" />
     
     <meta name="description" content="When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run iotedgectl setup with the --config-file option and don’t want to force passwords with the --auto-ce">
 <meta property="og:type" content="article">
@@ -199,7 +199,21 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run <code>iotedgectl setup</code> with the <code>--config-file</code> option and don’t want to force passwords with the <code>--auto-cert-gen-force-no-passwords</code> option, you will get the following message:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">INFO: Generating self signed certificates at: C:\ProgramData\azure-iot-edge\certs      </div><div class="line">                                                                                       </div><div class="line">                                                                                       </div><div class="line">********************************************************************************       </div><div class="line">You are being prompted to enter a passphrase for the Edge Device private key.          </div><div class="line">                                                                                       </div><div class="line">To prevent this prompt from appearing, enter the passphrase via the command            </div><div class="line">line options --device-ca-passphrase or --device-ca-passphrase-file.                    </div><div class="line"> - If you choose not to supply any passphrases, use command line option                </div><div class="line">   --auto-cert-gen-force-no-passwords.                                                 </div><div class="line"> - If using --config-file to setup the runtime, setup the input file                   </div><div class="line">   with the same options described above.                                              </div><div class="line">********************************************************************************       </div><div class="line">Press CTRL-C at anytime to exit.                                                       </div><div class="line">Please enter the Edge Device private key passphrase. Length should be &gt;= 4 and &lt;= 1023:</div></pre></td></tr></table></figure>
+INFO: Generating self signed certificates at: C:\ProgramData\azure-iot-edge\certs      
+                                                                                       
+                                                                                       
+********************************************************************************       
+You are being prompted to enter a passphrase for the Edge Device private key.          
+                                                                                       
+To prevent this prompt from appearing, enter the passphrase via the command            
+line options --device-ca-passphrase or --device-ca-passphrase-file.                    
+ - If you choose not to supply any passphrases, use command line option                
+   --auto-cert-gen-force-no-passwords.                                                 
+ - If using --config-file to setup the runtime, setup the input file                   
+   with the same options described above.                                              
+********************************************************************************       
+Press CTRL-C at anytime to exit.                                                       
+Please enter the Edge Device private key passphrase. Length should be &gt;= 4 and &lt;= 1023:
 <p><img src="01.png" alt=""></p>
 <p>The message doesn’t tell you exactly what you need to do to get around this.</p>
 <p>Here’s what you need to do:</p>
@@ -208,7 +222,46 @@
 <li>Find the <code>security.certificates.selfSigned.forceNoPasswords</code> setting and set it to <code>true</code></li>
 <li>Re-run <code>iotedgectl setup</code></li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"deployment"</span>: &#123;</div><div class="line">    <span class="string">"docker"</span>: &#123;</div><div class="line">      <span class="string">"edgeRuntimeImage"</span>: <span class="string">"[[enter ACR URI]]/azureiotedge-agent:1.0-preview"</span>, </div><div class="line">      <span class="string">"loggingOptions"</span>: &#123;</div><div class="line">        <span class="string">"log-driver"</span>: <span class="string">"json-file"</span>, </div><div class="line">        <span class="string">"log-opts"</span>: &#123;</div><div class="line">          <span class="string">"max-size"</span>: <span class="string">"10m"</span></div><div class="line">        &#125;</div><div class="line">      &#125;, </div><div class="line">      <span class="string">"registries"</span>: [</div><div class="line">        &#123;</div><div class="line">          <span class="string">"address"</span>: <span class="string">"[[enter ACR URI]]"</span>, </div><div class="line">          <span class="string">"password"</span>: <span class="string">"[[enter ACR password]]"</span>, </div><div class="line">          <span class="string">"username"</span>: <span class="string">"[[enter ACR username]]"</span></div><div class="line">        &#125;</div><div class="line">      ], </div><div class="line">      <span class="string">"uri"</span>: <span class="string">"unix:///var/run/docker.sock"</span></div><div class="line">    &#125;, </div><div class="line">    <span class="string">"type"</span>: <span class="string">"docker"</span></div><div class="line">  &#125;, </div><div class="line">  <span class="string">"deviceConnectionString"</span>: <span class="string">"[[enter device connection string]]"</span>, </div><div class="line">  <span class="string">"homeDir"</span>: <span class="string">"C:\\ProgramData\\azure-iot-edge"</span>, </div><div class="line">  <span class="string">"hostName"</span>: <span class="string">"[[enter hostname]]"</span>, </div><div class="line">  <span class="string">"logLevel"</span>: <span class="string">"info"</span>, </div><div class="line">  <span class="string">"schemaVersion"</span>: <span class="string">"1"</span>, </div><div class="line">  <span class="string">"security"</span>: &#123;</div><div class="line">    <span class="string">"certificates"</span>: &#123;</div><div class="line">      <span class="string">"option"</span>: <span class="string">"selfSigned"</span>, </div><div class="line">      <span class="string">"preInstalled"</span>: &#123;</div><div class="line">        <span class="string">"deviceCACertificateFilePath"</span>: <span class="string">""</span>, </div><div class="line">        <span class="string">"serverCertificateFilePath"</span>: <span class="string">""</span></div><div class="line">      &#125;, </div><div class="line">      <span class="string">"selfSigned"</span>: &#123;</div><div class="line">        <span class="string">"forceNoPasswords"</span>: <span class="literal">true</span>, </div><div class="line">        <span class="string">"forceRegenerate"</span>: <span class="literal">false</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+  <span class="string">"deployment"</span>: &#123;
+    <span class="string">"docker"</span>: &#123;
+      <span class="string">"edgeRuntimeImage"</span>: <span class="string">"[[enter ACR URI]]/azureiotedge-agent:1.0-preview"</span>, 
+      <span class="string">"loggingOptions"</span>: &#123;
+        <span class="string">"log-driver"</span>: <span class="string">"json-file"</span>, 
+        <span class="string">"log-opts"</span>: &#123;
+          <span class="string">"max-size"</span>: <span class="string">"10m"</span>
+        &#125;
+      &#125;, 
+      <span class="string">"registries"</span>: [
+        &#123;
+          <span class="string">"address"</span>: <span class="string">"[[enter ACR URI]]"</span>, 
+          <span class="string">"password"</span>: <span class="string">"[[enter ACR password]]"</span>, 
+          <span class="string">"username"</span>: <span class="string">"[[enter ACR username]]"</span>
+        &#125;
+      ], 
+      <span class="string">"uri"</span>: <span class="string">"unix:///var/run/docker.sock"</span>
+    &#125;, 
+    <span class="string">"type"</span>: <span class="string">"docker"</span>
+  &#125;, 
+  <span class="string">"deviceConnectionString"</span>: <span class="string">"[[enter device connection string]]"</span>, 
+  <span class="string">"homeDir"</span>: <span class="string">"C:\\ProgramData\\azure-iot-edge"</span>, 
+  <span class="string">"hostName"</span>: <span class="string">"[[enter hostname]]"</span>, 
+  <span class="string">"logLevel"</span>: <span class="string">"info"</span>, 
+  <span class="string">"schemaVersion"</span>: <span class="string">"1"</span>, 
+  <span class="string">"security"</span>: &#123;
+    <span class="string">"certificates"</span>: &#123;
+      <span class="string">"option"</span>: <span class="string">"selfSigned"</span>, 
+      <span class="string">"preInstalled"</span>: &#123;
+        <span class="string">"deviceCACertificateFilePath"</span>: <span class="string">""</span>, 
+        <span class="string">"serverCertificateFilePath"</span>: <span class="string">""</span>
+      &#125;, 
+      <span class="string">"selfSigned"</span>: &#123;
+        <span class="string">"forceNoPasswords"</span>: <span class="literal">true</span>, 
+        <span class="string">"forceRegenerate"</span>: <span class="literal">false</span>
+      &#125;
+    &#125;
+  &#125;
+&#125;
         </div>
         <footer>
         </footer>

@@ -232,7 +232,9 @@ I’ve had auto and home insurance with Pemco since 2003, but just switched to S
         <p class="article-excerpt">
             
 Developing a Vue.js app and I was getting this:
-Uncaught TypeError: Cannot set property 'render' of undefined    at normalizeComponent (componentNormalizer.js:24)    at Module../src/App.vue (App.vue?
+Uncaught TypeError: Cannot set property 'render' of undefined
+    at normalizeComponent (componentNormalizer.js:24)
+    at Module../src/App.vue (App.vu
         </p>
     </div>
 </article>
@@ -263,10 +265,12 @@ Uncaught TypeError: Cannot set property 'render' of undefined    at normalizeCom
 
         <p class="article-excerpt">
             With this code:
-@Componentexport default class CategoryRating extends Vue &#123;  @Prop(&#123;default: &#123;&#125;&#125;) category: any;
+@Component
+export default class CategoryRating extends Vue &#123;
+  @Prop(&#123;default: &#123;&#125;&#125;) category: any;
 I kept getting this VS Code error:
 
-Experimental support for d
+Experimental support for
         </p>
     </div>
 </article>

@@ -221,7 +221,11 @@
 <p>This isn’t an exact measurement of all services as it just a read test from blog storage.</p>
 </blockquote>
 <p>Here’s the code that is used to ping the blob.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"> $.ajax(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">"https://"</span> + x + <span class="string">".blob.core.windows.net/cb.json"</span>,</div><div class="line">    <span class="attr">dataType</span>: <span class="string">"jsonp"</span>,</div><div class="line">    <span class="attr">cache</span>: <span class="literal">false</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+ $.ajax(&#123;
+    <span class="attr">url</span>: <span class="string">"https://"</span> + x + <span class="string">".blob.core.windows.net/cb.json"</span>,
+    <span class="attr">dataType</span>: <span class="string">"jsonp"</span>,
+    <span class="attr">cache</span>: <span class="literal">false</span>
+&#125;);
 <p><a href="https://github.com/two10degrees/AzureSpeedTest/blob/master/index.html" target="_blank" rel="external">Source</a></p>
 <p>You can for their repo here: <a href="https://github.com/two10degrees/AzureSpeedTest" target="_blank" rel="external">two10degress / AzureSpeedTest</a></p>
 <p>Jon</p>

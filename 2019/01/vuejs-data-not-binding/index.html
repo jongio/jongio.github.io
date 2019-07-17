@@ -203,12 +203,64 @@ For example, with this code, I define data: { vm: {} }, but don’t">
         <div class="article-entry" itemprop="articleBody">
             <p>I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.</p>
 <p>For example, with this code, I define <code>data: { vm: {} }</code>, but don’t have the <code>items</code> property and then later set the <code>items</code> property in the <code>mounted</code> function.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">            <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">vm</span>: &#123;&#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>.vm.items = [&#123;</div><div class="line">                    <span class="string">"key"</span>: <span class="string">"key1"</span></div><div class="line">                &#125;];</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">html</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
+        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;
+            <span class="attr">el</span>: <span class="string">'#app'</span>,
+            <span class="attr">data</span>: &#123;
+                <span class="attr">vm</span>: &#123;&#125;
+            &#125;,
+            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
+                <span class="keyword">this</span>.vm.items = [&#123;
+                    <span class="string">"key"</span>: <span class="string">"key1"</span>
+                &#125;];
+            &#125;
+        &#125;);
+    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
 <p><img src="000044.png" alt="'Without items rendered'"><br>
 You can see that the items are not rendered, but they do appear in the Vue data model.</p>
 <p>It took me a while to figure this out, but when you define “data”, you have to specify the entire schema of the object. It will not work with dynamic objects - at least not to my current knowledge. LMK if there’s a way.</p>
 <p>So, I updated my code, like this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line">            <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">vm</span>: &#123;</div><div class="line">                    <span class="attr">items</span>: []</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>.vm.items = [&#123;</div><div class="line">                    <span class="string">"key"</span>: <span class="string">"key1"</span></div><div class="line">                &#125;];</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">html</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
+        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;
+            <span class="attr">el</span>: <span class="string">'#app'</span>,
+            <span class="attr">data</span>: &#123;
+                <span class="attr">vm</span>: &#123;
+                    <span class="attr">items</span>: []
+                &#125;
+            &#125;,
+            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
+                <span class="keyword">this</span>.vm.items = [&#123;
+                    <span class="string">"key"</span>: <span class="string">"key1"</span>
+                &#125;];
+            &#125;
+        &#125;);
+    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
 <p><img src="000045.png" alt="'With items rendered'"></p>
 <p>And, as you can see the “items” property is now bound and rendered.</p>
 <p>I burned a at least an hour on this today. I hope I save that time for you with this post.</p>

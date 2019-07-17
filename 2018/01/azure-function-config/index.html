@@ -199,7 +199,10 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>You may have noticed that ConfigurationManager is not available in Azure Functions v2 .NET Standard projects.  It’s no longer supported. AF v2 now uses <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/" target="_blank" rel="external">ASPNET Core Configuration</a>.  If you add the System.Configuration.ConfigurationManager NuGet package and try to use it you will see the following error:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[1/7/2018 1:50:51 PM] System.Private.CoreLib: Exception <span class="keyword">while</span> executing <span class="keyword">function</span>: Function1. </div><div class="line">System.Configuration.ConfigurationManager: Configuration system failed to initialize. </div><div class="line">System.Configuration.ConfigurationManager: Unrecognized configuration section system.serviceModel.</div><div class="line">(C:\Users\jon\AppData\Local\Azure.Functions.V2.Cli\2.0.1-beta\Azure.Functions.Cli.dll.config line 204).</div></pre></td></tr></table></figure>
+[1/7/2018 1:50:51 PM] System.Private.CoreLib: Exception <span class="keyword">while</span> executing <span class="keyword">function</span>: Function1. 
+System.Configuration.ConfigurationManager: Configuration system failed to initialize. 
+System.Configuration.ConfigurationManager: Unrecognized configuration section system.serviceModel.
+(C:\Users\jon\AppData\Local\Azure.Functions.V2.Cli\2.0.1-beta\Azure.Functions.Cli.dll.config line 204).
 <p><img src="07.png" alt=""><br>
 <img src="08.png" alt=""></p>
 <p>If you remove <code>system.serviceModel</code> from <code>Azure.Function.Cli.dll.config</code> you will see a generic <code>Object reference not set to an instance of an object</code> error.</p>
@@ -215,30 +218,43 @@
 </li>
 <li>
 <p>Make sure you include “ConnectionStrings” in your local.settings.json file</p>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"IsEncrypted"</span>: <span class="literal">false</span>,</div><div class="line">    <span class="string">"Values"</span>: &#123;</div><div class="line">        <span class="string">"AzureWebJobsStorage"</span>: <span class="string">"UseDevelopmentStorage=true"</span>,</div><div class="line">        <span class="string">"AzureWebJobsDashboard"</span>: <span class="string">"UseDevelopmentStorage=true"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">"ConnectionStrings"</span>: &#123;</div><div class="line">        <span class="string">"SqlConnectionString"</span>: <span class="string">"server=jongdb;user=jong;"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ &#123;
+    <span class="string">"IsEncrypted"</span>: <span class="literal">false</span>,
+    <span class="string">"Values"</span>: &#123;
+        <span class="string">"AzureWebJobsStorage"</span>: <span class="string">"UseDevelopmentStorage=true"</span>,
+        <span class="string">"AzureWebJobsDashboard"</span>: <span class="string">"UseDevelopmentStorage=true"</span>
+    &#125;,
+    <span class="string">"ConnectionStrings"</span>: &#123;
+        <span class="string">"SqlConnectionString"</span>: <span class="string">"server=jongdb;user=jong;"</span>
+    &#125;
+&#125;
 </li>
 <li>
 <p>Include the following using statement:</p>
- <figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> Microsoft.Extensions.Configuration;</div></pre></td></tr></table></figure>
+ <span class="keyword">using</span> Microsoft.Extensions.Configuration;
 </li>
 <li>
 <p>Add a 3rd parameter to your Run method of type ExecutionContext</p>
- <figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;HttpResponseMessage&gt; <span class="title">Run</span>(<span class="params">InputMessage req, TraceWriter log, ExecutionContext context</span>)</span></div></pre></td></tr></table></figure>
+ <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;HttpResponseMessage&gt; <span class="title">Run</span>(<span class="params">InputMessage req, TraceWriter log, ExecutionContext context</span>)</span>
 </li>
 <li>
 <p>Init a new <code>ConfigurationBuilder</code> class</p>
- <figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> config = <span class="keyword">new</span> ConfigurationBuilder()</div><div class="line">    .SetBasePath(context.FunctionAppDirectory)</div><div class="line">    .AddJsonFile(<span class="string">"local.settings.json"</span>, optional: <span class="literal">true</span>, reloadOnChange: <span class="literal">true</span>)</div><div class="line">    .AddEnvironmentVariables()</div><div class="line">    .Build();</div></pre></td></tr></table></figure>
+ <span class="keyword">var</span> config = <span class="keyword">new</span> ConfigurationBuilder()
+    .SetBasePath(context.FunctionAppDirectory)
+    .AddJsonFile(<span class="string">"local.settings.json"</span>, optional: <span class="literal">true</span>, reloadOnChange: <span class="literal">true</span>)
+    .AddEnvironmentVariables()
+    .Build();
 <blockquote>
 <p>FunctionAppDirectory sets the directory to find your local.settings.json file. Set <code>optional</code> to true because we won’t have the file when we deploy. AddEnvironmentVariables will pick up both App Settings and Connection Strings from Azure settings.</p>
 </blockquote>
 </li>
 <li>
 <p>Access Connection Strings:</p>
- <figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> cstr = config.GetConnectionString(<span class="string">"SqlConnectionString"</span>);</div></pre></td></tr></table></figure>
+ <span class="keyword">var</span> cstr = config.GetConnectionString(<span class="string">"SqlConnectionString"</span>);
 </li>
 <li>
 <p>Access AppSettings</p>
- <figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> setting1 = config[<span class="string">"Setting1"</span>];</div></pre></td></tr></table></figure>
+ <span class="keyword">var</span> setting1 = config[<span class="string">"Setting1"</span>];
 <blockquote>
 <p>The Configuration framework will convert your “Values” settings in local.settings.json to AppSettings and you can include by just the name without prefixing with “Values:”</p>
 </blockquote>

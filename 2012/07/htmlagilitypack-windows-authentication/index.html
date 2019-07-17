@@ -201,7 +201,14 @@ The trick is to set UseDefaultCredentials on the W">
         <div class="article-entry" itemprop="articleBody">
             <p>It wasn’t obvious to me how to load an Html doc that requires Windows Authentication. Here’s a quick code snippet that hopefully saves you some time.</p>
 <p>The trick is to set UseDefaultCredentials on the WebProxy object that is passed to the Load method.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> web = <span class="keyword">new</span> HtmlWeb();</div><div class="line">web.PreRequest = <span class="keyword">delegate</span>(HttpWebRequest webRequest)</div><div class="line">&#123;</div><div class="line">    webRequest.Timeout = <span class="number">1200000</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> WebProxy() &#123; UseDefaultCredentials = <span class="literal">true</span> &#125;;</div><div class="line"><span class="keyword">var</span> doc = web.Load(<span class="string">"http://[windowsauthurl]"</span>, <span class="string">"GET"</span>, proxy, CredentialCache.DefaultNetworkCredentials);</div></pre></td></tr></table></figure>
+<span class="keyword">var</span> web = <span class="keyword">new</span> HtmlWeb();
+web.PreRequest = <span class="keyword">delegate</span>(HttpWebRequest webRequest)
+&#123;
+    webRequest.Timeout = <span class="number">1200000</span>;
+    <span class="keyword">return</span> <span class="literal">true</span>;
+&#125;;
+<span class="keyword">var</span> proxy = <span class="keyword">new</span> WebProxy() &#123; UseDefaultCredentials = <span class="literal">true</span> &#125;;
+<span class="keyword">var</span> doc = web.Load(<span class="string">"http://[windowsauthurl]"</span>, <span class="string">"GET"</span>, proxy, CredentialCache.DefaultNetworkCredentials);
         </div>
         <footer>
         </footer>

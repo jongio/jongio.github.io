@@ -234,9 +234,24 @@
 <p>I went into the FTP of the site and found the log file &quot;Logging-errors.txt</p>
 <p><img src="/images/blog/Node.js-Express_D498/image_15.png" alt=""></p>
 <p>Which had this error:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Wed Aug 13 2014 22:35:53 GMT+0000 (Coordinated Universal Time): Unaught exception: Error: Cannot find module &apos;debug&apos;</div><div class="line">     at Function.Module._resolveFilename (module.js:338:15)</div><div class="line">     at Function.Module._load (module.js:280:25)</div><div class="line">     at Module.require (module.js:364:17)</div><div class="line">     at require (module.js:380:17)</div><div class="line">     at Object.&lt;anonymous&gt; (D:\home\site\wwwroot\node_modules\stylus\lib\visitor\evaluator.js:21:13)</div><div class="line">     at Module._compile (module.js:456:26)</div><div class="line">     at Object.Module._extensions..js (module.js:474:10)</div><div class="line">     at Module.load (module.js:356:32)</div><div class="line">     at Function.Module._load (module.js:312:12)</div><div class="line">     at Module.require (module.js:364:17)</div></pre></td></tr></table></figure>
+Wed Aug 13 2014 22:35:53 GMT+0000 (Coordinated Universal Time): Unaught exception: Error: Cannot find module &apos;debug&apos;
+     at Function.Module._resolveFilename (module.js:338:15)
+     at Function.Module._load (module.js:280:25)
+     at Module.require (module.js:364:17)
+     at require (module.js:380:17)
+     at Object.&lt;anonymous&gt; (D:\home\site\wwwroot\node_modules\stylus\lib\visitor\evaluator.js:21:13)
+     at Module._compile (module.js:456:26)
+     at Object.Module._extensions..js (module.js:474:10)
+     at Module.load (module.js:356:32)
+     at Function.Module._load (module.js:312:12)
+     at Module.require (module.js:364:17)
 <p>which means that npm didn’t install the “debug” module which is a dependency of “stylus”. I think the problem is related to this: <a href="http://stackoverflow.com/questions/18401606/npm-doesnt-install-module-dependencies" title="http://stackoverflow.com/questions/18401606/npm-doesnt-install-module-dependencies" target="_blank" rel="external">http://stackoverflow.com/questions/18401606/npm-doesnt-install-module-dependencies</a>. So, I added “debug” to my package.json file.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&quot;dependencies&quot;: &#123;</div><div class="line">     &quot;express&quot;: &quot;3.4.4&quot;,</div><div class="line">     &quot;jade&quot;: &quot;&quot;,</div><div class="line">     &quot;stylus&quot;: &quot;&quot;,</div><div class="line">     &quot;debug&quot;:  &quot;*&quot;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+&quot;dependencies&quot;: &#123;
+     &quot;express&quot;: &quot;3.4.4&quot;,
+     &quot;jade&quot;: &quot;&quot;,
+     &quot;stylus&quot;: &quot;&quot;,
+     &quot;debug&quot;:  &quot;*&quot;
+   &#125;
 <p>Committed those changes and sync’d.</p>
 <p><img src="/images/blog/Node.js-Express_D498/image_16.png" alt=""></p>
 <p>And now the site works</p>

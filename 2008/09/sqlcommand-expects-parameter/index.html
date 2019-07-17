@@ -206,9 +206,51 @@ I was 10">
 <em>Test method x threw exception: System.Data.SqlClient.SqlException: Procedure or function ‘sp_get_x’ expects parameter ‘@x’, which was not supplied…</em><br>
 I was 100% certain that the parameter was there, so I ran a SQL profile and noticed it was treating the cmd as plain text.<br>
 Turns out that I forgot to set the CommandType property to StoredProcedure.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">List profileContacts = <span class="literal">null</span>;</div><div class="line"><span class="keyword">using</span> (SqlConnection conn = <span class="keyword">new</span> SqlConnection(ConfigurationManager.ConnectionStrings[<span class="string">"ConnectionString"</span>].ConnectionString))</div><div class="line"><span class="keyword">using</span> (SqlCommand cmd = <span class="keyword">new</span> SqlCommand(<span class="string">"sp_get_x"</span>, conn))</div><div class="line"><span class="keyword">using</span> (DataSet ds = <span class="keyword">new</span> DataSet())</div><div class="line"><span class="keyword">using</span> (SqlDataAdapter adapter = <span class="keyword">new</span> SqlDataAdapter(cmd))</div><div class="line">&#123;</div><div class="line">    <span class="comment">//cmd.CommandType = CommandType.StoredProcedure;</span></div><div class="line">    cmd.Parameters.AddWithValue(<span class="string">"@x"</span>, profiles.ToXml());</div><div class="line"></div><div class="line">    adapter.Fill(ds);</div><div class="line">    <span class="keyword">if</span> (ds != <span class="literal">null</span> &amp;&amp; ds.Tables.Count &gt; <span class="number">0</span> &amp;&amp; ds.Tables[<span class="number">0</span>].Rows.Count &gt; <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (DataRow dr <span class="keyword">in</span> ds.Tables[<span class="number">0</span>].Rows)</div><div class="line">        &#123;</div><div class="line">            ProfileContactSlim profileContact = <span class="keyword">new</span> ProfileContactSlim();</div><div class="line">            profileContact.Load(dr);</div><div class="line">            profileContacts.Add(profileContact);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> profileContacts;</div></pre></td></tr></table></figure>
+List profileContacts = <span class="literal">null</span>;
+<span class="keyword">using</span> (SqlConnection conn = <span class="keyword">new</span> SqlConnection(ConfigurationManager.ConnectionStrings[<span class="string">"ConnectionString"</span>].ConnectionString))
+<span class="keyword">using</span> (SqlCommand cmd = <span class="keyword">new</span> SqlCommand(<span class="string">"sp_get_x"</span>, conn))
+<span class="keyword">using</span> (DataSet ds = <span class="keyword">new</span> DataSet())
+<span class="keyword">using</span> (SqlDataAdapter adapter = <span class="keyword">new</span> SqlDataAdapter(cmd))
+&#123;
+    <span class="comment">//cmd.CommandType = CommandType.StoredProcedure;</span>
+    cmd.Parameters.AddWithValue(<span class="string">"@x"</span>, profiles.ToXml());
+
+    adapter.Fill(ds);
+    <span class="keyword">if</span> (ds != <span class="literal">null</span> &amp;&amp; ds.Tables.Count &gt; <span class="number">0</span> &amp;&amp; ds.Tables[<span class="number">0</span>].Rows.Count &gt; <span class="number">0</span>)
+    &#123;
+        <span class="keyword">foreach</span> (DataRow dr <span class="keyword">in</span> ds.Tables[<span class="number">0</span>].Rows)
+        &#123;
+            ProfileContactSlim profileContact = <span class="keyword">new</span> ProfileContactSlim();
+            profileContact.Load(dr);
+            profileContacts.Add(profileContact);
+        &#125;
+    &#125;
+&#125;
+
+<span class="keyword">return</span> profileContacts;
 <p>Should be…</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">List profileContacts = <span class="literal">null</span>;</div><div class="line"><span class="keyword">using</span> (SqlConnection conn = <span class="keyword">new</span> SqlConnection(ConfigurationManager.ConnectionStrings[<span class="string">"ConnectionString"</span>].ConnectionString))</div><div class="line"><span class="keyword">using</span> (SqlCommand cmd = <span class="keyword">new</span> SqlCommand(<span class="string">"sp_get_x"</span>, conn))</div><div class="line"><span class="keyword">using</span> (DataSet ds = <span class="keyword">new</span> DataSet())</div><div class="line"><span class="keyword">using</span> (SqlDataAdapter adapter = <span class="keyword">new</span> SqlDataAdapter(cmd))</div><div class="line">&#123;</div><div class="line">    cmd.CommandType = CommandType.StoredProcedure;</div><div class="line">    cmd.Parameters.AddWithValue(<span class="string">"@x"</span>, profiles.ToXml());</div><div class="line"></div><div class="line">    adapter.Fill(ds);</div><div class="line">    <span class="keyword">if</span> (ds != <span class="literal">null</span> &amp;&amp; ds.Tables.Count &gt; <span class="number">0</span> &amp;&amp; ds.Tables[<span class="number">0</span>].Rows.Count &gt; <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">foreach</span> (DataRow dr <span class="keyword">in</span> ds.Tables[<span class="number">0</span>].Rows)</div><div class="line">        &#123;</div><div class="line">            ProfileContactSlim profileContact = <span class="keyword">new</span> ProfileContactSlim();</div><div class="line">            profileContact.Load(dr);</div><div class="line">            profileContacts.Add(profileContact);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">return</span> profileContacts;</div></pre></td></tr></table></figure>
+List profileContacts = <span class="literal">null</span>;
+<span class="keyword">using</span> (SqlConnection conn = <span class="keyword">new</span> SqlConnection(ConfigurationManager.ConnectionStrings[<span class="string">"ConnectionString"</span>].ConnectionString))
+<span class="keyword">using</span> (SqlCommand cmd = <span class="keyword">new</span> SqlCommand(<span class="string">"sp_get_x"</span>, conn))
+<span class="keyword">using</span> (DataSet ds = <span class="keyword">new</span> DataSet())
+<span class="keyword">using</span> (SqlDataAdapter adapter = <span class="keyword">new</span> SqlDataAdapter(cmd))
+&#123;
+    cmd.CommandType = CommandType.StoredProcedure;
+    cmd.Parameters.AddWithValue(<span class="string">"@x"</span>, profiles.ToXml());
+
+    adapter.Fill(ds);
+    <span class="keyword">if</span> (ds != <span class="literal">null</span> &amp;&amp; ds.Tables.Count &gt; <span class="number">0</span> &amp;&amp; ds.Tables[<span class="number">0</span>].Rows.Count &gt; <span class="number">0</span>)
+    &#123;
+        <span class="keyword">foreach</span> (DataRow dr <span class="keyword">in</span> ds.Tables[<span class="number">0</span>].Rows)
+        &#123;
+            ProfileContactSlim profileContact = <span class="keyword">new</span> ProfileContactSlim();
+            profileContact.Load(dr);
+            profileContacts.Add(profileContact);
+        &#125;
+    &#125;
+&#125;
+
+<span class="keyword">return</span> profileContacts;
 <p>Jon</p>
 
         </div>

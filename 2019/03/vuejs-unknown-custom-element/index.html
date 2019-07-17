@@ -202,13 +202,26 @@ Unknown custom element: &amp;lt;Categories&amp;gt; - did you register the compon
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m building a recursive Vue.js component and ran into this error:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">Unknown custom element: <span class="xml"><span class="tag">&lt;<span class="name">Categories</span>&gt;</span> - did you register the component correctly? For recursive components, make sure to provide the "name" option.</span></div></pre></td></tr></table></figure>
+Unknown custom element: <span class="xml"><span class="tag">&lt;<span class="name">Categories</span>&gt;</span> - did you register the component correctly? For recursive components, make sure to provide the "name" option.</span>
 <p><img src="000063.png" alt=""></p>
 <p>My @Component registration looked like this:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">  <span class="attr">components</span>: &#123;</div><div class="line">    RatingBar,</div><div class="line">    Items,</div><div class="line">    Categories</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+@Component(&#123;
+  <span class="attr">components</span>: &#123;
+    RatingBar,
+    Items,
+    Categories
+  &#125;
+&#125;)
 <p>The solution is super-simple, but non-obvious.</p>
 <p>You just need to add a name property like so:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Categories'</span>,</div><div class="line">  <span class="attr">components</span>: &#123;</div><div class="line">    RatingBar,</div><div class="line">    Items,</div><div class="line">    Categories</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+@Component(&#123;
+  <span class="attr">name</span>: <span class="string">'Categories'</span>,
+  <span class="attr">components</span>: &#123;
+    RatingBar,
+    Items,
+    Categories
+  &#125;
+&#125;)
 <p>And the problem is solved.</p>
 <p>Hope this helps.</p>
 <p>Jon</p>

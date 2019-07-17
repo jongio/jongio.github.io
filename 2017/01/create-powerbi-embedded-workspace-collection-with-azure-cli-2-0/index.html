@@ -209,7 +209,7 @@
 <img src="1.png" alt=""></p>
 <h2 id="2-install-azure-cli"><a class="header-anchor" href="#2-install-azure-cli"></a>2. Install Azure CLI</h2>
 <p>1. Open a command prompt and execute the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pip install --user azure-cli</div></pre></td></tr></table></figure>
+pip install --user azure-cli
 <p>You will see this when it is finished:<br>
 <img src="000018.png" alt=""></p>
 <h2 id="3-add-python-scripts-to-path"><a class="header-anchor" href="#3-add-python-scripts-to-path"></a>3. Add Python Scripts to PATH</h2>
@@ -218,12 +218,12 @@
 <img src="000023.png" alt=""></p>
 <h2 id="4-test-az"><a class="header-anchor" href="#4-test-az"></a>4. Test az</h2>
 <p>1. Close all your command prompts, open a new one and run the following:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">az</div></pre></td></tr></table></figure>
+az
 <p>You will see the following output:<br>
 <img src="000022.png" alt=""></p>
 <h2 id="5-login-to-azure"><a class="header-anchor" href="#5-login-to-azure"></a>5. Login to Azure</h2>
 <p>1. Run the following command to login:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">az login</div></pre></td></tr></table></figure>
+az login
 <p>You will see a message like the following:</p>
 <blockquote>
 <p>To sign in, use a web browser to open the page <a href="https://aka.ms/devicelogin" target="_blank" rel="external">https://aka.ms/devicelogin</a> and enter the code BVVHR4DRF to authenticate.</p>
@@ -235,16 +235,16 @@
 <blockquote>
 <p>Replace {subscription id} with your Azure subscription id</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">az account set --subscription &#123;subscription id&#125;</div></pre></td></tr></table></figure>
+az account set --subscription &#123;subscription id&#125;
 <p>2. Run the following command to test if the current subscription is correct:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">az account show</div></pre></td></tr></table></figure>
+az account show
 <h2 id="7-create-an-azure-resource-group"><a class="header-anchor" href="#7-create-an-azure-resource-group"></a>7. Create an Azure Resource Group</h2>
 <p>You can either create a new one or use an existing one. If you want to use an existing one skip to the next step.</p>
 <p>1. To create a new Resource Group, execute the following command.</p>
 <blockquote>
 <p>Replace ‘westus’ with your desired location and replace ‘jong-rg1’ with your desired Resource Group name.</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">az group create -l westus -n jong-rg1</div></pre></td></tr></table></figure>
+az group create -l westus -n jong-rg1
 <h2 id="8-deploy-power-bi-workspace-collection-to-azure-resource-group"><a class="header-anchor" href="#8-deploy-power-bi-workspace-collection-to-azure-resource-group"></a>8. Deploy Power BI Workspace Collection to Azure Resource Group</h2>
 <p>Now we want to deploy a new instance of a Power BI Workspace Collection to the Resource group we just created.</p>
 <blockquote>
@@ -255,14 +255,64 @@ Replace westus with your desired location.</p>
 </blockquote>
 <h3 id="option-1-use-this-command-line-script"><a class="header-anchor" href="#option-1-use-this-command-line-script"></a>Option 1: Use this Command Line Script</h3>
 <p>Download this <a href="https://gist.githubusercontent.com/jongio/3ed1f08272f374f8ff41f3e8d95042b8/raw/200e5c73ecaec4b1443003c7949a3def8c71505c/pbie.cmd" target="_blank" rel="external">pbie.cmd</a> file I created and run this command. It’s just a wrapper around option 2 below.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pbie jong-rg1 jongpbie-1 westus</div></pre></td></tr></table></figure>
+pbie jong-rg1 jongpbie-1 westus
 <h3 id="option-2-execute-the-command-directly"><a class="header-anchor" href="#option-2-execute-the-command-directly"></a>Option 2: Execute the Command Directly</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">az group deployment create -g jong-rg1 --template-uri https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json --parameters &quot;&#123;\&quot;name\&quot;: &#123;\&quot;value\&quot;: \&quot;jongpbie-test2\&quot;&#125;, \&quot;location\&quot;: &#123;\&quot;value\&quot;: \&quot;westus\&quot;&#125;&#125;&quot; --debug</div></pre></td></tr></table></figure>
+az group deployment create -g jong-rg1 --template-uri https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json --parameters &quot;&#123;\&quot;name\&quot;: &#123;\&quot;value\&quot;: \&quot;jongpbie-test2\&quot;&#125;, \&quot;location\&quot;: &#123;\&quot;value\&quot;: \&quot;westus\&quot;&#125;&#125;&quot; --debug
 <p>You will see the following output - which means your Power BI Embedded Workspace Collection has been created.</p>
 <blockquote>
 <p>See my <a href="/2017/01/powerbi-embedded-javascript-api-range-slider-filter/">How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API</a> blog post for instructions on how to create Power BI Workspaces within this Workspace Collection.</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Long running operation &apos;Starting group deployment create&apos; completed with result &#123;&apos;properties&apos;: &lt;azure.mgmt.resource.resources.models.deployment_properties_extended.DeploymentPropertiesExtended object at 0x05C6A370&gt;, &apos;id&apos;: u&apos;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&apos;, &apos;name&apos;: u&apos;pbiearm&apos;&#125;</div><div class="line">Application event &apos;Application.TransformResults&apos; with event data &#123;&apos;event_data&apos;: &#123;&apos;result&apos;: &#123;&apos;properties&apos;: &#123;&apos;template&apos;: None, &apos;parameters&apos;: &#123;&apos;name&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;jong-pbie1&apos;&#125;, &apos;location&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;westus&apos;&#125;&#125;, &apos;providers&apos;: [&#123;&apos;resourceTypes&apos;: [&#123;&apos;resourceType&apos;: u&apos;workspaceCollections&apos;, &apos;aliases&apos;: None, &apos;apiVersions&apos;: None, &apos;properties&apos;: None, &apos;locations&apos;: [u&apos;westus&apos;]&#125;], &apos;namespace&apos;: u&apos;Microsoft.PowerBI&apos;, &apos;id&apos;: None, &apos;registrationState&apos;: None&#125;], &apos;timestamp&apos;: &apos;2017-01-09T23:01:39.766163+00:00&apos;, &apos;templateLink&apos;: &#123;&apos;contentVersion&apos;: u&apos;1.0.0.0&apos;, &apos;uri&apos;: u&apos;https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json&apos;&#125;, &apos;parametersLink&apos;: None, &apos;debugSetting&apos;: None, &apos;mode&apos;: &apos;Incremental&apos;, &apos;dependencies&apos;: [], &apos;outputs&apos;: None, &apos;correlationId&apos;: u&apos;ebd106fa-d8e8-405a-9ae0-a8d203269575&apos;, &apos;provisioningState&apos;: u&apos;Succeeded&apos;&#125;, &apos;name&apos;: u&apos;pbiearm&apos;, &apos;id&apos;: u&apos;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&apos;&#125;&#125;&#125;</div><div class="line">Application event &apos;Application.FilterResults&apos; with event data &#123;&apos;event_data&apos;: &#123;&apos;result&apos;: &#123;&apos;resourceGroup&apos;: u&apos;jong-rg1&apos;, &apos;properties&apos;: &#123;&apos;template&apos;: None, &apos;parameters&apos;: &#123;&apos;name&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;jong-pbie1&apos;&#125;, &apos;location&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;westus&apos;&#125;&#125;, &apos;providers&apos;: [&#123;&apos;resourceTypes&apos;: [&#123;&apos;resourceType&apos;: u&apos;workspaceCollections&apos;, &apos;aliases&apos;: None, &apos;apiVersions&apos;: None, &apos;properties&apos;: None, &apos;locations&apos;: [u&apos;westus&apos;]&#125;], &apos;namespace&apos;: u&apos;Microsoft.PowerBI&apos;, &apos;id&apos;: None, &apos;registrationState&apos;: None&#125;], &apos;timestamp&apos;: &apos;2017-01-09T23:01:39.766163+00:00&apos;, &apos;templateLink&apos;: &#123;&apos;contentVersion&apos;: u&apos;1.0.0.0&apos;, &apos;uri&apos;: u&apos;https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json&apos;&#125;, &apos;parametersLink&apos;: None, &apos;debugSetting&apos;: None, &apos;mode&apos;: &apos;Incremental&apos;, &apos;dependencies&apos;: [], &apos;outputs&apos;: None, &apos;correlationId&apos;: u&apos;ebd106fa-d8e8-405a-9ae0-a8d203269575&apos;, &apos;provisioningState&apos;: u&apos;Succeeded&apos;&#125;, &apos;name&apos;: u&apos;pbiearm&apos;, &apos;id&apos;: u&apos;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&apos;&#125;&#125;&#125;</div><div class="line">&#123;</div><div class="line">  &quot;id&quot;: &quot;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&quot;,</div><div class="line">  &quot;name&quot;: &quot;pbiearm&quot;,</div><div class="line">  &quot;properties&quot;: &#123;</div><div class="line">    &quot;correlationId&quot;: &quot;ebd106fa-d8e8-405a-9ae0-a8d203269575&quot;,</div><div class="line">    &quot;debugSetting&quot;: null,</div><div class="line">    &quot;dependencies&quot;: [],</div><div class="line">    &quot;mode&quot;: &quot;Incremental&quot;,</div><div class="line">    &quot;outputs&quot;: null,</div><div class="line">    &quot;parameters&quot;: &#123;</div><div class="line">      &quot;location&quot;: &#123;</div><div class="line">        &quot;type&quot;: &quot;String&quot;,</div><div class="line">        &quot;value&quot;: &quot;westus&quot;</div><div class="line">      &#125;,</div><div class="line">      &quot;name&quot;: &#123;</div><div class="line">        &quot;type&quot;: &quot;String&quot;,</div><div class="line">        &quot;value&quot;: &quot;jong-pbie1&quot;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    &quot;parametersLink&quot;: null,</div><div class="line">    &quot;providers&quot;: [</div><div class="line">      &#123;</div><div class="line">        &quot;id&quot;: null,</div><div class="line">        &quot;namespace&quot;: &quot;Microsoft.PowerBI&quot;,</div><div class="line">        &quot;registrationState&quot;: null,</div><div class="line">        &quot;resourceTypes&quot;: [</div><div class="line">          &#123;</div><div class="line">            &quot;aliases&quot;: null,</div><div class="line">            &quot;apiVersions&quot;: null,</div><div class="line">            &quot;locations&quot;: [</div><div class="line">              &quot;westus&quot;</div><div class="line">            ],</div><div class="line">            &quot;properties&quot;: null,</div><div class="line">            &quot;resourceType&quot;: &quot;workspaceCollections&quot;</div><div class="line">          &#125;</div><div class="line">        ]</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">    &quot;provisioningState&quot;: &quot;Succeeded&quot;,</div><div class="line">    &quot;template&quot;: null,</div><div class="line">    &quot;templateLink&quot;: &#123;</div><div class="line">      &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,</div><div class="line">      &quot;uri&quot;: &quot;https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json&quot;</div><div class="line">    &#125;,</div><div class="line">    &quot;timestamp&quot;: &quot;2017-01-09T23:01:39.766163+00:00&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;resourceGroup&quot;: &quot;jong-rg1&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+Long running operation &apos;Starting group deployment create&apos; completed with result &#123;&apos;properties&apos;: &lt;azure.mgmt.resource.resources.models.deployment_properties_extended.DeploymentPropertiesExtended object at 0x05C6A370&gt;, &apos;id&apos;: u&apos;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&apos;, &apos;name&apos;: u&apos;pbiearm&apos;&#125;
+Application event &apos;Application.TransformResults&apos; with event data &#123;&apos;event_data&apos;: &#123;&apos;result&apos;: &#123;&apos;properties&apos;: &#123;&apos;template&apos;: None, &apos;parameters&apos;: &#123;&apos;name&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;jong-pbie1&apos;&#125;, &apos;location&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;westus&apos;&#125;&#125;, &apos;providers&apos;: [&#123;&apos;resourceTypes&apos;: [&#123;&apos;resourceType&apos;: u&apos;workspaceCollections&apos;, &apos;aliases&apos;: None, &apos;apiVersions&apos;: None, &apos;properties&apos;: None, &apos;locations&apos;: [u&apos;westus&apos;]&#125;], &apos;namespace&apos;: u&apos;Microsoft.PowerBI&apos;, &apos;id&apos;: None, &apos;registrationState&apos;: None&#125;], &apos;timestamp&apos;: &apos;2017-01-09T23:01:39.766163+00:00&apos;, &apos;templateLink&apos;: &#123;&apos;contentVersion&apos;: u&apos;1.0.0.0&apos;, &apos;uri&apos;: u&apos;https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json&apos;&#125;, &apos;parametersLink&apos;: None, &apos;debugSetting&apos;: None, &apos;mode&apos;: &apos;Incremental&apos;, &apos;dependencies&apos;: [], &apos;outputs&apos;: None, &apos;correlationId&apos;: u&apos;ebd106fa-d8e8-405a-9ae0-a8d203269575&apos;, &apos;provisioningState&apos;: u&apos;Succeeded&apos;&#125;, &apos;name&apos;: u&apos;pbiearm&apos;, &apos;id&apos;: u&apos;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&apos;&#125;&#125;&#125;
+Application event &apos;Application.FilterResults&apos; with event data &#123;&apos;event_data&apos;: &#123;&apos;result&apos;: &#123;&apos;resourceGroup&apos;: u&apos;jong-rg1&apos;, &apos;properties&apos;: &#123;&apos;template&apos;: None, &apos;parameters&apos;: &#123;&apos;name&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;jong-pbie1&apos;&#125;, &apos;location&apos;: &#123;&apos;type&apos;: u&apos;String&apos;, &apos;value&apos;: u&apos;westus&apos;&#125;&#125;, &apos;providers&apos;: [&#123;&apos;resourceTypes&apos;: [&#123;&apos;resourceType&apos;: u&apos;workspaceCollections&apos;, &apos;aliases&apos;: None, &apos;apiVersions&apos;: None, &apos;properties&apos;: None, &apos;locations&apos;: [u&apos;westus&apos;]&#125;], &apos;namespace&apos;: u&apos;Microsoft.PowerBI&apos;, &apos;id&apos;: None, &apos;registrationState&apos;: None&#125;], &apos;timestamp&apos;: &apos;2017-01-09T23:01:39.766163+00:00&apos;, &apos;templateLink&apos;: &#123;&apos;contentVersion&apos;: u&apos;1.0.0.0&apos;, &apos;uri&apos;: u&apos;https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json&apos;&#125;, &apos;parametersLink&apos;: None, &apos;debugSetting&apos;: None, &apos;mode&apos;: &apos;Incremental&apos;, &apos;dependencies&apos;: [], &apos;outputs&apos;: None, &apos;correlationId&apos;: u&apos;ebd106fa-d8e8-405a-9ae0-a8d203269575&apos;, &apos;provisioningState&apos;: u&apos;Succeeded&apos;&#125;, &apos;name&apos;: u&apos;pbiearm&apos;, &apos;id&apos;: u&apos;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&apos;&#125;&#125;&#125;
+&#123;
+  &quot;id&quot;: &quot;/subscriptions/[subid]/resourceGroups/jong-rg1/providers/Microsoft.Resources/deployments/pbiearm&quot;,
+  &quot;name&quot;: &quot;pbiearm&quot;,
+  &quot;properties&quot;: &#123;
+    &quot;correlationId&quot;: &quot;ebd106fa-d8e8-405a-9ae0-a8d203269575&quot;,
+    &quot;debugSetting&quot;: null,
+    &quot;dependencies&quot;: [],
+    &quot;mode&quot;: &quot;Incremental&quot;,
+    &quot;outputs&quot;: null,
+    &quot;parameters&quot;: &#123;
+      &quot;location&quot;: &#123;
+        &quot;type&quot;: &quot;String&quot;,
+        &quot;value&quot;: &quot;westus&quot;
+      &#125;,
+      &quot;name&quot;: &#123;
+        &quot;type&quot;: &quot;String&quot;,
+        &quot;value&quot;: &quot;jong-pbie1&quot;
+      &#125;
+    &#125;,
+    &quot;parametersLink&quot;: null,
+    &quot;providers&quot;: [
+      &#123;
+        &quot;id&quot;: null,
+        &quot;namespace&quot;: &quot;Microsoft.PowerBI&quot;,
+        &quot;registrationState&quot;: null,
+        &quot;resourceTypes&quot;: [
+          &#123;
+            &quot;aliases&quot;: null,
+            &quot;apiVersions&quot;: null,
+            &quot;locations&quot;: [
+              &quot;westus&quot;
+            ],
+            &quot;properties&quot;: null,
+            &quot;resourceType&quot;: &quot;workspaceCollections&quot;
+          &#125;
+        ]
+      &#125;
+    ],
+    &quot;provisioningState&quot;: &quot;Succeeded&quot;,
+    &quot;template&quot;: null,
+    &quot;templateLink&quot;: &#123;
+      &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+      &quot;uri&quot;: &quot;https://gist.githubusercontent.com/jongio/b55a0f3e8433a0484a6d07f2c7a724ac/raw/789df146e23c7a9c6e56cbec6335991491510b5a/pbiearm.json&quot;
+    &#125;,
+    &quot;timestamp&quot;: &quot;2017-01-09T23:01:39.766163+00:00&quot;
+  &#125;,
+  &quot;resourceGroup&quot;: &quot;jong-rg1&quot;
+&#125;
 <p><img src="000020.png" alt=""></p>
 <blockquote>
 <p>IMPORTANT: You cannot get the Power BI Embedded Access Keys using this method. I’m working with the CLI team to get that implemented soon. In the mean-time, you have to go to the portal to get the Access Keys.</p>

@@ -220,23 +220,51 @@ By default, Vetur (The VS Code Vue.js Extension) uses Pre">
 <p>So, when open a .vue file in VS Code and Format Document with Vetur, it uses Prettyhtml by default, which violates prettier ES Lint rules.</p>
 <p>For example,</p>
 <p>When you open App.vue, you get this…notice the space after <code>router-view</code> and the space after <code>router-link&gt;</code>…</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span> |</div><div class="line">   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">router-view</span> /&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">template</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"nav"</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span> |
+   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">router-view</span> /&gt;</span>
+ <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">template</span>&gt;</span>
 <p>Then you format the doc and get this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"nav"</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span>|</div><div class="line">   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">template</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"nav"</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span>|
+   <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">template</span>&gt;</span>
 <p>As you can see, those spaces are removed after <code>router-view</code> and <code>/router-link&gt;</code></p>
 <p>This is bad for me. I need the first space for proper formatting and I prefer the whitespace before the self-closing bracket.</p>
 <p>Then when you run <code>yarn serve</code> you get this warning.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">Module Warning (from ./node_modules/eslint-loader/index.js):</div><div class="line">warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:</div><div class="line">  5 |    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line">  6 |   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&gt; 7 |   <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span></div><div class="line">   |         ^</div><div class="line">  8 |  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  9 | <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"> 10 |</div></pre></td></tr></table></figure>
+Module Warning (from ./node_modules/eslint-loader/index.js):
+warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:
+  5 |    <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/about"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span>
+  6 |   <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+&gt; 7 |   <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span>
+   |         ^
+  8 |  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+  9 | <span class="tag">&lt;/<span class="name">template</span>&gt;</span>
+ 10 |
 <p>I searched for many hours and could not find a way to tell Prettyhtml to preserve those spaces. I could tell ES Lint to ignore those rules, but I <em>want</em> those spaces.</p>
 <p>So, I had to abandon Prettyhtml.</p>
 <p>I tried to go with Prettier directly using this VS Code setting:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">"vetur.format.defaultFormatter.html": "prettier"</div></pre></td></tr></table></figure>
+"vetur.format.defaultFormatter.html": "prettier"
 <p>(VS Code will tell you it is not a valid setting, but it actually runs Prettier)</p>
 <p>But Prettier always wraps attributes and there’s no way to tell it to not do that.</p>
 <p>For example, Prettier, will turn this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://cli.vuejs.org"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">rel</span>=<span class="string">"noopener"</span>&gt;</span>vue-cli documentation<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.</div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://cli.vuejs.org"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">rel</span>=<span class="string">"noopener"</span>&gt;</span>vue-cli documentation<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.
 <p>Into this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span></span></div><div class="line">  <span class="attr">href</span>=<span class="string">"https://cli.vuejs.org"</span></div><div class="line">  <span class="attr">target</span>=<span class="string">"_blank"</span></div><div class="line">  <span class="attr">rel</span>=<span class="string">"noopener"</span></div><div class="line">  &gt;vue-cli documentation<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.</div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">a</span>
+  <span class="attr">href</span>=<span class="string">"https://cli.vuejs.org"</span>
+  <span class="attr">target</span>=<span class="string">"_blank"</span>
+  <span class="attr">rel</span>=<span class="string">"noopener"</span>
+  &gt;</span>vue-cli documentation<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.
 <p>Which, to me, is not desirable. I have a huge monitor and don’t want to wrap every single attribute.</p>
 <p>From what I could find, there’s no way to tell Prettier to not wrap.</p>
 <p>So, I had to abandon Prettier as well.</p>
@@ -247,42 +275,113 @@ By default, Vetur (The VS Code Vue.js Extension) uses Pre">
 </ul>
 <p>I decided that I want to continue to use Vetur (The VS Code Extension) and the the only remaining option is <code>js-beautify-html</code> instead of Prettyhtml or Prettier.</p>
 <p>I added this setting:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">"vetur.format.defaultFormatter.html": "js-beautify-html"</div></pre></td></tr></table></figure>
+"vetur.format.defaultFormatter.html": "js-beautify-html"
 <p>Did a format…and whitespace was retained in my .vue files, but attributes were still being wrapped, so I dug and found the <code>wrap_attributes</code> settings and added this:</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"js-beautify-html"</span>,</div><div class="line">  <span class="attr">"vetur.format.defaultFormatterOptions"</span>: &#123;</div><div class="line">    <span class="attr">"js-beautify-html"</span>: &#123;</div><div class="line">     <span class="attr">"wrap_attributes"</span>: <span class="string">"auto"</span></div><div class="line">    &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+  <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"js-beautify-html"</span>,
+  <span class="attr">"vetur.format.defaultFormatterOptions"</span>: &#123;
+    <span class="attr">"js-beautify-html"</span>: &#123;
+     <span class="attr">"wrap_attributes"</span>: <span class="string">"auto"</span>
+    &#125;
+   &#125;
+&#125;
 <p>And that setting disables wrap_attributes.</p>
 <p>So, I’m golden with Formatting…now onto ES Lint issues.</p>
 <p>Then I run <code>yarn serve</code> and get this:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">warning: Replace `·href=<span class="string">"https://github.com/vuejs/awesome-vue"</span>·target=<span class="string">"_blank"</span>·rel=<span class="string">"noopener"</span>&gt;awesome-vue&lt;/a` with `⏎··········href=<span class="string">"https://github.com/vuejs/awesome-vue"</span>⏎··········target=<span class="string">"_blank"</span>⏎··········rel=<span class="string">"noopener"</span>⏎··········&gt;awesome-vue&lt;/a⏎········` (prettier/prettier) at src\components\HelloWorld.vue:63:11:</div><div class="line"> 61 |    &lt;/li&gt;</div><div class="line"> 62 |    &lt;li&gt;</div><div class="line">&gt; 63 |     &lt;a href=<span class="string">"https://github.com/vuejs/awesome-vue"</span> target=<span class="string">"_blank"</span> rel=<span class="string">"noopener"</span>&gt;awesome-vue&lt;/a&gt;</div><div class="line">   |      ^</div><div class="line"> 64 |    &lt;/li&gt;</div><div class="line"> 65 |   &lt;/ul&gt;</div><div class="line"> 66 |  &lt;/div&gt;</div></pre></td></tr></table></figure>
+warning: Replace `·href=<span class="string">"https://github.com/vuejs/awesome-vue"</span>·target=<span class="string">"_blank"</span>·rel=<span class="string">"noopener"</span>&gt;awesome-vue&lt;/a` with `⏎··········href=<span class="string">"https://github.com/vuejs/awesome-vue"</span>⏎··········target=<span class="string">"_blank"</span>⏎··········rel=<span class="string">"noopener"</span>⏎··········&gt;awesome-vue&lt;/a⏎········` (prettier/prettier) at src\components\HelloWorld.vue:63:11:
+ 61 |    &lt;/li&gt;
+ 62 |    &lt;li&gt;
+&gt; 63 |     &lt;a href=<span class="string">"https://github.com/vuejs/awesome-vue"</span> target=<span class="string">"_blank"</span> rel=<span class="string">"noopener"</span>&gt;awesome-vue&lt;/a&gt;
+   |      ^
+ 64 |    &lt;/li&gt;
+ 65 |   &lt;/ul&gt;
+ 66 |  &lt;/div&gt;
 <p>The issue is that ES Lint is configured to use Prettier, which wants attributes on new lines.</p>
 <p>I could have disabled that setting, but I’m now using es-beautifer, so I better switch to the ES Lint rules for that.</p>
 <p>I found the ES Lint beautifier plugin here: <a href="https://github.com/dai-shi/es-beautifier#usage-eslint-plugin" target="_blank" rel="external">https://github.com/dai-shi/es-beautifier#usage-eslint-plugin</a></p>
 <p>And I installed it:</p>
 <p><code>yarn add eslint eslint-plugin-es-beautifier</code></p>
 <p>And then opened <code>.eslintrc.js</code> and added that plugin:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">plugins: ["es-beautifier"],</div><div class="line">extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],</div></pre></td></tr></table></figure>
+plugins: ["es-beautifier"],
+extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],
 <p>Re-ran <code>yarn serve</code></p>
 <p>And got this error:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">error: Missing trailing comma (comma-dangle) at src\views\Home.vue:15:4:</div><div class="line"> 13 |  components: &#123;</div><div class="line"> 14 |   HelloWorld</div><div class="line">&gt; 15 |  &#125;</div><div class="line">   |  ^</div><div class="line"> 16 | &#125;)</div><div class="line"> 17 | <span class="built_in">export</span> default class Home extends Vue &#123;&#125;</div><div class="line"> 18 | &lt;/script&gt;</div></pre></td></tr></table></figure>
+error: Missing trailing comma (comma-dangle) at src\views\Home.vue:15:4:
+ 13 |  components: &#123;
+ 14 |   HelloWorld
+&gt; 15 |  &#125;
+   |  ^
+ 16 | &#125;)
+ 17 | <span class="built_in">export</span> default class Home extends Vue &#123;&#125;
+ 18 | &lt;/script&gt;
 <p>It’s looking for a dangling comman, which I don’t want to add to my code, so I disable it with this:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">rules: &#123;</div><div class="line">  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",</div><div class="line">  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",</div><div class="line">  "comma-dangle": ["error", "never"]</div><div class="line"> &#125;,</div></pre></td></tr></table></figure>
+rules: &#123;
+  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+  "comma-dangle": ["error", "never"]
+ &#125;,
 <p>I re-run <code>yarn serve</code> and get this:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">error: Expected linebreaks to be <span class="string">'LF'</span> but found <span class="string">'CRLF'</span> (linebreak-style) at src\main.ts:13:19:</div><div class="line"> 11 |  store,</div><div class="line"> 12 |  render: h =&gt; h(App)</div><div class="line">&gt; 13 | &#125;).<span class="variable">$mount</span>(<span class="string">"#app"</span>);</div><div class="line">   |          ^</div><div class="line"> 14 |</div></pre></td></tr></table></figure>
+error: Expected linebreaks to be <span class="string">'LF'</span> but found <span class="string">'CRLF'</span> (linebreak-style) at src\main.ts:13:19:
+ 11 |  store,
+ 12 |  render: h =&gt; h(App)
+&gt; 13 | &#125;).<span class="variable">$mount</span>(<span class="string">"#app"</span>);
+   |          ^
+ 14 |
 <p>It is checking for consistent linebreaks. At this point, I don’t really care, so I just disable that rule with this:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">rules: &#123;</div><div class="line"> "no-console": process.env.NODE_ENV === "production" ? "error" : "off",</div><div class="line"> "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",</div><div class="line"> "comma-dangle": ["error", "never"],</div><div class="line"> "linebreak-style": "off"</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+rules: &#123;
+ "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+ "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+ "comma-dangle": ["error", "never"],
+ "linebreak-style": "off"
+&#125;,
 <p><em>AND BOOM!</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">DONE Compiled successfully <span class="keyword">in</span> 5661ms                                                                              10:20:40 AM</div><div class="line">No <span class="built_in">type</span> errors found</div><div class="line">Version: typescript 3.2.4</div><div class="line">Time: 3210ms</div><div class="line"></div><div class="line"> App running at:</div><div class="line"> - Local:  http://localhost:8080/</div><div class="line"> - Network: unavailable</div><div class="line"></div><div class="line"> Note that the development build is not optimized.</div><div class="line"> To create a production build, run yarn build.</div></pre></td></tr></table></figure>
+DONE Compiled successfully <span class="keyword">in</span> 5661ms                                                                              10:20:40 AM
+No <span class="built_in">type</span> errors found
+Version: typescript 3.2.4
+Time: 3210ms
+
+ App running at:
+ - Local:  http://localhost:8080/
+ - Network: unavailable
+
+ Note that the development build is not optimized.
+ To create a production build, run yarn build.
 <p>As I went about creating more sophisticated TypeScript, the default Prettier formatter didn’t work for me there either, so I swapped that out with this:</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">"vetur.format.defaultFormatter.ts": "vscode-typescript"</div></pre></td></tr></table></figure>
+"vetur.format.defaultFormatter.ts": "vscode-typescript"
 <p>I now finally have .vue files being formatted correctly (at least the way I want them to be) and ES Lint passing successfully.</p>
 <p>Now, time to get to the fun part. Actually coding the app.</p>
 <p>I REALLY hope this post saves you some time.</p>
 <p>Jon</p>
 <p>Here are the files:</p>
 <p><strong>.eslintrc.js</strong></p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line"> root: true,</div><div class="line"> env: &#123;</div><div class="line">  node: true</div><div class="line"> &#125;,</div><div class="line"> plugins: ["es-beautifier"],</div><div class="line"> extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],</div><div class="line"> rules: &#123;</div><div class="line">  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",</div><div class="line">  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",</div><div class="line">  "comma-dangle": ["error", "never"],</div><div class="line">  "linebreak-style": "off"</div><div class="line"> &#125;,</div><div class="line"> parserOptions: &#123;</div><div class="line">  parser: "@typescript-eslint/parser"</div><div class="line"> &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+module.exports = &#123;
+ root: true,
+ env: &#123;
+  node: true
+ &#125;,
+ plugins: ["es-beautifier"],
+ extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],
+ rules: &#123;
+  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+  "comma-dangle": ["error", "never"],
+  "linebreak-style": "off"
+ &#125;,
+ parserOptions: &#123;
+  parser: "@typescript-eslint/parser"
+ &#125;
+&#125;;
 <p><strong>VS Code User Settings</strong></p>
-<figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"window.zoomLevel"</span>: <span class="number">2</span>,</div><div class="line">  <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"js-beautify-html"</span>,</div><div class="line">  <span class="attr">"vetur.format.defaultFormatterOptions"</span>: &#123;</div><div class="line">    <span class="attr">"js-beautify-html"</span>: &#123;</div><div class="line">      <span class="attr">"wrap_attributes"</span>: <span class="string">"auto"</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"vetur.format.defaultFormatter.ts"</span>: <span class="string">"vscode-typescript"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+  <span class="attr">"window.zoomLevel"</span>: <span class="number">2</span>,
+  <span class="attr">"vetur.format.defaultFormatter.html"</span>: <span class="string">"js-beautify-html"</span>,
+  <span class="attr">"vetur.format.defaultFormatterOptions"</span>: &#123;
+    <span class="attr">"js-beautify-html"</span>: &#123;
+      <span class="attr">"wrap_attributes"</span>: <span class="string">"auto"</span>
+    &#125;
+  &#125;,
+  <span class="attr">"vetur.format.defaultFormatter.ts"</span>: <span class="string">"vscode-typescript"</span>
+&#125;
 
         </div>
         <footer>

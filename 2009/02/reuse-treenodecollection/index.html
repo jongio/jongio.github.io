@@ -207,7 +207,11 @@ I first tried something">
             <p>I’m creating an app and need the same data set for two tree views.<br>
 Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor.</p>
 <p>I first tried something like this:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">TreeNode[] nodes = <span class="keyword">new</span> TreeNode[treeView1.Nodes.Count];</div><div class="line"></div><div class="line">treeView1.Nodes.CopyTo(nodes,<span class="number">0</span>);</div><div class="line"></div><div class="line">selectForm.treeView1.Nodes.AddRange(nodes);</div></pre></td></tr></table></figure>
+TreeNode[] nodes = <span class="keyword">new</span> TreeNode[treeView1.Nodes.Count];
+
+treeView1.Nodes.CopyTo(nodes,<span class="number">0</span>);
+
+selectForm.treeView1.Nodes.AddRange(nodes);
 <p>But got this exception.</p>
 <blockquote>
 <p>_Cannot add or insert the item ‘’ in more than one place. You must first remove it from its current location or clone it.</p>
@@ -215,7 +219,16 @@ Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-o
 </blockquote>
 <p>Apparently we need to first clone the nodes because they are already bound to the first TreeView.</p>
 <p>Here’s the quick and dirty (feel free to make it cleaner w/ extension method, etc)</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">selectForm.treeView1.Nodes.AddRange(TreeViewUtility.CloneNodes(treeView1));</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode[] <span class="title">CloneNodes</span>(<span class="params">TreeView tree</span>)</span></div><div class="line">        &#123;</div><div class="line">            TreeNode[] nodes = <span class="keyword">new</span> TreeNode[tree.Nodes.Count];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tree.Nodes.Count; i++)</div><div class="line">            &#123;</div><div class="line">                nodes[i] = tree.Nodes[i].Clone() <span class="keyword">as</span> TreeNode;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> nodes;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+selectForm.treeView1.Nodes.AddRange(TreeViewUtility.CloneNodes(treeView1));
+        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode[] <span class="title">CloneNodes</span>(<span class="params">TreeView tree</span>)</span>
+        &#123;
+            TreeNode[] nodes = <span class="keyword">new</span> TreeNode[tree.Nodes.Count];
+            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tree.Nodes.Count; i++)
+            &#123;
+                nodes[i] = tree.Nodes[i].Clone() <span class="keyword">as</span> TreeNode;
+            &#125;
+            <span class="keyword">return</span> nodes;
+        &#125;
         </div>
         <footer>
         </footer>

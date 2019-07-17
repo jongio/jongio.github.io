@@ -216,13 +216,23 @@
 <ol start="4">
 <li>Copied the 4 following strings into my project:</li>
 </ol>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiKey = <span class="string">"[copy from your linked in app details page]"</span>;</div><div class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiSecret = <span class="string">"[copy from your linked in app details page]"</span>; </div><div class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserToken = <span class="string">"[copy from your linked in app details page]"</span>; </div><div class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserSecret = <span class="string">"[copy from your linked in app details page]"</span>;</div></pre></td></tr></table></figure>
+<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiKey = <span class="string">"[copy from your linked in app details page]"</span>;
+<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiSecret = <span class="string">"[copy from your linked in app details page]"</span>; 
+<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserToken = <span class="string">"[copy from your linked in app details page]"</span>; 
+<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserSecret = <span class="string">"[copy from your linked in app details page]"</span>;
 <ol start="5">
 <li>Created this SearchAsync method</li>
 </ol>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;LinkedInProfiles&gt; <span class="title">SearchAsync</span>(<span class="params"><span class="keyword">string</span> queryText</span>)</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">var</span> l = <span class="keyword">new</span> LinkedInServiceProvider(LinkedInApiKey, LinkedInApiSecret);</div><div class="line">     <span class="keyword">var</span> a = l.GetApi(LinkedInUserToken, LinkedInUserSecret);</div><div class="line">     <span class="keyword">var</span> sp = <span class="keyword">new</span> SearchParameters() &#123; Keywords = queryText &#125;;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">await</span> a.ProfileOperations.SearchAsync(sp);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;LinkedInProfiles&gt; <span class="title">SearchAsync</span>(<span class="params"><span class="keyword">string</span> queryText</span>)</span>
+&#123;
+     <span class="keyword">var</span> l = <span class="keyword">new</span> LinkedInServiceProvider(LinkedInApiKey, LinkedInApiSecret);
+     <span class="keyword">var</span> a = l.GetApi(LinkedInUserToken, LinkedInUserSecret);
+     <span class="keyword">var</span> sp = <span class="keyword">new</span> SearchParameters() &#123; Keywords = queryText &#125;;
+     <span class="keyword">return</span> <span class="keyword">await</span> a.ProfileOperations.SearchAsync(sp);
+&#125;
 <p>6. Called SearchAsync method from another method</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> p = SearchAsync(queryText);</div><div class="line"><span class="keyword">foreach</span> (LinkedInProfile pr <span class="keyword">in</span> p.Result.Profiles)&#123;&#125;</div></pre></td></tr></table></figure>
+<span class="keyword">var</span> p = SearchAsync(queryText);
+<span class="keyword">foreach</span> (LinkedInProfile pr <span class="keyword">in</span> p.Result.Profiles)&#123;&#125;
 <p>I hope this saves you some time.</p>
 <p>Jon</p>
 

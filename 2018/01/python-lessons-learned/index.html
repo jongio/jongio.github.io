@@ -209,7 +209,8 @@
 <p>I discovered <a href="https://github.com/audreyr/cookiecutter" target="_blank" rel="external">Cookiecutter</a>, the Python package project scaffolding tool, about half way through the creation of my pip package.  I wish I would have known about it earlier, because it is really helpful. It will scaffold out an entire project for you with unit tests, Travis integration, setuptools and so on.  I used the <a href="https://github.com/audreyr/cookiecutter-pypackage" target="_blank" rel="external">Cookiecutter PyPackage</a> template, but you can find a lot more of them here: <a href="https://cookiecutter.readthedocs.io/en/latest/readme.html#a-pantry-full-of-cookiecutters" target="_blank" rel="external">A Pantry Full of Cookiecutters<br>
 </a></p>
 <h3 id="create-project"><a class="header-anchor" href="#create-project"></a>Create Project</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">pip install -U cookiecutter</div><div class="line">cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git</div></pre></td></tr></table></figure>
+pip install -U cookiecutter
+cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git
 <p><img src="03.png" alt=""></p>
 <h3 id="project-name"><a class="header-anchor" href="#project-name"></a>Project Name</h3>
 <p>I wanted to use <code>iotedgedev</code> as my PyPI name <strong>and</strong> GitHub repo and I also wanted <code>iotedgedev</code> to be the command line name. The cookiecutter template didn’t allow that directly so I had to make a few manual edits.  I created a project named <code>iotedgedev</code> and then made these changes:</p>
@@ -241,19 +242,25 @@
 <ol>
 <li>
 <p>Push Changes</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m <span class="string">""</span></div><div class="line">git push</div></pre></td></tr></table></figure>
+ git add .
+git commit -m <span class="string">""</span>
+git push
 </li>
 <li>
 <p>Bumpversion and create Wheel</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">bumpversion minor &amp;&amp; python setup.py bdist_wheel</div></pre></td></tr></table></figure>
+ bumpversion minor &amp;&amp; python setup.py bdist_wheel
 </li>
 <li>
 <p>Push Tags</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git push --tags</div></pre></td></tr></table></figure>
+ git push --tags
 </li>
 <li>
 <p>Upload with Twine</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#test</span></div><div class="line">twine upload -r pypitest dist/azure_iot_edge_dev_tool-0.50.0-py2.py3-none-any.whl</div><div class="line"></div><div class="line"><span class="comment">#production</span></div><div class="line">twine upload -r pypi dist/azure_iot_edge_dev_tool-0.52.0-py2.py3-none-any.whl</div></pre></td></tr></table></figure>
+ <span class="comment">#test</span>
+twine upload -r pypitest dist/azure_iot_edge_dev_tool-0.50.0-py2.py3-none-any.whl
+
+<span class="comment">#production</span>
+twine upload -r pypi dist/azure_iot_edge_dev_tool-0.52.0-py2.py3-none-any.whl
 <blockquote>
 <p>This will read from .pypirc file in the root of your project.</p>
 </blockquote>
@@ -261,29 +268,62 @@
 </ol>
 <h3 id="store-pypi-settings-in-pypirc"><a class="header-anchor" href="#store-pypi-settings-in-pypirc"></a>Store PyPI Settings in .pypirc</h3>
 <p>Store your PyPI settings in a .pypirc file in the root of your project, which looks something like this:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[distutils]</div><div class="line">index-servers =</div><div class="line">  pypi</div><div class="line">  pypitest</div><div class="line"></div><div class="line">[pypi]</div><div class="line">repository=https://pypi.python.org/pypi</div><div class="line">username=yourusername</div><div class="line">password=</div><div class="line"></div><div class="line">[pypitest]</div><div class="line">repository=https://test.pypi.org/legacy/</div><div class="line">username=yourusername</div><div class="line">password=</div></pre></td></tr></table></figure>
+[distutils]
+index-servers =
+  pypi
+  pypitest
+
+[pypi]
+repository=https://pypi.python.org/pypi
+username=yourusername
+password=
+
+[pypitest]
+repository=https://test.pypi.org/legacy/
+username=yourusername
+password=
 <p>That way when you call <code>twine upload -r pypi ...</code> it will use the repository, username and password in the file instead of typing it every time you push to PyPI.</p>
 <h3 id="test-pip-install"><a class="header-anchor" href="#test-pip-install"></a>Test Pip Install</h3>
 <p>When you run pip install it will point to production by default, you need to pass <code>--no-cache-dir</code>, <code>--index-url</code> and an <code>--extra-index-url</code> for it to ignore local packages, point to the test env, and use the production env for project dependencies.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pip --no-cache-dir install --index-url https://test.pypi.org/simple/ iotedgedev --extra-index-url https://pypi.org/simple</div></pre></td></tr></table></figure>
+pip --no-cache-dir install --index-url https://test.pypi.org/simple/ iotedgedev --extra-index-url https://pypi.org/simple
 <h2 id="command-line-arguments-click"><a class="header-anchor" href="#command-line-arguments-click"></a>Command Line Arguments: Click</h2>
 <p>I started off with <a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="external">argparse</a> and evaluated a few others, but landed on <a href="http://click.pocoo.org" target="_blank" rel="external">Click</a> because I like how it is integrated into the code. I had everything working with argparse and it was fine, but one I started writing tests I really appreciated that Click came with a <code>CLiRunner</code> object that was really helpful. I converted everything to Click in an hour or so.  You can see the final result here: <a href="https://github.com/azure/iotedgedev/blob/master/iotedgedev/cli.py" target="_blank" rel="external">iotedgedev/iotedgedev/cli.py</a>. You can view the full command structure on GitHub here: <a href="https://github.com/azure/iotedgedev#commands" target="_blank" rel="external">iotedgedev/README.md</a></p>
 <h3 id="help-with-h-and-help"><a class="header-anchor" href="#help-with-h-and-help"></a>Help with -h and --help</h3>
 <p>You can get both -h and --help for help commands if you pass this <code>CONTEXT_SETTINGS = dict(help_option_names=[&quot;-h&quot;, &quot;--help&quot;])</code> into the <code>@click.group</code> statement.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">CONTEXT_SETTINGS = dict(help_option_names=[&apos;-h&apos;, &apos;--help&apos;])</div><div class="line"></div><div class="line"></div><div class="line">@click.group(context_settings=CONTEXT_SETTINGS, invoke_without_command=True)</div></pre></td></tr></table></figure>
+CONTEXT_SETTINGS = dict(help_option_names=[&apos;-h&apos;, &apos;--help&apos;])
+
+
+@click.group(context_settings=CONTEXT_SETTINGS, invoke_without_command=True)
 <h3 id="version-command"><a class="header-anchor" href="#version-command"></a>Version Command</h3>
 <p>You can easily get a --version command by adding <code>@click.version_option()</code> above your main method:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@click.version_option()</div><div class="line">def main():</div></pre></td></tr></table></figure>
+@click.version_option()
+def main():
 <h3 id="help-print"><a class="header-anchor" href="#help-print"></a>Help Print</h3>
 <p>You can print out the help message using the following code. In my main Package, I want to print help if not commands are passed in and I want there to be an option hanging off the root.  This is the only way I could figure out how to do that.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">def main(set_config):</div><div class="line">    if(set_config):</div><div class="line">        utility.set_config()</div><div class="line">    else:</div><div class="line">        ctx = click.get_current_context()</div><div class="line">        if ctx.invoked_subcommand == None:</div><div class="line">            click.echo(ctx.get_help())</div></pre></td></tr></table></figure>
+def main(set_config):
+    if(set_config):
+        utility.set_config()
+    else:
+        ctx = click.get_current_context()
+        if ctx.invoked_subcommand == None:
+            click.echo(ctx.get_help())
 <h3 id="echo-instead-of-print-statements"><a class="header-anchor" href="#echo-instead-of-print-statements"></a>Echo instead of Print Statements</h3>
 <p>Click comes with an echo method that allows you to colorize your print statements and is Python 2/3 safe.  One of the last things I did in the project was convert all of my statements to use click.secho. Coloring my output helps differentiate it from the output of the out of proc calls I make.</p>
 <p>Here, I’m using a mixture of Yellow and White, which looks White and Grey with my current ConEmu color scheme.</p>
 <p><img src="05.png" alt=""></p>
 <h2 id="out-of-process-calls-subprocess-popen"><a class="header-anchor" href="#out-of-process-calls-subprocess-popen"></a>Out of Process Calls: subprocess.Popen</h2>
 <p>My script makes a bunch of out of process calls to things like <code>dotnet</code>, <code>docker</code> and <code>iotedgectl</code>.  I toyed around with a bunch of ways to do this and finally landed on subprocess.Popen because I could get both the status code and the result (print statements) from the call.  I wrapped mine in a method like this:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">def exe_proc(self, params, shell=False):</div><div class="line">       proc = subprocess.Popen(</div><div class="line">           params, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=shell)</div><div class="line"></div><div class="line">       stdout_data, stderr_data = proc.communicate()</div><div class="line">       if stdout_data != &quot;&quot;:</div><div class="line">           self.output.procout(self.decode(stdout_data))</div><div class="line"></div><div class="line">       if proc.returncode != 0:</div><div class="line">           self.output.error(self.decode(stderr_data))</div><div class="line">           sys.exit()</div></pre></td></tr></table></figure>
+def exe_proc(self, params, shell=False):
+       proc = subprocess.Popen(
+           params, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=shell)
+
+       stdout_data, stderr_data = proc.communicate()
+       if stdout_data != &quot;&quot;:
+           self.output.procout(self.decode(stdout_data))
+
+       if proc.returncode != 0:
+           self.output.error(self.decode(stderr_data))
+           sys.exit()
 <p><a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24" target="_blank" rel="external">https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24</a></p>
 <h2 id="pypi-readme"><a class="header-anchor" href="#pypi-readme"></a>PyPI Readme</h2>
 <p>PyPI does not natively support Markdown, although the website says it does, after many hours of trying I could not get it to work.  They do support RST and there are ways to convert Markdown to RST - but nothing was working for me. The Markdown to RST converter I was using <code>pyandoc</code> was not generating valid RST and I was not interested in maintaining two versions (Markdown &amp; RST) of my Readme. If this project was officially supported by Microsoft, then I would have figured it out, but this is a proof-of-concept project, so I decided to abandon the PyPI readme in favor of GitHub markdown and then linked to GitHub from PyPI.</p>
@@ -292,7 +332,10 @@
 <h2 id="environment-variables-python-dotenv"><a class="header-anchor" href="#environment-variables-python-dotenv"></a>Environment Variables: Python-DotEnv</h2>
 <p>My package heavily relies on Environment Variables so I can have a very simple command interface.  I did not want to ask the user to type all them in at the command line.  I used dotenv in my node projects and was happy to see that there’s one available for Python as well: <a href="https://github.com/theskumar/python-dotenv" target="_blank" rel="external">Python-DotEnv</a>. You can view my .env file here:<a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/template/.env.tmp" target="_blank" rel="external">iotedgedev/template/.env.tmp</a> and you can see how I’m loading it here: <a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/envvars.py#L59" target="_blank" rel="external">iotedgedev/envvars.py</a></p>
 <p>This will load the .env from the current directory:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">from dotenv import load_dotenv</div><div class="line"></div><div class="line">dotenv_path = os.path.join(os.getcwd(), &apos;.env&apos;)</div><div class="line">load_dotenv(dotenv_path)</div></pre></td></tr></table></figure>
+from dotenv import load_dotenv
+
+dotenv_path = os.path.join(os.getcwd(), &apos;.env&apos;)
+load_dotenv(dotenv_path)
 <p>And make all the Variables available via <code>os.environ[&quot;NAME&quot;]</code></p>
 <blockquote>
 <p>Make sure you add <code>.env</code> to your .gitignore file.</p>

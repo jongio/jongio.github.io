@@ -207,9 +207,22 @@
 <li>Set VaryByCustom to Day</li>
 <li>Set Duration = 86400, the number of seconds in a day. This is the max amount of time you want to cache. If the Custom VaryBy return value changes before the Duration expires then it will execute the controller action method again.</li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">[OutputCache(VaryByCustom = <span class="string">"Day"</span>, Duration = <span class="number">86400</span>)]</div><div class="line"><span class="function"><span class="keyword">public</span> ActionResult <span class="title">Index</span>(<span class="params"></span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> report = <span class="keyword">new</span> HealthReport();</div><div class="line">    report.Load();</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.View(report);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+[<span class="meta">OutputCache(VaryByCustom = <span class="meta-string">"Day"</span>, Duration = 86400)</span>]
+<span class="function"><span class="keyword">public</span> ActionResult <span class="title">Index</span>(<span class="params"></span>)</span>
+&#123;
+    <span class="keyword">var</span> report = <span class="keyword">new</span> HealthReport();
+    report.Load();
+    <span class="keyword">return</span> <span class="keyword">this</span>.View(report);
+&#125;
 <h3 id="override-getvarybycustomstring-in-global-asax-cs"><a class="header-anchor" href="#override-getvarybycustomstring-in-global-asax-cs"></a>Override GetVaryByCustomString in Global.asax.cs</h3>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">GetVaryByCustomString</span>(<span class="params">HttpContext context, <span class="keyword">string</span> custom</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.Compare(custom, <span class="string">"Day"</span>, <span class="literal">true</span>) == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> DateTime.Now.ToShortDateString();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">base</span>.GetVaryByCustomString(context, custom);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">GetVaryByCustomString</span>(<span class="params">HttpContext context, <span class="keyword">string</span> custom</span>)</span>
+&#123;
+    <span class="keyword">if</span> (<span class="keyword">string</span>.Compare(custom, <span class="string">"Day"</span>, <span class="literal">true</span>) == <span class="number">0</span>)
+    &#123;
+        <span class="keyword">return</span> DateTime.Now.ToShortDateString();
+    &#125;
+    <span class="keyword">return</span> <span class="keyword">base</span>.GetVaryByCustomString(context, custom);
+&#125;
 <p>Jon</p>
 
         </div>

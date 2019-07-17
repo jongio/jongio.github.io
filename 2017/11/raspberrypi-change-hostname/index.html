@@ -207,7 +207,7 @@ You can change it via editing text files or th">
 <p>You can use the <code>hostnamectl set-hostname [name]</code> command, but that <strong>does not update /etc/hosts</strong> and causes issues with Docker and other networking services.</p>
 <p>I prefer to update /etc/hostname and /etc/hosts manually:</p>
 <p>1. <strong>Change /etc/hostname</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hostname</div></pre></td></tr></table></figure>
+sudo nano /etc/hostname
 <ul>
 <li>Change raspberrypi to your desired hostname</li>
 <li>Hit CTRL+O and then ENTER to Save</li>
@@ -215,7 +215,7 @@ You can change it via editing text files or th">
 </ul>
 <p><img src="000318.png" alt=""></p>
 <p>2. <strong>Change /etc/hosts</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo nano /etc/hosts</div></pre></td></tr></table></figure>
+sudo nano /etc/hosts
 <ul>
 <li>Change raspberrypi to your desired hostname</li>
 <li>Hit CTRL+O and then ENTER to Save</li>
@@ -223,7 +223,7 @@ You can change it via editing text files or th">
 </ul>
 <p><img src="000316.png" alt=""></p>
 <p>3. <strong>Reboot</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+sudo reboot
 <h2 id="via-interface"><a class="header-anchor" href="#via-interface"></a>Via Interface</h2>
 <p>You can also change the hostname via the Raspbian UI:</p>
 <p>1. Go to Raspberry Pi Configuration -&gt; System and set a unique hostname and click OK.</p>

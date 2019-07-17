@@ -16,21 +16,24 @@
     
     <meta name="description" content="You need to use the SetValue method of the DependencyObject class…
 I’ll let the code speak for itself:
-&amp;lt;UserControl x:Class=&quot;SetGridProgrammatically.MainPage&quot;    xmlns=&quot;http://schemas.microsoft.com">
+&amp;lt;UserControl x:Class=&quot;SetGridProgrammatically.MainPage&quot;
+    xmlns=&quot;http://schemas.microsoft.co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Silverlight 4: How to programmatically position a control within a Grid">
 <meta property="og:url" content="https://blog.jongallant.com/2010/06/silverlight-position-control-in-grid/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="You need to use the SetValue method of the DependencyObject class…
 I’ll let the code speak for itself:
-&amp;lt;UserControl x:Class=&quot;SetGridProgrammatically.MainPage&quot;    xmlns=&quot;http://schemas.microsoft.com">
+&amp;lt;UserControl x:Class=&quot;SetGridProgrammatically.MainPage&quot;
+    xmlns=&quot;http://schemas.microsoft.co">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2018-12-10T12:54:21.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Silverlight 4: How to programmatically position a control within a Grid">
 <meta name="twitter:description" content="You need to use the SetValue method of the DependencyObject class…
 I’ll let the code speak for itself:
-&amp;lt;UserControl x:Class=&quot;SetGridProgrammatically.MainPage&quot;    xmlns=&quot;http://schemas.microsoft.com">
+&amp;lt;UserControl x:Class=&quot;SetGridProgrammatically.MainPage&quot;
+    xmlns=&quot;http://schemas.microsoft.co">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
@@ -206,8 +209,34 @@ I’ll let the code speak for itself:
         <div class="article-entry" itemprop="articleBody">
             <p>You need to use the SetValue method of the DependencyObject class…<br>
 I’ll let the code speak for itself:</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">UserControl</span> <span class="attr">x:Class</span>=<span class="string">"SetGridProgrammatically.MainPage"</span></span></div><div class="line">    <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span></div><div class="line">    <span class="attr">xmlns:x</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml"</span></div><div class="line">    <span class="attr">xmlns:d</span>=<span class="string">"http://schemas.microsoft.com/expression/blend/2008"</span></div><div class="line">    <span class="attr">xmlns:mc</span>=<span class="string">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span></div><div class="line">    <span class="attr">mc:Ignorable</span>=<span class="string">"d"</span></div><div class="line">    <span class="attr">d:DesignHeight</span>=<span class="string">"300"</span> <span class="attr">d:DesignWidth</span>=<span class="string">"400"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">x:Name</span>=<span class="string">"LayoutRoot"</span> <span class="attr">Background</span>=<span class="string">"White"</span> <span class="attr">ShowGridLines</span>=<span class="string">"True"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">Grid.RowDefinitions</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"93*"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"70*"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"137*"</span> /&gt;</span></div><div class="line">        Grid.RowDefinitions&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">Grid.ColumnDefinitions</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"70*"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"182*"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"148*"</span> /&gt;</span></div><div class="line">        Grid.ColumnDefinitions&gt;</div><div class="line">    Grid&gt;</div><div class="line">UserControl&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">Button b = <span class="keyword">new</span> Button();</div><div class="line"></div><div class="line">b.Content = <span class="string">"Silverlight"</span>;</div><div class="line">LayoutRoot.Children.Add(b);</div><div class="line"></div><div class="line">b.SetValue(Grid.RowProperty, <span class="number">1</span>);</div><div class="line">b.SetValue(Grid.ColumnProperty, <span class="number">1</span>);</div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">UserControl</span> <span class="attr">x:Class</span>=<span class="string">"SetGridProgrammatically.MainPage"</span>
+    <span class="attr">xmlns</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+    <span class="attr">xmlns:x</span>=<span class="string">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+    <span class="attr">xmlns:d</span>=<span class="string">"http://schemas.microsoft.com/expression/blend/2008"</span>
+    <span class="attr">xmlns:mc</span>=<span class="string">"http://schemas.openxmlformats.org/markup-compatibility/2006"</span>
+    <span class="attr">mc:Ignorable</span>=<span class="string">"d"</span>
+    <span class="attr">d:DesignHeight</span>=<span class="string">"300"</span> <span class="attr">d:DesignWidth</span>=<span class="string">"400"</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">x:Name</span>=<span class="string">"LayoutRoot"</span> <span class="attr">Background</span>=<span class="string">"White"</span> <span class="attr">ShowGridLines</span>=<span class="string">"True"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">Grid.RowDefinitions</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"93*"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"70*"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="name">RowDefinition</span> <span class="attr">Height</span>=<span class="string">"137*"</span> /&gt;</span>
+        Grid.RowDefinitions&gt;
+        <span class="tag">&lt;<span class="name">Grid.ColumnDefinitions</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"70*"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"182*"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="name">ColumnDefinition</span> <span class="attr">Width</span>=<span class="string">"148*"</span> /&gt;</span>
+        Grid.ColumnDefinitions&gt;
+    Grid&gt;
+UserControl&gt;
+Button b = <span class="keyword">new</span> Button();
+
+b.Content = <span class="string">"Silverlight"</span>;
+LayoutRoot.Children.Add(b);
+
+b.SetValue(Grid.RowProperty, <span class="number">1</span>);
+b.SetValue(Grid.ColumnProperty, <span class="number">1</span>);
 <p><img src="/images/blog/4251.image_5F00_thumb.png" alt=""></p>
 <p>More about Attached Properties here: <a href="http://msdn.microsoft.com/en-us/library/cc265152(VS.95).aspx" title="http://msdn.microsoft.com/en-us/library/cc265152(VS.95).aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/library/cc265152(VS.95).aspx</a></p>
 

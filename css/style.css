@@ -1737,80 +1737,94 @@ i.icon:before {
 .article-entry .highlight .line {
   height: 1.6em;
 }
-.highlight {
-  border: 1px solid #ddd;
-  font-size: 1em;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1e1e1e;
+  color: #dcdcdc;
 }
-.highlight .code .comment,
-.highlight .code .quote {
-  color: #998;
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+  color: #569cd6;
+}
+.hljs-link {
+  color: #569cd6;
+  text-decoration: underline;
+}
+.hljs-built_in,
+.hljs-type {
+  color: #4ec9b0;
+}
+.hljs-number,
+.hljs-class {
+  color: #b8d7a3;
+}
+.hljs-string,
+.hljs-meta-string {
+  color: #d69d85;
+}
+.hljs-regexp,
+.hljs-template-tag {
+  color: #9a5334;
+}
+.hljs-subst,
+.hljs-function,
+.hljs-title,
+.hljs-params,
+.hljs-formula {
+  color: #dcdcdc;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #57a64a;
   font-style: italic;
 }
-.highlight .code .keyword,
-.highlight .code .selector-tag,
-.highlight .code .subst {
-  color: #333;
-  font-weight: bold;
+.hljs-doctag {
+  color: #608b4e;
 }
-.highlight .code .number,
-.highlight .code .literal,
-.highlight .code .variable,
-.highlight .code .template-variable,
-.highlight .code .tag .attr {
-  color: #008080;
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-tag {
+  color: #9b9b9b;
 }
-.highlight .code .string,
-.highlight .code .doctag {
-  color: #d14;
+.hljs-variable,
+.hljs-template-variable {
+  color: #bd63c5;
 }
-.highlight .code .title,
-.highlight .code .section,
-.highlight .code .selector-id {
-  color: #900;
-  font-weight: bold;
+.hljs-attr,
+.hljs-attribute,
+.hljs-builtin-name {
+  color: #9cdcfe;
 }
-.highlight .code .subst {
-  font-weight: normal;
+.hljs-section {
+  color: #ffd700;
 }
-.highlight .code .type,
-.highlight .code .class .title {
-  color: #458;
-  font-weight: bold;
-}
-.highlight .code .tag,
-.highlight .code .name,
-.highlight .code .attribute {
-  color: #000080;
-  font-weight: normal;
-}
-.highlight .code .regexp,
-.highlight .code .link {
-  color: #009926;
-}
-.highlight .code .symbol,
-.highlight .code .bullet {
-  color: #990073;
-}
-.highlight .code .built_in,
-.highlight .code .builtin-name {
-  color: #0086b3;
-}
-.highlight .code .meta {
-  color: #999;
-  font-weight: bold;
-}
-.highlight .code .deletion {
-  background: #fdd;
-}
-.highlight .code .addition {
-  background: #dfd;
-}
-.highlight .code .emphasis {
+.hljs-emphasis {
   font-style: italic;
 }
-.highlight .code .strong {
+.hljs-strong {
   font-weight: bold;
+}
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #d7ba7d;
+}
+.hljs-addition {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+.hljs-deletion {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .article-entry .img-wrap:before {

@@ -241,7 +241,22 @@ Let’s create a Postman Col">
 <ol>
 <li>Copy this code block into your collections pre-request script block.</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">pm.sendRequest(&#123;</div><div class="line">    <span class="attr">url</span>: <span class="string">'https://login.microsoftonline.com/'</span> + pm.variables.get(<span class="string">"tenantId"</span>) + <span class="string">'/oauth2/token'</span>,</div><div class="line">    <span class="attr">method</span>: <span class="string">'POST'</span>,</div><div class="line">    <span class="attr">header</span>: <span class="string">'Content-Type: application/x-www-form-urlencoded'</span>,</div><div class="line">    <span class="attr">body</span>: &#123;</div><div class="line">        <span class="attr">mode</span>: <span class="string">'urlencoded'</span>,</div><div class="line">        <span class="attr">urlencoded</span>: [ </div><div class="line">            &#123;<span class="attr">key</span>: <span class="string">"grant_type"</span>, <span class="attr">value</span>: <span class="string">"client_credentials"</span>, <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,</div><div class="line">            &#123;<span class="attr">key</span>: <span class="string">"client_id"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientId"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,</div><div class="line">            &#123;<span class="attr">key</span>: <span class="string">"client_secret"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientSecret"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,</div><div class="line">            &#123;<span class="attr">key</span>: <span class="string">"resource"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"resource"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;</div><div class="line">    pm.globals.set(<span class="string">"bearerToken"</span>, res.json().access_token);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+pm.sendRequest(&#123;
+    <span class="attr">url</span>: <span class="string">'https://login.microsoftonline.com/'</span> + pm.variables.get(<span class="string">"tenantId"</span>) + <span class="string">'/oauth2/token'</span>,
+    <span class="attr">method</span>: <span class="string">'POST'</span>,
+    <span class="attr">header</span>: <span class="string">'Content-Type: application/x-www-form-urlencoded'</span>,
+    <span class="attr">body</span>: &#123;
+        <span class="attr">mode</span>: <span class="string">'urlencoded'</span>,
+        <span class="attr">urlencoded</span>: [ 
+            &#123;<span class="attr">key</span>: <span class="string">"grant_type"</span>, <span class="attr">value</span>: <span class="string">"client_credentials"</span>, <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,
+            &#123;<span class="attr">key</span>: <span class="string">"client_id"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientId"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,
+            &#123;<span class="attr">key</span>: <span class="string">"client_secret"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientSecret"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,
+            &#123;<span class="attr">key</span>: <span class="string">"resource"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"resource"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;
+        ]
+    &#125;
+&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;
+    pm.globals.set(<span class="string">"bearerToken"</span>, res.json().access_token);
+&#125;);
 <p><img src="000092.png" alt=""></p>
 <h3 id="variables"><a class="header-anchor" href="#variables"></a>Variables</h3>
 <p>Postman allows you to set variables at the collection level. We’ll put the variables required by the pre-request script and the Azure REST APIs in the “Variables” tab.</p>
@@ -251,7 +266,11 @@ Let’s create a Postman Col">
 <blockquote>
 <p>Make sure you add the variable values to the <strong>CURRENT VALUE</strong> column NOT the Initial Value column.</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">clientId</div><div class="line">clientSecret</div><div class="line">tenantId</div><div class="line">subscriptionId</div><div class="line">resource: https://management.azure.com/</div></pre></td></tr></table></figure>
+clientId
+clientSecret
+tenantId
+subscriptionId
+resource: https://management.azure.com/
 <p><img src="000102.png" alt=""></p>
 <p>Keep the “Create Collection” dialog open and continue to the next step.</p>
 <h2 id="get-azure-variables"><a class="header-anchor" href="#get-azure-variables"></a>Get Azure Variables</h2>
@@ -272,7 +291,9 @@ Let’s create a Postman Col">
 <ol start="3">
 <li>Copy the outputed variables to Postman Collection variables</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">clientId = appId</div><div class="line">clientSecret = password</div><div class="line">tenantId = tenant</div></pre></td></tr></table></figure>
+clientId = appId
+clientSecret = password
+tenantId = tenant
 <p><img src="000100.png" alt=""></p>
 <ol start="4">
 <li>Get Subscription Id</li>
@@ -316,7 +337,19 @@ Let’s create a Postman Col">
 </li>
 </ol>
 <p>You will see the REST request output in the bottom pane</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"value"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"id"</span>: <span class="string">"/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS"</span>,</div><div class="line">            <span class="string">"name"</span>: <span class="string">"DefaultResourceGroup-EUS"</span>,</div><div class="line">            <span class="string">"location"</span>: <span class="string">"eastus"</span>,</div><div class="line">            <span class="string">"tags"</span>: &#123;&#125;,</div><div class="line">            <span class="string">"properties"</span>: &#123;</div><div class="line">                <span class="string">"provisioningState"</span>: <span class="string">"Succeeded"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+    <span class="string">"value"</span>: [
+        &#123;
+            <span class="string">"id"</span>: <span class="string">"/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS"</span>,
+            <span class="string">"name"</span>: <span class="string">"DefaultResourceGroup-EUS"</span>,
+            <span class="string">"location"</span>: <span class="string">"eastus"</span>,
+            <span class="string">"tags"</span>: &#123;&#125;,
+            <span class="string">"properties"</span>: &#123;
+                <span class="string">"provisioningState"</span>: <span class="string">"Succeeded"</span>
+            &#125;
+        &#125;
+    ]
+&#125;
 <p><img src="000089.png" alt=""></p>
 <p>And that is how to call the Azure REST APIs with Postman in no time flat!</p>
 <p>Jon</p>

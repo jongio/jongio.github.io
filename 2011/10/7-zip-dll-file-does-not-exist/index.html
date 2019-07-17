@@ -211,7 +211,8 @@ Add a call to SetLibraryPath before you init SevenZipEx">
 <p><img src="/images/blog/1513.image_5F00_thumb_5F00_18F8D605.png" alt=""></p>
 <h1>Step 1: SetLibraryPath</h1>
 <p>Add a call to SetLibraryPath before you init SevenZipExtractor.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">SevenZipExtractor.SetLibraryPath(<span class="string">@"C:\Program Files\7-Zip\7z.dll"</span>);</div><div class="line">SevenZipExtractor zip = <span class="keyword">new</span> SevenZipExtractor(file);zip.ExtractArchive(xsnFolder.FullName);</div></pre></td></tr></table></figure>
+SevenZipExtractor.SetLibraryPath(<span class="string">@"C:\Program Files\7-Zip\7z.dll"</span>);
+SevenZipExtractor zip = <span class="keyword">new</span> SevenZipExtractor(file);zip.ExtractArchive(xsnFolder.FullName);
 <h1>Step 2: Set Platform Target</h1>
 <p>Also make sure that your project Platform target is set to Any CPU.</p>
 <p><img src="/images/blog/Solution-to-the-exception-Can-not-load-_9075/image.png" alt=""></p>

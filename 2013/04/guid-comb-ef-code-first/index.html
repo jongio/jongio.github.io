@@ -215,7 +215,46 @@
 <p>PM&gt; Install-Package EntityFramework -Pre</p>
 </blockquote>
 <p>3. Add this code to your app:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> System;</div><div class="line"><span class="keyword">using</span> System.ComponentModel.DataAnnotations;</div><div class="line"><span class="keyword">using</span> System.ComponentModel.DataAnnotations.Schema;</div><div class="line"><span class="keyword">using</span> System.Data.Entity;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">GuidComb</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> ItemContext())</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">10</span>; i++)</div><div class="line">                    db.Items.Add(<span class="keyword">new</span> Item());</div><div class="line"></div><div class="line">                db.SaveChanges();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> ItemContext())</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> db.Items)</div><div class="line">                    Console.WriteLine(item.Id);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Console.ReadKey();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Item</span></div><div class="line">    &#123;</div><div class="line">        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]</div><div class="line">        <span class="keyword">public</span> Guid Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemContext</span> : <span class="title">DbContext</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">public</span> DbSet&amp;lt;Item&amp;gt; Items &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<span class="keyword">using</span> System;
+<span class="keyword">using</span> System.ComponentModel.DataAnnotations;
+<span class="keyword">using</span> System.ComponentModel.DataAnnotations.Schema;
+<span class="keyword">using</span> System.Data.Entity;
+
+<span class="keyword">namespace</span> <span class="title">GuidComb</span>
+&#123;
+    <span class="keyword">class</span> <span class="title">Program</span>
+    &#123;
+        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span>
+        &#123;
+            <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> ItemContext())
+            &#123;
+                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">10</span>; i++)
+                    db.Items.Add(<span class="keyword">new</span> Item());
+
+                db.SaveChanges();
+            &#125;
+
+            <span class="keyword">using</span> (<span class="keyword">var</span> db = <span class="keyword">new</span> ItemContext())
+            &#123;
+                <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> db.Items)
+                    Console.WriteLine(item.Id);
+            &#125;
+
+            Console.ReadKey();
+        &#125;
+    &#125;
+
+    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Item</span>
+    &#123;
+        [<span class="meta">Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)</span>]
+        <span class="keyword">public</span> Guid Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
+    &#125;
+
+    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ItemContext</span> : <span class="title">DbContext</span>
+    &#123;
+        <span class="keyword">public</span> DbSet&amp;lt;Item&amp;gt; Items &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
+    &#125;
+&#125;
 <p>4. Run the following in Package Manager Console</p>
 <blockquote>
 <p>PM&gt; Enable-Migrations</p>
@@ -225,7 +264,31 @@
 <p>PM&gt; Add-Migration Comb</p>
 </blockquote>
 <p>6. Open the /Migrations/[Timestamp]_Comb.cs that was created by the Add-Migration command and add defaultValueSql: “newsequentialid()” to the Item table Column builder.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">GuidComb.Migrations</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">using</span> System;</div><div class="line">    <span class="keyword">using</span> System.Data.Entity.Migrations;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Comb</span> : <span class="title">DbMigration</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Up</span>(<span class="params"></span>)</span></div><div class="line">        &#123;</div><div class="line">            CreateTable(</div><div class="line">                <span class="string">"dbo.Items"</span>,</div><div class="line">                c =&amp;gt; <span class="keyword">new</span></div><div class="line">                    &#123;</div><div class="line">                        Id = c.Guid(nullable: <span class="literal">false</span>, identity: <span class="literal">true</span>, defaultValueSql: <span class="string">"newsequentialid()"</span>),</div><div class="line">                    &#125;)</div><div class="line">                .PrimaryKey(t =&amp;gt; t.Id);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Down</span>(<span class="params"></span>)</span></div><div class="line">        &#123;</div><div class="line">            DropTable(<span class="string">"dbo.Items"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<span class="keyword">namespace</span> <span class="title">GuidComb.Migrations</span>
+&#123;
+    <span class="keyword">using</span> System;
+    <span class="keyword">using</span> System.Data.Entity.Migrations;
+
+    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Comb</span> : <span class="title">DbMigration</span>
+    &#123;
+        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Up</span>(<span class="params"></span>)</span>
+        &#123;
+            CreateTable(
+                <span class="string">"dbo.Items"</span>,
+                c =&amp;gt; <span class="keyword">new</span>
+                    &#123;
+                        Id = c.Guid(nullable: <span class="literal">false</span>, identity: <span class="literal">true</span>, defaultValueSql: <span class="string">"newsequentialid()"</span>),
+                    &#125;)
+                .PrimaryKey(t =&amp;gt; t.Id);
+
+        &#125;
+
+        <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Down</span>(<span class="params"></span>)</span>
+        &#123;
+            DropTable(<span class="string">"dbo.Items"</span>);
+        &#125;
+    &#125;
+&#125;
 <p>7. Hit F5 and you should see this:</p>
 <p><img src="/images/blog/343c5f9b6c9a_661C/image.png" alt=""></p>
 <p>As you can see the Guid are being generated sequentially.</p>

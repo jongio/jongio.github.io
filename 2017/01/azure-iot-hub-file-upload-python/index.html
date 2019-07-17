@@ -240,7 +240,7 @@ Here’s">
 <p>Follow the instructions <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python" target="_blank" rel="external">here</a> to get the Python SDK on your machine. You can <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#pypi-wheels" target="_blank" rel="external">use pip</a> or compile it yourself.</p>
 <h2 id="get-python-sample"><a class="header-anchor" href="#get-python-sample"></a>Get Python Sample</h2>
 <p>1. Clone the Python SDK</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> --recursive https://github.com/Azure/azure-iot-sdk-python.git</div></pre></td></tr></table></figure>
+git <span class="built_in">clone</span> --recursive https://github.com/Azure/azure-iot-sdk-python.git
 <h2 id="run-python-sample"><a class="header-anchor" href="#run-python-sample"></a>Run Python Sample</h2>
 <p>0. Open a command prompt.<br>
 1. Navigate to the  <code>device/samples</code> folder.<br>
@@ -248,16 +248,27 @@ Here’s">
 <blockquote>
 <p>Replace [device connection string] with the <strong>device’s</strong> (NOT iotowner) connection string that you copied in step 1 above.</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">python iothub_client_sample_class.py -p mqtt -c <span class="string">"[device connection string]"</span></div></pre></td></tr></table></figure>
+python iothub_client_sample_class.py -p mqtt -c <span class="string">"[device connection string]"</span>
 <p>If everything is setup correctly, you will see the following message:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Blob upload confirmation[1001] received <span class="keyword">for</span> message with result = OK</div><div class="line">Total calls confirmed: 1</div></pre></td></tr></table></figure>
+Blob upload confirmation[1001] received <span class="keyword">for</span> message with result = OK
+Total calls confirmed: 1
 <h2 id="code-details"><a class="header-anchor" href="#code-details"></a>Code Details</h2>
 <p>Here’s the meat of the code for this sample.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">upload_to_blob</span><span class="params">(self, destinationfilename, source, size, usercontext)</span>:</span></div><div class="line">        self.client.upload_blob_async(</div><div class="line">            destinationfilename, source, size,</div><div class="line">            self._blob_upload_confirmation_callback, usercontext)</div></pre></td></tr></table></figure>
+<span class="function"><span class="keyword">def</span> <span class="title">upload_to_blob</span><span class="params">(self, destinationfilename, source, size, usercontext)</span>:</span>
+        self.client.upload_blob_async(
+            destinationfilename, source, size,
+            self._blob_upload_confirmation_callback, usercontext)
 <p>And here’s the code that calls that method:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">filename= <span class="string">"hello_python_blob.txt"</span></div><div class="line">content = <span class="string">"Hello World from Python Blob APi"</span></div><div class="line">hub_manager.upload_to_blob(filename, content, len(content), <span class="number">1001</span>)</div></pre></td></tr></table></figure>
+filename= <span class="string">"hello_python_blob.txt"</span>
+content = <span class="string">"Hello World from Python Blob APi"</span>
+hub_manager.upload_to_blob(filename, content, len(content), <span class="number">1001</span>)
 <p>If you want to upload files, you need to read them into memory first like this:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line">filename = <span class="string">"myimage.png"</span></div><div class="line">f = open(<span class="string">"C:\Temp\myimage.png"</span>, <span class="string">"rb"</span>)</div><div class="line">content = f.read()</div><div class="line"></div><div class="line">print(<span class="string">"IoTHubClient is uploading blob to storage"</span>)</div><div class="line">iotHubClient.upload_blob_async(filename, content, len(content), blob_upload_confirmation_callback, <span class="number">1001</span>)</div></pre></td></tr></table></figure>
+filename = <span class="string">"myimage.png"</span>
+f = open(<span class="string">"C:\Temp\myimage.png"</span>, <span class="string">"rb"</span>)
+content = f.read()
+
+print(<span class="string">"IoTHubClient is uploading blob to storage"</span>)
+iotHubClient.upload_blob_async(filename, content, len(content), blob_upload_confirmation_callback, <span class="number">1001</span>)
 <h2 id="file-upload-notifications"><a class="header-anchor" href="#file-upload-notifications"></a>File Upload Notifications</h2>
 <p>Please reference the following article to learn how to handle the File Upload Notification event on the server-side.  This is helpful when you want to kick-off a backend process when a file has been uploaded.</p>
 <p><a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification" target="_blank" rel="external">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification</a></p>
@@ -265,12 +276,19 @@ Here’s">
 <h3 id="1-invalid-syntax"><a class="header-anchor" href="#1-invalid-syntax"></a>1. Invalid Syntax</h3>
 <p>If you see the following error…you will need to open up the sample file in your IDE and add a comma after ‘size’ like this:</p>
 <p><img src="000047.png" alt=""></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">File <span class="string">"iothub_client_sample_class.py"</span>, line 158</div><div class="line">    self._send_reported_state_callback, user_context)</div><div class="line">       ^</div><div class="line">SyntaxError: invalid syntax</div></pre></td></tr></table></figure>
+File <span class="string">"iothub_client_sample_class.py"</span>, line 158
+    self._send_reported_state_callback, user_context)
+       ^
+SyntaxError: invalid syntax
 <h3 id="2-unable-to-iothubclient-ll-uploadtoblob"><a class="header-anchor" href="#2-unable-to-iothubclient-ll-uploadtoblob"></a>2. Unable to IoTHubClient_LL_UploadToBlob</h3>
 <p>1. You don’t have a storage account associated with your IoT Hub.<br>
 2. You are using a “Premium Storage” Account. Solution: Change your storage account to Standard Storage.<br>
 3. You didn’t click Save on the File Upload Blob. Make sure the File Upload pane has your Storage container listed.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_step3 Line:649 HTTP code was 400</div><div class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_Impl Line:843 IoTHubClient_LL_UploadToBlob_step3 failed</div><div class="line">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client.c Func:uploadingThread Line:1500 unable to IoTHubClient_LL_UploadToBlob</div><div class="line">Blob upload confirmation[1001] received <span class="keyword">for</span> message with result = ERROR</div><div class="line">    Total calls confirmed: 1</div></pre></td></tr></table></figure>
+Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_step3 Line:649 HTTP code was 400
+Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_Impl Line:843 IoTHubClient_LL_UploadToBlob_step3 failed
+Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client.c Func:uploadingThread Line:1500 unable to IoTHubClient_LL_UploadToBlob
+Blob upload confirmation[1001] received <span class="keyword">for</span> message with result = ERROR
+    Total calls confirmed: 1
 <h3 id="3-httpapi-executerequest-line-552-curl-easy-perform-failed-out-of-memory"><a class="header-anchor" href="#3-httpapi-executerequest-line-552-curl-easy-perform-failed-out-of-memory"></a>3. HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory</h3>
 <p>This is due to a bug in the Azure IoT Python SDK.  The issue is being tracked on GitHub <a href="https://github.com/Azure/azure-iot-sdk-python/issues/80" target="_blank" rel="external">here</a>.  In the meantime, you can use the sample code found here: <a href="https://github.com/jongio/azure-iot-rest" target="_blank" rel="external">https://github.com/jongio/azure-iot-rest</a>. You will find a Python sample that shows you how to upload files via the Azure IoT REST APIs.</p>
 <h3 id="4-importerror-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-no-such-file-or-directory"><a class="header-anchor" href="#4-importerror-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-no-such-file-or-directory"></a>4. ImportError: libboost_python-py27.so.1.55.0: cannot open shared object file: No such file or directory</h3>

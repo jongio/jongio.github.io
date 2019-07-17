@@ -209,13 +209,13 @@ I got this error. Could not load">
         <div class="article-entry" itemprop="articleBody">
             <p>If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.</p>
 <p>When using LoadFrom:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">Assembly a1 = Assembly.LoadFrom(file);</div></pre></td></tr></table></figure>
+Assembly a1 = Assembly.LoadFrom(file);
 <p>I got this error. Could not load file or assembly or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x80131515)</p>
 <p><img src="/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png" alt=""></p>
 <p>I figured I could copy it locally, but knew there must be a better way. So I scoured the interwebs and found this post on StackOverflow:</p>
 <p><a href="http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep" target="_blank" rel="external">http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep</a></p>
 <p>Which basically tells us to use Assembly.Load instead of Assembly.LoadFrom. Here’s the code that works:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line">Assembly a2 = Assembly.Load(File.ReadAllBytes(file));</div></pre></td></tr></table></figure>
+Assembly a2 = Assembly.Load(File.ReadAllBytes(file));
 <p>Jon</p>
 
         </div>

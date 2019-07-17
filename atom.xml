@@ -6,11 +6,42 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2019-05-20T22:20:54.569Z</updated>
+	<updated>2019-07-17T06:09:30.942Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
 	
+	
+	
+	<entry>
+		<title>Solution to Azure CLI won&#39;t upgrade to latest version or it still works after uninstall</title>
+		<link href="https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/" />
+		<id>https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/</id>
+		<published>2019-07-16T22:54:14.000Z</published>
+		<updated>2019-07-17T06:09:30.942Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66.&lt;/p&gt;
+&lt;p&gt;I uninstalled the Azure CLI via Apps, but it was still available via Terminal, cmd, and PowerShell.&lt;/p&gt;
+&lt;p&gt;I did some sluething and found these
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
+		
+	</entry>
 	
 	
 	<entry>
@@ -127,7 +158,7 @@
           
           
             &lt;p&gt;I’m building a recursive Vue.js component and ran into this error:&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Unknown custom element: &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Categories&lt;/span&gt;&amp;gt;&lt;/span&gt; - did you register the
+Unknown custom element: &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Categories&lt;/span&gt;&amp;gt;&lt;/span&gt; - did you register the component correctly? For recursive components, make sure to provide the &quot;name&quot;
           
         
 			
@@ -194,7 +225,9 @@
           
             &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/000056.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Developing a Vue.js app and I was getting this:&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Uncaught TypeError: Cannot &lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; property &lt;span class=&quot;string&quot;&gt;&#39;render&#39;&lt;/span&gt; of
+Uncaught TypeError: Cannot &lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; property &lt;span class=&quot;string&quot;&gt;&#39;render&#39;&lt;/span&gt; of undefined
+    at normalizeComponent (componentNormalizer.js:24)
+    at Module../src/App.vue
           
         
 			
@@ -228,7 +261,9 @@
           
           
             &lt;p&gt;With this code:&lt;/p&gt;
-&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Component&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; CategoryRating
+&lt;span class=&quot;meta&quot;&gt;@Component&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; CategoryRating &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; Vue &amp;#123;
+  &lt;span class=&quot;meta&quot;&gt;@Prop&lt;/span&gt;(&amp;#123;&lt;span
           
         
 			
@@ -304,7 +339,10 @@
             &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/01/vuejs-avoid-mutating-error/000049.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;
 Working on a Vue.js and TypeScript project.&lt;/p&gt;
 &lt;p&gt;I had this:&lt;/p&gt;
-&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Prop&lt;/span&gt;() enabled!: &lt;span class=&quot;built_in&quot;&gt;boolean&lt;/span&gt; = &lt;span
+&lt;span class=&quot;meta&quot;&gt;@Prop&lt;/span&gt;() enabled!: &lt;span class=&quot;built_in&quot;&gt;boolean&lt;/span&gt; = &lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;;
+&lt;p&gt;And got this error:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Avoid mutating a prop directly
           
         
 			
@@ -635,39 +673,10 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
           
           
             &lt;p&gt;In Azure DevOps, got this error:&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2018-09-25T21:24:45.2791049Z Parameter name: paths&lt;/div&gt;&lt;div
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Bugs" scheme="https://blog.jongallant.com/category/Tech/Bugs/" />
-		
-		
-		<category term="azuredevops" scheme="https://blog.jongallant.com/tags/azuredevops/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.</title>
-		<link href="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/" />
-		<id>https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/</id>
-		<published>2018-09-25T14:29:16.000Z</published>
-		<updated>2018-09-25T21:38:01.640Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;p&gt;In Azure DevOps, got this:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;As a workaround, add the DOTNET_CLI_HOME variable to the Build definition.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000005.png&quot;
+2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
+2018-09-25T21:24:45.2791049Z Parameter name: paths
+2018-09-25T21:24:45.2804472Z    at System.IO.Path.Combine(String[] paths)
+2018-09-25T21:24:45.2818339Z    at
           
         
 			

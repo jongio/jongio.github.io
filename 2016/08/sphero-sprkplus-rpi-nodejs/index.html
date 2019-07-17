@@ -211,9 +211,9 @@
 <p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" title="http://www.tightvnc.com/download.php" target="_blank" rel="external">http://www.tightvnc.com/download.php</a></p>
 <p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" title="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="external">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
 <p>Use the following to start VNC Server on your RPI3</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">vncserver :1</div></pre></td></tr></table></figure>
+vncserver :1
 <p>Use the following to get your RPI3 IP Address.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hostname -I</div></pre></td></tr></table></figure>
+hostname -I
 <h2 id="none"><a class="header-anchor" href="#none"></a><img src="/images/blog/d15999e44a95_CFB4/image_3.png" alt=""></h2>
 <p>Then use that IP when connecting from your desktop</p>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_4.png" alt=""></p>
@@ -227,16 +227,21 @@
 <p><img src="/images/blog/d15999e44a95_CFB4/image_8.png" alt=""></p>
 <h2 id="get-sprk-ble-address"><a class="header-anchor" href="#get-sprk-ble-address"></a>Get SPRK+ BLE Address</h2>
 <p>Run this in Terminal</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">bluetoothctl</div></pre></td></tr></table></figure>
+bluetoothctl
 <p><img src="/images/blog/d15999e44a95_CFB4/image_9.png" alt=""></p>
 <p>Copy the SPRK+ BLE Address. You will need it later.</p>
 <h2 id="install-node-js-on-rpi3"><a class="header-anchor" href="#install-node-js-on-rpi3"></a>Install Node.js on RPI3</h2>
 <p>Follow instructions in <a href="/2016/08/install-nodejs-raspbian.html">this blog post</a> to get Node.js onto the RPI3</p>
 <h2 id="install-sphero-sdk"><a class="header-anchor" href="#install-sphero-sdk"></a>Install Sphero SDK</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo npm install sphero</div><div class="line">sudo npm install noble</div></pre></td></tr></table></figure>
+sudo npm install sphero
+sudo npm install noble
 <p>You can ignore any errors you get with the noble install</p>
 <h2 id="create-node-js-file"><a class="header-anchor" href="#create-node-js-file"></a>Create Node.js File</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd ~</div><div class="line">mkdir sphero</div><div class="line">cd sphero</div><div class="line">touch sphero.js</div><div class="line">leafpad sphero.js</div></pre></td></tr></table></figure>
+cd ~
+mkdir sphero
+cd sphero
+touch sphero.js
+leafpad sphero.js
 <p><img src="/images/blog/d15999e44a95_CFB4/image_10.png" alt=""></p>
 <h2 id="copy-code-to-node-js-file"><a class="header-anchor" href="#copy-code-to-node-js-file"></a>Copy Code to Node.js File</h2>
 <script src="https://gist.github.com/jongio/0f354313489ccd7a138df3c902d00cdb.js"></script>
@@ -244,7 +249,7 @@
 <p>Open the sphero.js file and change the BLE Address to your SPRK+ BLE Address</p>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_11.png" alt=""></p>
 <h2 id="run-and-watch-with-delight"><a class="header-anchor" href="#run-and-watch-with-delight"></a>Run and Watch with Delight!</h2>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo node sphero.js</div></pre></td></tr></table></figure>
+sudo node sphero.js
 <iframe width="420" height="315" src="https://www.youtube.com/embed/jrO-nhmAC_I" frameborder="0" allowfullscreen></iframe>
         </div>
         <footer>

@@ -293,8 +293,9 @@ It took me a few mins to get all the right firmware and sdks going for Netduino 
 
         <p class="article-excerpt">
             I was running the following post-build scripts in VS2013…
-$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
-and was getting this err
+$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;
+$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
+and was getting this er
         </p>
     </div>
 </article>

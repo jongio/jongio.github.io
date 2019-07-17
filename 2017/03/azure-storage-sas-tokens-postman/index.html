@@ -209,9 +209,12 @@
 1. HTTP POST JSON payload to /exportDevices<br>
 2. API creates a job that exports Azure IoT Device Metadata to an Azure Storage blob.</p>
 <p>The format of the REST API is as follows:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;
 <p>The format of the JSON payload is as follows:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line"> <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://azurestorageaccount.blob.core.windows.net/container?azureStorageSasTokenQueryString"</span>,</div><div class="line"> <span class="string">"excludeKeys"</span>: <span class="string">"false"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+ <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://azurestorageaccount.blob.core.windows.net/container?azureStorageSasTokenQueryString"</span>,
+ <span class="string">"excludeKeys"</span>: <span class="string">"false"</span>
+&#125;
 <p>As you can see from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource#IotHubResource_ExportDevices" target="_blank" rel="external">Export Devices API docs</a> that JSON format is not actually documented and it doesn’t tell you that you need to provide a container and a SAS Token QueryString. Through some interweb sleuthing, I was able to find this page: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices" target="_blank" rel="external">Azure IoT Device Management in Bulk</a> - where I discovered that the exportBlobContainerUri had to have a SAS Token QueryString.</p>
 <blockquote>
 <p>Wouldn’t it be nice if there was a sample that we could run to show us everything we need to do to consume the REST API? Yes, it would, continue reading…</p>
@@ -230,12 +233,15 @@
 <h3 id="1-open-postman-and-setup-the-aad-token"><a class="header-anchor" href="#1-open-postman-and-setup-the-aad-token"></a>1. Open Postman and setup the AAD Token</h3>
 <p>As described in this blog post: <a href="/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a></p>
 <h3 id="2-create-a-new-postman-request-and-copy-the-following-url-into-the-url-textbox"><a class="header-anchor" href="#2-create-a-new-postman-request-and-copy-the-following-url-into-the-url-textbox"></a>2. Create a new Postman request and copy the following URL into the URL textbox</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;</div></pre></td></tr></table></figure>
+https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName/exportDevices?api-version=&#123;&#123;api-version&#125;&#125;
 <p><img src="000094.png" alt=""></p>
 <h3 id="3-copy-the-azure-storage-sas-postman-js-file-to-the-pre-request-script-sandbox"><a class="header-anchor" href="#3-copy-the-azure-storage-sas-postman-js-file-to-the-pre-request-script-sandbox"></a>3. Copy the <a href="https://github.com/jongio/azure-sas-tokens-postman/blob/master/azure-storage/azure-storage-sas-postman.js" target="_blank" rel="external">azure-storage-sas-postman.js</a> file to the Pre-request Script sandbox.</h3>
 <p><img src="000102.png" alt=""></p>
 <h3 id="4-copy-the-following-json-payload-into-the-body-tab"><a class="header-anchor" href="#4-copy-the-following-json-payload-into-the-body-tab"></a>4. Copy the following JSON payload into the body tab:</h3>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://&#123;&#123;device-storage-account-name&#125;&#125;.blob.core.windows.net/devices?&#123;&#123;device-export-sas-querystring&#125;&#125;"</span>,</div><div class="line">  <span class="string">"excludeKeys"</span>: <span class="string">"false"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+  <span class="string">"exportBlobContainerUri"</span>: <span class="string">"https://&#123;&#123;device-storage-account-name&#125;&#125;.blob.core.windows.net/devices?&#123;&#123;device-export-sas-querystring&#125;&#125;"</span>,
+  <span class="string">"excludeKeys"</span>: <span class="string">"false"</span>
+&#125;
 <p><img src="000095.png" alt=""></p>
 <blockquote>
 <p>Make sure you select ‘raw’ and ‘application\json’</p>
@@ -263,7 +269,16 @@ tenantId:72f988bf-86f1-41af-91ab-2d7cd011db47</p>
 <h3 id="6-verify-that-you-have-the-authorization-and-content-type-headers-set"><a class="header-anchor" href="#6-verify-that-you-have-the-authorization-and-content-type-headers-set"></a>6. Verify that you have the ‘Authorization’ and ‘Content-Type’ headers set.</h3>
 <p><img src="000098.png" alt=""></p>
 <h3 id="7-send-the-request-and-you-will-see-the-following-output"><a class="header-anchor" href="#7-send-the-request-and-you-will-see-the-following-output"></a>7. Send the request and you will see the following output:</h3>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"jobId"</span>: <span class="string">"07dca1d9-eee1-4776-9b9a-1a57fb97d93b"</span>,</div><div class="line">  <span class="string">"startTimeUtc"</span>: <span class="string">"Mon, 13 Mar 2017 05:27:16 GMT"</span>,</div><div class="line">  <span class="string">"type"</span>: <span class="string">"export"</span>,</div><div class="line">  <span class="string">"status"</span>: <span class="string">"enqueued"</span>,</div><div class="line">  <span class="string">"progress"</span>: <span class="number">0</span>,</div><div class="line">  <span class="string">"outputBlobContainerUri"</span>: <span class="string">"https://jongiothubdeviceexport.blob.core.windows.net/devices?st=2017-03-13T04%3A50%3A20Z&amp;se=2017-03-13T05%3A50%3A20Z&amp;sp=rwd&amp;sv=2016-05-31&amp;sr=c&amp;sig=EqSy2N9YEBXowyEqBQ%2FGv1mrmOZ67%2F80dr%2BKNUvI%3D"</span>,</div><div class="line">  <span class="string">"excludeKeysInExport"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="string">"useSecondaryStorageAsSource "</span>: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&#123;
+  <span class="string">"jobId"</span>: <span class="string">"07dca1d9-eee1-4776-9b9a-1a57fb97d93b"</span>,
+  <span class="string">"startTimeUtc"</span>: <span class="string">"Mon, 13 Mar 2017 05:27:16 GMT"</span>,
+  <span class="string">"type"</span>: <span class="string">"export"</span>,
+  <span class="string">"status"</span>: <span class="string">"enqueued"</span>,
+  <span class="string">"progress"</span>: <span class="number">0</span>,
+  <span class="string">"outputBlobContainerUri"</span>: <span class="string">"https://jongiothubdeviceexport.blob.core.windows.net/devices?st=2017-03-13T04%3A50%3A20Z&amp;se=2017-03-13T05%3A50%3A20Z&amp;sp=rwd&amp;sv=2016-05-31&amp;sr=c&amp;sig=EqSy2N9YEBXowyEqBQ%2FGv1mrmOZ67%2F80dr%2BKNUvI%3D"</span>,
+  <span class="string">"excludeKeysInExport"</span>: <span class="literal">false</span>,
+  <span class="string">"useSecondaryStorageAsSource "</span>: <span class="literal">false</span>
+&#125;
 <p><img src="000099.png" alt=""></p>
 <h3 id="8-then-using-azure-storage-explorer-view-your-devices-txt-file"><a class="header-anchor" href="#8-then-using-azure-storage-explorer-view-your-devices-txt-file"></a>8. Then, using <a href="http://storageexplorer.com/" target="_blank" rel="external">Azure Storage Explorer</a>, view your devices.txt file.</h3>
 <p><img src="000100.png" alt=""></p>
@@ -274,7 +289,7 @@ tenantId:72f988bf-86f1-41af-91ab-2d7cd011db47</p>
 <h2 id="newman-postman-collection-runner-on-server"><a class="header-anchor" href="#newman-postman-collection-runner-on-server"></a>Newman Postman Collection Runner (on Server)</h2>
 <p>You can then fully automate your REST API tests with <a href="https://www.npmjs.com/package/newman" target="_blank" rel="external">newman</a> on the server.</p>
 <p>This command:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">newman run &quot;Blog Samples.postman_collection.json&quot; -e &quot;Blog Samples.postman_environment.json&quot;</div></pre></td></tr></table></figure>
+newman run &quot;Blog Samples.postman_collection.json&quot; -e &quot;Blog Samples.postman_environment.json&quot;
 <p>Will execute all your requests in the collection and give you a pass/fail output like this:</p>
 <p><img src="000105.png" alt=""></p>
 <p>Like I mentioned before, I’m not quite done with the Azure IoT REST in Postman project, but I will continue to blog after I reach each milestone.</p>

@@ -216,13 +216,13 @@ Avoid mutating a prop directly since the value will be overwritten whenever the 
             <p><img src="000049.png" alt=""><br>
 Working on a Vue.js and TypeScript project.</p>
 <p>I had this:</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Prop</span>() enabled!: <span class="built_in">boolean</span> = <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<span class="meta">@Prop</span>() enabled!: <span class="built_in">boolean</span> = <span class="literal">false</span>;
 <p>And got this error:</p>
 <blockquote>
 <p>Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “enabled”</p>
 </blockquote>
 <p>And fixed by doing:</p>
-<figure class="highlight typescript"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Prop</span>(&#123;<span class="keyword">default</span>: <span class="literal">false</span>&#125;) enabled!: <span class="built_in">boolean</span>;</div></pre></td></tr></table></figure>
+<span class="meta">@Prop</span>(&#123;<span class="keyword">default</span>: <span class="literal">false</span>&#125;) enabled!: <span class="built_in">boolean</span>;
 <p>Discovered that you set the default in the @Prop init, versus inline.</p>
 <p>Jon</p>
 

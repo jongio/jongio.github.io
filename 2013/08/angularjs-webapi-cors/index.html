@@ -205,11 +205,27 @@
 <p>1. <strong>Nuget CORS</strong>: Microsoft.AspNet.WebApi.Cors – You need to include prerelease packages when you do a search.</p>
 <p><img src="/images/blog/angularjs-webapi-cors_B0C3/image.png" alt=""></p>
 <p>2. Call <strong>EnableCors</strong> from WebApiConfig</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">public static class WebApiConfig</div><div class="line">    &#123;</div><div class="line">        public static void Register(HttpConfiguration config)</div><div class="line">        &#123;</div><div class="line">            config.EnableCors(new EnableCorsAttribute(&quot;&quot;, &quot;&quot;, &quot;*&quot;));</div><div class="line"></div><div class="line">            config.Routes.MapHttpRoute(</div><div class="line">                name: &quot;DefaultApi&quot;,</div><div class="line">                routeTemplate: &quot;api/&#123;controller&#125;/&#123;id&#125;&quot;,</div><div class="line">                defaults: new &#123; id = RouteParameter.Optional &#125;</div><div class="line">            );</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+public static class WebApiConfig
+    &#123;
+        public static void Register(HttpConfiguration config)
+        &#123;
+            config.EnableCors(new EnableCorsAttribute(&quot;&quot;, &quot;&quot;, &quot;*&quot;));
+
+            config.Routes.MapHttpRoute(
+                name: &quot;DefaultApi&quot;,
+                routeTemplate: &quot;api/&#123;controller&#125;/&#123;id&#125;&quot;,
+                defaults: new &#123; id = RouteParameter.Optional &#125;
+            );
+        &#125;
+    &#125;
 <p>3. Make** $http calls** from AngularJS or any other Spa framework.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">return $http.post(&apos;http://localhost:45211/api/values/add/&apos;, value);</div></pre></td></tr></table></figure>
+return $http.post(&apos;http://localhost:45211/api/values/add/&apos;, value);
 <p>Here are the error messages you’ll get when you try to make a cross domain call:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">OPTIONS http://localhost:45211/api/values/add/ 405 (Method Not Allowed) angular.min.js:99</div><div class="line"></div><div class="line">OPTIONS http://localhost:45211/api/values/add/ Origin http://localhost:9087 is not allowed by Access-Control-Allow-Origin. angular.min.js:99</div><div class="line"></div><div class="line">XMLHttpRequest cannot load http://localhost:45211/api/values/add/. Origin http://localhost:9087 is not allowed by Access-Control-Allow-Origin.</div></pre></td></tr></table></figure>
+OPTIONS http://localhost:45211/api/values/add/ 405 (Method Not Allowed) angular.min.js:99
+
+OPTIONS http://localhost:45211/api/values/add/ Origin http://localhost:9087 is not allowed by Access-Control-Allow-Origin. angular.min.js:99
+
+XMLHttpRequest cannot load http://localhost:45211/api/values/add/. Origin http://localhost:9087 is not allowed by Access-Control-Allow-Origin.
         </div>
         <footer>
         </footer>

@@ -244,7 +244,13 @@ If you see “Unable to find dataset the-psf:pypi”, then that means you probab
 <img src="000004.png" alt=""></li>
 <li>Copy and Paste this query into New Query</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">SELECT</div><div class="line">  REGEXP_EXTRACT(details.python, r&quot;[0-9]+\.[0-9]+&quot;) AS python_version,</div><div class="line">  COUNT(*) AS downloads</div><div class="line">FROM `the-psf.pypi.downloads*`</div><div class="line">WHERE file.project=&quot;iotedgedev&quot;</div><div class="line">GROUP BY python_version</div><div class="line">ORDER BY downloads DESC</div></pre></td></tr></table></figure>
+SELECT
+  REGEXP_EXTRACT(details.python, r&quot;[0-9]+\.[0-9]+&quot;) AS python_version,
+  COUNT(*) AS downloads
+FROM `the-psf.pypi.downloads*`
+WHERE file.project=&quot;iotedgedev&quot;
+GROUP BY python_version
+ORDER BY downloads DESC
 <p><img src="000005.png" alt=""></p>
 <ol>
 <li>Change ‘iotedgedev’ to the name of your PyPI Package</li>

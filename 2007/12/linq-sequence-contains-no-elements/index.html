@@ -205,9 +205,9 @@ Instead of">
         
         <div class="article-entry" itemprop="articleBody">
             <p>If you call Single to get an object from your DB and the object doesn’t exist you will get an InvalidOperationException.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">return this.DataContext.MemberDaos.Single(m =&gt; m.MemberID == id);</div></pre></td></tr></table></figure>
+return this.DataContext.MemberDaos.Single(m =&gt; m.MemberID == id);
 <p>Instead of Single, use SingleOrDefault, which will return null if the object doesn’t exist.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">return this.DataContext.MemberDaos.SingleOrDefault(m =&gt; m.MemberID == id);</div></pre></td></tr></table></figure>
+return this.DataContext.MemberDaos.SingleOrDefault(m =&gt; m.MemberID == id);
         </div>
         <footer>
         </footer>

@@ -213,7 +213,11 @@
 <p>Now, let’s modify the device code to write more than a simple string to the IoT Hub.</p>
 <h1>IoT Device Code</h1>
 <p>This is the code that will run on the emulated IoT Device. It will write random JSON Serialized messages to your IoT Hub. The data model is simple a single “Participant” class with “Position” and “Count” properties.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">public class Participant</div><div class="line">&#123;</div><div class="line">     public int Position &#123; get; set; &#125;</div><div class="line">     public int Count &#123; get; set; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+public class Participant
+&#123;
+     public int Position &#123; get; set; &#125;
+     public int Count &#123; get; set; &#125;
+&#125;
 <p>1. Clone this repo: <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="external">https://github.com/jongio/UWPIoTDevice</a></p>
 <p>2. Open the DeviceKey.txt file and paste in your device connection string from the Azure Portal. (I don’t do much UWP dev and couldn’t quickly figure out how they want us to store config settings like this, so I just dropped it in a text file. LMK if you know a better way to manage config settings)</p>
 <p>3. Compile and move onto next step.</p>

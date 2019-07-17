@@ -204,7 +204,32 @@ Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
             <p>I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually.</p>
 <p>Thanks to Tarun Arora for a good starting point: <a href="http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx" target="_blank" rel="external">http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx</a></p>
 <p>Here’s how to update a query in code:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><div class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.Client;</div><div class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;</div><div class="line"><span class="keyword">using</span> System;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> <span class="title">ConsoleApplication1</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">class</span> <span class="title">Program</span></div><div class="line">    &#123;</div><div class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"http://yourtfsurl/"</span>));</div><div class="line">            <span class="keyword">var</span> store = tfs.GetService&lt;WorkItemStore&gt;();</div><div class="line">            <span class="keyword">var</span> project = store.Projects[<span class="string">"your project name"</span>];</div><div class="line"></div><div class="line">            <span class="keyword">foreach</span> (StoredQuery query <span class="keyword">in</span> project.StoredQueries)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span> (query.QueryText.Contains(<span class="string">"[System.IterationPath] under 'your area path'"</span>))</div><div class="line">                &#123;</div><div class="line">                    query.QueryText = query.QueryText.Replace(<span class="string">"[System.IterationPath] under 'your area path'"</span>, </div><div class="line">                        <span class="string">"[System.IterationPath] under 'your iteration path'"</span>);</div><div class="line">                    query.Update();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<span class="keyword">using</span> Microsoft.TeamFoundation.Client;
+<span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;
+<span class="keyword">using</span> System;
+
+<span class="keyword">namespace</span> <span class="title">ConsoleApplication1</span>
+&#123;
+    <span class="keyword">class</span> <span class="title">Program</span>
+    &#123;
+        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span>
+        &#123;
+            <span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"http://yourtfsurl/"</span>));
+            <span class="keyword">var</span> store = tfs.GetService&lt;WorkItemStore&gt;();
+            <span class="keyword">var</span> project = store.Projects[<span class="string">"your project name"</span>];
+
+            <span class="keyword">foreach</span> (StoredQuery query <span class="keyword">in</span> project.StoredQueries)
+            &#123;
+                <span class="keyword">if</span> (query.QueryText.Contains(<span class="string">"[System.IterationPath] under 'your area path'"</span>))
+                &#123;
+                    query.QueryText = query.QueryText.Replace(<span class="string">"[System.IterationPath] under 'your area path'"</span>, 
+                        <span class="string">"[System.IterationPath] under 'your iteration path'"</span>);
+                    query.Update();
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;
         </div>
         <footer>
         </footer>

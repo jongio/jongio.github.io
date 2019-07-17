@@ -15,19 +15,22 @@
     <meta name="keywords" content="python,dotnet,tox" />
     
     <meta name="description" content="When running Python unit tests with tox, you might see the following errors:
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
+C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
+C:\Program Files\dotnet\sdk\2.0.0\Nu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to 'Value cannot be null. Parameter name: path1' with dotnet and tox">
 <meta property="og:url" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="When running Python unit tests with tox, you might see the following errors:
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
+C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
+C:\Program Files\dotnet\sdk\2.0.0\Nu">
 <meta property="og:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
 <meta property="og:updated_time" content="2017-12-30T16:20:50.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to 'Value cannot be null. Parameter name: path1' with dotnet and tox">
 <meta name="twitter:description" content="When running Python unit tests with tox, you might see the following errors:
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
+C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
+C:\Program Files\dotnet\sdk\2.0.0\Nu">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
 <meta name="twitter:creator" content="@jongallant">
     
@@ -202,11 +205,25 @@ C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be 
         
         <div class="article-entry" itemprop="articleBody">
             <p>When running Python unit tests with tox, you might see the following errors:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. </div><div class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">System.ArgumentNullException: Value cannot be null.</div><div class="line">Parameter name: path1</div><div class="line">   at System.IO.Path.Combine(String path1, String path2)</div><div class="line">   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()</div><div class="line">   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)</div><div class="line">   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)</div><div class="line">   at Microsoft.DotNet.Cli.Program.Main(String[] args)</div></pre></td></tr></table></figure>
+C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
+C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1
+System.ArgumentNullException: Value cannot be null.
+Parameter name: path1
+   at System.IO.Path.Combine(String path1, String path2)
+   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()
+   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)
+   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)
+   at Microsoft.DotNet.Cli.Program.Main(String[] args)
 <p>That is happening because all environment variables are not passed to tox by default.</p>
 <p>Open <code>tox.ini</code> and add the <code>passenv = APPDATA ProgramFiles USERPROFILE</code> line:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[testenv]</div><div class="line">setenv =</div><div class="line">    PYTHONPATH = &#123;toxinidir&#125;</div><div class="line"></div><div class="line">commands = </div><div class="line">    python setup.py test</div><div class="line"></div><div class="line">passenv = APPDATA ProgramFiles USERPROFILE</div></pre></td></tr></table></figure>
+[testenv]
+setenv =
+    PYTHONPATH = &#123;toxinidir&#125;
+
+commands = 
+    python setup.py test
+
+passenv = APPDATA ProgramFiles USERPROFILE
 <p>Rerun <code>tox</code> and you should be good.</p>
 
         </div>

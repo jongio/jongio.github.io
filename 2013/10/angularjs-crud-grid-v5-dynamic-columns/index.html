@@ -200,7 +200,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I just added support for dynamic columns. Before you were limited to Id and Name, now you can specific the columns as a Json object in the directive.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">crud-grid</span> <span class="attr">table</span>=<span class="string">'person'</span> <span class="attr">columns</span>=<span class="string">'[&#123;"name":"Id", "class":"col-md-1", "autoincrement": "true"&#125;, &#123;"name":"Name"&#125;]'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">crud-grid</span> <span class="attr">table</span>=<span class="string">'person'</span> <span class="attr">columns</span>=<span class="string">'[&#123;"name":"Id", "class":"col-md-1", "autoincrement": "true"&#125;, &#123;"name":"Name"&#125;]'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
 <p><strong>name</strong>: The name of the column. Must match the column name in your db<br>
 <strong>class</strong>: The css class that you want to be applied to that column TH tag<br>
 <strong>autoincrement</strong>: Set to true if you don’t want the user to set. Useful for columns that are autoincremented primary keys.</p>
