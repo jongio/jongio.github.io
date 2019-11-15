@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#" />
+    <meta name="keywords" content="c#">
     
-    <meta name="description" content="If you get this exception
-
-_System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implemen">
+    <meta name="description" content="If you get this exception  _System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implemen">
+<meta name="keywords" content="c#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to Method has no implementation (no RVA) Error">
 <meta property="og:url" content="https://blog.jongallant.com/2009/02/method-has-no-implementation/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="If you get this exception
-
-_System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implemen">
+<meta property="og:description" content="If you get this exception  _System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implemen">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T22:08:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to Method has no implementation (no RVA) Error">
-<meta name="twitter:description" content="If you get this exception
-
-_System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implemen">
+<meta name="twitter:description" content="If you get this exception  _System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implemen">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ _System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Vers
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -209,10 +205,9 @@ _System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Vers
 <p>_System.TypeLoadException: Could not load type ‘x’ from assembly ‘xx, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null’ because the method ‘SendMessage’ has no implementation (no RVA)._Make sure you have a DllImport attribute for the method.</p>
 </blockquote>
 <p>This…</p>
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> IntPtr <span class="title">SendMessage</span>(<span class="params">IntPtr w, <span class="keyword">uint</span> m, IntPtr p1, IntPtr p2</span>)</span>;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> IntPtr <span class="title">SendMessage</span>(<span class="params">IntPtr w, <span class="keyword">uint</span> m, IntPtr p1, IntPtr p2</span>)</span>;</span><br></pre></td></tr></table></figure>
 <p>Becomes this…</p>
-[<span class="meta">DllImport(<span class="meta-string">"user32.dll"</span>)</span>]
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> IntPtr <span class="title">SendMessage</span>(<span class="params">IntPtr w, <span class="keyword">uint</span> m, IntPtr p1, IntPtr p2</span>)</span>;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">[<span class="meta">DllImport(<span class="meta-string">"user32.dll"</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> IntPtr <span class="title">SendMessage</span>(<span class="params">IntPtr w, <span class="keyword">uint</span> m, IntPtr p1, IntPtr p2</span>)</span>;</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

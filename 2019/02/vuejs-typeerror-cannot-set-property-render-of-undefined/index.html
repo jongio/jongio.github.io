@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="javascript,vuejs,webdev" />
+    <meta name="keywords" content="javascript,vuejs,webdev">
     
-    <meta name="description" content="Developing a Vue.js app and I was getting this:
-Uncaught TypeError: Cannot set property &apos;render&apos; of undefined
-    at normalizeComponent (componentNormalizer.js:24)
-    at Module../src/App.vue (App.vu">
+    <meta name="description" content="Developing a Vue.js app and I was getting this: Uncaught TypeError: Cannot set property &apos;render&apos; of undefined    at normalizeComponent (componentNormalizer.js:24)    at Module../src/App.vue (App.vue?">
+<meta name="keywords" content="javascript,vuejs,webdev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Vue.js TypeError: Cannot set property 'render' of undefined">
+<meta property="og:title" content="Solution to Vue.js TypeError: Cannot set property &#39;render&#39; of undefined">
 <meta property="og:url" content="https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Developing a Vue.js app and I was getting this:
-Uncaught TypeError: Cannot set property &apos;render&apos; of undefined
-    at normalizeComponent (componentNormalizer.js:24)
-    at Module../src/App.vue (App.vu">
+<meta property="og:description" content="Developing a Vue.js app and I was getting this: Uncaught TypeError: Cannot set property &apos;render&apos; of undefined    at normalizeComponent (componentNormalizer.js:24)    at Module../src/App.vue (App.vue?">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/000056.png">
-<meta property="og:updated_time" content="2019-02-11T19:29:57.043Z">
+<meta property="og:updated_time" content="2019-02-11T19:29:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to Vue.js TypeError: Cannot set property 'render' of undefined">
-<meta name="twitter:description" content="Developing a Vue.js app and I was getting this:
-Uncaught TypeError: Cannot set property &apos;render&apos; of undefined
-    at normalizeComponent (componentNormalizer.js:24)
-    at Module../src/App.vue (App.vu">
+<meta name="twitter:title" content="Solution to Vue.js TypeError: Cannot set property &#39;render&#39; of undefined">
+<meta name="twitter:description" content="Developing a Vue.js app and I was getting this: Uncaught TypeError: Cannot set property &apos;render&apos; of undefined    at normalizeComponent (componentNormalizer.js:24)    at Module../src/App.vue (App.vue?">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/000056.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@ Uncaught TypeError: Cannot set property &apos;render&apos; of undefined
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -207,26 +200,12 @@ Uncaught TypeError: Cannot set property &apos;render&apos; of undefined
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="000056.png" alt=""></p>
+            <p><img src="000056.png" alt></p>
 <p>Developing a Vue.js app and I was getting this:</p>
-Uncaught TypeError: Cannot <span class="built_in">set</span> property <span class="string">'render'</span> of undefined
-    at normalizeComponent (componentNormalizer.js:24)
-    at Module../src/App.vue (App.vue?180a:8)
-    at __webpack_require__ (bootstrap:766)
-    at fn (bootstrap:129)
-    at Module../src/main.ts (Scorecard.vue?c458:1)
-    at __webpack_require__ (bootstrap:766)
-    at fn (bootstrap:129)
-    at Object.0 (Home.vue?3d6e:1)
-    at __webpack_require__ (bootstrap:766)
-    at bootstrap:901
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Uncaught TypeError: Cannot <span class="built_in">set</span> property <span class="string">'render'</span> of undefined</span><br><span class="line">    at normalizeComponent (componentNormalizer.js:24)</span><br><span class="line">    at Module../src/App.vue (App.vue?180a:8)</span><br><span class="line">    at __webpack_require__ (bootstrap:766)</span><br><span class="line">    at fn (bootstrap:129)</span><br><span class="line">    at Module../src/main.ts (Scorecard.vue?c458:1)</span><br><span class="line">    at __webpack_require__ (bootstrap:766)</span><br><span class="line">    at fn (bootstrap:129)</span><br><span class="line">    at Object.0 (Home.vue?3d6e:1)</span><br><span class="line">    at __webpack_require__ (bootstrap:766)</span><br><span class="line">    at bootstrap:901</span><br></pre></td></tr></table></figure>
 <p>Turns out I accidentally removed the export from my App.vue file.</p>
 <p>To solve, open your App.vue file and make sure App is being exported.</p>
-&lt;script lang=<span class="string">"ts"</span>&gt;
-<span class="keyword">export</span> <span class="keyword">default</span> &#123;
-  <span class="attr">name</span>: <span class="string">'App'</span>
-&#125;;
-<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script lang=<span class="string">"ts"</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'App'</span></span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>

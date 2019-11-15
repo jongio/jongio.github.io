@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="review" />
+    <meta name="keywords" content="review">
     
     <meta name="description" content="I’m working on a project that involves aggregating data from many sources (Twitter, Blogs, Yammer, etc) so my team can get visibility and respond to questions being asked about our product. My goal is">
+<meta name="keywords" content="review">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Two Things to Consider when Integrating via Zapier">
 <meta property="og:url" content="https://blog.jongallant.com/2015/12/zapier-two-things/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on a project that involves aggregating data from many sources (Twitter, Blogs, Yammer, etc) so my team can get visibility and respond to questions being asked about our product. My goal is">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2017-01-20T22:18:05.022Z">
+<meta property="og:updated_time" content="2017-01-20T22:18:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Two Things to Consider when Integrating via Zapier">
 <meta name="twitter:description" content="I’m working on a project that involves aggregating data from many sources (Twitter, Blogs, Yammer, etc) so my team can get visibility and respond to questions being asked about our product. My goal is">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -199,8 +201,8 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on a project that involves aggregating data from many sources (Twitter, Blogs, Yammer, etc) so my team can get visibility and respond to questions being asked about our product. My goal is to suck in all the data from those sources, pop it into a database and then create a Power BI dashboard out of it.</p>
-<p>To do so, I created a webhook endpoint that accepts HTTP POST operations so I can have a single endpoint that accepts data and inserts it into the database. The missing part was querying for the data and calling my webhook. Instead of writing all those connectors I would rather use a service that does that for me. There are a bunch of services out there that enable service to service integrations, like <a href="https://zapier.com/" target="_blank" rel="external">Zapier</a> and <a href="http://ifttt.com/" target="_blank" rel="external">IFTTT</a>. There’s a good list of them <a href="http://apievangelist.com/2013/02/10/bringing-etl-to-the-masses-with-apis/" target="_blank" rel="external">here</a>. I spent a bunch of time with Zapier because they have connectors to most of the services I need to connect with and they support webhooks. IFTTT does those things as well, but I found their product to be too buggy for me to work with, especially the webhook (aka Maker) connector.</p>
-<p><a href="https://zapier.com/" target="_blank" rel="external">Zapier</a> is a polished product with an amazing user experience, but there are a few limitations that I think you should know about. I want to make sure you know that I think very highly of Zapier as a product. The UX is amazing. The error messaging is great. The support team is phenomenal. There are just two important things that prevent me from using it….</p>
+<p>To do so, I created a webhook endpoint that accepts HTTP POST operations so I can have a single endpoint that accepts data and inserts it into the database. The missing part was querying for the data and calling my webhook. Instead of writing all those connectors I would rather use a service that does that for me. There are a bunch of services out there that enable service to service integrations, like <a href="https://zapier.com/" target="_blank" rel="noopener">Zapier</a> and <a href="http://ifttt.com/" target="_blank" rel="noopener">IFTTT</a>. There’s a good list of them <a href="http://apievangelist.com/2013/02/10/bringing-etl-to-the-masses-with-apis/" target="_blank" rel="noopener">here</a>. I spent a bunch of time with Zapier because they have connectors to most of the services I need to connect with and they support webhooks. IFTTT does those things as well, but I found their product to be too buggy for me to work with, especially the webhook (aka Maker) connector.</p>
+<p><a href="https://zapier.com/" target="_blank" rel="noopener">Zapier</a> is a polished product with an amazing user experience, but there are a few limitations that I think you should know about. I want to make sure you know that I think very highly of Zapier as a product. The UX is amazing. The error messaging is great. The support team is phenomenal. There are just two important things that prevent me from using it….</p>
 <h2 id="it-only-retrieves-new-data"><a class="header-anchor" href="#it-only-retrieves-new-data"></a><strong>It only retrieves new data</strong></h2>
 <p>Zapier is for “new” data. Any new piece of content that is created in your source connector will be sent to your destination connector. But, if you need old data you have to get that yourself. It doesn’t allow you to go back in time. For my project, I have to get old and new data from the source. I could still use Zapier for new data, but I would have to write a script to get old data to prime it. If I go that far to get old data, then I can just quickly write a script to ping for new data. So, that alone would prevent me from using Zapier.</p>
 <p>I asked Zapier if they plan to expose direct access to their connectors so I could use then when creating my code to get old data. They unfortunately said no.</p>
@@ -208,7 +210,7 @@
 <h2 id="it-can-get-costly"><a class="header-anchor" href="#it-can-get-costly"></a><strong>It can get costly</strong></h2>
 <p>Zapier has “Zaps” and “Tasks”. A Zap is equivalent to <em>a job that connects source and destination data</em> and a Task is equivalent to <em>a POST operation to your destination</em>. They charge per Task, not per run of the Zap. Tasks can add up quickly, especially if you have a lot of connectors that are popular.</p>
 <p>I incorrectly assumed that a Task was a “run of the Zap”, but it’s not. A Task is “an execution of your destination connector”. If your destination is a webhook, then each time they call that webhook will count as a Task.</p>
-<p>As you can see on their <a href="https://zapier.com/app/pricing" target="_blank" rel="external">pricing page</a> you have multiple plans to choose from.</p>
+<p>As you can see on their <a href="https://zapier.com/app/pricing" target="_blank" rel="noopener">pricing page</a> you have multiple plans to choose from.</p>
 <div class="separator" style="clear: both; text-align: center;">![](/images/blog/zapier1.png)</div>
 They also have "[higher plans](https://zapier.com/help/higher-plans/)"
 <div class="separator" style="clear: both; text-align: center;">![](/images/blog/zapier2.png)</div>

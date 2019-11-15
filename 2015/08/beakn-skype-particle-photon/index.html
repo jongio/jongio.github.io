@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,7 +12,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="beakn is my Skype for Business (aka Lync) Status Light project that I have been building since late last year. Very simply, it’s a hardware device that will change color to Red, Yellow or Green as you">
 <meta property="og:type" content="article">
@@ -20,8 +20,9 @@
 <meta property="og:url" content="https://blog.jongallant.com/2015/08/beakn-skype-particle-photon/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="beakn is my Skype for Business (aka Lync) Status Light project that I have been building since late last year. Very simply, it’s a hardware device that will change color to Red, Yellow or Green as you">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:53:16.660Z">
+<meta property="og:updated_time" content="2018-05-16T20:53:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Quickly Create a Skype for Business Status Light with a Particle Photon">
 <meta name="twitter:description" content="beakn is my Skype for Business (aka Lync) Status Light project that I have been building since late last year. Very simply, it’s a hardware device that will change color to Red, Yellow or Green as you">
@@ -30,11 +31,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -197,7 +198,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>beakn is my Skype for Business (aka Lync) Status Light project that I have been building since late last year. Very simply, it’s a hardware device that will change color to Red, Yellow or Green as your Skype for Business status changes. You can put it in your home or office to let people know when you are busy, free or away.</p>
-<p>beakn has been through many iterations and I ultimately decided to use the Spark Core as my microcontroller development board because it comes with WiFi, has cloud events and is relatively cheap. Since my last post, Microsoft renamed Lync to Skype for Business, Spark changed its name to <a href="http://particle.io" target="_blank" rel="external">Particle</a> and they released a new board called the Photon. It has all the capabilities as the Core and it’s only $20.</p>
+<p>beakn has been through many iterations and I ultimately decided to use the Spark Core as my microcontroller development board because it comes with WiFi, has cloud events and is relatively cheap. Since my last post, Microsoft renamed Lync to Skype for Business, Spark changed its name to <a href="http://particle.io" target="_blank" rel="noopener">Particle</a> and they released a new board called the Photon. It has all the capabilities as the Core and it’s only $20.</p>
 <p>This post is a very quick walkthrough on how to setup the simplest version of beakn. All of the source is MIT. Forks make me happy, so please, fork on and be creative with it.</p>
 <h2 id="setup-photon"><a class="header-anchor" href="#setup-photon"></a>Setup Photon</h2>
 <p>You will want to get your Photon setup with WiFi and associated with your Particle account. I have instructions for doing so with either PuTTY or Node.js. Please select the method you prefer. I recommend the Node.js route if you are comfortable with Node.js</p>
@@ -205,35 +206,35 @@
 <p><a href="/2015/08/particle-photon-setup-nodejs.html">“How to Setup a Particle Photon with Node.js”</a></p>
 <p>Go to one of those posts, follow all of the instructions and then come back here to continue setting up your status light.</p>
 <h2 id="flash-beakn-to-photon"><a class="header-anchor" href="#flash-beakn-to-photon"></a>Flash beakn to Photon</h2>
-<p>Particle makes it really easy for you to share your scripts with others via their <a href="https://docs.particle.io/guide/tools-and-features/dev/#using-community-libraries" target="_blank" rel="external">Community Libraries feature</a>. I added beakn to the library…here’s how to get it installed.</p>
-<p>1. Go to <a href="https://build.particle.io/" target="_blank" rel="external">Particle Build</a> (the cloud IDE)</p>
+<p>Particle makes it really easy for you to share your scripts with others via their <a href="https://docs.particle.io/guide/tools-and-features/dev/#using-community-libraries" target="_blank" rel="noopener">Community Libraries feature</a>. I added beakn to the library…here’s how to get it installed.</p>
+<p>1. Go to <a href="https://build.particle.io/" target="_blank" rel="noopener">Particle Build</a> (the cloud IDE)</p>
 <p>2. Make sure the device you want to work with has the star next to it in the Device tab. In my case I want to flash to photon25.</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image.png" alt></p>
 <p>3. Click on the “Libraries” icon in the lower left rail</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_3.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_3.png" alt></p>
 <p>4. Seach for “beakn” and click on the beakn project.</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_4.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_4.png" alt></p>
 <p>You will see the code load to the right. It’s very simple. Just exposes a method that the beakn Desktop app calls when your Skype for Business status changes. That method sets the on-board RGB led based on what status is sent to it.</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_5.png" alt=""></p>
-<p>You can also find this code on GitHub here: <a href="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore-onboard-led.ino" title="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore-onboard-led.ino" target="_blank" rel="external">https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore-onboard-led.ino</a></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_5.png" alt></p>
+<p>You can also find this code on GitHub here: <a href="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore-onboard-led.ino" title="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore-onboard-led.ino" target="_blank" rel="noopener">https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore-onboard-led.ino</a></p>
 <p>5. Click the “USE THIS EXAMPLE” button.</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_6.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_6.png" alt></p>
 <p>6. Click the “Flash” icon in the upper left rail</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_7.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_7.png" alt></p>
 <p>You will then see a couple of messages in the footer while it is being flashed</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_8.png" alt=""></p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_9.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_8.png" alt></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_9.png" alt></p>
 <p>Your Photon will reboot after it is done flashing and the Led will very likely turn off. That’s okay, just move onto the next step.</p>
 <h2 id="install-skype-for-business"><a class="header-anchor" href="#install-skype-for-business"></a>Install Skype for Business</h2>
 <p>Make sure you have Skype for Business installed and you are signed in. The beakn desktop application will use the Skype library events to notify the Particle cloud that there’s a change.</p>
 <h2 id="install-beakn-desktop-application"><a class="header-anchor" href="#install-beakn-desktop-application"></a>Install beakn Desktop Application</h2>
-<p>The beakn Desktop application listens for Skype for Business status change events and sends those to your Photon. All the code for this app is MIT and is located <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="external">here</a>. Feel free to fork it and be creative.</p>
+<p>The beakn Desktop application listens for Skype for Business status change events and sends those to your Photon. All the code for this app is MIT and is located <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener">here</a>. Feel free to fork it and be creative.</p>
 <ol>
-<li>Go to the beakn releases GitHub page and install the latest version via the msi file: <a href="https://github.com/jongio/beakn/releases" title="https://github.com/jongio/beakn/releases" target="_blank" rel="external">https://github.com/jongio/beakn/releases</a></li>
+<li>Go to the beakn releases GitHub page and install the latest version via the msi file: <a href="https://github.com/jongio/beakn/releases" title="https://github.com/jongio/beakn/releases" target="_blank" rel="noopener">https://github.com/jongio/beakn/releases</a></li>
 </ol>
 <p>2. When you launch beakn for the first time it should see that you haven’t entered your Photon Id or Access Token and prompt you to do so. If it doesn’t then just go the place where you installed it and click on the beakn.exe file, then click on the Settings button.</p>
 <p>The Settings dialog will look like this:</p>
-<p><img src="/images/blog/141769c6fbd5_1431A/image_10.png" alt=""></p>
+<p><img src="/images/blog/141769c6fbd5_1431A/image_10.png" alt></p>
 <p>3. Enter your Photon Id and Access Token that you copied over into Notepad when you setup your Photon. If you don’t have them, then scroll to the top of this page and follow the “Setup Photon” link.</p>
 <p>As soon as you click Ok beakn will get your Skype for Business status and update your Photon LED color.</p>
 <p><strong>Congrats! You now have a very basic Skype for Business status light up and running!!</strong></p>

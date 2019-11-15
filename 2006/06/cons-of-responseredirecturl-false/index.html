@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT…
-The drawback to using this is that the">
+    <meta name="description" content="The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT… The drawback to using this is that the">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cons of Response.Redirect(url, false)">
 <meta property="og:url" content="https://blog.jongallant.com/2006/06/cons-of-responseredirecturl-false/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT…
-The drawback to using this is that the">
+<meta property="og:description" content="The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT… The drawback to using this is that the">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:36:44.809Z">
+<meta property="og:updated_time" content="2018-12-10T22:36:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cons of Response.Redirect(url, false)">
-<meta name="twitter:description" content="The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT…
-The drawback to using this is that the">
+<meta name="twitter:description" content="The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT… The drawback to using this is that the">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +66,7 @@ The drawback to using this is that the">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -200,34 +198,10 @@ The drawback to using this is that the">
         
         <div class="article-entry" itemprop="articleBody">
             <p>The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT…</p>
-<p>The drawback to using this is that the page will continue to process on the server and be sent to the client. If you are doing a redirect in Page_Init (or like) and call Response.Redirect(url, false) the page will only redirect once the current page is done executing. This means that any server side processing you are performing on that page WILL get executed. In most cases, I will take the exception perf hit over the rendering perf hit, esp since the page won’t be rendered anyway and that page could potentially have a ton of data. Using <a href="http://www.fiddlertool.com/fiddler/" target="_blank" rel="external">Fiddler</a> I was also able monitor my http traffic and see that when using this redirect method the page is actually being sent to the client as well.</p>
+<p>The drawback to using this is that the page will continue to process on the server and be sent to the client. If you are doing a redirect in Page_Init (or like) and call Response.Redirect(url, false) the page will only redirect once the current page is done executing. This means that any server side processing you are performing on that page WILL get executed. In most cases, I will take the exception perf hit over the rendering perf hit, esp since the page won’t be rendered anyway and that page could potentially have a ton of data. Using <a href="http://www.fiddlertool.com/fiddler/" target="_blank" rel="noopener">Fiddler</a> I was also able monitor my http traffic and see that when using this redirect method the page is actually being sent to the client as well.</p>
 <p>I don’t usually do redirects in try/catch blocks, but if you do the ThreadAbortException will be handled by your catch and potentially cause a transaction Abort (depending on what you are doing of course). If you do put the redirect in the try block, then you’ll need to explicitly catch the ThreadAbortException or create a wrapper method that does that for you.</p>
 <p>Something like this would work.</p>
-///
-
-
-     /// Provides functionality for redirecting http requests.
-     ///
-
-     public static class RedirectUtility
-    &#123;
-         ///
-
-         /// Redirects to the given url and swallows ThreadAbortException that is raised by the Redirect call.
-         ///
-
-         /// The url to redirect to.
-         public static void Redirect(string url)
-         &#123;
-             try
-             &#123;
-                 HttpContext.Current.Response.Redirect(url, true);
-             &#125;
-             catch (ThreadAbortException)
-             &#123;
-             &#125;
-         &#125;
-  &#125;
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">///</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     /// Provides functionality for redirecting http requests.</span><br><span class="line">     ///</span><br><span class="line"></span><br><span class="line">     public static class RedirectUtility</span><br><span class="line">    &#123;</span><br><span class="line">         ///</span><br><span class="line"></span><br><span class="line">         /// Redirects to the given url and swallows ThreadAbortException that is raised by the Redirect call.</span><br><span class="line">         ///</span><br><span class="line"></span><br><span class="line">         /// The url to redirect to.</span><br><span class="line">         public static void Redirect(string url)</span><br><span class="line">         &#123;</span><br><span class="line">             try</span><br><span class="line">             &#123;</span><br><span class="line">                 HttpContext.Current.Response.Redirect(url, true);</span><br><span class="line">             &#125;</span><br><span class="line">             catch (ThreadAbortException)</span><br><span class="line">             &#123;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer>

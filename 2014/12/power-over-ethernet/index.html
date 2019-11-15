@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot" />
+    <meta name="keywords" content="iot">
     
     <meta name="description" content="As I am building out my “maker experience” product “beakn” I’m constantly thinking about ways to improve it with the goal of getting it to be completely wireless. I started with it being USB connected">
+<meta name="keywords" content="iot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="What you should know about power-over-ethernet (PoE) when considering it for your maker project.">
 <meta property="og:url" content="https://blog.jongallant.com/2014/12/power-over-ethernet/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="As I am building out my “maker experience” product “beakn” I’m constantly thinking about ways to improve it with the goal of getting it to be completely wireless. I started with it being USB connected">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,13 +200,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="/images/blog/d00be0a0f09d_8C01/11361-01.jpg"><img src="/images/blog/d00be0a0f09d_8C01/11361-01_thumb.jpg" alt="11361-01" title="11361-01"></a>As I am building out my “maker experience” product “<a href="/tags/beakn">beakn</a>” I’m constantly thinking about ways to improve it with the goal of getting it to be completely wireless. I started with it being USB connected (<a href="/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a>), then Ethernet (<a href="/2014/12/beakn-v0-2-diy-lync-status-light.html">beak v0.2</a>) and now I’m looking into wireless communication. When I was looking at Ethernet I was researching Arduino ethernet shields and came across the <a href="http://www.amazon.com/Arduino-Ethernet-Power-over-Ethernet-PoE-Module/dp/B005D22FR6" target="_blank" rel="external">Arduino Ethernet Shield with Power-over-Ethernet (PoE) Module</a>. I didn’t research the requirements much, I just thought it would be great to have an Ethernet option and only run one cable and get both Ethernet and power – so I ordered it.</p>
+            <p><a href="/images/blog/d00be0a0f09d_8C01/11361-01.jpg"><img src="/images/blog/d00be0a0f09d_8C01/11361-01_thumb.jpg" alt="11361-01" title="11361-01"></a>As I am building out my “maker experience” product “<a href="/tags/beakn">beakn</a>” I’m constantly thinking about ways to improve it with the goal of getting it to be completely wireless. I started with it being USB connected (<a href="/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a>), then Ethernet (<a href="/2014/12/beakn-v0-2-diy-lync-status-light.html">beak v0.2</a>) and now I’m looking into wireless communication. When I was looking at Ethernet I was researching Arduino ethernet shields and came across the <a href="http://www.amazon.com/Arduino-Ethernet-Power-over-Ethernet-PoE-Module/dp/B005D22FR6" target="_blank" rel="noopener">Arduino Ethernet Shield with Power-over-Ethernet (PoE) Module</a>. I didn’t research the requirements much, I just thought it would be great to have an Ethernet option and only run one cable and get both Ethernet and power – so I ordered it.</p>
 <p>_<br>
 _</p>
 <p><em>(Arduino Ethernet Shield with PoE)</em></p>
-<p>What I didn’t realize is that power isn’t provided over ethernet by default. When I plugged the ethernet cable into the shield I thought it would power up, but it didn’t. I spent a lot of time researching settings or configuration for it, but found nothing. I bypassed my router and went directly to the source to see if it was an issue with my router. Still no luck. I then (using <a href="http://www.freetronics.com.au/pages/power-over-ethernet-for-arduino#.VI8m_SvF8pW" target="_blank" rel="external">this guide</a>)built a cable that I thought could be used to get power out of the ethernet cable.<a href="/images/blog/d00be0a0f09d_8C01/IMG_1881.jpg"><img src="/images/blog/d00be0a0f09d_8C01/IMG_1881_thumb.jpg" alt="IMG_1881" title="IMG_1881"></a></p>
+<p>What I didn’t realize is that power isn’t provided over ethernet by default. When I plugged the ethernet cable into the shield I thought it would power up, but it didn’t. I spent a lot of time researching settings or configuration for it, but found nothing. I bypassed my router and went directly to the source to see if it was an issue with my router. Still no luck. I then (using <a href="http://www.freetronics.com.au/pages/power-over-ethernet-for-arduino#.VI8m_SvF8pW" target="_blank" rel="noopener">this guide</a>)built a cable that I thought could be used to get power out of the ethernet cable.<a href="/images/blog/d00be0a0f09d_8C01/IMG_1881.jpg"><img src="/images/blog/d00be0a0f09d_8C01/IMG_1881_thumb.jpg" alt="IMG_1881" title="IMG_1881"></a></p>
 <p><em>(My custom PoE cable)</em></p>
-<p>It then came to me that power might not be provided by default. So I searched for “<a href="http://www.amazon.com/Ubiquiti-Networks-ERPOE-5-EdgeRouter-Adapter/dp/B00E77N3WE/ref=sr_1_1?s=electronics&amp;ie=UTF8&amp;qid=1418666731&amp;sr=1-1&amp;keywords=router+poe&amp;pebp=1418666744493" target="_blank" rel="external">router PoE</a>” and discovered that there are indeed PoE enabled routers and I didn’t have one.<br>
+<p>It then came to me that power might not be provided by default. So I searched for “<a href="http://www.amazon.com/Ubiquiti-Networks-ERPOE-5-EdgeRouter-Adapter/dp/B00E77N3WE/ref=sr_1_1?s=electronics&amp;ie=UTF8&amp;qid=1418666731&amp;sr=1-1&amp;keywords=router+poe&amp;pebp=1418666744493" target="_blank" rel="noopener">router PoE</a>” and discovered that there are indeed PoE enabled routers and I didn’t have one.<br>
 <a href="/images/blog/d00be0a0f09d_8C01/71NBj02-RNL._SL1500_.jpg"><a href="/images/blog/d00be0a0f09d_8C01/71NBj02-RNL._SL1500_.jpg"><img src="/images/blog/d00be0a0f09d_8C01/71NBj02-RNL._SL1500__thumb.jpg" alt="71NBj02-RNL.SL1500" title="71NBj02-RNL._SL1500_"></a></a></p>
 <p>(PoE router)</p>
 <p>I also at the same time pinged a co-worker, who is an EE – Hardware guru and he had this to say:</p>

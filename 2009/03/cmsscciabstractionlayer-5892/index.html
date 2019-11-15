@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&amp;gt;Source Control-&amp;gt;Change Source Control.
-
-Microsoft Visual Studio
-Unexpected error">
+    <meta name="description" content="I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&amp;gt;Source Control-&amp;gt;Change Source Control.  Microsoft Visual Studio Unexpected error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to the cmsscciabstractionlayer.cpp Line number: 5892 error">
 <meta property="og:url" content="https://blog.jongallant.com/2009/03/cmsscciabstractionlayer-5892/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&amp;gt;Source Control-&amp;gt;Change Source Control.
-
-Microsoft Visual Studio
-Unexpected error">
+<meta property="og:description" content="I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&amp;gt;Source Control-&amp;gt;Change Source Control.  Microsoft Visual Studio Unexpected error">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-28T08:16:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to the cmsscciabstractionlayer.cpp Line number: 5892 error">
-<meta name="twitter:description" content="I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&amp;gt;Source Control-&amp;gt;Change Source Control.
-
-Microsoft Visual Studio
-Unexpected error">
+<meta name="twitter:description" content="I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&amp;gt;Source Control-&amp;gt;Change Source Control.  Microsoft Visual Studio Unexpected error">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +66,7 @@ Unexpected error">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -205,7 +197,7 @@ Unexpected error">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&gt;Source Control-&gt;Change Source Control.<a href="http://s687.photobucket.com/albums/vv240/jongallant/?action=view&amp;current=vssproviderissue.png" target="_blank" rel="external"><img src="/images/blog/vssproviderissue.png" alt="Photobucket"></a></p>
+            <p>I often get this error when trying to bind a project or solution to a VSS provider in Visual Studio through File-&gt;Source Control-&gt;Change Source Control.<a href="http://s687.photobucket.com/albums/vv240/jongallant/?action=view&amp;current=vssproviderissue.png" target="_blank" rel="noopener"><img src="/images/blog/vssproviderissue.png" alt="Photobucket"></a></p>
 <blockquote>
 <p>Microsoft Visual Studio</p>
 <p>Unexpected error encountered. It is recommended that you restart the application as soon as possible.</p>
@@ -213,7 +205,7 @@ Unexpected error">
 <p>File: vsee\pkgs\vssprovider\cmsscciabstractionlayer.cpp</p>
 <p>Line number: 5892</p>
 </blockquote>
-<p><a href="http://s687.photobucket.com/albums/vv240/jongallant/?action=view&amp;current=vssproviderissue.png" target="_blank" rel="external"></a></p>
+<p><a href="http://s687.photobucket.com/albums/vv240/jongallant/?action=view&amp;current=vssproviderissue.png" target="_blank" rel="noopener"></a></p>
 <p>One reason you get this is because you have a file on your local disk, but not in VSS. This only happened with SLN files for me, but may happen with other files as well.</p>
 <p>You need to open up the VSS provider, SourceOffSite (SOS), or whatever you are using and manually add the file. Then go back to VS and Change Source Control again.</p>
 <p>Jon</p>

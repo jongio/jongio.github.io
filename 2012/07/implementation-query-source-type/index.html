@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#" />
+    <meta name="keywords" content="c#">
     
-    <meta name="description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’
-You get this error if">
+    <meta name="description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’ You get this error if">
+<meta name="keywords" content="c#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[object Object]">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/implementation-query-source-type/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’
-You get this error if">
+<meta property="og:description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’ You get this error if">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[object Object]">
-<meta name="twitter:description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’
-You get this error if">
+<meta name="twitter:description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’ You get this error if">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ You get this error if">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,20 +202,11 @@ You get this error if">
         <div class="article-entry" itemprop="articleBody">
             <p>Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’</p>
 <p>You get this error if you try to do a LINQ query on a collection that doesn’t have an explicit type:</p>
-<span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISubSection</span>
-&#123;
-    <span class="keyword">string</span> Title &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-
-    <span class="keyword">string</span> Description &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-
-    IList Items &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-&#125;
-<span class="keyword">var</span> x  =  <span class="keyword">from</span> c <span class="keyword">in</span> FailingBuilds.Items
-<p><img src="/images/blog/3db7faf53f1b_5B45/image.png" alt=""></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISubSection</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">string</span> Title &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">string</span> Description &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    IList Items &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x  =  <span class="keyword">from</span> c <span class="keyword">in</span> FailingBuilds.Items</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/3db7faf53f1b_5B45/image.png" alt></p>
 <p>The simplest way to fix this (if you know the type at render time) is to cast the property to the concrete type in the LINQ statement: List&lt;Build&gt; below</p>
-<span class="keyword">var</span> x = <span class="function"><span class="keyword">from</span> c <span class="title">in</span> (<span class="params">List&amp;lt;Build&amp;gt;</span>)FailingBuilds.Items
-        <span class="keyword">where</span> c.Committers.<span class="title">Count</span>(<span class="params"></span>) &amp;gt</span>; <span class="number">0</span>
-        <span class="keyword">select</span> c;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">from</span> c <span class="title">in</span> (<span class="params">List&amp;lt;Build&amp;gt;</span>)FailingBuilds.Items</span></span><br><span class="line"><span class="function">        <span class="keyword">where</span> c.Committers.<span class="title">Count</span>(<span class="params"></span>) &amp;gt</span>; <span class="number">0</span></span><br><span class="line">        <span class="keyword">select</span> c;</span><br></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>

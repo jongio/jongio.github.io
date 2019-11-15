@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot,azure,postman,rest" />
+    <meta name="keywords" content="azure,iot,postman,rest">
     
     <meta name="description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
+<meta name="keywords" content="azure,iot,postman,rest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
 <meta property="og:url" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/000119.png">
-<meta property="og:updated_time" content="2018-12-10T12:33:03.516Z">
+<meta property="og:updated_time" content="2018-12-10T12:33:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
 <meta name="twitter:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -213,7 +215,7 @@
     ));
   }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
 </script>
-<p>From my experience with Azure IoT Device Twin REST APIs, I thought it would be great to do the same thing for the entire Azure IoT REST API surface. I’m a huge fan of starting small and showing incremental progress, so with this post, I’m going to show you how I got the entire <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource" target="_blank" rel="external">Azure IoT Resource Provider REST API</a> surface working in Postman and Newman. The Resource Provider REST APIs allow you to manage IoT Hubs as an Azure Resource via the Azure Resource Manager APIs.  The official Swagger for the Resource Provider APIs can be found here: <a href="https://github.com/Azure/azure-rest-api-specs/blob/129d712131beef11c2c184b64de0edf1f9c62c17/specification/iothub/resource-manager/Microsoft.Devices/stable/2017-07-01/iothub.json" target="_blank" rel="external">Azure IoT Hub Resource Provider Swagger</a>.</p>
+<p>From my experience with Azure IoT Device Twin REST APIs, I thought it would be great to do the same thing for the entire Azure IoT REST API surface. I’m a huge fan of starting small and showing incremental progress, so with this post, I’m going to show you how I got the entire <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource" target="_blank" rel="noopener">Azure IoT Resource Provider REST API</a> surface working in Postman and Newman. The Resource Provider REST APIs allow you to manage IoT Hubs as an Azure Resource via the Azure Resource Manager APIs.  The official Swagger for the Resource Provider APIs can be found here: <a href="https://github.com/Azure/azure-rest-api-specs/blob/129d712131beef11c2c184b64de0edf1f9c62c17/specification/iothub/resource-manager/Microsoft.Devices/stable/2017-07-01/iothub.json" target="_blank" rel="noopener">Azure IoT Hub Resource Provider Swagger</a>.</p>
 <p>I’ve written this blog post with two audiences in mind:</p>
 <p><strong>1. View Only</strong>: You want to learn how to use the Azure IoT Resource Provider REST APIs but don’t want to setup all the Azure resources required to execute the requests.</p>
 <blockquote>
@@ -224,7 +226,7 @@
 <p>See <a href="#Option-2-View-and-Execute-Requests">Option 2: View and Execute Requests</a> below.</p>
 </blockquote>
 <h2 id="install-postman"><a class="header-anchor" href="#install-postman"></a>Install Postman</h2>
-<p>With either approach below, you will need to install Postman, which you can do here: <a href="http://getpostman.com" target="_blank" rel="external">Install Postman</a>.  I use the Desktop version, but the Chrome version should work fine as well.</p>
+<p>With either approach below, you will need to install Postman, which you can do here: <a href="http://getpostman.com" target="_blank" rel="noopener">Install Postman</a>.  I use the Desktop version, but the Chrome version should work fine as well.</p>
 <h2 id="option-1-view-requests-only"><a class="header-anchor" href="#option-1-view-requests-only"></a>Option 1: View Requests Only</h2>
 <p>If all you want to do is view the requests in Postman without executing anything, then jump to the <a href="#Open-Postman-Collection">Open Postman Collection</a> section below.</p>
 <h2 id="option-2-view-and-execute-requests"><a class="header-anchor" href="#option-2-view-and-execute-requests"></a>Option 2: View and Execute Requests</h2>
@@ -232,19 +234,19 @@
 <h2 id="set-postman-environment-variables"><a class="header-anchor" href="#set-postman-environment-variables"></a>Set Postman Environment Variables</h2>
 <p>Postman allows you to setup variables and allows you to group them by “Environment”.  For this exercise, you will create a new Environment and add the required variables.</p>
 <p>1. In Postman, click the Manage Environments option under the gears icon in the upper right.<br>
-<img src="000110.png" alt=""></p>
+<img src="000110.png" alt></p>
 <p>2. Click Add, then Click Bulk Edit</p>
-<p><img src="000111.png" alt=""><br>
-<img src="000112.png" alt=""></p>
+<p><img src="000111.png" alt><br>
+<img src="000112.png" alt></p>
 <p>3. Paste the following into the textbox:</p>
 <script src="https://gist.github.com/jongio/4cc9f764b844d69125a92ae04a718017.js"></script>
 <p>4. Give it a name like “Azure IoT Hub”</p>
-<p><img src="000116.png" alt=""></p>
+<p><img src="000116.png" alt></p>
 <p>5. We will now work on creating Azure resources and getting all of the variables needed to execute the Postman collection.</p>
-<p><img src="000117.png" alt=""></p>
+<p><img src="000117.png" alt></p>
 <h2 id="setup-azure-resources"><a class="header-anchor" href="#setup-azure-resources"></a>Setup Azure Resources</h2>
 <h3 id="1-create-azure-subscription"><a class="header-anchor" href="#1-create-azure-subscription"></a>1. Create Azure Subscription</h3>
-<p>You will likely already have an Azure Subscription, but if you don’t, you can create one in the <a href="https://portal.azure.com" target="_blank" rel="external">Azure Portal</a>.</p>
+<p>You will likely already have an Azure Subscription, but if you don’t, you can create one in the <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a>.</p>
 <p>Whether you just created an Azure Subscription or are using an existing one, you will need your Subscription Id to execute these REST API calls.</p>
 <blockquote>
 <p>Copy your <strong>Subscription Id</strong>, which is a GUID, to the <strong>subscriptionId</strong> Postman Environment variable.</p>
@@ -266,12 +268,12 @@
 <blockquote>
 <p>You can skip this step if you don’t need to test Device Bulk operations, but just keep in mind that those requests will fail.</p>
 </blockquote>
-<p>1. Create the Blob Storage Account, feel free to use <a href="http://storageexplorer.com" target="_blank" rel="external">Azure Storage Explorer</a> to do so.<br>
+<p>1. Create the Blob Storage Account, feel free to use <a href="http://storageexplorer.com" target="_blank" rel="noopener">Azure Storage Explorer</a> to do so.<br>
 2. Create two containers, one called ‘export’ and one called ‘import’.</p>
 <p>This is what your Blob Account will look like when you are done with this step:<br>
-<img src="000108.png" alt=""></p>
+<img src="000108.png" alt></p>
 <p>Find your account name and key:</p>
-<p><img src="000109.png" alt=""></p>
+<p><img src="000109.png" alt></p>
 <p>When you are done with this step, you will have the following:</p>
 <ul>
 <li><strong>deviceStorageAccountName</strong></li>
@@ -309,46 +311,46 @@
   }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
 </script>
 <p>When you open the collection you will see the following:<br>
-<img src="openpostmancollection.png" alt=""></p>
+<img src="openpostmancollection.png" alt></p>
 <p>Feel free to poke around and drill into whatever API you’d like to or execute them if you have done the setup steps above.</p>
 <h2 id="run-postman-collection"><a class="header-anchor" href="#run-postman-collection"></a>Run Postman Collection</h2>
 <p>1. Select the Environment that you create earlier, you may have called it Azure IoT Hub</p>
-<p><img src="000118.png" alt=""></p>
+<p><img src="000118.png" alt></p>
 <p>2. Click the ‘Run’ Button</p>
-<p><img src="000119.png" alt=""></p>
+<p><img src="000119.png" alt></p>
 <p>This will load the Postman Collection Runner window.</p>
-<p><img src="000120.png" alt=""></p>
+<p><img src="000120.png" alt></p>
 <p>3. Click ‘Start Test’</p>
 <p>You will immediately start to see the request results</p>
-<p><img src="000121.png" alt=""></p>
+<p><img src="000121.png" alt></p>
 <blockquote>
 <p>With the current configuration, the tests will take a while to execute because I am running the “Create IoT Hub” request and the “Verify IoT Hub” request, which is a polling request that returns a “Success” code when the IoT Hub is created.</p>
 </blockquote>
 <h2 id="run-postman-collection-via-newman"><a class="header-anchor" href="#run-postman-collection-via-newman"></a>Run Postman Collection via Newman</h2>
-<p><a href="https://github.com/postmanlabs/newman" target="_blank" rel="external">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
+<p><a href="https://github.com/postmanlabs/newman" target="_blank" rel="noopener">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
 <p>For example, the following will execute a Postman Collection with a given set of Environment variables.</p>
-newman run postman-collection.json -e environment-variables.json
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run postman-collection.json -e environment-variables.json</span><br></pre></td></tr></table></figure>
 <p>Here’s how to run the Azure IoT Hub collection with Newman.</p>
 <p>0. Install Newman</p>
-npm i -g newman
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g newman</span><br></pre></td></tr></table></figure>
 <p>1. Export the Postman Collection</p>
-<p><img src="000124.png" alt=""></p>
-<p><img src="000125.png" alt=""></p>
+<p><img src="000124.png" alt></p>
+<p><img src="000125.png" alt></p>
 <p>2. Export the Environment Variables</p>
 <p>Click the gear icon in the upper right hand corner of Postman and select Manage Environments and then click the Download Environment button.</p>
-<p><img src="000126.png" alt=""></p>
-<p><img src="000127.png" alt=""></p>
-<p><img src="000128.png" alt=""></p>
+<p><img src="000126.png" alt></p>
+<p><img src="000127.png" alt></p>
+<p><img src="000128.png" alt></p>
 <p>3. Open a CMD and execute the following command:</p>
-newman run <span class="string">"Azure IoT Hub.postman_collection.json"</span> -e <span class="string">"Azure IoT Hub.postman_environment.json"</span>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run <span class="string">"Azure IoT Hub.postman_collection.json"</span> -e <span class="string">"Azure IoT Hub.postman_environment.json"</span></span><br></pre></td></tr></table></figure>
 <p>You will see the following when the run completes</p>
-<p><img src="000129.png" alt=""></p>
+<p><img src="000129.png" alt></p>
 <blockquote>
 <p>There’s a chance you will get errors when running these, especially the Export/Import Device requests.  I’m following up with the Azure IoT team on this. If you do run into this issue, just run again or try again after some time.</p>
 </blockquote>
 <h2 id="setup-postman-monitor"><a class="header-anchor" href="#setup-postman-monitor"></a>Setup Postman Monitor</h2>
 <p>I haven’t tried this yet, but Postman offers a PRO feature called “Monitor”, which allows you to schedule the Collection Run.  I am more interested in integration with existing continuous integration software, which I will be exploring very soon.</p>
-<p>In the meantime, checkout their post <a href="https://www.getpostman.com/docs/integrating_with_jenkins" target="_blank" rel="external">Integrating automated API tests with Jenkins</a>.</p>
+<p>In the meantime, checkout their post <a href="https://www.getpostman.com/docs/integrating_with_jenkins" target="_blank" rel="noopener">Integrating automated API tests with Jenkins</a>.</p>
 <p>Jon</p>
 
         </div>

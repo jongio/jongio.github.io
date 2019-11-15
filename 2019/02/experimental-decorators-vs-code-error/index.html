@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,47 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="vuejs,typescript,webdev,vscode" />
+    <meta name="keywords" content="vuejs,typescript,webdev,vscode">
     
-    <meta name="description" content="With this code:
-@Component
-export default class CategoryRating extends Vue &amp;#123;
-  @Prop(&amp;#123;default: &amp;#123;&amp;#125;&amp;#125;) category: any;
-I kept getting this VS Code error:
-
-Experimental support for">
+    <meta name="description" content="With this code: @Componentexport default class CategoryRating extends Vue &amp;#123;  @Prop(&amp;#123;default: &amp;#123;&amp;#125;&amp;#125;) category: any; I kept getting this VS Code error:  Experimental support for d">
+<meta name="keywords" content="vuejs,typescript,webdev,vscode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the 'experimentalDecorators' option to remove this warning.">
+<meta property="og:title" content="Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning.">
 <meta property="og:url" content="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="With this code:
-@Component
-export default class CategoryRating extends Vue &amp;#123;
-  @Prop(&amp;#123;default: &amp;#123;&amp;#125;&amp;#125;) category: any;
-I kept getting this VS Code error:
-
-Experimental support for">
+<meta property="og:description" content="With this code: @Componentexport default class CategoryRating extends Vue &amp;#123;  @Prop(&amp;#123;default: &amp;#123;&amp;#125;&amp;#125;) category: any; I kept getting this VS Code error:  Experimental support for d">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/000054.png">
-<meta property="og:updated_time" content="2019-02-07T00:14:48.962Z">
+<meta property="og:updated_time" content="2019-02-07T00:14:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the 'experimentalDecorators' option to remove this warning.">
-<meta name="twitter:description" content="With this code:
-@Component
-export default class CategoryRating extends Vue &amp;#123;
-  @Prop(&amp;#123;default: &amp;#123;&amp;#125;&amp;#125;) category: any;
-I kept getting this VS Code error:
-
-Experimental support for">
+<meta name="twitter:title" content="Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning.">
+<meta name="twitter:description" content="With this code: @Componentexport default class CategoryRating extends Vue &amp;#123;  @Prop(&amp;#123;default: &amp;#123;&amp;#125;&amp;#125;) category: any; I kept getting this VS Code error:  Experimental support for d">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/000054.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -83,7 +67,7 @@ Experimental support for">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -217,20 +201,14 @@ Experimental support for">
         
         <div class="article-entry" itemprop="articleBody">
             <p>With this code:</p>
-<span class="meta">@Component</span>
-<span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> CategoryRating <span class="keyword">extends</span> Vue &#123;
-  <span class="meta">@Prop</span>(&#123;<span class="keyword">default</span>: &#123;&#125;&#125;) category: <span class="built_in">any</span>;
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> CategoryRating <span class="keyword">extends</span> Vue &#123;</span><br><span class="line">  <span class="meta">@Prop</span>(&#123;<span class="keyword">default</span>: &#123;&#125;&#125;) category: <span class="built_in">any</span>;</span><br></pre></td></tr></table></figure>
 <p>I kept getting this VS Code error:</p>
 <blockquote>
 <p>Experimental support for decorators is a feature that is subject to change in a future release. Set the ‘experimentalDecorators’ option to remove this warning.</p>
 </blockquote>
-<p><img src="000054.png" alt=""></p>
+<p><img src="000054.png" alt></p>
 <p>Even though I have experimentalDecorators set to true in my tsconfig</p>
-&#123;
-  <span class="attr">"compilerOptions"</span>: &#123;
-    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,
-  &#125;
-&#125;
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Turns out I had the parent folder open in VS Code,</p>
 <p><code>\code\project\</code></p>
 <p>But I needed to have the actual project as my root in VS Code</p>

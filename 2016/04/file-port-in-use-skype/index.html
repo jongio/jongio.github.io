@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure" />
+    <meta name="keywords" content="azure">
     
-    <meta name="description" content="I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project.
-This line of code:
-this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;">
+    <meta name="description" content="I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project. This line of code: this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;">
+<meta name="keywords" content="azure">
 <meta property="og:type" content="article">
-<meta property="og:title" content=""Use port 80 and 443 for additional incoming connections." - The Skype setting that every developer should disable. Solution to "The process cannot access the file because it is being used by another process" when running a Service Fabric hosted WebApp.">
+<meta property="og:title" content="&quot;Use port 80 and 443 for additional incoming connections.&quot; - The Skype setting that every developer should disable. Solution to &quot;The process cannot access the file because it is being used by another process&quot; when running a Service Fabric hosted WebApp.">
 <meta property="og:url" content="https://blog.jongallant.com/2016/04/file-port-in-use-skype/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project.
-This line of code:
-this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;">
+<meta property="og:description" content="I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project. This line of code: this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:35:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=""Use port 80 and 443 for additional incoming connections." - The Skype setting that every developer should disable. Solution to "The process cannot access the file because it is being used by another process" when running a Service Fabric hosted WebApp.">
-<meta name="twitter:description" content="I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project.
-This line of code:
-this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;">
+<meta name="twitter:title" content="&quot;Use port 80 and 443 for additional incoming connections.&quot; - The Skype setting that every developer should disable. Solution to &quot;The process cannot access the file because it is being used by another process&quot; when running a Service Fabric hosted WebApp.">
+<meta name="twitter:description" content="I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project. This line of code: this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -206,9 +202,9 @@ this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;amp;gt;
         <div class="article-entry" itemprop="articleBody">
             <p>I just flattened my machine and ran into this issue when running a Service Fabric hosted WebAPI project.</p>
 <p>This line of code:</p>
-this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;gt; this.startup.Configuration(appBuilder, this.config));
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.serverHandle = WebApp.Start(this.listeningAddress, appBuilder =&amp;gt; this.startup.Configuration(appBuilder, this.config));</span><br></pre></td></tr></table></figure>
 <p>Was throwing this exception:</p>
-Message=The process cannot access the file because it is being used by another process
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Message=The process cannot access the file because it is being used by another process</span><br></pre></td></tr></table></figure>
 <p>Luckily, I remembered that I ran into this same issue before and didn’t disable this when I rebuilt my machine. By default, Skype uses port 80 and 443. You, as a developer, should disable that. Uncheck this box under Tools—&gt; Options –&gt; Advanced –&gt; Connection: “Use port 80 and 443 for additional incoming connections”.</p>
 <p>[<img src="/images/blog/21bb50b5bf43_10686/2016-04-25_thumb.png" alt="2016-04-25" title="2016-04-25"></p>
 <p>Jon</p>

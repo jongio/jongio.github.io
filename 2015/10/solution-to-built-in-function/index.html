@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.
-
-Her">
+    <meta name="description" content="If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.  Her">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "Built-in function 'has_dbaccess' is not supported in this version of SQL Server." when connecting to an Azure SQL Database from Access">
+<meta property="og:title" content="Solution to &quot;Built-in function &#39;has_dbaccess&#39; is not supported in this version of SQL Server.&quot; when connecting to an Azure SQL Database from Access">
 <meta property="og:url" content="https://blog.jongallant.com/2015/10/solution-to-built-in-function/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.
-
-Her">
+<meta property="og:description" content="If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.  Her">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "Built-in function 'has_dbaccess' is not supported in this version of SQL Server." when connecting to an Azure SQL Database from Access">
-<meta name="twitter:description" content="If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.
-
-Her">
+<meta name="twitter:title" content="Solution to &quot;Built-in function &#39;has_dbaccess&#39; is not supported in this version of SQL Server.&quot; when connecting to an Azure SQL Database from Access">
+<meta name="twitter:description" content="If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.  Her">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +66,7 @@ Her">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,18 +198,18 @@ Her">
         
         <div class="article-entry" itemprop="articleBody">
             <p>If you get this exception when connecting to an Azure SQL Database from Access: “Built-in function ‘has_dbaccess’ is not supported in this version of SQL Server.”, you are using the wrong driver.</p>
-<p><img src="/images/blog/Solution-to-_12438/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_12438/image.png" alt></p>
 <p>Here’s what you need to do to get it to work from within Access:</p>
 <p>1. Click External Data –&gt; ODBC Database</p>
-<p><img src="/images/blog/Solution-to-_12438/image_3.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_12438/image_3.png" alt></p>
 <p>2. Choose “Link to the data source by creating a linked table.” option</p>
-<p><img src="/images/blog/Solution-to-_12438/image_4.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_12438/image_4.png" alt></p>
 <p>3. Select the “Machine Data Source” tab and click New</p>
-<p><img src="/images/blog/Solution-to-_12438/image_5.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_12438/image_5.png" alt></p>
 <p>4. Select “User Data Source” and click Next</p>
-<p><img src="/images/blog/Solution-to-_12438/image_6.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_12438/image_6.png" alt></p>
 <p>5. Scroll down to the bottom of the driver list and select “SQL Server Native Client 11.0”. Do not select “SQL Server”</p>
-<p><img src="/images/blog/Solution-to-_12438/image_7.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_12438/image_7.png" alt></p>
 <p>6. Go ahead and enter your db server, username and password and you should be good.</p>
 <p>Hope this helps you out.</p>
 <p>Jon</p>

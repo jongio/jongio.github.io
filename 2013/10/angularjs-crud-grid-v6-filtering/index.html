@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="angularjs" />
+    <meta name="keywords" content="angularjs">
     
-    <meta name="description" content="I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat
-CODE: https:">
+    <meta name="description" content="I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat CODE: https:">
+<meta name="keywords" content="angularjs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AngularJS CRUD Grid v6: Now with Filtering and Async Controllers">
 <meta property="og:url" content="https://blog.jongallant.com/2013/10/angularjs-crud-grid-v6-filtering/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat
-CODE: https:">
+<meta property="og:description" content="I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat CODE: https:">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:17:34.758Z">
+<meta property="og:updated_time" content="2018-12-10T22:17:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS CRUD Grid v6: Now with Filtering and Async Controllers">
-<meta name="twitter:description" content="I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat
-CODE: https:">
+<meta name="twitter:description" content="I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat CODE: https:">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ CODE: https:">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -202,15 +201,12 @@ CODE: https:">
         
         <div class="article-entry" itemprop="articleBody">
             <p>I just added filtering to the AngularJS CRUD Grid. AngularJS makes filtering VERY easy. All I had to do was add a text box with ng-model and then use the “filter” filter in your ng-repeat</p>
-<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF/" target="_blank" rel="external">https://github.com/jongio/AngularJS-WebApi-EF/</a></p>
-<p><img src="/images/blog/AngularJS-CRUD-Grid-v6-So.0--Bootstrap-3_C890/image.png" alt=""></p>
+<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF/" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF/</a></p>
+<p><img src="/images/blog/AngularJS-CRUD-Grid-v6-So.0--Bootstrap-3_C890/image.png" alt></p>
 <p><strong>NG-MODEL TEXT BOX:</strong></p>
-<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group col-md-4 row"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-filter"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">ng-model</span>=<span class="string">"filter"</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group col-md-4 row"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-filter"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">ng-model</span>=<span class="string">"filter"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>“FILTER” FILTER IN NG-REPEAT:</strong></p>
-<span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"object in objects | orderBy:orderBy.field:!orderBy.asc | filter: filter"</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"object in objects | orderBy:orderBy.field:!orderBy.asc | filter: filter"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>I also upgraded to the RTM builds of WebAPI and MVC and changed the controllers to Async controllers.</p>
 
         </div>

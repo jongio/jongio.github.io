@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto" />
+    <meta name="keywords" content="howto">
     
-    <meta name="description" content="Here’s what you have to do to get a VSO git repo setup in SourceTree
-Go to VSO Personal Access Tokens: https://{vso-account-name}.visualstudio.com/_details/security/tokens
-
-Replace {vso-account-name}">
+    <meta name="description" content="Here’s what you have to do to get a VSO git repo setup in SourceTree Go to VSO Personal Access Tokens: https://{vso-account-name}.visualstudio.com/_details/security/tokens  Replace {vso-account-name}">
+<meta name="keywords" content="howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Setup a Visual Studio Online (VSO) Git Repo in SourceTree">
 <meta property="og:url" content="https://blog.jongallant.com/2016/03/vso-sourcetree/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s what you have to do to get a VSO git repo setup in SourceTree
-Go to VSO Personal Access Tokens: https://{vso-account-name}.visualstudio.com/_details/security/tokens
-
-Replace {vso-account-name}">
+<meta property="og:description" content="Here’s what you have to do to get a VSO git repo setup in SourceTree Go to VSO Personal Access Tokens: https://{vso-account-name}.visualstudio.com/_details/security/tokens  Replace {vso-account-name}">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Setup a Visual Studio Online (VSO) Git Repo in SourceTree">
-<meta name="twitter:description" content="Here’s what you have to do to get a VSO git repo setup in SourceTree
-Go to VSO Personal Access Tokens: https://{vso-account-name}.visualstudio.com/_details/security/tokens
-
-Replace {vso-account-name}">
+<meta name="twitter:description" content="Here’s what you have to do to get a VSO git repo setup in SourceTree Go to VSO Personal Access Tokens: https://{vso-account-name}.visualstudio.com/_details/security/tokens  Replace {vso-account-name}">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@ Replace {vso-account-name}">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -207,32 +200,32 @@ Replace {vso-account-name}">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s what you have to do to get a VSO git repo setup in <a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a></p>
-<p>Go to VSO Personal Access Tokens: <a href="https://%7Bvso-account-name%7D.visualstudio.com/_details/security/tokens" target="_blank" rel="external">https://{vso-account-name}.visualstudio.com/_details/security/tokens</a></p>
+            <p>Here’s what you have to do to get a VSO git repo setup in <a href="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">SourceTree</a></p>
+<p>Go to VSO Personal Access Tokens: <a href="https://%7Bvso-account-name%7D.visualstudio.com/_details/security/tokens" target="_blank" rel="noopener">https://{vso-account-name}.visualstudio.com/_details/security/tokens</a></p>
 <blockquote>
 <p>Replace {vso-account-name} with your VSO account name</p>
 </blockquote>
 <p>Click “Add”</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image.png" alt=""></p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image.png" alt></p>
 <p>Enter a Description and set your preferences for Expiration, Accounts and Scopes.</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image_3.png" alt=""></p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image_3.png" alt></p>
 <p>Click “Create Token”</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image_4.png" alt=""></p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image_4.png" alt></p>
 <p>Click “Copy Token” and store that somewhere that you can access later because you won’t see it again through VSO.</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image_5.png" alt=""></p>
-<p>Install SourceTree: <a href="https://www.sourcetreeapp.com/" title="https://www.sourcetreeapp.com/" target="_blank" rel="external">https://www.sourcetreeapp.com/</a></p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image_5.png" alt></p>
+<p>Install SourceTree: <a href="https://www.sourcetreeapp.com/" title="https://www.sourcetreeapp.com/" target="_blank" rel="noopener">https://www.sourcetreeapp.com/</a></p>
 <p>Click “Clone / New”</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image_6.png" alt=""></p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image_6.png" alt></p>
 <p>Enter “Source Path / URL” in this format:</p>
-<p><a href="https://%7Busername:access-token%7D@%7Bvso-account-name%7D.visualstudio.com/DefaultCollection/%7Bproject-name%7D/_git/%7Brepo-name" target="_blank" rel="external">https://{username:access-token}@{vso-account-name}.visualstudio.com/DefaultCollection/{project-name}/_git/{repo-name</a>}</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image_7.png" alt=""></p>
+<p><a href="https://%7Busername:access-token%7D@%7Bvso-account-name%7D.visualstudio.com/DefaultCollection/%7Bproject-name%7D/_git/%7Brepo-name" target="_blank" rel="noopener">https://{username:access-token}@{vso-account-name}.visualstudio.com/DefaultCollection/{project-name}/_git/{repo-name</a>}</p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image_7.png" alt></p>
 <p>The best way to get this URL is to go to your VSO project in your browser and then add your username and access-token.</p>
 <blockquote>
 <p>Note your username does not contain an “@” sign. Just use the username of the email address that you sign-in to VSO with.</p>
 </blockquote>
 <p>With your cursor focus in the “Source Path / URL” input…hit TAB.</p>
 <p>You should then see this:</p>
-<p><img src="/images/blog/ee9ab1f43756_5223/image_8.png" alt=""></p>
+<p><img src="/images/blog/ee9ab1f43756_5223/image_8.png" alt></p>
 <p>If you don’t see that then something isn’t setup right. Your URL could be wrong or git might not be installed properly.</p>
 <p>Hope this helps.</p>
 <p>Jon</p>

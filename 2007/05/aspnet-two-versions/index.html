@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,50 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="asp.net" />
+    <meta name="keywords" content="asp.net">
     
-    <meta name="description" content="I just installed Orcas and was getting this error when running a performance test:
-
-Event Type: Error
-Event Source: ASP.NET 2.0.50727.0
-Event Category: None
-Event ID: 1062
-Date:  5/24/2007
-Time:  11:1">
+    <meta name="description" content="I just installed Orcas and was getting this error when running a performance test:  Event Type: Error Event Source: ASP.NET 2.0.50727.0 Event Category: None Event ID: 1062 Date:  5/24/2007 Time:  11:1">
+<meta name="keywords" content="asp.net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Running two different versions of ASP.NET on the same server">
 <meta property="og:url" content="https://blog.jongallant.com/2007/05/aspnet-two-versions/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just installed Orcas and was getting this error when running a performance test:
-
-Event Type: Error
-Event Source: ASP.NET 2.0.50727.0
-Event Category: None
-Event ID: 1062
-Date:  5/24/2007
-Time:  11:1">
+<meta property="og:description" content="I just installed Orcas and was getting this error when running a performance test:  Event Type: Error Event Source: ASP.NET 2.0.50727.0 Event Category: None Event ID: 1062 Date:  5/24/2007 Time:  11:1">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-26T00:20:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Running two different versions of ASP.NET on the same server">
-<meta name="twitter:description" content="I just installed Orcas and was getting this error when running a performance test:
-
-Event Type: Error
-Event Source: ASP.NET 2.0.50727.0
-Event Category: None
-Event ID: 1062
-Date:  5/24/2007
-Time:  11:1">
+<meta name="twitter:description" content="I just installed Orcas and was getting this error when running a performance test:  Event Type: Error Event Source: ASP.NET 2.0.50727.0 Event Category: None Event ID: 1062 Date:  5/24/2007 Time:  11:1">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -86,7 +67,7 @@ Time:  11:1">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -222,15 +203,15 @@ Time:  11:1">
             <p>I just installed Orcas and was getting this error when running a performance test:</p>
 <blockquote>
 <p><em>Event Type: Error<br>
-Event Source: <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> 2.0.50727.0<br>
+Event Source: <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> 2.0.50727.0<br>
 Event Category: None<br>
 Event ID: 1062<br>
 Date:  5/24/2007<br>
 Time:  11:11:12 AM<br>
 User:  N/A<br>
 Description:<br>
-It is not possible to run two different versions of <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> in the same IIS process. Please use the IIS Administration Tool to reconfigure your server to run the application in a separate process.</em></p>
-<p><em>For more information, see Help and Support Center at <em><a href="http://go.microsoft.com/fwlink/events.asp" target="_blank" rel="external"><em>http://go.microsoft.com/fwlink/events.asp</em></a></em>.</em></p>
+It is not possible to run two different versions of <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> in the same IIS process. Please use the IIS Administration Tool to reconfigure your server to run the application in a separate process.</em></p>
+<p><em>For more information, see Help and Support Center at <em><a href="http://go.microsoft.com/fwlink/events.asp" target="_blank" rel="noopener"><em>http://go.microsoft.com/fwlink/events.asp</em></a></em>.</em></p>
 </blockquote>
 <p>Running aspnet_regiis -i fixed the issue.  You should be all set to run Orcas on new sites you create, but you’ll need to manually set 3.5 for that site.</p>
 

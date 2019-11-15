@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="review,dev" />
+    <meta name="keywords" content="review,dev">
     
     <meta name="description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
+<meta name="keywords" content="review,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building Cross-Platform Apps with HTML5 and DXTREME">
 <meta property="og:url" content="https://blog.jongallant.com/2013/02/dxtreme-cross-platform-apps-html5/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:04:41.271Z">
+<meta property="og:updated_time" content="2018-12-10T22:04:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building Cross-Platform Apps with HTML5 and DXTREME">
 <meta name="twitter:description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,30 +200,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  </p><p>Like so many devs out there, I was recently faced with that exact question. It turns out that there are two options for doing so 1) Build HTML5 web apps and a bunch of shell apps, one for each of the platform or 2) build native apps for each of the platforms. Since I don’t have expertise in all of the platforms or the time and money to get ramped up on all of them, I decided to look into the first option. I was also fortunate enough to hear about a new cross-platform development framework that <a href="http://www.devexpress.com/" target="_blank" rel="external">DevExpress</a> was working on called <a href="http://www.devexpress.com/Subscriptions/DXperience/dxtreme.xml" target="_blank" rel="external">DXTREME</a>. DXTREME is designed to help you build apps for Android, Apple, and Windows 8 using technologies that web devs know inside and out like HTML, JavaScript, CSS and a XAML (for Win8 only). It includes a set of libraries, controls and other assets that abstract away the complexities of building applications for all of these different platforms. It integrates directly with Visual Studio and comes with a project template that you can use to build apps.  </p><p>It is built on two different stacks: HTML5 and XAML.  </p><p>The HTML5 stack is for building Android, Apple, and Windows 8 applications using HTML, JavaScript and CSS. It allows you to create apps that share appearance and multi-touch functionality across platforms, but are also compatible with the Apple App Store, the Google Play Store and the Windows Store.  </p><p>The XAML stack is for building native Windows 8 applications for developers who are already familiar with WPF or Silverlight.  </p><p>I’m going to bring you through my experience of running through DXTREME to create a basic application. Hopefully it will give you an idea of what ramp up time would look like for someone who is using DXTREME for the first time.  </p><p></p>
+            <p>What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  </p><p>Like so many devs out there, I was recently faced with that exact question. It turns out that there are two options for doing so 1) Build HTML5 web apps and a bunch of shell apps, one for each of the platform or 2) build native apps for each of the platforms. Since I don’t have expertise in all of the platforms or the time and money to get ramped up on all of them, I decided to look into the first option. I was also fortunate enough to hear about a new cross-platform development framework that <a href="http://www.devexpress.com/" target="_blank" rel="noopener">DevExpress</a> was working on called <a href="http://www.devexpress.com/Subscriptions/DXperience/dxtreme.xml" target="_blank" rel="noopener">DXTREME</a>. DXTREME is designed to help you build apps for Android, Apple, and Windows 8 using technologies that web devs know inside and out like HTML, JavaScript, CSS and a XAML (for Win8 only). It includes a set of libraries, controls and other assets that abstract away the complexities of building applications for all of these different platforms. It integrates directly with Visual Studio and comes with a project template that you can use to build apps.  </p><p>It is built on two different stacks: HTML5 and XAML.  </p><p>The HTML5 stack is for building Android, Apple, and Windows 8 applications using HTML, JavaScript and CSS. It allows you to create apps that share appearance and multi-touch functionality across platforms, but are also compatible with the Apple App Store, the Google Play Store and the Windows Store.  </p><p>The XAML stack is for building native Windows 8 applications for developers who are already familiar with WPF or Silverlight.  </p><p>I’m going to bring you through my experience of running through DXTREME to create a basic application. Hopefully it will give you an idea of what ramp up time would look like for someone who is using DXTREME for the first time.  </p><p></p>
 <h3 id="starting-a-multi-channel-application-project"><a class="header-anchor" href="#starting-a-multi-channel-application-project"></a>Starting a Multi-Channel Application Project</h3>
  <p>For this first exercise I selected the Multi-channel Application template, which is what you'll want to use to create cross-platform mobile apps using HTML, JavaScript and CSS.  </p><p>It turns out that you're basically building a single-page web application (SPA) using the Model View ViewModel (MVVM) pattern. The ViewModel uses Knockout, and the whole thing is tied together with Apache Cordova, which allows you to publish to the Apple App Store or Google Play.  </p><p>After selecting the Multi-channel application template, a solution is generated with 4 projects, one for Desktop, one for Mobile, one for Win8 and one Shared:  </p><p>[![clip_image001[4]](/images/blog/dxtreme_CE2A/clip_image0014_thumb.png "clip_image001[4]")  </p><p>It compiles out of the box.  </p><p>========== Build: 4 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========  </p><p>With the Desktop app selected I hit F5 to see what happens. It opened this sample app.
 </p><p><a href="/images/blog/dxtreme_CE2A/clip_image0034.jpg"><img src="/images/blog/dxtreme_CE2A/clip_image0034_thumb.jpg" alt="clip_image003[4]" title="clip_image003[4]"></a></p>
 <p>Back in Visual Studio, I select the Mobile project and hit F5 to open it in the simulator.  </p><p>[<img src="/images/blog/dxtreme_CE2A/clip_image0054_thumb.jpg" alt="clip_image005[4]" title="clip_image005[4]"></p>
 <h3 id="what-s-in-the-project"><a class="header-anchor" href="#what-s-in-the-project"></a>What’s in the Project?</h3>
  <p>Let's get back into Visual Studio and dig around the projects a bit. In the Desktop project you see a project reference to the Shared project. No other DLLs are required. That is good.  </p><p>[![clip_image007[4]](/images/blog/dxtreme_CE2A/clip_image0074_thumb.png "clip_image007[4]")  </p><p>I poke around and find a file called app.js in the root of the project. Cracking that open I find this code snippet, which uses the DXTREME framework to new up an HtmlApplication object.
-  $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;
-
-     Application2.app = <span class="keyword">new</span> DevExpress.framework.html.HtmlApplication(&#123;
-
-       <span class="attr">ns</span>: Application2,
-
-       <span class="attr">viewPortNode</span>: <span class="built_in">document</span>.getElementById(<span class="string">"viewPort"</span>),
-
-       <span class="attr">defaultLayout</span>: Application2.config.defaultLayout,
-
-       <span class="attr">navigation</span>: Application2.config.navigation
-
-     &#125;);
-
-     Application2.app.router.register(<span class="string">":view/:id"</span>, &#123; <span class="attr">view</span>: <span class="string">"About"</span>, <span class="attr">id</span>: <span class="literal">undefined</span> &#125;);
-
-&#125;);
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">     Application2.app = <span class="keyword">new</span> DevExpress.framework.html.HtmlApplication(&#123;</span><br><span class="line"></span><br><span class="line">       ns: Application2,</span><br><span class="line"></span><br><span class="line">       viewPortNode: <span class="built_in">document</span>.getElementById(<span class="string">"viewPort"</span>),</span><br><span class="line"></span><br><span class="line">       defaultLayout: Application2.config.defaultLayout,</span><br><span class="line"></span><br><span class="line">       navigation: Application2.config.navigation</span><br><span class="line"></span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">     Application2.app.router.register(<span class="string">":view/:id"</span>, &#123; <span class="attr">view</span>: <span class="string">"About"</span>, <span class="attr">id</span>: <span class="literal">undefined</span> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </p><p>The other projects are more of the same. Common logic is shared between applications, but you can dig into the individual files to tweak or enhance platform or device-specific features. 
 </p><p>One cool thing I notice is that they implemented a custom editor for their views. It allows you to preview the views from within Visual Studio. That is nice. 
 </p><p>[![clip_image010[4]](/images/blog/dxtreme_CE2A/clip_image0104_thumb.png "clip_image010[4]") 
@@ -238,35 +224,12 @@
 </p><p>[![clip_image016[4]](/images/blog/dxtreme_CE2A/clip_image0164_thumb.png "clip_image016[4]") 
 </p><p>And look like this...a basic Knockout ViewModel. 
 </p><p>[ShipperViewModel.js]
-(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;
-
-     DXCRM.ShipperViewModel = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;
-
-       <span class="keyword">this</span>.ShipperID = ko.observable();
-
-       <span class="keyword">this</span>.CompanyName = ko.observable();
-
-       <span class="keyword">this</span>.Phone = ko.observable();
-
-       <span class="keyword">if</span>(data)
-
-       <span class="keyword">this</span>.fromJS(data);
-
-     &#125;;
-&#125;)();
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">     DXCRM.ShipperViewModel = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.ShipperID = ko.observable();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.CompanyName = ko.observable();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.Phone = ko.observable();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span>(data)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.fromJS(data);</span><br><span class="line"></span><br><span class="line">     &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 </p><p>And they are used in the application views: 
 </p><p>[![clip_image017[4]](/images/blog/dxtreme_CE2A/clip_image0174_thumb.png "clip_image017[4]") 
 </p><p>Here's Shippers.js as an example. 
 </p><p>[Shippers.js]
-DXCRM.Shippers = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;
-     <span class="keyword">return</span> &#123;
-       <span class="attr">dataSource</span>: <span class="keyword">new</span> DevExpress.data.SimpleDataSource(&#123;
-       <span class="attr">store</span>: DXCRM.db.Shippers,
-       <span class="attr">map</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;
-         <span class="keyword">return</span> <span class="keyword">new</span> DXCRM.ShipperViewModel(item);
-       &#125;
-     &#125;)&#125;;
-&#125;;
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">DXCRM.Shippers = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> &#123;</span><br><span class="line">       dataSource: <span class="keyword">new</span> DevExpress.data.SimpleDataSource(&#123;</span><br><span class="line">       store: DXCRM.db.Shippers,</span><br><span class="line">       map: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">new</span> DXCRM.ShipperViewModel(item);</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </p><p>Those same ViewModels are being used in the WinJS project. That is great. I can see that there is code reuse going on between the HTML based projects. 
 </p><p>The demo applications are generated automatically via the DXTREME Project Wizard using the Microsoft NorthWind sample database. Obviously you can use your own data, but this is a nice way to get data into the application as you experiment. 
 </p><p>I then focused on the separate XAML solution for the Win8 app. It looks like a standard Win8 app that uses DXTREME controls. 

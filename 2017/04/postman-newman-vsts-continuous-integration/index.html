@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,postman,rest,vsts" />
+    <meta name="keywords" content="azure,postman,rest,vsts">
     
     <meta name="description" content="I’ve been doing a lot with Postman lately and have been blogging everything I’ve uncovered along the way. Postman is more than just an ad-hoc REST tester - I believe that the future of REST API docume">
+<meta name="keywords" content="azure,postman,rest,vsts">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Execute Postman Collections in your Continuous Integration Pipeline with Visual Studio Team Services (VSTS) and newman">
 <meta property="og:url" content="https://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’ve been doing a lot with Postman lately and have been blogging everything I’ve uncovered along the way. Postman is more than just an ad-hoc REST tester - I believe that the future of REST API docume">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/000175.png">
 <meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,84 +200,76 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’ve been doing a lot with <a href="http://getpostman.com" target="_blank" rel="external">Postman</a> lately and have been <a href="/tags/postman/">blogging everything I’ve uncovered along the way</a>. Postman is more than just an ad-hoc REST tester - I believe that the future of REST API documentation will be delivered via Postman. Swagger is a great starting point for API documentation, but it doesn’t give you the full power that Postman does via the “pre-request script” blocks and “tests”. Postman compliments Swagger by adding accompanying code to assist in the execution of your documentions. I like to call this experiment “Executable Documentation”, because in the end, I want to send my users a Postman link that allows them to execute the docs without having to comb through docs and samples. Every uri, body format, header is right there in plain sight in a single location. Super powerful.</p>
-<p>If you’ve been following along with my <a href="/tags/postman/">previous Postman posts</a>, or have your Postman Collection exactly the way you want it, you are going to want to run it on a regular basis to ensure it is fully working for your customers at all times.  You can use any continuous integration suite to do so. If you want to use Jenkins, you can <a href="/2017/04/jenkins-on-azure/">host Jenkins on Azure</a> and then follow <a href="https://www.getpostman.com/docs/integrating_with_jenkins" target="_blank" rel="external">this post</a> to get it configured.</p>
+            <p>I’ve been doing a lot with <a href="http://getpostman.com" target="_blank" rel="noopener">Postman</a> lately and have been <a href="/tags/postman/">blogging everything I’ve uncovered along the way</a>. Postman is more than just an ad-hoc REST tester - I believe that the future of REST API documentation will be delivered via Postman. Swagger is a great starting point for API documentation, but it doesn’t give you the full power that Postman does via the “pre-request script” blocks and “tests”. Postman compliments Swagger by adding accompanying code to assist in the execution of your documentions. I like to call this experiment “Executable Documentation”, because in the end, I want to send my users a Postman link that allows them to execute the docs without having to comb through docs and samples. Every uri, body format, header is right there in plain sight in a single location. Super powerful.</p>
+<p>If you’ve been following along with my <a href="/tags/postman/">previous Postman posts</a>, or have your Postman Collection exactly the way you want it, you are going to want to run it on a regular basis to ensure it is fully working for your customers at all times.  You can use any continuous integration suite to do so. If you want to use Jenkins, you can <a href="/2017/04/jenkins-on-azure/">host Jenkins on Azure</a> and then follow <a href="https://www.getpostman.com/docs/integrating_with_jenkins" target="_blank" rel="noopener">this post</a> to get it configured.</p>
 <blockquote>
-<p>Another great CI option is Microsoft’s <a href="https://www.visualstudio.com/team-services/" target="_blank" rel="external">Visual Studio Team Services</a> (VSTS) “Build &amp; Release” service.</p>
+<p>Another great CI option is Microsoft’s <a href="https://www.visualstudio.com/team-services/" target="_blank" rel="noopener">Visual Studio Team Services</a> (VSTS) “Build &amp; Release” service.</p>
 </blockquote>
-<p>This post will show you how to setup a VSTS code project and build definition to run your Postman Collections with <a href="https://www.npmjs.com/package/newman" target="_blank" rel="external">newman</a> on a regular basis. newman is a server side Postman collection executor.</p>
+<p>This post will show you how to setup a VSTS code project and build definition to run your Postman Collections with <a href="https://www.npmjs.com/package/newman" target="_blank" rel="noopener">newman</a> on a regular basis. newman is a server side Postman collection executor.</p>
 <h2 id="setup-vsts-code-project"><a class="header-anchor" href="#setup-vsts-code-project"></a>Setup VSTS Code Project</h2>
 <p>This is where we will store our Postman collection definition and environment variables file (needed when you run newman) and run our builds.</p>
-<p>1. Go to <a href="http://visualstudio.com" target="_blank" rel="external">http://visualstudio.com</a> and create a new account if you don’t have one.  Everything we do here today should be free (let me know if that is not the case).<br>
+<p>1. Go to <a href="http://visualstudio.com" target="_blank" rel="noopener">http://visualstudio.com</a> and create a new account if you don’t have one.  Everything we do here today should be free (let me know if that is not the case).<br>
 2. Create a new account and project. In my case, my account name is ‘azurerest’ and my project name is ‘iot’</p>
-<p><img src="000160.png" alt=""></p>
+<p><img src="000160.png" alt></p>
 <p>3. Clone the repo. Click ‘Code’ tab, click the project, and then click the Clone link in the upper right to find the clone URI.</p>
-<p><img src="000154.png" alt=""></p>
-<p><img src="000155.png" alt=""></p>
-git clone [your vsts project clone uri]
+<p><img src="000154.png" alt></p>
+<p><img src="000155.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone [your vsts project clone uri]</span><br></pre></td></tr></table></figure>
 <h2 id="export-postman-collection-and-environment-variables"><a class="header-anchor" href="#export-postman-collection-and-environment-variables"></a>Export Postman Collection and Environment Variables</h2>
 <p>You will commit your Postman collection definition file and environment variables to VSTS.  You will be committing secrets to source control, but in this case I could not find a good workaround for this because Postman expects a local file for Environment variables. You can control permissions to this repo if you are concerned with the secrets getting exposed - or maybe get Azure Key Vault or Blob Storage into your build process.</p>
 <blockquote>
 <p>Save the following files to the VSTS repo you created earlier.</p>
 </blockquote>
 <p>1. Export Postman Collection by selecting the “…” button on the collection details page and selecting “Export”</p>
-<p><img src="000156.png" alt=""></p>
+<p><img src="000156.png" alt></p>
 <p>2. Export Envrionment Variables by clicking the gear icon, select Manage Environments and then click the Download Environment icon.</p>
-<p><img src="000157.png" alt=""></p>
-<p><img src="000158.png" alt=""></p>
+<p><img src="000157.png" alt></p>
+<p><img src="000158.png" alt></p>
 <p>Your local repo should now look like this, with both the Postman Collection and the Envrionment Variables file</p>
-<p><img src="000159.png" alt=""></p>
+<p><img src="000159.png" alt></p>
 <h2 id="push-file-to-vsts-project"><a class="header-anchor" href="#push-file-to-vsts-project"></a>Push File to VSTS Project</h2>
 <p>You now need to push the Postman Collection and Environment Variables file to VSTS, so the build process can pick them up.</p>
 <p>Execute the following from the repo root:</p>
-git add .
-git commit -m &quot;Init commit&quot;
-git push
-<p>You can verify that your files have been pushed to the repo via <a href="http://visualstudio.com" target="_blank" rel="external">visualstudio.com</a></p>
-<p><img src="000163.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;Init commit&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>You can verify that your files have been pushed to the repo via <a href="http://visualstudio.com" target="_blank" rel="noopener">visualstudio.com</a></p>
+<p><img src="000163.png" alt></p>
 <h2 id="create-vsts-build-definition"><a class="header-anchor" href="#create-vsts-build-definition"></a>Create VSTS Build Definition</h2>
 <p>Now we will create the VSTS build definition to execute the collection on a regular basis.</p>
 <p>1. Click Build &amp; Release, then click “+ New Definition”</p>
-<p><img src="000161.png" alt=""></p>
+<p><img src="000161.png" alt></p>
 <p>2. Click “empty process” in the middle of the left pane</p>
-<p><img src="000164.png" alt=""></p>
+<p><img src="000164.png" alt></p>
 <p>3. Click “Add Task” and then click the Add button for “npm”</p>
-<p><img src="000165.png" alt=""></p>
-<p><img src="000166.png" alt=""></p>
+<p><img src="000165.png" alt></p>
+<p><img src="000166.png" alt></p>
 <p>4. Select “npm install” in the build task list and enter “newman -g” into the “arguments” textbox.</p>
-<p><img src="000167.png" alt=""></p>
+<p><img src="000167.png" alt></p>
 <p>5. Click “Add Task” and then click the Add button for “Command Line”</p>
-<p><img src="000168.png" alt=""></p>
-<p><img src="000169.png" alt=""></p>
+<p><img src="000168.png" alt></p>
+<p><img src="000169.png" alt></p>
 <p>6. Select “Run newman” in the built task list and enter the following into the “arguments” textbox.</p>
-run $(Build.SourcesDirectory)\iot.json -e $(Build.SourcesDirectory)\env.json
-<p><img src="000170.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">run $(Build.SourcesDirectory)\iot.json -e $(Build.SourcesDirectory)\env.json</span><br></pre></td></tr></table></figure>
+<p><img src="000170.png" alt></p>
 <blockquote>
 <p>The first argument is the Postman Collection file and the second argument (-e) is the Environment Variables file.</p>
 </blockquote>
 <p>7. Click the “Save &amp; queue” button to save this build definition.</p>
-<p><img src="000171.png" alt=""></p>
+<p><img src="000171.png" alt></p>
 <p>8. Select the “Hosted” Agent queue and then click the “Queue” button.</p>
-<p><img src="000172.png" alt=""></p>
+<p><img src="000172.png" alt></p>
 <p>You can see the execution details by drilling into the build:</p>
-<p><img src="000173.png" alt=""></p>
+<p><img src="000173.png" alt></p>
 <p>And here’s what success looks like.<br>
-<img src="000175.png" alt=""></p>
+<img src="000175.png" alt></p>
 <h2 id="build-schedule"><a class="header-anchor" href="#build-schedule"></a>Build Schedule</h2>
 <p>You can now schedule this build via the Build -&gt; Triggers form and also integrate it into your CI process</p>
-<p><img src="000176.png" alt=""></p>
+<p><img src="000176.png" alt></p>
 <h2 id="example-failure-test-case"><a class="header-anchor" href="#example-failure-test-case"></a>Example Failure Test Case</h2>
 <p>As a test, I created a sample that intentionally fails, so you can see that the Postman test cases will also fail the VSTS tests</p>
-<p><img src="000174.png" alt=""></p>
+<p><img src="000174.png" alt></p>
 <p>The request returns a 500 and the test is looking for a 200.</p>
 <h3 id="postman-test-code"><a class="header-anchor" href="#postman-test-code"></a>Postman Test Code</h3>
-var responseJSON;
-try &#123;
-    responseJSON = JSON.parse(responseBody); 
-    tests[&quot;Status equals 200&quot;] = responseJSON.status === 200;
-&#125;
-catch (e) &#123; &#125;
-tests[&quot;Body contains status&quot;] = responseBody.has(&quot;status&quot;);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var responseJSON;</span><br><span class="line">try &#123;</span><br><span class="line">    responseJSON = JSON.parse(responseBody); </span><br><span class="line">    tests[&quot;Status equals 200&quot;] = responseJSON.status === 200;</span><br><span class="line">&#125;</span><br><span class="line">catch (e) &#123; &#125;</span><br><span class="line">tests[&quot;Body contains status&quot;] = responseBody.has(&quot;status&quot;);</span><br></pre></td></tr></table></figure>
 <h2 id="conclusion"><a class="header-anchor" href="#conclusion"></a>Conclusion</h2>
 <p>So that’s it. You now have a source controlled Postman collection that is part of your CI process and setup to run on a schedule to suit your needs.</p>
 <p>My next post will wrap up everything I’ve learned with Postman and my pitch for using it as an “Executable Documentation” engine.</p>

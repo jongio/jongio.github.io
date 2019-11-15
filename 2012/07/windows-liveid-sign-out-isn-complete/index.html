@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="dev" />
+    <meta name="keywords" content="dev">
     
     <meta name="description" content="This is one of the worst authentication workflows out there. The only way to solve this is to close all your browser windows and go back to the site you were trying to login to. This is an extremely a">
+<meta name="keywords" content="dev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "Sign-out isn't complete…" when signing out of Windows Live">
+<meta property="og:title" content="Solution to &quot;Sign-out isn&#39;t complete…&quot; when signing out of Windows Live">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/windows-liveid-sign-out-isn-complete/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="This is one of the worst authentication workflows out there. The only way to solve this is to close all your browser windows and go back to the site you were trying to login to. This is an extremely a">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T04:21:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "Sign-out isn't complete…" when signing out of Windows Live">
+<meta name="twitter:title" content="Solution to &quot;Sign-out isn&#39;t complete…&quot; when signing out of Windows Live">
 <meta name="twitter:description" content="This is one of the worst authentication workflows out there. The only way to solve this is to close all your browser windows and go back to the site you were trying to login to. This is an extremely a">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,16 +200,16 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>This is one of the worst authentication workflows out there. The only way to solve this is to close all your browser windows and go back to the site you were trying to login to. This is an extremely awful user experience. I don’t care how complicated SSO and all the systems behind Windows Live Id are. All that complexity doesn’t matter to the end user. The barrier to entry has to got to be less. This is the default experience for Azure. I’ve pinged <a href="http://weblogs.asp.net/scottgu/" target="_blank" rel="external">ScottGu</a> about it.</p>
+            <p>This is one of the worst authentication workflows out there. The only way to solve this is to close all your browser windows and go back to the site you were trying to login to. This is an extremely awful user experience. I don’t care how complicated SSO and all the systems behind Windows Live Id are. All that complexity doesn’t matter to the end user. The barrier to entry has to got to be less. This is the default experience for Azure. I’ve pinged <a href="http://weblogs.asp.net/scottgu/" target="_blank" rel="noopener">ScottGu</a> about it.</p>
 <p><strong>Here’s the awful sign-out workflow I experienced this evening…</strong></p>
 <p>If you ever need to sign out or switch Windows Live accounts you often end up on a page that looks like this:</p>
 <p>Sign-out isn’t complete…</p>
-<p><img src="/images/blog/Solution-to-Sign-out-isnt-complete_13D09/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-Sign-out-isnt-complete_13D09/image.png" alt></p>
 <p>As a normal user I’m looking for a link to click to redirect me to the login page. It’s not there. So I click the back button, but it still shows me as logged in. So I click the forward button and I end up at the same page shown above.</p>
 <p>Then I decided to read the text on the page. “Finish signing out. Try clearing all of your browser cookies, and then close all browser windows. How?”</p>
 <p>Any normal user would have given up by now. I then click on “How?” and I’m taken to this site:<br>
-<a href="http://windows.microsoft.com/en-US/windows-live/id-help-center" target="_blank" rel="external">http://windows.microsoft.com/en-US/windows-live/id-help-center</a>.</p>
-<p><img src="/images/blog/Solution-to-Sign-out-isnt-complete_13D09/image_3.png" alt=""></p>
+<a href="http://windows.microsoft.com/en-US/windows-live/id-help-center" target="_blank" rel="noopener">http://windows.microsoft.com/en-US/windows-live/id-help-center</a>.</p>
+<p><img src="/images/blog/Solution-to-Sign-out-isnt-complete_13D09/image_3.png" alt></p>
 <p>There’s nothing there that tells me how to clear my browser cookies. So I click back. (I’m obviously playing “normal user” right now) and I end up at the “Sign-out isn’t complete” page.</p>
 <p>So my only option is to close all my browser windows. I usually have 20 or so open in different states and don’t really want to do that, but I must in order to move on.</p>
 <p>Maybe it’s not a simple thing to fix, but it fixing bad UX like this should be a P1 IMO.</p>

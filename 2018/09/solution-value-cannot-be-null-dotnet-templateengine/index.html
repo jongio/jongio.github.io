@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azuredevops" />
+    <meta name="keywords" content="azuredevops">
     
-    <meta name="description" content="In Azure DevOps, got this error:
-2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
-2018-09-25T21:24:45.2791049Z Parameter name: paths
-2018-09-25T21:24:45.2804472Z    at System.IO.Path.C">
+    <meta name="description" content="In Azure DevOps, got this error: 2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.2018-09-25T21:24:45.2791049Z Parameter name: paths2018-09-25T21:24:45.2804472Z    at System.IO.Path.Com">
+<meta name="keywords" content="azuredevops">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()">
 <meta property="og:url" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="In Azure DevOps, got this error:
-2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
-2018-09-25T21:24:45.2791049Z Parameter name: paths
-2018-09-25T21:24:45.2804472Z    at System.IO.Path.C">
+<meta property="og:description" content="In Azure DevOps, got this error: 2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.2018-09-25T21:24:45.2791049Z Parameter name: paths2018-09-25T21:24:45.2804472Z    at System.IO.Path.Com">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/000009.png">
-<meta property="og:updated_time" content="2018-09-25T22:54:48.758Z">
+<meta property="og:updated_time" content="2018-09-25T22:54:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution - Value cannot be null. Parameter name paths at System.IO.Path.Combine(String[] paths) at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()">
-<meta name="twitter:description" content="In Azure DevOps, got this error:
-2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
-2018-09-25T21:24:45.2791049Z Parameter name: paths
-2018-09-25T21:24:45.2804472Z    at System.IO.Path.C">
+<meta name="twitter:description" content="In Azure DevOps, got this error: 2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.2018-09-25T21:24:45.2791049Z Parameter name: paths2018-09-25T21:24:45.2804472Z    at System.IO.Path.Com">
 <meta name="twitter:image" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/000009.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -208,22 +201,10 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>In Azure DevOps, got this error:</p>
-2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
-2018-09-25T21:24:45.2791049Z Parameter name: paths
-2018-09-25T21:24:45.2804472Z    at System.IO.Path.Combine(String[] paths)
-2018-09-25T21:24:45.2818339Z    at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()
-2018-09-25T21:24:45.2832030Z    at Microsoft.TemplateEngine.Edge.Paths.UserPaths.get_AliasesFile()
-2018-09-25T21:24:45.2845669Z    at Microsoft.TemplateEngine.Edge.Settings.AliasRegistry.EnsureLoaded()
-2018-09-25T21:24:45.2859343Z    at Microsoft.TemplateEngine.Edge.Settings.AliasRegistry.TryExpandCommandAliases(IReadOnlyList`1 inputTokens, IReadOnlyList`1&amp; expandedInputTokens)
-2018-09-25T21:24:45.2874783Z    at Microsoft.TemplateEngine.Cli.AliasSupport.TryExpandAliases(INewCommandInput commandInput, AliasRegistry aliasRegistry)
-2018-09-25T21:24:45.2888665Z    at Microsoft.TemplateEngine.Cli.AliasSupport.CoordinateAliasExpansion(INewCommandInput commandInput, AliasRegistry aliasRegistry, ITelemetryLogger telemetryLogger)
-2018-09-25T21:24:45.2902455Z    at Microsoft.TemplateEngine.Cli.New3Command.ExecuteAsync()
-2018-09-25T21:24:45.2915947Z    at Microsoft.TemplateEngine.Cli.CommandParsing.NewCommandInputCli.&lt;&gt;c__DisplayClass19_0.&lt;&lt;OnExecute&gt;b__0&gt;d.MoveNext()
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.</span><br><span class="line">2018-09-25T21:24:45.2791049Z Parameter name: paths</span><br><span class="line">2018-09-25T21:24:45.2804472Z    at System.IO.Path.Combine(String[] paths)</span><br><span class="line">2018-09-25T21:24:45.2818339Z    at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()</span><br><span class="line">2018-09-25T21:24:45.2832030Z    at Microsoft.TemplateEngine.Edge.Paths.UserPaths.get_AliasesFile()</span><br><span class="line">2018-09-25T21:24:45.2845669Z    at Microsoft.TemplateEngine.Edge.Settings.AliasRegistry.EnsureLoaded()</span><br><span class="line">2018-09-25T21:24:45.2859343Z    at Microsoft.TemplateEngine.Edge.Settings.AliasRegistry.TryExpandCommandAliases(IReadOnlyList`1 inputTokens, IReadOnlyList`1&amp; expandedInputTokens)</span><br><span class="line">2018-09-25T21:24:45.2874783Z    at Microsoft.TemplateEngine.Cli.AliasSupport.TryExpandAliases(INewCommandInput commandInput, AliasRegistry aliasRegistry)</span><br><span class="line">2018-09-25T21:24:45.2888665Z    at Microsoft.TemplateEngine.Cli.AliasSupport.CoordinateAliasExpansion(INewCommandInput commandInput, AliasRegistry aliasRegistry, ITelemetryLogger telemetryLogger)</span><br><span class="line">2018-09-25T21:24:45.2902455Z    at Microsoft.TemplateEngine.Cli.New3Command.ExecuteAsync()</span><br><span class="line">2018-09-25T21:24:45.2915947Z    at Microsoft.TemplateEngine.Cli.CommandParsing.NewCommandInputCli.&lt;&gt;c__DisplayClass19_0.&lt;&lt;OnExecute&gt;b__0&gt;d.MoveNext()</span><br></pre></td></tr></table></figure>
 <p>Tracked it down to this line of code:<br>
-<a href="https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60" target="_blank" rel="external">https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60</a></p>
-string profileDir = _parent.Environment.GetEnvironmentVariable(isWindows
-                            ? &quot;USERPROFILE&quot;
-                            : &quot;HOME&quot;);
+<a href="https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60" target="_blank" rel="noopener">https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string profileDir = _parent.Environment.GetEnvironmentVariable(isWindows</span><br><span class="line">                            ? &quot;USERPROFILE&quot;</span><br><span class="line">                            : &quot;HOME&quot;);</span><br></pre></td></tr></table></figure>
 <p>Which assumes that either USERPROFILE or HOME will be set.</p>
 <p>I’m running tox in my Azure DevOps build from a Linux agent and wasn’t passing HOME in passenv.</p>
 <p>Add HOME to passenv in your tox.ini and this error should go away.</p>

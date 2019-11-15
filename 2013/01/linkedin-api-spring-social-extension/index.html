@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,dev" />
+    <meta name="keywords" content="c#,howto,dev">
     
     <meta name="description" content="I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing">
+<meta name="keywords" content="c#,howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to make authenticated calls to the LinkedIn API using the Spring.net Social Extension for LinkedIn">
 <meta property="og:url" content="https://blog.jongallant.com/2013/01/linkedin-api-spring-social-extension/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:26:48.113Z">
+<meta property="og:updated_time" content="2018-12-10T22:26:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to make authenticated calls to the LinkedIn API using the Spring.net Social Extension for LinkedIn">
 <meta name="twitter:description" content="I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,41 +200,31 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing I want to do is try to figure out how to get OAuth working when I have a thousand other things to do. I downloaded all the C# libraries I could find, but most required a bunch of setup or compiling or hacking that I don’t have time for. I then came across the <a href="http://www.springframework.net/social-linkedin/" target="_blank" rel="external">Spring.net Social Extension for LinkedIn</a>. I went over to the <a href="https://github.com/SpringSource/spring-net-social-linkedin" target="_blank" rel="external">SpringSource LinkedIn GitHub page</a> and found <a href="https://github.com/SpringSource/spring-net-social-linkedin/blob/master/examples/Spring.ConsoleQuickStart/src/Spring.ConsoleQuickStart/Program.cs" target="_blank" rel="external">this sample</a>. It looked pretty straight forward so I decided to go for it…and got it working in about 10 minutes.</p>
+            <p>I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing I want to do is try to figure out how to get OAuth working when I have a thousand other things to do. I downloaded all the C# libraries I could find, but most required a bunch of setup or compiling or hacking that I don’t have time for. I then came across the <a href="http://www.springframework.net/social-linkedin/" target="_blank" rel="noopener">Spring.net Social Extension for LinkedIn</a>. I went over to the <a href="https://github.com/SpringSource/spring-net-social-linkedin" target="_blank" rel="noopener">SpringSource LinkedIn GitHub page</a> and found <a href="https://github.com/SpringSource/spring-net-social-linkedin/blob/master/examples/Spring.ConsoleQuickStart/src/Spring.ConsoleQuickStart/Program.cs" target="_blank" rel="noopener">this sample</a>. It looked pretty straight forward so I decided to go for it…and got it working in about 10 minutes.</p>
 <p>Here’s what I did:</p>
 <ol>
 <li>
-<p>Created my LinkedIn app. <a href="https://www.linkedin.com/secure/developer?newapp=" title="https://www.linkedin.com/secure/developer?newapp=" target="_blank" rel="external">https://www.linkedin.com/secure/developer?newapp=</a></p>
+<p>Created my LinkedIn app. <a href="https://www.linkedin.com/secure/developer?newapp=" title="https://www.linkedin.com/secure/developer?newapp=" target="_blank" rel="noopener">https://www.linkedin.com/secure/developer?newapp=</a></p>
 </li>
 <li>
 <p>Created a new C# project and referenced Spring.Social.LinkedIn via nuGet</p>
 </li>
 </ol>
-<p><img src="/images/blog/a83cd1d4579a_E389/image.png" alt=""></p>
+<p><img src="/images/blog/a83cd1d4579a_E389/image.png" alt></p>
 <ol start="3">
 <li>Referenced Common.Logging (I actually did this later because I was getting an exception, but just do it now)</li>
 </ol>
-<p><img src="/images/blog/a83cd1d4579a_E389/image_thumb_3.png" alt=""></p>
+<p><img src="/images/blog/a83cd1d4579a_E389/image_thumb_3.png" alt></p>
 <ol start="4">
 <li>Copied the 4 following strings into my project:</li>
 </ol>
-<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiKey = <span class="string">"[copy from your linked in app details page]"</span>;
-<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiSecret = <span class="string">"[copy from your linked in app details page]"</span>; 
-<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserToken = <span class="string">"[copy from your linked in app details page]"</span>; 
-<span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserSecret = <span class="string">"[copy from your linked in app details page]"</span>;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiKey = <span class="string">"[copy from your linked in app details page]"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInApiSecret = <span class="string">"[copy from your linked in app details page]"</span>; </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserToken = <span class="string">"[copy from your linked in app details page]"</span>; </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> LinkedInUserSecret = <span class="string">"[copy from your linked in app details page]"</span>;</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>Created this SearchAsync method</li>
 </ol>
-<span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;LinkedInProfiles&gt; <span class="title">SearchAsync</span>(<span class="params"><span class="keyword">string</span> queryText</span>)</span>
-&#123;
-     <span class="keyword">var</span> l = <span class="keyword">new</span> LinkedInServiceProvider(LinkedInApiKey, LinkedInApiSecret);
-     <span class="keyword">var</span> a = l.GetApi(LinkedInUserToken, LinkedInUserSecret);
-     <span class="keyword">var</span> sp = <span class="keyword">new</span> SearchParameters() &#123; Keywords = queryText &#125;;
-     <span class="keyword">return</span> <span class="keyword">await</span> a.ProfileOperations.SearchAsync(sp);
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;LinkedInProfiles&gt; <span class="title">SearchAsync</span>(<span class="params"><span class="keyword">string</span> queryText</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="keyword">var</span> l = <span class="keyword">new</span> LinkedInServiceProvider(LinkedInApiKey, LinkedInApiSecret);</span><br><span class="line">     <span class="keyword">var</span> a = l.GetApi(LinkedInUserToken, LinkedInUserSecret);</span><br><span class="line">     <span class="keyword">var</span> sp = <span class="keyword">new</span> SearchParameters() &#123; Keywords = queryText &#125;;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">await</span> a.ProfileOperations.SearchAsync(sp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>6. Called SearchAsync method from another method</p>
-<span class="keyword">var</span> p = SearchAsync(queryText);
-<span class="keyword">foreach</span> (LinkedInProfile pr <span class="keyword">in</span> p.Result.Profiles)&#123;&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> p = SearchAsync(queryText);</span><br><span class="line"><span class="keyword">foreach</span> (LinkedInProfile pr <span class="keyword">in</span> p.Result.Profiles)&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p>I hope this saves you some time.</p>
 <p>Jon</p>
 

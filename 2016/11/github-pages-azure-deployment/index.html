@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure" />
+    <meta name="keywords" content="azure">
     
-    <meta name="description" content="Here’s a quick and easy way to get your GitHub Page repo deployed to an Azure Web App. Let me know if you run into any issues.
-Create GitHub Pages Repo
-Skip to next step if you already have a GitHub p">
+    <meta name="description" content="Here’s a quick and easy way to get your GitHub Page repo deployed to an Azure Web App. Let me know if you run into any issues. Create GitHub Pages Repo Skip to next step if you already have a GitHub p">
+<meta name="keywords" content="azure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Deploy a GitHub Pages Site to an Azure Web App">
 <meta property="og:url" content="https://blog.jongallant.com/2016/11/github-pages-azure-deployment/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s a quick and easy way to get your GitHub Page repo deployed to an Azure Web App. Let me know if you run into any issues.
-Create GitHub Pages Repo
-Skip to next step if you already have a GitHub p">
+<meta property="og:description" content="Here’s a quick and easy way to get your GitHub Page repo deployed to an Azure Web App. Let me know if you run into any issues. Create GitHub Pages Repo Skip to next step if you already have a GitHub p">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/blog/796dfb1aad8a_F309/image.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:33.784Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Deploy a GitHub Pages Site to an Azure Web App">
-<meta name="twitter:description" content="Here’s a quick and easy way to get your GitHub Page repo deployed to an Azure Web App. Let me know if you run into any issues.
-Create GitHub Pages Repo
-Skip to next step if you already have a GitHub p">
+<meta name="twitter:description" content="Here’s a quick and easy way to get your GitHub Page repo deployed to an Azure Web App. Let me know if you run into any issues. Create GitHub Pages Repo Skip to next step if you already have a GitHub p">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/blog/796dfb1aad8a_F309/image.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ Skip to next step if you already have a GitHub p">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -211,7 +207,7 @@ Skip to next step if you already have a GitHub p">
 <p>2. Under the repo settings &gt; GitHub Pages, set Source to the branch and Launch automatic page generator.</p>
 <p>3. Clone the repo locally</p>
 <h2 id="copy-azure-deployment-files"><a class="header-anchor" href="#copy-azure-deployment-files"></a>Copy Azure Deployment Files</h2>
-<p>We need to get .deployment, deploy.cmd and getruby.cmd in the root of the GitHub repo. We are going to pull those files from here: <a href="https://github.com/ritterim/jekyll-azure-deploy" title="https://github.com/ritterim/jekyll-azure-deploy" target="_blank" rel="external">https://github.com/ritterim/jekyll-azure-deploy</a>. If you have Bash installed on Windows you can use the following command:</p>
+<p>We need to get .deployment, deploy.cmd and getruby.cmd in the root of the GitHub repo. We are going to pull those files from here: <a href="https://github.com/ritterim/jekyll-azure-deploy" title="https://github.com/ritterim/jekyll-azure-deploy" target="_blank" rel="noopener">https://github.com/ritterim/jekyll-azure-deploy</a>. If you have Bash installed on Windows you can use the following command:</p>
 <script src="https://gist.github.com/jongio/a6b779448106eb3c2c56b6178b5b6816.js"></script>
 <p>If you don’t have bash, then figure out a way to get those files locally, i.e. clone that repo or download as a zip.</p>
 <p>After you have the files in the root of your repo locally, push them to your remote GitHub repo.</p>
@@ -222,24 +218,24 @@ Skip to next step if you already have a GitHub p">
 <p>and change %DEPLOYMENT_SOURCE%/_site to %DEPLOYMENT_SOURCE% (remove /_site)</p>
 <p>Once you have made that change, make sure you push to your remote GitHub repo</p>
 <h2 id="create-azure-website"><a class="header-anchor" href="#create-azure-website"></a>Create Azure WebSite</h2>
-<p>Go to <a href="https://portal.azure.com/#create/Microsoft.WebSite" title="https://portal.azure.com/#create/Microsoft.WebSite" target="_blank" rel="external">https://portal.azure.com/#create/Microsoft.WebSite</a> and create your site.</p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image.png" alt=""></p>
+<p>Go to <a href="https://portal.azure.com/#create/Microsoft.WebSite" title="https://portal.azure.com/#create/Microsoft.WebSite" target="_blank" rel="noopener">https://portal.azure.com/#create/Microsoft.WebSite</a> and create your site.</p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image.png" alt></p>
 <h2 id="increase-deployment-timeout"><a class="header-anchor" href="#increase-deployment-timeout"></a>Increase Deployment Timeout</h2>
 <p>Ruby takes a while to install the first time, so increase the deployment timeout with this setting.</p>
 <p>Open Azure Web App, Go to Application settings and add a custom setting called SCM_COMMAND_IDLE_TIMEOUT and set it to 3600</p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image_3.png" alt=""></p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image_3.png" alt></p>
 <p>Make sure you click Save.</p>
 <h2 id="setup-github-to-azure-deployment-hook"><a class="header-anchor" href="#setup-github-to-azure-deployment-hook"></a>Setup GitHub to Azure Deployment Hook</h2>
 <p>Open Azure Web App, Go to “Deployment options” and select GitHub, Authorize and select your repo and branch and click OK.</p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image_4.png" alt=""></p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image_5.png" alt=""></p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image_4.png" alt></p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image_5.png" alt></p>
 <p>You will see this notification</p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image_6.png" alt=""></p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image_6.png" alt></p>
 <p>Click on “Deployment options” again and you should see that the site is being deployed:</p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image_7.png" alt=""></p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image_7.png" alt></p>
 <p>It will take a few minutes to complete.</p>
 <p>Open a browser and navigate to your site. Your GitHub pages site should load.</p>
-<p><img src="/images/blog/796dfb1aad8a_F309/image_8.png" alt=""></p>
+<p><img src="/images/blog/796dfb1aad8a_F309/image_8.png" alt></p>
 <p>Jon</p>
 
         </div>

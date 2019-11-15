@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,azure" />
+    <meta name="keywords" content="azure,howto">
     
-    <meta name="description" content="I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time.
-You are probably already past this p">
+    <meta name="description" content="I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time. You are probably already past this p">
+<meta name="keywords" content="azure,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Convert an Azure On-Demand WebJob to a Scheduled WebJob">
 <meta property="og:url" content="https://blog.jongallant.com/2016/01/azure-ondemand-to-scheduled-webjob/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time.
-You are probably already past this p">
+<meta property="og:description" content="I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time. You are probably already past this p">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2017-12-19T22:22:18.380Z">
+<meta property="og:updated_time" content="2017-12-19T22:22:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Convert an Azure On-Demand WebJob to a Scheduled WebJob">
-<meta name="twitter:description" content="I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time.
-You are probably already past this p">
+<meta name="twitter:description" content="I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time. You are probably already past this p">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ You are probably already past this p">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,15 +202,15 @@ You are probably already past this p">
         <div class="article-entry" itemprop="articleBody">
             <p>I had an On-Demand Azure WebJob and wanted to convert it to a scheduled WebJob. It took me a while to figure out how, so I thought I’d share to save you some time.</p>
 <p>You are probably already past this point, but just in case you didn’t know, there’s a Azure WebJob VisualStudio template that sets up the deployment scripts for you.</p>
-<p><img src="/images/blog/b1aff13d6385_7300/image.png" alt=""></p>
+<p><img src="/images/blog/b1aff13d6385_7300/image.png" alt></p>
 <p>When you create it it defaults to On-Demand and there’s no easy way to convert it to a schedule via Visual Studio or either of the Azure Portals.</p>
 <p>All you have to do is create a new file called settings.job in the root of your project.</p>
-<p><img src="/images/blog/b1aff13d6385_7300/image_3.png" alt=""></p>
+<p><img src="/images/blog/b1aff13d6385_7300/image_3.png" alt></p>
 <p>And put some cron script in there to tell Azure what schedule you’d like.</p>
 <p>Your settings.job file is going to look like this if you want to run it every minute.</p>
-<p><img src="/images/blog/b1aff13d6385_7300/image_4.png" alt=""></p>
+<p><img src="/images/blog/b1aff13d6385_7300/image_4.png" alt></p>
 <p>Deploy that file out to Azure and it will automattically be converted to a scheduled job.</p>
-<p>Here’s more info on webjobs and schedules: <a href="https://github.com/projectkudu/kudu/wiki/Web-jobs" title="https://github.com/projectkudu/kudu/wiki/Web-jobs" target="_blank" rel="external">https://github.com/projectkudu/kudu/wiki/Web-jobs</a></p>
+<p>Here’s more info on webjobs and schedules: <a href="https://github.com/projectkudu/kudu/wiki/Web-jobs" title="https://github.com/projectkudu/kudu/wiki/Web-jobs" target="_blank" rel="noopener">https://github.com/projectkudu/kudu/wiki/Web-jobs</a></p>
 <p>Jon</p>
 
         </div>

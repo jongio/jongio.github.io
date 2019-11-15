@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,7 +12,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="By default TFS always displays the System.ChangedBy field as the current user. I am Jon Gallant and Wallace Breza is a dev on my team. As you can see he was the last to change the bug, but my name is">
 <meta property="og:type" content="article">
@@ -20,8 +20,9 @@
 <meta property="og:url" content="https://blog.jongallant.com/2011/09/tfs-changedby-current-user/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="By default TFS always displays the System.ChangedBy field as the current user. I am Jon Gallant and Wallace Breza is a dev on my team. As you can see he was the last to change the bug, but my name is">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T12:08:17.762Z">
+<meta property="og:updated_time" content="2018-12-10T12:08:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution: TFS always shows ChangedBy as the current user">
 <meta name="twitter:description" content="By default TFS always displays the System.ChangedBy field as the current user. I am Jon Gallant and Wallace Breza is a dev on my team. As you can see he was the last to change the bug, but my name is">
@@ -30,11 +31,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -197,26 +198,26 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>By default TFS always displays the System.ChangedBy field as the current user. I am Jon Gallant and Wallace Breza is a dev on my team. As you can see he was the last to change the bug, but my name is in the System.ChangedBy field.</p>
-<p><img src="/images/blog/0755.image_5F00_thumb_5F00_4B861A98.png" alt=""></p>
+<p><img src="/images/blog/0755.image_5F00_thumb_5F00_4B861A98.png" alt></p>
 <p>This is happening because the work item is put into Edit mode when it is opened and that includes setting the System.ChangedBy field to currentuser. I talked with the TFS Work Item here and they have logged a bug.</p>
 <p>Here’s the workaround I’m using.</p>
 <ol>
 <li>
-<p>Install the <a href="http://www.bing.com/search?setmkt=en-US&amp;q=tfs+power+tools" target="_blank" rel="external">TFS Power Tools.</a></p>
+<p>Install the <a href="http://www.bing.com/search?setmkt=en-US&amp;q=tfs+power+tools" target="_blank" rel="noopener">TFS Power Tools.</a></p>
 </li>
 <li>
 <p>Open the Work Item Template from Tools –&gt; Process Editor –&gt;Work Item Types –&gt; Open WIT from Server</p>
 </li>
 </ol>
-<p><img src="/images/blog/8780.image_5F00_thumb_5F00_002676D4.png" alt=""></p>
+<p><img src="/images/blog/8780.image_5F00_thumb_5F00_002676D4.png" alt></p>
 <ol start="3">
 <li>Select the Work Item Type you want to update</li>
 </ol>
-<p><img src="/images/blog/5164.image_5F00_thumb_5F00_1FD5509C.png" alt=""></p>
+<p><img src="/images/blog/5164.image_5F00_thumb_5F00_1FD5509C.png" alt></p>
 <ol start="4">
 <li>In the Fields tab click New</li>
 </ol>
-<p><img src="/images/blog/3005.image_5F00_thumb_5F00_3F842A64.png" alt=""></p>
+<p><img src="/images/blog/3005.image_5F00_thumb_5F00_3F842A64.png" alt></p>
 <ol start="5">
 <li>Enter the following information:</li>
 </ol>
@@ -225,7 +226,7 @@ Type: String<br>
 Reference Name: YourOwnNamespace.LastChangedBy<br>
 Help Text: Whatever you want to put in here<br>
 Reportable: Dimension</p>
-<p><img src="/images/blog/5460.image_5F00_thumb_5F00_3145B174.png" alt=""></p>
+<p><img src="/images/blog/5460.image_5F00_thumb_5F00_3145B174.png" alt></p>
 <ol start="6">
 <li>
 <p>Click the Rules tab</p>
@@ -237,13 +238,13 @@ Reportable: Dimension</p>
 <p>Select COPY. Click OK</p>
 </li>
 </ol>
-<p><img src="/images/blog/6153.image_5F00_thumb_5F00_0A0B683F.png" alt=""></p>
+<p><img src="/images/blog/6153.image_5F00_thumb_5F00_0A0B683F.png" alt></p>
 <ol start="9">
 <li>Set the following values:</li>
 </ol>
 <p>From: field<br>
 Field: System.ChangedBy</p>
-<p><img src="/images/blog/8204.image_5F00_thumb_5F00_10BE71C2.png" alt=""></p>
+<p><img src="/images/blog/8204.image_5F00_thumb_5F00_10BE71C2.png" alt></p>
 <ol start="10">
 <li>
 <p>Click OK</p>
@@ -258,7 +259,7 @@ Field: System.ChangedBy</p>
 <p>Over in the details pane to the right, change the “Field Name” property to YourOwnNamespace.LastChangedBy.</p>
 </li>
 </ol>
-<p><img src="/images/blog/8875.image_5F00_thumb_5F00_650DA7C5.png" alt=""></p>
+<p><img src="/images/blog/8875.image_5F00_thumb_5F00_650DA7C5.png" alt></p>
 <ol start="14">
 <li>
 <p>Save the WIT.</p>
@@ -267,7 +268,7 @@ Field: System.ChangedBy</p>
 <p>Click the Refresh button in Team Explorer</p>
 </li>
 </ol>
-<p><img src="/images/blog/8284.image_5F00_thumb_5F00_3DD35E90.png" alt=""></p>
+<p><img src="/images/blog/8284.image_5F00_thumb_5F00_3DD35E90.png" alt></p>
 <ol start="16">
 <li>
 <p>Close all your open documents, bugs, queries, etc. There is a local cache that won’t reflect the changes unless you close and reopen.</p>
@@ -276,7 +277,7 @@ Field: System.ChangedBy</p>
 <p>Open up a bug and see that Changed By now equals the last person that changed the bug.</p>
 </li>
 </ol>
-<p><img src="/images/blog/0777.image_5F00_thumb_5F00_7D9D4515.png" alt=""></p>
+<p><img src="/images/blog/0777.image_5F00_thumb_5F00_7D9D4515.png" alt></p>
 <p>Hope this helps,<br>
 Jon</p>
 

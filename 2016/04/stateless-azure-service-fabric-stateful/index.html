@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,azure" />
+    <meta name="keywords" content="azure,howto">
     
     <meta name="description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
+<meta name="keywords" content="azure,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Convert a Stateless Azure Service Fabric Service to a Stateful Service">
 <meta property="og:url" content="https://blog.jongallant.com/2016/04/stateless-azure-service-fabric-stateful/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:45.031Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Convert a Stateless Azure Service Fabric Service to a Stateful Service">
 <meta name="twitter:description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -199,36 +201,36 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new stateless service and another stateful service and diff’d them. I’m sharing in case someone else needs to do the same.</p>
-<p>You can see everything you need to do in this commit: <a href="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" title="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" target="_blank" rel="external">https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
+<p>You can see everything you need to do in this commit: <a href="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" title="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" target="_blank" rel="noopener">https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
 <p>Or you can follow along below…</p>
 <h2 id="mysolution-myservice-myservice-cs"><a class="header-anchor" href="#mysolution-myservice-myservice-cs"></a>MySolution/MyService/MyService.cs</h2>
 <h3 id="add-microsoft-servicefabric-data-collections-namespace"><a class="header-anchor" href="#add-microsoft-servicefabric-data-collections-namespace"></a>Add Microsoft.ServiceFabric.Data.Collections namespace</h3>
-<p><img src="/images/blog/fb131b200a2c_5773/image.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image.png" alt></p>
 <h3 id="derive-from-statefulservice-instead-of-stateless-service-and-inject-statefulservicecontext"><a class="header-anchor" href="#derive-from-statefulservice-instead-of-stateless-service-and-inject-statefulservicecontext"></a>Derive from StatefulService instead of Stateless service and inject StatefulServiceContext</h3>
-<p><img src="/images/blog/fb131b200a2c_5773/image_3.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_3.png" alt></p>
 <h3 id="use-servicereplicalistener-instead-of-serviceinstancelistener"><a class="header-anchor" href="#use-servicereplicalistener-instead-of-serviceinstancelistener"></a>Use ServiceReplicaListener instead of ServiceInstanceListener</h3>
-<p><img src="/images/blog/fb131b200a2c_5773/image_4.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_4.png" alt></p>
 <h3 id="use-reliabledictionary-reliablequeue-as-needed-by-your-service-logic"><a class="header-anchor" href="#use-reliabledictionary-reliablequeue-as-needed-by-your-service-logic"></a>Use ReliableDictionary/ReliableQueue as needed by your service logic.</h3>
-<p><img src="/images/blog/fb131b200a2c_5773/image_5.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_5.png" alt></p>
 <h2 id="mysolution-myservice-packageroot-config-settings-xml"><a class="header-anchor" href="#mysolution-myservice-packageroot-config-settings-xml"></a>MySolution/MyService/PackageRoot/Config/Settings.xml</h2>
 <h3 id="add-replicatorconfig-section-to-config"><a class="header-anchor" href="#add-replicatorconfig-section-to-config"></a>Add ReplicatorConfig section to config</h3>
-<p><img src="/images/blog/fb131b200a2c_5773/image_6.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_6.png" alt></p>
 <h2 id="mysolution-myservice-packageroot-servicemanifest-xml"><a class="header-anchor" href="#mysolution-myservice-packageroot-servicemanifest-xml"></a>MySolution/MyService/PackageRoot/ServiceManifest.xml</h2>
 <h4 id="set-haspersistedstate-variable-in-servicemanifest"><a class="header-anchor" href="#set-haspersistedstate-variable-in-servicemanifest"></a>Set “HasPersistedState” variable in ServiceManifest</h4>
 <h4 id="change-statelessservicetype-to-statefulservicetype"><a class="header-anchor" href="#change-statelessservicetype-to-statefulservicetype"></a>Change StatelessServiceType to StatefulServiceType</h4>
-<p><img src="/images/blog/fb131b200a2c_5773/image_7.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_7.png" alt></p>
 <h2 id="mysolution-myservice-serviceeventsource-cs"><a class="header-anchor" href="#mysolution-myservice-serviceeventsource-cs"></a>MySolution/MyService/ServiceEventSource.cs</h2>
 <h4 id="inject-statefulservice-and-set-replicaid-instead-of-instanceid"><a class="header-anchor" href="#inject-statefulservice-and-set-replicaid-instead-of-instanceid"></a>Inject StatefulService and set ReplicaId instead of InstanceId</h4>
-<p><img src="/images/blog/fb131b200a2c_5773/image_8.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_8.png" alt></p>
 <h2 id="mysolution-myservicefabricapplication-applicationpackageroot-applicationmanifest-xml"><a class="header-anchor" href="#mysolution-myservicefabricapplication-applicationpackageroot-applicationmanifest-xml"></a>MySolution/MyServiceFabricApplication/ApplicationPackageRoot/ApplicationManifest.xml</h2>
 <h4 id="add-replica-settings-to-applicationmanifest"><a class="header-anchor" href="#add-replica-settings-to-applicationmanifest"></a>Add Replica settings to ApplicationManifest</h4>
 <h4 id="change-statelessservice-element-to-statefulservice-element"><a class="header-anchor" href="#change-statelessservice-element-to-statefulservice-element"></a>Change StatelessService element to StatefulService Element</h4>
-<p><img src="/images/blog/fb131b200a2c_5773/image_9.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_9.png" alt></p>
 <h3 id="mysolution-myservicefabricapplication-applicationparameters-cloud-xml"><a class="header-anchor" href="#mysolution-myservicefabricapplication-applicationparameters-cloud-xml"></a>MySolution/MyServiceFabricApplication/ApplicationParameters/Cloud.xml</h3>
 <h4 id="add-parameters-to-your-cloud-and-local-xml-files"><a class="header-anchor" href="#add-parameters-to-your-cloud-and-local-xml-files"></a>Add Parameters to your Cloud and Local.xml files</h4>
-<p><img src="/images/blog/fb131b200a2c_5773/image_10.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_10.png" alt></p>
 <h3 id="mysolution-myservicefabricapplication-applicationparameters-local-xml"><a class="header-anchor" href="#mysolution-myservicefabricapplication-applicationparameters-local-xml"></a>MySolution/MyServiceFabricApplication/ApplicationParameters/Local.xml</h3>
-<p><img src="/images/blog/fb131b200a2c_5773/image_11.png" alt=""></p>
+<p><img src="/images/blog/fb131b200a2c_5773/image_11.png" alt></p>
 <p>Jon</p>
 
         </div>

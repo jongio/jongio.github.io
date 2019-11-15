@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,dev" />
+    <meta name="keywords" content="c#,howto,dev">
     
     <meta name="description" content="I have a long running script that needs to run once a day and I’d like to store the results of that script in cache for the rest of the day so only one user (or any automated http request) will incur">
+<meta name="keywords" content="c#,howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to OutputCache an object based on the current date with VaryByCustom and GetVaryByCustomString">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/outputcache-current-date-varybycustom/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I have a long running script that needs to run once a day and I’d like to store the results of that script in cache for the rest of the day so only one user (or any automated http request) will incur">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-28T07:31:31.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -199,7 +201,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I have a long running script that needs to run once a day and I’d like to store the results of that script in cache for the rest of the day so only one user (or any automated http request) will incur the delay.</p>
-<p>It took me a few mins to figure out the best cache the day for the rest of the day. I went back and forth between using <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> Cache object directly and OutputCaching.</p>
+<p>It took me a few mins to figure out the best cache the day for the rest of the day. I went back and forth between using <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Cache object directly and OutputCaching.</p>
 <p>I ended up going with OutputCache because it is really simple and I don’t need to worry about locking, inserting, updaing like I would the Cache object.</p>
 <p>I was going to use VaryByHeader=“Date”, but that would invalidate on the second, not the day like I need it to. So I ended up going with VaryByCustom.</p>
 <h3 id="outputcache-attribute-on-controller-action-method"><a class="header-anchor" href="#outputcache-attribute-on-controller-action-method"></a>OutputCache Attribute on Controller Action Method</h3>
@@ -207,22 +209,9 @@
 <li>Set VaryByCustom to Day</li>
 <li>Set Duration = 86400, the number of seconds in a day. This is the max amount of time you want to cache. If the Custom VaryBy return value changes before the Duration expires then it will execute the controller action method again.</li>
 </ul>
-[<span class="meta">OutputCache(VaryByCustom = <span class="meta-string">"Day"</span>, Duration = 86400)</span>]
-<span class="function"><span class="keyword">public</span> ActionResult <span class="title">Index</span>(<span class="params"></span>)</span>
-&#123;
-    <span class="keyword">var</span> report = <span class="keyword">new</span> HealthReport();
-    report.Load();
-    <span class="keyword">return</span> <span class="keyword">this</span>.View(report);
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">[<span class="meta">OutputCache(VaryByCustom = <span class="meta-string">"Day"</span>, Duration = 86400)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> ActionResult <span class="title">Index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> report = <span class="keyword">new</span> HealthReport();</span><br><span class="line">    report.Load();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.View(report);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="override-getvarybycustomstring-in-global-asax-cs"><a class="header-anchor" href="#override-getvarybycustomstring-in-global-asax-cs"></a>Override GetVaryByCustomString in Global.asax.cs</h3>
-<span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">GetVaryByCustomString</span>(<span class="params">HttpContext context, <span class="keyword">string</span> custom</span>)</span>
-&#123;
-    <span class="keyword">if</span> (<span class="keyword">string</span>.Compare(custom, <span class="string">"Day"</span>, <span class="literal">true</span>) == <span class="number">0</span>)
-    &#123;
-        <span class="keyword">return</span> DateTime.Now.ToShortDateString();
-    &#125;
-    <span class="keyword">return</span> <span class="keyword">base</span>.GetVaryByCustomString(context, custom);
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">string</span> <span class="title">GetVaryByCustomString</span>(<span class="params">HttpContext context, <span class="keyword">string</span> custom</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.Compare(custom, <span class="string">"Day"</span>, <span class="literal">true</span>) == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> DateTime.Now.ToShortDateString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">base</span>.GetVaryByCustomString(context, custom);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>

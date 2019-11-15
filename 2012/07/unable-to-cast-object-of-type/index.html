@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,dev" />
+    <meta name="keywords" content="c#,dev">
     
-    <meta name="description" content="Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance.
-I struggled with this for way too long,">
+    <meta name="description" content="Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance. I struggled with this for way too long,">
+<meta name="keywords" content="c#,dev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "Unable to cast object of type '[type1]' to type '[type2]'." when trying to cast a List to List">
+<meta property="og:title" content="Solution to &quot;Unable to cast object of type &#39;[type1]&#39; to type &#39;[type2]&#39;.&quot; when trying to cast a List to List">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/unable-to-cast-object-of-type/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance.
-I struggled with this for way too long,">
+<meta property="og:description" content="Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance. I struggled with this for way too long,">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "Unable to cast object of type '[type1]' to type '[type2]'." when trying to cast a List to List">
-<meta name="twitter:description" content="Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance.
-I struggled with this for way too long,">
+<meta name="twitter:title" content="Solution to &quot;Unable to cast object of type &#39;[type1]&#39; to type &#39;[type2]&#39;.&quot; when trying to cast a List to List">
+<meta name="twitter:description" content="Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with covariance and contravariance. I struggled with this for way too long,">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ I struggled with this for way too long,">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -201,34 +200,17 @@ I struggled with this for way too long,">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with <a href="http://blogs.msdn.com/b/csharpfaq/archive/2010/02/16/covariance-and-contravariance-faq.aspx" target="_blank" rel="external">covariance and contravariance</a>.</p>
+            <p>Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with <a href="http://blogs.msdn.com/b/csharpfaq/archive/2010/02/16/covariance-and-contravariance-faq.aspx" target="_blank" rel="noopener">covariance and contravariance</a>.</p>
 <p>I struggled with this for way too long, hope you save you some time.</p>
 <p>I have a list that contains a Heavy object that I don’t want to serialize down to the client. So I created a Slim version of it with an explicit operator to convert from Heavy to Slim.</p>
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WorkItem</span>
-&#123;
-    <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-&#125;
-
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WorkItemSlim</span>
-&#123;
-    <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">WorkItemSlim</span>(<span class="params">WorkItem workItem</span>)</span>
-    &#123;
-        <span class="keyword">var</span> wis = <span class="keyword">new</span> WorkItemSlim();
-        wis.Id = workItem.Id;
-        <span class="keyword">return</span> wis;
-    &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WorkItem</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WorkItemSlim</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">WorkItemSlim</span>(<span class="params">WorkItem workItem</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> wis = <span class="keyword">new</span> WorkItemSlim();</span><br><span class="line">        wis.Id = workItem.Id;</span><br><span class="line">        <span class="keyword">return</span> wis;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>This works great when explicitly casting a single Heavy object to a Slim object like so:</p>
-<span class="keyword">var</span> workItem = <span class="keyword">new</span> WorkItem();
-workItem.Id = <span class="number">1</span>;
-
-WorkItemSlim wis = (WorkItemSlim)workItem;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> workItem = <span class="keyword">new</span> WorkItem();</span><br><span class="line">workItem.Id = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">WorkItemSlim wis = (WorkItemSlim)workItem;</span><br></pre></td></tr></table></figure>
 <p>But you get “Unable to cast object of type ‘[type1]’ to type ‘[type2]’.” when you try to cast a List&lt;WorkItem&gt; to List&lt;WorkItemSlim&gt;</p>
-<p><img src="/images/blog/Solution-to-Unable-to-cast-object-of-ty_8698/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-Unable-to-cast-object-of-ty_8698/image.png" alt></p>
 <p>I spent a lot of timing looking at my explicit operator trying to figure out what I did wrong, but after some searching I discovered that a List&lt;T&gt; isn’t supported at runtime.</p>
 <p>So the (not so great) solution is to convert each object of the list (one by one) to the other type.</p>
-<span class="keyword">var</span> workItemSlimList2 = workItemList.ConvertAll(m =&amp;gt; (WorkItemSlim)m);
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> workItemSlimList2 = workItemList.ConvertAll(m =&amp;gt; (WorkItemSlim)m);</span><br></pre></td></tr></table></figure>
 <p>I hope I saved you some time.</p>
 <p>Jon</p>
 

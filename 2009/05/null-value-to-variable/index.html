@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,asp.net" />
+    <meta name="keywords" content="c#,asp.net">
     
-    <meta name="description" content="By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: You tried to assign the Null value to a variable that is not a Variant data type.
-Then yo">
+    <meta name="description" content="By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: You tried to assign the Null value to a variable that is not a Variant data type. Then yo">
+<meta name="keywords" content="c#,asp.net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to the "You tried to assign the Null value to a variable that is not a Variant data type." Exception">
+<meta property="og:title" content="Solution to the &quot;You tried to assign the Null value to a variable that is not a Variant data type.&quot; Exception">
 <meta property="og:url" content="https://blog.jongallant.com/2009/05/null-value-to-variable/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: You tried to assign the Null value to a variable that is not a Variant data type.
-Then yo">
+<meta property="og:description" content="By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: You tried to assign the Null value to a variable that is not a Variant data type. Then yo">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T06:51:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to the "You tried to assign the Null value to a variable that is not a Variant data type." Exception">
-<meta name="twitter:description" content="By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: You tried to assign the Null value to a variable that is not a Variant data type.
-Then yo">
+<meta name="twitter:title" content="Solution to the &quot;You tried to assign the Null value to a variable that is not a Variant data type.&quot; Exception">
+<meta name="twitter:description" content="By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: You tried to assign the Null value to a variable that is not a Variant data type. Then yo">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ Then yo">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -204,9 +203,9 @@ Then yo">
             <p>By default the DataSource wizard passes parameters for AutoNumber primary keys. If you are getting this error: <em>You tried to assign the Null value to a variable that is not a Variant data type.</em></p>
 <p>Then you need to remove that default parameter.</p>
 <p>This is what Visual Studio adds by default:</p>
-InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerId], [PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?, ?)<span class="string">"</span>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerId], [PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?, ?)<span class="string">"</span></span><br></pre></td></tr></table></figure>
 <p>Remove the primary key like so</p>
-InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?)<span class="string">"</span>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">InsertCommand="<span class="keyword">INSERT</span> <span class="keyword">INTO</span> [Partner] ([PartnerGuid], [<span class="keyword">Name</span>]) <span class="keyword">VALUES</span> (?, ?)<span class="string">"</span></span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

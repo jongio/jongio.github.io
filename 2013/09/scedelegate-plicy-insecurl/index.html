@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="angularjs" />
+    <meta name="keywords" content="angularjs">
     
-    <meta name="description" content="Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.
-UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been f">
+    <meta name="description" content="Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy. UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been f">
+<meta name="keywords" content="angularjs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.">
 <meta property="og:url" content="https://blog.jongallant.com/2013/09/scedelegate-plicy-insecurl/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.
-UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been f">
+<meta property="og:description" content="Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy. UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been f">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-28T07:28:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.">
-<meta name="twitter:description" content="Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.
-UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been f">
+<meta name="twitter:description" content="Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy. UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been f">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ UPDATE: This error was also appearing in IE11 because of a bug in the user agent
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -202,9 +201,9 @@ UPDATE: This error was also appearing in IE11 because of a bug in the user agent
         
         <div class="article-entry" itemprop="articleBody">
             <p><em>Error: [$sce:insecurl] Blocked loading resource from url not allowed by $sceDelegate policy.</em></p>
-<p>UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been fixed in 1.2.0RC2. <a href="http://code.angularjs.org/1.2.0-rc.2/" target="_blank" rel="external">http://code.angularjs.org/1.2.0-rc.2/</a></p>
+<p>UPDATE: This error was also appearing in IE11 because of a bug in the user agent detection. That has been fixed in 1.2.0RC2. <a href="http://code.angularjs.org/1.2.0-rc.2/" target="_blank" rel="noopener">http://code.angularjs.org/1.2.0-rc.2/</a></p>
 <p>You might see this error when you try to bind an external resource, such as vimeo, youtube, etc. This is a new security measure in 1.2.0. To resolve just add the following line to your AngularJS configProvider.</p>
-$sceDelegateProvider.resourceUrlWhitelist([&apos;^(?:http(?:s)?:\/\/)?(?:[^\.]+\.)?\(vimeo|youtube)\.com(/.*)?$&apos;, &apos;self&apos;]);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$sceDelegateProvider.resourceUrlWhitelist([&apos;^(?:http(?:s)?:\/\/)?(?:[^\.]+\.)?\(vimeo|youtube)\.com(/.*)?$&apos;, &apos;self&apos;]);</span><br></pre></td></tr></table></figure>
 <p>This says that vimeo, youtube and self (aka localhost) are okay to make outbound calls from AngularJS.</p>
 
         </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.
-
-Add the DatabaseGenerated attribute if you are using EF Code First:
-[DatabaseGenerated(Da">
+    <meta name="description" content="Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.  Add the DatabaseGenerated attribute if you are using EF Code First: [DatabaseGenerated(Da">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to: "The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value" with Entity Framework when calling SaveChanges">
+<meta property="og:title" content="Solution to: &quot;The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value&quot; with Entity Framework when calling SaveChanges">
 <meta property="og:url" content="https://blog.jongallant.com/2013/07/datetime2-datetime-out-of-range-ef/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.
-
-Add the DatabaseGenerated attribute if you are using EF Code First:
-[DatabaseGenerated(Da">
+<meta property="og:description" content="Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.  Add the DatabaseGenerated attribute if you are using EF Code First: [DatabaseGenerated(Da">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to: "The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value" with Entity Framework when calling SaveChanges">
-<meta name="twitter:description" content="Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.
-
-Add the DatabaseGenerated attribute if you are using EF Code First:
-[DatabaseGenerated(Da">
+<meta name="twitter:title" content="Solution to: &quot;The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value&quot; with Entity Framework when calling SaveChanges">
+<meta name="twitter:description" content="Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.  Add the DatabaseGenerated attribute if you are using EF Code First: [DatabaseGenerated(Da">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +66,7 @@ Add the DatabaseGenerated attribute if you are using EF Code First:
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -206,10 +198,9 @@ Add the DatabaseGenerated attribute if you are using EF Code First:
         
         <div class="article-entry" itemprop="articleBody">
             <p>Go into your EDMX file, select the field that is causing the error and set StoreGeneratedPattern to Computed.</p>
-<p><img src="/images/blog/Solution-to-The-conversion-of-a-datetime_EB/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-The-conversion-of-a-datetime_EB/image.png" alt></p>
 <p>Add the DatabaseGenerated attribute if you are using EF Code First:</p>
-[<span class="meta">DatabaseGenerated(DatabaseGeneratedOption.Computed)</span>]
-<span class="keyword">public</span> Nullable&amp;lt;System.DateTime&amp;gt; Created &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">[<span class="meta">DatabaseGenerated(DatabaseGeneratedOption.Computed)</span>]</span><br><span class="line"><span class="keyword">public</span> Nullable&amp;lt;System.DateTime&amp;gt; Created &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

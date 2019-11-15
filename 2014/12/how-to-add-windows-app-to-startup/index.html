@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto" />
+    <meta name="keywords" content="howto">
     
     <meta name="description" content="It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approa">
+<meta name="keywords" content="howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to automatically launch a Windows app when a user logs into their computer">
 <meta property="og:url" content="https://blog.jongallant.com/2014/12/how-to-add-windows-app-to-startup/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approa">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:37.203Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to automatically launch a Windows app when a user logs into their computer">
 <meta name="twitter:description" content="It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approa">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,45 +200,29 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approach worked best for me. Example source is on <a href="https://github.com/jongio/windows-startup-example" target="_blank" rel="external">GitHub</a> and walkthrough is below. Hope this saves you some time.</p>
+            <p>It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approach worked best for me. Example source is on <a href="https://github.com/jongio/windows-startup-example" target="_blank" rel="noopener">GitHub</a> and walkthrough is below. Hope this saves you some time.</p>
 <p>Jon</p>
-<p>1. Create Windows app. Create Installer app using the <a href="https://visualstudiogallery.msdn.microsoft.com/9abe329c-9bba-44a1-be59-0fbf6151054d" target="_blank" rel="external">Microsoft Visual Studio Installer Projects extension</a></p>
+<p>1. Create Windows app. Create Installer app using the <a href="https://visualstudiogallery.msdn.microsoft.com/9abe329c-9bba-44a1-be59-0fbf6151054d" target="_blank" rel="noopener">Microsoft Visual Studio Installer Projects extension</a></p>
 <p>2. Open up the build config manager and make sure the Installer project is building as well.</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image.png" alt></p>
 <p>3. Right click on the Windows project. Add Item –&gt; Installer class</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image_3.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image_3.png" alt></p>
 <p>4. In the Installer class override both the Commit and Uninstall methods. Replace “windows-startup-example-app” with the name of your app and change the exe name.</p>
-<span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Commit</span>(<span class="params">System.Collections.IDictionary savedState</span>)</span>
-&#123;
-    <span class="keyword">base</span>.Commit(savedState);
-    <span class="keyword">using</span> (RegistryKey key = Registry.CurrentUser.OpenSubKey(<span class="string">"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"</span>, <span class="literal">true</span>))
-    &#123;
-        key.SetValue(<span class="string">"windows-startup-example-app"</span>, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + <span class="string">"\\windows-startup-example-app.exe"</span>);
-    &#125;
-&#125;
-
-       <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Uninstall</span>(<span class="params">System.Collections.IDictionary savedState</span>)</span>
-&#123;
-    <span class="keyword">base</span>.Uninstall(savedState);
-   <span class="keyword">using</span> (RegistryKey key = Registry.CurrentUser.OpenSubKey(<span class="string">"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"</span>, <span class="literal">true</span>))
-    &#123;
-        key.DeleteValue(<span class="string">"windows-startup-example-app"</span>, <span class="literal">false</span>);
-    &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Commit</span>(<span class="params">System.Collections.IDictionary savedState</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">base</span>.Commit(savedState);</span><br><span class="line">    <span class="keyword">using</span> (RegistryKey key = Registry.CurrentUser.OpenSubKey(<span class="string">"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"</span>, <span class="literal">true</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        key.SetValue(<span class="string">"windows-startup-example-app"</span>, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + <span class="string">"\\windows-startup-example-app.exe"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Uninstall</span>(<span class="params">System.Collections.IDictionary savedState</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">base</span>.Uninstall(savedState);</span><br><span class="line">   <span class="keyword">using</span> (RegistryKey key = Registry.CurrentUser.OpenSubKey(<span class="string">"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run"</span>, <span class="literal">true</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        key.DeleteValue(<span class="string">"windows-startup-example-app"</span>, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>5\. Right click on Installer project and view Custom Actions
-</p><p><img src="/images/blog/12077fd3b80a_13FA2/image_4.png" alt=""></p>
+</p><p><img src="/images/blog/12077fd3b80a_13FA2/image_4.png" alt></p>
 <p>6. Right click Commit and select Add Custom Action</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image_5.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image_5.png" alt></p>
 <p>7. Click Application Folder and Add the Primary Output</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image_6.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image_6.png" alt></p>
 <p>8. Repeat Steps 6 &amp; 7 for Install and Uninstall. It should now look like this:</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image_7.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image_7.png" alt></p>
 <p>9. Open RegEdit and navigate to HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</p>
 <p>10. Go back to VS and Right click on Install project and install app.</p>
 <p>11. Go back to RegEdit and you should now see the app.</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image_8.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image_8.png" alt></p>
 <p>12. Log out of computer and log back in. You should now see the app automatically start up.</p>
-<p><img src="/images/blog/12077fd3b80a_13FA2/image_9.png" alt=""></p>
+<p><img src="/images/blog/12077fd3b80a_13FA2/image_9.png" alt></p>
 
         </div>
         <footer>

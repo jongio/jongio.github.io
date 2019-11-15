@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot" />
+    <meta name="keywords" content="iot">
     
     <meta name="description" content="I’ve been building a battery-powered wifi-enabled Lync Status light for the last couple of months. Lots of people have been building the beakn and I did a hackathon class last week, so I thought it wo">
+<meta name="keywords" content="iot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Build a Lync Status Light in Minutes with a Spark Core or Photon">
 <meta property="og:url" content="https://blog.jongallant.com/2015/02/beakn-lync-status-light-in-minutes/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’ve been building a battery-powered wifi-enabled Lync Status light for the last couple of months. Lots of people have been building the beakn and I did a hackathon class last week, so I thought it wo">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,12 +200,12 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’ve been building a battery-powered wifi-enabled Lync Status light for the last couple of months. Lots of people have been building the beakn and I did a <a href="https://twitter.com/jongallant/status/565649351813652480" target="_blank" rel="external">hackathon class</a> last week, so I thought it would be ideal to have a very simple step-by-step walk through. I’m working on getting the beakn officially manufactured so there are <a href="/tags/beakn">more complex versions</a> available if you are comfortable with soldering. The version below is a great starting point.</p>
-<h2 id="1-get-a-spark-core-or-photon-from-https-store-spark-io-core-a6fcc2b47e235d529ab58fe0a1124588"><a class="header-anchor" href="#1-get-a-spark-core-or-photon-from-https-store-spark-io-core-a6fcc2b47e235d529ab58fe0a1124588"></a>1: Get a Spark Core or Photon from <a href="https://store.spark.io/" title="https://store.spark.io/" target="_blank" rel="external">https://store.spark.io/</a> [<img src="/images/blog/e97b659edc77_DE37/core-a6fcc2b47e235d529ab58fe0a1124588_thumb.png" alt="core-a6fcc2b47e235d529ab58fe0a1124588" title="core-a6fcc2b47e235d529ab58fe0a1124588"></h2>
+            <p>I’ve been building a battery-powered wifi-enabled Lync Status light for the last couple of months. Lots of people have been building the beakn and I did a <a href="https://twitter.com/jongallant/status/565649351813652480" target="_blank" rel="noopener">hackathon class</a> last week, so I thought it would be ideal to have a very simple step-by-step walk through. I’m working on getting the beakn officially manufactured so there are <a href="/tags/beakn">more complex versions</a> available if you are comfortable with soldering. The version below is a great starting point.</p>
+<h2 id="1-get-a-spark-core-or-photon-from-https-store-spark-io-core-a6fcc2b47e235d529ab58fe0a1124588"><a class="header-anchor" href="#1-get-a-spark-core-or-photon-from-https-store-spark-io-core-a6fcc2b47e235d529ab58fe0a1124588"></a>1: Get a Spark Core or Photon from <a href="https://store.spark.io/" title="https://store.spark.io/" target="_blank" rel="noopener">https://store.spark.io/</a> [<img src="/images/blog/e97b659edc77_DE37/core-a6fcc2b47e235d529ab58fe0a1124588_thumb.png" alt="core-a6fcc2b47e235d529ab58fe0a1124588" title="core-a6fcc2b47e235d529ab58fe0a1124588"></h2>
 <h2 id="2-plug-spark-core-into-your-computer-via-usb"><a class="header-anchor" href="#2-plug-spark-core-into-your-computer-via-usb"></a>2: Plug Spark Core into your computer via USB</h2>
 <p><a href="/images/blog/e97b659edc77_DE37/IMG_0381.jpg"><img src="/images/blog/e97b659edc77_DE37/IMG_0381_thumb.jpg" alt="IMG_0381" title="IMG_0381"></a></p>
-<h2 id="3-install-spark-core-iphone-or-android-app"><a class="header-anchor" href="#3-install-spark-core-iphone-or-android-app"></a>3: Install Spark Core <a href="https://itunes.apple.com/us/app/spark-core/id760157884" target="_blank" rel="external">iPhone</a> or <a href="https://play.google.com/store/apps/details?id=io.spark.core.android" target="_blank" rel="external">Android</a> app.</h2>
-<p>If you don’t have an iPhone or Android you will need to follow the “<a href="http://docs.spark.io/connect/" target="_blank" rel="external">Connect over USB</a>” section of the Spark Getting started guide</p>
+<h2 id="3-install-spark-core-iphone-or-android-app"><a class="header-anchor" href="#3-install-spark-core-iphone-or-android-app"></a>3: Install Spark Core <a href="https://itunes.apple.com/us/app/spark-core/id760157884" target="_blank" rel="noopener">iPhone</a> or <a href="https://play.google.com/store/apps/details?id=io.spark.core.android" target="_blank" rel="noopener">Android</a> app.</h2>
+<p>If you don’t have an iPhone or Android you will need to follow the “<a href="http://docs.spark.io/connect/" target="_blank" rel="noopener">Connect over USB</a>” section of the Spark Getting started guide</p>
 <p>[<img src="/images/blog/e97b659edc77_DE37/IMG_0382_thumb.png" alt="IMG_0382" title="IMG_0382"></p>
 <h2 id="4-connect-phone-to-wifi-network"><a class="header-anchor" href="#4-connect-phone-to-wifi-network"></a>4: Connect phone to Wifi network</h2>
 <p>Must be WPA2 (SSID and Passcode) – WPA2-Enterprise won’t work.</p>
@@ -216,43 +218,43 @@
 <h4 id="b-give-your-core-a-name-and-hit-ok"><a class="header-anchor" href="#b-give-your-core-a-name-and-hit-ok"></a>b) Give your Core a name and hit ok.</h4>
 <h2 id="img-0390"><a class="header-anchor" href="#img-0390"></a>[<img src="/images/blog/e97b659edc77_DE37/IMG_0390_thumb.png" alt="IMG_0390" title="IMG_0390"></h2>
 <h2 id="7-flash-beakn-code-to-spark"><a class="header-anchor" href="#7-flash-beakn-code-to-spark"></a>7: Flash beakn code to Spark</h2>
-<h4 id="a-go-to-spark-build-https-www-spark-io-build"><a class="header-anchor" href="#a-go-to-spark-build-https-www-spark-io-build"></a>a) Go to Spark Build (<a href="https://www.spark.io/build" title="https://www.spark.io/build" target="_blank" rel="external">https://www.spark.io/build</a>)</h4>
+<h4 id="a-go-to-spark-build-https-www-spark-io-build"><a class="header-anchor" href="#a-go-to-spark-build-https-www-spark-io-build"></a>a) Go to Spark Build (<a href="https://www.spark.io/build" title="https://www.spark.io/build" target="_blank" rel="noopener">https://www.spark.io/build</a>)</h4>
 <h4 id="b-click-on-libraries-in-lower-left-rail"><a class="header-anchor" href="#b-click-on-libraries-in-lower-left-rail"></a>b) Click on Libraries in lower left rail</h4>
-<p><img src="/images/blog/e97b659edc77_DE37/image.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image.png" alt></p>
 <h4 id="c-search-for-and-click-on-beakn"><a class="header-anchor" href="#c-search-for-and-click-on-beakn"></a>c) Search for and click on “beakn”</h4>
-<p><img src="/images/blog/e97b659edc77_DE37/image_3.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_3.png" alt></p>
 <p>You will see the beakn-sparkcore-onboard-led.ino file to the right</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_4.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_4.png" alt></p>
 <h4 id="d-click-on-use-this-example-button-in-the-left-rail"><a class="header-anchor" href="#d-click-on-use-this-example-button-in-the-left-rail"></a>d) Click on “USE THIS EXAMPLE” button in the left rail</h4>
-<p><img src="/images/blog/e97b659edc77_DE37/image_5.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_5.png" alt></p>
 <p>You will then see this page that shows the current app that loaded</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_6.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_6.png" alt></p>
 <h4 id="e-click-on-the-flash-lightning-bolt-icon-in-the-left-rail-to-send-the-code-to-the-spark-code"><a class="header-anchor" href="#e-click-on-the-flash-lightning-bolt-icon-in-the-left-rail-to-send-the-code-to-the-spark-code"></a>e) Click on the “Flash” lightning bolt icon in the left rail to send the code to the Spark Code</h4>
-<p><img src="/images/blog/e97b659edc77_DE37/image_7.png" alt=""></p>
-<p>You will see the Spark Core led flash while it is being flashed. If you don’t then use the Spark Core <a href="http://docs.spark.io/troubleshooting/" target="_blank" rel="external">debug help</a>.</p>
-<h2 id="8-install-beakn-windows-app-from-http-bit-ly-beakn-client"><a class="header-anchor" href="#8-install-beakn-windows-app-from-http-bit-ly-beakn-client"></a>8: Install beakn Windows App from <a href="http://bit.ly/beakn-client" target="_blank" rel="external">http://bit.ly/beakn-client</a></h2>
-<p>The beakn.exe app listens for Lync events and calls the beakn.setStatus function that you just deployed to the Core. Install the latest version of beakn-{version}.msi from <a href="http://bit.ly/beakn-client" target="_blank" rel="external">http://bit.ly/beakn-client</a> - which was beakn.v0.4.2 as of this post.</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_20.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_7.png" alt></p>
+<p>You will see the Spark Core led flash while it is being flashed. If you don’t then use the Spark Core <a href="http://docs.spark.io/troubleshooting/" target="_blank" rel="noopener">debug help</a>.</p>
+<h2 id="8-install-beakn-windows-app-from-http-bit-ly-beakn-client"><a class="header-anchor" href="#8-install-beakn-windows-app-from-http-bit-ly-beakn-client"></a>8: Install beakn Windows App from <a href="http://bit.ly/beakn-client" target="_blank" rel="noopener">http://bit.ly/beakn-client</a></h2>
+<p>The beakn.exe app listens for Lync events and calls the beakn.setStatus function that you just deployed to the Core. Install the latest version of beakn-{version}.msi from <a href="http://bit.ly/beakn-client" target="_blank" rel="noopener">http://bit.ly/beakn-client</a> - which was beakn.v0.4.2 as of this post.</p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_20.png" alt></p>
 <p>The last page of the install will look like this – you will want to keep that “Launch beakn” checkbox checked.</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_21.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_21.png" alt></p>
 <h2 id="9-set-your-spark-settings"><a class="header-anchor" href="#9-set-your-spark-settings"></a>9: Set your Spark settings</h2>
 <p>When beakn.exe launches it checks for your Spark Device Id and Access token and if either are not set you will see this:</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_22.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_22.png" alt></p>
 <p>Click OK and you will see the settings dialog:</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_23.png" alt=""></p>
-<p>Go to <a href="http://spark.io/build" target="_blank" rel="external">http://spark.io/build</a> to find both Device Id and Access token and copy and paste them into this settings dialog.</p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_23.png" alt></p>
+<p>Go to <a href="http://spark.io/build" target="_blank" rel="noopener">http://spark.io/build</a> to find both Device Id and Access token and copy and paste them into this settings dialog.</p>
 <p>To get the Device Id, click on the icon that looks like a target, second from bottom</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_12.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_12.png" alt></p>
 <p>To get the Access Token, click on the icon that looks like gears (standard settings icon)</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_16.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_16.png" alt></p>
 <p>Copy and paste both of those into the beakn settings dialog and then click Ok.</p>
 <p>You will now see the beakn dialog that is really just a log of the messages that are being sent to your beakn device.</p>
-<p><img src="/images/blog/e97b659edc77_DE37/image_24.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_24.png" alt></p>
 <h2 id="10-open-lync-and-toggle-your-status-to-try-it-out"><a class="header-anchor" href="#10-open-lync-and-toggle-your-status-to-try-it-out"></a>10: Open Lync and Toggle your status to try it out</h2>
-<p><img src="/images/blog/e97b659edc77_DE37/image_19.png" alt=""></p>
+<p><img src="/images/blog/e97b659edc77_DE37/image_19.png" alt></p>
 <p><a href="/images/blog/e97b659edc77_DE37/IMG_0391.jpg"><img src="/images/blog/e97b659edc77_DE37/IMG_0391_thumb.jpg" alt="IMG_0391" title="IMG_0391"></a></p>
 <p>(It’s hard to tell in the photo, but the onboard led changed to red)</p>
-<p>You should now be all setup with your beakn. Stay tuned for updates on <a href="http://twitter.com/jongallant" target="_blank" rel="external">twitter</a></p>
+<p>You should now be all setup with your beakn. Stay tuned for updates on <a href="http://twitter.com/jongallant" target="_blank" rel="noopener">twitter</a></p>
 <p>Jon</p>
 
         </div>

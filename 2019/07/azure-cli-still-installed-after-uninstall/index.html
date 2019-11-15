@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure" />
+    <meta name="keywords" content="azure">
     
-    <meta name="description" content="On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66.
-I uninstalled the Azure CLI via Apps, but it was still av">
+    <meta name="description" content="On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66. I uninstalled the Azure CLI via Apps, but it was still av">
+<meta name="keywords" content="azure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Azure CLI won't upgrade to latest version or it still works after uninstall">
+<meta property="og:title" content="Solution to Azure CLI won&#39;t upgrade to latest version or it still works after uninstall">
 <meta property="og:url" content="https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66.
-I uninstalled the Azure CLI via Apps, but it was still av">
+<meta property="og:description" content="On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66. I uninstalled the Azure CLI via Apps, but it was still av">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/000104.png">
-<meta property="og:updated_time" content="2019-07-23T00:13:03.122Z">
+<meta property="og:updated_time" content="2019-07-23T00:13:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to Azure CLI won't upgrade to latest version or it still works after uninstall">
-<meta name="twitter:description" content="On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66.
-I uninstalled the Azure CLI via Apps, but it was still av">
+<meta name="twitter:title" content="Solution to Azure CLI won&#39;t upgrade to latest version or it still works after uninstall">
+<meta name="twitter:description" content="On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66. I uninstalled the Azure CLI via Apps, but it was still av">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/000104.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ I uninstalled the Azure CLI via Apps, but it was still av">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -213,7 +212,7 @@ I uninstalled the Azure CLI via Apps, but it was still av">
 <p>Seems like the uninstaller missed those files.</p>
 <p>I deleted all three of them and <code>az</code> no longer worked.</p>
 <p>Not sure how I got into this state, but if you find yourself in the same situation, just deleted those files, re-install the CLI and you should be good.</p>
-<p>Tracking the issue here: <a href="https://github.com/Azure/azure-cli/issues/9958" target="_blank" rel="external">https://github.com/Azure/azure-cli/issues/9958</a></p>
+<p>Tracking the issue here: <a href="https://github.com/Azure/azure-cli/issues/9958" target="_blank" rel="noopener">https://github.com/Azure/azure-cli/issues/9958</a></p>
 <h3 id="update-7-22-2019"><a class="header-anchor" href="#update-7-22-2019"></a>Update: 7/22/2019</h3>
 <p>It appears that I installed the Azure CLI via pip at some point and forgot I did that.  I ran <code>pip uninstall azure-cli</code> and got the following, which cleaned up all the other files.  So, if you run into the same issue, just uninstall via pip.</p>
 <p><img src="000106.png" alt="The pip uninstsall files"></p>
@@ -298,6 +297,19 @@ I uninstalled the Azure CLI via Apps, but it was still av">
     
     <nav id="article-nav">
         
+            <a href="/2019/11/azure-sdks/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">
+                    newer
+                </strong>
+                <p class="article-nav-title">
+                    
+                        Introducting the New Azure SDKs
+                            
+                </p>
+                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+
+            </a>
+            
                 
                     <a href="/2019/05/hiring-devs/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">

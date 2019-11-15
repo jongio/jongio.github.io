@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,dev,powerbi,nodejs" />
+    <meta name="keywords" content="howto,dev,powerbi,nodejs">
     
-    <meta name="description" content="The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it.
-I’ve been digging into the new Power BI Custom Visual SDK and just cr">
+    <meta name="description" content="The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it. I’ve been digging into the new Power BI Custom Visual SDK and just cr">
+<meta name="keywords" content="howto,dev,powerbi,nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing">
 <meta property="og:url" content="https://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it.
-I’ve been digging into the new Power BI Custom Visual SDK and just cr">
+<meta property="og:description" content="The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it. I’ve been digging into the new Power BI Custom Visual SDK and just cr">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-07-24T17:29:13.395Z">
+<meta property="og:updated_time" content="2018-07-24T17:29:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing">
-<meta name="twitter:description" content="The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it.
-I’ve been digging into the new Power BI Custom Visual SDK and just cr">
+<meta name="twitter:description" content="The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it. I’ve been digging into the new Power BI Custom Visual SDK and just cr">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ I’ve been digging into the new Power BI Custom Visual SDK and just cr">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -202,33 +201,33 @@ I’ve been digging into the new Power BI Custom Visual SDK and just cr">
         
         <div class="article-entry" itemprop="articleBody">
             <p>The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it.</p>
-<p>I’ve been digging into the new <a href="https://github.com/microsoft/powerbi-visuals-tools" target="_blank" rel="external">Power BI Custom Visual SDK</a> and just created my first visual called <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">Liquid Fill Gauge</a>. It is based off of <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Curtis Bratton</a>’s <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="external">Liquid Fill Gauge</a>.  Here’s how I did it…</p>
+<p>I’ve been digging into the new <a href="https://github.com/microsoft/powerbi-visuals-tools" target="_blank" rel="noopener">Power BI Custom Visual SDK</a> and just created my first visual called <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge" target="_blank" rel="noopener">Liquid Fill Gauge</a>. It is based off of <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="noopener">Curtis Bratton</a>’s <a href="https://gist.github.com/brattonc/5e5ce9beee483220e2f6" target="_blank" rel="noopener">Liquid Fill Gauge</a>.  Here’s how I did it…</p>
 <h2 id="custom-visual-series"><a class="header-anchor" href="#custom-visual-series"></a>Custom Visual Series</h2>
 <p>This is Part 1 of the series, here are the other posts:</p>
 <p>2. <a href="/2016/09/powerbi-custom-visual-from-existing-d3-2.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings</a></p>
 <p>3. <a href="/2016/10/powerbi-custom-visual-from-existing-d3-3.html">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 3 - Custom Format Properties</a></p>
-<p>You can download the visual and use within your reports here: <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/" title="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/" target="_blank" rel="external">https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/</a><br>
-<img src="https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge/master/assets/thumbnail.png" alt=""></p>
+<p>You can download the visual and use within your reports here: <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/" title="https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/" target="_blank" rel="noopener">https://github.com/jongio/PowerBI-visuals-liquidFillGauge/releases/</a><br>
+<img src="https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge/master/assets/thumbnail.png" alt></p>
 <p>I walk through each step below – feel free to skim through it, use it as a reference or follow along step-by-step.</p>
 <h3 id="setup-power-bi-custom-visual-dev-environment"><a class="header-anchor" href="#setup-power-bi-custom-visual-dev-environment"></a>Setup Power BI Custom Visual Dev Environment</h3>
-<p>1. Follow the instructions here to get your dev env setup: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="external">Power BI Documentation: Use developer tools to create custom visuals</a></p>
+<p>1. Follow the instructions here to get your dev env setup: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="noopener">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <h2 id="clone-repo"><a class="header-anchor" href="#clone-repo"></a>Clone Repo</h2>
 <p>You can complete this exercise without cloning the repo, but if you want to get all the code and easily copy and paste, then you’ll want to clone.</p>
 <h3 id="part-1-code"><a class="header-anchor" href="#part-1-code"></a>Part 1 Code:</h3>
 <p>Here’s what your code will look like at the end of this blog post:<br>
-<a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1" target="_blank" rel="external">https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1</a></p>
+<a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1" target="_blank" rel="noopener">https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1</a></p>
 <p><code>git clone https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1.git</code></p>
 <h3 id="final-code"><a class="header-anchor" href="#final-code"></a>Final Code:</h3>
 <p>Here’s the final liquidFillGauge code:<br>
-<a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge" target="_blank" rel="external">https://github.com/jongio/PowerBI-visuals-liquidFillGauge</a></p>
+<a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge" target="_blank" rel="noopener">https://github.com/jongio/PowerBI-visuals-liquidFillGauge</a></p>
 <p><code>git clone https://github.com/jongio/PowerBI-visuals-liquidFillGauge.git</code></p>
 <h2 id="open-code"><a class="header-anchor" href="#open-code"></a>Open Code</h2>
-<p>I use <a href="http://code.visualstudio.com/" target="_blank" rel="external">VS Code</a>, but feel free to use any editor.</p>
+<p>I use <a href="http://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a>, but feel free to use any editor.</p>
 <h2 id="create-custom-visual"><a class="header-anchor" href="#create-custom-visual"></a>Create Custom Visual</h2>
 <p>This uses the new SDK to create a custom visual template.</p>
 <script src="https://gist.github.com/jongio/3208252605ba09dabf10e7e55a239a1e.js"></script>
 <p>This is what the dir structure looks like in VS Code.</p>
-<p><img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb3.png" alt="" title="image_thumb3"></p>
+<p><img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb3.png" alt title="image_thumb3"></p>
 <h2 id="reference-d3-typings"><a class="header-anchor" href="#reference-d3-typings"></a>Reference d3 Typings</h2>
 <p>You create Custom Visuals using TypeScript and d3, but d3 isn’t referenced by default in the new Custom Visual SDK. Here’s How to get it installed and referenced to make it visible to TypeScript.</p>
 <blockquote>
@@ -238,7 +237,7 @@ I’ve been digging into the new Power BI Custom Visual SDK and just cr">
 <h2 id="add-liquidfillgauge-js-file"><a class="header-anchor" href="#add-liquidfillgauge-js-file"></a>Add liquidFillGauge.js File</h2>
 <p>1. Create a file in the “src” folder called “liquidFillGauge.js”.<br>
 2. Copy the code from the following file into it. If you cloned the repo, you will have this file locally as well.<br>
-<a href="https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge-Part1/master/liquidFillGauge/src/liquidFillGauge.js" title="https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge-Part1/master/liquidFillGauge/src/liquidFillGauge.js" target="_blank" rel="external">https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge-Part1/master/liquidFillGauge/src/liquidFillGauge.js</a></p>
+<a href="https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge-Part1/master/liquidFillGauge/src/liquidFillGauge.js" title="https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge-Part1/master/liquidFillGauge/src/liquidFillGauge.js" target="_blank" rel="noopener">https://raw.githubusercontent.com/jongio/PowerBI-visuals-liquidFillGauge-Part1/master/liquidFillGauge/src/liquidFillGauge.js</a></p>
 <h3 id="notes"><a class="header-anchor" href="#notes"></a>Notes</h3>
 <blockquote>
 <p>The following is informational only,  you do not need to make these changes.</p>
@@ -248,7 +247,7 @@ I’ve been digging into the new Power BI Custom Visual SDK and just cr">
 <p>PowerBI puts all Custom Visuals in IFRAMEs, so the clip-path needs to reference the absolute url of the page like so:</p>
 <script src="https://gist.github.com/jongio/b33fea7fa07be8ad358b9301f464a6e7.js"></script>
 <h4 id="d3-instance"><a class="header-anchor" href="#d3-instance"></a>d3 Instance</h4>
-<p>Once I deployed my visual to <a href="http://PowerBI.com" target="_blank" rel="external">PowerBI.com</a> I ran into another IFRAME issue that required me to pass in the d3 selection instance, versus doing the d3.select inside the visual. Instead of passing in elementId, I pass in a reference to the svg element</p>
+<p>Once I deployed my visual to <a href="http://PowerBI.com" target="_blank" rel="noopener">PowerBI.com</a> I ran into another IFRAME issue that required me to pass in the d3 selection instance, versus doing the d3.select inside the visual. Instead of passing in elementId, I pass in a reference to the svg element</p>
 <script src="https://gist.github.com/jongio/5feda8ea55d44170fbbfb10e9ad6414b.js"></script>
 <h2 id="add-liquidfillgauge-js-to-pbiviz-json"><a class="header-anchor" href="#add-liquidfillgauge-js-to-pbiviz-json"></a>Add liquidFillGauge.js to pbiviz.json</h2>
 <p>This will tell pbiviz to include the .js file in your project.</p>
@@ -269,10 +268,10 @@ I’ve been digging into the new Power BI Custom Visual SDK and just cr">
 <p>I added another local variable to hold a reference to the gauge and then either call loadLiquidFillGauge for the first load or call this.gauge.update for subsequent calls.</p>
 </blockquote>
 <script src="https://gist.github.com/jongio/111e9248c03c97cd64b6c0082241d2c6.js"></script>
-<h2 id="test-on-powerbi-com"><a class="header-anchor" href="#test-on-powerbi-com"></a>Test on <a href="http://PowerBI.com" target="_blank" rel="external">PowerBI.com</a></h2>
+<h2 id="test-on-powerbi-com"><a class="header-anchor" href="#test-on-powerbi-com"></a>Test on <a href="http://PowerBI.com" target="_blank" rel="noopener">PowerBI.com</a></h2>
 <p>1. Start your local server</p>
 <script src="https://gist.github.com/jongio/ae1916aea0446adfad0ba2e884793575.js"></script>
-<p>2. Go to <a href="http://app.powerbi.com/" target="_blank" rel="external">http://app.powerbi.com</a><br>
+<p>2. Go to <a href="http://app.powerbi.com/" target="_blank" rel="noopener">http://app.powerbi.com</a><br>
 3. Create a report that uses your visual<br>
 4. Map a data value to the “Measure Data” field. I’m using the Month column in the Dates table in the Customer Profitability Sample dataset.<br>
 <img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb11.png" alt="image_thumb11" title="image_thumb11"></p>
@@ -281,7 +280,7 @@ I’ve been digging into the new Power BI Custom Visual SDK and just cr">
 </blockquote>
 <p>5. You should then see your custom visual rendered.</p>
 <p><img src="/images/blog/powerbi-custom-visual-from-d3_A9E3/image_thumb13.png" alt="image_thumb13" title="image_thumb13"></p>
-<p>If you do not see it, then compare your code to the code in this <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1" target="_blank" rel="external">GitHub repo</a> and fix anything that is different.</p>
+<p>If you do not see it, then compare your code to the code in this <a href="https://github.com/jongio/PowerBI-visuals-liquidFillGauge-Part1" target="_blank" rel="noopener">GitHub repo</a> and fix anything that is different.</p>
 <p>–<br>
 Hope this gets you on your way to creating your own visuals.<br>
 Jon</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="asp.net" />
+    <meta name="keywords" content="asp.net">
     
     <meta name="description" content="Binding simple (int/string, etc) type properties to a TemplateColumn in a GridView is easy, but when you need to bind the Grid to an object that has properties that aren’t simple types it gets a bit m">
+<meta name="keywords" content="asp.net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Binding Complex Properties to GridView">
 <meta property="og:url" content="https://blog.jongallant.com/2007/08/binding-complex-properties-to-gridview/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Binding simple (int/string, etc) type properties to a TemplateColumn in a GridView is easy, but when you need to bind the Grid to an object that has properties that aren’t simple types it gets a bit m">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T22:08:43.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -199,11 +201,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Binding simple (int/string, etc) type properties to a TemplateColumn in a GridView is easy, but when you need to bind the Grid to an object that has properties that aren’t simple types it gets a bit more complex. The Bind method only works with simple types, so you need to use the Eval method and the dot operator to get the values from the complex type property.</p>
-<span class="tag">&lt;<span class="name">asp:TemplateField</span> <span class="attr">HeaderText</span>=<span class="string">"From Tag"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">ItemTemplate</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">asp:Label</span> <span class="attr">ID</span>=<span class="string">"FromTagTitle"</span> <span class="attr">runat</span>=<span class="string">"server"</span> <span class="attr">Text</span>=<span class="string">'&lt;%# Eval("FromTag.Title") %&gt;'</span>&gt;</span><span class="tag">&lt;/<span class="name">asp:Label</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">ItemTemplate</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">asp:TemplateField</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">asp:TemplateField</span> <span class="attr">HeaderText</span>=<span class="string">"From Tag"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ItemTemplate</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">asp:Label</span> <span class="attr">ID</span>=<span class="string">"FromTagTitle"</span> <span class="attr">runat</span>=<span class="string">"server"</span> <span class="attr">Text</span>=<span class="string">'&lt;%# Eval("FromTag.Title") %&gt;'</span>&gt;</span><span class="tag">&lt;/<span class="name">asp:Label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ItemTemplate</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">asp:TemplateField</span>&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

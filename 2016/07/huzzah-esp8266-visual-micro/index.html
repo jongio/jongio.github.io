@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,iot" />
+    <meta name="keywords" content="iot,howto">
     
     <meta name="description" content="I’ve been using the Adafruit Feather HUZZAH ESP8266 board and Visual Micro quite a bit lately. The Huzzah is a board that includes the ESP8266 WiFi module and a LiPo battery jack – making it really ea">
+<meta name="keywords" content="iot,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use Visual Micro (Arduino VS Extension) as your Adafruit HUZZAH ESP8266 IDE">
 <meta property="og:url" content="https://blog.jongallant.com/2016/07/huzzah-esp8266-visual-micro/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’ve been using the Adafruit Feather HUZZAH ESP8266 board and Visual Micro quite a bit lately. The Huzzah is a board that includes the ESP8266 WiFi module and a LiPo battery jack – making it really ea">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:39.286Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to use Visual Micro (Arduino VS Extension) as your Adafruit HUZZAH ESP8266 IDE">
 <meta name="twitter:description" content="I’ve been using the Adafruit Feather HUZZAH ESP8266 board and Visual Micro quite a bit lately. The Huzzah is a board that includes the ESP8266 WiFi module and a LiPo battery jack – making it really ea">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,38 +200,38 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’ve been using the <a href="https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/overview" target="_blank" rel="external">Adafruit Feather HUZZAH ESP8266 board</a> and <a href="https://visualstudiogallery.msdn.microsoft.com/069a905d-387d-4415-bc37-665a5ac9caba" target="_blank" rel="external">Visual Micro</a> quite a bit lately. The Huzzah is a board that includes the <a href="https://en.wikipedia.org/wiki/ESP8266" target="_blank" rel="external">ESP8266</a> WiFi module and a LiPo battery jack – making it really easy to build stand-alone IoT devices. Visual Micro is a VS extension that allows you to code Arduino projects like any other VS project, including debugging.</p>
+            <p>I’ve been using the <a href="https://learn.adafruit.com/adafruit-feather-huzzah-esp8266/overview" target="_blank" rel="noopener">Adafruit Feather HUZZAH ESP8266 board</a> and <a href="https://visualstudiogallery.msdn.microsoft.com/069a905d-387d-4415-bc37-665a5ac9caba" target="_blank" rel="noopener">Visual Micro</a> quite a bit lately. The Huzzah is a board that includes the <a href="https://en.wikipedia.org/wiki/ESP8266" target="_blank" rel="noopener">ESP8266</a> WiFi module and a LiPo battery jack – making it really easy to build stand-alone IoT devices. Visual Micro is a VS extension that allows you to code Arduino projects like any other VS project, including debugging.</p>
 <p>Here’s the HUZZAH:</p>
-<p><img src="/images/blog/395d47876fbe_889B/image.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image.png" alt></p>
 <p>Here’s how I configure Visual Micro to code against it:</p>
-<p>1. <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx" target="_blank" rel="external">Install VS 2015</a> – I have enterprise, but community should work.</p>
-<p>2. <a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="external">Install Arduino IDE</a></p>
-<p>3. <a href="https://visualstudiogallery.msdn.microsoft.com/069a905d-387d-4415-bc37-665a5ac9caba" target="_blank" rel="external">Install Visual Micro</a></p>
+<p>1. <a href="https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx" target="_blank" rel="noopener">Install VS 2015</a> – I have enterprise, but community should work.</p>
+<p>2. <a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">Install Arduino IDE</a></p>
+<p>3. <a href="https://visualstudiogallery.msdn.microsoft.com/069a905d-387d-4415-bc37-665a5ac9caba" target="_blank" rel="noopener">Install Visual Micro</a></p>
 <p>4. Open VS</p>
 <p>5. Configure Visual Micro</p>
 <p>You should see the “Configure Ide Locations” dialog popup when you open VS. If you don’t, you can open it by clicking on Configure from the Visual Micro Explorer:</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_3.png" alt=""></p>
-<p><img src="/images/blog/395d47876fbe_889B/image_5.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_3.png" alt></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_5.png" alt></p>
 <p>a) Select Arduino 1.6.</p>
 <p>b) Enter the path to Arduino.exe, typically c:\program files (x86)\arduino</p>
-<p>c) Enter “<a href="http://arduino.esp8266.com/stable/package_esp8266com_index.json" target="_blank" rel="external">http://arduino.esp8266.com/stable/package_esp8266com_index.json</a>” into the board manager text box.</p>
+<p>c) Enter “<a href="http://arduino.esp8266.com/stable/package_esp8266com_index.json" target="_blank" rel="noopener">http://arduino.esp8266.com/stable/package_esp8266com_index.json</a>” into the board manager text box.</p>
 <p>6. Click Visual Micro Explorer –&gt; Rescan</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_6.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_6.png" alt></p>
 <p>You should now see esp8266 in the “Board Package Installer –&gt; All” tree.</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_7.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_7.png" alt></p>
 <p>7. Click on esp8266 –&gt; 2.3.0 and click OK.</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_8.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_8.png" alt></p>
 <p>8. Click on “Adafruit” under “Board Package Auto-Discovery”</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_9.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_9.png" alt></p>
 <p>The “Adafruit HUZZAH ESP8266” options should now be available in the Visual Micro board dropdown menu.</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_10.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_10.png" alt></p>
 <p>9. Plug your board into a USB port.</p>
 <p>10. Select the board and the appropriate COM port. Mine is on COM3.</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_11.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_11.png" alt></p>
 <p>11. Create a new Visual Micro Project called Huzzah blink.</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_12.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_12.png" alt></p>
 <p>12. Copy and paste this code into the HuzzahBlink.ino file<script src="https://gist.github.com/jongio/0ba2aeedb93516074f385383ebc1b57b.js"></script></p><p>13. Click the “Build and Upload” button</p>
-<p><img src="/images/blog/395d47876fbe_889B/image_13.png" alt=""></p>
+<p><img src="/images/blog/395d47876fbe_889B/image_13.png" alt></p>
 <p>You should now see the onboard LED blinking.</p>
 <p>Jon</p>
 <p><a href="/images/blog/395d47876fbe_889B/image_5.png"><br>

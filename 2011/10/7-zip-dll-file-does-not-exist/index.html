@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#" />
+    <meta name="keywords" content="c#">
     
-    <meta name="description" content="Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”
-
-Step 1: SetLibraryPath
-Add a call to SetLibraryPath before you init SevenZipEx">
+    <meta name="description" content="Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”  Step 1: SetLibraryPath Add a call to SetLibraryPath before you init SevenZipEx">
+<meta name="keywords" content="c#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to the exception: Can not load 7-zip library or internal COM error! Message: DLL file does not exist.">
 <meta property="og:url" content="https://blog.jongallant.com/2011/10/7-zip-dll-file-does-not-exist/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”
-
-Step 1: SetLibraryPath
-Add a call to SetLibraryPath before you init SevenZipEx">
+<meta property="og:description" content="Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”  Step 1: SetLibraryPath Add a call to SetLibraryPath before you init SevenZipEx">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:36:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to the exception: Can not load 7-zip library or internal COM error! Message: DLL file does not exist.">
-<meta name="twitter:description" content="Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”
-
-Step 1: SetLibraryPath
-Add a call to SetLibraryPath before you init SevenZipEx">
+<meta name="twitter:description" content="Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”  Step 1: SetLibraryPath Add a call to SetLibraryPath before you init SevenZipEx">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@ Add a call to SetLibraryPath before you init SevenZipEx">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -208,14 +201,13 @@ Add a call to SetLibraryPath before you init SevenZipEx">
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here’s how to solve the exception: “Can not load 7-zip library or internal COM error! Message: DLL file does not exist.”</p>
-<p><img src="/images/blog/1513.image_5F00_thumb_5F00_18F8D605.png" alt=""></p>
+<p><img src="/images/blog/1513.image_5F00_thumb_5F00_18F8D605.png" alt></p>
 <h1>Step 1: SetLibraryPath</h1>
 <p>Add a call to SetLibraryPath before you init SevenZipExtractor.</p>
-SevenZipExtractor.SetLibraryPath(<span class="string">@"C:\Program Files\7-Zip\7z.dll"</span>);
-SevenZipExtractor zip = <span class="keyword">new</span> SevenZipExtractor(file);zip.ExtractArchive(xsnFolder.FullName);
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">SevenZipExtractor.SetLibraryPath(<span class="string">@"C:\Program Files\7-Zip\7z.dll"</span>);</span><br><span class="line">SevenZipExtractor zip = <span class="keyword">new</span> SevenZipExtractor(file);zip.ExtractArchive(xsnFolder.FullName);</span><br></pre></td></tr></table></figure>
 <h1>Step 2: Set Platform Target</h1>
 <p>Also make sure that your project Platform target is set to Any CPU.</p>
-<p><img src="/images/blog/Solution-to-the-exception-Can-not-load-_9075/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-the-exception-Can-not-load-_9075/image.png" alt></p>
 <p>Jon</p>
 
         </div>

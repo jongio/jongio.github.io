@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="If you create a project in Blend 2 May Preview and right click on the project and select “Edit in Visual Studio”. Blend 2 creates that VS project using version 2.0 of the .NET Framework. Some symptoms">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Workaround for Blend 2 "Edit in Visual Studio" wrong Framework version issue">
+<meta property="og:title" content="Workaround for Blend 2 &quot;Edit in Visual Studio&quot; wrong Framework version issue">
 <meta property="og:url" content="https://blog.jongallant.com/2007/05/blend-2-wrong-framework-version-25/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="If you create a project in Blend 2 May Preview and right click on the project and select “Edit in Visual Studio”. Blend 2 creates that VS project using version 2.0 of the .NET Framework. Some symptoms">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T22:08:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Workaround for Blend 2 "Edit in Visual Studio" wrong Framework version issue">
+<meta name="twitter:title" content="Workaround for Blend 2 &quot;Edit in Visual Studio&quot; wrong Framework version issue">
 <meta name="twitter:description" content="If you create a project in Blend 2 May Preview and right click on the project and select “Edit in Visual Studio”. Blend 2 creates that VS project using version 2.0 of the .NET Framework. Some symptoms">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -202,25 +203,7 @@ Apply the following (one-time only) workaround to enable projects created in Vis
 2.        Navigate to the Expression Blend installation directory typically installed at Program Files\Microsoft Expression\Blend 1.1.<br>
 3.        Create a new XML file in that folder and rename the file to Blend.exe.config.<br>
 Copy and paste the following XML into that file:</p>
-<span class="meta">&lt;?xml version ="1.0"?&gt;</span>
-<span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">startup</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">supportedRuntime</span> <span class="attr">version</span>=<span class="string">"v2.0.50727"</span> <span class="attr">safemode</span>=<span class="string">"true"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">requiredRuntime</span> <span class="attr">version</span>=<span class="string">"v2.0.50727"</span> <span class="attr">safemode</span>=<span class="string">"true"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">startup</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">runtime</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">assemblyBinding</span> <span class="attr">xmlns</span>=<span class="string">"urn:schemas-microsoft-com:asm.v1"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">dependentAssembly</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">assemblyIdentity</span> <span class="attr">name</span>=<span class="string">"Microsoft.Build.Framework"</span> <span class="attr">publicKeyToken</span>=<span class="string">"b03f5f7f11d50a3a"</span> <span class="attr">culture</span>=<span class="string">"neutral"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">bindingRedirect</span> <span class="attr">oldVersion</span>=<span class="string">"0.0.0.0-99.9.9.9"</span> <span class="attr">newVersion</span>=<span class="string">"3.5.0.0"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">dependentAssembly</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">dependentAssembly</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">assemblyIdentity</span> <span class="attr">name</span>=<span class="string">"Microsoft.Build.Engine"</span> <span class="attr">publicKeyToken</span>=<span class="string">"b03f5f7f11d50a3a"</span> <span class="attr">culture</span>=<span class="string">"neutral"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">bindingRedirect</span> <span class="attr">oldVersion</span>=<span class="string">"0.0.0.0-99.9.9.9"</span> <span class="attr">newVersion</span>=<span class="string">"3.5.0.0"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">dependentAssembly</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">assemblyBinding</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">runtime</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version ="1.0"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">supportedRuntime</span> <span class="attr">version</span>=<span class="string">"v2.0.50727"</span> <span class="attr">safemode</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">requiredRuntime</span> <span class="attr">version</span>=<span class="string">"v2.0.50727"</span> <span class="attr">safemode</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">startup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">runtime</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">assemblyBinding</span> <span class="attr">xmlns</span>=<span class="string">"urn:schemas-microsoft-com:asm.v1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">assemblyIdentity</span> <span class="attr">name</span>=<span class="string">"Microsoft.Build.Framework"</span> <span class="attr">publicKeyToken</span>=<span class="string">"b03f5f7f11d50a3a"</span> <span class="attr">culture</span>=<span class="string">"neutral"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bindingRedirect</span> <span class="attr">oldVersion</span>=<span class="string">"0.0.0.0-99.9.9.9"</span> <span class="attr">newVersion</span>=<span class="string">"3.5.0.0"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">assemblyIdentity</span> <span class="attr">name</span>=<span class="string">"Microsoft.Build.Engine"</span> <span class="attr">publicKeyToken</span>=<span class="string">"b03f5f7f11d50a3a"</span> <span class="attr">culture</span>=<span class="string">"neutral"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bindingRedirect</span> <span class="attr">oldVersion</span>=<span class="string">"0.0.0.0-99.9.9.9"</span> <span class="attr">newVersion</span>=<span class="string">"3.5.0.0"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">assemblyBinding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">runtime</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>4.        Save the changes to the file and close it.<br>
 5.        Start Expression Blend. Now you should be able to successfully build your projects and solutions.<br>
 Note If you uninstall Visual Studio Code Name “Orcas” and the .NET Framework 3.5, you should also delete the Blend.exe.config file.</p>

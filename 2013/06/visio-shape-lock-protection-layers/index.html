@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,dev" />
+    <meta name="keywords" content="howto,dev">
     
     <meta name="description" content="I almost gave up, but I finally found where Microsoft hid the ability to lock shapes in Visio 2013. You actually don’t want lock shapes, you want to create layers and lock the layers. But if you reall">
+<meta name="keywords" content="howto,dev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Lock Shapes in Visio 2013. You can lock shapes, but don't. Use layers instead.">
+<meta property="og:title" content="How to Lock Shapes in Visio 2013. You can lock shapes, but don&#39;t. Use layers instead.">
 <meta property="og:url" content="https://blog.jongallant.com/2013/06/visio-shape-lock-protection-layers/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I almost gave up, but I finally found where Microsoft hid the ability to lock shapes in Visio 2013. You actually don’t want lock shapes, you want to create layers and lock the layers. But if you reall">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Lock Shapes in Visio 2013. You can lock shapes, but don't. Use layers instead.">
+<meta name="twitter:title" content="How to Lock Shapes in Visio 2013. You can lock shapes, but don&#39;t. Use layers instead.">
 <meta name="twitter:description" content="I almost gave up, but I finally found where Microsoft hid the ability to lock shapes in Visio 2013. You actually don’t want lock shapes, you want to create layers and lock the layers. But if you reall">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -199,23 +201,23 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I almost gave up, but I finally found where Microsoft hid the ability to lock shapes in Visio 2013. You actually don’t want lock shapes, you want to create layers and lock the layers. But if you really want to lock the shape then enable the Developer tab, Click Protection and check all the boxes.</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image.png" alt></p>
 <p>That turned out to be the wrong approach for me because selecting the shapes nested within locked shapes is still a pain.</p>
 <p>I ended up going with Layers. You create a layer, assign shapes to the layer and then lock the layer. Layer management in Visio is really broken from a UX perspective (as you will see below), but it’s the lesser of two evils.</p>
 <p>Let’s say you have the following shape and you want to lock the ‘background shape’ so you can move the ‘foreground shape’</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_4.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_4.png" alt></p>
 <p>Select the ‘background shape’, click the Home tab, select Layers, select Assign to Layer and call it Background</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_5.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_5.png" alt></p>
 <p>To lock the layer: Home tab, Layers, select Layer Properties and check the Lock checkbox. Click ok.</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_7.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_7.png" alt></p>
 <p><strong>How do you remove a shape from the layer?</strong>  Once you lock the layer then all of the shape selectors aren’t available, so there’s no way to select the shape to remove it from the layer. What you need to do is first unlock the layer, select the shape, then click Assign to Layer and uncheck Background.</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_9.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_9.png" alt></p>
 <p>**How do you add another shape to the same layer? **Let’s say I want to add ‘Background shape 2’ to the background layer.</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_11.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_11.png" alt></p>
 <p>You would think that you could select it, click Assign to Layer, check the Background checkbox and be done. Nope. You get this when you click Assign to Layer.</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_12.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_12.png" alt></p>
 <p>Visio is broken. It doesn’t read in your current layers when you try to Assign. So what you need to do is type the name of the layer you want to add the shape to.</p>
-<p><img src="/images/blog/ff677c3f3300_4264/image_13.png" alt=""></p>
+<p><img src="/images/blog/ff677c3f3300_4264/image_13.png" alt></p>
 
         </div>
         <footer>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,outlook" />
+    <meta name="keywords" content="outlook,howto">
     
     <meta name="description" content="A big part of my Zero Inbox routine is to Cc myself when I want to be reminded to follow up on the mail. This is useful when you want to make sure you don’t send an email with a request from someone a">
+<meta name="keywords" content="outlook,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Create a Custom Outlook Ribbon Button to Cc Yourself Before Sending an Email">
 <meta property="og:url" content="https://blog.jongallant.com/2017/01/outlook-custom-ribbon-button-macro-send-and-cc/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="A big part of my Zero Inbox routine is to Cc myself when I want to be reminded to follow up on the mail. This is useful when you want to make sure you don’t send an email with a request from someone a">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/outlook-custom-ribbon-button-macro-send-and-cc/000012.png">
 <meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,42 +205,32 @@
 <p>Here’s how I did it. It’s pretty straight-forward, but took me longer than it should of. Hope this helps you out.</p>
 <h2 id="enable-developer-tab"><a class="header-anchor" href="#enable-developer-tab"></a>Enable Developer Tab</h2>
 <p>1. Open Outlook -&gt; File -&gt; Options -&gt; Customize Ribbon -&gt; Check the Developer Tab<br>
-<img src="000010.png" alt=""></p>
+<img src="000010.png" alt></p>
 <h2 id="create-macro"><a class="header-anchor" href="#create-macro"></a>Create Macro</h2>
 <p>1. Click on Developer Tab -&gt; Click on Visual Basic Button<br>
-<img src="000011.png" alt=""></p>
+<img src="000011.png" alt></p>
 <p>2. Double Click “Project1-&gt;Microsoft Outlook Objects-&gt;ThisOutlookSession”. Copy and Paste the following code into the code window.</p>
 <blockquote>
-<p>Replace <enter your="" email="" here=""> with the email that you want to Cc.</enter></p>
+<p>Replace <enter your email here> with the email that you want to Cc.</enter></p>
 </blockquote>
-
-Public Sub CcAndSend()
-
-Dim mail As Outlook.MailItem
-Set mail = Application.ActiveInspector.CurrentItem
-
-mail.cc = mail.cc &amp; &quot;;&lt;enter your email here&gt;&quot;
-
-mail.Send
-
-End Sub
-<p><img src="000012.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Public Sub CcAndSend()</span><br><span class="line"></span><br><span class="line">Dim mail As Outlook.MailItem</span><br><span class="line">Set mail = Application.ActiveInspector.CurrentItem</span><br><span class="line"></span><br><span class="line">mail.cc = mail.cc &amp; &quot;;&lt;enter your email here&gt;&quot;</span><br><span class="line"></span><br><span class="line">mail.Send</span><br><span class="line"></span><br><span class="line">End Sub</span><br></pre></td></tr></table></figure>
+<p><img src="000012.png" alt></p>
 <h2 id="add-button-to-ribbon"><a class="header-anchor" href="#add-button-to-ribbon"></a>Add Button to Ribbon</h2>
 <p>1. Open a New Email Message -&gt; Right Click on Ribbon -&gt; Select Customize Ribbon</p>
-<p><img src="000013.png" alt=""></p>
+<p><img src="000013.png" alt></p>
 <p>2. On the right, Click ‘New Mail Message’<br>
-<img src="000014.png" alt=""></p>
+<img src="000014.png" alt></p>
 <p>3. Click ‘New Group’<br>
-<img src="000015.png" alt=""></p>
+<img src="000015.png" alt></p>
 <p>4. Right click on the New Group you just created and select Rename. Give it a name like ‘Custom’<br>
-<img src="000018.png" alt=""></p>
+<img src="000018.png" alt></p>
 <p>5. On the left, Select Macros, click on your macro and then click the Add &gt;&gt; Button<br>
-<img src="000019.png" alt=""></p>
+<img src="000019.png" alt></p>
 <p>6. Back on the right, Right Click on your macro, select rename, give it a name and select an icon. Click OK.<br>
-<img src="000020.png" alt=""></p>
+<img src="000020.png" alt></p>
 <h2 id="test-it"><a class="header-anchor" href="#test-it"></a>Test it</h2>
 <p>1. You should now see the button on your ribbon. Click it and make sure it Ccs and Sends.<br>
-<img src="000022.png" alt=""></p>
+<img src="000022.png" alt></p>
 <p>Jon</p>
 
         </div>

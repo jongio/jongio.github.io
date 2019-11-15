@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto" />
+    <meta name="keywords" content="howto">
     
     <meta name="description" content="I’m hacking on project that requires an accelerometer. I picked up this 9-Axis Inertial Navigation Module for Arduino from my local Vetco. That board is actually a GY801 (the newer version of the GY80">
+<meta name="keywords" content="howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Read All Accelerometer, Gyroscope, Barometer and Compass Data from the GY801, GY80 aka 9-Axis Inertial Navigation Module for Arduino aka IMU 10DOF L3G4200D+ADXL345+HMC5883L+BMP180">
 <meta property="og:url" content="https://blog.jongallant.com/2016/06/gy801-data/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m hacking on project that requires an accelerometer. I picked up this 9-Axis Inertial Navigation Module for Arduino from my local Vetco. That board is actually a GY801 (the newer version of the GY80">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T11:56:59.003Z">
+<meta property="og:updated_time" content="2018-12-10T11:56:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Read All Accelerometer, Gyroscope, Barometer and Compass Data from the GY801, GY80 aka 9-Axis Inertial Navigation Module for Arduino aka IMU 10DOF L3G4200D+ADXL345+HMC5883L+BMP180">
 <meta name="twitter:description" content="I’m hacking on project that requires an accelerometer. I picked up this 9-Axis Inertial Navigation Module for Arduino from my local Vetco. That board is actually a GY801 (the newer version of the GY80">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,8 +200,8 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m hacking on project that requires an accelerometer. I picked up this <a href="http://www.vetco.net/catalog/product_info.php?products_id=13835" target="_blank" rel="external">9-Axis Inertial Navigation Module for Arduino</a> from my local Vetco. That board is actually a <a href="http://www.hotmcu.com/imu-10dof-l3g4200dadxl345hmc5883lbmp180-p-190.html" target="_blank" rel="external">GY801</a> (the newer version of the GY80). It has a gyroscope L3G4200D, accelerometer (<a href="http://www.analog.com/en/products/mems/mems-accelerometers/adxl345.html" target="_blank" rel="external">ADXL345</a>), compass (<a href="https://cdn-shop.adafruit.com/datasheets/HMC5883L_3-Axis_Digital_Compass_IC.pdf" target="_blank" rel="external">HMC5883L</a>) and a barometer (<a href="https://www.bosch-sensortec.com/bst/products/all_products/bmp180" target="_blank" rel="external">BMP180</a>) (<a href="https://www.adafruit.com/product/391" target="_blank" rel="external">BMP085</a> on the GY80) all on one board.</p>
-<p><img src="/images/blog/86e948720d7c_81EC/image.png" alt=""></p>
+            <p>I’m hacking on project that requires an accelerometer. I picked up this <a href="http://www.vetco.net/catalog/product_info.php?products_id=13835" target="_blank" rel="noopener">9-Axis Inertial Navigation Module for Arduino</a> from my local Vetco. That board is actually a <a href="http://www.hotmcu.com/imu-10dof-l3g4200dadxl345hmc5883lbmp180-p-190.html" target="_blank" rel="noopener">GY801</a> (the newer version of the GY80). It has a gyroscope L3G4200D, accelerometer (<a href="http://www.analog.com/en/products/mems/mems-accelerometers/adxl345.html" target="_blank" rel="noopener">ADXL345</a>), compass (<a href="https://cdn-shop.adafruit.com/datasheets/HMC5883L_3-Axis_Digital_Compass_IC.pdf" target="_blank" rel="noopener">HMC5883L</a>) and a barometer (<a href="https://www.bosch-sensortec.com/bst/products/all_products/bmp180" target="_blank" rel="noopener">BMP180</a>) (<a href="https://www.adafruit.com/product/391" target="_blank" rel="noopener">BMP085</a> on the GY80) all on one board.</p>
+<p><img src="/images/blog/86e948720d7c_81EC/image.png" alt></p>
 <p>Hooking this up to an arduino is simple, just connect:</p>
 <ul>
 <li>3V to 3.3V</li>
@@ -207,9 +209,9 @@
 <li>SDA to SDA</li>
 <li>SCL to SCL</li>
 </ul>
-<p>I searched around a bit for some sample code to get all the data from each component and found <a href="https://github.com/jrowberg/i2cdevlib" target="_blank" rel="external">this i2cdevlib GitHub repo</a> that has sample sketches for every component included in the GY801. I combined all of the components included in the GY80 and GY801 boards into one sample sketch, which can be found here <a href="https://github.com/jrowberg/i2cdevlib/pull/244/files" title="https://github.com/jrowberg/i2cdevlib/pull/244/files" target="_blank" rel="external">https://github.com/jrowberg/i2cdevlib/pull/244/files</a>. (I’ll update links if my PR is merged)</p>
-<p>To get started quickly, just <a href="https://github.com/jongio/i2cdevlib" target="_blank" rel="external">clone my fork</a>, copy all the folders in the Arduino folder to your arduino/libraries folder and open up the GY80_raw.ino file and deploy. After you do that you should see output in your serial monitor like this:</p>
-<p><img src="/images/blog/86e948720d7c_81EC/image_3.png" alt=""></p>
+<p>I searched around a bit for some sample code to get all the data from each component and found <a href="https://github.com/jrowberg/i2cdevlib" target="_blank" rel="noopener">this i2cdevlib GitHub repo</a> that has sample sketches for every component included in the GY801. I combined all of the components included in the GY80 and GY801 boards into one sample sketch, which can be found here <a href="https://github.com/jrowberg/i2cdevlib/pull/244/files" title="https://github.com/jrowberg/i2cdevlib/pull/244/files" target="_blank" rel="noopener">https://github.com/jrowberg/i2cdevlib/pull/244/files</a>. (I’ll update links if my PR is merged)</p>
+<p>To get started quickly, just <a href="https://github.com/jongio/i2cdevlib" target="_blank" rel="noopener">clone my fork</a>, copy all the folders in the Arduino folder to your arduino/libraries folder and open up the GY80_raw.ino file and deploy. After you do that you should see output in your serial monitor like this:</p>
+<p><img src="/images/blog/86e948720d7c_81EC/image_3.png" alt></p>
 <p>Jon</p>
 
         </div>

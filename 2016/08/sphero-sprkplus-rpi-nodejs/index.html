@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="nodejs" />
+    <meta name="keywords" content="nodejs">
     
     <meta name="description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
+<meta name="keywords" content="nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js">
 <meta property="og:url" content="https://blog.jongallant.com/2016/08/sphero-sprkplus-rpi-nodejs/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-11T02:17:31.430Z">
+<meta property="og:updated_time" content="2018-12-11T02:17:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Control a Sphero SPRK+ with a Raspberry Pi 3 and Node.js">
 <meta name="twitter:description" content="I’m working on a demo that involves streaming Sphero data through the Azure IoT stack. I got my Sphero SPRK+ last week and quickly discovered that it only has Bluetooth Low Energy (BLE) enabled and no">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,58 +200,53 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m working on a demo that involves streaming <a href="http://www.sphero.com/" target="_blank" rel="external">Sphero</a> data through the <a href="https://azure.microsoft.com/en-us/suites/iot-suite/" target="_blank" rel="external">Azure IoT</a> stack. I got my <a href="http://www.sphero.com/sprk-plus" target="_blank" rel="external">Sphero SPRK+</a> last week and quickly discovered that it only has <a href="https://en.wikipedia.org/wiki/Bluetooth_low_energy" target="_blank" rel="external">Bluetooth Low Energy (BLE)</a> enabled and not regular Bluetooth. So, I couldn’t get it to connect to my Windows or OSX machines because they don’t have a BLE chipset. I suspect that Sphero will push Bluetooth support via a firmware update later this fall. Until then, you can do the following to code against your SPRK+ using a Raspberry Pi 3, which ships with BLE.</p>
+            <p>I’m working on a demo that involves streaming <a href="http://www.sphero.com/" target="_blank" rel="noopener">Sphero</a> data through the <a href="https://azure.microsoft.com/en-us/suites/iot-suite/" target="_blank" rel="noopener">Azure IoT</a> stack. I got my <a href="http://www.sphero.com/sprk-plus" target="_blank" rel="noopener">Sphero SPRK+</a> last week and quickly discovered that it only has <a href="https://en.wikipedia.org/wiki/Bluetooth_low_energy" target="_blank" rel="noopener">Bluetooth Low Energy (BLE)</a> enabled and not regular Bluetooth. So, I couldn’t get it to connect to my Windows or OSX machines because they don’t have a BLE chipset. I suspect that Sphero will push Bluetooth support via a firmware update later this fall. Until then, you can do the following to code against your SPRK+ using a Raspberry Pi 3, which ships with BLE.</p>
 <h2 id="raspberry-pi-3"><a class="header-anchor" href="#raspberry-pi-3"></a>Raspberry Pi 3</h2>
 <p>Get a Raspberry Pi 3 and plug it in. Monitor, keyboard, mouse, network cable.</p>
 <h2 id="sphero-sprk"><a class="header-anchor" href="#sphero-sprk"></a>Sphero SPRK+</h2>
 <p>Get a Sphero SPRK+ and plug it in.</p>
-<p><img src="/images/blog/d15999e44a95_CFB4/image.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image.png" alt></p>
 <h2 id="install-raspbian"><a class="header-anchor" href="#install-raspbian"></a>Install Raspbian</h2>
 <p>Flash Raspbian Jessie onto a MicroSD card and boot up your RPI3. Use <a href="/2016/08/azure-iot-gateway-raspberry-pi-3.html">this blog post</a> if you need help with this step.</p>
 <h2 id="install-tightvnc"><a class="header-anchor" href="#install-tightvnc"></a>Install TightVNC</h2>
 <p>This is helpful for accessing the RPI3 from your desktop. This step isn’t required if you want to control RPI3 using locally keyboard and mouse.</p>
-<p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" title="http://www.tightvnc.com/download.php" target="_blank" rel="external">http://www.tightvnc.com/download.php</a></p>
-<p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" title="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="external">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
+<p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" title="http://www.tightvnc.com/download.php" target="_blank" rel="noopener">http://www.tightvnc.com/download.php</a></p>
+<p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" title="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
 <p>Use the following to start VNC Server on your RPI3</p>
-vncserver :1
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vncserver :1</span><br></pre></td></tr></table></figure>
 <p>Use the following to get your RPI3 IP Address.</p>
-hostname -I
-<h2 id="none"><a class="header-anchor" href="#none"></a><img src="/images/blog/d15999e44a95_CFB4/image_3.png" alt=""></h2>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hostname -I</span><br></pre></td></tr></table></figure>
+<h2 id="none"><a class="header-anchor" href="#none"></a><img src="/images/blog/d15999e44a95_CFB4/image_3.png" alt></h2>
 <p>Then use that IP when connecting from your desktop</p>
-<p><img src="/images/blog/d15999e44a95_CFB4/image_4.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_4.png" alt></p>
 <h2 id="pair-the-sprk"><a class="header-anchor" href="#pair-the-sprk"></a>Pair the SPRK+</h2>
-<p><img src="/images/blog/d15999e44a95_CFB4/image_5.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_5.png" alt></p>
 <p>It will be named SK-XXXX.</p>
-<p><img src="/images/blog/d15999e44a95_CFB4/image_6.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_6.png" alt></p>
 <p>You will need to click OK on your RPI3 here:</p>
-<p><img src="/images/blog/d15999e44a95_CFB4/image_7.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_7.png" alt></p>
 <p>You might see this…ignore it.</p>
-<p><img src="/images/blog/d15999e44a95_CFB4/image_8.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_8.png" alt></p>
 <h2 id="get-sprk-ble-address"><a class="header-anchor" href="#get-sprk-ble-address"></a>Get SPRK+ BLE Address</h2>
 <p>Run this in Terminal</p>
-bluetoothctl
-<p><img src="/images/blog/d15999e44a95_CFB4/image_9.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bluetoothctl</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_9.png" alt></p>
 <p>Copy the SPRK+ BLE Address. You will need it later.</p>
 <h2 id="install-node-js-on-rpi3"><a class="header-anchor" href="#install-node-js-on-rpi3"></a>Install Node.js on RPI3</h2>
 <p>Follow instructions in <a href="/2016/08/install-nodejs-raspbian.html">this blog post</a> to get Node.js onto the RPI3</p>
 <h2 id="install-sphero-sdk"><a class="header-anchor" href="#install-sphero-sdk"></a>Install Sphero SDK</h2>
-sudo npm install sphero
-sudo npm install noble
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install sphero</span><br><span class="line">sudo npm install noble</span><br></pre></td></tr></table></figure>
 <p>You can ignore any errors you get with the noble install</p>
 <h2 id="create-node-js-file"><a class="header-anchor" href="#create-node-js-file"></a>Create Node.js File</h2>
-cd ~
-mkdir sphero
-cd sphero
-touch sphero.js
-leafpad sphero.js
-<p><img src="/images/blog/d15999e44a95_CFB4/image_10.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir sphero</span><br><span class="line">cd sphero</span><br><span class="line">touch sphero.js</span><br><span class="line">leafpad sphero.js</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_10.png" alt></p>
 <h2 id="copy-code-to-node-js-file"><a class="header-anchor" href="#copy-code-to-node-js-file"></a>Copy Code to Node.js File</h2>
 <script src="https://gist.github.com/jongio/0f354313489ccd7a138df3c902d00cdb.js"></script>
 <h2 id="change-the-ble-address-to-your-sprk-ble-address"><a class="header-anchor" href="#change-the-ble-address-to-your-sprk-ble-address"></a>Change the BLE Address to your SPRK+ BLE Address</h2>
 <p>Open the sphero.js file and change the BLE Address to your SPRK+ BLE Address</p>
-<p><img src="/images/blog/d15999e44a95_CFB4/image_11.png" alt=""></p>
+<p><img src="/images/blog/d15999e44a95_CFB4/image_11.png" alt></p>
 <h2 id="run-and-watch-with-delight"><a class="header-anchor" href="#run-and-watch-with-delight"></a>Run and Watch with Delight!</h2>
-sudo node sphero.js
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo node sphero.js</span><br></pre></td></tr></table></figure>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/jrO-nhmAC_I" frameborder="0" allowfullscreen></iframe>
         </div>
         <footer>

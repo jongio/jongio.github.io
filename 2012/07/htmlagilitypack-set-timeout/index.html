@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,dev" />
+    <meta name="keywords" content="c#,howto,dev">
     
     <meta name="description" content="HtmlAgilityPack is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property">
+<meta name="keywords" content="c#,howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to set HtmlAgilityPack Timeout">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/htmlagilitypack-set-timeout/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="HtmlAgilityPack is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T16:00:56.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,33 +200,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="http://htmlagilitypack.codeplex.com/" target="_blank" rel="external">HtmlAgilityPack</a> is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property. I see a lot of people recommending using HttpWebRequest or WebClient to get the request and then HtmlAgilityPack to query the DOM, but there’s an easier way.</p>
-<p>You can view the source for <a href="http://htmlagilitypack.codeplex.com/SourceControl/changeset/view/98677#1096541" target="_blank" rel="external">HtmlWeb here</a> and see that they expose a PreRequest delegate:</p>
-<span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">bool</span> <span class="title">PreRequestHandler</span>(<span class="params">HttpWebRequest request</span>)</span>;
+            <p><a href="http://htmlagilitypack.codeplex.com/" target="_blank" rel="noopener">HtmlAgilityPack</a> is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property. I see a lot of people recommending using HttpWebRequest or WebClient to get the request and then HtmlAgilityPack to query the DOM, but there’s an easier way.</p>
+<p>You can view the source for <a href="http://htmlagilitypack.codeplex.com/SourceControl/changeset/view/98677#1096541" target="_blank" rel="noopener">HtmlWeb here</a> and see that they expose a PreRequest delegate:</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">bool</span> <span class="title">PreRequestHandler</span>(<span class="params">HttpWebRequest request</span>)</span>;</span><br></pre></td></tr></table></figure>
 <p>And they call that delegate right before making the GetResponse call:</p>
-<span class="keyword">if</span> (PreRequest != <span class="literal">null</span>)
-&#123;
-    <span class="comment">// allow our user to change the request at will</span>
-    <span class="keyword">if</span> (!PreRequest(req))
-    &#123;
-        <span class="keyword">return</span> HttpStatusCode.ResetContent;
-    &#125;              
-&#125;
-
-HttpWebResponse resp;
-
-<span class="keyword">try</span>
-&#123;
-    resp = req.GetResponse() <span class="keyword">as</span> HttpWebResponse;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (PreRequest != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// allow our user to change the request at will</span></span><br><span class="line">    <span class="keyword">if</span> (!PreRequest(req))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> HttpStatusCode.ResetContent;</span><br><span class="line">    &#125;              </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">HttpWebResponse resp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    resp = req.GetResponse() <span class="keyword">as</span> HttpWebResponse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>So all you have to do is assign a delegate to PreRequest and set your timeout within that delegate:</p>
-<span class="keyword">var</span> web = <span class="keyword">new</span> HtmlWeb();
-web.PreRequest = <span class="keyword">delegate</span>(HttpWebRequest webRequest)
-&#123;
-     webRequest.Timeout = <span class="number">4</span>;
-     <span class="keyword">return</span> <span class="literal">true</span>;
-&#125;;
-<span class="keyword">var</span> doc = web.Load(<span class="string">"http://www.msn.com/"</span>);
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> web = <span class="keyword">new</span> HtmlWeb();</span><br><span class="line">web.PreRequest = <span class="keyword">delegate</span>(HttpWebRequest webRequest)</span><br><span class="line">&#123;</span><br><span class="line">     webRequest.Timeout = <span class="number">4</span>;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> doc = web.Load(<span class="string">"http://www.msn.com/"</span>);</span><br></pre></td></tr></table></figure>
 <p>Yep, it’s that easy.</p>
 <p>Jon</p>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,visual studio" />
+    <meta name="keywords" content="c#,howto,visual studio">
     
     <meta name="description" content="Sometimes you want to update a read only system field in TFS, such as System.CreatedDate or System.ResolvedDate. There is no way to do that with TFS 2010 by using the UI or the object model because bo">
+<meta name="keywords" content="c#,howto,visual studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to modify read only TFS fields with WorkItemServer.Update">
 <meta property="og:url" content="https://blog.jongallant.com/2012/06/tfs-how-to-update-read-only-fields/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Sometimes you want to update a read only system field in TFS, such as System.CreatedDate or System.ResolvedDate. There is no way to do that with TFS 2010 by using the UI or the object model because bo">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -200,88 +202,22 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Sometimes you want to update a read only system field in TFS, such as System.CreatedDate or System.ResolvedDate. There is no way to do that with TFS 2010 by using the UI or the object model because both of those methods execute validation rules and you can’t disable them. I heard that you can bypass them in TFS 2012 using the object model, but with TFS 2010 you have to use the WorkItemServer.Update method and pass in the values in an xml package with BypassRules set to true.</p>
 <p>Most people will first try to set the property directly using the object model like this:</p>
-item.CreatedDate = date;
-<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image.png" alt=""></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">item.CreatedDate = date;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image.png" alt></p>
 <p>But you get the error: “The property ‘Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.CreatedDate’ has no setter” OR “Property or indexer ‘Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.CreatedDate’ cannot be assigned to – it is read only”</p>
 <p>Then you’ll try to bypass the build time error by setting the property using the Fields name value pair by doing something like this:</p>
-item.Fields[<span class="string">"System.CreatedDate"</span>].Value = date.ToString()
-<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_3.png" alt=""></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">item.Fields[<span class="string">"System.CreatedDate"</span>].Value = date.ToString()</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_3.png" alt></p>
 <p>But you get the “InvalidNotOldValue” validation error when calling Validate() and “TF237124: Work Item is not ready to save”</p>
-<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_4.png" alt=""></p>
+<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_4.png" alt></p>
 <p>So the only way to do this with TFS 2010 is to bypass the validation rules using the WorkItemServer.Update method. Here’s how you do that:</p>
 <p>1. Add the following references to your project:</p>
-<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_5.png" alt=""></p>
+<p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_5.png" alt></p>
 <ul>
 <li>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.Client.dll</li><li>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.WorkItemTracking.Client.dll</li><li>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll</li>
 </ul>
 <p>2. Copy the following code into your project or take snippets to meet your needs. The inline comments explain what everything does.</p>
-<span class="keyword">namespace</span> <span class="title">ChangeReadonlyField</span>
-&#123;
-    <span class="keyword">using</span> System;
-    <span class="keyword">using</span> System.Text;
-    <span class="keyword">using</span> System.Xml;
-    <span class="keyword">using</span> Microsoft.TeamFoundation.Client;
-    <span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;
-    <span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Proxy;
-
-    <span class="keyword">class</span> <span class="title">Program</span>
-    &#123;
-        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span>
-        &#123;
-            <span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"[tfs url"</span>));
-            <span class="keyword">var</span> store = tfs.GetService&lt;WorkItemStore&gt;();
-            <span class="keyword">var</span> server = tfs.GetService&lt;WorkItemServer&gt;();
-            <span class="keyword">var</span> date = <span class="keyword">new</span> DateTime(<span class="number">2012</span>, <span class="number">1</span>, <span class="number">31</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);
-
-            <span class="keyword">var</span> id = <span class="number">1279424</span>;
-            <span class="keyword">var</span> item = store.GetWorkItem(id);
-
-            <span class="comment">// When you call update you need to pass the revision number that you want to update.</span>
-            <span class="comment">// Most of the time ist t makes sense to use the latest revision, which is stored in the Rev property</span>
-            <span class="keyword">var</span> revision = item.Rev.ToString();
-
-            <span class="comment">// Create the xml package that is needed when calling the server to update a readonly field.   </span>
-            <span class="comment">// Make sure you pass in the date using XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local)</span>
-            <span class="comment">// You won't get the correct date if you just call date.ToString()</span>
-            <span class="keyword">var</span> sb = <span class="keyword">new</span> StringBuilder();
-            sb.Append(<span class="string">"&lt;Package&gt;"</span>);
-            sb.AppendFormat(<span class="string">"&lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='&#123;0&#125;' Revision='&#123;1&#125;'&gt;"</span>, id, revision);
-            sb.Append(<span class="string">"&lt;Columns&gt;"</span>);
-            sb.AppendFormat(<span class="string">"&lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;&#123;0&#125;&lt;/Value&gt;&lt;/Column&gt;"</span>,
-                XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local));
-            sb.Append(<span class="string">"&lt;/Columns&gt;&lt;/UpdateWorkItem&gt;&lt;/Package&gt;"</span>);
-
-            <span class="comment">/* This is what the XML looks like
-                &lt;Package&gt;
-                  &lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='1279424' Revision='11'&gt;
-                    &lt;Columns&gt;
-                       &lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;1/1/2012 1:01:01 AM&lt;/Value&gt;&lt;/Column&gt;
-                    &lt;/Columns&gt;
-                  &lt;/UpdateWorkItem&gt;
-                &lt;/Package&gt;
-            */</span>
-
-            <span class="comment">// Initialize the params that are needed for the service call</span>
-            <span class="keyword">var</span> mthe = <span class="keyword">new</span> MetadataTableHaveEntry[<span class="number">0</span>];
-            <span class="keyword">string</span> dbStamp;
-            IMetadataRowSets rowsets;
-            XmlElement outElement = <span class="literal">null</span>;
-
-            <span class="comment">// Load the xml string into an XmlDocument so you can pull the document Element that </span>
-            <span class="comment">// the service call needs</span>
-            <span class="keyword">var</span> x = <span class="keyword">new</span> XmlDocument();
-            x.LoadXml(sb.ToString());
-
-            <span class="comment">// Call WorkItemServer update method to update the readonly fields and bypass the API validation</span>
-            server.Update(WorkItemServer.NewRequestId(),
-                x.DocumentElement,
-                <span class="keyword">out</span> outElement,
-                mthe,
-                <span class="keyword">out</span> dbStamp,
-                <span class="keyword">out</span> rowsets);
-        &#125;
-    &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">ChangeReadonlyField</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">using</span> System;</span><br><span class="line">    <span class="keyword">using</span> System.Text;</span><br><span class="line">    <span class="keyword">using</span> System.Xml;</span><br><span class="line">    <span class="keyword">using</span> Microsoft.TeamFoundation.Client;</span><br><span class="line">    <span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;</span><br><span class="line">    <span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Proxy;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"[tfs url"</span>));</span><br><span class="line">            <span class="keyword">var</span> store = tfs.GetService&lt;WorkItemStore&gt;();</span><br><span class="line">            <span class="keyword">var</span> server = tfs.GetService&lt;WorkItemServer&gt;();</span><br><span class="line">            <span class="keyword">var</span> date = <span class="keyword">new</span> DateTime(<span class="number">2012</span>, <span class="number">1</span>, <span class="number">31</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> id = <span class="number">1279424</span>;</span><br><span class="line">            <span class="keyword">var</span> item = store.GetWorkItem(id);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// When you call update you need to pass the revision number that you want to update.</span></span><br><span class="line">            <span class="comment">// Most of the time ist t makes sense to use the latest revision, which is stored in the Rev property</span></span><br><span class="line">            <span class="keyword">var</span> revision = item.Rev.ToString();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Create the xml package that is needed when calling the server to update a readonly field.   </span></span><br><span class="line">            <span class="comment">// Make sure you pass in the date using XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local)</span></span><br><span class="line">            <span class="comment">// You won't get the correct date if you just call date.ToString()</span></span><br><span class="line">            <span class="keyword">var</span> sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            sb.Append(<span class="string">"&lt;Package&gt;"</span>);</span><br><span class="line">            sb.AppendFormat(<span class="string">"&lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='&#123;0&#125;' Revision='&#123;1&#125;'&gt;"</span>, id, revision);</span><br><span class="line">            sb.Append(<span class="string">"&lt;Columns&gt;"</span>);</span><br><span class="line">            sb.AppendFormat(<span class="string">"&lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;&#123;0&#125;&lt;/Value&gt;&lt;/Column&gt;"</span>,</span><br><span class="line">                XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local));</span><br><span class="line">            sb.Append(<span class="string">"&lt;/Columns&gt;&lt;/UpdateWorkItem&gt;&lt;/Package&gt;"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">/* This is what the XML looks like</span></span><br><span class="line"><span class="comment">                &lt;Package&gt;</span></span><br><span class="line"><span class="comment">                  &lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='1279424' Revision='11'&gt;</span></span><br><span class="line"><span class="comment">                    &lt;Columns&gt;</span></span><br><span class="line"><span class="comment">                       &lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;1/1/2012 1:01:01 AM&lt;/Value&gt;&lt;/Column&gt;</span></span><br><span class="line"><span class="comment">                    &lt;/Columns&gt;</span></span><br><span class="line"><span class="comment">                  &lt;/UpdateWorkItem&gt;</span></span><br><span class="line"><span class="comment">                &lt;/Package&gt;</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// Initialize the params that are needed for the service call</span></span><br><span class="line">            <span class="keyword">var</span> mthe = <span class="keyword">new</span> MetadataTableHaveEntry[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">string</span> dbStamp;</span><br><span class="line">            IMetadataRowSets rowsets;</span><br><span class="line">            XmlElement outElement = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Load the xml string into an XmlDocument so you can pull the document Element that </span></span><br><span class="line">            <span class="comment">// the service call needs</span></span><br><span class="line">            <span class="keyword">var</span> x = <span class="keyword">new</span> XmlDocument();</span><br><span class="line">            x.LoadXml(sb.ToString());</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Call WorkItemServer update method to update the readonly fields and bypass the API validation</span></span><br><span class="line">            server.Update(WorkItemServer.NewRequestId(),</span><br><span class="line">                x.DocumentElement,</span><br><span class="line">                <span class="keyword">out</span> outElement,</span><br><span class="line">                mthe,</span><br><span class="line">                <span class="keyword">out</span> dbStamp,</span><br><span class="line">                <span class="keyword">out</span> rowsets);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>

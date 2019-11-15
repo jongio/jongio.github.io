@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="python,dotnet,tox" />
+    <meta name="keywords" content="python,dotnet,tox">
     
-    <meta name="description" content="When running Python unit tests with tox, you might see the following errors:
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
-C:\Program Files\dotnet\sdk\2.0.0\Nu">
+    <meta name="description" content="When running Python unit tests with tox, you might see the following errors: C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
+<meta name="keywords" content="python,dotnet,tox">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to 'Value cannot be null. Parameter name: path1' with dotnet and tox">
+<meta property="og:title" content="Solution to &#39;Value cannot be null. Parameter name: path1&#39; with dotnet and tox">
 <meta property="og:url" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="When running Python unit tests with tox, you might see the following errors:
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
-C:\Program Files\dotnet\sdk\2.0.0\Nu">
+<meta property="og:description" content="When running Python unit tests with tox, you might see the following errors: C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
-<meta property="og:updated_time" content="2017-12-30T16:20:50.177Z">
+<meta property="og:updated_time" content="2017-12-30T16:20:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to 'Value cannot be null. Parameter name: path1' with dotnet and tox">
-<meta name="twitter:description" content="When running Python unit tests with tox, you might see the following errors:
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
-C:\Program Files\dotnet\sdk\2.0.0\Nu">
+<meta name="twitter:title" content="Solution to &#39;Value cannot be null. Parameter name: path1&#39; with dotnet and tox">
+<meta name="twitter:description" content="When running Python unit tests with tox, you might see the following errors: C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. C:\Program Files\dotnet\sdk\2.0.0\NuG">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ C:\Program Files\dotnet\sdk\2.0.0\Nu">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -205,25 +201,11 @@ C:\Program Files\dotnet\sdk\2.0.0\Nu">
         
         <div class="article-entry" itemprop="articleBody">
             <p>When running Python unit tests with tox, you might see the following errors:</p>
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
-C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1
-System.ArgumentNullException: Value cannot be null.
-Parameter name: path1
-   at System.IO.Path.Combine(String path1, String path2)
-   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()
-   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)
-   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)
-   at Microsoft.DotNet.Cli.Program.Main(String[] args)
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. </span><br><span class="line">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">System.ArgumentNullException: Value cannot be null.</span><br><span class="line">Parameter name: path1</span><br><span class="line">   at System.IO.Path.Combine(String path1, String path2)</span><br><span class="line">   at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()</span><br><span class="line">   at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)</span><br><span class="line">   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)</span><br><span class="line">   at Microsoft.DotNet.Cli.Program.Main(String[] args)</span><br></pre></td></tr></table></figure>
 <p>That is happening because all environment variables are not passed to tox by default.</p>
 <p>Open <code>tox.ini</code> and add the <code>passenv = APPDATA ProgramFiles USERPROFILE</code> line:</p>
-[testenv]
-setenv =
-    PYTHONPATH = &#123;toxinidir&#125;
-
-commands = 
-    python setup.py test
-
-passenv = APPDATA ProgramFiles USERPROFILE
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[testenv]</span><br><span class="line">setenv =</span><br><span class="line">    PYTHONPATH = &#123;toxinidir&#125;</span><br><span class="line"></span><br><span class="line">commands = </span><br><span class="line">    python setup.py test</span><br><span class="line"></span><br><span class="line">passenv = APPDATA ProgramFiles USERPROFILE</span><br></pre></td></tr></table></figure>
 <p>Rerun <code>tox</code> and you should be good.</p>
 
         </div>

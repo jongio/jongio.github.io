@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,41 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.
-
-To find out what app is using that port…
-Open resmon.exe
-Go to Network ta">
+    <meta name="description" content="If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.  To find out what app is using that port… Open resmon.exe Go to Network ta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "Port '443' is in use" When Starting a Web App from Visual Studio">
+<meta property="og:title" content="Solution to &quot;Port &#39;443&#39; is in use&quot; When Starting a Web App from Visual Studio">
 <meta property="og:url" content="https://blog.jongallant.com/2016/02/solution-port-443-is-in-use/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.
-
-To find out what app is using that port…
-Open resmon.exe
-Go to Network ta">
+<meta property="og:description" content="If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.  To find out what app is using that port… Open resmon.exe Go to Network ta">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "Port '443' is in use" When Starting a Web App from Visual Studio">
-<meta name="twitter:description" content="If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.
-
-To find out what app is using that port…
-Open resmon.exe
-Go to Network ta">
+<meta name="twitter:title" content="Solution to &quot;Port &#39;443&#39; is in use&quot; When Starting a Web App from Visual Studio">
+<meta name="twitter:description" content="If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.  To find out what app is using that port… Open resmon.exe Go to Network ta">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -77,7 +66,7 @@ Go to Network ta">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -209,12 +198,12 @@ Go to Network ta">
         
         <div class="article-entry" itemprop="articleBody">
             <p>If you see this error when trying to run a web app in Visual Studio – that means something is currently running on that port.</p>
-<p><img src="/images/blog/d4ab59600a50_B771/image.png" alt=""></p>
+<p><img src="/images/blog/d4ab59600a50_B771/image.png" alt></p>
 <p>To find out what app is using that port…</p>
 <p>Open resmon.exe</p>
 <p>Go to Network tab, Listening Ports</p>
 <p>Find 443 (or whatever port VS is complaining about)</p>
-<p><img src="/images/blog/d4ab59600a50_B771/image_3.png" alt=""></p>
+<p><img src="/images/blog/d4ab59600a50_B771/image_3.png" alt></p>
 <p>And see what app is using it – and kill it.</p>
 <p>In my case Skype was using 443.</p>
 <p>Signing out of Skype solved the problem.</p>

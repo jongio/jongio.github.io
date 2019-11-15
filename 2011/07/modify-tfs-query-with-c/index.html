@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto" />
+    <meta name="keywords" content="c#,howto">
     
-    <meta name="description" content="I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually.
-Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
+    <meta name="description" content="I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually. Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
+<meta name="keywords" content="c#,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Programmatically Modify a TFS Query with C#">
 <meta property="og:url" content="https://blog.jongallant.com/2011/07/modify-tfs-query-with-c/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually.
-Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
+<meta property="og:description" content="I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually. Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T15:51:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Programmatically Modify a TFS Query with C#">
-<meta name="twitter:description" content="I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually.
-Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
+<meta name="twitter:description" content="I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually. Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -202,34 +201,9 @@ Thanks to Tarun Arora for a good starting point: http://geekswithblogs.net">
         
         <div class="article-entry" itemprop="articleBody">
             <p>I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually.</p>
-<p>Thanks to Tarun Arora for a good starting point: <a href="http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx" target="_blank" rel="external">http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx</a></p>
+<p>Thanks to Tarun Arora for a good starting point: <a href="http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx" target="_blank" rel="noopener">http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx</a></p>
 <p>Here’s how to update a query in code:</p>
-<span class="keyword">using</span> Microsoft.TeamFoundation.Client;
-<span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;
-<span class="keyword">using</span> System;
-
-<span class="keyword">namespace</span> <span class="title">ConsoleApplication1</span>
-&#123;
-    <span class="keyword">class</span> <span class="title">Program</span>
-    &#123;
-        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span>
-        &#123;
-            <span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"http://yourtfsurl/"</span>));
-            <span class="keyword">var</span> store = tfs.GetService&lt;WorkItemStore&gt;();
-            <span class="keyword">var</span> project = store.Projects[<span class="string">"your project name"</span>];
-
-            <span class="keyword">foreach</span> (StoredQuery query <span class="keyword">in</span> project.StoredQueries)
-            &#123;
-                <span class="keyword">if</span> (query.QueryText.Contains(<span class="string">"[System.IterationPath] under 'your area path'"</span>))
-                &#123;
-                    query.QueryText = query.QueryText.Replace(<span class="string">"[System.IterationPath] under 'your area path'"</span>, 
-                        <span class="string">"[System.IterationPath] under 'your iteration path'"</span>);
-                    query.Update();
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.Client;</span><br><span class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ConsoleApplication1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"http://yourtfsurl/"</span>));</span><br><span class="line">            <span class="keyword">var</span> store = tfs.GetService&lt;WorkItemStore&gt;();</span><br><span class="line">            <span class="keyword">var</span> project = store.Projects[<span class="string">"your project name"</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">foreach</span> (StoredQuery query <span class="keyword">in</span> project.StoredQueries)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (query.QueryText.Contains(<span class="string">"[System.IterationPath] under 'your area path'"</span>))</span><br><span class="line">                &#123;</span><br><span class="line">                    query.QueryText = query.QueryText.Replace(<span class="string">"[System.IterationPath] under 'your area path'"</span>, </span><br><span class="line">                        <span class="string">"[System.IterationPath] under 'your iteration path'"</span>);</span><br><span class="line">                    query.Update();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

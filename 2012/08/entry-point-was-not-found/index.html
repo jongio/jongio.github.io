@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,dev" />
+    <meta name="keywords" content="c#,dev">
     
     <meta name="description" content="I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we">
+<meta name="keywords" content="c#,dev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "Entry point was not found." in Visual Studio">
+<meta property="og:title" content="Solution to &quot;Entry point was not found.&quot; in Visual Studio">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/entry-point-was-not-found/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "Entry point was not found." in Visual Studio">
+<meta name="twitter:title" content="Solution to &quot;Entry point was not found.&quot; in Visual Studio">
 <meta name="twitter:description" content="I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,13 +200,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image.png" alt=""></p>
+            <p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image.png" alt></p>
 <p>I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app were point to different versions of the same Framework DLL. It compiled fine, just got the exception at runtime.</p>
-<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_3.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_3.png" alt></p>
 <h4 id="version-11-referenced-in-my-main-app"><a class="header-anchor" href="#version-11-referenced-in-my-main-app"></a>VERSION 11 REFERENCED IN MY MAIN APP</h4>
-<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_4.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_4.png" alt></p>
 <h4 id="version-10-referenced-in-my-library-app"><a class="header-anchor" href="#version-10-referenced-in-my-library-app"></a>VERSION 10 REFERENCED IN MY LIBRARY APP</h4>
-<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_5.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_5.png" alt></p>
 <p>The solution is simple, just change one of the references so they match. In my case I change the Main app to reference version 10.</p>
 <p>Jon</p>
 

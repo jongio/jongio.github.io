@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,azure" />
+    <meta name="keywords" content="azure,howto">
     
-    <meta name="description" content="I just spent way too much time getting AppInsights working in an Azure WebJob.
-Here are a couple of tips:
-1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
+    <meta name="description" content="I just spent way too much time getting AppInsights working in an Azure WebJob. Here are a couple of tips: 1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
+<meta name="keywords" content="azure,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Setup Application Insights in an Azure WebJob">
 <meta property="og:url" content="https://blog.jongallant.com/2016/02/azure-webjob-appinsights/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob.
-Here are a couple of tips:
-1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
+<meta property="og:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob. Here are a couple of tips: 1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:27.463Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Setup Application Insights in an Azure WebJob">
-<meta name="twitter:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob.
-Here are a couple of tips:
-1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
+<meta name="twitter:description" content="I just spent way too much time getting AppInsights working in an Azure WebJob. Here are a couple of tips: 1. Make sure you are using the right InstrumentationKey. Go here to find out how: https://azur">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ Here are a couple of tips:
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -206,7 +202,7 @@ Here are a couple of tips:
         <div class="article-entry" itemprop="articleBody">
             <p>I just spent way too much time getting AppInsights working in an Azure WebJob.</p>
 <p>Here are a couple of tips:</p>
-<p>1. Make sure you are using the right InstrumentationKey. Go here to find out how: <a href="https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/" title="https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/" target="_blank" rel="external">https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/</a></p>
+<p>1. Make sure you are using the right InstrumentationKey. Go here to find out how: <a href="https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/" title="https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/documentation/articles/app-insights-start-monitoring-app-health-usage/</a></p>
 <p>2. Make sure you programmatically set your InstrumentationKey (Also store it in Azure app settings in case you need to change it.</p>
   <script src="https://gist.github.com/jongio/9f38b214a41891989f61.js"></script>
 <p>3. Make sure you call Flush after you write any events</p>

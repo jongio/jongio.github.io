@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,asp.net" />
+    <meta name="keywords" content="c#,asp.net">
     
-    <meta name="description" content="I’m creating an app and need the same data set for two tree views.
-Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor.
-I first tried something">
+    <meta name="description" content="I’m creating an app and need the same data set for two tree views. Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor. I first tried something">
+<meta name="keywords" content="c#,asp.net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Reuse TreeNodeCollection in Windows Forms apps">
 <meta property="og:url" content="https://blog.jongallant.com/2009/02/reuse-treenodecollection/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m creating an app and need the same data set for two tree views.
-Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor.
-I first tried something">
+<meta property="og:description" content="I’m creating an app and need the same data set for two tree views. Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor. I first tried something">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T15:51:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Reuse TreeNodeCollection in Windows Forms apps">
-<meta name="twitter:description" content="I’m creating an app and need the same data set for two tree views.
-Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor.
-I first tried something">
+<meta name="twitter:description" content="I’m creating an app and need the same data set for two tree views. Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor. I first tried something">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ I first tried something">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -207,11 +203,7 @@ I first tried something">
             <p>I’m creating an app and need the same data set for two tree views.<br>
 Nodes.AddRange only works with a TreeNode[] and the TreeNodeCollection is read-only and doesn’t have a ctor.</p>
 <p>I first tried something like this:</p>
-TreeNode[] nodes = <span class="keyword">new</span> TreeNode[treeView1.Nodes.Count];
-
-treeView1.Nodes.CopyTo(nodes,<span class="number">0</span>);
-
-selectForm.treeView1.Nodes.AddRange(nodes);
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">TreeNode[] nodes = <span class="keyword">new</span> TreeNode[treeView1.Nodes.Count];</span><br><span class="line"></span><br><span class="line">treeView1.Nodes.CopyTo(nodes,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">selectForm.treeView1.Nodes.AddRange(nodes);</span><br></pre></td></tr></table></figure>
 <p>But got this exception.</p>
 <blockquote>
 <p>_Cannot add or insert the item ‘’ in more than one place. You must first remove it from its current location or clone it.</p>
@@ -219,16 +211,7 @@ selectForm.treeView1.Nodes.AddRange(nodes);
 </blockquote>
 <p>Apparently we need to first clone the nodes because they are already bound to the first TreeView.</p>
 <p>Here’s the quick and dirty (feel free to make it cleaner w/ extension method, etc)</p>
-selectForm.treeView1.Nodes.AddRange(TreeViewUtility.CloneNodes(treeView1));
-        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode[] <span class="title">CloneNodes</span>(<span class="params">TreeView tree</span>)</span>
-        &#123;
-            TreeNode[] nodes = <span class="keyword">new</span> TreeNode[tree.Nodes.Count];
-            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tree.Nodes.Count; i++)
-            &#123;
-                nodes[i] = tree.Nodes[i].Clone() <span class="keyword">as</span> TreeNode;
-            &#125;
-            <span class="keyword">return</span> nodes;
-        &#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">selectForm.treeView1.Nodes.AddRange(TreeViewUtility.CloneNodes(treeView1));</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode[] <span class="title">CloneNodes</span>(<span class="params">TreeView tree</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            TreeNode[] nodes = <span class="keyword">new</span> TreeNode[tree.Nodes.Count];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tree.Nodes.Count; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                nodes[i] = tree.Nodes[i].Clone() <span class="keyword">as</span> TreeNode;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> nodes;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

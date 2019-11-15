@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,dev" />
+    <meta name="keywords" content="c#,howto,dev">
     
     <meta name="description" content="The ADO.NET Entity Framework is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO">
+<meta name="keywords" content="c#,howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to manually update your Entity Framework model classes when they get out of sync with your database">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/entity-framework-manual-update/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The ADO.NET Entity Framework is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:29:03.741Z">
+<meta property="og:updated_time" content="2018-12-10T22:29:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to manually update your Entity Framework model classes when they get out of sync with your database">
 <meta name="twitter:description" content="The ADO.NET Entity Framework is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,35 +200,35 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The <a href="http://msdn.microsoft.com/en-us/library/bb399572(v=vs.110).aspx" target="_blank" rel="external">ADO.NET Entity Framework</a> is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO EF is the best one I’ve used yet.</p>
+            <p>The <a href="http://msdn.microsoft.com/en-us/library/bb399572(v=vs.110).aspx" target="_blank" rel="noopener">ADO.NET Entity Framework</a> is an awesome way to quickly pull data into an app. I’ve been building apps for a really long time and have used all the frameworks that have come out over the years. IMO EF is the best one I’ve used yet.</p>
 <p>Well, I should say it is awesome MOST of the time. The biggest beef I have with it is that the models can get out of sync with the database and saving the EDMX file and running the “Update Model from Database…” feature doesn’t work.</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image.png" alt></p>
 <p><em>(The Update Model from Database option doesn’t update the object model and class files)</em></p>
 <p>For example, let’s say I start with this model:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_3.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_3.png" alt></p>
 <p>And I add a new table to the DB called Foo:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_4.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_4.png" alt></p>
 <p>I then go back to my app and add my new table to the model using the “Update Model from Database…” feature:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_5.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_5.png" alt></p>
 <p>And it is added to the diagram:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_6.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_6.png" alt></p>
 <p>But the corresponding object model and CS file wasn’t generated:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_7.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_7.png" alt></p>
 <p>Up until today I would have recreated the EDMX file, which is a big pain. But I discovered that there’s a context menu item called “Run Custom Tool”.</p>
 <p>The most obvious choice is to select “Run Custom Tool” from the EDMX file, but that doesn’t do anything:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_8.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_8.png" alt></p>
 <p>If you F4 the corresponding T4 file you can see that the custom tool associated with the T4 file is: TextTemplatingFileGenerator</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_9.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_9.png" alt></p>
 <p>So, I selected “Run Custom Tool” from the T4 context menu:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_10.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_10.png" alt></p>
 <p>And that generated the Foo.cs file:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_11.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_11.png" alt></p>
 <p>But I still didn’t have the Foo class in my object model:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_12.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_12.png" alt></p>
 <p>So I selected the “Run Custom Tool” on the tt file:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_13.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_13.png" alt></p>
 <p>And that generated the correct object model:</p>
-<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_14.png" alt=""></p>
+<p><img src="/images/blog/5c9ad7bd69d6_ABCB/image_14.png" alt></p>
 <p>So anytime you find your EF model and/or class files out of sync with your database then you need to manually run the “Run Custom Tool” command on both the [Entities].tt file and the [Entities].Context.tt file.</p>
 <p>This is a big pain. I will ping the product team to see if they can run the custom tool on the EDMX file when it is saved and recursively run on all the tt files associated with that EDMX parent.</p>
 <p>Jon</p>

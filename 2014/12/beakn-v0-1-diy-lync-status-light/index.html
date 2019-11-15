@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot,beakn" />
+    <meta name="keywords" content="iot,beakn">
     
     <meta name="description" content="Part of my new job is to fully understand the process a maker goes through when developing their ideas into products. There’s no better way to do that than to build something. I believe that to truly">
+<meta name="keywords" content="iot,beakn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="beakn v0.1 : DIY Lync Status Light with an Arduino, Ping Pong Ball and a Cardboard Box">
 <meta property="og:url" content="https://blog.jongallant.com/2014/12/beakn-v0-1-diy-lync-status-light/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Part of my new job is to fully understand the process a maker goes through when developing their ideas into products. There’s no better way to do that than to build something. I believe that to truly">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T11:55:31.562Z">
+<meta property="og:updated_time" content="2018-12-10T11:55:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beakn v0.1 : DIY Lync Status Light with an Arduino, Ping Pong Ball and a Cardboard Box">
 <meta name="twitter:description" content="Part of my new job is to fully understand the process a maker goes through when developing their ideas into products. There’s no better way to do that than to build something. I believe that to truly">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,7 +200,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/blog/ef55af178d49_C2E0/IMG_1677.jpg" alt=""></p>
+            <p><img src="/images/blog/ef55af178d49_C2E0/IMG_1677.jpg" alt></p>
 <p>Part of my new job is to fully understand the process a maker goes through when developing their ideas into products. There’s no better way to do that than to build something. I believe that to truly learn something you have to struggle through it with your own hands.</p>
 <p>For my first “maker experience” project I decided to build a light that represents your Lync status. When Busy it will be red, when Away, yellow and when available it will be green. Yes, it’s very simple, but that’s intentional. I wanted the first project to be more about learning the maker process and not building something complex.</p>
 <p>I’m calling this project “beakn” because a beacon is defined as a light set up in a high or prominent position as a warning, signal or celebration. It will be placed on your desk at work or home to let people know when it’s ok or not to disturb you.</p>
@@ -207,14 +209,14 @@
 <h3 id="the-beakn-hardware"><a class="header-anchor" href="#the-beakn-hardware"></a><strong>The beakn Hardware</strong></h3>
 <h4 id="components"><a class="header-anchor" href="#components"></a>Components</h4>
 <ul>
-<li>Arduino – I used an <a href="http://arduino.cc/en/Main/arduinoBoardUno" target="_blank" rel="external">Uno</a>, but any Arduino with 3 outputs and a serial port will work.</li>
-<li>1 Half-size <a href="https://www.adafruit.com/products/64" target="_blank" rel="external">Breadboard</a></li>
-<li>1 <a href="https://www.sparkfun.com/products/512" target="_blank" rel="external">USB A to B-Type cable</a> to connect Arduino to computer</li>
-<li>3 10mm Diffused LEDs. One <a href="https://www.sparkfun.com/products/10632" target="_blank" rel="external">red</a>, one <a href="https://www.sparkfun.com/products/10634" target="_blank" rel="external">yellow</a>, one <a href="https://www.sparkfun.com/products/10633" target="_blank" rel="external">green</a>.</li>
+<li>Arduino – I used an <a href="http://arduino.cc/en/Main/arduinoBoardUno" target="_blank" rel="noopener">Uno</a>, but any Arduino with 3 outputs and a serial port will work.</li>
+<li>1 Half-size <a href="https://www.adafruit.com/products/64" target="_blank" rel="noopener">Breadboard</a></li>
+<li>1 <a href="https://www.sparkfun.com/products/512" target="_blank" rel="noopener">USB A to B-Type cable</a> to connect Arduino to computer</li>
+<li>3 10mm Diffused LEDs. One <a href="https://www.sparkfun.com/products/10632" target="_blank" rel="noopener">red</a>, one <a href="https://www.sparkfun.com/products/10634" target="_blank" rel="noopener">yellow</a>, one <a href="https://www.sparkfun.com/products/10633" target="_blank" rel="noopener">green</a>.</li>
 <li>3 220ohm, 1/4W Resistors</li>
-<li>6 <a href="https://www.sparkfun.com/products/9140" target="_blank" rel="external">Jumper Wires</a> Male/Female – For connecting LEDs to breadboard and Arduino</li>
+<li>6 <a href="https://www.sparkfun.com/products/9140" target="_blank" rel="noopener">Jumper Wires</a> Male/Female – For connecting LEDs to breadboard and Arduino</li>
 <li>1 Ping Pong Ball</li>
-<li>1 Box – I used an Intel Edison box that I had, which is 6&quot;L x 3.5&quot;W x 2&quot;H. You can <a href="https://www.youtube.com/watch?v=d-QGl1EKrlI" target="_blank" rel="external">make one out of scrap cardboard</a> if you don’t have one handy.</li>
+<li>1 Box – I used an Intel Edison box that I had, which is 6&quot;L x 3.5&quot;W x 2&quot;H. You can <a href="https://www.youtube.com/watch?v=d-QGl1EKrlI" target="_blank" rel="noopener">make one out of scrap cardboard</a> if you don’t have one handy.</li>
 </ul>
 <h4 id="tools"><a class="header-anchor" href="#tools"></a><strong>Tools</strong></h4>
 <ul>
@@ -242,47 +244,47 @@
 <li>Yellow LED Cathode pin to 220ohm resistor to GND</li>
 <li>Green LED Cathode pin to 220ohm resistor to GND</li>
 </ul>
-<p><img src="/images/blog/ef55af178d49_C2E0/beaknv1circuit_thumb.png" alt=""></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/beaknv1circuit_thumb.png" alt></p>
 <p><strong>Step 3</strong></p>
 <p>Drill holes into the Ping Pong ball like so. The walls of the ping pong ball are VERY thin and will rip so please make sure you use pilot holes starting from the smallest bit and then move up to a bit that is a little smaller than 10mm.</p>
-<p><img src="/images/blog/ef55af178d49_C2E0/image.png" alt=""></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/image.png" alt></p>
 <p><strong>Step 4</strong></p>
 <p>Carve holes in box.</p>
 <ul>
 <li>Carve a 1 inch hold in middle of top of box for the ping pong ball</li>
 </ul>
-<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1681.jpg" alt=""></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1681.jpg" alt></p>
 <ul>
 <li>Carve a square .5 inch hole in the back of the box for the USB cable.</li>
 </ul>
-<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1682.jpg" alt=""></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1682.jpg" alt></p>
 <p><strong>Step 5</strong></p>
 <p>Put Arduino, breadboard and lights into box. Stuff the LEDs through the top hole and into the ping pong ball. Stuff the ping pong ball into the hole. The rims of the LEDs will keep it in place.</p>
-<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1683_thumb_3.jpg" alt=""></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1683_thumb_3.jpg" alt></p>
 <p><strong>Step 6</strong></p>
 <p>Connect the USB cable and close the box.</p>
-<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1688_thumb.jpg" alt="">]</p>
-<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1687_thumb.jpg" alt="">]</p>
+<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1688_thumb.jpg" alt>]</p>
+<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1687_thumb.jpg" alt>]</p>
 <p>That’s all there is to it. We’ll do RGB LEDs, Blinkm and surface mount LEDs in later versions, but what we have so far is a good start.</p>
 <h3 id="the-beakn-software"><a class="header-anchor" href="#the-beakn-software"></a>The beakn Software</h3>
 <p>This first version of beakn uses serial communication to communicate from your desktop to the Arduino. The two main components of the software are:</p>
 <h4 id="desktop-app"><a class="header-anchor" href="#desktop-app"></a>Desktop App</h4>
-<p><img src="/images/blog/ef55af178d49_C2E0/image_3.png" alt=""></p>
-<p>You will need a desktop application that uses the <a href="http://msdn.microsoft.com/en-us/library/office/jj933215%28v=office.15%29.aspx" target="_blank" rel="external">Lync SDK</a> to listen for Lync events and <a href="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="external">Command Messenger</a> to communicate with the Arduino. This is a Windows Form application that doesn’t have a UI. It’s a form, not a Windows service because it needs to run under the context of the currently logged in user and a Windows Service is machine level.</p>
-<p>You can install this app from GitHub here: <a href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="external">https://github.com/jongio/beakn/releases/tag/v0.1</a>. Click the beakn-0.1.msi green button and install.</p>
-<p>Or you can get the source and build it yourself: <a href="https://github.com/jongio/beakn/tree/master/desktop" title="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="external">https://github.com/jongio/beakn/tree/master/desktop</a> (that is the latest code) if you want to download the code as of v0.1 then use this link and click the “source code” button. <a href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="external">https://github.com/jongio/beakn/releases/tag/v0.1</a></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/image_3.png" alt></p>
+<p>You will need a desktop application that uses the <a href="http://msdn.microsoft.com/en-us/library/office/jj933215%28v=office.15%29.aspx" target="_blank" rel="noopener">Lync SDK</a> to listen for Lync events and <a href="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="noopener">Command Messenger</a> to communicate with the Arduino. This is a Windows Form application that doesn’t have a UI. It’s a form, not a Windows service because it needs to run under the context of the currently logged in user and a Windows Service is machine level.</p>
+<p>You can install this app from GitHub here: <a href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="noopener">https://github.com/jongio/beakn/releases/tag/v0.1</a>. Click the beakn-0.1.msi green button and install.</p>
+<p>Or you can get the source and build it yourself: <a href="https://github.com/jongio/beakn/tree/master/desktop" title="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener">https://github.com/jongio/beakn/tree/master/desktop</a> (that is the latest code) if you want to download the code as of v0.1 then use this link and click the “source code” button. <a href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="noopener">https://github.com/jongio/beakn/releases/tag/v0.1</a></p>
 <p>The default COM port is COM3. Check Device Manager to see what COM port your Arduino is on and adjust the beakn.exe.config file to match that.</p>
-<p><img src="/images/blog/ef55af178d49_C2E0/port_thumb.png" alt=""></p>
-<p>The meat of the app is in <a href="https://github.com/jongio/beakn/blob/master/desktop/beakn/beakn/Protocol/Serial.cs" target="_blank" rel="external">Serial.cs</a>. Serial.cs uses CmdMessenger to initiate and communicate with the Arduino. Controller.cs uses the Lync SDK to handle Lync status change events</p>
-<p>I also created a wrapper around the Lync SDK called lyncx, which you can find the source for here: <a href="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" title="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" target="_blank" rel="external">https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs</a></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/port_thumb.png" alt></p>
+<p>The meat of the app is in <a href="https://github.com/jongio/beakn/blob/master/desktop/beakn/beakn/Protocol/Serial.cs" target="_blank" rel="noopener">Serial.cs</a>. Serial.cs uses CmdMessenger to initiate and communicate with the Arduino. Controller.cs uses the Lync SDK to handle Lync status change events</p>
+<p>I also created a wrapper around the Lync SDK called lyncx, which you can find the source for here: <a href="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" title="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" target="_blank" rel="noopener">https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs</a></p>
 <h4 id="arduino-sketch"><a class="header-anchor" href="#arduino-sketch"></a>Arduino Sketch</h4>
-<p><img src="/images/blog/ef55af178d49_C2E0/image_4.png" alt=""></p>
-<p>You will need an Arduino sketch to receive the serial command and turn the appropriate LED. You can download the Arduino sketch here: <a href="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" title="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" target="_blank" rel="external">https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch</a>.</p>
-<p>Open it in your Arduino IDE and upload it to your Arduino. You will need to have the CmdMessenger.h file in your Arduino libraries folder (C:\Program Files (x86)\Arduino\libraries\CmdMessenger), which you can get here: <a href="https://github.com/thijse/Arduino-CmdMessenger" title="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="external">https://github.com/thijse/Arduino-CmdMessenger</a></p>
+<p><img src="/images/blog/ef55af178d49_C2E0/image_4.png" alt></p>
+<p>You will need an Arduino sketch to receive the serial command and turn the appropriate LED. You can download the Arduino sketch here: <a href="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" title="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" target="_blank" rel="noopener">https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch</a>.</p>
+<p>Open it in your Arduino IDE and upload it to your Arduino. You will need to have the CmdMessenger.h file in your Arduino libraries folder (C:\Program Files (x86)\Arduino\libraries\CmdMessenger), which you can get here: <a href="https://github.com/thijse/Arduino-CmdMessenger" title="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="noopener">https://github.com/thijse/Arduino-CmdMessenger</a></p>
 <p>The “loop” of the sketch listens for serial events and uses the readStringArg method of CmdMessenger to get the current availability status and then calls analogWrite to set the colors of each of the ping. I’m using analogWrite instead of digitialWrite here because I will use an RGB LED in a future version.</p>
 <h3 id="test-it-out"><a class="header-anchor" href="#test-it-out"></a>Test it out</h3>
 <p>After you install the desktop app and upload your sketch the ping pong ball should turn the color of your Lync status!  Play with changing your Lync status and see if the color changes. I’m hoping it does!</p>
-<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1677_thumb_3.jpg" alt="">]</p>
+<p><img src="/images/blog/ef55af178d49_C2E0/IMG_1677_thumb_3.jpg" alt>]</p>
 <p>I haven’t fully tested the software side of things – so LMK if you run into any issues at all and I’ll try to help out.</p>
 <p>Thanks for following along. Feedback is more than welcome.</p>
 <p>The next revision should be done before the end of the week. The next step is getting rid of that breadboard.</p>

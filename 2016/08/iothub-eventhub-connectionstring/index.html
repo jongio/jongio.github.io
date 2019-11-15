@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,iot,azure" />
+    <meta name="keywords" content="azure,iot,howto">
     
-    <meta name="description" content="Here’s how to directly connect to the Event Hub that backs an IoT Hub.
-New Way
-As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Opera">
+    <meta name="description" content="Here’s how to directly connect to the Event Hub that backs an IoT Hub. New Way As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Opera">
+<meta name="keywords" content="azure,iot,howto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Directly Connect to Azure IoT Hub's Underlying Event Hub">
+<meta property="og:title" content="How to Directly Connect to Azure IoT Hub&#39;s Underlying Event Hub">
 <meta property="og:url" content="https://blog.jongallant.com/2016/08/iothub-eventhub-connectionstring/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s how to directly connect to the Event Hub that backs an IoT Hub.
-New Way
-As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Opera">
+<meta property="og:description" content="Here’s how to directly connect to the Event Hub that backs an IoT Hub. New Way As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Opera">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2017-05-30T22:48:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Directly Connect to Azure IoT Hub's Underlying Event Hub">
-<meta name="twitter:description" content="Here’s how to directly connect to the Event Hub that backs an IoT Hub.
-New Way
-As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Opera">
+<meta name="twitter:title" content="How to Directly Connect to Azure IoT Hub&#39;s Underlying Event Hub">
+<meta name="twitter:description" content="Here’s how to directly connect to the Event Hub that backs an IoT Hub. New Way As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Opera">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ As of 5/30/2017, you can now get the underlying Event Hub connection string by e
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -209,15 +205,15 @@ As of 5/30/2017, you can now get the underlying Event Hub connection string by e
 <p>As of 5/30/2017, you can now get the underlying Event Hub connection string by either the “Endpoints” blade or the “Operations Monitoring” blade.</p>
 <h3 id="endpoints-blade"><a class="header-anchor" href="#endpoints-blade"></a>Endpoints Blade</h3>
 <p>Click Endpoints<br>
-<img src="000086.png" alt=""></p>
+<img src="000086.png" alt></p>
 <p>Click Events<br>
-<img src="000088.png" alt=""></p>
+<img src="000088.png" alt></p>
 <p>Use “Event Hub-compatible endpoint”<br>
-<img src="000089.png" alt=""></p>
+<img src="000089.png" alt></p>
 <h3 id="operations-monitoring-blade"><a class="header-anchor" href="#operations-monitoring-blade"></a>Operations Monitoring Blade</h3>
 <p>Click Operations Monitoring<br>
 Use “Event Hub-compatible endpoint”<br>
-<img src="000085.png" alt=""></p>
+<img src="000085.png" alt></p>
 <h2 id="old-way"><a class="header-anchor" href="#old-way"></a>Old Way</h2>
 <p>Here’s the connection string template, copy this, then copy each highlighted part from each step below.</p>
 <p><strong>Endpoint</strong>=&lt;Event Hub-compatible endpoint&gt;;<strong>SharedAccessKeyName</strong>=iothubowner;<strong>SharedAccessKey</strong>=&lt;iothubowner primary key&gt;</p>
@@ -227,7 +223,7 @@ Use “Event Hub-compatible endpoint”<br>
 <p>Set to iothubowner or whatever user you want to use</p><p>
 </p><h2 id="3-sharedaccesskey"><a class="header-anchor" href="#3-sharedaccesskey"></a>3. SharedAccessKey</h2>
 <p>In the Azure Portal, go to IoT Hub, Settings, Shared access policies, select user and copy Primary Key
-</p><p><img src="/images/blog/64d09c2507ef_9A3F/image_3.png" alt=""></p>
+</p><p><img src="/images/blog/64d09c2507ef_9A3F/image_3.png" alt></p>
 
         </div>
         <footer>

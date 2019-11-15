@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="asp.net,howto,javascript" />
+    <meta name="keywords" content="asp.net,howto,javascript">
     
-    <meta name="description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.
-
-“TypeError: m[5] is undefined”
-
-“TypeError: Cannot read property ‘length’ of undefined”
-There has been a known issue with Firefox an">
+    <meta name="description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.  “TypeError: m[5] is undefined”  “TypeError: Cannot read property ‘length’ of undefined” There has been a known issue with Firefox an">
+<meta name="keywords" content="asp.net,howto,javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "TypeError: m[5] is undefined", "TypeError: Cannot read property length of undefined" and How to Override JavaScript in ASP.NET WebResource.axd files">
+<meta property="og:title" content="Solution to &quot;TypeError: m[5] is undefined&quot;, &quot;TypeError: Cannot read property length of undefined&quot; and How to Override JavaScript in ASP.NET WebResource.axd files">
 <meta property="og:url" content="https://blog.jongallant.com/2013/03/typeerror-webresource-override/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.
-
-“TypeError: m[5] is undefined”
-
-“TypeError: Cannot read property ‘length’ of undefined”
-There has been a known issue with Firefox an">
+<meta property="og:description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.  “TypeError: m[5] is undefined”  “TypeError: Cannot read property ‘length’ of undefined” There has been a known issue with Firefox an">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:20:37.928Z">
+<meta property="og:updated_time" content="2018-12-10T22:20:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "TypeError: m[5] is undefined", "TypeError: Cannot read property length of undefined" and How to Override JavaScript in ASP.NET WebResource.axd files">
-<meta name="twitter:description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.
-
-“TypeError: m[5] is undefined”
-
-“TypeError: Cannot read property ‘length’ of undefined”
-There has been a known issue with Firefox an">
+<meta name="twitter:title" content="Solution to &quot;TypeError: m[5] is undefined&quot;, &quot;TypeError: Cannot read property length of undefined&quot; and How to Override JavaScript in ASP.NET WebResource.axd files">
+<meta name="twitter:description" content="You’ll sometimes get this error in Firefox and Chrome, but not IE.  “TypeError: m[5] is undefined”  “TypeError: Cannot read property ‘length’ of undefined” There has been a known issue with Firefox an">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -80,7 +67,7 @@ There has been a known issue with Firefox an">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -214,32 +201,23 @@ There has been a known issue with Firefox an">
         
         <div class="article-entry" itemprop="articleBody">
             <p>You’ll sometimes get this error in Firefox and Chrome, but not IE.</p>
-<p><img src="/images/blog/Solution-to-TypeError_57B3/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-TypeError_57B3/image.png" alt></p>
 <p><em>“TypeError: m[5] is undefined”</em></p>
-<p><img src="/images/blog/Solution-to-TypeError_57B3/image_3.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-TypeError_57B3/image_3.png" alt></p>
 <p><em>“TypeError: Cannot read property ‘length’ of undefined”</em></p>
-<p>There has been a known issue with Firefox and Chrome when you combine RegularExpressionValidators and RequiredFieldValidators. It’s been around since 2009, but no one has addressed the issue. Here’s the bug report on <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> forums: <a href="http://forums.asp.net/t/1417973.aspx" title="http://forums.asp.net/t/1417973.aspx" target="_blank" rel="external">http://forums.asp.net/t/1417973.aspx</a> and here’s the bug report filed to Mozilla for the FF issue. Neither of them have a solution.</p>
+<p>There has been a known issue with Firefox and Chrome when you combine RegularExpressionValidators and RequiredFieldValidators. It’s been around since 2009, but no one has addressed the issue. Here’s the bug report on <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> forums: <a href="http://forums.asp.net/t/1417973.aspx" title="http://forums.asp.net/t/1417973.aspx" target="_blank" rel="noopener">http://forums.asp.net/t/1417973.aspx</a> and here’s the bug report filed to Mozilla for the FF issue. Neither of them have a solution.</p>
 <p>I narrowed it down to these lines of code in WebResource.axd – the one with the Validator control JavaScript that starts with</p>
 <p>var Page_ValidationVer = “125”;</p>
-<span class="keyword">if</span> (m != <span class="literal">null</span> &amp;amp;&amp;amp; (m[<span class="number">2</span>].length == <span class="number">4</span> || val.dateorder == <span class="string">"ymd"</span>)) &#123;
-  year = (m[<span class="number">5</span>].length == <span class="number">4</span>) ? m[<span class="number">5</span>] : GetFullYear(<span class="built_in">parseInt</span>(m[<span class="number">6</span>], <span class="number">10</span>))
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (m != <span class="literal">null</span> &amp;amp;&amp;amp; (m[<span class="number">2</span>].length == <span class="number">4</span> || val.dateorder == <span class="string">"ymd"</span>)) &#123;</span><br><span class="line">  year = (m[<span class="number">5</span>].length == <span class="number">4</span>) ? m[<span class="number">5</span>] : GetFullYear(<span class="built_in">parseInt</span>(m[<span class="number">6</span>], <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
 <p>The root of the problem is that the WebResource JavaScript isn’t checking if “m[2]” and “m[5]” are undefined before checking the “length” property. The obvious fix is to do just that, but it’s embedded in an automatically generated WebResource.axd file. You can’t edit it directly, but since Microsoft didn’t scope the JavaScript properly you can override that method if you insert a method with the same name at the bottom of the page.</p>
 <p>Here’s how I resolved it:</p>
 <p>1. Create a new .js file called WebResourceOverrides.js</p>
 <p>2. Copy the entire “ValidatorConvert” method from the WebResource.axd file to the file I created in Step 1.</p>
 <p>3. Modify the method to check for undefined</p>
-<span class="comment">// added m[2] undefined check because it was failing in FF and Chrome</span>
-<span class="keyword">if</span> (m != <span class="literal">null</span> &amp;&amp; ( (<span class="keyword">typeof</span>(m[<span class="number">2</span>]) != <span class="string">'undefined'</span> &amp;&amp; m[<span class="number">2</span>].length == <span class="number">4</span>) || val.dateorder == <span class="string">"ymd"</span>)) &#123;
-
-.
-.
-.
-
-<span class="comment">// added m[5] undefined check because it was failing in FF and Chrome</span>
-year = (<span class="keyword">typeof</span> m[<span class="number">5</span>] != <span class="string">'undefined'</span> &amp;amp;&amp;amp; m[<span class="number">5</span>].length == <span class="number">4</span>) ? m[<span class="number">5</span>] : GetFullYear(<span class="built_in">parseInt</span>(m[<span class="number">6</span>], <span class="number">10</span>))
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// added m[2] undefined check because it was failing in FF and Chrome</span></span><br><span class="line"><span class="keyword">if</span> (m != <span class="literal">null</span> &amp;&amp; ( (<span class="keyword">typeof</span>(m[<span class="number">2</span>]) != <span class="string">'undefined'</span> &amp;&amp; m[<span class="number">2</span>].length == <span class="number">4</span>) || val.dateorder == <span class="string">"ymd"</span>)) &#123;</span><br><span class="line"></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line"></span><br><span class="line"><span class="comment">// added m[5] undefined check because it was failing in FF and Chrome</span></span><br><span class="line">year = (<span class="keyword">typeof</span> m[<span class="number">5</span>] != <span class="string">'undefined'</span> &amp;amp;&amp;amp; m[<span class="number">5</span>].length == <span class="number">4</span>) ? m[<span class="number">5</span>] : GetFullYear(<span class="built_in">parseInt</span>(m[<span class="number">6</span>], <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
 <p>4. Reference that new js file AT THE BOTTOM OF my master page</p>
-&lt;script type="text/javascript" src="/WebResourceOverrides.js"&lt;/script&gt;
-<p>You can download my version of the WebResourceOverrides.js file from here: <a href="http://jongallant.com/blogassets/WebResourceOverrides.js.txt" target="_blank" rel="external">http://jongallant.com/blogassets/WebResourceOverrides.js.txt</a>. Just remove the “.txt” extension, copy to your site, add the reference to the bottom of your master page and you are good to go.</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type="text/javascript" src="/WebResourceOverrides.js"&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>You can download my version of the WebResourceOverrides.js file from here: <a href="http://jongallant.com/blogassets/WebResourceOverrides.js.txt" target="_blank" rel="noopener">http://jongallant.com/blogassets/WebResourceOverrides.js.txt</a>. Just remove the “.txt” extension, copy to your site, add the reference to the bottom of your master page and you are good to go.</p>
 <p>Jon</p>
 
         </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,dev,visual studio" />
+    <meta name="keywords" content="c#,dev,visual studio">
     
-    <meta name="description" content="There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting.
-In my referenced project the “Target framework” was set">
+    <meta name="description" content="There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting. In my referenced project the “Target framework” was set">
+<meta name="keywords" content="c#,dev,visual studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[object Object]">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/type-or-namespace-name-build-error/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting.
-In my referenced project the “Target framework” was set">
+<meta property="og:description" content="There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting. In my referenced project the “Target framework” was set">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[object Object]">
-<meta name="twitter:description" content="There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting.
-In my referenced project the “Target framework” was set">
+<meta name="twitter:description" content="There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting. In my referenced project the “Target framework” was set">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ In my referenced project the “Target framework” was set">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,11 +202,11 @@ In my referenced project the “Target framework” was set">
         <div class="article-entry" itemprop="articleBody">
             <p>There are many reasons why this error will appear. One of the less obvious reasons has to do with the “Target framework” project level setting.</p>
 <p>In my referenced project the “Target framework” was set to “.NET Framework 4”</p>
-<p><img src="/images/blog/Solution-to-_BEB1/image.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_BEB1/image.png" alt></p>
 <p>And in the referencing project the “Target framework” was set to “.NET Framework 4 Client Profile”</p>
-<p><img src="/images/blog/Solution-to-_BEB1/image_3.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_BEB1/image_3.png" alt></p>
 <p>And I got the build error:</p>
-<p><img src="/images/blog/Solution-to-_BEB1/image_4.png" alt=""></p>
+<p><img src="/images/blog/Solution-to-_BEB1/image_4.png" alt></p>
 <p>Error    2    The type or namespace name ‘TFSCommon’ could not be found (are you missing a using directive or an assembly reference?)    C:_work\Dev\TFSCode\QueryTextViewer\Program.cs    8    11    QueryTextViewer</p>
 <p>These target frameworks need to match. So just set your referencing project to the same “Target framework” and the build error will be resolved.</p>
 <p>Jon</p>

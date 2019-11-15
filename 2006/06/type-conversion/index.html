@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object).
-Because the und">
+    <meta name="description" content="While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object). Because the und">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Type conversion (From object to Nullable, Enum, Custom TypeConverter)">
 <meta property="og:url" content="https://blog.jongallant.com/2006/06/type-conversion/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object).
-Because the und">
+<meta property="og:description" content="While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object). Because the und">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-11T01:33:57.582Z">
+<meta property="og:updated_time" content="2018-12-11T01:33:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Type conversion (From object to Nullable, Enum, Custom TypeConverter)">
-<meta name="twitter:description" content="While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object).
-Because the und">
+<meta name="twitter:description" content="While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object). Because the und">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +66,7 @@ Because the und">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -201,35 +199,7 @@ Because the und">
         <div class="article-entry" itemprop="articleBody">
             <p>While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object).</p>
 <p>Because the underlying datatype could have been anything (ref/value type, nullable, custom) I created a helper method that accepts an object value and returns the value casted to the appropriate type.  The can obviously be used in many contexts so I thought I’d share.</p>
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">ConvertTo</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span></span>)</span>
-&#123;
-    <span class="comment">// check for value = null, thx alex</span>
-
-    Type t = <span class="keyword">typeof</span>(T);
-
-    <span class="comment">// do we have a nullable type?</span>
-    <span class="keyword">if</span> (t.IsGenericType &amp;&amp; t.GetGenericTypeDefinition().Equals(<span class="keyword">typeof</span>(Nullable&lt;&gt;)))
-    &#123;
-        NullableConverter nc = <span class="keyword">new</span> NullableConverter(t);
-        t = nc.UnderlyingType;
-    &#125;
-
-    <span class="keyword">if</span> (t.IsEnum) <span class="comment">// if enum use parse</span>
-        <span class="keyword">return</span> (T)Enum.Parse(t, <span class="keyword">value</span>.ToString(), <span class="literal">false</span>);
-    <span class="keyword">else</span>
-    &#123;
-        <span class="comment">// if we have a custom type converter then use it</span>
-        TypeConverter td = TypeDescriptor.GetConverter(t);
-        <span class="keyword">if</span> (td.CanConvertFrom(<span class="keyword">value</span>.GetType()))
-        &#123;
-            <span class="keyword">return</span> (T)td.ConvertFrom(<span class="keyword">value</span>);
-        &#125;
-        <span class="keyword">else</span> <span class="comment">// otherwise use the changetype</span>
-            <span class="keyword">return</span> (T)Convert.ChangeType(<span class="keyword">value</span>, t);
-    &#125;
-&#125;
-
-DateTime dt = TypeConversionUtility.ConvertTo(dateVal);
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">ConvertTo</span>(<span class="params"><span class="keyword">object</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// check for value = null, thx alex</span></span><br><span class="line"></span><br><span class="line">    Type t = <span class="keyword">typeof</span>(T);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// do we have a nullable type?</span></span><br><span class="line">    <span class="keyword">if</span> (t.IsGenericType &amp;&amp; t.GetGenericTypeDefinition().Equals(<span class="keyword">typeof</span>(Nullable&lt;&gt;)))</span><br><span class="line">    &#123;</span><br><span class="line">        NullableConverter nc = <span class="keyword">new</span> NullableConverter(t);</span><br><span class="line">        t = nc.UnderlyingType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (t.IsEnum) <span class="comment">// if enum use parse</span></span><br><span class="line">        <span class="keyword">return</span> (T)Enum.Parse(t, <span class="keyword">value</span>.ToString(), <span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// if we have a custom type converter then use it</span></span><br><span class="line">        TypeConverter td = TypeDescriptor.GetConverter(t);</span><br><span class="line">        <span class="keyword">if</span> (td.CanConvertFrom(<span class="keyword">value</span>.GetType()))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> (T)td.ConvertFrom(<span class="keyword">value</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// otherwise use the changetype</span></span><br><span class="line">            <span class="keyword">return</span> (T)Convert.ChangeType(<span class="keyword">value</span>, t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DateTime dt = TypeConversionUtility.ConvertTo(dateVal);</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer>

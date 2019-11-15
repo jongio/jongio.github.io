@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="javascript,vuejs,web" />
+    <meta name="keywords" content="javascript,vuejs,web">
     
-    <meta name="description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.
-For example, with this code, I define data: { vm: {} }, but don’t">
+    <meta name="description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work. For example, with this code, I define data: { vm: {} }, but don’t">
+<meta name="keywords" content="javascript,vuejs,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to Vue.js Not Binding Complex View Model Objects">
 <meta property="og:url" content="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.
-For example, with this code, I define data: { vm: {} }, but don’t">
+<meta property="og:description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work. For example, with this code, I define data: { vm: {} }, but don’t">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/000046.png">
-<meta property="og:updated_time" content="2019-01-26T06:34:07.734Z">
+<meta property="og:updated_time" content="2019-01-26T06:34:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to Vue.js Not Binding Complex View Model Objects">
-<meta name="twitter:description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.
-For example, with this code, I define data: { vm: {} }, but don’t">
+<meta name="twitter:description" content="I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work. For example, with this code, I define data: { vm: {} }, but don’t">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/000046.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ For example, with this code, I define data: { vm: {} }, but don’t">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,64 +202,12 @@ For example, with this code, I define data: { vm: {} }, but don’t">
         <div class="article-entry" itemprop="articleBody">
             <p>I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.</p>
 <p>For example, with this code, I define <code>data: { vm: {} }</code>, but don’t have the <code>items</code> property and then later set the <code>items</code> property in the <code>mounted</code> function.</p>
-<span class="tag">&lt;<span class="name">html</span>&gt;</span>
-
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-
-    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-
-    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
-        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;
-            <span class="attr">el</span>: <span class="string">'#app'</span>,
-            <span class="attr">data</span>: &#123;
-                <span class="attr">vm</span>: &#123;&#125;
-            &#125;,
-            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
-                <span class="keyword">this</span>.vm.items = [&#123;
-                    <span class="string">"key"</span>: <span class="string">"key1"</span>
-                &#125;];
-            &#125;
-        &#125;);
-    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            el: <span class="string">'#app'</span>,</span></span><br><span class="line">            data: &#123;</span><br><span class="line">                vm: &#123;&#125;</span><br><span class="line">            &#125;,</span><br><span class="line"><span class="javascript">            mounted: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">this</span>.vm.items = [&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">"key"</span>: <span class="string">"key1"</span></span></span><br><span class="line">                &#125;];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="000044.png" alt="'Without items rendered'"><br>
 You can see that the items are not rendered, but they do appear in the Vue data model.</p>
 <p>It took me a while to figure this out, but when you define “data”, you have to specify the entire schema of the object. It will not work with dynamic objects - at least not to my current knowledge. LMK if there’s a way.</p>
 <p>So, I updated my code, like this:</p>
-<span class="tag">&lt;<span class="name">html</span>&gt;</span>
-
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-
-    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-
-    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
-        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;
-            <span class="attr">el</span>: <span class="string">'#app'</span>,
-            <span class="attr">data</span>: &#123;
-                <span class="attr">vm</span>: &#123;
-                    <span class="attr">items</span>: []
-                &#125;
-            &#125;,
-            <span class="attr">mounted</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
-                <span class="keyword">this</span>.vm.items = [&#123;
-                    <span class="string">"key"</span>: <span class="string">"key1"</span>
-                &#125;];
-            &#125;
-        &#125;);
-    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Items<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in vm.items"</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            el: <span class="string">'#app'</span>,</span></span><br><span class="line">            data: &#123;</span><br><span class="line">                vm: &#123;</span><br><span class="line">                    items: []</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"><span class="javascript">            mounted: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">this</span>.vm.items = [&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="string">"key"</span>: <span class="string">"key1"</span></span></span><br><span class="line">                &#125;];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="000045.png" alt="'With items rendered'"></p>
 <p>And, as you can see the “items” property is now bound and rendered.</p>
 <p>I burned a at least an hour on this today. I hope I save that time for you with this post.</p>

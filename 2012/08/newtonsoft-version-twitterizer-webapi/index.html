@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.
-
-Unfortunatel">
+    <meta name="description" content="I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.  Unfortunatel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to the exception: "Updating 'Newtonsoft.Json 4.5.8' to 'Newtonsoft.Json 4.5.5' failed. Unable to find a version of 'Microsoft.AspNet.WebApi.Client' that is compatible with 'Newtonsoft.Json 4.5.5'." when trying to install the twitterizer NuGet package in Visual Studio 2012">
+<meta property="og:title" content="Solution to the exception: &quot;Updating &#39;Newtonsoft.Json 4.5.8&#39; to &#39;Newtonsoft.Json 4.5.5&#39; failed. Unable to find a version of &#39;Microsoft.AspNet.WebApi.Client&#39; that is compatible with &#39;Newtonsoft.Json 4.5.5&#39;.&quot; when trying to install the twitterizer NuGet package in Visual Studio 2012">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/newtonsoft-version-twitterizer-webapi/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.
-
-Unfortunatel">
+<meta property="og:description" content="I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.  Unfortunatel">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to the exception: "Updating 'Newtonsoft.Json 4.5.8' to 'Newtonsoft.Json 4.5.5' failed. Unable to find a version of 'Microsoft.AspNet.WebApi.Client' that is compatible with 'Newtonsoft.Json 4.5.5'." when trying to install the twitterizer NuGet package in Visual Studio 2012">
-<meta name="twitter:description" content="I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.
-
-Unfortunatel">
+<meta name="twitter:title" content="Solution to the exception: &quot;Updating &#39;Newtonsoft.Json 4.5.8&#39; to &#39;Newtonsoft.Json 4.5.5&#39; failed. Unable to find a version of &#39;Microsoft.AspNet.WebApi.Client&#39; that is compatible with &#39;Newtonsoft.Json 4.5.5&#39;.&quot; when trying to install the twitterizer NuGet package in Visual Studio 2012">
+<meta name="twitter:description" content="I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.  Unfortunatel">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +66,7 @@ Unfortunatel">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,7 +198,7 @@ Unfortunatel">
         
         <div class="article-entry" itemprop="articleBody">
             <p>I have the RTM of Visual Studio installed, but the WebApi NuGet RTM build isn’t available yet. WebApi depends on Newtonsoft.Json and so does Twitterizer, but there is a version conflict.</p>
-<p><img src="/images/blog/59461963c47b_1483E/image.png" alt=""></p>
+<p><img src="/images/blog/59461963c47b_1483E/image.png" alt></p>
 <p>Unfortunately the solution to this error: <em>“Updating ‘Newtonsoft.Json 4.5.8’ to ‘Newtonsoft.Json 4.5.5’ failed. Unable to find a version of ‘Microsoft.AspNet.WebApi.Client’ that is compatible with ‘Newtonsoft.Json 4.5.5’.”</em> is to uninstall WebApi from the project and then install Twitterizer.</p>
 <p>For now, until WebApi RTMs, you can’t have both twitterizer and WebApi installed in the same project. You can easily just create another WebApi project that doesn’t need twitterizer.</p>
 <p>Sorry for the hassle. Should be fixed with WebApi RTMs. Which should be soon.</p>

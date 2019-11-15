@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="asp.net" />
+    <meta name="keywords" content="asp.net">
     
     <meta name="description" content="Truth be told – I haven’t done a lot of ASP.NET dev over the last couple of years, but since I do a good amount of maker projects that involve webhooks, I had to checkout the new ASP.NET WebHooks feat">
+<meta name="keywords" content="asp.net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASP.NET WebHooks Preview Nuget Package Install Script">
 <meta property="og:url" content="https://blog.jongallant.com/2015/11/aspnet-webhooks-nuget-install/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Truth be told – I haven’t done a lot of ASP.NET dev over the last couple of years, but since I do a good amount of maker projects that involve webhooks, I had to checkout the new ASP.NET WebHooks feat">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:20.960Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASP.NET WebHooks Preview Nuget Package Install Script">
 <meta name="twitter:description" content="Truth be told – I haven’t done a lot of ASP.NET dev over the last couple of years, but since I do a good amount of maker projects that involve webhooks, I had to checkout the new ASP.NET WebHooks feat">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,26 +200,11 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Truth be told – I haven’t done a lot of <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> dev over the last couple of years, but since I do a good amount of maker projects that involve webhooks, I had to checkout the <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx" target="_blank" rel="external">new ASP.NET WebHooks feature</a>.</p>
-<p>I went to install the Nuget packages recommended by <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/15/sending-webhooks-with-asp-net-webhooks-preview.aspx" target="_blank" rel="external">this article</a> and got this error:</p>
-Install-Package : Failed to add reference to &apos;System.IO&apos;. Please make sure that it is in the Global Assembly Cache.
-
-At C:\users\jong\documents\visual studio 2015\Projects\webhookstest1\nuget-install.ps1:2 char:1
-
-Install-Package Microsoft.AspNet.WebHooks.Custom.AzureStorage -Includ …
-
-~~~~~~~~~~~~~~~~~
-     + CategoryInfo          : NotSpecified: (:) [Install-Package], Exception
-     + FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdlets.InstallPackageCommand
- 
- 
-
-Install failed. Rolling back…
-
-Package &apos;Microsoft.AspNet.DataProtection 1.0.0-beta6&apos; does not exist in project &apos;webhookstest1&apos;
+            <p>Truth be told – I haven’t done a lot of <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> dev over the last couple of years, but since I do a good amount of maker projects that involve webhooks, I had to checkout the <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx" target="_blank" rel="noopener">new ASP.NET WebHooks feature</a>.</p>
+<p>I went to install the Nuget packages recommended by <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/15/sending-webhooks-with-asp-net-webhooks-preview.aspx" target="_blank" rel="noopener">this article</a> and got this error:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Install-Package : Failed to add reference to &apos;System.IO&apos;. Please make sure that it is in the Global Assembly Cache.</span><br><span class="line"></span><br><span class="line">At C:\users\jong\documents\visual studio 2015\Projects\webhookstest1\nuget-install.ps1:2 char:1</span><br><span class="line"></span><br><span class="line">Install-Package Microsoft.AspNet.WebHooks.Custom.AzureStorage -Includ …</span><br><span class="line"></span><br><span class="line">~~~~~~~~~~~~~~~~~</span><br><span class="line">     + CategoryInfo          : NotSpecified: (:) [Install-Package], Exception</span><br><span class="line">     + FullyQualifiedErrorId : NuGetCmdletUnhandledException,NuGet.PackageManagement.PowerShellCmdlets.InstallPackageCommand</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Install failed. Rolling back…</span><br><span class="line"></span><br><span class="line">Package &apos;Microsoft.AspNet.DataProtection 1.0.0-beta6&apos; does not exist in project &apos;webhookstest1&apos;</span><br></pre></td></tr></table></figure>
 <p>It could have surfaced via the following exception as well:</p>
-Error    CS1061    &apos;HttpConfiguration&apos; does not contain a definition for &apos;InitializeCustomWebHooksAzureStorage&apos; and no extension method &apos;InitializeCustomWebHooksAzureStorage&apos; accepting a first argument of type &apos;HttpConfiguration&apos; could be found (are you missing a using directive or an assembly reference?)   
- WebApplication4    c:\users\jong\documents\visual studio 2015\Projects\WebApplication4\WebApplication4\App_Start\WebApiConfig.cs    24
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Error    CS1061    &apos;HttpConfiguration&apos; does not contain a definition for &apos;InitializeCustomWebHooksAzureStorage&apos; and no extension method &apos;InitializeCustomWebHooksAzureStorage&apos; accepting a first argument of type &apos;HttpConfiguration&apos; could be found (are you missing a using directive or an assembly reference?)   </span><br><span class="line"> WebApplication4    c:\users\jong\documents\visual studio 2015\Projects\WebApplication4\WebApplication4\App_Start\WebApiConfig.cs    24</span><br></pre></td></tr></table></figure>
 <p>It looks like Microsoft.AspNet.DataProtection is also required. I created a gist that includes all the dependencies you need.<script src="https://gist.github.com/jongio/793c29a3511e9ebe56f3.js"></script></p>
 <p>Just copy that ps1 file to your solution folder and run it in the Package Manager Console</p>
 <p>Hope this help</p>

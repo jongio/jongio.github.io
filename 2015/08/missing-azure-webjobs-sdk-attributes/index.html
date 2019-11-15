@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure" />
+    <meta name="keywords" content="azure">
     
-    <meta name="description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same.
-Here’s the exception we are dealing with:
-
-can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
+    <meta name="description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same. Here’s the exception we are dealing with:  can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
+<meta name="keywords" content="azure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "can't be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?" when creating an Azure WebJob">
+<meta property="og:title" content="Solution to &quot;can&#39;t be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?&quot; when creating an Azure WebJob">
 <meta property="og:url" content="https://blog.jongallant.com/2015/08/missing-azure-webjobs-sdk-attributes/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same.
-Here’s the exception we are dealing with:
-
-can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
+<meta property="og:description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same. Here’s the exception we are dealing with:  can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:40.112Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "can't be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?" when creating an Azure WebJob">
-<meta name="twitter:description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same.
-Here’s the exception we are dealing with:
-
-can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
+<meta name="twitter:title" content="Solution to &quot;can&#39;t be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?&quot; when creating an Azure WebJob">
+<meta name="twitter:description" content="I spent spent way too much time with this one. Hope this post saves you from doing the same. Here’s the exception we are dealing with:  can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@ can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -209,7 +202,7 @@ can’t be invoked from Azure WebJobs SDK. Is it missing Azure Web">
         <div class="article-entry" itemprop="articleBody">
             <p>I spent spent way too much time with this one. Hope this post saves you from doing the same.</p>
 <p>Here’s the exception we are dealing with:</p>
-<p><img src="/images/blog/5a6d0d23da10_6745/image.png" alt=""><br>
+<p><img src="/images/blog/5a6d0d23da10_6745/image.png" alt><br>
 can’t be invoked from Azure WebJobs SDK. Is it missing Azure WebJobs SDK attributes?</p>
 <p>I got this error when I was creating an on-demand WebJob. It should have take a few minutes to write the entire job, but the error message led me down a path and I put my blinders onto visibility issues. Based on the message, I spent a bunch of time researching Azure WebJobs attributes to no avail. I then broke the problem down by creating a new WebJob with only a few lines of code:</p>
 <script src="https://gist.github.com/jongio/4d8364f49f49e2ae087f.js"></script>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,iot,azure,powerbi" />
+    <meta name="keywords" content="azure,iot,howto,powerbi">
     
     <meta name="description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
+<meta name="keywords" content="azure,iot,howto,powerbi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Build a Real-Time IoT Dashboard with Azure IoT Hub, Azure Stream Analytics and Power BI">
 <meta property="og:url" content="https://blog.jongallant.com/2016/06/iot-dashboard-azure-iot-hub-powerbi/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:39.708Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Build a Real-Time IoT Dashboard with Azure IoT Hub, Azure Stream Analytics and Power BI">
 <meta name="twitter:description" content="Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&amp;gt; Azure IoT Hub –&amp;gt; Azure Stream Analytics –&amp;gt; Power BI. Follow alon">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,14 +200,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&gt; <a href="https://azure.microsoft.com/en-us/services/iot-hub/" target="_blank" rel="external">Azure IoT Hub</a> –&gt; <a href="https://azure.microsoft.com/en-us/services/stream-analytics/" target="_blank" rel="external">Azure Stream Analytics</a> –&gt; <a href="http://powerbi.com" target="_blank" rel="external">Power BI</a>. Follow along with this post if you want to build out a simple version to get your started. Please leave a comment if you have any issues along the way.</p>
+            <p>Azure provides a set of services that allow you to visualize IoT device data in real-time. The data pipeline is: IoT Device –&gt; <a href="https://azure.microsoft.com/en-us/services/iot-hub/" target="_blank" rel="noopener">Azure IoT Hub</a> –&gt; <a href="https://azure.microsoft.com/en-us/services/stream-analytics/" target="_blank" rel="noopener">Azure Stream Analytics</a> –&gt; <a href="http://powerbi.com" target="_blank" rel="noopener">Power BI</a>. Follow along with this post if you want to build out a simple version to get your started. Please leave a comment if you have any issues along the way.</p>
 <p>Here’s the end result…trust me, it updates in real-time once you build this out.</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image.png" alt></p>
 <ul>
-<li><strong>Azure IoT Hub</strong> will be setup with the new Azure Portal <a href="https://portal.azure.com/" title="https://portal.azure.com" target="_blank" rel="external">https://portal.azure.com</a></li>
-<li><strong>IoT Device Code</strong> is on GitHub here <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="external">https://github.com/jongio/UWPIoTDevice</a></li>
-<li><strong>Azure Stream Analytics</strong> will be setup with the old Azure Portal <a href="https://manage.windowsazure.com" title="https://manage.windowsazure.com" target="_blank" rel="external">https://manage.windowsazure.com</a> (Stream Analytics is in the new portal, but it doesn’t have Power BI output yet)</li>
-<li><strong>Power BI</strong> dashboard will be setup at <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a></li>
+<li><strong>Azure IoT Hub</strong> will be setup with the new Azure Portal <a href="https://portal.azure.com/" title="https://portal.azure.com" target="_blank" rel="noopener">https://portal.azure.com</a></li>
+<li><strong>IoT Device Code</strong> is on GitHub here <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="noopener">https://github.com/jongio/UWPIoTDevice</a></li>
+<li><strong>Azure Stream Analytics</strong> will be setup with the old Azure Portal <a href="https://manage.windowsazure.com" title="https://manage.windowsazure.com" target="_blank" rel="noopener">https://manage.windowsazure.com</a> (Stream Analytics is in the new portal, but it doesn’t have Power BI output yet)</li>
+<li><strong>Power BI</strong> dashboard will be setup at <a href="http://app.powerbi.com" target="_blank" rel="noopener">http://app.powerbi.com</a></li>
 </ul>
 <h1>Azure IoT Hub</h1>
 <p>Follow my “<a href="/2016/05/azure-iot-hub-uwp.html">how to Get Started with Azure IoT Hub and a UWP App</a>” to get the IoT Hub setup and the code that will run on your emulated IoT device. When you setup the IoT Hub, choose the S1 option instead of free if you want to write more than 8k messages a day.</p>
@@ -213,25 +215,21 @@
 <p>Now, let’s modify the device code to write more than a simple string to the IoT Hub.</p>
 <h1>IoT Device Code</h1>
 <p>This is the code that will run on the emulated IoT Device. It will write random JSON Serialized messages to your IoT Hub. The data model is simple a single “Participant” class with “Position” and “Count” properties.</p>
-public class Participant
-&#123;
-     public int Position &#123; get; set; &#125;
-     public int Count &#123; get; set; &#125;
-&#125;
-<p>1. Clone this repo: <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="external">https://github.com/jongio/UWPIoTDevice</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Participant</span><br><span class="line">&#123;</span><br><span class="line">     public int Position &#123; get; set; &#125;</span><br><span class="line">     public int Count &#123; get; set; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1. Clone this repo: <a href="https://github.com/jongio/UWPIoTDevice" title="https://github.com/jongio/UWPIoTDevice" target="_blank" rel="noopener">https://github.com/jongio/UWPIoTDevice</a></p>
 <p>2. Open the DeviceKey.txt file and paste in your device connection string from the Azure Portal. (I don’t do much UWP dev and couldn’t quickly figure out how they want us to store config settings like this, so I just dropped it in a text file. LMK if you know a better way to manage config settings)</p>
 <p>3. Compile and move onto next step.</p>
 <h1>Azure Stream Analytics</h1>
 <p>Stream Analytics will take messages from IoT Hub and push them to Power BI. There are three things you need to configure: input, query and output.</p>
-<p>1. Go to the old Azure Portal: <a href="https://manage.windowsazure.com" title="https://manage.windowsazure.com" target="_blank" rel="external">https://manage.windowsazure.com</a></p>
+<p>1. Go to the old Azure Portal: <a href="https://manage.windowsazure.com" title="https://manage.windowsazure.com" target="_blank" rel="noopener">https://manage.windowsazure.com</a></p>
 <p>2. Create a new Stream Analytics</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_3.png" alt=""></p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_4.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_3.png" alt></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_4.png" alt></p>
 <p>3. Connect the “input” to the IoT Hub you created earlier. Choose “Data stream”, “IoT Hub”, “JSON” and “UTF8”</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_5.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_5.png" alt></p>
 <p>4. Connect the “output” to Power BI. You will need to authenticate to Power BI.</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_6.png" alt=""></p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_7.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_6.png" alt></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_7.png" alt></p>
 <p>5. Write a query that connects your IoT Hub input to your Power BI output.</p>
  <script src="https://gist.github.com/jongio/aa30af73d1e324ad1bb6fe27cbe181e7.js"></script> 
 <p>6. Click the Save button.</p>
@@ -239,25 +237,25 @@ public class Participant
 <h1>Power BI</h1>
 <p>Stream Analytics will automatically create the Power BI dataset after you send the first message to it.</p>
 <p>1. Open up the UWPIoTDevice project you cloned earlier and send a single message.</p>
-<p>2. Go to <a href="http://app.powerbi.com" target="_blank" rel="external">http://app.powerbi.com</a>. You should see that the Power BI dataset has been automatically created.</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_8.png" alt=""></p>
+<p>2. Go to <a href="http://app.powerbi.com" target="_blank" rel="noopener">http://app.powerbi.com</a>. You should see that the Power BI dataset has been automatically created.</p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_8.png" alt></p>
 <p>3. Click on the dataset, add the position and count fields.</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_9.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_9.png" alt></p>
 <p>You should now see something like this:</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_10.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_10.png" alt></p>
 <p>4. Go back to the UWP app and send some more messages, then come back to Power BI and click Refresh. You should now see something like this:</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_11.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_11.png" alt></p>
 <p>Modify the appearance however you’d like. I just added data labels to mine</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_12.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_12.png" alt></p>
 <p>5. Click “Save” in the upper right hand corner and give the report a name:</p>
 <p>VERY IMPORTANT: Save the report before pinning the visual to the dashboard.</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_13.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_13.png" alt></p>
 <p>6. Click on the “Pin” icon on that visual and pin it to a dashboard.</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_15.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_15.png" alt></p>
 <p>7. Open your dashboard</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_17.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_17.png" alt></p>
 <p>8. Open the UWPIoTDevice app and send some more messages</p>
-<p><img src="/images/blog/481dd41dcc5e_EBDD/image_18.png" alt=""></p>
+<p><img src="/images/blog/481dd41dcc5e_EBDD/image_18.png" alt></p>
 <p>You should now see the dashboard being updated in real-time as you send more messages to it.</p>
 <p>Jon</p>
 

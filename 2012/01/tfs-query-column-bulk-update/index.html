@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,7 +12,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="I just created 10 queries with all the same columns and sort order. I then realized I missed a column and wanted to add another sort column to all those queries. I made the changes to one of the other">
 <meta property="og:type" content="article">
@@ -20,6 +20,7 @@
 <meta property="og:url" content="https://blog.jongallant.com/2012/01/tfs-query-column-bulk-update/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I just created 10 queries with all the same columns and sort order. I then realized I missed a column and wanted to add another sort column to all those queries. I made the changes to one of the other">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:01.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +31,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,30 +204,15 @@
 </blockquote>
 <p>1. Open a new console app.<br>
 2. Reference Microsoft.TeamFoundation.Client and Microsoft.TeamFoundation.WorkItemTracking.Client<br>
-<img src="/images/blog/4403.image_5F00_thumb_5F00_117FE0D7.png" alt=""><br>
+<img src="/images/blog/4403.image_5F00_thumb_5F00_117FE0D7.png" alt><br>
 3. Add the using statements:</p>
-<span class="keyword">using</span> Microsoft.TeamFoundation.Client;
-<span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.Client;</span><br><span class="line"><span class="keyword">using</span> Microsoft.TeamFoundation.WorkItemTracking.Client;</span><br></pre></td></tr></table></figure>
 <p>4. Add this code to your main method</p>
-<span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"[url to your tfs server]"</span>));
-<span class="keyword">var</span> store = tfs.GetService();
-<span class="keyword">var</span> project = store.Projects[<span class="string">"[your project name"</span>];
-  <span class="keyword">var</span> sourceGuid = <span class="keyword">new</span> Guid(<span class="string">"14c1bcab-0bcb-40ee-80c1-e23d1dc41a15"</span>); List destinationGuids = <span class="keyword">new</span> List &#123;
-   <span class="keyword">new</span> Guid(<span class="string">"183dba3a-06fd-4b3f-bf60-9dec3fe8cfcd"</span>), <span class="keyword">new</span> Guid(<span class="string">"c0a612b9-9e61-4f78-98ab-07c70702b9d6"</span>), <span class="keyword">new</span> Guid(<span class="string">"3925276a-389c-4052-b1c9-6efedc2ee3a0"</span>), <span class="keyword">new</span> Guid(<span class="string">"599f08f7-a3c0-4b88-a7fe-66f1b9e88e54"</span>), <span class="keyword">new</span> Guid(<span class="string">"80d10f84-b14d-429c-82df-c6c0113fd043"</span>), <span class="keyword">new</span> Guid(<span class="string">"5cc37d79-70c2-426d-bfe4-8544c805ae21"</span>), <span class="keyword">new</span> Guid(<span class="string">"d147d553-0aac-4ebb-8ee7-d281cb5fc7c0"</span>), <span class="keyword">new</span> Guid(<span class="string">"01e8daea-585a-4d3e-af0d-c2c11e742f8c"</span>)
-  &#125;; <span class="comment">// the QueryText is a lot like SQL... SELECT COLUMNS FROM TABLE ORDER BY COLUMNS // we want to get the selected COLUMNS and the ORDER BY columns, then copy those to the destination queries var sourceQuery = project.StoredQueries[sourceGuid];</span>
-  <span class="comment">// get the columns</span>
-  <span class="keyword">var</span> sourceColumns = sourceQuery.QueryText.Substring(<span class="number">0</span>, sourceQuery.QueryText.IndexOf(<span class="string">" from "</span>));
-  <span class="comment">// get the order by</span>
-  <span class="keyword">var</span> sourceSort = sourceQuery.QueryText.Substring(sourceQuery.QueryText.IndexOf(<span class="string">" order by "</span>)); <span class="keyword">foreach</span>(Guid destinationGuid <span class="keyword">in</span> destinationGuids) &#123; <span class="comment">// get the destination query filters, the stuff in between the columns and the order by        StoredQuery destinationQuery = project.StoredQueries[destinationGuid];        int fromIndex = destinationQuery.QueryText.IndexOf(" from ");        int orderByIndex = destinationQuery.QueryText.IndexOf(" order by ");</span>
-   <span class="keyword">string</span> queryFilters = destinationQuery.QueryText.Substring(fromIndex, orderByIndex - fromIndex);
-   <span class="comment">// combine the source columns and sort with the destination filters</span>
-   destinationQuery.QueryText = <span class="keyword">string</span>.Concat(sourceColumns, queryFilters, sourceSort);
-   destinationQuery.Update();
-  &#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(<span class="keyword">new</span> Uri(<span class="string">"[url to your tfs server]"</span>));</span><br><span class="line"><span class="keyword">var</span> store = tfs.GetService();</span><br><span class="line"><span class="keyword">var</span> project = store.Projects[<span class="string">"[your project name"</span>];</span><br><span class="line">  <span class="keyword">var</span> sourceGuid = <span class="keyword">new</span> Guid(<span class="string">"14c1bcab-0bcb-40ee-80c1-e23d1dc41a15"</span>); List destinationGuids = <span class="keyword">new</span> List &#123;</span><br><span class="line">   <span class="keyword">new</span> Guid(<span class="string">"183dba3a-06fd-4b3f-bf60-9dec3fe8cfcd"</span>), <span class="keyword">new</span> Guid(<span class="string">"c0a612b9-9e61-4f78-98ab-07c70702b9d6"</span>), <span class="keyword">new</span> Guid(<span class="string">"3925276a-389c-4052-b1c9-6efedc2ee3a0"</span>), <span class="keyword">new</span> Guid(<span class="string">"599f08f7-a3c0-4b88-a7fe-66f1b9e88e54"</span>), <span class="keyword">new</span> Guid(<span class="string">"80d10f84-b14d-429c-82df-c6c0113fd043"</span>), <span class="keyword">new</span> Guid(<span class="string">"5cc37d79-70c2-426d-bfe4-8544c805ae21"</span>), <span class="keyword">new</span> Guid(<span class="string">"d147d553-0aac-4ebb-8ee7-d281cb5fc7c0"</span>), <span class="keyword">new</span> Guid(<span class="string">"01e8daea-585a-4d3e-af0d-c2c11e742f8c"</span>)</span><br><span class="line">  &#125;; <span class="comment">// the QueryText is a lot like SQL... SELECT COLUMNS FROM TABLE ORDER BY COLUMNS // we want to get the selected COLUMNS and the ORDER BY columns, then copy those to the destination queries var sourceQuery = project.StoredQueries[sourceGuid];</span></span><br><span class="line">  <span class="comment">// get the columns</span></span><br><span class="line">  <span class="keyword">var</span> sourceColumns = sourceQuery.QueryText.Substring(<span class="number">0</span>, sourceQuery.QueryText.IndexOf(<span class="string">" from "</span>));</span><br><span class="line">  <span class="comment">// get the order by</span></span><br><span class="line">  <span class="keyword">var</span> sourceSort = sourceQuery.QueryText.Substring(sourceQuery.QueryText.IndexOf(<span class="string">" order by "</span>)); <span class="keyword">foreach</span>(Guid destinationGuid <span class="keyword">in</span> destinationGuids) &#123; <span class="comment">// get the destination query filters, the stuff in between the columns and the order by        StoredQuery destinationQuery = project.StoredQueries[destinationGuid];        int fromIndex = destinationQuery.QueryText.IndexOf(" from ");        int orderByIndex = destinationQuery.QueryText.IndexOf(" order by ");</span></span><br><span class="line">   <span class="keyword">string</span> queryFilters = destinationQuery.QueryText.Substring(fromIndex, orderByIndex - fromIndex);</span><br><span class="line">   <span class="comment">// combine the source columns and sort with the destination filters</span></span><br><span class="line">   destinationQuery.QueryText = <span class="keyword">string</span>.Concat(sourceColumns, queryFilters, sourceSort);</span><br><span class="line">   destinationQuery.Update();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>5. Replace [url to your tfs server] with the url to your tfs server, you can get this from your TFS admin.<br>
 6. Replace [your project name] with the name of your project.<br>
 7. Find the Guid of the source query. You can select the query in Team Explorer and hit F4. Copy the Guid in the Url field to the sourceGuid property in your code.</p>
-<p><img src="/images/blog/1261.image_5F00_thumb_5F00_70203B3A.png" alt=""></p>
+<p><img src="/images/blog/1261.image_5F00_thumb_5F00_70203B3A.png" alt></p>
 <p>8. Find the Guid for all the queries you want to change and put those Guids in the destinationGuids collection.</p>
 <p>9. Run the app.</p>
 <p>HTH,</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,dev" />
+    <meta name="keywords" content="howto,dev">
     
-    <meta name="description" content="The Twitter API has its own custom date time format.
-
-Tue Dec 01 22:35:28 +0000 2015
-
-DateTime.Parse will barf if you try to parse it.
-I searched around a bit and didn’t find a quick resolution. Lucki">
+    <meta name="description" content="The Twitter API has its own custom date time format.  Tue Dec 01 22:35:28 +0000 2015  DateTime.Parse will barf if you try to parse it. I searched around a bit and didn’t find a quick resolution. Lucki">
+<meta name="keywords" content="howto,dev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Parse Twitter's Date Time Format with C#">
+<meta property="og:title" content="How to Parse Twitter&#39;s Date Time Format with C#">
 <meta property="og:url" content="https://blog.jongallant.com/2015/12/twitter-date-parsing-csharp/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="The Twitter API has its own custom date time format.
-
-Tue Dec 01 22:35:28 +0000 2015
-
-DateTime.Parse will barf if you try to parse it.
-I searched around a bit and didn’t find a quick resolution. Lucki">
+<meta property="og:description" content="The Twitter API has its own custom date time format.  Tue Dec 01 22:35:28 +0000 2015  DateTime.Parse will barf if you try to parse it. I searched around a bit and didn’t find a quick resolution. Lucki">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:45.742Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Parse Twitter's Date Time Format with C#">
-<meta name="twitter:description" content="The Twitter API has its own custom date time format.
-
-Tue Dec 01 22:35:28 +0000 2015
-
-DateTime.Parse will barf if you try to parse it.
-I searched around a bit and didn’t find a quick resolution. Lucki">
+<meta name="twitter:title" content="How to Parse Twitter&#39;s Date Time Format with C#">
+<meta name="twitter:description" content="The Twitter API has its own custom date time format.  Tue Dec 01 22:35:28 +0000 2015  DateTime.Parse will barf if you try to parse it. I searched around a bit and didn’t find a quick resolution. Lucki">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -80,7 +67,7 @@ I searched around a bit and didn’t find a quick resolution. Lucki">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -213,12 +200,12 @@ I searched around a bit and didn’t find a quick resolution. Lucki">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The <a href="https://dev.twitter.com/overview/documentation" target="_blank" rel="external">Twitter API</a> has its own custom date time format.</p>
+            <p>The <a href="https://dev.twitter.com/overview/documentation" target="_blank" rel="noopener">Twitter API</a> has its own custom date time format.</p>
 <blockquote>
 <p>Tue Dec 01 22:35:28 +0000 2015</p>
 </blockquote>
 <p>DateTime.Parse will barf if you try to parse it.</p>
-<p>I searched around a bit and didn’t find a quick resolution. Luckily I do know <a href="https://twitter.com/mj1856" target="_blank" rel="external">Matt Johnson</a> aka “DateTime Guy” aka <a href="https://www.pluralsight.com/courses/date-time-fundamentals" target="_blank" rel="external">Date and Time Fundamentals</a> Pluralsight Course Author aka <a href="http://hanselminutes.com/485/the-problem-with-datetime-nodatime-with-matt-johnson" target="_blank" rel="external">Hanselminutes guest</a>…. and he was on IM. He, of course, is very familiar with Twitter’s date format and helped me come up with a couple of options. One for DateTime and one for DateTimeOffset – he recommends DateTimeOffset so I went with that.</p>
+<p>I searched around a bit and didn’t find a quick resolution. Luckily I do know <a href="https://twitter.com/mj1856" target="_blank" rel="noopener">Matt Johnson</a> aka “DateTime Guy” aka <a href="https://www.pluralsight.com/courses/date-time-fundamentals" target="_blank" rel="noopener">Date and Time Fundamentals</a> Pluralsight Course Author aka <a href="http://hanselminutes.com/485/the-problem-with-datetime-nodatime-with-matt-johnson" target="_blank" rel="noopener">Hanselminutes guest</a>…. and he was on IM. He, of course, is very familiar with Twitter’s date format and helped me come up with a couple of options. One for DateTime and one for DateTimeOffset – he recommends DateTimeOffset so I went with that.</p>
 <script src="https://gist.github.com/jongio/ed6aa9811e611e0a645e.js"></script>
 <p>Thanks Matt.</p>
 <p>Hope this helps.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="raspberrypi" />
+    <meta name="keywords" content="raspberrypi">
     
-    <meta name="description" content="The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS.
-Here’s how to get it installed.
-
-Purch">
+    <meta name="description" content="The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS. Here’s how to get it installed.  Purch">
+<meta name="keywords" content="raspberrypi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Install Raspbian on Raspberry Pi">
 <meta property="og:url" content="https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS.
-Here’s how to get it installed.
-
-Purch">
+<meta property="og:description" content="The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS. Here’s how to get it installed.  Purch">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/000332.png">
-<meta property="og:updated_time" content="2017-12-05T06:46:04.566Z">
+<meta property="og:updated_time" content="2017-12-05T06:46:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Install Raspbian on Raspberry Pi">
-<meta name="twitter:description" content="The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS.
-Here’s how to get it installed.
-
-Purch">
+<meta name="twitter:description" content="The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS. Here’s how to get it installed.  Purch">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/11/raspberrypi-install-raspbian/000332.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@ Purch">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -210,24 +203,24 @@ Purch">
             <p>The very first thing you are going to want to do when you get your Raspberry Pi is install an OS.  You have a few options, including Raspbian, a Debian based OS.</p>
 <p>Here’s how to get it installed.</p>
 <ol>
-<li>Purchase a <a href="https://www.adafruit.com/product/2693" target="_blank" rel="external">MicroSD card - 16GB / Class 10</a></li>
-<li>Download <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="external">Raspbian</a>. Either Desktop or Lite.</li>
-<li>Install <a href="https://etcher.io/" target="_blank" rel="external">Etcher</a>. To flash Raspbian to MicroSD card</li>
+<li>Purchase a <a href="https://www.adafruit.com/product/2693" target="_blank" rel="noopener">MicroSD card - 16GB / Class 10</a></li>
+<li>Download <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">Raspbian</a>. Either Desktop or Lite.</li>
+<li>Install <a href="https://etcher.io/" target="_blank" rel="noopener">Etcher</a>. To flash Raspbian to MicroSD card</li>
 <li>Open Etcher. Select Raspbian. Select the MicroSD card. Click Flash!</li>
 </ol>
-<p><img src="000332.png" alt=""></p>
+<p><img src="000332.png" alt></p>
 <blockquote>
 <p>You may see a message indicating that the image cannot be verified. I’ve always ignore it and had no issues.</p>
 </blockquote>
 <ol>
 <li>Wait for about 20 minutes for it to complete the flash.</li>
 <li>Remove the MicroSD card from your desktop and insert it into your Pi.</li>
-<li>Power up your Pi. Make sure you use a 5V/2A power supply like <a href="https://www.adafruit.com/product/2693" target="_blank" rel="external">this one</a>.</li>
+<li>Power up your Pi. Make sure you use a 5V/2A power supply like <a href="https://www.adafruit.com/product/2693" target="_blank" rel="noopener">this one</a>.</li>
 <li>Login to Pi. Default username is <code>pi</code> and password is <code>raspberry</code></li>
 <li>Update Raspbian</li>
 </ol>
 <p>After you connect to the internet, make sure you update Raspbian so you have any security patches installed.</p>
-sudo apt update &amp;&amp; sudo apt full-upgrade -y
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt full-upgrade -y</span><br></pre></td></tr></table></figure>
 <p>You now have Raspbian running on your Pi.</p>
 <p>Jon</p>
 

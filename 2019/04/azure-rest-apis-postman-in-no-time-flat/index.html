@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,50 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,postman,rest" />
+    <meta name="keywords" content="azure,postman,rest">
     
-    <meta name="description" content="This post will show you the fastest way to call the Azure REST APIs using Postman.
-We’ll use:
-
-Postman
-Azure Cloud Shell - https://shell.azure.com
-
-Create Postman Collection
-Let’s create a Postman Col">
+    <meta name="description" content="This post will show you the fastest way to call the Azure REST APIs using Postman. We’ll use:  Postman Azure Cloud Shell - https://shell.azure.com  Create Postman Collection Let’s create a Postman Col">
+<meta name="keywords" content="azure,postman,rest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Call the Azure REST APIs with Postman In No Time Flat">
 <meta property="og:url" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="This post will show you the fastest way to call the Azure REST APIs using Postman.
-We’ll use:
-
-Postman
-Azure Cloud Shell - https://shell.azure.com
-
-Create Postman Collection
-Let’s create a Postman Col">
+<meta property="og:description" content="This post will show you the fastest way to call the Azure REST APIs using Postman. We’ll use:  Postman Azure Cloud Shell - https://shell.azure.com  Create Postman Collection Let’s create a Postman Col">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/000095.png">
-<meta property="og:updated_time" content="2019-04-08T23:16:06.376Z">
+<meta property="og:updated_time" content="2019-04-08T23:16:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Call the Azure REST APIs with Postman In No Time Flat">
-<meta name="twitter:description" content="This post will show you the fastest way to call the Azure REST APIs using Postman.
-We’ll use:
-
-Postman
-Azure Cloud Shell - https://shell.azure.com
-
-Create Postman Collection
-Let’s create a Postman Col">
+<meta name="twitter:description" content="This post will show you the fastest way to call the Azure REST APIs using Postman. We’ll use:  Postman Azure Cloud Shell - https://shell.azure.com  Create Postman Collection Let’s create a Postman Col">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/000095.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -86,7 +67,7 @@ Let’s create a Postman Col">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -222,42 +203,27 @@ Let’s create a Postman Col">
             <p>This post will show you the fastest way to call the Azure REST APIs using Postman.</p>
 <p>We’ll use:</p>
 <ol>
-<li><a href="https://getpostman.com" target="_blank" rel="external">Postman</a></li>
-<li><a href="https://shell.azure.com" target="_blank" rel="external">Azure Cloud Shell</a> - <a href="https://shell.azure.com" target="_blank" rel="external">https://shell.azure.com</a></li>
+<li><a href="https://getpostman.com" target="_blank" rel="noopener">Postman</a></li>
+<li><a href="https://shell.azure.com" target="_blank" rel="noopener">Azure Cloud Shell</a> - <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a></li>
 </ol>
 <h2 id="create-postman-collection"><a class="header-anchor" href="#create-postman-collection"></a>Create Postman Collection</h2>
 <p>Let’s create a Postman Collection, add a pre-request script, and set some variables.</p>
 <ol>
 <li>In Postman, click the “New” button in the upper left and select “Collection”.</li>
 </ol>
-<p><img src="000083.png" alt=""></p>
+<p><img src="000083.png" alt></p>
 <ol start="2">
 <li>Give it a name, but don’t click the “Create” button yet.</li>
 </ol>
-<p><img src="000098.png" alt=""></p>
+<p><img src="000098.png" alt></p>
 <h3 id="pre-request-script"><a class="header-anchor" href="#pre-request-script"></a>Pre-Request Script</h3>
 <p>Postman allows you to assign a pre-request script to a collection, which is code that will run before every request.  We’ll use that to generate a <code>bearerToken</code> that is required in the <code>Authorization</code> header of each Azure REST API request.</p>
-<p>This script will do a POST to <a href="http://login.microsoftonline.com" target="_blank" rel="external">login.microsoftonline.com</a> and put the response token in a global variable called <code>bearerToken</code>.</p>
+<p>This script will do a POST to <a href="http://login.microsoftonline.com" target="_blank" rel="noopener">login.microsoftonline.com</a> and put the response token in a global variable called <code>bearerToken</code>.</p>
 <ol>
 <li>Copy this code block into your collections pre-request script block.</li>
 </ol>
-pm.sendRequest(&#123;
-    <span class="attr">url</span>: <span class="string">'https://login.microsoftonline.com/'</span> + pm.variables.get(<span class="string">"tenantId"</span>) + <span class="string">'/oauth2/token'</span>,
-    <span class="attr">method</span>: <span class="string">'POST'</span>,
-    <span class="attr">header</span>: <span class="string">'Content-Type: application/x-www-form-urlencoded'</span>,
-    <span class="attr">body</span>: &#123;
-        <span class="attr">mode</span>: <span class="string">'urlencoded'</span>,
-        <span class="attr">urlencoded</span>: [ 
-            &#123;<span class="attr">key</span>: <span class="string">"grant_type"</span>, <span class="attr">value</span>: <span class="string">"client_credentials"</span>, <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,
-            &#123;<span class="attr">key</span>: <span class="string">"client_id"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientId"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,
-            &#123;<span class="attr">key</span>: <span class="string">"client_secret"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientSecret"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,
-            &#123;<span class="attr">key</span>: <span class="string">"resource"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"resource"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;
-        ]
-    &#125;
-&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;
-    pm.globals.set(<span class="string">"bearerToken"</span>, res.json().access_token);
-&#125;);
-<p><img src="000092.png" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">pm.sendRequest(&#123;</span><br><span class="line">    url: <span class="string">'https://login.microsoftonline.com/'</span> + pm.variables.get(<span class="string">"tenantId"</span>) + <span class="string">'/oauth2/token'</span>,</span><br><span class="line">    method: <span class="string">'POST'</span>,</span><br><span class="line">    header: <span class="string">'Content-Type: application/x-www-form-urlencoded'</span>,</span><br><span class="line">    body: &#123;</span><br><span class="line">        mode: <span class="string">'urlencoded'</span>,</span><br><span class="line">        urlencoded: [ </span><br><span class="line">            &#123;<span class="attr">key</span>: <span class="string">"grant_type"</span>, <span class="attr">value</span>: <span class="string">"client_credentials"</span>, <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">            &#123;<span class="attr">key</span>: <span class="string">"client_id"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientId"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">            &#123;<span class="attr">key</span>: <span class="string">"client_secret"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"clientSecret"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">            &#123;<span class="attr">key</span>: <span class="string">"resource"</span>, <span class="attr">value</span>: pm.variables.get(<span class="string">"resource"</span>), <span class="attr">disabled</span>: <span class="literal">false</span>&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, res</span>) </span>&#123;</span><br><span class="line">    pm.globals.set(<span class="string">"bearerToken"</span>, res.json().access_token);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="000092.png" alt></p>
 <h3 id="variables"><a class="header-anchor" href="#variables"></a>Variables</h3>
 <p>Postman allows you to set variables at the collection level. We’ll put the variables required by the pre-request script and the Azure REST APIs in the “Variables” tab.</p>
 <ol>
@@ -266,17 +232,13 @@ pm.sendRequest(&#123;
 <blockquote>
 <p>Make sure you add the variable values to the <strong>CURRENT VALUE</strong> column NOT the Initial Value column.</p>
 </blockquote>
-clientId
-clientSecret
-tenantId
-subscriptionId
-resource: https://management.azure.com/
-<p><img src="000102.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clientId</span><br><span class="line">clientSecret</span><br><span class="line">tenantId</span><br><span class="line">subscriptionId</span><br><span class="line">resource: https://management.azure.com/</span><br></pre></td></tr></table></figure>
+<p><img src="000102.png" alt></p>
 <p>Keep the “Create Collection” dialog open and continue to the next step.</p>
 <h2 id="get-azure-variables"><a class="header-anchor" href="#get-azure-variables"></a>Get Azure Variables</h2>
 <ol>
 <li>
-<p>Open Azure Cloud Shell - <a href="https://shell.azure.com" target="_blank" rel="external">https://shell.azure.com</a></p>
+<p>Open Azure Cloud Shell - <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a></p>
 </li>
 <li>
 <p>Create a Service Principal</p>
@@ -287,30 +249,28 @@ resource: https://management.azure.com/
 <p>Make sure you change <code>sp1</code> with a unique name.</p>
 </blockquote>
 <p><code>az ad sp create-for-rbac -n &quot;sp1&quot;</code></p>
-<p><img src="000099.png" alt=""></p>
+<p><img src="000099.png" alt></p>
 <ol start="3">
 <li>Copy the outputed variables to Postman Collection variables</li>
 </ol>
-clientId = appId
-clientSecret = password
-tenantId = tenant
-<p><img src="000100.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clientId = appId</span><br><span class="line">clientSecret = password</span><br><span class="line">tenantId = tenant</span><br></pre></td></tr></table></figure>
+<p><img src="000100.png" alt></p>
 <ol start="4">
 <li>Get Subscription Id</li>
 </ol>
 <p>Run the following command to get your subscription Id.</p>
 <p><code>az account show --query id -otsv</code></p>
-<p><img src="000080.png" alt=""></p>
+<p><img src="000080.png" alt></p>
 <ol start="5">
 <li>Copy the outputed Subscription Id to Postman Collection Variables tab</li>
 </ol>
 <p>At this point your variables tab should look like this - with every variable filled out.</p>
-<p><img src="000101.png" alt=""></p>
+<p><img src="000101.png" alt></p>
 <h2 id="finish-creating-collection"><a class="header-anchor" href="#finish-creating-collection"></a>Finish Creating Collection</h2>
 <ol>
 <li>Click the ‘Create’ Button on the Postman Collection form.</li>
 </ol>
-<p><img src="000097.png" alt=""></p>
+<p><img src="000097.png" alt></p>
 <h2 id="create-postman-request"><a class="header-anchor" href="#create-postman-request"></a>Create Postman Request</h2>
 <ol>
 <li>
@@ -324,9 +284,9 @@ tenantId = tenant
 <p>Save the Request to the Postman Collection you created earlier.</p>
 </li>
 </ol>
-<p><img src="000088.png" alt=""></p>
+<p><img src="000088.png" alt></p>
 <p>The Postman Collection pane should now look like this:</p>
-<p><img src="000094.png" alt=""></p>
+<p><img src="000094.png" alt></p>
 <h2 id="execute-request"><a class="header-anchor" href="#execute-request"></a>Execute Request</h2>
 <ol>
 <li>
@@ -337,20 +297,8 @@ tenantId = tenant
 </li>
 </ol>
 <p>You will see the REST request output in the bottom pane</p>
-&#123;
-    <span class="string">"value"</span>: [
-        &#123;
-            <span class="string">"id"</span>: <span class="string">"/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS"</span>,
-            <span class="string">"name"</span>: <span class="string">"DefaultResourceGroup-EUS"</span>,
-            <span class="string">"location"</span>: <span class="string">"eastus"</span>,
-            <span class="string">"tags"</span>: &#123;&#125;,
-            <span class="string">"properties"</span>: &#123;
-                <span class="string">"provisioningState"</span>: <span class="string">"Succeeded"</span>
-            &#125;
-        &#125;
-    ]
-&#125;
-<p><img src="000089.png" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"value"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"id"</span>: <span class="string">"/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS"</span>,</span><br><span class="line">            <span class="string">"name"</span>: <span class="string">"DefaultResourceGroup-EUS"</span>,</span><br><span class="line">            <span class="string">"location"</span>: <span class="string">"eastus"</span>,</span><br><span class="line">            <span class="string">"tags"</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">"properties"</span>: &#123;</span><br><span class="line">                <span class="string">"provisioningState"</span>: <span class="string">"Succeeded"</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="000089.png" alt></p>
 <p>And that is how to call the Azure REST APIs with Postman in no time flat!</p>
 <p>Jon</p>
 

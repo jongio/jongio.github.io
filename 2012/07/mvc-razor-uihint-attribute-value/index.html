@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,dev" />
+    <meta name="keywords" content="c#,howto,dev">
     
     <meta name="description" content="The UIHint Attribute is a great way to pass metadata from a model to a view. I was looking around for a simple way to get the value of the attribute from my razor view. I could be missing something ob">
+<meta name="keywords" content="c#,howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to get a UIHint attribute value from an MVC Razor view">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/mvc-razor-uihint-attribute-value/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The UIHint Attribute is a great way to pass metadata from a model to a view. I was looking around for a simple way to get the value of the attribute from my razor view. I could be missing something ob">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T16:00:56.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,31 +200,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx" target="_blank" rel="external">UIHint Attribute</a> is a great way to pass metadata from a model to a view. I was looking around for a simple way to get the value of the attribute from my razor view. I could be missing something obvious, but I couldn’t find anything. <a href="http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-2-modelmetadata.html/" target="_blank" rel="external">Brad Wilson has some great posts</a> about ModelMetadata if you want to look at in more depth.</p>
+            <p>The <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx" target="_blank" rel="noopener">UIHint Attribute</a> is a great way to pass metadata from a model to a view. I was looking around for a simple way to get the value of the attribute from my razor view. I could be missing something obvious, but I couldn’t find anything. <a href="http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-2-modelmetadata.html/" target="_blank" rel="noopener">Brad Wilson has some great posts</a> about ModelMetadata if you want to look at in more depth.</p>
 <p>You set UIHint Attributes in your model like this:</p>
-[<span class="meta">DataMember</span>]
-[<span class="meta">UIHint(<span class="meta-string">"Hidden"</span>)</span>]
-<span class="keyword">public</span> <span class="keyword">string</span> Key &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">[<span class="meta">DataMember</span>]</span><br><span class="line">[<span class="meta">UIHint(<span class="meta-string">"Hidden"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> Key &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
 <p>You could write a custom ModelMetadata provider and so on to get it or you can do what I did and write a simple extension method on PropertyInfo to grab the data. I will expand on the design later, but it meets my needs right now.</p>
-<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">PropertyInfoExtensions</span>
-&#123;
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsHidden</span>(<span class="params"><span class="keyword">this</span> PropertyInfo property</span>)</span>
-    &#123;
-        <span class="keyword">return</span> <span class="keyword">string</span>.Compare(ModelMetadataProviders.
-            Current.GetMetadataForProperty(<span class="literal">null</span>, property.DeclaringType, 
-            property.Name).TemplateHint, <span class="string">"Hidden"</span>) == <span class="number">0</span>;
-    &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">PropertyInfoExtensions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsHidden</span>(<span class="params"><span class="keyword">this</span> PropertyInfo property</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">string</span>.Compare(ModelMetadataProviders.</span><br><span class="line">            Current.GetMetadataForProperty(<span class="literal">null</span>, property.DeclaringType, </span><br><span class="line">            property.Name).TemplateHint, <span class="string">"Hidden"</span>) == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>And then in your view you just call IsHidden</p>
-@<span class="keyword">foreach</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> Model.GetType().GetProperties())
-&#123;
-    &lt;td&gt;
-        <span class="keyword">if</span>(!prop.IsHidden())
-        &#123;
-            @prop.GetValue(Model, <span class="literal">null</span>)
-        &#125;
-    &lt;/td&gt;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">foreach</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> Model.GetType().GetProperties())</span><br><span class="line">&#123;</span><br><span class="line">    &lt;td&gt;</span><br><span class="line">        <span class="keyword">if</span>(!prop.IsHidden())</span><br><span class="line">        &#123;</span><br><span class="line">            @prop.GetValue(Model, <span class="literal">null</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/td&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

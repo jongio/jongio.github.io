@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,asp.net" />
+    <meta name="keywords" content="c#,asp.net">
     
-    <meta name="description" content="Before last week the only two viable Mobile Browser Detection options were:
-
-WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas – Great for .NET solutions, but it’s starts at">
+    <meta name="description" content="Before last week the only two viable Mobile Browser Detection options were:  WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas – Great for .NET solutions, but it’s starts at">
+<meta name="keywords" content="c#,asp.net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mobile Browser Detection in ASP.NET">
 <meta property="og:url" content="https://blog.jongallant.com/2009/04/mobile-browser-detection-in-aspnet/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Before last week the only two viable Mobile Browser Detection options were:
-
-WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas – Great for .NET solutions, but it’s starts at">
+<meta property="og:description" content="Before last week the only two viable Mobile Browser Detection options were:  WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas – Great for .NET solutions, but it’s starts at">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T12:09:43.685Z">
+<meta property="og:updated_time" content="2018-12-10T12:09:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mobile Browser Detection in ASP.NET">
-<meta name="twitter:description" content="Before last week the only two viable Mobile Browser Detection options were:
-
-WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas – Great for .NET solutions, but it’s starts at">
+<meta name="twitter:description" content="Before last week the only two viable Mobile Browser Detection options were:  WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas – Great for .NET solutions, but it’s starts at">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas �
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -206,14 +202,14 @@ WURFL – Great for non-.NET solutions. .NET APIs lack support2.  DeviceAtlas �
         <div class="article-entry" itemprop="articleBody">
             <p>Before last week the only two viable Mobile Browser Detection options were:</p>
 <ol>
-<li><a href="http://wurfl.sourceforge.net/" target="_blank" rel="external">WURFL</a> – Great for non-.NET solutions. .NET APIs lack support2.  <a href="http://deviceatlas.com/" target="_blank" rel="external">DeviceAtlas</a> – Great for .NET solutions, but it’s starts at $99/server/year. DeviceAtlas claims to have better <a href="http://en.wikipedia.org/wiki/UAProf" target="_blank" rel="external">UAProf</a> support than WURFL.</li>
+<li><a href="http://wurfl.sourceforge.net/" target="_blank" rel="noopener">WURFL</a> – Great for non-.NET solutions. .NET APIs lack support2.  <a href="http://deviceatlas.com/" target="_blank" rel="noopener">DeviceAtlas</a> – Great for .NET solutions, but it’s starts at $99/server/year. DeviceAtlas claims to have better <a href="http://en.wikipedia.org/wiki/UAProf" target="_blank" rel="noopener">UAProf</a> support than WURFL.</li>
 </ol>
-<p>To solve this problem Microsoft developed an <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> friendly browser detection solution using a standard “<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx" target="_blank" rel="external">.browser</a>” file called “<a href="http://mdbf.codeplex.com/" target="_blank" rel="external">Mobile Device Browser File</a>” or <a href="http://mdbf.codeplex.com/" target="_blank" rel="external">MDBF</a>. This is the same solution that is being utilized by many Microsoft properties such as Hotmail.</p>
+<p>To solve this problem Microsoft developed an <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> friendly browser detection solution using a standard “<a href="http://msdn.microsoft.com/en-us/library/ms228122.aspx" target="_blank" rel="noopener">.browser</a>” file called “<a href="http://mdbf.codeplex.com/" target="_blank" rel="noopener">Mobile Device Browser File</a>” or <a href="http://mdbf.codeplex.com/" target="_blank" rel="noopener">MDBF</a>. This is the same solution that is being utilized by many Microsoft properties such as Hotmail.</p>
 <p>Chris Woods (the MDBF PM) gave a talk at MIX09 on the new project, view the video here:. The data for MDBF comes from WURFL and “other sources”. I hope Microsoft contributes back to WURFL since they have direct access to providers they will have a ton of insight into new devices and capabilities that non-.NET platforms utilizing WURFL will benefit from.</p>
-<p>To implement MDBF in your <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> application:</p>
+<p>To implement MDBF in your <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> application:</p>
 <ol>
-<li>Download the mobile.browser file from <a href="http://mdbf.codeplex.com/" target="_blank" rel="external">mdbf.codeplex.com</a></li>
-<li>Add the file to your <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> web app here: App_Browsers/Devices/mobile.browser3.  Use the standard Request.Browser[“PropertyName”] to access the new properties</li>
+<li>Download the mobile.browser file from <a href="http://mdbf.codeplex.com/" target="_blank" rel="noopener">mdbf.codeplex.com</a></li>
+<li>Add the file to your <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> web app here: App_Browsers/Devices/mobile.browser3.  Use the standard Request.Browser[“PropertyName”] to access the new properties</li>
 </ol>
 <p>Jon Gallant</p>
 

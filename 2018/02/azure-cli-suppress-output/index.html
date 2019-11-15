@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,cli" />
+    <meta name="keywords" content="azure,cli">
     
-    <meta name="description" content="Update
-As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output.
-You can review the">
+    <meta name="description" content="Update As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output. You can review the">
+<meta name="keywords" content="azure,cli">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure CLI: How to Supress Command Output">
 <meta property="og:url" content="https://blog.jongallant.com/2018/02/azure-cli-suppress-output/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Update
-As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output.
-You can review the">
+<meta property="og:description" content="Update As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output. You can review the">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2018/02/azure-cli-suppress-output/000032.png">
-<meta property="og:updated_time" content="2019-01-17T21:23:12.662Z">
+<meta property="og:updated_time" content="2019-01-17T21:23:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure CLI: How to Supress Command Output">
-<meta name="twitter:description" content="Update
-As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output.
-You can review the">
+<meta name="twitter:description" content="Update As of Azure CLI version 2.0.55 that was released on 01/15/2019, the --output param now supports none.  So you can just use: az [command] --output none to suppress CLI output. You can review the">
 <meta name="twitter:image" content="https://blog.jongallant.com/2018/02/azure-cli-suppress-output/000032.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ You can review the">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -205,8 +201,8 @@ You can review the">
         
         <div class="article-entry" itemprop="articleBody">
             <h2 id="update"><a class="header-anchor" href="#update"></a>Update</h2>
-<p>As of Azure CLI version 2.0.55 that was <a href="https://docs.microsoft.com/en-us/cli/azure/release-notes-azure-cli?view=azure-cli-latest#january-15-2018" target="_blank" rel="external">released on 01/15/2019</a>, the <code>--output</code> param now supports <code>none</code>.  So you can just use: <code>az [command] --output none</code> to suppress CLI output.</p>
-<p>You can review the PR that implemented the <code>none</code> option here: <a href="https://github.com/Azure/azure-cli/pull/8198/files" target="_blank" rel="external">https://github.com/Azure/azure-cli/pull/8198/files</a></p>
+<p>As of Azure CLI version 2.0.55 that was <a href="https://docs.microsoft.com/en-us/cli/azure/release-notes-azure-cli?view=azure-cli-latest#january-15-2018" target="_blank" rel="noopener">released on 01/15/2019</a>, the <code>--output</code> param now supports <code>none</code>.  So you can just use: <code>az [command] --output none</code> to suppress CLI output.</p>
+<p>You can review the PR that implemented the <code>none</code> option here: <a href="https://github.com/Azure/azure-cli/pull/8198/files" target="_blank" rel="noopener">https://github.com/Azure/azure-cli/pull/8198/files</a></p>
 <h2 id="original-post"><a class="header-anchor" href="#original-post"></a>Original Post</h2>
 <p>By default, when you run an Azure CLI command, <code>az [command]</code>, it will usually have an output…but sometimes you want to suppress the output.</p>
 <p>There’s no way to tell the Azure CLI to suppress output - the <code>--output</code> param supports json,jsonc,table,tsv,yaml.</p>
@@ -215,7 +211,7 @@ You can review the">
 <code>az [command] --output none</code></p>
 <p>** OLD **<br>
 <code>az [command] --query &quot;[?n]|[0]&quot;</code></p>
-<p>I’ve asked the CLI team to provide a <code>-o none</code> option and that request is being tracked here: <a href="https://github.com/Azure/azure-cli/issues/5667" target="_blank" rel="external">https://github.com/Azure/azure-cli/issues/5667</a></p>
+<p>I’ve asked the CLI team to provide a <code>-o none</code> option and that request is being tracked here: <a href="https://github.com/Azure/azure-cli/issues/5667" target="_blank" rel="noopener">https://github.com/Azure/azure-cli/issues/5667</a></p>
 <p>Jon</p>
 
         </div>

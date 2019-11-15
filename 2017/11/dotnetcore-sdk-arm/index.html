@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot,dotnet,raspberrypi" />
+    <meta name="keywords" content="iot,raspberrypi,dotnet">
     
     <meta name="description" content="The .NET Core SDK is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is not currently working on supporting it. As mentioned in the announcement, the SDK doesn’t fit">
+<meta name="keywords" content="iot,raspberrypi,dotnet">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".NET Core SDK Not Supported on ARM">
 <meta property="og:url" content="https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The .NET Core SDK is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is not currently working on supporting it. As mentioned in the announcement, the SDK doesn’t fit">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/error.png">
-<meta property="og:updated_time" content="2017-11-08T21:52:48.029Z">
+<meta property="og:updated_time" content="2017-11-08T21:52:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".NET Core SDK Not Supported on ARM">
 <meta name="twitter:description" content="The .NET Core SDK is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is not currently working on supporting it. As mentioned in the announcement, the SDK doesn’t fit">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,23 +200,17 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The .NET Core <strong>SDK</strong> is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is <strong>not</strong> currently working on supporting it. As mentioned in the <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="external">announcement</a>, the SDK doesn’t fit within a reasonable performance profile envelope for ARM based devices. They have prioritized getting the Runtime working on ARM over the SDK, which is reasonable as most people will dev on a x64 machine and deploy to ARM devices.</p>
+            <p>The .NET Core <strong>SDK</strong> is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is <strong>not</strong> currently working on supporting it. As mentioned in the <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="noopener">announcement</a>, the SDK doesn’t fit within a reasonable performance profile envelope for ARM based devices. They have prioritized getting the Runtime working on ARM over the SDK, which is reasonable as most people will dev on a x64 machine and deploy to ARM devices.</p>
 <p>If you try to install the SDK on a Raspberry Pi you will see the following error:</p>
-pi@raspberrypi:~ $ sudo apt install dotnet-sdk-2.0.2
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-E: Unable to locate package dotnet-sdk-2.0.2
-E: Couldn&apos;t find any package by glob &apos;dotnet-sdk-2.0.2&apos;
-E: Couldn&apos;t find any package by regex &apos;dotnet-sdk-2.0.2&apos;
-<p><img src="error.png" alt=""></p>
-<p>However, the .NET Core <strong>Runtime</strong> <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="external">does support ARM</a>, so you can develop on a <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="external">supported OS/Arch</a> and then deploy to an ARM device.  You will find instructions for deploying to Raspberry Pi <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="external">here</a>. You can find the list of .NET Core Runtime on ARM issues <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="external">here</a>.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pi@raspberrypi:~ $ sudo apt install dotnet-sdk-2.0.2</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree</span><br><span class="line">Reading state information... Done</span><br><span class="line">E: Unable to locate package dotnet-sdk-2.0.2</span><br><span class="line">E: Couldn&apos;t find any package by glob &apos;dotnet-sdk-2.0.2&apos;</span><br><span class="line">E: Couldn&apos;t find any package by regex &apos;dotnet-sdk-2.0.2&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="error.png" alt></p>
+<p>However, the .NET Core <strong>Runtime</strong> <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="noopener">does support ARM</a>, so you can develop on a <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="noopener">supported OS/Arch</a> and then deploy to an ARM device.  You will find instructions for deploying to Raspberry Pi <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="noopener">here</a>. You can find the list of .NET Core Runtime on ARM issues <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="noopener">here</a>.</p>
 <p><strong>References</strong></p>
 <ul>
-<li>.NET Core Runtime ARM Announcement: <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="external">https://github.com/dotnet/announcements/issues/29</a></li>
-<li>.NET Core Runtime ARM Issues: <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="external">https://github.com/dotnet/coreclr/issues?utf8=✓&amp;q=label%3Aarch-arm32 </a></li>
-<li>.NET Core Supported OS/Arch: <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="external">https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md</a></li>
-<li>.NET Core on Raspberry Pi: <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="external">https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md</a></li>
+<li>.NET Core Runtime ARM Announcement: <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="noopener">https://github.com/dotnet/announcements/issues/29</a></li>
+<li>.NET Core Runtime ARM Issues: <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="noopener">https://github.com/dotnet/coreclr/issues?utf8=✓&amp;q=label%3Aarch-arm32 </a></li>
+<li>.NET Core Supported OS/Arch: <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="noopener">https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md</a></li>
+<li>.NET Core on Raspberry Pi: <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="noopener">https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md</a></li>
 </ul>
 <p>Hope this saves you some time and points you in the right direction.</p>
 <p>Jon</p>

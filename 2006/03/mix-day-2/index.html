@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,7 +12,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="Very cool talk with Joe Belfiore this morning. I came a little late, but caught the cool work ms is doing with ease of integration with Office Addins. VSTO makes this especially easy. He demo’d a cool">
 <meta property="og:type" content="article">
@@ -20,8 +20,9 @@
 <meta property="og:url" content="https://blog.jongallant.com/2006/03/mix-day-2/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Very cool talk with Joe Belfiore this morning. I came a little late, but caught the cool work ms is doing with ease of integration with Office Addins. VSTO makes this especially easy. He demo’d a cool">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T12:54:36.588Z">
+<meta property="og:updated_time" content="2018-12-10T12:54:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mix Day 2 - Office, Media Center, Gadgets, Atlas">
 <meta name="twitter:description" content="Very cool talk with Joe Belfiore this morning. I came a little late, but caught the cool work ms is doing with ease of integration with Office Addins. VSTO makes this especially easy. He demo’d a cool">
@@ -30,11 +31,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -204,7 +205,7 @@
 <ul>
 <li>Use JSON when marshaling data from client to server. SOAP works, but is more difficult to deserialize and much more verbose.</li>
 <li>Don’t assume client calls always succeed. Have callbacks and a plan for failures.</li>
-<li>Watch the browser history stack, clients navigate with Atlas and the address bar is not updated, users add to favorites and are right back where they started from. Local live uses permalink, but we need a better way – <a href="http://Live.com" target="_blank" rel="external">Live.com</a> tags a hash onto the url and then discovers the page state from that.</li>
+<li>Watch the browser history stack, clients navigate with Atlas and the address bar is not updated, users add to favorites and are right back where they started from. Local live uses permalink, but we need a better way – <a href="http://Live.com" target="_blank" rel="noopener">Live.com</a> tags a hash onto the url and then discovers the page state from that.</li>
 <li>Cache whenever possible.</li>
 <li>Handle the OnBeforeUnload event to check for requests that have not been completed and prompt the user to verify that they really want to leave the page before the operation completes.</li>
 <li>Make use of subdomains for resources such as images, includes files, etc so that the browser connections are free to make AJAX calls.</li>

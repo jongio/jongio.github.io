@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto" />
+    <meta name="keywords" content="howto">
     
     <meta name="description" content="SyncBack is a great backup and sync utility, but by default it creates Windows XP scheduled tasks which do not support running under a NETWORK SERVICE account and there’s no way to change that through">
+<meta name="keywords" content="howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use NETWORK SERVICE account with SyncBack scheduled tasks">
 <meta property="og:url" content="https://blog.jongallant.com/2011/12/syncback-scheduled-task-network-service/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="SyncBack is a great backup and sync utility, but by default it creates Windows XP scheduled tasks which do not support running under a NETWORK SERVICE account and there’s no way to change that through">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,7 +200,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="http://www.2brightsparks.com/freeware/index.html" target="_blank" rel="external">SyncBack</a> is a great backup and sync utility, but by default it creates Windows XP scheduled tasks which do not support running under a NETWORK SERVICE account and there’s no way to change that through the SyncBack interface.</p>
+            <p><a href="http://www.2brightsparks.com/freeware/index.html" target="_blank" rel="noopener">SyncBack</a> is a great backup and sync utility, but by default it creates Windows XP scheduled tasks which do not support running under a NETWORK SERVICE account and there’s no way to change that through the SyncBack interface.</p>
 <p>Here’s my work around:</p>
 <p>1. Create the job in SyncBack</p>
 <p>2. Right click on the job and create the schedule as you normally would.</p>
@@ -207,9 +209,9 @@
 <p>5. Double click the SyncBack task that was created by SyncBack.</p>
 <p>6. Click on the General Tab. Click Change User or Group…</p>
 <p>7. Enter “NETWORK SERVICE”. Click OK</p>
-<p><img src="/images/blog/2061.image_5F00_thumb_5F00_21CD415F.png" alt=""></p>
+<p><img src="/images/blog/2061.image_5F00_thumb_5F00_21CD415F.png" alt></p>
 <p>8. Select “Windows 7, Windows Server 2008 R2” in the Configure for dropdown</p>
-<p><img src="/images/blog/1488.image_5F00_thumb_5F00_7A92F829.png" alt=""></p>
+<p><img src="/images/blog/1488.image_5F00_thumb_5F00_7A92F829.png" alt></p>
 <p>Hope this helps you out.</p>
 <p>Jon</p>
 

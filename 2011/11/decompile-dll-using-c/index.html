@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto" />
+    <meta name="keywords" content="c#,howto">
     
     <meta name="description" content="I’m working on a project that involves researching and comparing many versions of the same DLL. I don’t have the source for every version of this DLL so I needed a way to convert it to C# files and di">
+<meta name="keywords" content="c#,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to programmatically generate C# files from a DLL or EXE">
 <meta property="og:url" content="https://blog.jongallant.com/2011/11/decompile-dll-using-c/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on a project that involves researching and comparing many versions of the same DLL. I don’t have the source for every version of this DLL so I needed a way to convert it to C# files and di">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T15:51:34.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -200,25 +202,17 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on a project that involves researching and comparing many versions of the same DLL. I don’t have the source for every version of this DLL so I needed a way to convert it to C# files and diff those. Since there are thousands of versions of this file out there I needed to be able to generate the C# files programmatically.<br>
 I started with Reflector, but it doesn’t have a simple API needed to generate the files programmatically.<br>
-I came across [JustDecompile](<a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="external">http://www.telerik.com/products/decompiler.aspx</a>. from Telerik and found that they do have a command line API that works great. I could have just invoked the EXE with Process.Start, but I figured I should see how they are doing and see if I could do everything inproc. So I decompiled the JustDecompile.exe file and found a very simple DLL method that they use to output C# files.</p>
-<p>1. Download <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="external">JustDecompile</a><br>
+I came across [JustDecompile](<a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">http://www.telerik.com/products/decompiler.aspx</a>. from Telerik and found that they do have a command line API that works great. I could have just invoked the EXE with Process.Start, but I figured I should see how they are doing and see if I could do everything inproc. So I decompiled the JustDecompile.exe file and found a very simple DLL method that they use to output C# files.</p>
+<p>1. Download <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">JustDecompile</a><br>
 2. Open up your project and Add References to these two DLLs.</p>
-C:\<span class="function">Program <span class="title">Files</span> (<span class="params">x86</span>)\Telerik\JustDecompile\Libraries\JustDecompile.Tools.MSBuildProjectBuilder.dll
-C:\Program <span class="title">Files</span> (<span class="params">x86</span>)\Telerik\JustDecompile\Libraries\JustDecompiler.dll</span>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">C:\<span class="function">Program <span class="title">Files</span> (<span class="params">x86</span>)\Telerik\JustDecompile\Libraries\JustDecompile.Tools.MSBuildProjectBuilder.dll</span></span><br><span class="line"><span class="function">C:\Program <span class="title">Files</span> (<span class="params">x86</span>)\Telerik\JustDecompile\Libraries\JustDecompiler.dll</span></span><br></pre></td></tr></table></figure>
 <p>3. Add the following namespaces:</p>
-<span class="keyword">using</span> JustDecompile.Tools.MSBuildProjectBuilder;       
-<span class="keyword">using</span> Telerik.JustDecompiler.Languages.CSharp;        
-<span class="keyword">using</span> System.Threading;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> JustDecompile.Tools.MSBuildProjectBuilder;       </span><br><span class="line"><span class="keyword">using</span> Telerik.JustDecompiler.Languages.CSharp;        </span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br></pre></td></tr></table></figure>
 <p>4. Add this code to your project where you want to programmatically decompile code</p>
-MSBuildProjectBuilder projectBuilder = <span class="keyword">new</span> MSBuildProjectBuilder([path to dll], outfolder, <span class="keyword">new</span> CSharpV4());
-projectBuilder.ProjectFileCreated += <span class="keyword">new</span> EventHandler&lt;ProjectFileCreatedEvent&gt;(projectBuilder_ProjectFileCreated);&lt;/ProjectFileCreatedEvent&gt;
-projectBuilder.BuildProject(<span class="keyword">new</span> CancellationToken());
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">MSBuildProjectBuilder projectBuilder = <span class="keyword">new</span> MSBuildProjectBuilder([path to dll], outfolder, <span class="keyword">new</span> CSharpV4());</span><br><span class="line">projectBuilder.ProjectFileCreated += <span class="keyword">new</span> EventHandler&lt;ProjectFileCreatedEvent&gt;(projectBuilder_ProjectFileCreated);&lt;/ProjectFileCreatedEvent&gt;</span><br><span class="line">projectBuilder.BuildProject(<span class="keyword">new</span> CancellationToken());</span><br></pre></td></tr></table></figure>
 <p>Where [path to dll] is the path to the dll that you want to decompile and outfolder is the folder you want to output the C# files.</p>
 <p>5. Add this event handler to be notified when the Visual Studio Project file has been created</p>
-<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">projectBuilder_ProjectFileCreated</span>(<span class="params"><span class="keyword">object</span> sender, ProjectFileCreatedEvent e</span>)</span>
-&#123;
-  <span class="comment">//throw new NotImplementedException();</span>
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">projectBuilder_ProjectFileCreated</span>(<span class="params"><span class="keyword">object</span> sender, ProjectFileCreatedEvent e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">//throw new NotImplementedException();</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Hope this saves you some time.</p>
 <p>Jon</p>
 

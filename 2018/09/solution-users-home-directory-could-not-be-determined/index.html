@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azuredevops" />
+    <meta name="keywords" content="azuredevops">
     
-    <meta name="description" content="In Azure DevOps, got this:
-The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
-As a workaround, add the DOTNET_CLI_HOME v">
+    <meta name="description" content="In Azure DevOps, got this: The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use. As a workaround, add the DOTNET_CLI_HOME v">
+<meta name="keywords" content="azuredevops">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution - The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.">
+<meta property="og:title" content="Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.">
 <meta property="og:url" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="In Azure DevOps, got this:
-The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
-As a workaround, add the DOTNET_CLI_HOME v">
+<meta property="og:description" content="In Azure DevOps, got this: The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use. As a workaround, add the DOTNET_CLI_HOME v">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000007.png">
-<meta property="og:updated_time" content="2018-09-25T21:38:01.640Z">
+<meta property="og:updated_time" content="2018-09-25T21:38:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution - The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.">
-<meta name="twitter:description" content="In Azure DevOps, got this:
-The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use.
-As a workaround, add the DOTNET_CLI_HOME v">
+<meta name="twitter:title" content="Solution - The user&#39;s home directory could not be determined. Set the &#39;DOTNET_CLI_HOME&#39; environment variable to specify the directory to use.">
+<meta name="twitter:description" content="In Azure DevOps, got this: The user&apos;s home directory could not be determined. Set the &apos;DOTNET_CLI_HOME&apos; environment variable to specify the directory to use. As a workaround, add the DOTNET_CLI_HOME v">
 <meta name="twitter:image" content="https://blog.jongallant.com/2018/09/solution-users-home-directory-could-not-be-determined/000007.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ As a workaround, add the DOTNET_CLI_HOME v">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -207,7 +203,7 @@ As a workaround, add the DOTNET_CLI_HOME v">
             <p>In Azure DevOps, got this:</p>
 <p><code>The user's home directory could not be determined. Set the 'DOTNET_CLI_HOME' environment variable to specify the directory to use.</code></p>
 <p>As a workaround, add the DOTNET_CLI_HOME variable to the Build definition.</p>
-<p><img src="000005.png" alt=""></p>
+<p><img src="000005.png" alt></p>
 <p>And if you are using Tox, make sure you add DOTNET_CLI_HOME to your tox.ini file’s passenv setting, so tox receives the variable:</p>
 <p><code>passenv = APPDATA ProgramFiles USERPROFILE PROGRAMDATA DOTENV_FILE LOCALAPPDATA DOTNET_CLI_HOME</code></p>
 <p>Jon</p>

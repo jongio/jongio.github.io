@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot,azure" />
+    <meta name="keywords" content="azure,iot">
     
-    <meta name="description" content="Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes here.
-I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
+    <meta name="description" content="Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes here. I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
+<meta name="keywords" content="azure,iot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to Unreachable Azure IoT Hub Endpoint">
 <meta property="og:url" content="https://blog.jongallant.com/2017/05/azure-iot-endpoint-unreachable/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes here.
-I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
+<meta property="og:description" content="Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes here. I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/05/azure-iot-endpoint-unreachable/000082.png">
 <meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution to Unreachable Azure IoT Hub Endpoint">
-<meta name="twitter:description" content="Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes here.
-I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
+<meta name="twitter:description" content="Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes here. I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/05/azure-iot-endpoint-unreachable/000082.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@ I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,14 +202,14 @@ I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable”">
         <div class="article-entry" itemprop="articleBody">
             <p>Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes <a href="/2016/12/azure-iot-hub-routes/">here</a>.</p>
 <p>I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable” in the portal.</p>
-<p><img src="000082.png" alt=""></p>
-<p>I spent a bunch of time trying to debug this and ultimately discovered that IoT Hub Service Bus Endpoints don’t support Queues with “Sessions” or “Duplicate Detection” enabled. Here’s a link to the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" target="_blank" rel="external">official docs</a>.</p>
+<p><img src="000082.png" alt></p>
+<p>I spent a bunch of time trying to debug this and ultimately discovered that IoT Hub Service Bus Endpoints don’t support Queues with “Sessions” or “Duplicate Detection” enabled. Here’s a link to the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" target="_blank" rel="noopener">official docs</a>.</p>
 <p>So, when you create your Queue, make sure you <strong>DO NOT</strong> check the boxes below:</p>
 <ul>
 <li>“Enable duplicate detection”</li>
 <li>“Enable sessions”</li>
 </ul>
-<p><img src="000084.png" alt=""></p>
+<p><img src="000084.png" alt></p>
 <p>Jon</p>
 
         </div>

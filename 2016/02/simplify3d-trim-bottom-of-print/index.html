@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="3dprinting" />
+    <meta name="keywords" content="3dprinting">
     
     <meta name="description" content="I’m printing out part I found on Thingiverse and the bottom of it has some inset text. I would rather the entire bottom of the piece be flush with the print bed. Instead of trying to modify it in Fusi">
+<meta name="keywords" content="3dprinting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Trim Off the Bottom of a 3D Print with Simplify3D">
 <meta property="og:url" content="https://blog.jongallant.com/2016/02/simplify3d-trim-bottom-of-print/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m printing out part I found on Thingiverse and the bottom of it has some inset text. I would rather the entire bottom of the piece be flush with the print bed. Instead of trying to modify it in Fusi">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -200,19 +202,19 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I’m printing out part I found on Thingiverse and the bottom of it has some inset text. I would rather the entire bottom of the piece be flush with the print bed. Instead of trying to modify it in Fusion 360, I’m going to use Simplify3D to tell my Dremel to start printing the model after the inset.</p>
 <p>Here’s what the bottom of the model looks like:</p>
-<p><img src="/images/blog/4a1defe30fe5_8070/image.png" alt=""></p>
+<p><img src="/images/blog/4a1defe30fe5_8070/image.png" alt></p>
 <p>As you can see, that inset text prevents the part from sitting completely on the bed. It will actually print fine, but I would just prefer it sit flush. It won’t have the nice bevel on the top, but that’s okay with me.</p>
 <p>The first thing you have to to is find out how far inset the text is by using the cross section dialog in Simplify3d</p>
-<p><img src="/images/blog/4a1defe30fe5_8070/image_3.png" alt=""></p>
+<p><img src="/images/blog/4a1defe30fe5_8070/image_3.png" alt></p>
 <p>You will see below that I moved the Z-Axis to .50mm and I can see through the text.</p>
-<p><img src="/images/blog/4a1defe30fe5_8070/image_4.png" alt=""></p>
+<p><img src="/images/blog/4a1defe30fe5_8070/image_4.png" alt></p>
 <p>If I bump that up to .51 the text holes are filled in:</p>
-<p><img src="/images/blog/4a1defe30fe5_8070/image_5.png" alt=""></p>
+<p><img src="/images/blog/4a1defe30fe5_8070/image_5.png" alt></p>
 <p>That means that the text is inset .50mm and I need to start my print at .51mm.</p>
 <p>I then go into my Process settings –&gt; Advanced Tab and check “Start printing at height:” and set it to .51mm</p>
-<p><img src="/images/blog/4a1defe30fe5_8070/image_6.png" alt=""></p>
+<p><img src="/images/blog/4a1defe30fe5_8070/image_6.png" alt></p>
 <p>I then click on “Prepare to Print” and slide to the bottom layer. As you can see the text isn’t there and my print will sit flush on my print bed.</p>
-<p><img src="/images/blog/4a1defe30fe5_8070/image_7.png" alt=""></p>
+<p><img src="/images/blog/4a1defe30fe5_8070/image_7.png" alt></p>
 <p>Jon</p>
 
         </div>

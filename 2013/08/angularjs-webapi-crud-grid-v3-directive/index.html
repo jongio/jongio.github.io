@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="angularjs" />
+    <meta name="keywords" content="angularjs">
     
-    <meta name="description" content="Today I took my V2 Crud Grid and moved it into an AngularJS directive. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:
-
-CODE:">
+    <meta name="description" content="Today I took my V2 Crud Grid and moved it into an AngularJS directive. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:  CODE:">
+<meta name="keywords" content="angularjs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AngularJS CRUD Grid v3: Now a Directive and Multiple Grids per page">
 <meta property="og:url" content="https://blog.jongallant.com/2013/08/angularjs-webapi-crud-grid-v3-directive/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Today I took my V2 Crud Grid and moved it into an AngularJS directive. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:
-
-CODE:">
+<meta property="og:description" content="Today I took my V2 Crud Grid and moved it into an AngularJS directive. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:  CODE:">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:17:35.883Z">
+<meta property="og:updated_time" content="2018-12-10T22:17:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS CRUD Grid v3: Now a Directive and Multiple Grids per page">
-<meta name="twitter:description" content="Today I took my V2 Crud Grid and moved it into an AngularJS directive. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:
-
-CODE:">
+<meta name="twitter:description" content="Today I took my V2 Crud Grid and moved it into an AngularJS directive. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:  CODE:">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@ CODE:">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -204,132 +200,25 @@ CODE:">
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Today I took my <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html#.Ufr2V42SpMw">V2 Crud Grid</a> and moved it into an <a href="http://docs.angularjs.org/guide/directive" target="_blank" rel="external">AngularJS directive</a>. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:</p>
-<p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image.png" alt=""></p>
-<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="external">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
+            <p>Today I took my <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html#.Ufr2V42SpMw">V2 Crud Grid</a> and moved it into an <a href="http://docs.angularjs.org/guide/directive" target="_blank" rel="noopener">AngularJS directive</a>. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:</p>
+<p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image.png" alt></p>
+<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
 <p>Here’s what I did in a nutshell:</p>
 <p>1. Moved all the angular code to the /Scripts folder:</p>
-<p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image_3.png" alt=""></p>
+<p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image_3.png" alt></p>
 <p>2. app.js only contains this one line of code to initialize the app:</p>
-<span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, [<span class="string">'ngResource'</span>]);
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, [<span class="string">'ngResource'</span>]);</span><br></pre></td></tr></table></figure>
 <p>3. I put the notification factory under /Services</p>
 <p>4. I created the crud-grid-directive.js file and put the directive code. I renamed person to object so that we can reuse the directive for multiple tables.</p>
 <p>scope: true – tells angular to create a new scope for each instance of the directive</p>
 <p>$attrs.tableName is set in the view…see how below.</p>
-app.directive(<span class="string">'crudGrid'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
-    <span class="keyword">return</span> &#123;
-        <span class="attr">restrict</span>: <span class="string">'A'</span>,
-        <span class="attr">replace</span>: <span class="literal">false</span>,
-        <span class="attr">scope</span>: <span class="literal">true</span>,
-        <span class="attr">templateUrl</span>: <span class="string">'/Scripts/App/Directives/Templates/crud-grid-directive-template.html'</span>,
-        <span class="attr">controller</span>: [<span class="string">'$scope'</span>, <span class="string">'$element'</span>, <span class="string">'$attrs'</span>, <span class="string">'crudGridDataFactory'</span>, <span class="string">'notificationFactory'</span>,
-            <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $element, $attrs, crudGridDataFactory, notificationFactory</span>) </span>&#123;
-                $scope.objects = [];
-                $scope.addMode = <span class="literal">false</span>;
-
-                $scope.toggleAddMode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
-                    $scope.addMode = !$scope.addMode;
-                &#125;;
-
-                $scope.toggleEditMode = <span class="function"><span class="keyword">function</span> (<span class="params">object</span>) </span>&#123;
-                    object.editMode = !object.editMode;
-                &#125;;
-
-                <span class="keyword">var</span> successCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e, cb</span>) </span>&#123;
-                    notificationFactory.success();
-                    $scope.getData(cb);
-                &#125;;
-
-                <span class="keyword">var</span> successPostCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;
-                    successCallback(e, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
-                        $scope.toggleAddMode();
-                        $scope.object = &#123;&#125;;
-                    &#125;);
-                &#125;;
-
-                <span class="keyword">var</span> errorCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;
-                    notificationFactory.error(e.object.Message);
-                &#125;;
-
-                $scope.addObject = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;
-                    crudGridDataFactory($attrs.tableName).save($scope.object, successPostCallback, errorCallback);
-                &#125;;
-
-                $scope.deleteObject = <span class="function"><span class="keyword">function</span> (<span class="params">object</span>) </span>&#123;
-                    crudGridDataFactory($attrs.tableName).delete(&#123; <span class="attr">id</span>: object.Id &#125;, successCallback, errorCallback);
-                &#125;;
-
-                $scope.updateObject = <span class="function"><span class="keyword">function</span> (<span class="params">object</span>) </span>&#123;
-                    crudGridDataFactory($attrs.tableName).update(&#123; <span class="attr">id</span>: object.Id &#125;, object, successCallback, errorCallback);
-                &#125;;
-
-                $scope.getData = <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;
-                    crudGridDataFactory($attrs.tableName).query(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;
-                        $scope.objects = data;
-                        <span class="keyword">if</span> (cb) cb();
-                    &#125;);
-                &#125;;
-
-                $scope.getData();
-            &#125;]
-    &#125;
-&#125;);
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.directive(<span class="string">'crudGrid'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        restrict: <span class="string">'A'</span>,</span><br><span class="line">        replace: <span class="literal">false</span>,</span><br><span class="line">        scope: <span class="literal">true</span>,</span><br><span class="line">        templateUrl: <span class="string">'/Scripts/App/Directives/Templates/crud-grid-directive-template.html'</span>,</span><br><span class="line">        controller: [<span class="string">'$scope'</span>, <span class="string">'$element'</span>, <span class="string">'$attrs'</span>, <span class="string">'crudGridDataFactory'</span>, <span class="string">'notificationFactory'</span>,</span><br><span class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $element, $attrs, crudGridDataFactory, notificationFactory</span>) </span>&#123;</span><br><span class="line">                $scope.objects = [];</span><br><span class="line">                $scope.addMode = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">                $scope.toggleAddMode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    $scope.addMode = !$scope.addMode;</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                $scope.toggleEditMode = <span class="function"><span class="keyword">function</span> (<span class="params">object</span>) </span>&#123;</span><br><span class="line">                    object.editMode = !object.editMode;</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">var</span> successCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e, cb</span>) </span>&#123;</span><br><span class="line">                    notificationFactory.success();</span><br><span class="line">                    $scope.getData(cb);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">var</span> successPostCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">                    successCallback(e, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                        $scope.toggleAddMode();</span><br><span class="line">                        $scope.object = &#123;&#125;;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">var</span> errorCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">                    notificationFactory.error(e.object.Message);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                $scope.addObject = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    crudGridDataFactory($attrs.tableName).save($scope.object, successPostCallback, errorCallback);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                $scope.deleteObject = <span class="function"><span class="keyword">function</span> (<span class="params">object</span>) </span>&#123;</span><br><span class="line">                    crudGridDataFactory($attrs.tableName).delete(&#123; <span class="attr">id</span>: object.Id &#125;, successCallback, errorCallback);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                $scope.updateObject = <span class="function"><span class="keyword">function</span> (<span class="params">object</span>) </span>&#123;</span><br><span class="line">                    crudGridDataFactory($attrs.tableName).update(&#123; <span class="attr">id</span>: object.Id &#125;, object, successCallback, errorCallback);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                $scope.getData = <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</span><br><span class="line">                    crudGridDataFactory($attrs.tableName).query(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">                        $scope.objects = data;</span><br><span class="line">                        <span class="keyword">if</span> (cb) cb();</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                $scope.getData();</span><br><span class="line">            &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>5. Moved the factory code to /Directives/Services. It now accepts a type and builds the URL from that so we can reuse for multiple tables.</p>
-app.factory(<span class="string">'crudGridDataFactory'</span>, [<span class="string">'$http'</span>, <span class="string">'$resource'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$http, $resource</span>) </span>&#123;
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;
-        <span class="keyword">return</span> $resource(<span class="string">'api/'</span> + type + <span class="string">'/:id'</span>, &#123; <span class="attr">id</span>: <span class="string">'@id'</span> &#125;, &#123; <span class="string">'update'</span>: &#123; <span class="attr">method</span>: <span class="string">'PUT'</span> &#125; &#125;, &#123; <span class="string">'query'</span>: &#123; <span class="attr">method</span>: <span class="string">'GET'</span>, <span class="attr">isArray</span>: <span class="literal">false</span> &#125; &#125;);
-    &#125;;
-&#125;]);
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.factory(<span class="string">'crudGridDataFactory'</span>, [<span class="string">'$http'</span>, <span class="string">'$resource'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$http, $resource</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $resource(<span class="string">'api/'</span> + type + <span class="string">'/:id'</span>, &#123; <span class="attr">id</span>: <span class="string">'@id'</span> &#125;, &#123; <span class="string">'update'</span>: &#123; <span class="attr">method</span>: <span class="string">'PUT'</span> &#125; &#125;, &#123; <span class="string">'query'</span>: &#123; <span class="attr">method</span>: <span class="string">'GET'</span>, <span class="attr">isArray</span>: <span class="literal">false</span> &#125; &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
 <p>6. As you can see in the code above I created a new template for the directive in Directives/Templates called crud-grid-directive-template.html, which contains the HTML markup that the grid will render.</p>
-<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"crud-grid table table-striped table-bordered table-condensed table-hover"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">tr</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">"width: 100px;"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-plus"</span> <span class="attr">ng-click</span>=<span class="string">"toggleAddMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">th</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">"width: 50px;"</span>&gt;</span>Id<span class="tag">&lt;/<span class="name">th</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">th</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">th</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-show</span>=<span class="string">"addMode"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">td</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-save"</span> <span class="attr">ng-click</span>=<span class="string">"addObject()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-remove"</span> <span class="attr">ng-click</span>=<span class="string">"toggleAddMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>
-                <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">td</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">td</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"object.Name"</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">td</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"object in objects | orderBy:'Id':true"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">td</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == null || object.editMode == false"</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-edit"</span> <span class="attr">ng-click</span>=<span class="string">"toggleEditMode(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-trash"</span> <span class="attr">ng-click</span>=<span class="string">"deleteObject(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>
-                <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == true"</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-save"</span> <span class="attr">ng-click</span>=<span class="string">"updateObject(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-remove"</span> <span class="attr">ng-click</span>=<span class="string">"toggleEditMode(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>
-                <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">td</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">td</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == null || object.editMode == false"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"object.Name"</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == true"</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">td</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">table</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"crud-grid table table-striped table-bordered table-condensed table-hover"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">"width: 100px;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-plus"</span> <span class="attr">ng-click</span>=<span class="string">"toggleAddMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">"width: 50px;"</span>&gt;</span>Id<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-show</span>=<span class="string">"addMode"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-save"</span> <span class="attr">ng-click</span>=<span class="string">"addObject()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-remove"</span> <span class="attr">ng-click</span>=<span class="string">"toggleAddMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"object.Name"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"object in objects | orderBy:'Id':true"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == null || object.editMode == false"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-edit"</span> <span class="attr">ng-click</span>=<span class="string">"toggleEditMode(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-trash"</span> <span class="attr">ng-click</span>=<span class="string">"deleteObject(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == true"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-save"</span> <span class="attr">ng-click</span>=<span class="string">"updateObject(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-remove"</span> <span class="attr">ng-click</span>=<span class="string">"toggleEditMode(object)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == null || object.editMode == false"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"object.Name"</span> <span class="attr">ng-show</span>=<span class="string">"object.editMode == true"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>7. Now all that is left in the view is this, which defines two crud grids and assigns the corresponding tables.</p>
-<span class="tag">&lt;<span class="name">h1</span>&gt;</span>People<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>
-<span class="tag">&lt;<span class="name">div</span> <span class="attr">crud-grid</span> <span class="attr">table-name</span>=<span class="string">'person'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-<span class="tag">&lt;<span class="name">h1</span>&gt;</span>Places<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>
-<span class="tag">&lt;<span class="name">div</span> <span class="attr">crud-grid</span> <span class="attr">table-name</span>=<span class="string">'place'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>People<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">crud-grid</span> <span class="attr">table-name</span>=<span class="string">'person'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Places<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">crud-grid</span> <span class="attr">table-name</span>=<span class="string">'place'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>(I also created a new “Place” model and controller)</p>
 <p>Hope this helps you ramp up on AngularJS directives.</p>
 <p>Jon</p>

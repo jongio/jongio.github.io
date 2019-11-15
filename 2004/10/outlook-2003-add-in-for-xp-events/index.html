@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,7 +12,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working">
 <meta property="og:type" content="article">
@@ -20,6 +20,7 @@
 <meta property="og:url" content="https://blog.jongallant.com/2004/10/outlook-2003-add-in-for-xp-events/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T06:15:09.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +31,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -196,16 +197,10 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working great on my 2003 server dev box, but when installed on XP they did not fire. I tried many workarounds, but nothing was working, so I posted at <a href="http://www.outlookcode.com/threads.aspx?forumid=5&amp;messageid=7859" target="_blank" rel="external">OutlookCode.com</a> and Robert Halstead was nice enough to share a work around with me.</p>
+            <p>In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working great on my 2003 server dev box, but when installed on XP they did not fire. I tried many workarounds, but nothing was working, so I posted at <a href="http://www.outlookcode.com/threads.aspx?forumid=5&amp;messageid=7859" target="_blank" rel="noopener">OutlookCode.com</a> and Robert Halstead was nice enough to share a work around with me.</p>
 <p>What you have to do is add the “static” modifier to the variable declaration. It is hard to believe that I could not find this online somewhere and I hope someone with the same issue finds this post.</p>
 <p>Here is some sample code with the workaround.</p>
-public class Connect : Object, Extensibility.IDTExtensibility2
-&#123;
-    private static Microsoft.Office.Interop.Outlook.Items sentFolderItems;
-    public void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)
-    &#123;
-        sentFolderItems = applicationObject.Session.GetDefaultFolder(OlDefaultFolders.olFolderSentMail).Items;
-        sentFolderItems.ItemAdd += new ItemsEvents_ItemAddEventHandler(SentItems_ItemAdd);
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class Connect : Object, Extensibility.IDTExtensibility2</span><br><span class="line">&#123;</span><br><span class="line">    private static Microsoft.Office.Interop.Outlook.Items sentFolderItems;</span><br><span class="line">    public void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)</span><br><span class="line">    &#123;</span><br><span class="line">        sentFolderItems = applicationObject.Session.GetDefaultFolder(OlDefaultFolders.olFolderSentMail).Items;</span><br><span class="line">        sentFolderItems.ItemAdd += new ItemsEvents_ItemAddEventHandler(SentItems_ItemAdd);</span><br></pre></td></tr></table></figure>
         </div>
         <footer>
         </footer>

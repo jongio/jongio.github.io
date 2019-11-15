@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,iot" />
+    <meta name="keywords" content="iot,howto">
     
-    <meta name="description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time.
-.NET Micro Framework and VS2013 Setup
-0. Close VS20">
+    <meta name="description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time. .NET Micro Framework and VS2013 Setup 0. Close VS20">
+<meta name="keywords" content="iot,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to get setup with Netduino and Visual Studio 2013">
 <meta property="og:url" content="https://blog.jongallant.com/2014/11/netduino-vs2013/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time.
-.NET Micro Framework and VS2013 Setup
-0. Close VS20">
+<meta property="og:description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time. .NET Micro Framework and VS2013 Setup 0. Close VS20">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:15:50.992Z">
+<meta property="og:updated_time" content="2018-12-10T22:15:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to get setup with Netduino and Visual Studio 2013">
-<meta name="twitter:description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time.
-.NET Micro Framework and VS2013 Setup
-0. Close VS20">
+<meta name="twitter:description" content="It took me a few mins to get all the right firmware and sdks going for Netduino Plus 2 and Visual Studio 2013. Hope this post saves you some time. .NET Micro Framework and VS2013 Setup 0. Close VS20">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -210,17 +206,17 @@
 <h2 id="net-micro-framework-and-vs2013-setup"><a class="header-anchor" href="#net-micro-framework-and-vs2013-setup"></a>.NET Micro Framework and VS2013 Setup</h2>
 <p>0. Close VS2013 for good measure.</p>
 <p>1. Uninstall any .NET Micro Framework versions that you currently have installed.</p>
-<p>2. Install “.NET Micro Framework V4.3 SDK-R2-Beta” from here: <a href="http://netmf.github.io" target="_blank" rel="external">http://netmf.github.io</a></p>
+<p>2. Install “.NET Micro Framework V4.3 SDK-R2-Beta” from here: <a href="http://netmf.github.io" target="_blank" rel="noopener">http://netmf.github.io</a></p>
 <ul>
 <li>Click “Combined ZIP bundle of all files” – that will download a zip</li>
 <li>Open that zip and install MicroFrameworkSDK.msi (I chose the “Complete” install option)</li>
 <li>Install netmfvs2013.vsix</li>
 </ul>
-<p><img src="/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/image.png" alt=""></p>
+<p><img src="/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/image.png" alt></p>
 <p>3. Uninstall any Netduino SDKs that you have installed.</p>
 <p>4. Install this experimental version of the Netduino SDK</p>
 <h2 id="netduino-setup"><a class="header-anchor" href="#netduino-setup"></a>Netduino Setup</h2>
-<p>1. Create an account on <a href="http://Netduino.com" target="_blank" rel="external">Netduino.com</a>. This allows you to download the firmware.</p>
+<p>1. Create an account on <a href="http://Netduino.com" target="_blank" rel="noopener">Netduino.com</a>. This allows you to download the firmware.</p>
 <p>2. Download the Netduino Firmware update. You might get a “Sorry, you don’t have permission for that!” error. Just login and try again.</p>
 <p>3. Flash the Netduino Firmware:</p>
 <p>how to flash this firmware</p>
@@ -229,7 +225,7 @@
 <p>3. Run the attached Netduino Update tool. (From Step #2 above)<br>
 a. If your device does not appear, install the STDFU drivers + tools v3.0.3.<br>
 b. If your device appears as “STM Device in DFU Mode”, click on “Options”, select your board type from the Product selection box and close the Options window.</p>
-<p><img src="/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/image_3.png" alt=""></p>
+<p><img src="/images/blog/Netduino-Plus-2-and-Visual-Studio-2013_D8A4/image_3.png" alt></p>
 <p>4. Select the checkbox next to your device and press “Upgrade”</p>
 <p>5. Wait while the upgrade operation completes. After flashing, your Netduino will reboot and will be removed from the upgrade list.</p>
 <p>6. After flashing, set your network settings using .NET MF’s MFDeploy (C:\Program Files (x86)\Microsoft .NET Micro Framework\v4.3\Tools).</p>
@@ -247,11 +243,11 @@ how to find your current version of Netduino firmware</li>
 <p>Assembly: mscorlib (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Native (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Hardware (4.3.1.0)</p>
-<p>Assembly: <a href="http://Microsoft.SPOT.Net" target="_blank" rel="external">Microsoft.SPOT.Net</a> (4.3.1.0)</p>
+<p>Assembly: <a href="http://Microsoft.SPOT.Net" target="_blank" rel="noopener">Microsoft.SPOT.Net</a> (4.3.1.0)</p>
 <p>Assembly: System (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Hardware.SerialPort (4.3.1.0)</p>
-<p>Assembly: <a href="http://Microsoft.SPOT.IO" target="_blank" rel="external">Microsoft.SPOT.IO</a> (4.3.1.0)</p>
-<p>Assembly: <a href="http://System.IO" target="_blank" rel="external">System.IO</a> (4.3.1.0)</p>
+<p>Assembly: <a href="http://Microsoft.SPOT.IO" target="_blank" rel="noopener">Microsoft.SPOT.IO</a> (4.3.1.0)</p>
+<p>Assembly: <a href="http://System.IO" target="_blank" rel="noopener">System.IO</a> (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Hardware.PWM (4.3.1.0)</p>
 <p>Assembly: Microsoft.SPOT.Hardware.Usb (4.3.1.0)</p>
 <p>Assembly: SecretLab</p>

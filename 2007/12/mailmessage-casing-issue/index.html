@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
     <meta name="description" content="With the transition of MailMessage from System.Web.Mail to System.Net.Mail there were some mail header casing changes that caused mail sent to Hotmail and Live email addresses to appear as being succe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System.Net.Mail.MailMessage Mail Header Casing Issue Fixed in .NET 2.0 SP1 & .NET 3.5">
+<meta property="og:title" content="System.Net.Mail.MailMessage Mail Header Casing Issue Fixed in .NET 2.0 SP1 &amp; .NET 3.5">
 <meta property="og:url" content="https://blog.jongallant.com/2007/12/mailmessage-casing-issue/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="With the transition of MailMessage from System.Web.Mail to System.Net.Mail there were some mail header casing changes that caused mail sent to Hotmail and Live email addresses to appear as being succe">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T06:51:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="System.Net.Mail.MailMessage Mail Header Casing Issue Fixed in .NET 2.0 SP1 & .NET 3.5">
+<meta name="twitter:title" content="System.Net.Mail.MailMessage Mail Header Casing Issue Fixed in .NET 2.0 SP1 &amp; .NET 3.5">
 <meta name="twitter:description" content="With the transition of MailMessage from System.Web.Mail to System.Net.Mail there were some mail header casing changes that caused mail sent to Hotmail and Live email addresses to appear as being succe">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +66,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -197,7 +198,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>With the transition of MailMessage from System.Web.Mail to System.Net.Mail there were some mail header casing changes that caused mail sent to Hotmail and Live email addresses to appear as being successfully sent, but failed to arrive at the destination email address.  All headers were being sent all lower, which triggered spam filtering at the server.</p>
-<p>I have verified that this issue has been fixed with .NET 2.0 SP1 &amp; 3.5 which was just released a couple of weeks ago.  You can download the .NET 2.0 SP1 bits here: <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=79BC3B77-E02C-4AD3-AACF-A7633F706BA5&amp;displaylang=en" target="_blank" rel="external">http://www.microsoft.com/downloads/details.aspx?FamilyId=79BC3B77-E02C-4AD3-AACF-A7633F706BA5&amp;displaylang=en</a> or you can install .NET 3.5, which includes 2.0 SP1 &amp; 3.0 SP1 here: <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=333325FD-AE52-4E35-B531-508D977D32A6&amp;displaylang=en" target="_blank" rel="external">http://www.microsoft.com/downloads/details.aspx?FamilyId=333325FD-AE52-4E35-B531-508D977D32A6&amp;displaylang=en</a></p>
+<p>I have verified that this issue has been fixed with .NET 2.0 SP1 &amp; 3.5 which was just released a couple of weeks ago.  You can download the .NET 2.0 SP1 bits here: <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=79BC3B77-E02C-4AD3-AACF-A7633F706BA5&amp;displaylang=en" target="_blank" rel="noopener">http://www.microsoft.com/downloads/details.aspx?FamilyId=79BC3B77-E02C-4AD3-AACF-A7633F706BA5&amp;displaylang=en</a> or you can install .NET 3.5, which includes 2.0 SP1 &amp; 3.0 SP1 here: <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=333325FD-AE52-4E35-B531-508D977D32A6&amp;displaylang=en" target="_blank" rel="noopener">http://www.microsoft.com/downloads/details.aspx?FamilyId=333325FD-AE52-4E35-B531-508D977D32A6&amp;displaylang=en</a></p>
 <p>I don’t have a work around for 2.0 bits, it’s best to just upgrade to SP1.</p>
 <p>Hope this helps,<br>
 Jon</p>

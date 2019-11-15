@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,dev" />
+    <meta name="keywords" content="howto,dev">
     
     <meta name="description" content="UPDATE (08/27/2012): I created a custom Google Chrome extension that allows you to unstar all items without having to run any JavaScript!  Read more about it here: Unstar All Google Reader™ Starred It">
+<meta name="keywords" content="howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How Unstar All Google Reader Starred Items">
 <meta property="og:url" content="https://blog.jongallant.com/2012/06/google-reader-unstar-all/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="UPDATE (08/27/2012): I created a custom Google Chrome extension that allows you to unstar all items without having to run any JavaScript!  Read more about it here: Unstar All Google Reader™ Starred It">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -201,39 +203,39 @@
             <p>UPDATE (08/27/2012): I created a custom Google Chrome extension that allows you to unstar all items without having to run any JavaScript!  Read more about it here: <a href="/2012/08/unstar-google-reader-chrome-extension.html">Unstar All Google Reader™ Starred Items with my new Chrome™ Extension</a></p>
 <hr>
 <p>I’ve been starring Google Reader items for years and noticed yesterday that I had thousands of them starred…some from 2010…I’m never going to read those posts and want start with a clean starred items page. Google Reader doesn’t have an “unstar all” feature. So instead of clicking thousands of times, I wrote a little JavaScript to do that for me. Hope it saves you some time as well.</p>
-<p><strong>1.</strong> Go to <a href="http://reader.google.com/" target="_blank" rel="external">Google Reader</a> and click on the “Starred Items” navigation item in the left column.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image.png" alt=""></p>
+<p><strong>1.</strong> Go to <a href="http://reader.google.com/" target="_blank" rel="noopener">Google Reader</a> and click on the “Starred Items” navigation item in the left column.</p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image.png" alt></p>
 <p><strong>2.</strong> Make sure all your starred items have been fetched from the server. You can load all items by scrolling all the way down to the bottom of the page or by hitting the “End” key on your keyboard. When you get to the bottom of the page you’ll see a little loading icon in the lower right hand corner that looks like this:</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_3.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_3.png" alt></p>
 <p>Repeat the scrolling until all items appear – you won’t see the loading icon anymore when all items have been loaded. We do this so all items are in the DOM and we can then act upon them with JavaScript. (I might think about scripting this someday, but I don’t have time right now) Once you have scrolled all items into view then you can move on step 3.</p>
 <p><strong>3.</strong> Copy the “Unstar All” script below into the Console tab of your browsers development tools and hit enter or hit the Run script button (depending on your browser, detailed instructions for each browser are below).</p>
-var x = document.getElementsByClassName(&apos;entry-icons&apos;); for(var i=0;i&amp;lt;x.length;i++)x[i].firstChild.click();
-<p><img src="/images/blog/3027dd417fd4_F36D/image_5.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var x = document.getElementsByClassName(&apos;entry-icons&apos;); for(var i=0;i&amp;lt;x.length;i++)x[i].firstChild.click();</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_5.png" alt></p>
 <p><strong>4.</strong> After you execute the script all of the star icons will be grey. Refresh the page by holding down CTRL and clicking on the refresh button or close your browser and reopen to clear the cache.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_6.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_6.png" alt></p>
 <p>5. After you refresh your page you won’t have any starred items. If you still do then you didn’t have all the starred items downloaded to the page. See step 2 above and execute the script again.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_7.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_7.png" alt></p>
 <p><strong>Detailed Instructions</strong></p>
 <p><strong>IE9</strong></p>
 <p>1. Hit F12</p>
 <p>2. Click on the Console Tab</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_8.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_8.png" alt></p>
 <p>3. Copy the script above into the input box.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_9.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_9.png" alt></p>
 <p>4. Click the Run Script button.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_10.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_10.png" alt></p>
 <p><strong>Google Chrome</strong></p>
 <p>1. Hit F12</p>
 <p>2. Click on the Console Tab</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_11.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_11.png" alt></p>
 <p>3. Copy the script above into the input box.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_12.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_12.png" alt></p>
 <p>4. Hit Enter.</p>
 <p><strong>FireFox</strong></p>
 <p>1. Hit CTRL+SHFT+K or select Web Developer –&gt; Web Console from the main menu.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_13.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_13.png" alt></p>
 <p>3. Copy the script above into the input box.</p>
-<p><img src="/images/blog/3027dd417fd4_F36D/image_14.png" alt=""></p>
+<p><img src="/images/blog/3027dd417fd4_F36D/image_14.png" alt></p>
 <p>4. Hit Enter.</p>
 <p>The script in this post may (but probably won’t) have side effects on your browser, machine, mind, etc. I’m in no way responsible for any damage this script causes to you or your loved ones. Use at your own risk.</p>
 

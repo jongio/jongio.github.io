@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,javascript" />
+    <meta name="keywords" content="howto,javascript">
     
     <meta name="description" content="Most people know that the KendoUI controls are awesome and free. The thing that is missing from there demo site is how to create a Jsonp WebApi service that the controls can talk to. I tried to get it">
+<meta name="keywords" content="howto,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KendoUI + WebApi + Jsonp - how to get KendoUI working with WebApi and Jsonp">
 <meta property="og:url" content="https://blog.jongallant.com/2013/05/kendoui-webapi-jsonp/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Most people know that the KendoUI controls are awesome and free. The thing that is missing from there demo site is how to create a Jsonp WebApi service that the controls can talk to. I tried to get it">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:39.923Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KendoUI + WebApi + Jsonp - how to get KendoUI working with WebApi and Jsonp">
 <meta name="twitter:description" content="Most people know that the KendoUI controls are awesome and free. The thing that is missing from there demo site is how to create a Jsonp WebApi service that the controls can talk to. I tried to get it">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -199,86 +201,30 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Most people know that the KendoUI controls are awesome and free. The thing that is missing from there demo site is how to create a Jsonp WebApi service that the controls can talk to. I tried to get it up and running and ran into an issue because my service was returning regular Json and the “Loading” icon just spun for ever.</p>
-<p>Here’s how to get an e2e going with KendoUI TreeView and WebApi. This post very intentionally follows the code demo provided by Telerik <a href="http://demos.kendoui.com/web/treeview/remote-data.html" target="_blank" rel="external">here</a></p>
+<p>Here’s how to get an e2e going with KendoUI TreeView and WebApi. This post very intentionally follows the code demo provided by Telerik <a href="http://demos.kendoui.com/web/treeview/remote-data.html" target="_blank" rel="noopener">here</a></p>
 <p>Hopefully you find it useful.</p>
-<p><a href="https://github.com/jongio/KendoUIJsonPWebApi" target="_blank" rel="external">Download <span>Latest version from GitHub</span></a></p>
+<p><a href="https://github.com/jongio/KendoUIJsonPWebApi" target="_blank" rel="noopener">Download <span>Latest version from GitHub</span></a></p>
 <p><strong>Create VS Project</strong><br>
 1. Create a new MVC project.</p>
 <p><strong>Add Nuget References</strong><br>
 2. Add the following references</p>
-<p><a href="http://nuget.org/packages/WebApiContrib.Formatting.Jsonp/" target="_blank" rel="external">WebApiContrib.Formatting.Jsonp</a> – This adds the JsonpMediaTypeFormatter class to the project.</p>
-<p><a href="http://nuget.org/packages/KendoUIWeb/" target="_blank" rel="external">KendoUIWeb</a> – This adds the KendoUI controls to the project.</p>
+<p><a href="http://nuget.org/packages/WebApiContrib.Formatting.Jsonp/" target="_blank" rel="noopener">WebApiContrib.Formatting.Jsonp</a> – This adds the JsonpMediaTypeFormatter class to the project.</p>
+<p><a href="http://nuget.org/packages/KendoUIWeb/" target="_blank" rel="noopener">KendoUIWeb</a> – This adds the KendoUI controls to the project.</p>
 <p><strong>Register Formatter</strong><br>
 3. Add the following line of code to the Application_Start() method of the Global.asax file</p>
-GlobalConfiguration.Configuration.Formatters.Insert(<span class="number">0</span>, <span class="keyword">new</span> JsonpMediaTypeFormatter());
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">GlobalConfiguration.Configuration.Formatters.Insert(<span class="number">0</span>, <span class="keyword">new</span> JsonpMediaTypeFormatter());</span><br></pre></td></tr></table></figure>
 <p><strong>Create Model</strong></p>
 <p>4. Add the following Employee class to the /Models folder</p>
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Employee</span>
-&#123;
-    <span class="keyword">public</span> <span class="keyword">int</span> EmployeeId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-    <span class="keyword">public</span> <span class="keyword">string</span> FullName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-    <span class="keyword">public</span> <span class="keyword">bool</span> HasEmployees &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-    <span class="keyword">public</span> <span class="keyword">int</span>? ReportsTo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Employee</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> EmployeeId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> FullName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> HasEmployees &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>? ReportsTo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Create Controller</strong></p>
 <p>5. Add the following Controller to the /Controllers folder</p>
-<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EmployeesController</span> : <span class="title">ApiController</span>
-&#123;
-    <span class="keyword">private</span> <span class="keyword">readonly</span> List&lt;Employee&gt; _employees = <span class="keyword">new</span> List&lt;Employee&gt; 
-    &#123;
-        <span class="keyword">new</span> Employee&#123; FullName = <span class="string">"Jon Gallant"</span>, EmployeeId = <span class="number">1</span>, HasEmployees = <span class="literal">true</span>, ReportsTo = <span class="literal">null</span>&#125;,
-        <span class="keyword">new</span> Employee&#123; FullName = <span class="string">"Scott Hanselman"</span>, EmployeeId = <span class="number">2</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;,
-        <span class="keyword">new</span> Employee &#123;FullName = <span class="string">"Howard Dierking"</span>, EmployeeId = <span class="number">3</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;,
-        <span class="keyword">new</span> Employee &#123;FullName = <span class="string">"Drew Miller"</span>, EmployeeId = <span class="number">4</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;,
-        <span class="keyword">new</span> Employee &#123; FullName = <span class="string">"Jeff Atwood"</span>, EmployeeId = <span class="number">5</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;
-    &#125;;
-
-    <span class="function"><span class="keyword">public</span> IEnumerable&lt;Employee&gt; <span class="title">Get</span>(<span class="params"></span>)</span>
-    &#123;
-        <span class="keyword">return</span> _employees.Where(e =&gt; !e.ReportsTo.HasValue);
-    &#125;
-
-    <span class="function"><span class="keyword">public</span> IEnumerable&lt;Employee&gt; <span class="title">Get</span>(<span class="params"><span class="keyword">int</span> employeeId</span>)</span>
-    &#123;
-        <span class="keyword">return</span> _employees.Where(e =&gt; e.ReportsTo == employeeId);
-    &#125;
-&#125;
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EmployeesController</span> : <span class="title">ApiController</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> List&lt;Employee&gt; _employees = <span class="keyword">new</span> List&lt;Employee&gt; </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">new</span> Employee&#123; FullName = <span class="string">"Jon Gallant"</span>, EmployeeId = <span class="number">1</span>, HasEmployees = <span class="literal">true</span>, ReportsTo = <span class="literal">null</span>&#125;,</span><br><span class="line">        <span class="keyword">new</span> Employee&#123; FullName = <span class="string">"Scott Hanselman"</span>, EmployeeId = <span class="number">2</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;,</span><br><span class="line">        <span class="keyword">new</span> Employee &#123;FullName = <span class="string">"Howard Dierking"</span>, EmployeeId = <span class="number">3</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;,</span><br><span class="line">        <span class="keyword">new</span> Employee &#123;FullName = <span class="string">"Drew Miller"</span>, EmployeeId = <span class="number">4</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;,</span><br><span class="line">        <span class="keyword">new</span> Employee &#123; FullName = <span class="string">"Jeff Atwood"</span>, EmployeeId = <span class="number">5</span>, HasEmployees = <span class="literal">false</span>, ReportsTo = <span class="number">1</span>&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerable&lt;Employee&gt; <span class="title">Get</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> _employees.Where(e =&gt; !e.ReportsTo.HasValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerable&lt;Employee&gt; <span class="title">Get</span>(<span class="params"><span class="keyword">int</span> employeeId</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">return</span> _employees.Where(e =&gt; e.ReportsTo == employeeId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>Create View</strong></p>
 <p>6. Add the following View to the /Views/Home/Index.cshtml file.</p>
-<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"~/Content/kendo/2013.1.319/kendo.common.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"~/Content/kendo/2013.1.319/kendo.default.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/kendo/2013.1.319/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/kendo/2013.1.319/kendo.web.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-
-<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"treeview"</span> <span class="attr">class</span>=<span class="string">"demo-section"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-
-<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
-    <span class="comment">//var serviceRoot = "http://demos.kendoui.com/service";</span>
-    <span class="keyword">var</span> serviceRoot = <span class="string">"api"</span>;
-
-    homogeneous = <span class="keyword">new</span> kendo.data.HierarchicalDataSource(&#123;
-        <span class="attr">transport</span>: &#123;
-            <span class="attr">read</span>: &#123;
-                <span class="attr">url</span>: serviceRoot + <span class="string">"/Employees"</span>,
-                <span class="attr">dataType</span>: <span class="string">"jsonp"</span>
-            &#125;
-        &#125;,
-        <span class="attr">schema</span>: &#123;
-            <span class="attr">model</span>: &#123;
-                <span class="attr">id</span>: <span class="string">"EmployeeId"</span>,
-                <span class="attr">hasChildren</span>: <span class="string">"HasEmployees"</span>
-            &#125;
-        &#125;
-    &#125;);
-
-    $(<span class="string">"#treeview"</span>).kendoTreeView(&#123;
-        <span class="attr">dataSource</span>: homogeneous,
-        <span class="attr">dataTextField</span>: <span class="string">"FullName"</span>
-    &#125;);
-</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"~/Content/kendo/2013.1.319/kendo.common.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"~/Content/kendo/2013.1.319/kendo.default.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/kendo/2013.1.319/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/kendo/2013.1.319/kendo.web.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"treeview"</span> <span class="attr">class</span>=<span class="string">"demo-section"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//var serviceRoot = "http://demos.kendoui.com/service";</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> serviceRoot = <span class="string">"api"</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    homogeneous = <span class="keyword">new</span> kendo.data.HierarchicalDataSource(&#123;</span></span><br><span class="line">        transport: &#123;</span><br><span class="line">            read: &#123;</span><br><span class="line"><span class="javascript">                url: serviceRoot + <span class="string">"/Employees"</span>,</span></span><br><span class="line"><span class="javascript">                dataType: <span class="string">"jsonp"</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        schema: &#123;</span><br><span class="line">            model: &#123;</span><br><span class="line"><span class="javascript">                id: <span class="string">"EmployeeId"</span>,</span></span><br><span class="line"><span class="javascript">                hasChildren: <span class="string">"HasEmployees"</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">    $(<span class="string">"#treeview"</span>).kendoTreeView(&#123;</span></span><br><span class="line">        dataSource: homogeneous,</span><br><span class="line"><span class="javascript">        dataTextField: <span class="string">"FullName"</span></span></span><br><span class="line">    &#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><strong>Run it!</strong></p>
 <p>Run it and this is what you should see.</p>
-<p><img src="/images/blog/5a9bdccb8987_93A7/image.png" alt=""></p>
+<p><img src="/images/blog/5a9bdccb8987_93A7/image.png" alt></p>
 <p>Jon</p>
 
         </div>

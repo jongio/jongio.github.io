@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,38 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto" />
+    <meta name="keywords" content="c#,howto">
     
-    <meta name="description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.
-When using LoadFrom:
-Assembly a1 = Assembly.LoadFrom(file);
-I got this error. Could not load">
+    <meta name="description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception. When using LoadFrom: Assembly a1 = Assembly.LoadFrom(file); I got this error. Could not load">
+<meta name="keywords" content="c#,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to load a remote assembly using Assembly.Load">
 <meta property="og:url" content="https://blog.jongallant.com/2012/01/remote-assembly-load/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.
-When using LoadFrom:
-Assembly a1 = Assembly.LoadFrom(file);
-I got this error. Could not load">
+<meta property="og:description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception. When using LoadFrom: Assembly a1 = Assembly.LoadFrom(file); I got this error. Could not load">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2019-01-06T07:44:52.451Z">
+<meta property="og:updated_time" content="2019-01-06T07:44:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to load a remote assembly using Assembly.Load">
-<meta name="twitter:description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.
-When using LoadFrom:
-Assembly a1 = Assembly.LoadFrom(file);
-I got this error. Could not load">
+<meta name="twitter:description" content="If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception. When using LoadFrom: Assembly a1 = Assembly.LoadFrom(file); I got this error. Could not load">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -74,7 +67,7 @@ I got this error. Could not load">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -209,13 +202,13 @@ I got this error. Could not load">
         <div class="article-entry" itemprop="articleBody">
             <p>If you try to load a remote assembly using it’s path you’ll likely get a permission or operation exception.</p>
 <p>When using LoadFrom:</p>
-Assembly a1 = Assembly.LoadFrom(file);
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">Assembly a1 = Assembly.LoadFrom(file);</span><br></pre></td></tr></table></figure>
 <p>I got this error. Could not load file or assembly or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x80131515)</p>
-<p><img src="/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png" alt=""></p>
+<p><img src="/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png" alt></p>
 <p>I figured I could copy it locally, but knew there must be a better way. So I scoured the interwebs and found this post on StackOverflow:</p>
-<p><a href="http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep" target="_blank" rel="external">http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep</a></p>
+<p><a href="http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep" target="_blank" rel="noopener">http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep</a></p>
 <p>Which basically tells us to use Assembly.Load instead of Assembly.LoadFrom. Here’s the code that works:</p>
-Assembly a2 = Assembly.Load(File.ReadAllBytes(file));
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">Assembly a2 = Assembly.Load(File.ReadAllBytes(file));</span><br></pre></td></tr></table></figure>
 <p>Jon</p>
 
         </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,35 +12,30 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content>
     
-    <meta name="description" content="I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.
-
-Not">
+    <meta name="description" content="I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.  Not">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[object Object]">
 <meta property="og:url" content="https://blog.jongallant.com/2012/06/tfs-cannot-delete-field-referenced/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.
-
-Not">
+<meta property="og:description" content="I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.  Not">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[object Object]">
-<meta name="twitter:description" content="I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.
-
-Not">
+<meta name="twitter:description" content="I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.  Not">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -71,7 +66,7 @@ Not">
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -203,14 +198,14 @@ Not">
         
         <div class="article-entry" itemprop="articleBody">
             <p>I was migrating one field to another today and I got this exception when trying to delete the old field from the Fields tab: “Cannot delete this field because it is referenced by other objects”.</p>
-<p><img src="/images/blog/72bb8ccebdda_7946/image.png" alt=""></p>
+<p><img src="/images/blog/72bb8ccebdda_7946/image.png" alt></p>
 <p>Not a great error message, but it means that “You can’t delete this field because it is referenced in the Layout tab”.</p>
 <p>Here’s how to fix this:</p>
 <p>1. Open the WIT. Go to the Layout tab.</p>
 <p>2. Find the reference to the field that you are trying to delete. In my case I was trying to delete Project.ITRNumber. As you can see it was still being referenced in the Layout…which is why I couldn’t delete it from the field list.</p>
-<p><img src="/images/blog/72bb8ccebdda_7946/image_3.png" alt=""></p>
+<p><img src="/images/blog/72bb8ccebdda_7946/image_3.png" alt></p>
 <p>3. Either change or remove that control from Layout. In my case I changed it to MSN.LSE.ITR rather than deleting and recreating the control.</p>
-<p><img src="/images/blog/72bb8ccebdda_7946/image_4.png" alt=""></p>
+<p><img src="/images/blog/72bb8ccebdda_7946/image_4.png" alt></p>
 <p>4. Go back to the Fields tab.</p>
 <p>5. Select the field you want to delete and click the Delete button from the toolbar.</p>
 <p>It should delete the field now.</p>

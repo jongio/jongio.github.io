@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto" />
+    <meta name="keywords" content="howto">
     
     <meta name="description" content="PluralSight is great, but because I don’t have 3 hours every time I want to learn something, I always watch them at double speed – and that’s as fast as PluralSight allows you to go….until now. Will">
+<meta name="keywords" content="howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to turn up PluralSight video playback speed to 11!">
 <meta property="og:url" content="https://blog.jongallant.com/2013/05/pluralsight-playback-speed/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="PluralSight is great, but because I don’t have 3 hours every time I want to learn something, I always watch them at double speed – and that’s as fast as PluralSight allows you to go….until now. Will">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,12 +200,12 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/blog/49e26d1d9d7e_BCB8/image.png" alt=""></p>
-<p><a href="http://www.pluralsight.com/" target="_blank" rel="external">PluralSight</a> is great, but because I don’t have 3 hours every time I want to learn something, I always watch them at double speed – and that’s as fast as PluralSight allows you to go….until now. <a href="https://twitter.com/itsananderson" target="_blank" rel="external">Will</a> said I should try to get the video player element and increase the speed in the console. <a href="https://twitter.com/wbreza" target="_blank" rel="external">Wallace</a> stopped by and we figured it out.</p>
-<p>They use <a href="http://angularjs.org/" target="_blank" rel="external">AngularJS</a> (yah!) so I got ahold of the controller and called their setPlaybackSpeed method and…it worked!</p>
+            <p><img src="/images/blog/49e26d1d9d7e_BCB8/image.png" alt></p>
+<p><a href="http://www.pluralsight.com/" target="_blank" rel="noopener">PluralSight</a> is great, but because I don’t have 3 hours every time I want to learn something, I always watch them at double speed – and that’s as fast as PluralSight allows you to go….until now. <a href="https://twitter.com/itsananderson" target="_blank" rel="noopener">Will</a> said I should try to get the video player element and increase the speed in the console. <a href="https://twitter.com/wbreza" target="_blank" rel="noopener">Wallace</a> stopped by and we figured it out.</p>
+<p>They use <a href="http://angularjs.org/" target="_blank" rel="noopener">AngularJS</a> (yah!) so I got ahold of the controller and called their setPlaybackSpeed method and…it worked!</p>
 <p>So all you have to do is open your Chrome console and execute this line of code:</p>
-angular.element($(<span class="string">'div[ng-controller="PlayerControlsController"]'</span>).get(<span class="number">0</span>)).scope().setPlaybackSpeed(<span class="number">11</span>)
-<p><img src="/images/blog/49e26d1d9d7e_BCB8/image_3.png" alt=""></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">angular.element($(<span class="string">'div[ng-controller="PlayerControlsController"]'</span>).get(<span class="number">0</span>)).scope().setPlaybackSpeed(<span class="number">11</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/blog/49e26d1d9d7e_BCB8/image_3.png" alt></p>
 <p>You don’t get audio when it is played that fast and anything over 2 is probably too fast…but hey, you can do it if you want to.</p>
 <p>Watch this if you don’t get the “11” reference.</p>
 <iframe height="315" src="http://www.youtube.com/embed/F7IZZXQ89Oc" frameborder="0" width="560" allowfullscreen></iframe>

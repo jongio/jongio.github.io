@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="asp.net" />
+    <meta name="keywords" content="asp.net">
     
     <meta name="description" content="I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe Hanselman on this one. My error wasn’t exactly the same as what he described, but close. Thro">
+<meta name="keywords" content="asp.net">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to "'Page_ClientValidate' is null or undefined not a function object" and other ominous JavaScript errors in IE10">
+<meta property="og:title" content="Solution to &quot;&#39;Page_ClientValidate&#39; is null or undefined not a function object&quot; and other ominous JavaScript errors in IE10">
 <meta property="og:url" content="https://blog.jongallant.com/2013/03/ie10-pageclientvalidate/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe Hanselman on this one. My error wasn’t exactly the same as what he described, but close. Thro">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T15:51:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to "'Page_ClientValidate' is null or undefined not a function object" and other ominous JavaScript errors in IE10">
+<meta name="twitter:title" content="Solution to &quot;&#39;Page_ClientValidate&#39; is null or undefined not a function object&quot; and other ominous JavaScript errors in IE10">
 <meta name="twitter:description" content="I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe Hanselman on this one. My error wasn’t exactly the same as what he described, but close. Thro">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,12 +200,12 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="external">Hanselman</a> on this one. My error wasn’t exactly the same as what he described, but close. Through some searching I found his post, implemented the new browser files and the issue was resolved. Thanks Hanselman!</p>
+            <p>I just spent several hours trying to figure out why I was getting JavaScript errors when using IE10. I owe <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="noopener">Hanselman</a> on this one. My error wasn’t exactly the same as what he described, but close. Through some searching I found his post, implemented the new browser files and the issue was resolved. Thanks Hanselman!</p>
 <p>Everything worked fine in IE10 Compatibility Mode and all other browsers, just not IE10. I was getting errors like:</p>
 <blockquote>
 <p><em>“‘Page_ClientValidate’ is null or undefined not a function object”&quot;</em></p>
 </blockquote>
-<p>You can read more on <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="external">his post</a>, but the short of it is that <a href="http://ASP.NET" target="_blank" rel="external">ASP.NET</a> uses files on the server to determine which browser the user is using. They obviously didn’t account for IE10.</p>
+<p>You can read more on <a href="http://www.hanselman.com/blog/BugAndFixASPNETFailsToDetectIE10CausingDoPostBackIsUndefinedJavaScriptErrorOrMaintainFF5ScrollbarPosition.aspx" target="_blank" rel="noopener">his post</a>, but the short of it is that <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> uses files on the server to determine which browser the user is using. They obviously didn’t account for IE10.</p>
 <p>Jon</p>
 
         </div>

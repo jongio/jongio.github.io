@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="colorblind,chrome,accessibility" />
+    <meta name="keywords" content="colorblind,chrome,accessibility">
     
     <meta name="description" content="The default GitHub.com theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the">
+<meta name="keywords" content="colorblind,chrome,accessibility">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Helping Colorblind Folks Distinguish Between Text and Hyperlinks in Chrome">
 <meta property="og:url" content="https://blog.jongallant.com/2019/01/colorblind-always-underline-links-chrome/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The default GitHub.com theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2019/01/colorblind-always-underline-links-chrome/000025_1.png">
-<meta property="og:updated_time" content="2019-01-12T02:37:22.098Z">
+<meta property="og:updated_time" content="2019-01-12T02:37:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Helping Colorblind Folks Distinguish Between Text and Hyperlinks in Chrome">
 <meta name="twitter:description" content="The default GitHub.com theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,54 +200,48 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The default <a href="http://GitHub.com" target="_blank" rel="external">GitHub.com</a> theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the same issue all over the web.</p>
-<p>For example, the following image is from a <a href="http://GitHub.com" target="_blank" rel="external">GitHub.com</a> repo.  The word “Contributing” is a link.</p>
-<p><img src="000023_1.png" alt=""></p>
+            <p>The default <a href="http://GitHub.com" target="_blank" rel="noopener">GitHub.com</a> theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the same issue all over the web.</p>
+<p>For example, the following image is from a <a href="http://GitHub.com" target="_blank" rel="noopener">GitHub.com</a> repo.  The word “Contributing” is a link.</p>
+<p><img src="000023_1.png" alt></p>
 <p>This is how a colorblind person sees the same thing:</p>
-<p><img src="000022_1.png" alt=""></p>
+<p><img src="000022_1.png" alt></p>
 <p>As you may or may not be able to tell, it is hard to distinguish that Contributing is a link.  Imagine if you are trying to scan a large doc for a link - it’s kind of like looking for a needle in a haystack.</p>
 <p>This issue has been bugging me for a longtime and last month I decided to figure something out. I was in a rush to check a ton of links on a GitHub repo and it was taking me forever to find them.</p>
 <p>So, I took to Twitter with this:</p>
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Will a user-defined !important CSS hack get you closer to where you want to be? <a href="https://t.co/NQmhd5FhCi" target="_blank" rel="external">https://t.co/NQmhd5FhCi</a></p>&mdash; Noel Bundick (@acanthamoeba) <a href="https://twitter.com/acanthamoeba/status/1070391190862741504?ref_src=twsrc%5Etfw" target="_blank" rel="external">December 5, 2018</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Will a user-defined !important CSS hack get you closer to where you want to be? <a href="https://t.co/NQmhd5FhCi" target="_blank" rel="noopener">https://t.co/NQmhd5FhCi</a></p>&mdash; Noel Bundick (@acanthamoeba) <a href="https://twitter.com/acanthamoeba/status/1070391190862741504?ref_src=twsrc%5Etfw" target="_blank" rel="noopener">December 5, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Noel pointed me to that site which showed me how to use the <a href="https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en" target="_blank" rel="external">Stylish Chrome Extension</a> - which allows you to define a custom style that is applied to every website you visit.  (You can also select specific sites the style applies to)</p>
+<p>Noel pointed me to that site which showed me how to use the <a href="https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en" target="_blank" rel="noopener">Stylish Chrome Extension</a> - which allows you to define a custom style that is applied to every website you visit.  (You can also select specific sites the style applies to)</p>
 <blockquote>
-<p>Some people reported that Stylish collects your browsing history. You should read their <a href="https://userstyles.org/login/policy" target="_blank" rel="external">privacy policy</a>. It states that they do collect data, but nothing that ties it back to you personally. You can go into Stylish settings and uncheck “Send de-identified browsing data…” which prevents the data grab that people reported. If this is off putting or you are concerned with this, then you should try <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne/related?hl=en" target="_blank" rel="external">Stylus</a>, which is a fork of the Stylish codebase with all the analytics code removed.  You can’t as easily manage styles, but it may set you at ease knowing it is not collecting any data.</p>
+<p>Some people reported that Stylish collects your browsing history. You should read their <a href="https://userstyles.org/login/policy" target="_blank" rel="noopener">privacy policy</a>. It states that they do collect data, but nothing that ties it back to you personally. You can go into Stylish settings and uncheck “Send de-identified browsing data…” which prevents the data grab that people reported. If this is off putting or you are concerned with this, then you should try <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne/related?hl=en" target="_blank" rel="noopener">Stylus</a>, which is a fork of the Stylish codebase with all the analytics code removed.  You can’t as easily manage styles, but it may set you at ease knowing it is not collecting any data.</p>
 <p>I have included instructions below that show you how to set this up with Stylus.</p>
 </blockquote>
 <p>The only logical thing I could think of was to underline all links so they all pop out of the page.</p>
-<p>I created this Stylish style: <a href="https://userstyles.org/styles/166675/always-underline-links" target="_blank" rel="external">Always Underline Links</a></p>
+<p>I created this Stylish style: <a href="https://userstyles.org/styles/166675/always-underline-links" target="_blank" rel="noopener">Always Underline Links</a></p>
 <p>Which has this CSS:</p>
-<span class="selector-tag">a</span>
-&#123;
-  <span class="attribute">text-decoration</span>: underline <span class="meta">!important</span>;
-&#125;
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">a</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>So, now here’s what that same section looks like with the “Always Underline Links” style applied.</p>
-<p><img src="000025_1.png" alt=""></p>
+<p><img src="000025_1.png" alt></p>
 <p>This has been super helpful for me over the last couple of months.  I haven’t struggled at all to find links on a text heavy site.</p>
 <h2 id="step-by-step-instructions-to-always-underline-links-with-stylish"><a class="header-anchor" href="#step-by-step-instructions-to-always-underline-links-with-stylish"></a>Step by Step Instructions to Always Underline Links with Stylish</h2>
 <ol>
-<li>Install the <a href="https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en" target="_blank" rel="external">Stylish Chrome Extension</a></li>
-<li>Install the <a href="https://userstyles.org/styles/166675/always-underline-links" target="_blank" rel="external">“Always Underline Links” Style</a></li>
+<li>Install the <a href="https://chrome.google.com/webstore/detail/stylish-custom-themes-for/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en" target="_blank" rel="noopener">Stylish Chrome Extension</a></li>
+<li>Install the <a href="https://userstyles.org/styles/166675/always-underline-links" target="_blank" rel="noopener">“Always Underline Links” Style</a></li>
 <li>Visit websites and enjoy the underlined links.</li>
 </ol>
 <h2 id="step-by-step-instructions-to-always-underline-links-with-stylus"><a class="header-anchor" href="#step-by-step-instructions-to-always-underline-links-with-stylus"></a>Step by Step Instructions to Always Underline Links with Stylus</h2>
 <ol>
-<li>Install the <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne/related?hl=en" target="_blank" rel="external">Stylus Chrome Extension</a></li>
+<li>Install the <a href="https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne/related?hl=en" target="_blank" rel="noopener">Stylus Chrome Extension</a></li>
 <li>Right-click on extension icon and select “Open Style Manager”</li>
 <li>Click “Write new style”</li>
 <li>Copy the following code into the code text box:</li>
 </ol>
-<span class="selector-tag">a</span>
-&#123;
-  <span class="attribute">text-decoration</span>: underline <span class="meta">!important</span>;
-&#125;
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">a</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>Click Save</li>
 <li>Visit websites and enjoy the underlined links.</li>
 </ol>
-<p>BTW - I’m using this <a href="https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa?hl=en" target="_blank" rel="external">Colorblind Chrome Extension</a> to render websites in all the colorblind variants.</p>
-<p>Definitely checkout this podcast: <a href="https://www.hanselminutes.com/665/regine-gilbert-on-the-essence-of-accessibility" target="_blank" rel="external">Regine Gilbert on the Essence of Accessibility</a> for a great accessibility discussion.  It’s what actually motivated me to show you all my always underline solution.</p>
+<p>BTW - I’m using this <a href="https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa?hl=en" target="_blank" rel="noopener">Colorblind Chrome Extension</a> to render websites in all the colorblind variants.</p>
+<p>Definitely checkout this podcast: <a href="https://www.hanselminutes.com/665/regine-gilbert-on-the-essence-of-accessibility" target="_blank" rel="noopener">Regine Gilbert on the Essence of Accessibility</a> for a great accessibility discussion.  It’s what actually motivated me to show you all my always underline solution.</p>
 <p>Hope this helps you as well.</p>
 <p>Jon</p>
 

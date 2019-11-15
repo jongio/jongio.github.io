@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,14 +12,16 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="dev" />
+    <meta name="keywords" content="dev">
     
     <meta name="description" content="I’m investigating automatic REST API SDK generation options and I’d like your help narrowing things down. We, at Power BI, have a REST/JSON API and our documentation is up on apiary, which supports “A">
+<meta name="keywords" content="dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="REST API SDK Generators">
 <meta property="og:url" content="https://blog.jongallant.com/2015/09/api-sdk-generators/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m investigating automatic REST API SDK generation options and I’d like your help narrowing things down. We, at Power BI, have a REST/JSON API and our documentation is up on apiary, which supports “A">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="og:updated_time" content="2016-12-27T15:51:34.000Z">
 <meta name="twitter:card" content="summary">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,8 +200,8 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m investigating automatic REST API SDK generation options and I’d like your help narrowing things down. We, at Power BI, have a REST/JSON API and our documentation is up on <a href="http://docs.powerbi.apiary.io/" target="_blank" rel="external">apiary</a>, which supports “<a href="https://apiblueprint.org/" target="_blank" rel="external">API Blueprint</a>”, not <a href="http://swagger.io/" target="_blank" rel="external">Swagger</a>. We want to accommodate as many languages and technologies as possible, so the first then we are going to do is convert our API Blueprint to Swagger (using <a href="https://www.npmjs.com/package/apib2swagger" target="_blank" rel="external">apib2swagger</a>) and publish our swagger.json file so you all can generate your own SDKs from it. We’ll then decide which SDK generation tools to use and make all of the SDKs available via GitHub and the major packages managers (npm, bower, nuget, etc).</p>
-<p>Here’s a table of the options I was able to discover on my own. Please have a look and let me know if I missed any or feel free to tell me about your experiences with any of them.   <table class="table table-bordered table-hover table-striped table-condensed"><tbody><tr><th></th><th></th><th><a href="https://github.com/Azure/autorest/" target="_blank" rel="external">AutoRest</a></th><th><a href="https://apimatic.io/" target="_blank" rel="external">APIMatic</a></th><th><a href="https://github.com/pksunkara/alpaca" target="_blank" rel="external">Alpaca</a></th><th><a href="http://restunited.com/" target="_blank" rel="external">REST United</a></th><th><a href="https://github.com/swagger-api/swagger-codegen" target="_blank" rel="external">Swagger CodeGen</a></th></tr><tr><td><strong>Price</strong></td><td></td><td>Free</td><td>$500/Year</td><td>Free</td><td>$600/year</td><td>Free</td></tr><tr><td><strong>Languages</strong></td><td>C#</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>TypeScript</td><td>X</td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>Node</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>AngularJS</td><td></td><td>X</td><td></td><td></td><td>X</td></tr><tr><td></td><td>JavaScript</td><td></td><td></td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Java</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Java for Android</td><td></td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Java for JVM</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Ruby</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>PHP</td><td></td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>Python</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>Swift</td><td></td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>Objective-C</td><td></td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>ActionScript</td><td></td><td></td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Scala</td><td></td><td></td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Tizen</td><td></td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>SpringMVC</td><td></td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>Go</td><td>X</td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Clojure</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Rust</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td><strong>Features</strong></td><td>Logging</td><td>X</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Tracing</td><td>X</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Retries</td><td>X</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Authentication</td><td>X</td><td>X</td><td></td><td>X</td><td>?</td></tr><tr><td></td><td>Async Signatures</td><td>X</td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>CodeGen Service</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td><strong>Import Formats</strong></td><td>API Blueprint</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>RAML</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Google API Discovery</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>IODocs</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>WADL</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Swagger</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>YAML</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>JSON Schema</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>Thanks!<br>
+            <p>I’m investigating automatic REST API SDK generation options and I’d like your help narrowing things down. We, at Power BI, have a REST/JSON API and our documentation is up on <a href="http://docs.powerbi.apiary.io/" target="_blank" rel="noopener">apiary</a>, which supports “<a href="https://apiblueprint.org/" target="_blank" rel="noopener">API Blueprint</a>”, not <a href="http://swagger.io/" target="_blank" rel="noopener">Swagger</a>. We want to accommodate as many languages and technologies as possible, so the first then we are going to do is convert our API Blueprint to Swagger (using <a href="https://www.npmjs.com/package/apib2swagger" target="_blank" rel="noopener">apib2swagger</a>) and publish our swagger.json file so you all can generate your own SDKs from it. We’ll then decide which SDK generation tools to use and make all of the SDKs available via GitHub and the major packages managers (npm, bower, nuget, etc).</p>
+<p>Here’s a table of the options I was able to discover on my own. Please have a look and let me know if I missed any or feel free to tell me about your experiences with any of them.   <table class="table table-bordered table-hover table-striped table-condensed"><tbody><tr><th></th><th></th><th><a href="https://github.com/Azure/autorest/" target="_blank" rel="noopener">AutoRest</a></th><th><a href="https://apimatic.io/" target="_blank" rel="noopener">APIMatic</a></th><th><a href="https://github.com/pksunkara/alpaca" target="_blank" rel="noopener">Alpaca</a></th><th><a href="http://restunited.com/" target="_blank" rel="noopener">REST United</a></th><th><a href="https://github.com/swagger-api/swagger-codegen" target="_blank" rel="noopener">Swagger CodeGen</a></th></tr><tr><td><strong>Price</strong></td><td></td><td>Free</td><td>$500/Year</td><td>Free</td><td>$600/year</td><td>Free</td></tr><tr><td><strong>Languages</strong></td><td>C#</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>TypeScript</td><td>X</td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>Node</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>AngularJS</td><td></td><td>X</td><td></td><td></td><td>X</td></tr><tr><td></td><td>JavaScript</td><td></td><td></td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Java</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Java for Android</td><td></td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Java for JVM</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Ruby</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>PHP</td><td></td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>Python</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr><tr><td></td><td>Swift</td><td></td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>Objective-C</td><td></td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>ActionScript</td><td></td><td></td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Scala</td><td></td><td></td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>Tizen</td><td></td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>SpringMVC</td><td></td><td></td><td></td><td></td><td>X</td></tr><tr><td></td><td>Go</td><td>X</td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Clojure</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Rust</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td><strong>Features</strong></td><td>Logging</td><td>X</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Tracing</td><td>X</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Retries</td><td>X</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>Authentication</td><td>X</td><td>X</td><td></td><td>X</td><td>?</td></tr><tr><td></td><td>Async Signatures</td><td>X</td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>CodeGen Service</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td><strong>Import Formats</strong></td><td>API Blueprint</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>RAML</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Google API Discovery</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>IODocs</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>WADL</td><td></td><td>X</td><td></td><td></td><td></td></tr><tr><td></td><td>Swagger</td><td>X</td><td>X</td><td></td><td>X</td><td>X</td></tr><tr><td></td><td>YAML</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td>JSON Schema</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>Thanks!<br>
 Jon</p>
 
         </div>

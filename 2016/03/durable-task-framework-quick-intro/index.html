@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,29 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,dev,azure" />
+    <meta name="keywords" content="azure,howto,dev">
     
     <meta name="description" content="The Durable Task Framework (DTF) is a workflow execution framework that is based on async/await and backed by Azure Service Bus. I was recently in need of a long running workflow engine and wanted to">
+<meta name="keywords" content="azure,howto,dev">
 <meta property="og:type" content="article">
-<meta property="og:title" content="A Quick Intro: Azure Durable Task Framework for Long Running Code-Based Workflows Using async/await and Azure Service Bus">
+<meta property="og:title" content="A Quick Intro: Azure Durable Task Framework for Long Running Code-Based Workflows Using async&#x2F;await and Azure Service Bus">
 <meta property="og:url" content="https://blog.jongallant.com/2016/03/durable-task-framework-quick-intro/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The Durable Task Framework (DTF) is a workflow execution framework that is based on async/await and backed by Azure Service Bus. I was recently in need of a long running workflow engine and wanted to">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:33.357Z">
+<meta property="og:updated_time" content="2018-05-16T20:39:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A Quick Intro: Azure Durable Task Framework for Long Running Code-Based Workflows Using async/await and Azure Service Bus">
+<meta name="twitter:title" content="A Quick Intro: Azure Durable Task Framework for Long Running Code-Based Workflows Using async&#x2F;await and Azure Service Bus">
 <meta name="twitter:description" content="The Durable Task Framework (DTF) is a workflow execution framework that is based on async/await and backed by Azure Service Bus. I was recently in need of a long running workflow engine and wanted to">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -198,34 +200,34 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The <a href="https://github.com/Azure/durabletask" target="_blank" rel="external">Durable Task Framework</a> (DTF) is a workflow execution framework that is based on async/await and backed by Azure Service Bus. I was recently in need of a long running workflow engine and wanted to take advantage of all the async/await goodness. I looked at a bunch of options, including Windows Workflow Foundation, BizTalk, Logic Apps and <a href="http://WorkflowEngine.net" target="_blank" rel="external">WorkflowEngine.net</a>. I haven’t gone too deep into DTF, but from the surface it looks like it is lightweight enough and pretty straight forward with minimal dependencies.</p>
-<p>DTF is on GitHub here: <a href="https://github.com/Azure/durabletask" title="https://github.com/Azure/durabletask" target="_blank" rel="external">https://github.com/Azure/durabletask</a></p>
+            <p>The <a href="https://github.com/Azure/durabletask" target="_blank" rel="noopener">Durable Task Framework</a> (DTF) is a workflow execution framework that is based on async/await and backed by Azure Service Bus. I was recently in need of a long running workflow engine and wanted to take advantage of all the async/await goodness. I looked at a bunch of options, including Windows Workflow Foundation, BizTalk, Logic Apps and <a href="http://WorkflowEngine.net" target="_blank" rel="noopener">WorkflowEngine.net</a>. I haven’t gone too deep into DTF, but from the surface it looks like it is lightweight enough and pretty straight forward with minimal dependencies.</p>
+<p>DTF is on GitHub here: <a href="https://github.com/Azure/durabletask" title="https://github.com/Azure/durabletask" target="_blank" rel="noopener">https://github.com/Azure/durabletask</a></p>
 <p>It has two main components: Orchestrations and Tasks. Orchestrations “orchestrate” your application logic and executes custom code inline and calls out to Tasks. Your custom orchestrations are derived from TaskOrchestration&lt;TResult, TInput&gt; and your custom tasks are derived from TaskActivity&lt;TInput, TResult&gt;</p>
-<p>To use it as is today, you should either get a release of it <a href="https://github.com/jongio/durabletask/releases" target="_blank" rel="external">here</a> or if you want to build it locally, I recommend that you sync to <a href="https://github.com/Azure/durabletask/pull/32" target="_blank" rel="external">my PR here</a>, or just use <a href="https://github.com/jongio/durabletask/tree/nugetdotnetupdates" target="_blank" rel="external">my fork here</a>, which updates all the NuGet packages to the latest versions and upgrades it to .NET 4.6.1.Once you clone the repo, open up the DurableTaskSamples.sln, build and run unit tests to make sure all is good. Make sure you restore NuGetpackages, right click solution name and click “Restore NuGet Packages”</p>
+<p>To use it as is today, you should either get a release of it <a href="https://github.com/jongio/durabletask/releases" target="_blank" rel="noopener">here</a> or if you want to build it locally, I recommend that you sync to <a href="https://github.com/Azure/durabletask/pull/32" target="_blank" rel="noopener">my PR here</a>, or just use <a href="https://github.com/jongio/durabletask/tree/nugetdotnetupdates" target="_blank" rel="noopener">my fork here</a>, which updates all the NuGet packages to the latest versions and upgrades it to .NET 4.6.1.Once you clone the repo, open up the DurableTaskSamples.sln, build and run unit tests to make sure all is good. Make sure you restore NuGetpackages, right click solution name and click “Restore NuGet Packages”</p>
 <p>Here’s a quick walkthrough on how to get it setup.</p>
 <h2 id="setup-azure"><a class="header-anchor" href="#setup-azure"></a>Setup Azure</h2>
 <h3 id="table-storage"><a class="header-anchor" href="#table-storage"></a>Table Storage</h3>
 <p>1. Go to the new Azure Portal and create a new Storage Account. Click New and then search for “storage account”.</p>
-<p><img src="/images/blog/a6f01814a8be_902F/image.png" alt=""></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image.png" alt></p>
 <p>Select “Resource Manager” deployment model</p>
-<p><img src="/images/blog/a6f01814a8be_902F/image_3.png" alt=""></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image_3.png" alt></p>
 <p>Give it a name, select pricing model, subscription, resource group and location.</p>
 <p>Get the connection string from the Settings –&gt; Access Keys blade</p>
-<p><img src="/images/blog/a6f01814a8be_902F/image_4.png" alt=""></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image_4.png" alt></p>
 <p>Copy that connection string to the “StorageConnectionString” appSetting in DurableTaskSamples/App.config</p>
 <h3 id="service-bus"><a class="header-anchor" href="#service-bus"></a>Service Bus</h3>
-<p>Go to the Azure Portal and create a new Service Bus Topic, which has to be done at <a href="http://manage.windowsazure.com" target="_blank" rel="external">http://manage.windowsazure.com</a>, not <a href="http://portal.azure.com" target="_blank" rel="external">http://portal.azure.com</a></p>
-<p><img src="/images/blog/a6f01814a8be_902F/image_5.png" alt=""></p>
+<p>Go to the Azure Portal and create a new Service Bus Topic, which has to be done at <a href="http://manage.windowsazure.com" target="_blank" rel="noopener">http://manage.windowsazure.com</a>, not <a href="http://portal.azure.com" target="_blank" rel="noopener">http://portal.azure.com</a></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image_5.png" alt></p>
 <p>Grab the connectionstring for that service bus and paste it into “ServiceBusConnectionSTring” appSetting in DurableTaskSamples/App.config</p>
 <p>You can also change the taskHubName appSetting if you want to.</p>
 <h3 id="run-durabletasksamples"><a class="header-anchor" href="#run-durabletasksamples"></a>Run DurableTaskSamples</h3>
 <p>Double click on DurableTaskSamples Properties and change the Debug-&gt;Start Options-&gt;Command line arguments to this: “-c –s Greetings”</p>
-<p><img src="/images/blog/a6f01814a8be_902F/image_6.png" alt=""></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image_6.png" alt></p>
 <p>Set a breakpoint in Program.cs, SendGreetingTaks.Execute and GetUserTask.Execute and hit F5.</p>
 <p>Step through the code and you should see this:</p>
-<p><img src="/images/blog/a6f01814a8be_902F/image_7.png" alt=""></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image_7.png" alt></p>
 <p>Enter your name and continue to step through the code and you’ll see this.</p>
-<p><img src="/images/blog/a6f01814a8be_902F/image_8.png" alt=""></p>
+<p><img src="/images/blog/a6f01814a8be_902F/image_8.png" alt></p>
 <p>As you can see, for this very simple orchestration “GreetingsOrchestration” there are two called tasks “GetUserTask”, which does the name prompt and “SendGreetingTask”, which writes the greeting to the console.</p>
 <p>GreetingsOrchestration derives from TaskOrchestration&lt;string, string&gt; and has a RunTask method that calls GetUserTask and SendGreetingTask.</p>
  <script src="https://gist.github.com/jongio/d77d3edf23cc958626a7.js"></script>   

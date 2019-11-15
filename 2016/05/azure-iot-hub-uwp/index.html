@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,32 +12,31 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,iot,azure" />
+    <meta name="keywords" content="azure,iot,howto">
     
-    <meta name="description" content="Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from Olivier Bloch’s Build Talk:
-1. Create a new Azure IoT Hub – Free Tier – in Azure Portal http:">
+    <meta name="description" content="Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from Olivier Bloch’s Build Talk: 1. Create a new Azure IoT Hub – Free Tier – in Azure Portal http:">
+<meta name="keywords" content="azure,iot,howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Get Started with Azure IoT Hub and a UWP App">
 <meta property="og:url" content="https://blog.jongallant.com/2016/05/azure-iot-hub-uwp/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from Olivier Bloch’s Build Talk:
-1. Create a new Azure IoT Hub – Free Tier – in Azure Portal http:">
+<meta property="og:description" content="Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from Olivier Bloch’s Build Talk: 1. Create a new Azure IoT Hub – Free Tier – in Azure Portal http:">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2017-12-19T22:22:15.904Z">
+<meta property="og:updated_time" content="2017-12-19T22:22:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Get Started with Azure IoT Hub and a UWP App">
-<meta name="twitter:description" content="Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from Olivier Bloch’s Build Talk:
-1. Create a new Azure IoT Hub – Free Tier – in Azure Portal http:">
+<meta name="twitter:description" content="Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from Olivier Bloch’s Build Talk: 1. Create a new Azure IoT Hub – Free Tier – in Azure Portal http:">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -68,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -201,68 +200,49 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from <a href="https://channel9.msdn.com/Events/Build/2016/B844" target="_blank" rel="external">Olivier Bloch’s Build Talk</a>:</p>
-<p>1. Create a new Azure IoT Hub – Free Tier – in Azure Portal <a href="http://portal.azure.com" target="_blank" rel="external">http://portal.azure.com</a></p>
-<p><img src="/images/blog/987201621419_9160/image.png" alt=""></p>
+            <p>Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from <a href="https://channel9.msdn.com/Events/Build/2016/B844" target="_blank" rel="noopener">Olivier Bloch’s Build Talk</a>:</p>
+<p>1. Create a new Azure IoT Hub – Free Tier – in Azure Portal <a href="http://portal.azure.com" target="_blank" rel="noopener">http://portal.azure.com</a></p>
+<p><img src="/images/blog/987201621419_9160/image.png" alt></p>
 <p>Once that is created, grab the “iothubowner” connection string – primary key value. (Click Settings –&gt; Shared Access Policies –&gt; iothubowner)</p>
-<p><img src="/images/blog/987201621419_9160/image_3.png" alt=""></p>
-<p>2. Install the <a href="https://github.com/Azure/azure-iot-sdks/releases/latest" target="_blank" rel="external">Azure IoT Hub Device Explorer Windows app</a> – you’ll use this to view and send messages that come and go through the IoT Hub.</p>
-<p><img src="/images/blog/987201621419_9160/image_4.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_3.png" alt></p>
+<p>2. Install the <a href="https://github.com/Azure/azure-iot-sdks/releases/latest" target="_blank" rel="noopener">Azure IoT Hub Device Explorer Windows app</a> – you’ll use this to view and send messages that come and go through the IoT Hub.</p>
+<p><img src="/images/blog/987201621419_9160/image_4.png" alt></p>
 <p>Enter the iothubowner connection string from the last step and click update.</p>
-<p><img src="/images/blog/987201621419_9160/image_5.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_5.png" alt></p>
 <p>3. In VS2015, create a new UWP app</p>
-<p><img src="/images/blog/987201621419_9160/image_6.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_6.png" alt></p>
 <p>Click OK here:</p>
-<p><img src="/images/blog/987201621419_9160/image_7.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_7.png" alt></p>
 <p>Enable Developer Mode if prompted to do so.</p>
-<p><img src="/images/blog/987201621419_9160/image_8.png" alt=""></p>
-<p><img src="/images/blog/987201621419_9160/image_9.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_8.png" alt></p>
+<p><img src="/images/blog/987201621419_9160/image_9.png" alt></p>
 <p>3. Add a connection to your IoT Hub via References –&gt; Add Connected Service</p>
-<p><img src="/images/blog/987201621419_9160/image_10.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_10.png" alt></p>
 <p>Click “Find more services…” at the bottom.</p>
-<p><img src="/images/blog/987201621419_9160/image_11.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_11.png" alt></p>
 <p>Find “Connected Service for Azure IoT Hub” and install it.</p>
-<p><img src="/images/blog/987201621419_9160/image_12.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_12.png" alt></p>
 <p>You should now see “Azure IoT Hub”</p>
-<p><img src="/images/blog/987201621419_9160/image_13.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_13.png" alt></p>
 <p>Sign-in and find your IoT Hub instance you created earlier.</p>
-<p><img src="/images/blog/987201621419_9160/image_14.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_14.png" alt></p>
 <p>Add a new Device.</p>
-<p><img src="/images/blog/987201621419_9160/image_15.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_15.png" alt></p>
 <p>Once you make that connection, you will now see the device in the Device Explorer Management tab and the Azure Portal Devices blade.</p>
-<p><img src="/images/blog/987201621419_9160/image_16.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_16.png" alt></p>
 <p>The Connected Service will add an AzureIoTHub file to your project. It has helper methods for sending and receiving IoT Hub messages.</p>
-<p><img src="/images/blog/987201621419_9160/image_18.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_18.png" alt></p>
 <p>Open up MainPage.xml and drop a button and textblock onto the design surface.</p>
-<p><img src="/images/blog/987201621419_9160/image_19.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_19.png" alt></p>
 <p>Open MainPage.xml.cs and add this code – receive and send messages to the IoT Hub vai the AzureIoTHub helper.</p>
-public <span class="function"><span class="title">MainPage</span></span>()
-&#123;
-     this.InitializeComponent();
-
-    Task.Run(
-         async () =&gt; &#123;
-             <span class="keyword">while</span> (<span class="literal">true</span>) &#123;
-                 var message = await AzureIoTHub.ReceiveCloudToDeviceMessageAsync();
-                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.High, () =&gt; &#123;
-                     textBlock.Text += Environment.NewLine + message;
-                 &#125;);
-             &#125;
-         &#125;
-         );
-&#125;
-
-private void button_Click(object sender, RoutedEventArgs e)
-&#123;
-     Task.Run(async () =&gt; &#123; await AzureIoTHub.SendDeviceToCloudMessageAsync(); &#125;);
-&#125;
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">public MainPage()</span><br><span class="line">&#123;</span><br><span class="line">     this.InitializeComponent();</span><br><span class="line"></span><br><span class="line">    Task.Run(</span><br><span class="line">         async () =&gt; &#123;</span><br><span class="line">             <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                 var message = await AzureIoTHub.ReceiveCloudToDeviceMessageAsync();</span><br><span class="line">                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.High, () =&gt; &#123;</span><br><span class="line">                     textBlock.Text += Environment.NewLine + message;</span><br><span class="line">                 &#125;);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void button_Click(object sender, RoutedEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">     Task.Run(async () =&gt; &#123; await AzureIoTHub.SendDeviceToCloudMessageAsync(); &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Compile and Run the VS Project.</p>
 <p>Open the Data tab in Device Explorer and click the Monitor button</p>
-<p><img src="/images/blog/987201621419_9160/image_20.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_20.png" alt></p>
 <p>When you click the Button in your UWP app, you’ll see data in the Device Explorer Data tab</p>
-<p><img src="/images/blog/987201621419_9160/image_21.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_21.png" alt></p>
 <p>When you want to send a message to the device, go to the Device Explorer, Messages To Devices tab, enter your message and click Send.</p>
-<p><img src="/images/blog/987201621419_9160/image_22.png" alt=""></p>
+<p><img src="/images/blog/987201621419_9160/image_22.png" alt></p>
 <p>That should get you going with a very basic connection between a UWP and IoT Hub.</p>
 <p>Jon</p>
 

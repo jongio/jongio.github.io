@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     
     <title>
@@ -12,16 +12,18 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="powerbi" />
+    <meta name="keywords" content="powerbi">
     
     <meta name="description" content="I’m working on a new visual that uses an open source JavaScript control that includes a CSS file.  I was hoping I could just reference it in pbiviz.json, but that’s not possible because it only suppor">
+<meta name="keywords" content="powerbi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Reference a CSS File in a Power BI Custom Visual Project">
 <meta property="og:url" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-css-file/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on a new visual that uses an open source JavaScript control that includes a CSS file.  I was hoping I could just reference it in pbiviz.json, but that’s not possible because it only suppor">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-css-file/000008.png">
-<meta property="og:updated_time" content="2017-01-20T19:32:43.492Z">
+<meta property="og:updated_time" content="2017-01-20T19:32:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Reference a CSS File in a Power BI Custom Visual Project">
 <meta name="twitter:description" content="I’m working on a new visual that uses an open source JavaScript control that includes a CSS file.  I was hoping I could just reference it in pbiviz.json, but that’s not possible because it only suppor">
@@ -30,11 +32,11 @@
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml" />
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
     
 
     
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico">
     
 
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
@@ -65,7 +67,7 @@
     
     
 
-</head>
+</head></html>
 
 <body>
     <div id="wrap">
@@ -201,10 +203,10 @@
             <p>I’m working on a new visual that uses an open source JavaScript control that includes a CSS file.  I was hoping I could just reference it in pbiviz.json, but that’s not possible because it only supports one style file.</p>
 <p>The only way to reference it is to use a CSS @import directive at the top of the visual.less file.</p>
 <p>1. Copy the CSS file into your project, via copy and paste or npm/bower, etc. In this case, I copied the file to my style folder instead of referencing via npm because I had to make some changes to it to get it to work with Power BI.</p>
-<p><img src="000007.png" alt=""></p>
+<p><img src="000007.png" alt></p>
 <p>2. Open up your style/visual.css file and add this line of code to the top.  The path is relative to the root of the visual project.</p>
-@<span class="keyword">import</span> (less) <span class="string">"style/nouislider.css"</span>;
-<p><img src="000008.png" alt=""></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">@<span class="keyword">import</span> (less) <span class="string">"style/nouislider.css"</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="000008.png" alt></p>
 <p>Then just pbiviz package or pbiviz start to test it out.</p>
 <p>Jon</p>
 
