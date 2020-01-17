@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>
+        
+        How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,iot,postman,rest">
+    
+    <meta name="description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
+<meta name="keywords" content="azure,iot,postman,rest">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman">
+<meta property="og:url" content="https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/000069.png">
+<meta property="og:updated_time" content="2019-01-06T07:37:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman">
+<meta name="twitter:description" content="This post describes how to use Postman and Newman to demonstrate your APIs to your users. Of course, you are going to want to use Apiary to officially describe your APIs, but if you really want to dem">
+<meta name="twitter:image" content="https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/000069.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    
+
+    
+    <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head></html>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/videos/">Videos</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Azure/">Azure</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-azure-iot-hub-device-twin-rest-apis-postman-newman" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Use the Azure IoT Hub Device Twins REST APIs with Postman and Newman
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/" class="article-date">
+    <time datetime="2017-02-08T21:05:24.000Z" itemprop="datePublished">2017-02-08</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/">rest</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>This post describes how to use <a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a> and <a href="https://www.getpostman.com/docs/newman_intro" target="_blank" rel="noopener">Newman</a> to demonstrate your APIs to your users. Of course, you are going to want to use <a href="https://apiary.io/" target="_blank" rel="noopener">Apiary</a> to officially describe your APIs, but if you really want to demonstrate exact calls and provide guidance on how to use the APIs in a personal manner, it doesn’t get any better than sending over a Postman Collection file and asking them to run that inside of Postman or Newman. Within the file they are able to see the exact URIs, parameters, headers that you use to accomplish their scenario. They can then take that guidance and convert it to whatever technology best suits their application needs.</p>
+<p>I’m working with a customer that needs to use the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/" target="_blank" rel="noopener">Azure IoT Hub REST APIs</a> to work with <a href="https://docs.microsoft.com/en-us/rest/api/iothub/service/gettwin" target="_blank" rel="noopener">Device Twins</a> (a cloud representation of your IoT device). You can read more about Device Twins <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins" target="_blank" rel="noopener">here</a> and see the official REST API docs <a href="https://docs.microsoft.com/en-us/rest/api/iothub/service/gettwin" target="_blank" rel="noopener">here</a>.</p>
+<p>A few days ago I forwarded the documentation over to the customer and they struggled with trying to figure out how to use the APIs. There’s a lot missing from the docs and it is mostly generated from comments. My recommendation back to the Azure IoT team is going to be to use Apiary and provide very clear and concise code samples for common scenarios. Many customers have to use the REST APIs because of the memory constrained devices and they want complete control over the interation with IoT Hub - REST APIs should be treated as first class citizens and Postman/Newman/Apiary help do so.</p>
+<p>Given that I needed to resolve this customer issue right away, I could not take the time to update the documentation, but wanted to get them the help they needed ASAP.  This is the perfect use case for Postman/Newman. So, I jumped into Postman, created a new collection, wrote a pre-request script to generate a SAS token and then demonstrated how to use the APIs. I then used Newman to script the test runs from the command line.</p>
+<p>This post will bring you through how I did that. We will go through how to GET a Device Twin document as well as PATCH it to include a desired property.</p>
+<h2 id="get-postman"><a class="header-anchor" href="#get-postman"></a>Get Postman</h2>
+<ul>
+<li>Download Postman from <a href="http://getpostman.com" target="_blank" rel="noopener">http://getpostman.com</a> (I’m using Windows, but feel free to use whatever version works for you.)</li>
+</ul>
+<p><img src="000051.png" alt></p>
+<h2 id="create-a-new-postman-collection"><a class="header-anchor" href="#create-a-new-postman-collection"></a>Create a New Postman Collection</h2>
+<p>Postman allows you to organize your REST API calls into collections and then share those collections.</p>
+<p>I created a collection called “Azure IoT Hub Device Twins”<br>
+<img src="000052.png" alt></p>
+<h2 id="setup-postman-environment"><a class="header-anchor" href="#setup-postman-environment"></a>Setup Postman Environment</h2>
+<p>Postman allows you to setup environments that allow you to set and get global variables. This is where we are going to set the variables we need for these calls.</p>
+<ul>
+<li>Click on the eye icon in the upper right.<br>
+<img src="000054.png" alt></li>
+</ul>
+<p><img src="000055.png" alt></p>
+<p>There you will see that you can configure the variables you need for your script.  In the Device Twin case, you need to set the following:</p>
+<ul>
+<li>hubName - The name of your IoT Hub from the Azure portal.</li>
+<li>deviceId - The name of your device</li>
+<li>signingKey - The iothubowner key form the Azure Portal</li>
+<li>expiresInMins - The number of minutes you want to use the token for</li>
+<li>policyName - The access policy to use - set to iothubowner for Device Twin scenario</li>
+<li>deviceName - The second step of this script PATCHES the device twin metadata, it will use this name. Enter anything you want.</li>
+</ul>
+<h2 id="add-pre-request-script-to-generate-sas-token"><a class="header-anchor" href="#add-pre-request-script-to-generate-sas-token"></a>Add Pre-request Script to Generate SAS Token</h2>
+<p>Azure IoT Hub requires you to supply an Authorization header when you call the REST endpoints. You can read more about the requirements for that token on the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="noopener">IoT Hub Security Guide</a>.</p>
+<p>The Authorization header has the following format:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SharedAccessSignature sr=jongiothub.azure-devices.net&amp;sig=ZiyjB%2FWuGrG43%2BkfuE07w3iC6em8eluH918%2Bi1F46Uo%3D&amp;se=1486605666&amp;skn=iothubowner</span><br></pre></td></tr></table></figure>
+<p>The parameters are:</p>
+<ul>
+<li>sr - The resource uri</li>
+<li>sig - The URI encoded base64 encoded signature</li>
+<li>se - The TTL for the token</li>
+<li>skn - The policy name</li>
+</ul>
+<p>We are going to use the Postman Pre-request Script feature to generate the token.</p>
+<p>You’ll notice that that under the URI, there’s a Pre-request script tab.<br>
+<img src="000056.png" alt></p>
+<ul>
+<li>Click that tab and enter the following code to generate the SAS token and put it in a Postman global variable. You can read the comments to try to decipher how each component is generated.</li>
+</ul>
+<script src="https://gist.github.com/jongio/76e577162e85f0110abc2743458d4771.js"></script>
+<h2 id="add-api-calls"><a class="header-anchor" href="#add-api-calls"></a>Add API Calls</h2>
+<p>The Postman main development area allows you to enter URIs, parameters, headers, Pre-request scripts and Tests.</p>
+<p>For the first example we are going to start with the “GET Device Twin” call, which just gets the device twin (cloud representation of the device metadata).</p>
+<p><img src="000053.png" alt></p>
+<p>The URI to get the device twin is in the following format:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://&#123;%raw%&#125;&#123;&#123;hubName&#125;&#125;&#123;%endraw%&#125;.azure-devices.net/twins/&#123;%raw%&#125;&#123;&#123;deviceId&#125;&#125;&#123;%endraw%&#125;?api-version=2016-11-14</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Notice that Postman uses a double-curly syntax for variables.</p>
+</blockquote>
+<p>With every Azure IoT Hub API call you need to include the api-version and Authorization header.  You can read more about IoT Hub security <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="noopener">here</a>. The <strong>api-version</strong> is pretty straight forward and you can get the most recent version that you should use from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/#common-parameters-and-headers" target="_blank" rel="noopener">Common parameters and headers</a> page. The <strong>Authorization</strong> header is a Shared Access Signature that follows very strict, but not very well documented requirements. You can read more about that above.</p>
+<h3 id="add-get-device-twin-call"><a class="header-anchor" href="#add-get-device-twin-call"></a>Add GET Device Twin Call</h3>
+<p>1. Enter the URI, in this case: <code>https://{{hubName}}.azure-devices.net/twins/{{deviceId}}?api-version=2016-11-14</code><br>
+2. Add ‘Authorization’ header and set the value to <code>{{token}}</code> - that tells Postman to read that value from the global variables you just set in your Pre-request script.<br>
+3. Click on the “Tests” tab and enter the following:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tests[<span class="string">"Body matches string"</span>] = responseBody.has(postman.getGlobalVariable(<span class="string">"deviceId"</span>));</span><br></pre></td></tr></table></figure>
+<p><img src="000058.png" alt></p>
+<p>This test will pass if it finds the deviceId that is stored in the global variable.</p>
+<p>3. Click Send and view the output.  It will look something like this:<br>
+<img src="000057.png" alt></p>
+<p>And you will see that the tests pass:<br>
+<img src="000059.png" alt></p>
+<h2 id="add-patch-device-twin-call"><a class="header-anchor" href="#add-patch-device-twin-call"></a>Add PATCH Device Twin Call</h2>
+<p>1. Create a new call by clicking the + sign tab. You can also duplicate the GET call, but remove the Pre-request script if you do that.<br>
+<img src="000060.png" alt></p>
+<p>2. The URI is the same as the GET call</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">https://&#123;&#123;hubName&#125;&#125;.azure-devices.net/twins/&#123;&#123;deviceId&#125;&#125;?api-version=2016-11-14</span><br></pre></td></tr></table></figure>
+<p>3. Select “PATCH” verb.<br>
+<img src="000061.png" alt></p>
+<p>4. Set the Authorization and Content-Type headers<br>
+<img src="000063.png" alt></p>
+<p>5. Set the body to the following:</p>
+<script src="https://gist.github.com/jongio/4fd1a5d78beb24e1b2db3b729cad039d.js"></script>
+<p>6. Create the following test:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tests[<span class="string">"Body matches string"</span>] = responseBody.has(postman.getGlobalVariable(<span class="string">"deviceName"</span>));</span><br></pre></td></tr></table></figure>
+<p>7. Click send and you should now see the deviceName property in the JSON result.</p>
+<p><img src="000065.png" alt></p>
+<p>And your Test should pass:<br>
+<img src="000066.png" alt></p>
+<h2 id="run-the-tests-in-postman-collection-runner"><a class="header-anchor" href="#run-the-tests-in-postman-collection-runner"></a>Run the Tests in Postman Collection Runner</h2>
+<p>Postman includes an app that allows you to run all the tests in a collection at once.</p>
+<p>1. Click on the toggle arrow next to the collection name and click Run<br>
+<img src="000067.png" alt></p>
+<p>2. That will bring up the Collection Runner, Click Start Run after selecting your Collection<br>
+<img src="000068.png" alt></p>
+<p>3. Your tests will run and you’ll see pass/fail for all of them.<br>
+<img src="000069.png" alt></p>
+<h2 id="run-the-tests-in-newman"><a class="header-anchor" href="#run-the-tests-in-newman"></a>Run the Tests in Newman</h2>
+<p>Newman is Postman’s Node.js serverside Collection execution engine.  It takes in a Collection definition a reference to the global variables and then executes the job.</p>
+<p>1. Install Newman</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g newman</span><br></pre></td></tr></table></figure>
+<p>2. Download the Postman Collection File</p>
+<p>Expand the Collection Toggle, click the … button, then Click Export and save that file to your machine.<br>
+<img src="000071.png" alt></p>
+<p>3. Download the Global Variables File. Go back to your Environments, click Edit, then click the “Download as JSON” button.<br>
+<img src="000072.png" alt><br>
+<img src="000070.png" alt></p>
+<p>4. Open CMD and run the following:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run <span class="string">"Azure IoT Hub Device Twins.postman_collection.json"</span> -g globals.postman_globals.json</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Change the file names to match the file names you downloaded earlier.</p>
+</blockquote>
+<p>You will then see the following output showing that the tests have passed.<br>
+<img src="000073.png" alt></p>
+<p>I hope this posts helps you get started with Postman/Newman as well as the Azure IoT Hub Device Twin REST APIs.</p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                            
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+            <a href="/2017/02/azure-key-vault-explorer/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">
+                    newer
+                </strong>
+                <p class="article-nav-title">
+                    
+                        How to Securely Share Secrets with Azure Key Vault and Azure Key Vault Explorer
+                            
+                </p>
+                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+
+            </a>
+            
+                
+                    <a href="/2017/02/create-new-powerbi-tenant-and-add-users-with-azure-active-directory-and-office365/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            How to Create a New Power BI Tenant and Add Users with Azure Active Directory and Office 365
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="7222147978"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- rail -->
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="1523952970"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+    <!-- banner -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="8838481977"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2020
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2017/02/azure-iot-hub-device-twin-rest-apis-postman-newman/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+
+</html>

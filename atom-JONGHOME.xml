@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Jon Gallant</title>
+	
+	
+	<link href="/atom.xml" rel="self" />
+	
+	<link href="https://blog.jongallant.com/" />
+	<updated>2019-12-30T05:57:24.464Z</updated>
+	<id>https://blog.jongallant.com/</id>
+	
+	<author><name>Jon Gallant</name></author>
+	
+	
+	
+	<entry>
+		<title>Solution to Power BI Desktop Missing Data Tab</title>
+		<link href="https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/" />
+		<id>https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/</id>
+		<published>2019-12-29T21:21:48.000Z</published>
+		<updated>2019-12-30T05:57:24.464Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;When using Power BI Desktop you will see the “Data” tab on the left.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/000006.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;When you create a new DirectQuery connection, the “Data” tab disappears.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/000007.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;It wasn’t obvious to me that the “Data” tab disappeared because I only
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Introducing the New Azure SDKs</title>
+		<link href="https://blog.jongallant.com/2019/11/azure-sdks/" />
+		<id>https://blog.jongallant.com/2019/11/azure-sdks/</id>
+		<published>2019-11-15T13:30:33.000Z</published>
+		<updated>2019-11-19T00:56:01.056Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;blockquote&gt;
+&lt;p&gt;As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: &lt;a href=&quot;https://azure.github.io/azure-sdk/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure SDK Releases&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Azure has had a tremendous amount of growth in a very short
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/" />
+		
+		
+		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
+		
+		<category term="dev" scheme="https://blog.jongallant.com/tags/dev/" />
+		
+		<category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Azure CLI won&#39;t upgrade to latest version or it still works after uninstall</title>
+		<link href="https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/" />
+		<id>https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/</id>
+		<published>2019-07-16T22:54:14.000Z</published>
+		<updated>2019-07-23T00:13:03.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66.&lt;/p&gt;
+&lt;p&gt;I uninstalled the Azure CLI via Apps, but it was still available via Terminal, cmd, and PowerShell.&lt;/p&gt;
+&lt;p&gt;I did some sluething and found these
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>I&#39;m Hiring Devs</title>
+		<link href="https://blog.jongallant.com/2019/05/hiring-devs/" />
+		<id>https://blog.jongallant.com/2019/05/hiring-devs/</id>
+		<published>2019-05-20T11:41:33.000Z</published>
+		<updated>2019-05-20T22:20:54.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;This is my 20th year as a software engineer and 15th year at Microsoft. I started in 1999 and worked in startups for 5 years. I then spent the next 12 years at Microsoft shipping products and services for Bing, Power BI, IoT, MSN, MSDN, and Windows. 3 years ago I joined Commercial Software
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Jobs" scheme="https://blog.jongallant.com/category/Tech/Jobs/" />
+		
+		
+		<category term="jobs" scheme="https://blog.jongallant.com/tags/jobs/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>How to Call the Azure REST APIs with Postman In No Time Flat</title>
+		<link href="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/" />
+		<id>https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/</id>
+		<published>2019-04-06T16:36:21.000Z</published>
+		<updated>2019-04-08T23:16:06.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;This post will show you the fastest way to call the Azure REST APIs using Postman.&lt;/p&gt;
+&lt;p&gt;We’ll use:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://getpostman.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Postman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://shell.azure.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Cloud Shell&lt;/a&gt; - &lt;a
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
+		
+		<category term="postman" scheme="https://blog.jongallant.com/tags/postman/" />
+		
+		<category term="rest" scheme="https://blog.jongallant.com/tags/rest/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Postman Collection Created as Read only</title>
+		<link href="https://blog.jongallant.com/2019/03/postman-collection-readonly/" />
+		<id>https://blog.jongallant.com/2019/03/postman-collection-readonly/</id>
+		<published>2019-03-29T16:05:10.000Z</published>
+		<updated>2019-03-29T23:21:54.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/03/postman-collection-readonly/000070.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;I did a bunch of Googling and Githubbing to no avail.&lt;/p&gt;
+&lt;p&gt;I happened to go to my accounts profile page and noticed this at the
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="postman" scheme="https://blog.jongallant.com/tags/postman/" />
+		
+		<category term="rest" scheme="https://blog.jongallant.com/tags/rest/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Vue.js Error - Unknown custom element - did you register the component correctly? For recursive components, make sure to provide the name option.</title>
+		<link href="https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/" />
+		<id>https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/</id>
+		<published>2019-03-07T23:27:42.000Z</published>
+		<updated>2019-03-08T07:48:17.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I’m building a recursive Vue.js component and ran into this error:&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Unknown custom element: &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;Categories&lt;/span&gt;&amp;gt;&lt;/span&gt; - did you register the
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/" />
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="typescript" scheme="https://blog.jongallant.com/tags/typescript/" />
+		
+		<category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>How I Saved 31% on Insurance...and Other Insurance Tips</title>
+		<link href="https://blog.jongallant.com/2019/02/how-i-saved-31-percent-on-insurance-and-other-insurance-tips/" />
+		<id>https://blog.jongallant.com/2019/02/how-i-saved-31-percent-on-insurance-and-other-insurance-tips/</id>
+		<published>2019-02-21T07:18:48.000Z</published>
+		<updated>2019-02-21T16:37:54.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/02/how-i-saved-31-percent-on-insurance-and-other-insurance-tips/insurance.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;I’ve had auto and home insurance with Pemco since 2003, but just switched to Safeco for 31% less.  I wasn’t unhappy with Pemco - as they were responsive to claims and reputable, but unfortunately, they jacked up my rates so much that I had to look around. I
+          
+        
+			
+		</summary>
+		
+		<category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/" />
+		
+		
+		<category term="consumer" scheme="https://blog.jongallant.com/tags/consumer/" />
+		
+		<category term="insurance" scheme="https://blog.jongallant.com/tags/insurance/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Vue.js TypeError: Cannot set property &#39;render&#39; of undefined</title>
+		<link href="https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/" />
+		<id>https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/</id>
+		<published>2019-02-11T11:22:21.000Z</published>
+		<updated>2019-02-11T19:29:57.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/000056.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;Developing a Vue.js app and I was getting this:&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Uncaught TypeError: Cannot &lt;span class=&quot;built_in&quot;&gt;set&lt;/span&gt; property &lt;span class=&quot;string&quot;&gt;&#39;render&#39;&lt;/span&gt; of
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/" />
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning.</title>
+		<link href="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/" />
+		<id>https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/</id>
+		<published>2019-02-06T16:06:23.000Z</published>
+		<updated>2019-02-07T00:14:48.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;With this code:&lt;/p&gt;
+&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Component&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="typescript" scheme="https://blog.jongallant.com/tags/typescript/" />
+		
+		<category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/" />
+		
+		<category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>How I Resolved Vue.js, VSCode, Vetur, Prettyhtml, and Prettier Formatting and ES Lint Issues</title>
+		<link href="https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/" />
+		<id>https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/</id>
+		<published>2019-02-04T09:56:45.000Z</published>
+		<updated>2019-02-05T19:14:53.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/vuevscode.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;I spent way too much time this weekend debugging Vue.js - Vetur - Prettyhtml - Prettier - Beautify - Eslint issues.&lt;/p&gt;
+&lt;p&gt;Here’s what I discovered:&lt;/p&gt;
+&lt;p&gt;By default, &lt;a href=&quot;https://vuejs.github.io/vetur/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vetur&lt;/a&gt; (The VS
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/" />
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/" />
+		
+		<category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop&#39;s value.</title>
+		<link href="https://blog.jongallant.com/2019/01/vuejs-avoid-mutating-error/" />
+		<id>https://blog.jongallant.com/2019/01/vuejs-avoid-mutating-error/</id>
+		<published>2019-01-31T17:07:26.000Z</published>
+		<updated>2019-02-01T01:22:53.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/01/vuejs-avoid-mutating-error/000049.png&quot; alt&gt;&lt;br&gt;
+Working on a Vue.js and TypeScript project.&lt;/p&gt;
+&lt;p&gt;I had this:&lt;/p&gt;
+&lt;figure class=&quot;highlight typescript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Prop&lt;/span&gt;() enabled!: &lt;span class=&quot;built_in&quot;&gt;boolean&lt;/span&gt; = &lt;span
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/" />
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="web" scheme="https://blog.jongallant.com/tags/web/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Vue.js Not Binding Complex View Model Objects</title>
+		<link href="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/" />
+		<id>https://blog.jongallant.com/2019/01/vuejs-data-not-binding/</id>
+		<published>2019-01-25T22:14:21.000Z</published>
+		<updated>2019-01-26T06:34:07.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.&lt;/p&gt;
+&lt;p&gt;For example, with this code, I define &lt;code&gt;data: { vm: {} }&lt;/code&gt;, but don’t have the &lt;code&gt;items&lt;/code&gt; property and then later set the
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/" />
+		
+		<category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/" />
+		
+		<category term="web" scheme="https://blog.jongallant.com/tags/web/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>How to Create a Microsoft To-Do Task from a Tweet using the iOS Share Menu and IFTTT</title>
+		<link href="https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/" />
+		<id>https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/</id>
+		<published>2019-01-24T21:32:14.000Z</published>
+		<updated>2019-01-31T22:04:21.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;One way to keep track of tweets that you want to follow up on is to “like” them to review at a later time.  I posted my method for that here: &lt;a href=&quot;https://blog.jongallant.com/twitter-likes-microsoft-todo-with-ifttt&quot;&gt;How to Create a Microsoft To-Do Task from a Liked Tweet using IFTTT&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;But we all don’t want
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="productivity" scheme="https://blog.jongallant.com/tags/productivity/" />
+		
+		<category term="todo" scheme="https://blog.jongallant.com/tags/todo/" />
+		
+		<category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/" />
+		
+		<category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>How to Create a Microsoft To-Do Task from a Liked Tweet using IFTTT</title>
+		<link href="https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/" />
+		<id>https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/</id>
+		<published>2019-01-23T06:28:07.000Z</published>
+		<updated>2019-01-25T07:08:02.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I only “like” tweets that I want to follow up on. For example, when someone tweets a new podcast I’ll “like” it as a reminder to listen to it later.&lt;/p&gt;
+&lt;p&gt;Before today, I would have to go to my “Liked Tweets” page on Twitter to find my likes and then take action on them.  But there’s no way to
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="productivity" scheme="https://blog.jongallant.com/tags/productivity/" />
+		
+		<category term="todo" scheme="https://blog.jongallant.com/tags/todo/" />
+		
+		<category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/" />
+		
+		<category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to &#39;The level of the video being input to the display is not correct and the calibration is unable to continue. The video signal appears to be configured for an HDTV and not for a display monitor. Please check the video adapter settings and make sure that they are not configured for an HDTV.&#39;</title>
+		<link href="https://blog.jongallant.com/2019/01/nec-monitors-spectraview-nvidia-hdtv-error/" />
+		<id>https://blog.jongallant.com/2019/01/nec-monitors-spectraview-nvidia-hdtv-error/</id>
+		<published>2019-01-20T22:58:00.000Z</published>
+		<updated>2019-01-21T08:02:40.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I have a NVIDIA GeForce GTX 745 graphics card, which has one DisplayPort and one HDMI port.  My NEC PA322UHD is connected via DisplayPort and my NEC EA275UHD is connected via HDMI.&lt;/p&gt;
+&lt;p&gt;I got this error when I tried to calibrate the EA275UHD (HDMI):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/01/nec-monitors-spectraview-nvidia-hdtv-error/000033.png&quot;
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="nvidia" scheme="https://blog.jongallant.com/tags/nvidia/" />
+		
+		<category term="nec" scheme="https://blog.jongallant.com/tags/nec/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>My New Snowboard Gear for 2019: Everything I Learned While Searching for a New Snowboard and Bindings</title>
+		<link href="https://blog.jongallant.com/2019/01/snowboard-gear/" />
+		<id>https://blog.jongallant.com/2019/01/snowboard-gear/</id>
+		<published>2019-01-13T17:45:00.000Z</published>
+		<updated>2019-01-14T01:53:28.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/01/snowboard-gear/banner.png&quot; alt=&quot;All of My Snowboarding Gear&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been snowboarding off-and-on for over 25 years but have never owned a decent snowboard. I recently decided to get a good snowboard and bindings and, like everything else I buy, I researched it to death before purchasing. This
+          
+        
+			
+		</summary>
+		
+		<category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/" />
+		
+		
+		<category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/" />
+		
+		<category term="snowboarding" scheme="https://blog.jongallant.com/tags/snowboarding/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Helping Colorblind Folks Distinguish Between Text and Hyperlinks in Chrome</title>
+		<link href="https://blog.jongallant.com/2019/01/colorblind-always-underline-links-chrome/" />
+		<id>https://blog.jongallant.com/2019/01/colorblind-always-underline-links-chrome/</id>
+		<published>2019-01-11T13:57:23.000Z</published>
+		<updated>2019-01-12T02:37:22.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;The default &lt;a href=&quot;http://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub.com&lt;/a&gt; theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the same issue all over the
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="colorblind" scheme="https://blog.jongallant.com/tags/colorblind/" />
+		
+		<category term="chrome" scheme="https://blog.jongallant.com/tags/chrome/" />
+		
+		<category term="accessibility" scheme="https://blog.jongallant.com/tags/accessibility/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>How to Update Firmware on Dremel Idea Builder 3D Printer (3D20)</title>
+		<link href="https://blog.jongallant.com/2018/10/dremel-3dprinter-3d20-firmware-update/" />
+		<id>https://blog.jongallant.com/2018/10/dremel-3dprinter-3d20-firmware-update/</id>
+		<published>2018-10-24T22:20:16.000Z</published>
+		<updated>2018-10-25T05:33:47.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;ol&gt;
+&lt;li&gt;Go to Firmware Page &lt;a href=&quot;https://digilab.dremel.com/3D-Support&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://digilab.dremel.com/3D-Support&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Download Firmware Zip file and unzip it.&lt;/li&gt;
+&lt;li&gt;Run dremel_firmware.exe as Admin.&lt;/li&gt;
+&lt;li&gt;Plug printer into computer’s low-powered USB
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="3dprinting" scheme="https://blog.jongallant.com/tags/3dprinting/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Proactive Mentorship</title>
+		<link href="https://blog.jongallant.com/2018/10/proactive-mentorship/" />
+		<id>https://blog.jongallant.com/2018/10/proactive-mentorship/</id>
+		<published>2018-10-18T22:06:56.000Z</published>
+		<updated>2018-10-19T05:27:52.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;The concept of proactive mentorship is all about encouraging both mentees and mentors to be assertive in asking for and offering help.&lt;/p&gt;
+&lt;p&gt;I’m a big believer in mentorship because I’m a byproduct of many patient mentors. I wouldn’t be close to where I am today without them. With every job
+          
+        
+			
+		</summary>
+		
+		<category term="Leadership" scheme="https://blog.jongallant.com/category/Leadership/" />
+		
+		<category term="Proactive Mentorship" scheme="https://blog.jongallant.com/category/Leadership/Proactive-Mentorship/" />
+		
+		
+		<category term="management" scheme="https://blog.jongallant.com/tags/management/" />
+		
+	</entry>
+	
+</feed>

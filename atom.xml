@@ -6,7 +6,7 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2019-11-19T00:56:01.056Z</updated>
+	<updated>2020-01-09T00:32:13.000Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
@@ -14,11 +14,73 @@
 	
 	
 	<entry>
+		<title>How to rename or remove spaces from OneDrive folder name</title>
+		<link href="https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/" />
+		<id>https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/</id>
+		<published>2020-01-08T11:43:20.000Z</published>
+		<updated>2020-01-09T00:32:13.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format &lt;code&gt;OneDrive - {Name}&lt;/code&gt;. Which causes endless issues as a dev, such as running &lt;code&gt;tox&lt;/code&gt; or
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="onedrive" scheme="https://blog.jongallant.com/tags/onedrive/" />
+		
+	</entry>
+	
+	
+	<entry>
+		<title>Solution to Power BI Desktop Missing Data Tab</title>
+		<link href="https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/" />
+		<id>https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/</id>
+		<published>2019-12-29T21:21:48.000Z</published>
+		<updated>2019-12-30T05:57:24.000Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;When using Power BI Desktop you will see the “Data” tab on the left.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/000006.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;When you create a new DirectQuery connection, the “Data” tab disappears.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/000007.png&quot; alt&gt;&lt;/p&gt;
+&lt;p&gt;It wasn’t obvious to me that the “Data” tab disappeared because I only
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/" />
+		
+	</entry>
+	
+	
+	<entry>
 		<title>Introducing the New Azure SDKs</title>
 		<link href="https://blog.jongallant.com/2019/11/azure-sdks/" />
 		<id>https://blog.jongallant.com/2019/11/azure-sdks/</id>
 		<published>2019-11-15T13:30:33.000Z</published>
-		<updated>2019-11-19T00:56:01.056Z</updated>
+		<updated>2019-11-19T00:56:01.000Z</updated>
 		
 		<summary type="html">
 			
@@ -40,9 +102,9 @@
 		<category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/" />
 		
 		
-		<category term="dev" scheme="https://blog.jongallant.com/tags/dev/" />
-		
 		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
+		
+		<category term="dev" scheme="https://blog.jongallant.com/tags/dev/" />
 		
 		<category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/" />
 		
@@ -454,9 +516,9 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		
 		<category term="todo" scheme="https://blog.jongallant.com/tags/todo/" />
 		
-		<category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/" />
-		
 		<category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/" />
+		
+		<category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/" />
 		
 	</entry>
 	
@@ -490,9 +552,9 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		
 		<category term="todo" scheme="https://blog.jongallant.com/tags/todo/" />
 		
-		<category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/" />
-		
 		<category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/" />
+		
+		<category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/" />
 		
 	</entry>
 	
@@ -622,68 +684,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		
 		
 		<category term="3dprinting" scheme="https://blog.jongallant.com/tags/3dprinting/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>Proactive Mentorship</title>
-		<link href="https://blog.jongallant.com/2018/10/proactive-mentorship/" />
-		<id>https://blog.jongallant.com/2018/10/proactive-mentorship/</id>
-		<published>2018-10-18T22:06:56.000Z</published>
-		<updated>2018-10-19T05:27:52.000Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;p&gt;The concept of proactive mentorship is all about encouraging both mentees and mentors to be assertive in asking for and offering help.&lt;/p&gt;
-&lt;p&gt;I’m a big believer in mentorship because I’m a byproduct of many patient mentors. I wouldn’t be close to where I am today without them. With every job
-          
-        
-			
-		</summary>
-		
-		<category term="Leadership" scheme="https://blog.jongallant.com/category/Leadership/" />
-		
-		<category term="Proactive Mentorship" scheme="https://blog.jongallant.com/category/Leadership/Proactive-Mentorship/" />
-		
-		
-		<category term="management" scheme="https://blog.jongallant.com/tags/management/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant</title>
-		<link href="https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/" />
-		<id>https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/</id>
-		<published>2018-09-28T09:30:11.000Z</published>
-		<updated>2018-09-28T17:11:50.000Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;h2 id=&quot;remove-yourself-from-an-azure-subscription&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/#remove-yourself-from-an-azure-subscription&quot;&gt;&lt;/a&gt;Remove Yourself from an Azure Subscription&lt;/h2&gt;
-&lt;p&gt;It is not possible to remove yourself from a Subscription.  You have to contact the Subscription owner to remove
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Tutorial" scheme="https://blog.jongallant.com/category/Tech/Tutorial/" />
-		
-		
-		<category term="howto" scheme="https://blog.jongallant.com/tags/howto/" />
-		
-		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
 		
 	</entry>
 	

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <title>
+        
+        How to Convert a Stateless Azure Service Fabric Service to a Stateful Service |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,howto">
+    
+    <meta name="description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
+<meta name="keywords" content="azure,howto">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Convert a Stateless Azure Service Fabric Service to a Stateful Service">
+<meta property="og:url" content="https://blog.jongallant.com/2016/04/stateless-azure-service-fabric-stateful/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:updated_time" content="2018-05-16T20:39:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Convert a Stateless Azure Service Fabric Service to a Stateful Service">
+<meta name="twitter:description" content="I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    
+
+    
+    <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+</head></html>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/videos/">Videos</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-stateless-azure-service-fabric-stateful" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Convert a Stateless Azure Service Fabric Service to a Stateful Service
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2016/04/stateless-azure-service-fabric-stateful/" class="article-date">
+    <time datetime="2016-04-10T06:31:00.000Z" itemprop="datePublished">2016-04-10</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new stateless service and another stateful service and diff’d them. I’m sharing in case someone else needs to do the same.</p>
+<p>You can see everything you need to do in this commit: <a href="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" title="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" target="_blank" rel="noopener">https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
+<p>Or you can follow along below…</p>
+<h2 id="mysolution-myservice-myservice-cs"><a class="header-anchor" href="#mysolution-myservice-myservice-cs"></a>MySolution/MyService/MyService.cs</h2>
+<h3 id="add-microsoft-servicefabric-data-collections-namespace"><a class="header-anchor" href="#add-microsoft-servicefabric-data-collections-namespace"></a>Add Microsoft.ServiceFabric.Data.Collections namespace</h3>
+<p><img src="/images/blog/fb131b200a2c_5773/image.png" alt></p>
+<h3 id="derive-from-statefulservice-instead-of-stateless-service-and-inject-statefulservicecontext"><a class="header-anchor" href="#derive-from-statefulservice-instead-of-stateless-service-and-inject-statefulservicecontext"></a>Derive from StatefulService instead of Stateless service and inject StatefulServiceContext</h3>
+<p><img src="/images/blog/fb131b200a2c_5773/image_3.png" alt></p>
+<h3 id="use-servicereplicalistener-instead-of-serviceinstancelistener"><a class="header-anchor" href="#use-servicereplicalistener-instead-of-serviceinstancelistener"></a>Use ServiceReplicaListener instead of ServiceInstanceListener</h3>
+<p><img src="/images/blog/fb131b200a2c_5773/image_4.png" alt></p>
+<h3 id="use-reliabledictionary-reliablequeue-as-needed-by-your-service-logic"><a class="header-anchor" href="#use-reliabledictionary-reliablequeue-as-needed-by-your-service-logic"></a>Use ReliableDictionary/ReliableQueue as needed by your service logic.</h3>
+<p><img src="/images/blog/fb131b200a2c_5773/image_5.png" alt></p>
+<h2 id="mysolution-myservice-packageroot-config-settings-xml"><a class="header-anchor" href="#mysolution-myservice-packageroot-config-settings-xml"></a>MySolution/MyService/PackageRoot/Config/Settings.xml</h2>
+<h3 id="add-replicatorconfig-section-to-config"><a class="header-anchor" href="#add-replicatorconfig-section-to-config"></a>Add ReplicatorConfig section to config</h3>
+<p><img src="/images/blog/fb131b200a2c_5773/image_6.png" alt></p>
+<h2 id="mysolution-myservice-packageroot-servicemanifest-xml"><a class="header-anchor" href="#mysolution-myservice-packageroot-servicemanifest-xml"></a>MySolution/MyService/PackageRoot/ServiceManifest.xml</h2>
+<h4 id="set-haspersistedstate-variable-in-servicemanifest"><a class="header-anchor" href="#set-haspersistedstate-variable-in-servicemanifest"></a>Set “HasPersistedState” variable in ServiceManifest</h4>
+<h4 id="change-statelessservicetype-to-statefulservicetype"><a class="header-anchor" href="#change-statelessservicetype-to-statefulservicetype"></a>Change StatelessServiceType to StatefulServiceType</h4>
+<p><img src="/images/blog/fb131b200a2c_5773/image_7.png" alt></p>
+<h2 id="mysolution-myservice-serviceeventsource-cs"><a class="header-anchor" href="#mysolution-myservice-serviceeventsource-cs"></a>MySolution/MyService/ServiceEventSource.cs</h2>
+<h4 id="inject-statefulservice-and-set-replicaid-instead-of-instanceid"><a class="header-anchor" href="#inject-statefulservice-and-set-replicaid-instead-of-instanceid"></a>Inject StatefulService and set ReplicaId instead of InstanceId</h4>
+<p><img src="/images/blog/fb131b200a2c_5773/image_8.png" alt></p>
+<h2 id="mysolution-myservicefabricapplication-applicationpackageroot-applicationmanifest-xml"><a class="header-anchor" href="#mysolution-myservicefabricapplication-applicationpackageroot-applicationmanifest-xml"></a>MySolution/MyServiceFabricApplication/ApplicationPackageRoot/ApplicationManifest.xml</h2>
+<h4 id="add-replica-settings-to-applicationmanifest"><a class="header-anchor" href="#add-replica-settings-to-applicationmanifest"></a>Add Replica settings to ApplicationManifest</h4>
+<h4 id="change-statelessservice-element-to-statefulservice-element"><a class="header-anchor" href="#change-statelessservice-element-to-statefulservice-element"></a>Change StatelessService element to StatefulService Element</h4>
+<p><img src="/images/blog/fb131b200a2c_5773/image_9.png" alt></p>
+<h3 id="mysolution-myservicefabricapplication-applicationparameters-cloud-xml"><a class="header-anchor" href="#mysolution-myservicefabricapplication-applicationparameters-cloud-xml"></a>MySolution/MyServiceFabricApplication/ApplicationParameters/Cloud.xml</h3>
+<h4 id="add-parameters-to-your-cloud-and-local-xml-files"><a class="header-anchor" href="#add-parameters-to-your-cloud-and-local-xml-files"></a>Add Parameters to your Cloud and Local.xml files</h4>
+<p><img src="/images/blog/fb131b200a2c_5773/image_10.png" alt></p>
+<h3 id="mysolution-myservicefabricapplication-applicationparameters-local-xml"><a class="header-anchor" href="#mysolution-myservicefabricapplication-applicationparameters-local-xml"></a>MySolution/MyServiceFabricApplication/ApplicationParameters/Local.xml</h3>
+<p><img src="/images/blog/fb131b200a2c_5773/image_11.png" alt></p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                            
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+            <a href="/2016/04/brother-printer-troubleshooting-tips/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">
+                    newer
+                </strong>
+                <p class="article-nav-title">
+                    
+                        Brother Printer Troubleshooting Tips
+                            
+                </p>
+                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+
+            </a>
+            
+                
+                    <a href="/2016/03/durable-task-framework-quick-intro/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            A Quick Intro: Azure Durable Task Framework for Long Running Code-Based Workflows Using async/await and Azure Service Bus
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="7222147978"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- rail -->
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="1523952970"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+    <!-- banner -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="8838481977"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2020
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2016/04/stateless-azure-service-fabric-stateful/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+
+</html>
