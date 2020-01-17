@@ -6,11 +6,46 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2020-01-09T00:32:13.000Z</updated>
+	<updated>2020-01-17T19:19:25.231Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
 	
+	
+	
+	<entry>
+		<title>How to use the Azure Data Explorer (kusto) REST API with Httpie</title>
+		<link href="https://blog.jongallant.com/2020/01/azure-data-explorer-rest/" />
+		<id>https://blog.jongallant.com/2020/01/azure-data-explorer-rest/</id>
+		<published>2020-01-17T09:13:18.000Z</published>
+		<updated>2020-01-17T19:19:25.231Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I’m working on project that pulls &lt;a href=&quot;https://www.gharchive.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;gharchive&lt;/a&gt; data into Azure Data Explorer (kusto) and I decided to try to do all of my setup with the Azure CLI.  I could easily create my cluster and database with the CLI, but could not
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tutorials" scheme="https://blog.jongallant.com/category/Tech/Tutorials/" />
+		
+		
+		<category term="azure" scheme="https://blog.jongallant.com/tags/azure/" />
+		
+		<category term="rest" scheme="https://blog.jongallant.com/tags/rest/" />
+		
+		<category term="kusto" scheme="https://blog.jongallant.com/tags/kusto/" />
+		
+		<category term="httpie" scheme="https://blog.jongallant.com/tags/httpie/" />
+		
+	</entry>
 	
 	
 	<entry>
@@ -651,39 +686,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		<category term="chrome" scheme="https://blog.jongallant.com/tags/chrome/" />
 		
 		<category term="accessibility" scheme="https://blog.jongallant.com/tags/accessibility/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>How to Update Firmware on Dremel Idea Builder 3D Printer (3D20)</title>
-		<link href="https://blog.jongallant.com/2018/10/dremel-3dprinter-3d20-firmware-update/" />
-		<id>https://blog.jongallant.com/2018/10/dremel-3dprinter-3d20-firmware-update/</id>
-		<published>2018-10-24T22:20:16.000Z</published>
-		<updated>2018-10-25T05:33:47.000Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;ol&gt;
-&lt;li&gt;Go to Firmware Page &lt;a href=&quot;https://digilab.dremel.com/3D-Support&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://digilab.dremel.com/3D-Support&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Download Firmware Zip file and unzip it.&lt;/li&gt;
-&lt;li&gt;Run dremel_firmware.exe as Admin.&lt;/li&gt;
-&lt;li&gt;Plug printer into computer’s low-powered USB
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
-		
-		
-		<category term="3dprinting" scheme="https://blog.jongallant.com/tags/3dprinting/" />
 		
 	</entry>
 	
