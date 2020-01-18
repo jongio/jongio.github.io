@@ -6,11 +6,42 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2020-01-17T19:19:25.231Z</updated>
+	<updated>2020-01-18T15:02:39.120Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
 	
+	
+	
+	<entry>
+		<title>How to loop over a Python range that has a single item - zero length range</title>
+		<link href="https://blog.jongallant.com/2020/01/python-loop-range-single-item/" />
+		<id>https://blog.jongallant.com/2020/01/python-loop-range-single-item/</id>
+		<published>2020-01-18T06:28:25.000Z</published>
+		<updated>2020-01-18T15:02:39.120Z</updated>
+		
+		<summary type="html">
+			
+			  
+        
+          
+          
+            &lt;p&gt;I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year.&lt;/p&gt;
+&lt;p&gt;For example, given the start year and end year of 2020, I want a loop to execute for 2020.&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span
+          
+        
+			
+		</summary>
+		
+		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
+		
+		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
+		
+		
+		<category term="python" scheme="https://blog.jongallant.com/tags/python/" />
+		
+	</entry>
 	
 	
 	<entry>
@@ -653,39 +684,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 		<category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/" />
 		
 		<category term="snowboarding" scheme="https://blog.jongallant.com/tags/snowboarding/" />
-		
-	</entry>
-	
-	
-	<entry>
-		<title>Helping Colorblind Folks Distinguish Between Text and Hyperlinks in Chrome</title>
-		<link href="https://blog.jongallant.com/2019/01/colorblind-always-underline-links-chrome/" />
-		<id>https://blog.jongallant.com/2019/01/colorblind-always-underline-links-chrome/</id>
-		<published>2019-01-11T13:57:23.000Z</published>
-		<updated>2019-01-12T02:37:22.000Z</updated>
-		
-		<summary type="html">
-			
-			  
-        
-          
-          
-            &lt;p&gt;The default &lt;a href=&quot;http://github.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub.com&lt;/a&gt; theme is not very colorblind friendly because it is hard to distinguish hyperlinks from normal text. I’m using GitHub as an example because I use that site a lot, but I see the same issue all over the
-          
-        
-			
-		</summary>
-		
-		<category term="Tech" scheme="https://blog.jongallant.com/category/Tech/" />
-		
-		<category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/" />
-		
-		
-		<category term="colorblind" scheme="https://blog.jongallant.com/tags/colorblind/" />
-		
-		<category term="chrome" scheme="https://blog.jongallant.com/tags/chrome/" />
-		
-		<category term="accessibility" scheme="https://blog.jongallant.com/tags/accessibility/" />
 		
 	</entry>
 	

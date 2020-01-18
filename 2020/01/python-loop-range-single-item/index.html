@@ -6,24 +6,28 @@
     
     <title>
         
-        Archive: 2020 |
+        How to loop over a Python range that has a single item - zero length range |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/archives/2020/index.html">
+    <meta name="keywords" content="python">
+    
+    <meta name="description" content="I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year. For example, given the start year and end year of 2020, I want a loop to execute for 2020">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to loop over a Python range that has a single item - zero length range">
+<meta property="og:url" content="https://blog.jongallant.com/2020/01/python-loop-range-single-item/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
+<meta property="og:description" content="I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year. For example, given the start year and end year of 2020, I want a loop to execute for 2020">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2020/01/python-loop-range-single-item/000047.png">
+<meta property="og:updated_time" content="2020-01-18T15:02:39.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jon Gallant">
-<meta name="twitter:description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:title" content="How to loop over a Python range that has a single item - zero length range">
+<meta name="twitter:description" content="I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year. For example, given the start year and end year of 2020, I want a loop to execute for 2020">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/01/python-loop-range-single-item/000047.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -154,7 +158,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    Archive: 2020
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -169,109 +173,65 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
+                            <article id="post-python-loop-range-single-item" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
     
-    <div class="archive-year-wrap">
-        <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>
-            2020</a>
-    </div>
-    
-    <div class="archives">
-        
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-01-18T06:28:25.000Z" itemprop="datePublished">
-                    2020-01-18</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/01/python-loop-range-single-item/">How to loop over a Python range that has a single item - zero length range</a>
+        <h1 class="article-title" itemprop="name">
+        How to loop over a Python range that has a single item - zero length range
         </h1>
     
 
-        <p class="article-excerpt">
-            I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year.
-For example, given the start year and end year of 2020, I want a loop to execute for 2020
-        </p>
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2020/01/python-loop-range-single-item/" class="article-date">
+    <time datetime="2020-01-18T06:28:25.000Z" itemprop="datePublished">2020-01-18</time>
+</a>
+
+                
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year.</p>
+<p>For example, given the start year and end year of 2020, I want a loop to execute for 2020.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">years = range(2020, 2020)</span><br><span class="line">for y in years:</span><br><span class="line">    print(y)</span><br></pre></td></tr></table></figure>
+<p>But the python <code>range</code> object doesn’t recognize this as a single range item and won’t output anything.  The source for the range object is here: <a href="https://github.com/python/cpython/blob/master/Objects/rangeobject.c" target="_blank" rel="noopener">https://github.com/python/cpython/blob/master/Objects/rangeobject.c</a> and I believe it is this conditional statement that causes range to return a length of zero.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/* if (lo &gt;= hi), return length of 0. */</span><br><span class="line">cmp_result = PyObject_RichCompareBool(lo, hi, Py_GE);</span><br><span class="line">if (cmp_result != 0) &#123;</span><br><span class="line">    Py_DECREF(step);</span><br><span class="line">    if (cmp_result &lt; 0)</span><br><span class="line">        return NULL;</span><br><span class="line">    return PyLong_FromLong(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>My solution to this was to use create a custom function that uses python <code>yield</code> keyword to return an item even if the start and end are equal, with this code:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def lte_range(start, end, step=1):</span><br><span class="line">    while start &lt;= end:</span><br><span class="line">        yield start</span><br><span class="line">        start += step</span><br></pre></td></tr></table></figure>
+<p>This code will yield aka return the start value even if it is equal to the end value.</p>
+<p>So, this code:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">years = lte_range(2020, 2020)</span><br><span class="line">for y in years:</span><br><span class="line">    print(y)</span><br></pre></td></tr></table></figure>
+<p>Will output:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2020</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Hope this helps you out.  Let me know in the comments if you know of a better way to achieve this.</p>
+<p>Thanks,<br>
+Jon</p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        
 
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-01-17T09:13:18.000Z" itemprop="datePublished">
-                    2020-01-17</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-        </div>
-        
+    <section id="comments">
     
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/01/azure-data-explorer-rest/">How to use the Azure Data Explorer (kusto) REST API with Httpie</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I’m working on project that pulls gharchive data into Azure Data Explorer (kusto) and I decided to try to do all of my setup with the Azure CLI.  I could easily create my cluster and database with the
-        </p>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-            
-        </div>
-        
-        
 
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-01-08T11:43:20.000Z" itemprop="datePublished">
-                    2020-01-08</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
     
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/01/onedrive-rename-remove-spaces-from-folder-name/">How to rename or remove spaces from OneDrive folder name</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format OneDrive - {
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-        
-    </div>
-</section>
+    </section>
 
 
                             
@@ -332,6 +292,24 @@ For example, given the start year and end year of 2020, I want a loop to execute
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2020/01/azure-data-explorer-rest/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            How to use the Azure Data Explorer (kusto) REST API with Httpie
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -402,11 +380,13 @@ For example, given the start year and end year of 2020, I want a loop to execute
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2020/01/python-loop-range-single-item/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
