@@ -23,7 +23,7 @@
 <meta property="og:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-rest-apis-postman/AzurePostman2min.png">
-<meta property="og:updated_time" content="2019-01-30T19:14:46.000Z">
+<meta property="og:updated_time" content="2020-01-20T12:21:15.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Azure REST APIs with Postman in 2 Minutes">
 <meta name="twitter:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
@@ -251,7 +251,10 @@
 <p><img src="20.png" alt></p>
 <p><img src="22.png" alt></p>
 <h3 id="get-resource-groups-request"><a class="header-anchor" href="#get-resource-groups-request"></a>Get Resource Groups Request</h3>
-<p>This request will GET <code>https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups?api-version=2017-05-10</code> with an Authorization header set to the Bearer Token we just requested with ‘Get AAD Token’.</p>
+<p>This request will GET <code>https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups?api-version=2019-10-01</code> with an Authorization header set to the Bearer Token we just requested with ‘Get AAD Token’.</p>
+<blockquote>
+<p>See <a href="https://docs.microsoft.com/en-us/rest/api/resources/resourcegroups" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/resources/resourcegroups</a> for latest <code>api-version</code> value</p>
+</blockquote>
 <p><img src="21.png" alt></p>
 <h3 id="set-environment-variables"><a class="header-anchor" href="#set-environment-variables"></a>Set Environment Variables</h3>
 <p>When you clicked on the “Run in Postman” button Postman also created an Environment for you called “Azure REST”.  You will now set your Service Principal settings in the Environment to be used in the requests.</p>
