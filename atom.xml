@@ -6,7 +6,7 @@
 	<link href="/atom.xml" rel="self" />
 	
 	<link href="https://blog.jongallant.com/" />
-	<updated>2020-01-18T15:02:39.120Z</updated>
+	<updated>2020-01-20T12:11:23.697Z</updated>
 	<id>https://blog.jongallant.com/</id>
 	
 	<author><name>Jon Gallant</name></author>
@@ -18,7 +18,7 @@
 		<link href="https://blog.jongallant.com/2020/01/python-loop-range-single-item/" />
 		<id>https://blog.jongallant.com/2020/01/python-loop-range-single-item/</id>
 		<published>2020-01-18T06:28:25.000Z</published>
-		<updated>2020-01-18T15:02:39.120Z</updated>
+		<updated>2020-01-20T12:11:23.697Z</updated>
 		
 		<summary type="html">
 			
@@ -26,9 +26,9 @@
         
           
           
-            &lt;p&gt;I’m working on an app that accepts a start year and end year, loops through those years, and outputs the year.&lt;/p&gt;
+            &lt;p&gt;I’m working on an app that accepts user input of a start year and end year, loops through those years, and outputs the year.&lt;/p&gt;
 &lt;p&gt;For example, given the start year and end year of 2020, I want a loop to execute for 2020.&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
           
         
 			
