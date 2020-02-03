@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="powerbi">
+    <meta name="keywords" content="powerbi" />
     
     <meta name="description" content="Here’s how to reference three.js in your Power BI Custom Visual project.  I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.  1. Setup you">
-<meta name="keywords" content="powerbi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Reference Three.js in a Power BI Custom Visual Project">
 <meta property="og:url" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here’s how to reference three.js in your Power BI Custom Visual project.  I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.  1. Setup you">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/000009.png">
-<meta property="og:updated_time" content="2018-07-24T14:15:34.000Z">
+<meta property="article:published_time" content="2017-01-20T11:53:12.000Z">
+<meta property="article:modified_time" content="2018-07-24T14:15:34.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Reference Three.js in a Power BI Custom Visual Project">
-<meta name="twitter:description" content="Here’s how to reference three.js in your Power BI Custom Visual project.  I have not tested to see if three.js actually works on powerbi.com, but this is how to resolve reference issues.  1. Setup you">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/000009.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/">powerbi</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/" rel="tag">powerbi</a></li></ul>
 
             </div>
         
@@ -206,24 +227,49 @@
 </blockquote>
 <p>1. Setup your dev environment by following the instructions in this post: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="noopener">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <p>2. Create visual and navigate to the new directory.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pbiviz new threejstest</span><br><span class="line">cd threejstest</span><br></pre></td></tr></table></figure>
+<pre><code>pbiviz new threejstest
+cd threejstest
+</code></pre>
 <p>3. Install three.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i three --save</span><br></pre></td></tr></table></figure>
+<pre><code>npm i three --save
+</code></pre>
 <p>4. Install typings</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i -g typings</span><br></pre></td></tr></table></figure>
+<pre><code>npm i -g typings
+</code></pre>
 <p>5. Install three typings</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typings install dt~three --save --global</span><br></pre></td></tr></table></figure>
+<pre><code>typings install dt~three --save --global
+</code></pre>
 <p>6. Open in VS Code (or any editor)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">code .</span><br></pre></td></tr></table></figure>
+<pre><code>code .
+</code></pre>
 <p>7. Open tsconfig.json and add references to the three.js files</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"allowJs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"emitDecoratorMetadata"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"experimentalDecorators"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"target"</span>: <span class="string">"ES5"</span>,</span><br><span class="line">    <span class="attr">"sourceMap"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"out"</span>: <span class="string">"./.tmp/build/visual.js"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"files"</span>: [</span><br><span class="line">    <span class="string">".api/v1.4.0/PowerBI-visuals.d.ts"</span>,</span><br><span class="line">    <span class="string">"node_modules/three/build/three.js"</span>,</span><br><span class="line">    <span class="string">"typings/index.d.ts"</span>,</span><br><span class="line">    <span class="string">"src/visual.ts"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-json">{
+  &quot;compilerOptions&quot;: {
+    &quot;allowJs&quot;: true,
+    &quot;emitDecoratorMetadata&quot;: true,
+    &quot;experimentalDecorators&quot;: true,
+    &quot;target&quot;: &quot;ES5&quot;,
+    &quot;sourceMap&quot;: true,
+    &quot;out&quot;: &quot;./.tmp/build/visual.js&quot;
+  },
+  &quot;files&quot;: [
+    &quot;.api/v1.4.0/PowerBI-visuals.d.ts&quot;,
+    &quot;node_modules/three/build/three.js&quot;,
+    &quot;typings/index.d.ts&quot;,
+    &quot;src/visual.ts&quot;
+  ]
+}
+</code></pre>
 <p>8. Add three.d.ts to /src folder and copy this code to that file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">declare var three: any;</span><br></pre></td></tr></table></figure>
+<pre><code>declare var three: any;
+</code></pre>
 <p>9. Open src/visual.ts and add this line to the top of the file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/// &lt;amd-dependency path=&apos;three&apos;&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>/// &lt;amd-dependency path='three'&gt;
+</code></pre>
 <p>10. Instantiate a new THREE.Scene(); object in your constructor</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let scene = new THREE.Scene();</span><br></pre></td></tr></table></figure>
-<p><img src="000009.png" alt></p>
+<pre><code>let scene = new THREE.Scene();
+</code></pre>
+<p><img src="000009.png" alt=""></p>
 
         </div>
         <footer>
@@ -235,7 +281,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -343,7 +389,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -415,20 +461,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto">
+    <meta name="keywords" content="howto" />
     
     <meta name="description" content="I connect and disconnect my RocketFish Bluetooth Headset (RF-MAB2) from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off">
-<meta name="keywords" content="howto">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Quickly Connect and Reconnect a Bluetooth Device to a Windows 8 Machine">
 <meta property="og:url" content="https://blog.jongallant.com/2012/12/windows-8-bluetooth-connect/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I connect and disconnect my RocketFish Bluetooth Headset (RF-MAB2) from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:published_time" content="2012-12-04T04:11:00.000Z">
+<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="howto">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Quickly Connect and Reconnect a Bluetooth Device to a Windows 8 Machine">
-<meta name="twitter:description" content="I connect and disconnect my RocketFish Bluetooth Headset (RF-MAB2) from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li></ul>
 
             </div>
         
@@ -203,39 +224,39 @@
             <p>I connect and disconnect my <a href="http://www.bing.com/search?q=RF-MAB2" target="_blank" rel="noopener">RocketFish Bluetooth Headset (RF-MAB2)</a> from my phone and laptop all day long. Connecting and disconnecting Bluetooth devices to one machine is easy, just turn it on and off. The trouble comes when you need to connect and disconnect from multiple devices – Windows depends on third party drivers to help and the result is a non-intuitive experience. As I mentioned in my “<a href="/2012/09/quickly-pair-bluetooth-device-windows.html">How to Quickly Connect a Bluetooth Device to a Windows 7 Machine</a>” post, it wasn’t simple to figure out how to do that in Windows 7 and it’s even harder in Windows 8. The Windows 8 Devices App only allows you to Add and Remove the device. It would be great if I could just double click on a device that is already paired to reestablish the connection, but that isn’t supported for now. I am discussing the issue with the Bluetooth team and they are working on getting this into their backlog.</p>
 <p>The short answer to this post is that there isn’t a way to quickly connect a Bluetooth device in Windows 8. But I will show you the only two options I discovered.</p>
 <p>If you haven’t done so already then you should find out who manufacture’s your Bluetooth stack and get their Windows 8 drivers. My PC uses the Broadcom Bluetooth stack (<a href="http://www.broadcom.com/support/bluetooth/update.php" target="_blank" rel="noopener">Download</a>) so your experience will be different if you have a different stack, but it should pretty similar.</p>
-<h3 id="option-1-control-panel-the-bluetooth-driver"><a class="header-anchor" href="#option-1-control-panel-the-bluetooth-driver"></a>Option 1 – Control Panel &amp; the Bluetooth Driver</h3>
+<h3 id="Option-1-–-Control-Panel-the-Bluetooth-Driver"><a class="header-anchor" href="#Option-1-–-Control-Panel-the-Bluetooth-Driver"></a>Option 1 – Control Panel &amp; the Bluetooth Driver</h3>
 <p>This is the option that I prefer. It still isn’t very fast, but it is faster than Option 2 because it doesn’t require you to add and remove the device every time you want to connect it. There is a little bit of initial setup, but it is worth it over time.</p>
-<h2 id="connect-your-device"><a class="header-anchor" href="#connect-your-device"></a>Connect Your Device</h2>
+<h2 id="Connect-Your-Device"><a class="header-anchor" href="#Connect-Your-Device"></a>Connect Your Device</h2>
 <p>1. Follow the “How to Connect the Device to Your Computer” section under Option 2 below to establish your initial connection.</p>
-<h2 id="setup-the-taskbar-icon"><a class="header-anchor" href="#setup-the-taskbar-icon"></a>Setup the Taskbar Icon</h2>
+<h2 id="Setup-the-Taskbar-Icon"><a class="header-anchor" href="#Setup-the-Taskbar-Icon"></a>Setup the Taskbar Icon</h2>
 <p>This will allow you to quickly launch into “Devices and Printers” on your computer.</p>
 <p>1. Create a Shortcut to “Devices and Printers” by following the steps on this page: <a href="http://www.sevenforums.com/tutorials/68235-devices-printers-shortcut-create.html" target="_blank" rel="noopener">How to Create a “Devices and Printers” Shortcut in Windows 7</a></p>
 <p>2. Drag that Shortcut into your Taskbar</p>
-<p><img src="/images/blog/927c62386414_29F9/image.png" alt></p>
-<h2 id="how-to-reconnect-your-device"><a class="header-anchor" href="#how-to-reconnect-your-device"></a>How to Reconnect Your Device</h2>
+<p><img src="/images/blog/927c62386414_29F9/image.png" alt=""></p>
+<h2 id="How-to-Reconnect-Your-Device"><a class="header-anchor" href="#How-to-Reconnect-Your-Device"></a>How to Reconnect Your Device</h2>
 <p>1. Put the Bluetooth device in pairing mode. Read the documentation for the device to find out How to do this. For the RF-MAB2, you just need to hold down the button that has the icon of an old school phone for about 6 seconds.</p>
 <p>2. Click on the icon in your taskbar that you created above. That will launch Devices and Printers.</p>
-<p><img src="/images/blog/927c62386414_29F9/image_3.png" alt></p>
+<p><img src="/images/blog/927c62386414_29F9/image_3.png" alt=""></p>
 <p>2. Right click on your device and click Control.</p>
-<p><img src="/images/blog/927c62386414_29F9/image_4.png" alt></p>
+<p><img src="/images/blog/927c62386414_29F9/image_4.png" alt=""></p>
 <p>3. Click Connect</p>
-<p><img src="/images/blog/927c62386414_29F9/image_5.png" alt></p>
+<p><img src="/images/blog/927c62386414_29F9/image_5.png" alt=""></p>
 <p>There will be a series of beeps and then your device will be connected</p>
-<p><img src="/images/blog/927c62386414_29F9/image_6.png" alt></p>
-<h3 id="option-2-windows-8-devices-app"><a class="header-anchor" href="#option-2-windows-8-devices-app"></a>Option 2 – Windows 8 Devices App</h3>
+<p><img src="/images/blog/927c62386414_29F9/image_6.png" alt=""></p>
+<h3 id="Option-2-–-Windows-8-Devices-App"><a class="header-anchor" href="#Option-2-–-Windows-8-Devices-App"></a>Option 2 – Windows 8 Devices App</h3>
 <p>With this approach you need to manually remove and then re-add the device every time you want to connect it.</p>
-<h2 id="how-to-connect-the-device-to-your-computer"><a class="header-anchor" href="#how-to-connect-the-device-to-your-computer"></a>How to Connect the Device to Your Computer</h2>
+<h2 id="How-to-Connect-the-Device-to-Your-Computer"><a class="header-anchor" href="#How-to-Connect-the-Device-to-Your-Computer"></a>How to Connect the Device to Your Computer</h2>
 <p>1. Put the Bluetooth device in pairing mode. Read the documentation for the device to find out how to do this. For the RF-MAB2, you just need to hold down the button that has the icon of an old school phone for about 6 seconds.</p>
 <p>2. Launch the Windows 8 Devices App. You can get there by double clicking the Bluetooth icon in your system tray or by hitting Windows key and then typing in “devices” and click on Settings then click on Devices.</p>
-<p><img src="/images/blog/927c62386414_29F9/image_7.png" alt></p>
-<p><img src="/images/blog/927c62386414_29F9/image_8.png" alt></p>
+<p><img src="/images/blog/927c62386414_29F9/image_7.png" alt=""></p>
+<p><img src="/images/blog/927c62386414_29F9/image_8.png" alt=""></p>
 <p>3. Click “Add a device” and your device will be added.</p>
-<p><img src="/images/blog/927c62386414_29F9/image_9.png" alt></p>
-<h2 id="how-to-reconnect-the-device-to-your-computer"><a class="header-anchor" href="#how-to-reconnect-the-device-to-your-computer"></a>How to Reconnect the Device to Your Computer</h2>
+<p><img src="/images/blog/927c62386414_29F9/image_9.png" alt=""></p>
+<h2 id="How-to-Reconnect-the-Device-to-Your-Computer"><a class="header-anchor" href="#How-to-Reconnect-the-Device-to-Your-Computer"></a>How to Reconnect the Device to Your Computer</h2>
 <p>This is where Windows 8 is lacking. It would be great if I could just load up the Devices App and double click on my device to reconnect it, but double click doesn’t do anything. The only option is to remove the device and then add it back. It’s a pain, but that’s the only way to do it with the Devices App for now.</p>
 <p>1. Follow steps 1 &amp; 2 in the “How to Connect the Device to Your Computer” above to get to the Devices App</p>
 <p>2. Click on your device and then click on the icon that appears with the minus icon in it.</p>
-<p><img src="/images/blog/927c62386414_29F9/image_11.png" alt></p>
+<p><img src="/images/blog/927c62386414_29F9/image_11.png" alt=""></p>
 <p>3. Click Remove.</p>
 <p>4. Reconnect your device like you did in the “How to Connect the Device to Your Computer” step above.</p>
 <p>You device should now be reconnected.</p>
@@ -252,7 +273,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -360,7 +381,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -432,20 +453,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

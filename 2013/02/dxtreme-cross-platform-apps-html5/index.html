@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,58 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="review,dev">
+    <meta name="keywords" content="review,dev" />
     
     <meta name="description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
-<meta name="keywords" content="review,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building Cross-Platform Apps with HTML5 and DXTREME">
 <meta property="og:url" content="https://blog.jongallant.com/2013/02/dxtreme-cross-platform-apps-html5/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:04:41.000Z">
+<meta property="article:published_time" content="2013-02-26T00:37:00.000Z">
+<meta property="article:modified_time" content="2018-12-10T22:04:41.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="review">
+<meta property="article:tag" content="dev">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Building Cross-Platform Apps with HTML5 and DXTREME">
-<meta name="twitter:description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,88 +216,146 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/review/">review</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/review/" rel="tag">review</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  </p><p>Like so many devs out there, I was recently faced with that exact question. It turns out that there are two options for doing so 1) Build HTML5 web apps and a bunch of shell apps, one for each of the platform or 2) build native apps for each of the platforms. Since I don’t have expertise in all of the platforms or the time and money to get ramped up on all of them, I decided to look into the first option. I was also fortunate enough to hear about a new cross-platform development framework that <a href="http://www.devexpress.com/" target="_blank" rel="noopener">DevExpress</a> was working on called <a href="http://www.devexpress.com/Subscriptions/DXperience/dxtreme.xml" target="_blank" rel="noopener">DXTREME</a>. DXTREME is designed to help you build apps for Android, Apple, and Windows 8 using technologies that web devs know inside and out like HTML, JavaScript, CSS and a XAML (for Win8 only). It includes a set of libraries, controls and other assets that abstract away the complexities of building applications for all of these different platforms. It integrates directly with Visual Studio and comes with a project template that you can use to build apps.  </p><p>It is built on two different stacks: HTML5 and XAML.  </p><p>The HTML5 stack is for building Android, Apple, and Windows 8 applications using HTML, JavaScript and CSS. It allows you to create apps that share appearance and multi-touch functionality across platforms, but are also compatible with the Apple App Store, the Google Play Store and the Windows Store.  </p><p>The XAML stack is for building native Windows 8 applications for developers who are already familiar with WPF or Silverlight.  </p><p>I’m going to bring you through my experience of running through DXTREME to create a basic application. Hopefully it will give you an idea of what ramp up time would look like for someone who is using DXTREME for the first time.  </p><p></p>
-<h3 id="starting-a-multi-channel-application-project"><a class="header-anchor" href="#starting-a-multi-channel-application-project"></a>Starting a Multi-Channel Application Project</h3>
- <p>For this first exercise I selected the Multi-channel Application template, which is what you'll want to use to create cross-platform mobile apps using HTML, JavaScript and CSS.  </p><p>It turns out that you're basically building a single-page web application (SPA) using the Model View ViewModel (MVVM) pattern. The ViewModel uses Knockout, and the whole thing is tied together with Apache Cordova, which allows you to publish to the Apple App Store or Google Play.  </p><p>After selecting the Multi-channel application template, a solution is generated with 4 projects, one for Desktop, one for Mobile, one for Win8 and one Shared:  </p><p>[![clip_image001[4]](/images/blog/dxtreme_CE2A/clip_image0014_thumb.png "clip_image001[4]")  </p><p>It compiles out of the box.  </p><p>========== Build: 4 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========  </p><p>With the Desktop app selected I hit F5 to see what happens. It opened this sample app.
-</p><p><a href="/images/blog/dxtreme_CE2A/clip_image0034.jpg"><img src="/images/blog/dxtreme_CE2A/clip_image0034_thumb.jpg" alt="clip_image003[4]" title="clip_image003[4]"></a></p>
-<p>Back in Visual Studio, I select the Mobile project and hit F5 to open it in the simulator.  </p><p>[<img src="/images/blog/dxtreme_CE2A/clip_image0054_thumb.jpg" alt="clip_image005[4]" title="clip_image005[4]"></p>
-<h3 id="what-s-in-the-project"><a class="header-anchor" href="#what-s-in-the-project"></a>What’s in the Project?</h3>
- <p>Let's get back into Visual Studio and dig around the projects a bit. In the Desktop project you see a project reference to the Shared project. No other DLLs are required. That is good.  </p><p>[![clip_image007[4]](/images/blog/dxtreme_CE2A/clip_image0074_thumb.png "clip_image007[4]")  </p><p>I poke around and find a file called app.js in the root of the project. Cracking that open I find this code snippet, which uses the DXTREME framework to new up an HtmlApplication object.
- <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">     Application2.app = <span class="keyword">new</span> DevExpress.framework.html.HtmlApplication(&#123;</span><br><span class="line"></span><br><span class="line">       ns: Application2,</span><br><span class="line"></span><br><span class="line">       viewPortNode: <span class="built_in">document</span>.getElementById(<span class="string">"viewPort"</span>),</span><br><span class="line"></span><br><span class="line">       defaultLayout: Application2.config.defaultLayout,</span><br><span class="line"></span><br><span class="line">       navigation: Application2.config.navigation</span><br><span class="line"></span><br><span class="line">     &#125;);</span><br><span class="line"></span><br><span class="line">     Application2.app.router.register(<span class="string">":view/:id"</span>, &#123; <span class="attr">view</span>: <span class="string">"About"</span>, <span class="attr">id</span>: <span class="literal">undefined</span> &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</p><p>The other projects are more of the same. Common logic is shared between applications, but you can dig into the individual files to tweak or enhance platform or device-specific features. 
-</p><p>One cool thing I notice is that they implemented a custom editor for their views. It allows you to preview the views from within Visual Studio. That is nice. 
-</p><p>[![clip_image010[4]](/images/blog/dxtreme_CE2A/clip_image0104_thumb.png "clip_image010[4]") 
-</p><h3 id="learning-dxtreme-from-the-docs"><a class="header-anchor" href="#learning-dxtreme-from-the-docs"></a>Learning DXTREME from the Docs</h3>
+            <p>What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  <p>Like so many devs out there, I was recently faced with that exact question. It turns out that there are two options for doing so 1) Build HTML5 web apps and a bunch of shell apps, one for each of the platform or 2) build native apps for each of the platforms. Since I don’t have expertise in all of the platforms or the time and money to get ramped up on all of them, I decided to look into the first option. I was also fortunate enough to hear about a new cross-platform development framework that <a href="http://www.devexpress.com/" target="_blank" rel="noopener">DevExpress</a> was working on called <a href="http://www.devexpress.com/Subscriptions/DXperience/dxtreme.xml" target="_blank" rel="noopener">DXTREME</a>. DXTREME is designed to help you build apps for Android, Apple, and Windows 8 using technologies that web devs know inside and out like HTML, JavaScript, CSS and a XAML (for Win8 only). It includes a set of libraries, controls and other assets that abstract away the complexities of building applications for all of these different platforms. It integrates directly with Visual Studio and comes with a project template that you can use to build apps.  <p>It is built on two different stacks: HTML5 and XAML.  <p>The HTML5 stack is for building Android, Apple, and Windows 8 applications using HTML, JavaScript and CSS. It allows you to create apps that share appearance and multi-touch functionality across platforms, but are also compatible with the Apple App Store, the Google Play Store and the Windows Store.  <p>The XAML stack is for building native Windows 8 applications for developers who are already familiar with WPF or Silverlight.  <p>I’m going to bring you through my experience of running through DXTREME to create a basic application. Hopefully it will give you an idea of what ramp up time would look like for someone who is using DXTREME for the first time.  <p></p>
+<h3 id="Starting-a-Multi-Channel-Application-Project"><a class="header-anchor" href="#Starting-a-Multi-Channel-Application-Project"></a>Starting a Multi-Channel Application Project</h3>
+ <p>For this first exercise I selected the Multi-channel Application template, which is what you'll want to use to create cross-platform mobile apps using HTML, JavaScript and CSS.  <p>It turns out that you're basically building a single-page web application (SPA) using the Model View ViewModel (MVVM) pattern. The ViewModel uses Knockout, and the whole thing is tied together with Apache Cordova, which allows you to publish to the Apple App Store or Google Play.  <p>After selecting the Multi-channel application template, a solution is generated with 4 projects, one for Desktop, one for Mobile, one for Win8 and one Shared:  <p>[![clip_image001[4]](/images/blog/dxtreme_CE2A/clip_image0014_thumb.png "clip_image001[4]")  <p>It compiles out of the box.  <p>========== Build: 4 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========  <p>With the Desktop app selected I hit F5 to see what happens. It opened this sample app.
+<p><a href="/images/blog/dxtreme_CE2A/clip_image0034.jpg"><img src="/images/blog/dxtreme_CE2A/clip_image0034_thumb.jpg" alt="clip_image003[4]" title="clip_image003[4]"></a></p>
+<p>Back in Visual Studio, I select the Mobile project and hit F5 to open it in the simulator.  <p>[<img src="/images/blog/dxtreme_CE2A/clip_image0054_thumb.jpg" alt="clip_image005[4]" title="clip_image005[4]"></p>
+<h3 id="What’s-in-the-Project"><a class="header-anchor" href="#What’s-in-the-Project"></a>What’s in the Project?</h3>
+ <p>Let's get back into Visual Studio and dig around the projects a bit. In the Desktop project you see a project reference to the Shared project. No other DLLs are required. That is good.  <p>[![clip_image007[4]](/images/blog/dxtreme_CE2A/clip_image0074_thumb.png "clip_image007[4]")  <p>I poke around and find a file called app.js in the root of the project. Cracking that open I find this code snippet, which uses the DXTREME framework to new up an HtmlApplication object.
+<pre><code class="language-javascript">$(function() {
+
+    Application2.app = new DevExpress.framework.html.HtmlApplication({
+
+      ns: Application2,
+
+      viewPortNode: document.getElementById(&quot;viewPort&quot;),
+
+      defaultLayout: Application2.config.defaultLayout,
+
+      navigation: Application2.config.navigation
+
+    });
+
+    Application2.app.router.register(&quot;:view/:id&quot;, { view: &quot;About&quot;, id: undefined });
+
+});
+</code></pre>
+<p>The other projects are more of the same. Common logic is shared between applications, but you can dig into the individual files to tweak or enhance platform or device-specific features. 
+<p>One cool thing I notice is that they implemented a custom editor for their views. It allows you to preview the views from within Visual Studio. That is nice. 
+<p>[![clip_image010[4]](/images/blog/dxtreme_CE2A/clip_image0104_thumb.png "clip_image010[4]") 
+<h3 id="Learning-DXTREME-from-the-Docs"><a class="header-anchor" href="#Learning-DXTREME-from-the-Docs"></a>Learning DXTREME from the Docs</h3>
 <p>You can find the HTML docs here: [http://help.devexpress.com/HTML/#!Overview](http://help.devexpress.com/HTML/#!Overview) and the Windows 8 docs here: [http://help.devexpress.com/#XAML/CustomDocument12019](http://help.devexpress.com/#XAML/CustomDocument12019) 
-</p><p>The HTML5 docs look good. There is a simple walk-through that looks a lot like the knockout one and it does a decent job of explaining what goes into building a DXTREME app. 
-</p><p>[![clip_image012[4]](/images/blog/dxtreme_CE2A/clip_image0124_thumb.jpg "clip_image012[4]")](/images/blog/dxtreme_CE2A/clip_image0124.jpg) 
-</p><p>DXTREME also includes several sample apps to get you started and provide examples of how the templates and DevExpress controls work together. Here's the app that launches when you launch DXTREME. It has pointers to demos and sample apps. 
-</p><p>[![clip_image014[4]](/images/blog/dxtreme_CE2A/clip_image0144_thumb.jpg "clip_image014[4]")](/images/blog/dxtreme_CE2A/clip_image0144.jpg) 
-</p><p>Let's take a look at the CRM HTML JS app and see what it tells us about building a DXTREME app. The CRM app includes 5 projects 
-</p><p>[![clip_image015[4]](/images/blog/dxtreme_CE2A/clip_image0154_thumb.png "clip_image015[4]") 
-</p><p>Everything looks self-explanatory. Most of this looks like the Multi-Channel project template, except this one doesn't have a Win8 project (there is a separate demo for that) and it includes a Service project. 
-</p><p>Let's dig into the solution. The ViewModels are in the Shared project. 
-</p><p>[![clip_image016[4]](/images/blog/dxtreme_CE2A/clip_image0164_thumb.png "clip_image016[4]") 
-</p><p>And look like this...a basic Knockout ViewModel. 
-</p><p>[ShipperViewModel.js]
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">     DXCRM.ShipperViewModel = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.ShipperID = ko.observable();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.CompanyName = ko.observable();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.Phone = ko.observable();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span>(data)</span><br><span class="line"></span><br><span class="line">       <span class="keyword">this</span>.fromJS(data);</span><br><span class="line"></span><br><span class="line">     &#125;;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-</p><p>And they are used in the application views: 
-</p><p>[![clip_image017[4]](/images/blog/dxtreme_CE2A/clip_image0174_thumb.png "clip_image017[4]") 
-</p><p>Here's Shippers.js as an example. 
-</p><p>[Shippers.js]
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">DXCRM.Shippers = <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> &#123;</span><br><span class="line">       dataSource: <span class="keyword">new</span> DevExpress.data.SimpleDataSource(&#123;</span><br><span class="line">       store: DXCRM.db.Shippers,</span><br><span class="line">       map: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">new</span> DXCRM.ShipperViewModel(item);</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</p><p>Those same ViewModels are being used in the WinJS project. That is great. I can see that there is code reuse going on between the HTML based projects. 
-</p><p>The demo applications are generated automatically via the DXTREME Project Wizard using the Microsoft NorthWind sample database. Obviously you can use your own data, but this is a nice way to get data into the application as you experiment. 
-</p><p>I then focused on the separate XAML solution for the Win8 app. It looks like a standard Win8 app that uses DXTREME controls. 
-</p><h3 id="deployment"><a class="header-anchor" href="#deployment"></a>Deployment</h3>
-<p>So now that you have the app developed you need to package it up and get it ready to ship to Microsoft, Apple and Google. 
-</p><p>So, let's say I built the CRM app and I want to deploy it. There are two solutions, one for Win8 and one for everything else. Let's try the deploying the latter. 
-</p><p>I go to the first project in the solution, the "Desktop" project. Right clicking on that gives me a "Build Native Package" option: 
-</p><p>[![clip_image018[4]](/images/blog/dxtreme_CE2A/clip_image0184_thumb.png "clip_image018[4]") 
-</p><p>Which launches this dialog: 
-</p><p>[![clip_image020[4]](/images/blog/dxtreme_CE2A/clip_image0204_thumb.jpg "clip_image020[4]")](/images/blog/dxtreme_CE2A/clip_image0204.jpg) 
-</p><p>Like most .NET devs, let's say I've never shipped an Android or iOS application. I would have no idea what to do with this screen. I then wander over to the DXTREME help docs because I remember seeing something about deployment in that earlier. I find the "Native Packages" section here: [http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages](http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages) 
-</p><p>It turns out that I need to register for the Apple and Google developer programs and I can get my certificate files from them. DXTREME provides a link to the Apple and Google program and a link to XCA to generate the certificate. 
-</p><p>There's some platform-specific knowledge you're going to need before deploying on multiple platforms. Because Apple, Google and Microsoft have their own stores, registration requirements, certificates and so on, you'll have to spend some time learning about that. DXTREME simplifies much of the cross-platform coding experience, but there's not a one-click solution for deployment. 
-</p><p>  
-</p><h3 id="final-thoughts"><a class="header-anchor" href="#final-thoughts"></a>Final Thoughts</h3>
-<p>After spending a couple of hours with DXTREME it looks like a good step in the right direction towards cross-platform application development. It's great that I can utilize the technologies that I already know and having the DXTREME controls adaptively render based on platform is great. I spent a little time looking into what it would take to ramp up on iOS and Android development and as a .NET developer I would definitely rather take the time to ramp up on DXTREME. I look forward to digging into DXTREME a little more and to seeing where they go with it in future releases. 
-</p><p>Jon 
-<hr>
-</p><p>title: First look at the Intel IvyBridge Ultrabook<br>
-tags:</p>
-<ul>
-<li>review</li>
-<li>visual studio<br>
-categories: [Tech, Reviews]<br>
-alias: 2012/09/intel-ivybridge-ultrabook-first-look.html<br>
-date: 2012-09-27 20:32:00</li>
-</ul>
-<hr>
-<p>Intel just sent me an IvyBridge Ultrabook to try out and review as a development machine. It’s not a final machine and won’t ever be sold by Intel. The main purpose of the machine is to show what can be built with Windows 8 and Intel components. To do so, it comes with sensors including:</p>
-<ul>
-<li>5 point multi-touch screen</li>
-<li>accelerometer</li>
-<li>magnetometer</li>
-<li>gyroscope</li>
-<li>ambient light sensor</li>
-<li>GPS</li>
-<li>NFC</li>
-</ul>
-<p>I’m not sure how I’m going to integrate the usage of these sensors into web dev, but I can definitely see an opportunity with mobile apps.</p>
-<p>I have had a lot of opportunity to play with other Ultrabooks on the market, so I was surprised that it wasn’t as thin and light as the others. Yes, it is a pre-production machine that will never be on the market, but they haven’t quite hit the mark with size and portability yet.</p>
-<p>It shipped with a non-RTM version of Windows 8, so the first thing I did was install RTM on it. The OS installed quickly as did Office and Visual Studio. I was up and running with my normal tools in a couple of hours.</p>
-<p>I haven’t done any real dev on this machine, but from what I’ve seen so far, it is fast. Switching apps, moving around Windows, using Office and IE are all instantaneous. I’m very curious to see how this thing does with 5 instances of Visual Studio and Resharper. My gut is that 4GB of RAM isn’t going to scale since each instance of VS usually takes about 500MB in resting state. They are definitely going to need to ship these with more RAM if they are to be considered a true dev machine.</p>
-<p>I personally can’t use any laptop trackpad and keyboard for very long, but the trackpad and keyboard that ships with it is a little more difficult to use than other Ultrabooks I’ve used. I definitely need to figure out a way to set this up to work with my normal mouse and keyboard and multi-monitors.</p>
-<p>I’ll do more in-depth reviews in the weeks to follow.</p>
-<p>Jon</p>
-<p><strong>Disclosure of Material Connection:</strong> Like I mentioned above, Intel sent me the Ultrabook and are letting me keep the device so I can continue to give them feedback on it as a dev machine. I am disclosing this in accordance with the Federal Trade Commission’s 16 CFR, Part 255: &quot;Guides Concerning the Use of Endorsements and Testimonials in Advertising.</p>
+<p>The HTML5 docs look good. There is a simple walk-through that looks a lot like the knockout one and it does a decent job of explaining what goes into building a DXTREME app. 
+<p>[![clip_image012[4]](/images/blog/dxtreme_CE2A/clip_image0124_thumb.jpg "clip_image012[4]")](/images/blog/dxtreme_CE2A/clip_image0124.jpg) 
+<p>DXTREME also includes several sample apps to get you started and provide examples of how the templates and DevExpress controls work together. Here's the app that launches when you launch DXTREME. It has pointers to demos and sample apps. 
+<p>[![clip_image014[4]](/images/blog/dxtreme_CE2A/clip_image0144_thumb.jpg "clip_image014[4]")](/images/blog/dxtreme_CE2A/clip_image0144.jpg) 
+<p>Let's take a look at the CRM HTML JS app and see what it tells us about building a DXTREME app. The CRM app includes 5 projects 
+<p>[![clip_image015[4]](/images/blog/dxtreme_CE2A/clip_image0154_thumb.png "clip_image015[4]") 
+<p>Everything looks self-explanatory. Most of this looks like the Multi-Channel project template, except this one doesn't have a Win8 project (there is a separate demo for that) and it includes a Service project. 
+<p>Let's dig into the solution. The ViewModels are in the Shared project. 
+<p>[![clip_image016[4]](/images/blog/dxtreme_CE2A/clip_image0164_thumb.png "clip_image016[4]") 
+<p>And look like this...a basic Knockout ViewModel. 
+<p>[ShipperViewModel.js]
+<pre><code class="language-javascript">(function() {
+
+     DXCRM.ShipperViewModel = function(data) {
+
+       this.ShipperID = ko.observable();
+
+       this.CompanyName = ko.observable();
+
+       this.Phone = ko.observable();
+
+       if(data)
+
+       this.fromJS(data);
+
+     };
+})();
+
+</code></pre>
+<p>And they are used in the application views: 
+<p>[![clip_image017[4]](/images/blog/dxtreme_CE2A/clip_image0174_thumb.png "clip_image017[4]") 
+<p>Here's Shippers.js as an example. 
+<p>[Shippers.js]
+```javascript
+DXCRM.Shippers = function(params) {
+     return {
+       dataSource: new DevExpress.data.SimpleDataSource({
+       store: DXCRM.db.Shippers,
+       map: function(item) {
+         return new DXCRM.ShipperViewModel(item);
+       }
+     })};
+};
+<pre><code>&lt;p&gt;Those same ViewModels are being used in the WinJS project. That is great. I can see that there is code reuse going on between the HTML based projects. 
+&lt;p&gt;The demo applications are generated automatically via the DXTREME Project Wizard using the Microsoft NorthWind sample database. Obviously you can use your own data, but this is a nice way to get data into the application as you experiment. 
+&lt;p&gt;I then focused on the separate XAML solution for the Win8 app. It looks like a standard Win8 app that uses DXTREME controls. 
+
+
+
+### Deployment
+
+&lt;p&gt;So now that you have the app developed you need to package it up and get it ready to ship to Microsoft, Apple and Google. 
+&lt;p&gt;So, let's say I built the CRM app and I want to deploy it. There are two solutions, one for Win8 and one for everything else. Let's try the deploying the latter. 
+&lt;p&gt;I go to the first project in the solution, the &quot;Desktop&quot; project. Right clicking on that gives me a &quot;Build Native Package&quot; option: 
+&lt;p&gt;[![clip_image018[4]](/images/blog/dxtreme_CE2A/clip_image0184_thumb.png &quot;clip_image018[4]&quot;) 
+&lt;p&gt;Which launches this dialog: 
+&lt;p&gt;[![clip_image020[4]](/images/blog/dxtreme_CE2A/clip_image0204_thumb.jpg &quot;clip_image020[4]&quot;)](/images/blog/dxtreme_CE2A/clip_image0204.jpg) 
+&lt;p&gt;Like most .NET devs, let's say I've never shipped an Android or iOS application. I would have no idea what to do with this screen. I then wander over to the DXTREME help docs because I remember seeing something about deployment in that earlier. I find the &quot;Native Packages&quot; section here: [http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages](http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages) 
+&lt;p&gt;It turns out that I need to register for the Apple and Google developer programs and I can get my certificate files from them. DXTREME provides a link to the Apple and Google program and a link to XCA to generate the certificate. 
+&lt;p&gt;There's some platform-specific knowledge you're going to need before deploying on multiple platforms. Because Apple, Google and Microsoft have their own stores, registration requirements, certificates and so on, you'll have to spend some time learning about that. DXTREME simplifies much of the cross-platform coding experience, but there's not a one-click solution for deployment. 
+&lt;p&gt;  
+
+### Final Thoughts
+
+&lt;p&gt;After spending a couple of hours with DXTREME it looks like a good step in the right direction towards cross-platform application development. It's great that I can utilize the technologies that I already know and having the DXTREME controls adaptively render based on platform is great. I spent a little time looking into what it would take to ramp up on iOS and Android development and as a .NET developer I would definitely rather take the time to ramp up on DXTREME. I look forward to digging into DXTREME a little more and to seeing where they go with it in future releases. 
+&lt;p&gt;Jon 
+
+---
+title: First look at the Intel IvyBridge Ultrabook
+tags:
+  - review
+  - visual studio
+categories: [Tech, Reviews]
+alias: 2012/09/intel-ivybridge-ultrabook-first-look.html
+date: 2012-09-27 20:32:00
+---
+
+Intel just sent me an IvyBridge Ultrabook to try out and review as a development machine. It's not a final machine and won't ever be sold by Intel. The main purpose of the machine is to show what can be built with Windows 8 and Intel components. To do so, it comes with sensors including:
+
+*   5 point multi-touch screen
+*   accelerometer
+*   magnetometer
+*   gyroscope
+*   ambient light sensor
+*   GPS
+*   NFC 
+
+I'm not sure how I'm going to integrate the usage of these sensors into web dev, but I can definitely see an opportunity with mobile apps. 
+
+I have had a lot of opportunity to play with other Ultrabooks on the market, so I was surprised that it wasn't as thin and light as the others. Yes, it is a pre-production machine that will never be on the market, but they haven't quite hit the mark with size and portability yet.
+
+It shipped with a non-RTM version of Windows 8, so the first thing I did was install RTM on it. The OS installed quickly as did Office and Visual Studio. I was up and running with my normal tools in a couple of hours.
+
+I haven't done any real dev on this machine, but from what I've seen so far, it is fast. Switching apps, moving around Windows, using Office and IE are all instantaneous. I'm very curious to see how this thing does with 5 instances of Visual Studio and Resharper. My gut is that 4GB of RAM isn't going to scale since each instance of VS usually takes about 500MB in resting state. They are definitely going to need to ship these with more RAM if they are to be considered a true dev machine.
+
+I personally can't use any laptop trackpad and keyboard for very long, but the trackpad and keyboard that ships with it is a little more difficult to use than other Ultrabooks I've used. I definitely need to figure out a way to set this up to work with my normal mouse and keyboard and multi-monitors. 
+
+I'll do more in-depth reviews in the weeks to follow.
+
+Jon
+
+ 
+
+**Disclosure of Material Connection:** Like I mentioned above, Intel sent me the Ultrabook and are letting me keep the device so I can continue to give them feedback on it as a dev machine. I am disclosing this in accordance with the Federal Trade Commission's 16 CFR, Part 255: &quot;Guides Concerning the Use of Endorsements and Testimonials in Advertising.</code></pre>
 
         </div>
         <footer>
@@ -287,7 +367,7 @@ date: 2012-09-27 20:32:00</li>
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -362,7 +442,7 @@ date: 2012-09-27 20:32:00</li>
                 </strong>
                 <p class="article-nav-title">
                     
-                        Solution to &quot;GnuTLF error -53: Error in the push function.&quot;
+                        Solution to &#34;GnuTLF error -53: Error in the push function.&#34;
                             
                 </p>
                 <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
@@ -375,7 +455,7 @@ date: 2012-09-27 20:32:00</li>
                             older
                         </strong>
                         <p class="article-nav-title">
-                            How to get around Spotify&#39;s one device at a time limitation that results in this error message: &quot;Spotify has been paused because your account is being used somewhere else.&quot;
+                            How to get around Spotify&#39;s one device at a time limitation that results in this error message: &#34;Spotify has been paused because your account is being used somewhere else.&#34;
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -395,7 +475,7 @@ date: 2012-09-27 20:32:00</li>
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -467,20 +547,40 @@ date: 2012-09-27 20:32:00</li>
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

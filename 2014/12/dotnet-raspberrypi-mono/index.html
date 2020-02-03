@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,58 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot,visual studio">
+    <meta name="keywords" content="iot,visual studio" />
     
     <meta name="description" content="I’ve spent a good part of the last 15 years doing .NET development. When I joined IoT and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world.">
-<meta name="keywords" content="iot,visual studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to run .NET on RaspberryPi with Mono">
 <meta property="og:url" content="https://blog.jongallant.com/2014/12/dotnet-raspberrypi-mono/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’ve spent a good part of the last 15 years doing .NET development. When I joined IoT and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world.">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2019-01-06T07:40:08.000Z">
+<meta property="article:published_time" content="2014-12-19T10:56:00.000Z">
+<meta property="article:modified_time" content="2019-01-06T07:40:08.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="iot">
+<meta property="article:tag" content="visual studio">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to run .NET on RaspberryPi with Mono">
-<meta name="twitter:description" content="I’ve spent a good part of the last 15 years doing .NET development. When I joined IoT and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world.">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +216,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visual-studio/">visual studio</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/" rel="tag">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visual-studio/" rel="tag">visual studio</a></li></ul>
 
             </div>
         
@@ -205,41 +227,42 @@
 <p>In this post we’ll build a standard .NET console app with Visual Studio and run it on a RaspberryPi with Mono. The only real magic is Mono, the rest is stock .NET. I don’t even need Mono on my Windows machine. I just write a Console app like I do any other Console app. Deploy it to my Pi and run it with Mono. Xamarin Studio is not required.</p>
 <p>Let’s build a simple Blinky console app (which is the Hello World for maker projects). I’ll show you how to get your RaspberryPi setup with Mono, how to write to pins and how to deploy and run your code.</p>
 <p>I’m using Visual Studio 2013, RaspberryPi model B and Windows 8.1.</p>
-<h2 id="raspberrypi-setup"><a class="header-anchor" href="#raspberrypi-setup"></a>RaspberryPi Setup</h2>
-<h3 id="1-setup-linux-on-pi"><a class="header-anchor" href="#1-setup-linux-on-pi"></a>1. Setup Linux on Pi</h3>
+<h2 id="RaspberryPi-Setup"><a class="header-anchor" href="#RaspberryPi-Setup"></a>RaspberryPi Setup</h2>
+<h3 id="1-Setup-Linux-on-Pi"><a class="header-anchor" href="#1-Setup-Linux-on-Pi"></a>1. Setup Linux on Pi</h3>
 <blockquote>
-<h4 id="get-occidentalis-v0-2"><a class="header-anchor" href="#get-occidentalis-v0-2"></a>Get Occidentalis v0.2</h4>
+<h4 id="Get-Occidentalis-v0-2"><a class="header-anchor" href="#Get-Occidentalis-v0-2"></a>Get Occidentalis v0.2</h4>
 <ul>
 <li><a href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></li>
 </ul>
-<h4 id="make-occidentalis-sd-card"><a class="header-anchor" href="#make-occidentalis-sd-card"></a>Make Occidentalis SD card</h4>
+<h4 id="Make-Occidentalis-SD-card"><a class="header-anchor" href="#Make-Occidentalis-SD-card"></a>Make Occidentalis SD card</h4>
 <ul>
 <li><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></li>
 </ul>
-<h4 id="run-first-time-config"><a class="header-anchor" href="#run-first-time-config"></a>Run first time config</h4>
+<h4 id="Run-first-time-config"><a class="header-anchor" href="#Run-first-time-config"></a>Run first time config</h4>
 <ul>
 <li><a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" target="_blank" rel="noopener">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></li>
 </ul>
 </blockquote>
-<h3 id="2-configure-network"><a class="header-anchor" href="#2-configure-network"></a>2. Configure Network</h3>
-<p>Plug Ethernet Cable into Pi</p><p>Setup Samba for NetBIOS name or give it a static IP. This is so you can deploy your code to the Pi</p>
+<h3 id="2-Configure-Network"><a class="header-anchor" href="#2-Configure-Network"></a>2. Configure Network</h3>
+<p>Plug Ethernet Cable into Pi<p>Setup Samba for NetBIOS name or give it a static IP. This is so you can deploy your code to the Pi</p>
 <ul>
 <li>
-<p>Samba route: <a href="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" title="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" target="_blank" rel="noopener">http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html</a> – Takes longer than static IP route, but better long term.</p>
+<p>Samba route: <a href="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" target="_blank" rel="noopener" title="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html">http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html</a> – Takes longer than static IP route, but better long term.</p>
 </li>
 <li>
-<p>Mount as a Windows drive: <a href="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" title="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" target="_blank" rel="noopener">http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/</a>*   Static IP: <a href="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" title="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" target="_blank" rel="noopener">https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address</a></p>
+<p>Mount as a Windows drive: <a href="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" target="_blank" rel="noopener" title="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/">http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/</a>*   Static IP: <a href="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" target="_blank" rel="noopener" title="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address">https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address</a></p>
 </li>
 </ul>
-<h3 id="3-setup-remote-desktop-optional"><a class="header-anchor" href="#3-setup-remote-desktop-optional"></a>3. Setup Remote Desktop (Optional)</h3>
-<p>This is so you can use your main computer's mouse and keyboard instead of having to go back and forth between the Pi and your desktop. I've found this link the quickest way with xrdp</p><p>[http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/](http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/ "http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/")
-</p><h3 id="4-setup-sftp"><a class="header-anchor" href="#4-setup-sftp"></a>4. Setup SFTP</h3>
+<h3 id="3-Setup-Remote-Desktop-Optional"><a class="header-anchor" href="#3-Setup-Remote-Desktop-Optional"></a>3. Setup Remote Desktop (Optional)</h3>
+<p>This is so you can use your main computer's mouse and keyboard instead of having to go back and forth between the Pi and your desktop. I've found this link the quickest way with xrdp<p>[http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/](http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/ "http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/")
+<h3 id="4-Setup-SFTP"><a class="header-anchor" href="#4-Setup-SFTP"></a>4. Setup SFTP</h3>
 <p>You are going to deploy your code from your Windows machine to your Pi via SFTP. Here's how with FileZilla
-</p><p><a href="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" title="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" target="_blank" rel="noopener">http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html</a></p>
-<h3 id="5-install-mono"><a class="header-anchor" href="#5-install-mono"></a>5. Install Mono</h3>
+<p><a href="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" target="_blank" rel="noopener" title="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html">http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html</a></p>
+<h3 id="5-Install-Mono"><a class="header-anchor" href="#5-Install-Mono"></a>5. Install Mono</h3>
 <p>Run this command from RaspberryPi terminal to install mono.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install mono-complete</span><br></pre></td></tr></table></figure>
-<h3 id="6-setup-led"><a class="header-anchor" href="#6-setup-led"></a>6. Setup LED</h3>
+<pre><code class="language-csharp">sudo apt-get install mono-complete
+</code></pre>
+<h3 id="6-Setup-LED"><a class="header-anchor" href="#6-Setup-LED"></a>6. Setup LED</h3>
 <p>This is intentionally very simple because this post is about showing .NET on Pi versus what can be done with Pi.</p>
 <ul>
 <li>1x LED</li>
@@ -247,26 +270,56 @@
 <li>1x Breadboard</li>
 <li>2x Jumper Wires</li>
 </ul>
-<p>There are two ways to look at Pi wiring Board layout and BCM, this is great resource for making sure you are using the right pin numbers: <a href="http://pi.gadgetoid.com/pinout" title="http://pi.gadgetoid.com/pinout" target="_blank" rel="noopener">http://pi.gadgetoid.com/pinout</a>. We’ll use the “Board” physical layout, so the 6th pin down from the outer rail is 12.</p>
+<p>There are two ways to look at Pi wiring Board layout and BCM, this is great resource for making sure you are using the right pin numbers: <a href="http://pi.gadgetoid.com/pinout" target="_blank" rel="noopener" title="http://pi.gadgetoid.com/pinout">http://pi.gadgetoid.com/pinout</a>. We’ll use the “Board” physical layout, so the 6th pin down from the outer rail is 12.</p>
 <p>1. Place LED in breadboard</p>
 <p>2. Connect Pin 18 to LED Annode (the long lead) via jumper wire.</p>
 <p>3. Connect Ground to breadboard</p>
 <p>4. Connect resistor from Ground to LED Cathode (the short lead)</p>
 <p>[<img src="/images/blog/05a34f94e298_3E89/dotnet-raspberrypi-mono_thumb.png" alt="dotnet-raspberrypi-mono" title="dotnet-raspberrypi-mono"></p>
 <p><a href="/images/blog/05a34f94e298_3E89/P-738-3.jpg"><img src="/images/blog/05a34f94e298_3E89/P-738-3_thumb.jpg" alt="P-738-3" title="P-738-3"></a><a href="/images/blog/05a34f94e298_3E89/P-750-3.jpg"><img src="/images/blog/05a34f94e298_3E89/P-750-3_thumb.jpg" alt="P-750-3" title="P-750-3"></a></p>
-<h2 id="c-console-app"><a class="header-anchor" href="#c-console-app"></a>C# Console App</h2>
+<h2 id="C-Console-App"><a class="header-anchor" href="#C-Console-App"></a>C# Console App</h2>
 <p>We are going to use the stock Visual Studio C# console app template. Go ahead and create a Console app.</p>
 <p>We are going to also use the <a href="https://www.nuget.org/packages/Raspberry.IO.GeneralPurpose" target="_blank" rel="noopener">Raspberry.IO.GeneralPurpose nuget package</a> to talk to the GPIO pin 18. Go ahead and add a reference to that. GPIO = General Purpose Input Output</p>
 <p>That library has a Toggle method so let’s just use it. The code is super simple. Just configure the pin, init a GpioConnection and call Toggle.</p>
-<p>This code is also on GitHub: <a href="https://github.com/jongio/" title="https://github.com/jongio/" target="_blank" rel="noopener">https://github.com/jongio/</a><a href="http://github.io/jongallant/dotnet-raspberrypi-mono" target="_blank" rel="noopener">dotnet-raspberrypi-mono</a></p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> Raspberry.IO.GeneralPurpose;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">dotnet_raspberrypi_mono</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            OutputPinConfiguration pin12 = ConnectorPin.P1Pin12.Output();</span><br><span class="line">            pin12.Enabled = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">using</span> (GpioConnection connection = <span class="keyword">new</span> GpioConnection(pin12))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">while</span> (!Console.KeyAvailable)</span><br><span class="line">                &#123;</span><br><span class="line">                    connection.Toggle(pin12);</span><br><span class="line">                    Thread.Sleep(<span class="number">250</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This code is also on GitHub: <a href="https://github.com/jongio/" target="_blank" rel="noopener" title="https://github.com/jongio/">https://github.com/jongio/</a><a href="http://github.io/jongallant/dotnet-raspberrypi-mono" target="_blank" rel="noopener">dotnet-raspberrypi-mono</a></p>
+<pre><code class="language-csharp">using Raspberry.IO.GeneralPurpose;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace dotnet_raspberrypi_mono
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            OutputPinConfiguration pin12 = ConnectorPin.P1Pin12.Output();
+            pin12.Enabled = false;
+
+            using (GpioConnection connection = new GpioConnection(pin12))
+            {
+                while (!Console.KeyAvailable)
+                {
+                    connection.Toggle(pin12);
+                    Thread.Sleep(250);
+                }
+            }
+        }
+    }
+}
+
+</code></pre>
 <p>Build the app in Visual Studio.</p>
-<h2 id="deploy-to-raspberrypi"><a class="header-anchor" href="#deploy-to-raspberrypi"></a>Deploy to RaspberryPi</h2>
+<h2 id="Deploy-to-RaspberryPi"><a class="header-anchor" href="#Deploy-to-RaspberryPi"></a>Deploy to RaspberryPi</h2>
 <p>If using samba w/ mapped drive, just output the code to the drive. If using FileZilla then just copy the bin/Debug folder to a folder in a directory such as /home/pi/dotnet-raspberrypi-mono</p>
 <p>It’s just an xcopy deploy.</p>
-<h2 id="run-app-on-pi"><a class="header-anchor" href="#run-app-on-pi"></a>Run app on Pi</h2>
+<h2 id="Run-app-on-Pi"><a class="header-anchor" href="#Run-app-on-Pi"></a>Run app on Pi</h2>
 <p>Log into your Pi. Open a terminal. Navigate to the exe you just copied over and execute this command.</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">sudo mono dotnet-raspberrypi-mono.exe</span><br></pre></td></tr></table></figure>
+<pre><code class="language-csharp">sudo mono dotnet-raspberrypi-mono.exe
+</code></pre>
 <p>Your LED should now be blinking!</p>
 <p>I hope this quick sample gets you going with RaspberryPi and .NET – and helps you become a maker.</p>
 <p>Jon</p>
@@ -281,7 +334,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -389,7 +442,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -461,20 +514,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

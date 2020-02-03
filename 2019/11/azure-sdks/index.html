@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,59 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,dev,sdk">
+    <meta name="keywords" content="azure,dev,sdk" />
     
-    <meta name="description" content="As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: Azure SDK Releases  Azure has had a tremendous amount of growth in a very short amount of time. With that">
-<meta name="keywords" content="azure,dev,sdk">
+    <meta name="description" content="As of 11&#x2F;4&#x2F;2019, a few of the New Azure SDKs have hit General Availability!  Read more here: Azure SDK Releases  Azure has had a tremendous amount of growth in a very short amount of time. With that">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introducing the New Azure SDKs">
 <meta property="og:url" content="https://blog.jongallant.com/2019/11/azure-sdks/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: Azure SDK Releases  Azure has had a tremendous amount of growth in a very short amount of time. With that">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="As of 11&#x2F;4&#x2F;2019, a few of the New Azure SDKs have hit General Availability!  Read more here: Azure SDK Releases  Azure has had a tremendous amount of growth in a very short amount of time. With that">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2019/11/azure-sdks/sdks.jpeg">
-<meta property="og:updated_time" content="2019-11-19T00:56:01.000Z">
+<meta property="article:published_time" content="2019-11-15T13:30:33.000Z">
+<meta property="article:modified_time" content="2019-11-19T00:56:01.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="dev">
+<meta property="article:tag" content="sdk">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Introducing the New Azure SDKs">
-<meta name="twitter:description" content="As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: Azure SDK Releases  Azure has had a tremendous amount of growth in a very short amount of time. With that">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/11/azure-sdks/sdks.jpeg">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +82,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +161,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +217,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/">sdk</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/" rel="tag">sdk</a></li></ul>
 
             </div>
         
@@ -203,12 +226,12 @@
             <blockquote>
 <p>As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: <a href="https://azure.github.io/azure-sdk/index.html" target="_blank" rel="noopener">Azure SDK Releases</a></p>
 </blockquote>
-<p>Azure has had a tremendous amount of growth in a very short amount of time. With that growth came a lot of goodness, but also a significant amount of inconsistencies at the SDK surface. While developing for Azure you may have noticed a few ways to authenticate with our SDKs, and a few ways to perform logging, package name differences, and things that just didn’t play nice with your application.  We heard our customers loud and clear and, one year ago, decided to fix this problem across all of Azure. We corralled some of the best API and Framework design folks, like <a href="https://twitter.com/PeterMarcu" target="_blank" rel="noopener">Peter Marcu</a>, <a href="https://twitter.com/JeffRichter" target="_blank" rel="noopener">Jeffrey Richter</a>, and <a href="https://twitter.com/kcwalina" target="_blank" rel="noopener">Krzysztof Cwalina</a> and started a new team called the Azure SDK team with the following mission: <strong>“Azure SDK Team: Creating a high quality, consistent, diagnosable, and idiomatic experience for developers to connect their applications to Azure.”</strong></p>
+<p>Azure has had a tremendous amount of growth in a very short amount of time. With that growth came a lot of goodness, but also a significant amount of inconsistencies at the SDK surface. While developing for Azure you may have noticed a few ways to authenticate with our SDKs, and a few ways to perform logging, package name differences, and things that just didn’t play nice with your application.  We heard our customers loud and clear and, one year ago, decided to fix this problem across all of Azure. We corralled some of the best API and Framework design folks, like <a href="https://twitter.com/PeterMarcu" target="_blank" rel="noopener">Peter Marcu</a>, <a href="https://twitter.com/JeffRichter" target="_blank" rel="noopener">Jeffrey Richter</a>, and <a href="https://twitter.com/kcwalina" target="_blank" rel="noopener">Krzysztof Cwalina</a> and started a new team called the Azure SDK team with the following mission: <strong>&quot;Azure SDK Team: Creating a high quality, consistent, diagnosable, and idiomatic experience for developers to connect their applications to Azure.&quot;</strong></p>
 <p><img src="sdks.jpeg" alt="Azure SDK Ship It Award"></p>
 <blockquote>
 <p>On a personal note, I worked a lot with the Azure SDK team in my previous role at Microsoft and became super intrigued by the team’s vision and decided to move over to the SDK team last week!</p>
 </blockquote>
-<h2 id="sdk-guidelines"><a class="header-anchor" href="#sdk-guidelines"></a>SDK Guidelines</h2>
+<h2 id="SDK-Guidelines"><a class="header-anchor" href="#SDK-Guidelines"></a>SDK Guidelines</h2>
 <p>The first objective was to create a set of guidelines that all Azure SDKs will follow to bring consistency across all SDKs.  As you can imagine there were many hours of discussions and documentation that went into developing these guidelines, which can now be found here: <a href="https://azure.github.io/azure-sdk/general_introduction.html" target="_blank" rel="noopener">Azure SDK General Guidelines</a>. General guidelines are great to set a baseline across all languages, but we wanted more.  We wanted each of the SDKs to be idiomatic - we want every developer to feel at home in their language of choice - for example, if you are a Python dev, we wanted to make sure that when you are developing with Azure that it fells pythonic and not like you are using APIs created by a Java or .NET dev.  So taking that to heart, we also developed guidelines for each of the languages we target including:</p>
 <ul>
 <li><a href="https://azure.github.io/azure-sdk/java_introduction.html" target="_blank" rel="noopener">Java</a></li>
@@ -220,7 +243,7 @@
 <li><a href="https://azure.github.io/azure-sdk/clang_introduction.html" target="_blank" rel="noopener">C (Draft)</a></li>
 <li><a href="https://azure.github.io/azure-sdk/ios_introduction.html" target="_blank" rel="noopener">iOS (Draft)</a>.</li>
 </ul>
-<h2 id="github-repos"><a class="header-anchor" href="#github-repos"></a>GitHub Repos</h2>
+<h2 id="GitHub-Repos"><a class="header-anchor" href="#GitHub-Repos"></a>GitHub Repos</h2>
 <p>Each of the SDKs is grouped by language and is linked to from the central <a href="https://github.com/Azure/azure-sdk" target="_blank" rel="noopener">Azure SDK repo</a>. For example, all Java SDKs are in the same repo and the same goes for all the other languages.  This enables us to easily share code, build systems, and other dependencies across the entire SDK surface for each language.  You will find each of the language repos here:</p>
 <ul>
 <li><a href="https://github.com/Azure/azure-sdk-for-java" target="_blank" rel="noopener">Java</a></li>
@@ -231,7 +254,7 @@
 <li><a href="https://github.com/Azure/azure-sdk-for-net" target="_blank" rel="noopener">Android (Draft)</a></li>
 <li><a href="https://github.com/Azure/azure-sdk-for-ios" target="_blank" rel="noopener">iOS (Draft)</a>.</li>
 </ul>
-<h2 id="azure-services"><a class="header-anchor" href="#azure-services"></a>Azure Services</h2>
+<h2 id="Azure-Services"><a class="header-anchor" href="#Azure-Services"></a>Azure Services</h2>
 <p>The SDK team obviously couldn’t boil the ocean and ship all new SDKs in one shot, so they had to decide which services to target first. After a lot of data crunching and customer engagement we decided to start with:</p>
 <ul>
 <li><strong>Azure Core</strong> - Shared library to be used by all SDKs, logging, retries, etc.</li>
@@ -242,7 +265,7 @@
 <li><strong>Azure App Configuration</strong> - Store your application’s configuration.</li>
 <li><strong>Azure Event Hubs</strong> - Data streaming and event ingestion.</li>
 </ul>
-<h2 id="november-2019-ga"><a class="header-anchor" href="#november-2019-ga"></a>November 2019 GA</h2>
+<h2 id="November-2019-GA"><a class="header-anchor" href="#November-2019-GA"></a>November 2019 GA</h2>
 <p>The big announcement this week is that some of the SDKs have finally been published as GA (General Availability), which means <strong>you can officially start to use them in your applications!</strong></p>
 <p>The following SDKs are now GA:</p>
 <ul>
@@ -260,22 +283,24 @@
 <blockquote>
 <p>Each of the various languages is at different release cycles so please review all of the release notes available here: <a href="https://azure.github.io/azure-sdk/index.html" target="_blank" rel="noopener">Azure SDK Releases</a> to determine if the service/language you use has GA’d.</p>
 </blockquote>
-<h2 id="feature-spotlight-defaultazurecredential"><a class="header-anchor" href="#feature-spotlight-defaultazurecredential"></a>Feature Spotlight: DefaultAzureCredential</h2>
+<h2 id="Feature-Spotlight-DefaultAzureCredential"><a class="header-anchor" href="#Feature-Spotlight-DefaultAzureCredential"></a>Feature Spotlight: DefaultAzureCredential</h2>
 <p>One of my favorite new SDK features is Azure Identity’s <a href="https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python" target="_blank" rel="noopener"><code>DefaultAzureCredential()</code></a>, which searches for Service Principal, Managed Identities, and VS2019 login credentials so you can easily move your code from your dev box to production.</p>
 <p>For example, the following code will first check environment variables for Service Principal, then if your app is on an Azure resource that supports Managed Identities will look for that, and finally, it will see if you’ve logged into VS2019.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">credential = DefaultAzureCredential()</span><br><span class="line">blobclient = BlobServiceClient(account_url=<span class="string">"https://name.blob.core.windows.net/"</span>, credential=credential)</span><br></pre></td></tr></table></figure>
+<pre><code class="language-python">credential = DefaultAzureCredential()
+blobclient = BlobServiceClient(account_url=&quot;https://name.blob.core.windows.net/&quot;, credential=credential)
+</code></pre>
 <p>This is huge for devs who have had to self manage all the various authentication mechanisms and change them for dev vs prod.</p>
 <p>Stay tuned, because I’ll be blogging and <a href="https://www.youtube.com/jongallant" target="_blank" rel="noopener">creating videos</a> for more SDK features in the coming months.</p>
-<h2 id="azure-sdk-videos"><a class="header-anchor" href="#azure-sdk-videos"></a>Azure SDK Videos</h2>
+<h2 id="Azure-SDK-Videos"><a class="header-anchor" href="#Azure-SDK-Videos"></a>Azure SDK Videos</h2>
 <p>Here are some videos from my teammates to help you get started and learn more about the SDKs:</p>
 <ul>
 <li><a href="https://myignite.techcommunity.microsoft.com/sessions/83979" target="_blank" rel="noopener">15 Minutes to improve your Python App in Azure</a> by <a href="https://twitter.com/OlszewskaKate" target="_blank" rel="noopener">Kate Olszewska</a></li>
 <li><a href="https://myignite.techcommunity.microsoft.com/sessions/85022" target="_blank" rel="noopener">Build a better Java Spring App with Azure</a> by <a href="https://twitter.com/cyau25" target="_blank" rel="noopener">Connie Yau</a></li>
 <li><a href="https://myignite.techcommunity.microsoft.com/sessions/85028" target="_blank" rel="noopener">Build a better .NET Core Azure Service</a> by <a href="https://twitter.com/JeffRichter" target="_blank" rel="noopener">Jeffrey Richter</a></li>
 </ul>
-<h2 id="my-ask"><a class="header-anchor" href="#my-ask"></a>My Ask</h2>
+<h2 id="My-Ask"><a class="header-anchor" href="#My-Ask"></a>My Ask</h2>
 <p>My ask is that you start using the SDKs in your new apps, port your existing apps, and give us feedback via GitHub issues - I will see you there.</p>
-<h2 id="links"><a class="header-anchor" href="#links"></a>Links</h2>
+<h2 id="Links"><a class="header-anchor" href="#Links"></a>Links</h2>
 <p><a href="https://azure.github.io/azure-sdk/" target="_blank" rel="noopener">Azure SDK Documentation</a><br>
 <a href="https://github.com/Azure/azure-sdk" target="_blank" rel="noopener">Azure SDK Repo</a><br>
 <a href="https://twitter.com/AzureSDK" target="_blank" rel="noopener">Azure SDK Twitter @AzureSDK</a></p>
@@ -290,7 +315,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -398,7 +423,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -470,20 +495,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

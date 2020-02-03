@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
     <url>
         <loc>https://blog.jongallant.com</loc>
         <changefreq>daily</changefreq>
@@ -7,120 +8,29 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Tech/Career/</loc>
-        <lastmod>2017-04-01T16:46:44.000Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Tech/Tutorials/</loc>
+        <lastmod>2020-02-03T05:00:16.426Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Musings/</loc>
-        <lastmod>2018-01-13T15:54:08.000Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Tech/</loc>
+        <lastmod>2020-02-03T05:00:16.426Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Leadership/Career-Model/</loc>
-        <lastmod>2018-02-18T15:56:33.000Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Tech/Tips/</loc>
+        <lastmod>2020-01-31T08:56:02.401Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Leadership/Review-Model/</loc>
-        <lastmod>2018-02-18T16:31:23.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Leadership/Work-Life-Balance/</loc>
-        <lastmod>2018-05-02T22:07:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Leadership/Proactive-Mentorship/</loc>
-        <lastmod>2018-10-19T05:27:52.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/IoT/</loc>
-        <lastmod>2018-12-10T12:55:24.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/Announcements/</loc>
-        <lastmod>2018-12-10T21:26:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/Conferences/</loc>
-        <lastmod>2018-12-11T02:21:44.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/Microsoft/</loc>
-        <lastmod>2018-12-11T02:49:35.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/3D-Printing/</loc>
-        <lastmod>2018-12-11T03:01:26.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/Reviews/</loc>
-        <lastmod>2018-12-11T03:21:10.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/Bugs/</loc>
-        <lastmod>2019-01-21T07:58:46.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Tech/Power-BI/</loc>
-        <lastmod>2019-01-31T22:02:32.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Leadership/</loc>
-        <lastmod>2019-01-31T22:05:55.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Leadership/Productivity/</loc>
-        <lastmod>2019-01-31T22:05:55.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/category/Reviews/</loc>
-        <lastmod>2019-02-21T16:37:54.000Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Tech/Azure/</loc>
+        <lastmod>2020-01-20T12:21:15.140Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -133,29 +43,120 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Tech/Tutorials/</loc>
-        <lastmod>2020-01-17T19:19:25.231Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Reviews/</loc>
+        <lastmod>2019-02-21T16:37:54.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Tech/Tips/</loc>
-        <lastmod>2020-01-20T12:11:23.697Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Leadership/Productivity/</loc>
+        <lastmod>2019-01-31T22:05:55.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Tech/</loc>
-        <lastmod>2020-01-20T12:21:15.140Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Leadership/</loc>
+        <lastmod>2019-01-31T22:05:55.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/category/Tech/Azure/</loc>
-        <lastmod>2020-01-20T12:21:15.140Z</lastmod>
+        <loc>https://blog.jongallant.com/category/Tech/Power-BI/</loc>
+        <lastmod>2019-01-31T22:02:32.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/Bugs/</loc>
+        <lastmod>2019-01-21T07:58:46.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/Reviews/</loc>
+        <lastmod>2018-12-11T03:21:10.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/3D-Printing/</loc>
+        <lastmod>2018-12-11T03:01:26.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/Microsoft/</loc>
+        <lastmod>2018-12-11T02:49:35.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/Conferences/</loc>
+        <lastmod>2018-12-11T02:21:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/Announcements/</loc>
+        <lastmod>2018-12-10T21:26:44.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/IoT/</loc>
+        <lastmod>2018-12-10T12:55:24.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Leadership/Proactive-Mentorship/</loc>
+        <lastmod>2018-10-19T05:27:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Leadership/Work-Life-Balance/</loc>
+        <lastmod>2018-05-02T22:07:40.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Leadership/Review-Model/</loc>
+        <lastmod>2018-02-18T16:31:23.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Leadership/Career-Model/</loc>
+        <lastmod>2018-02-18T15:56:33.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Musings/</loc>
+        <lastmod>2018-01-13T15:54:08.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/category/Tech/Career/</loc>
+        <lastmod>2017-04-01T16:46:44.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

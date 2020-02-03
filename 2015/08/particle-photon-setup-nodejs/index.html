@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,58 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,nodejs">
+    <meta name="keywords" content="howto,nodejs" />
     
     <meta name="description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here. Put Photon in Listening Mode 1. Plug Photon into your compute">
-<meta name="keywords" content="howto,nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Setup a Particle Photon with Node.js">
 <meta property="og:url" content="https://blog.jongallant.com/2015/08/particle-photon-setup-nodejs/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here. Put Photon in Listening Mode 1. Plug Photon into your compute">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:published_time" content="2015-08-12T11:44:00.000Z">
+<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Setup a Particle Photon with Node.js">
-<meta name="twitter:description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here. Put Photon in Listening Mode 1. Plug Photon into your compute">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,53 +216,59 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY <a href="/2015/08/particle-photon-setup-windows-putty.html">here</a>.</p>
-<h2 id="put-photon-in-listening-mode"><a class="header-anchor" href="#put-photon-in-listening-mode"></a>Put Photon in Listening Mode</h2>
-<p>1. Plug Photon into your computer’s USB port.</p><p>2. Is your Photon flashing blue? If so, move on to next step. If not, then hold down the Setup button until the LED flashes blue. If you can’t get it to flash blue then hit the Reset key and try again.</p><p><iframe width="300" height="300" src="https://vine.co/v/eZUH7WaWjMT/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
-<h2 id="create-particle-account"><a class="header-anchor" href="#create-particle-account"></a>Create Particle Account</h2>
+<h2 id="Put-Photon-in-Listening-Mode"><a class="header-anchor" href="#Put-Photon-in-Listening-Mode"></a>Put Photon in Listening Mode</h2>
+<p>1. Plug Photon into your computer’s USB port.<p>2. Is your Photon flashing blue? If so, move on to next step. If not, then hold down the Setup button until the LED flashes blue. If you can’t get it to flash blue then hit the Reset key and try again.<p><iframe width="300" height="300" src="https://vine.co/v/eZUH7WaWjMT/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script></p>
+<h2 id="Create-Particle-Account"><a class="header-anchor" href="#Create-Particle-Account"></a>Create Particle Account</h2>
 <p>1\. Create a [new Particle Account here](https://build.particle.io/signup) or use one that you already have.
-</p><h2 id="setup-node"><a class="header-anchor" href="#setup-node"></a>Setup Node</h2>
+<h2 id="Setup-Node"><a class="header-anchor" href="#Setup-Node"></a>Setup Node</h2>
 <p>1\. Install [Node.js](https://nodejs.org/). Make sure you include Node.js in your PATH during install.
-</p><p>2. Install the particle-cli Node.js package. Open a command prompt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g particle-cli</span><br></pre></td></tr></table></figure>
-<h2 id="connect-photon-to-wifi-network"><a class="header-anchor" href="#connect-photon-to-wifi-network"></a>Connect Photon to WiFi Network</h2>
+<p>2. Install the particle-cli Node.js package. Open a command prompt</p>
+<pre><code>npm install -g particle-cli
+</code></pre>
+<h2 id="Connect-Photon-to-WiFi-Network"><a class="header-anchor" href="#Connect-Photon-to-WiFi-Network"></a>Connect Photon to WiFi Network</h2>
 <p>1. Enter the following command into the command prompt and enter your WiFi SSID and Password</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">particle setup wifi</span><br></pre></td></tr></table></figure>
+<pre><code>particle setup wifi
+</code></pre>
 <p>If all goes well, you will see a message that looks like this:</p>
-<p><img src="/images/blog/6d56fbfccda3_9D69/image.png" alt></p>
+<p><img src="/images/blog/6d56fbfccda3_9D69/image.png" alt=""></p>
 <p>If your Photon is not pulsing cyan (aka breathing cyan) then try this step over again.</p>
-<h2 id="get-photon-id"><a class="header-anchor" href="#get-photon-id"></a>Get Photon Id</h2>
+<h2 id="Get-Photon-Id"><a class="header-anchor" href="#Get-Photon-Id"></a>Get Photon Id</h2>
 <p>1. Enter the following command into the command prompt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">particle identify</span><br></pre></td></tr></table></figure>
+<pre><code>particle identify
+</code></pre>
 <p>That will print out your Photon’s unique id to the console.</p>
-<p><img src="/images/blog/6d56fbfccda3_9D69/image_3.png" alt></p>
+<p><img src="/images/blog/6d56fbfccda3_9D69/image_3.png" alt=""></p>
 <p>You will need that later, so copy it over into Notepad.</p>
-<h2 id="login-to-particle"><a class="header-anchor" href="#login-to-particle"></a>Login to Particle</h2>
+<h2 id="Login-to-Particle"><a class="header-anchor" href="#Login-to-Particle"></a>Login to Particle</h2>
 <p>1. Enter the following command into the command prompt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">particle login</span><br></pre></td></tr></table></figure>
+<pre><code>particle login
+</code></pre>
 <p>It will prompt you to enter your Particle account email and password. Please do so.</p>
-<p><img src="/images/blog/6d56fbfccda3_9D69/image_4.png" alt></p>
-<h2 id="add-photon-to-your-particle-account"><a class="header-anchor" href="#add-photon-to-your-particle-account"></a>Add Photon to your Particle Account</h2>
+<p><img src="/images/blog/6d56fbfccda3_9D69/image_4.png" alt=""></p>
+<h2 id="Add-Photon-to-your-Particle-Account"><a class="header-anchor" href="#Add-Photon-to-your-Particle-Account"></a>Add Photon to your Particle Account</h2>
 <p>Your Photon must be breathing cyan before you attempt this step. If it isn’t, then follow the WiFi steps above.</p>
 <p>1. Enter the following command into the command prompt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">particle device add [your photon id from above]</span><br></pre></td></tr></table></figure>
+<pre><code>particle device add [your photon id from above]
+</code></pre>
 <p>If all goes well you will see a message like this:</p>
-<p><img src="/images/blog/6d56fbfccda3_9D69/image_5.png" alt></p>
-<h2 id="get-particle-access-token"><a class="header-anchor" href="#get-particle-access-token"></a>Get Particle Access Token</h2>
+<p><img src="/images/blog/6d56fbfccda3_9D69/image_5.png" alt=""></p>
+<h2 id="Get-Particle-Access-Token"><a class="header-anchor" href="#Get-Particle-Access-Token"></a>Get Particle Access Token</h2>
 <p>You will need an access token to call any of the Particle APIs.</p>
 <p>1. Execute the following command into the command prompt</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">particle token list</span><br></pre></td></tr></table></figure>
+<pre><code>particle token list
+</code></pre>
 <p>2. Enter your credentials and find the token that doesn’t have an expiration date:</p>
-<p><img src="/images/blog/6d56fbfccda3_9D69/image_6.png" alt></p>
+<p><img src="/images/blog/6d56fbfccda3_9D69/image_6.png" alt=""></p>
 <p>3. Copy that access token to Notepad. You’ll need it later when you call the Particle APIs.</p>
-<h2 id="next"><a class="header-anchor" href="#next"></a>Next</h2>
-<p>That's how you get your Photon setup with Windows using Node.js</p><p>From here, you can deploy your own app to your Photon or try building my ["Skype for Business Status Light"](/2015/08/beakn-skype-particle-photon.html)</p><p>Make on!</p><p>Jon</p>
+<h2 id="Next"><a class="header-anchor" href="#Next"></a>Next</h2>
+<p>That's how you get your Photon setup with Windows using Node.js<p>From here, you can deploy your own app to your Photon or try building my ["Skype for Business Status Light"](/2015/08/beakn-skype-particle-photon.html)<p>Make on!<p>Jon
         </div>
         <footer>
         </footer>
@@ -251,7 +279,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -359,7 +387,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -431,20 +459,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

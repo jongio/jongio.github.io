@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="angularjs">
+    <meta name="keywords" content="angularjs" />
     
     <meta name="description" content="In V1 of my AngularJS, WebApi grid I used $http to call my WebApi endpoints. I’ve been using $resource a lot lately, so I thought I’d go back and update it to use $resource instead. Here’s what it loo">
-<meta name="keywords" content="angularjs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AngularJS CRUD Grid v2: Now using $resource instead of $http">
 <meta property="og:url" content="https://blog.jongallant.com/2013/07/angularjs-webapi-ef-crud-grid-v2/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="In V1 of my AngularJS, WebApi grid I used $http to call my WebApi endpoints. I’ve been using $resource a lot lately, so I thought I’d go back and update it to use $resource instead. Here’s what it loo">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-11T01:33:26.000Z">
+<meta property="article:published_time" content="2013-07-30T23:35:00.000Z">
+<meta property="article:modified_time" content="2018-12-11T01:33:26.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="angularjs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AngularJS CRUD Grid v2: Now using $resource instead of $http">
-<meta name="twitter:description" content="In V1 of my AngularJS, WebApi grid I used $http to call my WebApi endpoints. I’ve been using $resource a lot lately, so I thought I’d go back and update it to use $resource instead. Here’s what it loo">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/">angularjs</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularjs/" rel="tag">angularjs</a></li></ul>
 
             </div>
         
@@ -202,18 +223,161 @@
         <div class="article-entry" itemprop="articleBody">
             <p>In <a href="/2013/05/angularjs-webapi-ef.html">V1 of my AngularJS, WebApi grid</a> I used $http to call my WebApi endpoints. I’ve been using $resource a lot lately, so I thought I’d go back and update it to use $resource instead.</p>
 <p>Here’s what it looks like:</p>
-<p><img src="/images/blog/AngularJS-WebAPI-CRUD-Grid-v2_1404F/image.png" alt></p>
+<p><img src="/images/blog/AngularJS-WebAPI-CRUD-Grid-v2_1404F/image.png" alt=""></p>
 <p><strong>SOURCE</strong>: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
 <p>Here’s how I wired up resource:</p>
 <p>1. Reference angular-resource.js</p>
 <p>2. Inject ngResource into the app</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, [<span class="string">'ngResource'</span>]);</span><br></pre></td></tr></table></figure>
+<pre><code class="language-javascript">var app = angular.module('app', ['ngResource']);
+</code></pre>
 <p>3. Modify the personFactory to return a resource object instead of the individual $http calls.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.factory(<span class="string">'personFactory'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$http, $resource</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $resource(<span class="string">'api/person/:id'</span>,</span><br><span class="line">        &#123; <span class="attr">id</span>: <span class="string">'@@id'</span> &#125;,</span><br><span class="line">        &#123; <span class="string">'update'</span>: &#123; <span class="attr">method</span>: <span class="string">'PUT'</span> &#125; &#125;,</span><br><span class="line">        &#123; <span class="string">'query'</span>: &#123; <span class="attr">method</span>: <span class="string">'GET'</span>, <span class="attr">isArray</span>: <span class="literal">false</span> &#125; &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="language-javascript">app.factory('personFactory', function ($http, $resource) {
+    return $resource('api/person/:id',
+        { id: '@@id' },
+        { 'update': { method: 'PUT' } },
+        { 'query': { method: 'GET', isArray: false } });
+});
+</code></pre>
 <p>4. Modify the $scope methods to use the resource methods, save, delete, query, update:</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$scope.addPerson = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    personFactory.save($scope.person, successPostCallback, errorCallback);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-javascript">$scope.addPerson = function () {
+    personFactory.save($scope.person, successPostCallback, errorCallback);
+};
+</code></pre>
 <p>Here’s the entire view. I’ll refactor it later.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>AngularJS-WebApi-EF<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    @Scripts.Render("~/bundles/jquery")</span><br><span class="line">    @Scripts.Render("~/bundles/angular")</span><br><span class="line">    @Scripts.Render("~/bundles/toastr")</span><br><span class="line">    @Scripts.Render("~/bundles/bootstrap")</span><br><span class="line">    @Styles.Render("~/content/bootstrap")</span><br><span class="line">    @Styles.Render("~/content/toastr")</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">"IndexCtrl"</span> <span class="attr">ng-cloak</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"crud-grid table table-striped table-bordered table-condensed table-hover"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">"width: 100px;"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-plus"</span> <span class="attr">ng-click</span>=<span class="string">"toggleAddMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">"width: 50px;"</span>&gt;</span>Id<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">th</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-show</span>=<span class="string">"addMode"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-save"</span> <span class="attr">ng-click</span>=<span class="string">"addPerson()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-remove"</span> <span class="attr">ng-click</span>=<span class="string">"toggleAddMode()"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"person.Name"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"person in people | orderBy:'Id':true"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span> <span class="attr">ng-show</span>=<span class="string">"person.editMode == null || person.editMode == false"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-edit"</span> <span class="attr">ng-click</span>=<span class="string">"toggleEditMode(person)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-trash"</span> <span class="attr">ng-click</span>=<span class="string">"deletePerson(person)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-toolbar"</span> <span class="attr">ng-show</span>=<span class="string">"person.editMode == true"</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-group"</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-save"</span> <span class="attr">ng-click</span>=<span class="string">"updatePerson(person)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"btn icon-remove"</span> <span class="attr">ng-click</span>=<span class="string">"toggleEditMode(person)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-show</span>=<span class="string">"person.editMode == null || person.editMode == false"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">input</span> <span class="attr">ng-model</span>=<span class="string">"person.Name"</span> <span class="attr">ng-show</span>=<span class="string">"person.editMode == true"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> app = angular.module(<span class="string">'app'</span>, [<span class="string">'ngResource'</span>]);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        app.factory(<span class="string">'personFactory'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$http, $resource</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> $resource(<span class="string">'api/person/:id'</span>,</span></span><br><span class="line"><span class="javascript">                &#123; <span class="attr">id</span>: <span class="string">'@@id'</span> &#125;,</span></span><br><span class="line"><span class="javascript">                &#123; <span class="string">'update'</span>: &#123; <span class="attr">method</span>: <span class="string">'PUT'</span> &#125; &#125;,</span></span><br><span class="line"><span class="javascript">                &#123; <span class="string">'query'</span>: &#123; <span class="attr">method</span>: <span class="string">'GET'</span>, <span class="attr">isArray</span>: <span class="literal">false</span> &#125; &#125;);</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        app.factory(<span class="string">'notificationFactory'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">                success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    toastr.success(<span class="string">"Success"</span>);</span></span><br><span class="line">                &#125;,</span><br><span class="line"><span class="javascript">                error: <span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    toastr.error(text, <span class="string">"Error"</span>);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        app.controller(<span class="string">'IndexCtrl'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $q, personFactory, notificationFactory</span>) </span>&#123;</span></span><br><span class="line">            $scope.people = [];</span><br><span class="line"><span class="javascript">            $scope.addMode = <span class="literal">false</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">            $scope.toggleAddMode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line">                $scope.addMode = !$scope.addMode;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            $scope.toggleEditMode = <span class="function"><span class="keyword">function</span> (<span class="params">person</span>) </span>&#123;</span></span><br><span class="line">                person.editMode = !person.editMode;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> successCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e, cb</span>) </span>&#123;</span></span><br><span class="line">                notificationFactory.success();</span><br><span class="line">                $scope.getPeople(cb);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> successPostCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                successCallback(e, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line">                    $scope.toggleAddMode();</span><br><span class="line">                    $scope.person = &#123;&#125;;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> errorCallback = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></span><br><span class="line">                notificationFactory.error(e.data.Message);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            $scope.addPerson = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line">                personFactory.save($scope.person, successPostCallback, errorCallback);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            $scope.deletePerson = <span class="function"><span class="keyword">function</span> (<span class="params">person</span>) </span>&#123;</span></span><br><span class="line">                personFactory.delete(&#123; id: person.Id &#125;, successCallback, errorCallback);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            $scope.updatePerson = <span class="function"><span class="keyword">function</span> (<span class="params">person</span>) </span>&#123;</span></span><br><span class="line">                personFactory.update(&#123; id: person.Id &#125;, person, successCallback, errorCallback);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            $scope.getPeople = <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                personFactory.query(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line">                    $scope.people = data;</span><br><span class="line">                    if (cb) cb();</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            $scope.getPeople();</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html ng-app=&quot;app&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;AngularJS-WebApi-EF&lt;/title&gt;
+    @Scripts.Render(&quot;~/bundles/jquery&quot;)
+    @Scripts.Render(&quot;~/bundles/angular&quot;)
+    @Scripts.Render(&quot;~/bundles/toastr&quot;)
+    @Scripts.Render(&quot;~/bundles/bootstrap&quot;)
+    @Styles.Render(&quot;~/content/bootstrap&quot;)
+    @Styles.Render(&quot;~/content/toastr&quot;)
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div ng-controller=&quot;IndexCtrl&quot; ng-cloak&gt;
+        &lt;table class=&quot;crud-grid table table-striped table-bordered table-condensed table-hover&quot;&gt;
+            &lt;tr&gt;
+                &lt;th style=&quot;width: 100px;&quot;&gt;
+                    &lt;div class=&quot;btn-toolbar&quot;&gt;&lt;i class=&quot;btn icon-plus&quot; ng-click=&quot;toggleAddMode()&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                &lt;/th&gt;
+                &lt;th style=&quot;width: 50px;&quot;&gt;Id&lt;/th&gt;
+                &lt;th&gt;Name&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr ng-show=&quot;addMode&quot;&gt;
+                &lt;td&gt;
+                    &lt;div class=&quot;btn-toolbar&quot;&gt;
+                        &lt;div class=&quot;btn-group&quot;&gt;
+                            &lt;i class=&quot;btn icon-save&quot; ng-click=&quot;addPerson()&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;btn icon-remove&quot; ng-click=&quot;toggleAddMode()&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;input ng-model=&quot;person.Name&quot; /&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr ng-repeat=&quot;person in people | orderBy:'Id':true&quot;&gt;
+                &lt;td&gt;
+                    &lt;div class=&quot;btn-toolbar&quot; ng-show=&quot;person.editMode == null || person.editMode == false&quot;&gt;
+                        &lt;div class=&quot;btn-group&quot;&gt;
+                            &lt;i class=&quot;btn icon-edit&quot; ng-click=&quot;toggleEditMode(person)&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;btn icon-trash&quot; ng-click=&quot;deletePerson(person)&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;btn-toolbar&quot; ng-show=&quot;person.editMode == true&quot;&gt;
+                        &lt;div class=&quot;btn-group&quot;&gt;
+                            &lt;i class=&quot;btn icon-save&quot; ng-click=&quot;updatePerson(person)&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;btn icon-remove&quot; ng-click=&quot;toggleEditMode(person)&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;span ng-show=&quot;person.editMode == null || person.editMode == false&quot;&gt;&lt;/span&gt;
+                    &lt;input ng-model=&quot;person.Name&quot; ng-show=&quot;person.editMode == true&quot; /&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var app = angular.module('app', ['ngResource']);
+
+        app.factory('personFactory', function ($http, $resource) {
+            return $resource('api/person/:id',
+                { id: '@@id' },
+                { 'update': { method: 'PUT' } },
+                { 'query': { method: 'GET', isArray: false } });
+        });
+
+        app.factory('notificationFactory', function () {
+            return {
+                success: function () {
+                    toastr.success(&quot;Success&quot;);
+                },
+                error: function (text) {
+                    toastr.error(text, &quot;Error&quot;);
+                }
+            };
+        });
+
+        app.controller('IndexCtrl', function ($scope, $q, personFactory, notificationFactory) {
+            $scope.people = [];
+            $scope.addMode = false;
+
+            $scope.toggleAddMode = function () {
+                $scope.addMode = !$scope.addMode;
+            };
+
+            $scope.toggleEditMode = function (person) {
+                person.editMode = !person.editMode;
+            };
+
+            var successCallback = function (e, cb) {
+                notificationFactory.success();
+                $scope.getPeople(cb);
+            };
+
+            var successPostCallback = function (e) {
+                successCallback(e, function () {
+                    $scope.toggleAddMode();
+                    $scope.person = {};
+                });
+            };
+
+            var errorCallback = function (e) {
+                notificationFactory.error(e.data.Message);
+            };
+
+            $scope.addPerson = function () {
+                personFactory.save($scope.person, successPostCallback, errorCallback);
+            };
+
+            $scope.deletePerson = function (person) {
+                personFactory.delete({ id: person.Id }, successCallback, errorCallback);
+            };
+
+            $scope.updatePerson = function (person) {
+                personFactory.update({ id: person.Id }, person, successCallback, errorCallback);
+            };
+
+            $scope.getPeople = function (cb) {
+                personFactory.query(function (data) {
+                    $scope.people = data;
+                    if (cb) cb();
+                });
+            };
+
+            $scope.getPeople();
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
         </div>
         <footer>
         </footer>
@@ -224,7 +388,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -312,7 +476,7 @@
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Solution to: &quot;The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value&quot; with Entity Framework when calling SaveChanges
+                            Solution to: &#34;The conversion of a datetime2 data type to a datetime data type resulted in an out-of-range value&#34; with Entity Framework when calling SaveChanges
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -332,7 +496,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -404,20 +568,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

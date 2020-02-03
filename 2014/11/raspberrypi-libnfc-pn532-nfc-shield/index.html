@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,58 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot,raspberrypi">
+    <meta name="keywords" content="iot,raspberrypi" />
     
     <meta name="description" content="I’m working on an NFC project and to test things out I got a PN532 NFC shield working with a RaspberryPi via libnfc. Adafruit has a good step-by-step tutorial, but it’s not up-to-date and it’s for the">
-<meta name="keywords" content="iot,raspberrypi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Connect a PN532 NFC Shield to a RaspberryPi via libnfc">
 <meta property="og:url" content="https://blog.jongallant.com/2014/11/raspberrypi-libnfc-pn532-nfc-shield/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m working on an NFC project and to test things out I got a PN532 NFC shield working with a RaspberryPi via libnfc. Adafruit has a good step-by-step tutorial, but it’s not up-to-date and it’s for the">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-11T02:21:49.000Z">
+<meta property="article:published_time" content="2014-11-11T15:44:00.000Z">
+<meta property="article:modified_time" content="2018-12-11T02:21:49.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="iot">
+<meta property="article:tag" content="raspberrypi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Connect a PN532 NFC Shield to a RaspberryPi via libnfc">
-<meta name="twitter:description" content="I’m working on an NFC project and to test things out I got a PN532 NFC shield working with a RaspberryPi via libnfc. Adafruit has a good step-by-step tutorial, but it’s not up-to-date and it’s for the">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,35 +216,35 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/">raspberrypi</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/" rel="tag">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberrypi/" rel="tag">raspberrypi</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image.png" alt>I’m working on an NFC project and to test things out I got a <a href="http://www.adafruit.com/products/789" target="_blank" rel="noopener">PN532 NFC shield</a> working with a RaspberryPi via <a href="http://nfc-tools.org/" target="_blank" rel="noopener">libnfc</a>.</p>
+            <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image.png" alt="">I’m working on an NFC project and to test things out I got a <a href="http://www.adafruit.com/products/789" target="_blank" rel="noopener">PN532 NFC shield</a> working with a RaspberryPi via <a href="http://nfc-tools.org/" target="_blank" rel="noopener">libnfc</a>.</p>
 <p>Adafruit has a good <a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/overview" target="_blank" rel="noopener">step-by-step tutorial</a>, but it’s not up-to-date and it’s for the <a href="http://www.adafruit.com/product/364" target="_blank" rel="noopener">PN532 breakout board</a> not the PN532 shield. They also have <a href="https://learn.adafruit.com/adafruit-pn532-rfid-nfc/overview" target="_blank" rel="noopener">this one for Arduino</a> – it’s not RaspberryPi, but still helpful for understanding the concepts.</p>
 <p>Here’s how I got it going – hope this saves you some time.</p>
 <p><strong>1. Get Occidentalis v0.2</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" title="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></p>
+<p><a href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></p>
 <p><strong>2. Make Occidentalis SD card</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" title="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></p>
+<p><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></p>
 <p><strong>3. Run first time config</strong></p>
-<p><a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" title="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" target="_blank" rel="noopener">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></p>
+<p><a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></p>
 <p><strong>4. Free UART on the Pi</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi</a></p>
+<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi</a></p>
 <ul>
-<li>On step one remove any key-value pairs that reference ttyAMAO (i.e. console=ttyAMAO,115200) and keep everything else. <a href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins" target="_blank" rel="noopener">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins</a></li>
+<li>On step one remove any key-value pairs that reference ttyAMAO (i.e. console=ttyAMAO,115200) and keep everything else. <a href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins" target="_blank" rel="noopener" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins</a></li>
 </ul>
 <p><strong>5. Get and Build libnfc</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc</a></p>
+<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc</a></p>
 <ul>
-<li>On step three you might get the following: “./configure command not found” if so then follow the instructions here: <a href="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489" title="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489" target="_blank" rel="noopener">http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489</a></li>
+<li>On step three you might get the following: “./configure command not found” if so then follow the instructions here: <a href="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489" target="_blank" rel="noopener" title="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489">http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489</a></li>
 </ul>
 <p><strong>6. Prepare the PN532</strong></p>
 <p>When I was going through this I was going under the assumption that libnfc only worked in UART mode (because that is what I found on from many sources), but I later found that it does support I2C and SPI. To get PN532 in UART mode you need to solder SEL0 on the board (make sure you are soldering SEL closest to MOSI on the board. In v.1 of PN532 SEL0 and SEL1 labels were reversed.</p>
-<p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_3.png" alt></p>
-<p>I found that info here: <a href="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html" title="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html" target="_blank" rel="noopener">http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html</a></p>
+<p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_3.png" alt=""></p>
+<p>I found that info here: <a href="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html" target="_blank" rel="noopener" title="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html">http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html</a></p>
 <p><strong>7. Wire up the PN532 to the breadboard and the RaspberryPi</strong></p>
 <ul>
 <li>Connect 5v power and GND from RaspberryPi to breadboard</li>
@@ -233,11 +255,11 @@
 <li>Connect PN532 SCL to RaspberryPi TXD with a 220ohm resistor between them</li>
 <li>Connect PN532 SDA to RaspberryPi RXD with a 220ohm resistor between them</li>
 </ul>
-<p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_4.png" alt></p>
+<p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_4.png" alt=""></p>
 <p><strong>8. Test it out</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out</a></p>
+<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out</a></p>
 <p>After running nfc-poll and swiping a card you should see your UID – which means it is working!</p>
-<p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_5.png" alt></p>
+<p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_5.png" alt=""></p>
 <p>Let me know if you run into any issues.</p>
 <p>Jon</p>
 
@@ -251,7 +273,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -359,7 +381,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -431,20 +453,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

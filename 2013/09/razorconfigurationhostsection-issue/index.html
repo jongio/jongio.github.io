@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,43 +12,56 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content>
+    <meta name="keywords" content="" />
     
-    <meta name="description" content="[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version=2.0.0.0, Cul">
+    <meta name="description" content="[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version&#x3D;2.0.0.0, Cul">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to: [A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from &#39;System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&#39; in the context &#39;Default&#39; at location &#39;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.WebPages.Razor\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Razor.dll&#39;. Type B originates from &#39;System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&#39; in the context &#39;Default&#39; at location &#39;C:\Users\jong\AppData\Local\Temp\Temporary ASP.NET Files\root\6f8c444d\f737f6f4\assembly\dl3\dde55404\3dbcbf4e_cab0ce01\System.Web.WebPages.Razor.dll&#39;.">
+<meta property="og:title" content="Solution to: [A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from &#39;System.Web.WebPages.Razor, Version&#x3D;2.0.0.0, Culture&#x3D;neutral, PublicKeyToken&#x3D;31bf3856ad364e35&#39; in the context &#39;Default&#39; at location &#39;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.WebPages.Razor\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Razor.dll&#39;. Type B originates from &#39;System.Web.WebPages.Razor, Version&#x3D;3.0.0.0, Culture&#x3D;neutral, PublicKeyToken&#x3D;31bf3856ad364e35&#39; in the context &#39;Default&#39; at location &#39;C:\Users\jong\AppData\Local\Temp\Temporary ASP.NET Files\root\6f8c444d\f737f6f4\assembly\dl3\dde55404\3dbcbf4e_cab0ce01\System.Web.WebPages.Razor.dll&#39;.">
 <meta property="og:url" content="https://blog.jongallant.com/2013/09/razorconfigurationhostsection-issue/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version=2.0.0.0, Cul">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version&#x3D;2.0.0.0, Cul">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2016-12-28T07:29:05.000Z">
+<meta property="article:published_time" content="2013-09-13T15:03:00.000Z">
+<meta property="article:modified_time" content="2016-12-28T07:29:05.000Z">
+<meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to: [A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from &#39;System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&#39; in the context &#39;Default&#39; at location &#39;C:\windows\Microsoft.Net\assembly\GAC_MSIL\System.Web.WebPages.Razor\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Razor.dll&#39;. Type B originates from &#39;System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&#39; in the context &#39;Default&#39; at location &#39;C:\Users\jong\AppData\Local\Temp\Temporary ASP.NET Files\root\6f8c444d\f737f6f4\assembly\dl3\dde55404\3dbcbf4e_cab0ce01\System.Web.WebPages.Razor.dll&#39;.">
-<meta name="twitter:description" content="[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version=2.0.0.0, Cul">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -66,7 +79,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -139,7 +158,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -197,9 +218,18 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h4 id="a-system-web-webpages-razor-configuration-hostsection-cannot-be-cast-to-b-system-web-webpages-razor-configuration-hostsection-type-a-originates-from-system-web-webpages-razor-version-2-0-0-0-culture-neutral-publickeytoken-31bf3856ad364e35-in-the-context-default-at-location-c-windows-microsoft-net-assembly-gac-msil-system-web-webpages-razor-v4-0-2-0-0-0-31bf3856ad364e35-system-web-webpages-razor-dll-type-b-originates-from-system-web-webpages-razor-version-3-0-0-0-culture-neutral-publickeytoken-31bf3856ad364e35-in-the-context-default-at-location-c-users-jong-appdata-local-temp-temporary-asp-net-files-root-6f8c444d-f737f6f4-assembly-dl3-dde55404-3dbcbf4e-cab0ce01-system-web-webpages-razor-dll"><a class="header-anchor" href="#a-system-web-webpages-razor-configuration-hostsection-cannot-be-cast-to-b-system-web-webpages-razor-configuration-hostsection-type-a-originates-from-system-web-webpages-razor-version-2-0-0-0-culture-neutral-publickeytoken-31bf3856ad364e35-in-the-context-default-at-location-c-windows-microsoft-net-assembly-gac-msil-system-web-webpages-razor-v4-0-2-0-0-0-31bf3856ad364e35-system-web-webpages-razor-dll-type-b-originates-from-system-web-webpages-razor-version-3-0-0-0-culture-neutral-publickeytoken-31bf3856ad364e35-in-the-context-default-at-location-c-users-jong-appdata-local-temp-temporary-asp-net-files-root-6f8c444d-f737f6f4-assembly-dl3-dde55404-3dbcbf4e-cab0ce01-system-web-webpages-razor-dll"></a><em>[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35’ in the context ‘Default’ at location ‘C:\windows\<a href="http://Microsoft.Net" target="_blank" rel="noopener">Microsoft.Net</a>\assembly\GAC_MSIL\System.Web.WebPages.Razor\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Razor.dll’. Type B originates from ‘System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35’ in the context ‘Default’ at location ‘C:\Users\jong\AppData\Local\Temp\Temporary <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Files\root\6f8c444d\f737f6f4\assembly\dl3\dde55404\3dbcbf4e_cab0ce01\System.Web.WebPages.Razor.dll’.</em></h4>
+            <h4 id="A-System-Web-WebPages-Razor-Configuration-HostSection-cannot-be-cast-to-B-System-Web-WebPages-Razor-Configuration-HostSection-Type-A-originates-from-‘System-Web-WebPages-Razor-Version-2-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-windows-Microsoft-Net-assembly-GAC-MSIL-System-Web-WebPages-Razor-v4-0-2-0-0-0-31bf3856ad364e35-System-Web-WebPages-Razor-dll’-Type-B-originates-from-‘System-Web-WebPages-Razor-Version-3-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-Users-jong-AppData-Local-Temp-Temporary-ASP-NET-Files-root-6f8c444d-f737f6f4-assembly-dl3-dde55404-3dbcbf4e-cab0ce01-System-Web-WebPages-Razor-dll’"><a class="header-anchor" href="#A-System-Web-WebPages-Razor-Configuration-HostSection-cannot-be-cast-to-B-System-Web-WebPages-Razor-Configuration-HostSection-Type-A-originates-from-‘System-Web-WebPages-Razor-Version-2-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-windows-Microsoft-Net-assembly-GAC-MSIL-System-Web-WebPages-Razor-v4-0-2-0-0-0-31bf3856ad364e35-System-Web-WebPages-Razor-dll’-Type-B-originates-from-‘System-Web-WebPages-Razor-Version-3-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-Users-jong-AppData-Local-Temp-Temporary-ASP-NET-Files-root-6f8c444d-f737f6f4-assembly-dl3-dde55404-3dbcbf4e-cab0ce01-System-Web-WebPages-Razor-dll’"></a><em>[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35’ in the context ‘Default’ at location ‘C:\windows\<a href="http://Microsoft.Net" target="_blank" rel="noopener">Microsoft.Net</a>\assembly\GAC_MSIL\System.Web.WebPages.Razor\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Razor.dll’. Type B originates from ‘System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35’ in the context ‘Default’ at location ‘C:\Users\jong\AppData\Local\Temp\Temporary <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Files\root\6f8c444d\f737f6f4\assembly\dl3\dde55404\3dbcbf4e_cab0ce01\System.Web.WebPages.Razor.dll’.</em></h4>
 <p>Add this to Web.config</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">runtime</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">assemblyBinding</span> <span class="attr">xmlns</span>=<span class="string">"urn:schemas-microsoft-com:asm.v1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">assemblyIdentity</span> <span class="attr">name</span>=<span class="string">"System.Web.WebPages.Razor"</span> <span class="attr">publicKeyToken</span>=<span class="string">"31bf3856ad364e35"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bindingRedirect</span> <span class="attr">oldVersion</span>=<span class="string">"0.0.0.0-3.0.0.0"</span> <span class="attr">newVersion</span>=<span class="string">"3.0.0.0"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependentAssembly</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">assemblyBinding</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">runtime</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-xml">&lt;runtime&gt;
+  &lt;assemblyBinding xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+    &lt;dependentAssembly&gt;
+      &lt;assemblyIdentity name=&quot;System.Web.WebPages.Razor&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
+      &lt;bindingRedirect oldVersion=&quot;0.0.0.0-3.0.0.0&quot; newVersion=&quot;3.0.0.0&quot;/&gt;
+    &lt;/dependentAssembly&gt;
+  &lt;/assemblyBinding&gt;
+&lt;/runtime&gt;
+</code></pre>
+
         </div>
         <footer>
         </footer>
@@ -210,7 +240,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -318,7 +348,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -390,20 +420,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

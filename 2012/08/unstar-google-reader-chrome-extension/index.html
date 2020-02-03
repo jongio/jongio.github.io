@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,58 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,dev">
+    <meta name="keywords" content="howto,dev" />
     
     <meta name="description" content="I’m an avid Google Reader user. I star and unstar items a lot and sometimes my starred items pile up. I wrote a few lines of JavaScript to unstar all items in bulk and blogged about it back in June. R">
-<meta name="keywords" content="howto,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unstar All Google Reader™ Starred Items with my new Chrome™ Extension">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/unstar-google-reader-chrome-extension/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I’m an avid Google Reader user. I star and unstar items a lot and sometimes my starred items pile up. I wrote a few lines of JavaScript to unstar all items in bulk and blogged about it back in June. R">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:published_time" content="2012-08-20T03:41:00.000Z">
+<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="dev">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Unstar All Google Reader™ Starred Items with my new Chrome™ Extension">
-<meta name="twitter:description" content="I’m an avid Google Reader user. I star and unstar items a lot and sometimes my starred items pile up. I wrote a few lines of JavaScript to unstar all items in bulk and blogged about it back in June. R">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,20 +216,20 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m an avid <a href="http://reader.google.com/" target="_blank" rel="noopener">Google Reader</a> user. I star and unstar items a lot and sometimes my starred items pile up. I wrote a few lines of JavaScript to unstar all items in bulk and <a href="/2012/06/google-reader-unstar-all.html">blogged about it back in June</a>. Rather than get a good night sleep tonight I decided wrap that JavaScript into a Chrome Extension, which you can <a href="https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd" target="_blank" rel="noopener">download from the Chrome Web Store</a></p>
-<p><img src="/images/blog/b99f85592ac0_305E/image.png" alt>](<a href="https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd</a>)</p>
+<p><img src="/images/blog/b99f85592ac0_305E/image.png" alt="">](<a href="https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd</a>)</p>
 <p>Most people who will find this post are in desperate need of help because they just spent the last 30 seconds clicking about 20 stars and realized that it’s going to take them hours if not days to unstar the rest of their starred items.</p>
 <p>The extension is really simple. It just adds a star to your extension bar. You load your starred items and click the star.</p>
-<p><img src="/images/blog/b99f85592ac0_305E/image_3.png" alt title="image"></p>
+<p><img src="/images/blog/b99f85592ac0_305E/image_3.png" alt="" title="image"></p>
 <p><em>(Screenshot of starred items)</em></p>
 <p>The script will loop through all the items currently loaded into the page and toggle the star. So this extension also useful to if you want to star in bulk.</p>
-<p><img src="/images/blog/b99f85592ac0_305E/image_4.png" alt title="image"></p>
+<p><img src="/images/blog/b99f85592ac0_305E/image_4.png" alt="" title="image"></p>
 <p><em>(Screenshot of empty starred items section after the “Unstar” button was clicked)</em></p>
 <p>You can download the Chrome Extension here: <a href="https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/cpjmiliephgahdlmfdnnnhpciignoojd</a></p>
 <p>I really hope this saves you some time. If so, then feel free to leave or comment or review it on the web store.</p>
@@ -223,7 +245,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -331,7 +353,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -403,20 +425,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

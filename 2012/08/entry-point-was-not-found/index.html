@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
         
-        Solution to &quot;Entry point was not found.&quot; in Visual Studio |
+        Solution to &#34;Entry point was not found.&#34; in Visual Studio |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,dev">
+    <meta name="keywords" content="c#,dev" />
     
     <meta name="description" content="I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we">
-<meta name="keywords" content="c#,dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to &quot;Entry point was not found.&quot; in Visual Studio">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/entry-point-was-not-found/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="article:published_time" content="2012-08-07T17:17:00.000Z">
+<meta property="article:modified_time" content="2016-12-29T03:37:00.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="dev">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solution to &quot;Entry point was not found.&quot; in Visual Studio">
-<meta name="twitter:description" content="I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app we">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -180,7 +202,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution to &quot;Entry point was not found.&quot; in Visual Studio
+        Solution to &#34;Entry point was not found.&#34; in Visual Studio
         </h1>
     
 
@@ -194,19 +216,19 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image.png" alt></p>
+            <p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image.png" alt=""></p>
 <p>I got this “System.EntryPointNotFoundException” exception today: “Entry point was not found.”  There could be many reasons for this exception. In my case it was because my main app and library app were point to different versions of the same Framework DLL. It compiled fine, just got the exception at runtime.</p>
-<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_3.png" alt></p>
-<h4 id="version-11-referenced-in-my-main-app"><a class="header-anchor" href="#version-11-referenced-in-my-main-app"></a>VERSION 11 REFERENCED IN MY MAIN APP</h4>
-<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_4.png" alt></p>
-<h4 id="version-10-referenced-in-my-library-app"><a class="header-anchor" href="#version-10-referenced-in-my-library-app"></a>VERSION 10 REFERENCED IN MY LIBRARY APP</h4>
-<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_5.png" alt></p>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_3.png" alt=""></p>
+<h4 id="VERSION-11-REFERENCED-IN-MY-MAIN-APP"><a class="header-anchor" href="#VERSION-11-REFERENCED-IN-MY-MAIN-APP"></a>VERSION 11 REFERENCED IN MY MAIN APP</h4>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_4.png" alt=""></p>
+<h4 id="VERSION-10-REFERENCED-IN-MY-LIBRARY-APP"><a class="header-anchor" href="#VERSION-10-REFERENCED-IN-MY-LIBRARY-APP"></a>VERSION 10 REFERENCED IN MY LIBRARY APP</h4>
+<p><img src="/images/blog/Solution-to-Entry-poin.-in-Visual-Studio_F067/image_5.png" alt=""></p>
 <p>The solution is simple, just change one of the references so they match. In my case I change the Main app to reference version 10.</p>
 <p>Jon</p>
 
@@ -220,7 +242,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -328,7 +350,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -400,20 +422,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

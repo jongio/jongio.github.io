@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot">
+    <meta name="keywords" content="iot" />
     
     <meta name="description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
-<meta name="keywords" content="iot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="beakn v0.4 - DIY Lync Status Light with Spark Core, WiFi, Batteries, SMD LEDs, On&#x2F;Off Switch, Ping pong ball and a Cardboard Box">
 <meta property="og:url" content="https://blog.jongallant.com/2014/12/beakn-v0-4-diy-lync-status-light/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:53:17.000Z">
+<meta property="article:published_time" content="2014-12-23T04:31:00.000Z">
+<meta property="article:modified_time" content="2018-05-16T20:53:17.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="iot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="beakn v0.4 - DIY Lync Status Light with Spark Core, WiFi, Batteries, SMD LEDs, On&#x2F;Off Switch, Ping pong ball and a Cardboard Box">
-<meta name="twitter:description" content="Over the past couple of weeks I’ve been working on a Lync Status light called “beakn”. I joined the Windows IoT Maker team not too long ago and have been immersing myself in the Maker space – I’ve bee">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/" rel="tag">iot</a></li></ul>
 
             </div>
         
@@ -206,32 +227,32 @@
 <p>Aside: The WiFi network at Microsoft is WPA2-Enterprise which isn’t support by most of the micro-controller development boards, like RaspberryPi and Arduino. The Intel Edison was the only one that I found to support it. v0.4 will only work with the WiFi protocols that Spark Core supports, which is are simple home network security like WPA/WPA2 or WEP. See their <a href="http://docs.spark.io/troubleshooting/" target="_blank" rel="noopener">troubleshooting guide</a> if you run into issues. I developed this on my home network and will need to use a hotspot at work or switch to Edison.</p>
 </blockquote>
 <p>With v0.4 I also experimented with Surface Mount Device (SMD) LEDs and I added a power toggle switch. I still have the ping pong ball diffuser and an upgraded cardboard box. I switched it from the Intel Edison box to the Spark Core box. The Spark Core is tiny and my SMD LEDs are small so I could get away with a very small box.</p>
-<h2 id="spark-core-board"><a class="header-anchor" href="#spark-core-board"></a>Spark Core Board</h2>
+<h2 id="Spark-Core-Board"><a class="header-anchor" href="#Spark-Core-Board"></a>Spark Core Board</h2>
 <p>The pictures speak for themselves. Super small and meets my needs. WiFi. GPIO pins. That’s all I need for this project.</p>
-<p><img src="/images/blog/1291b2b0c337_C70/image.png" alt></p>
+<p><img src="/images/blog/1291b2b0c337_C70/image.png" alt=""></p>
 <p>Photon is also coming soon. It’s $19 and it will work for beakn too.</p>
-<p><img src="/images/blog/1291b2b0c337_C70/image_4.png" alt></p>
-<h2 id="spark-ide"><a class="header-anchor" href="#spark-ide"></a>Spark IDE</h2>
+<p><img src="/images/blog/1291b2b0c337_C70/image_4.png" alt=""></p>
+<h2 id="Spark-IDE"><a class="header-anchor" href="#Spark-IDE"></a>Spark IDE</h2>
 <p>The Spark Core development experience is AMAZING. It is all done in the browser. I used Chrome to write the code, build it and deploy it to the Spark Core. They also have a <a href="https://www.spark.io/dev" target="_blank" rel="noopener">desktop IDE</a> as well that is based on GitHub’s atom.</p>
 <p>Here’s a screenshot showing the browser IDE.</p>
-<p><img src="/images/blog/1291b2b0c337_C70/image_5.png" alt></p>
+<p><img src="/images/blog/1291b2b0c337_C70/image_5.png" alt=""></p>
 <p>Here’s the desktop IDE.</p>
-<p><img src="/images/blog/1291b2b0c337_C70/image_6.png" alt></p>
+<p><img src="/images/blog/1291b2b0c337_C70/image_6.png" alt=""></p>
 <p>The other cool thing is that anyone can contribute libraries to Spark Core via GitHub. Check <a href="https://github.com/spark/uber-library-example/#getting-started" target="_blank" rel="noopener">this out</a> for more info. I contributed a “beakn” library so if you are building this then try searching the library for beakn and you should pull up the sample file.</p>
-<p><img src="/images/blog/1291b2b0c337_C70/image_7.png" alt></p>
+<p><img src="/images/blog/1291b2b0c337_C70/image_7.png" alt=""></p>
 <p>I was truly impressed with Spark Core. From initial setup to the IDE to the cloud apis to the very small form factor…everything was just perfect. The best thing about it is that I feel inspired to development more and I feel like I can actually get some other project ideas quickly off the ground. Products like this should first and foremost “inspire people to create” and the Spark Core definitely did that for me.</p>
-<h2 id="wifi"><a class="header-anchor" href="#wifi"></a>WiFi</h2>
+<h2 id="WiFi"><a class="header-anchor" href="#WiFi"></a>WiFi</h2>
 <p>For WiFi I didn’t have to do much. I just went through the <a href="http://docs.spark.io/start/" target="_blank" rel="noopener">Spark Core getting started guide</a> and connected my Spark Core to my WiFi using the iPhone app. No libraries to import. It just works.</p>
-<h2 id="lights"><a class="header-anchor" href="#lights"></a>Lights</h2>
+<h2 id="Lights"><a class="header-anchor" href="#Lights"></a>Lights</h2>
 <p>For SMD LEDs I have to admit that I asked someone on the team how to do solder them and he gave me a good lesson. I experimented a bunch with different ways to get them to attach to the protoboard and run wires to pins. With my first version I attached small pieces of wire wrapping wire to each LED, but with the second version I ran a single wire down each side. I reduced the resistance as well; I went from a 220ohm resistor to a 47ohm resistor. I’m not 100% sure that value is right, but it’s what an online ohms law calculator gave me – 3.3v and 20ma per LED.</p>
 <p>If you aren’t comfortable with SMD LEDs then I recommend going with any of the designs from v0.1, v0.2 or v0.3 which use 10mm big LEDs. Either option will work just fine.</p>
-<h2 id="diffuser"><a class="header-anchor" href="#diffuser"></a>Diffuser</h2>
+<h2 id="Diffuser"><a class="header-anchor" href="#Diffuser"></a>Diffuser</h2>
 <p>I get a lot of compliments about using a ping pong ball, but of course that won’t be in the final product. This round I experimented with a clear plastic diffuser, but wasn’t happy with the results so I went back to the ping pong ball.</p>
-<h2 id="power"><a class="header-anchor" href="#power"></a>Power</h2>
+<h2 id="Power"><a class="header-anchor" href="#Power"></a>Power</h2>
 <p>My goal of developing a wireless device means it needs to run on battery. The Spark Core runs on 3.3V DC and needs an Input voltage of 3.6 to 6.0 volts. On <a href="http://docs.spark.io/hardware/" target="_blank" rel="noopener">this page</a> they recommend a 3.6V LiPo or 4AAs. I had the 4AA battery case so that is what I went with.</p>
 <p>Since the beakn is now battery powered I threw a toggle switch in the circuit as well.</p>
-<h2 id="build-the-beakn-hardware"><a class="header-anchor" href="#build-the-beakn-hardware"></a>Build the beakn Hardware</h2>
-<h3 id="parts-you-will-need-the-following-to-build-beakn-v0-4"><a class="header-anchor" href="#parts-you-will-need-the-following-to-build-beakn-v0-4"></a>Parts – You will need the following to build beakn v0.4</h3>
+<h2 id="Build-the-beakn-Hardware"><a class="header-anchor" href="#Build-the-beakn-Hardware"></a>Build the beakn Hardware</h2>
+<h3 id="Parts-–-You-will-need-the-following-to-build-beakn-v0-4"><a class="header-anchor" href="#Parts-–-You-will-need-the-following-to-build-beakn-v0-4"></a>Parts – You will need the following to build beakn v0.4</h3>
 <ul>
 <li><a href="https://store.spark.io/" target="_blank" rel="noopener">Spark Core</a> – $39</li>
 <li>Ping pong ball</li>
@@ -257,17 +278,17 @@
 <li>Drill</li>
 <li>1/4&quot; Drill Bit*   Big LED Route – Doesn’t require soldering</li>
 </ul>
-<h3 id="the-box"><a class="header-anchor" href="#the-box"></a>The Box</h3>
+<h3 id="The-Box"><a class="header-anchor" href="#The-Box"></a>The Box</h3>
 <p>1. Get a clean box by removing any extra cardboard that is inside it.</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1158.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1158_thumb.jpg" alt="P-1158" title="P-1158"></a></p>
 <p>2. Cut a hole in the front for the toggle switch.</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1313.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1313_thumb.jpg" alt="P-1313" title="P-1313"></a></p>
 <p>3. Cut a hold in the top for the lights.</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1306.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1306_thumb.jpg" alt="P-1306" title="P-1306"></a></p>
-<h3 id="the-ball"><a class="header-anchor" href="#the-ball"></a>The Ball</h3>
+<h3 id="The-Ball"><a class="header-anchor" href="#The-Ball"></a>The Ball</h3>
 <p>Cut a hole in the bottom of the ping pong ball and duct tape it to the hole in the top of the box.</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1320.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1320_thumb.jpg" alt="P-1320" title="P-1320"></a></p>
-<h3 id="the-smd-led-array"><a class="header-anchor" href="#the-smd-led-array"></a>The SMD LED Array</h3>
+<h3 id="The-SMD-LED-Array"><a class="header-anchor" href="#The-SMD-LED-Array"></a>The SMD LED Array</h3>
 <p>1. Drill a 3x3 grid into the Prototyping board to hold the LEDs in place. You are going to run wire to connect the negative and positive terminals so make sure all the sides are the same. Negative on right, positive on left for all of them. The negative side has a little notch in the corner.</p>
 <p>2. Dab a very small amount of solder to connect all three leads of each side.</p>
 <p>3. Lay a piece of wire wrapping wire across the negative side and solder in place. Do the same for positive and do for all 9 LEDs.</p>
@@ -282,19 +303,19 @@
 <li>Ground: GND</li>
 </ul>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1288.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1288_thumb.jpg" alt="P-1288" title="P-1288"></a><a href="/images/blog/1291b2b0c337_C70/P-1293.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1293_thumb.jpg" alt="P-1293" title="P-1293"></a><a href="/images/blog/1291b2b0c337_C70/P-1296.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1296_thumb.jpg" alt="P-1296" title="P-1296"></a><a href="/images/blog/1291b2b0c337_C70/P-1312.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1312_thumb.jpg" alt="P-1312" title="P-1312"></a><a href="/images/blog/1291b2b0c337_C70/P-1319.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1319_thumb.jpg" alt="P-1319" title="P-1319"></a></p>
-<h3 id="the-batteries-and-toggle-switch"><a class="header-anchor" href="#the-batteries-and-toggle-switch"></a>The Batteries and Toggle Switch</h3>
+<h3 id="The-Batteries-and-Toggle-Switch"><a class="header-anchor" href="#The-Batteries-and-Toggle-Switch"></a>The Batteries and Toggle Switch</h3>
 <p>Your battery holder likely came with tinned ends. Cut the 2x male to female jumper wires and solder the switch in between them. <a href="http://www.learningaboutelectronics.com/Articles/Toggle-switch-wiring.php" target="_blank" rel="noopener">This page</a> was helpful when researching toggle switch wiring.</p>
 <p>Connect the red wire to Spark Core VIN and the black wire to Spark Core GND.</p>
 <p>Put the batteries in the battery holder and you should see the Spark Core start up.</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1170.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1170_thumb.jpg" alt="P-1170" title="P-1170"></a><a href="/images/blog/1291b2b0c337_C70/P-1176.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1176_thumb.jpg" alt="P-1176" title="P-1176"></a><a href="/images/blog/1291b2b0c337_C70/P-1185.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1185_thumb.jpg" alt="P-1185" title="P-1185"></a><a href="/images/blog/1291b2b0c337_C70/P-1273.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1273_thumb.jpg" alt="P-1273" title="P-1273"></a></p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1315.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1315_thumb.jpg" alt="P-1315" title="P-1315"></a></p>
-<h3 id="the-final-product"><a class="header-anchor" href="#the-final-product"></a>The final product</h3>
+<h3 id="The-final-product"><a class="header-anchor" href="#The-final-product"></a>The final product</h3>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1316.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1316_thumb.jpg" alt="P-1316" title="P-1316"></a></p>
-<h2 id="install-the-beakn-desktop-application"><a class="header-anchor" href="#install-the-beakn-desktop-application"></a>Install the beakn Desktop Application</h2>
+<h2 id="Install-the-beakn-Desktop-Application"><a class="header-anchor" href="#Install-the-beakn-Desktop-Application"></a>Install the beakn Desktop Application</h2>
 <p>The beakn desktop application runs in the background and listens for Lync status changes. When that occurs it issues an HTTP request to the Spark Cloud API to tell the device what color to show. I found this VERY helpful library called <a href="https://github.com/kareem613/SharpSpark" target="_blank" rel="noopener">SharpSpark</a>. It was super easy to use – I’ve asked them to put on nuget, but for now you have to get the code and build it locally.</p>
 <p>To install the desktop app you can:</p>
-<p>1. Get the source, build it and run it: <a href="https://github.com/jongio/beakn/tree/master/desktop" title="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener">https://github.com/jongio/beakn/tree/master/desktop</a></p>
-<p>2. Install via the v0.4 MSI: <a href="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi" title="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi" target="_blank" rel="noopener">https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi</a></p>
+<p>1. Get the source, build it and run it: <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/tree/master/desktop">https://github.com/jongio/beakn/tree/master/desktop</a></p>
+<p>2. Install via the v0.4 MSI: <a href="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi">https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi</a></p>
 <p>After you install it you are going to need to modify the config to use your Spark Core keys.</p>
 <p>1. If beakn.exe is running you’ll need to stop it.</p>
 <p>2. Open a CMD prompt as Admin and open beakn.exe.config in notepad.</p>
@@ -305,12 +326,12 @@
 </code></pre>
 <p>5. Save it.</p>
 <p>6. Double-click on beakn.exe to restart it.</p>
-<h2 id="install-the-spark-core-beakn-code"><a class="header-anchor" href="#install-the-spark-core-beakn-code"></a>Install the Spark Core beakn Code</h2>
+<h2 id="Install-the-Spark-Core-beakn-Code"><a class="header-anchor" href="#Install-the-Spark-Core-beakn-Code"></a>Install the Spark Core beakn Code</h2>
 <p>This is the code that sits on your Spark Core. It is going to set the appropriate LED color. You will notice that there is a call to “Spark.function(“setStatus”, setStatus);” That is a method included in the Spark Core development experience. It sets up the setStatus function as a function that can be called via HTTP with their Cloud API. Amazingly simple. This functionality was much more code in my previous versions because I had to talk to MQTT servers directly.</p>
 <p>You can get the code in two ways:</p>
 <p>1. Search the Spark libraries for “beakn”. <a href="http://spark.io" target="_blank" rel="noopener">http://spark.io</a>, Libraries, search for beakn. Directly use the beakn-sparkcore.ino example file.</p>
-<p>2. Go to the beakn-sparkcore GitHub repository and copy the code to the Spark Core IDE and deploy to your device. <a href="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" title="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" target="_blank" rel="noopener">https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino</a></p>
-<h2 id="fire-it-up"><a class="header-anchor" href="#fire-it-up"></a>Fire it up</h2>
+<p>2. Go to the beakn-sparkcore GitHub repository and copy the code to the Spark Core IDE and deploy to your device. <a href="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino" target="_blank" rel="noopener" title="https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino">https://raw.githubusercontent.com/jongio/beakn-sparkcore/master/firmware/examples/beakn-sparkcore.ino</a></p>
+<h2 id="Fire-it-up"><a class="header-anchor" href="#Fire-it-up"></a>Fire it up</h2>
 <p>Turn on your beakn using your toggle switch. It will flash red, yellow and then green when it starts up. After that you’ll need to change your Lync status to get it initialized. (I’m researching ways to automatically pull the latest status – for now just toggle).</p>
 <p><a href="/images/blog/1291b2b0c337_C70/P-1335_3.jpg"><img src="/images/blog/1291b2b0c337_C70/P-1335_thumb_3.jpg" alt="P-1335" title="P-1335"></a></p>
 <p>This version was definitely more involved than the others. The SMD LEDs and custom protoboard made it fun, but also more challenging. I had a blast building it. I look forward to seeing what you do with it.</p>
@@ -326,7 +347,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -434,7 +455,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -506,20 +527,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure">
+    <meta name="keywords" content="azure" />
     
     <meta name="description" content="I recently gave a few presentations at Ignite New Zealand and used a couple of applications to help me find the lowest latency Azure Region from Auckland.  You’ll want to know the top two regions, bec">
-<meta name="keywords" content="azure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Find Azure Regions with Lowest Latency">
 <meta property="og:url" content="https://blog.jongallant.com/2017/01/azure-region-latency-test/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I recently gave a few presentations at Ignite New Zealand and used a couple of applications to help me find the lowest latency Azure Region from Auckland.  You’ll want to know the top two regions, bec">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/azure-region-latency-test/000004.png">
-<meta property="og:updated_time" content="2018-12-10T12:43:41.000Z">
+<meta property="article:published_time" content="2017-01-11T17:57:22.000Z">
+<meta property="article:modified_time" content="2018-12-10T12:43:41.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Find Azure Regions with Lowest Latency">
-<meta name="twitter:description" content="I recently gave a few presentations at Ignite New Zealand and used a couple of applications to help me find the lowest latency Azure Region from Auckland.  You’ll want to know the top two regions, bec">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/01/azure-region-latency-test/000004.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li></ul>
 
             </div>
         
@@ -207,23 +228,28 @@
 <blockquote>
 <p>With either approach below, you will need to ask someone from your target location to run the test.</p>
 </blockquote>
-<h2 id="azure-storage-latency-test"><a class="header-anchor" href="#azure-storage-latency-test"></a>Azure Storage Latency Test</h2>
+<h2 id="Azure-Storage-Latency-Test"><a class="header-anchor" href="#Azure-Storage-Latency-Test"></a>Azure Storage Latency Test</h2>
 <p><a href="http://www.azurespeed.com/" target="_blank" rel="noopener">azurespeed.com</a></p>
 <p>The <a href="http://www.azurespeed.com/" target="_blank" rel="noopener">Azure Storage Latency Test</a> site looks like it is maintained more frequently, becuase it has the West US 2 region, while the other option below does not.</p>
 <p>This site allows you to select the regions you want to test and shows you the top 3 closest regions.</p>
-<p><img src="000005.png" alt></p>
+<p><img src="000005.png" alt=""></p>
 <p>The other great thing about this site is that it includes Upload/Download Speed Tests, Cloud IP Ranges and a Cloud Region Finder.</p>
-<p><img src="000006.png" alt></p>
+<p><img src="000006.png" alt=""></p>
 <p>You can find the source here: <a href="https://github.com/blrchen/AzureSpeed" target="_blank" rel="noopener">blrchen / AzureSpeed</a></p>
-<h2 id="microsoft-azure-speed-test"><a class="header-anchor" href="#microsoft-azure-speed-test"></a>Microsoft Azure Speed Test</h2>
+<h2 id="Microsoft-Azure-Speed-Test"><a class="header-anchor" href="#Microsoft-Azure-Speed-Test"></a>Microsoft Azure Speed Test</h2>
 <p><a href="https://azurespeedtest.azurewebsites.net/" target="_blank" rel="noopener">azurespeedtest.azurewebsites.net</a></p>
 <p>When you hit <a href="https://azurespeedtest.azurewebsites.net/" target="_blank" rel="noopener">Microsoft Azure Speed Test</a> the speed test will start and you will be presented with a line chart with all of the regions sorted by Average Latency.</p>
-<p><img src="000004.png" alt></p>
+<p><img src="000004.png" alt=""></p>
 <blockquote>
 <p>This isn’t an exact measurement of all services as it just a read test from blog storage.</p>
 </blockquote>
 <p>Here’s the code that is used to ping the blob.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> $.ajax(&#123;</span><br><span class="line">    url: <span class="string">"https://"</span> + x + <span class="string">".blob.core.windows.net/cb.json"</span>,</span><br><span class="line">    dataType: <span class="string">"jsonp"</span>,</span><br><span class="line">    cache: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="language-javascript"> $.ajax({
+    url: &quot;https://&quot; + x + &quot;.blob.core.windows.net/cb.json&quot;,
+    dataType: &quot;jsonp&quot;,
+    cache: false
+});
+</code></pre>
 <p><a href="https://github.com/two10degrees/AzureSpeedTest/blob/master/index.html" target="_blank" rel="noopener">Source</a></p>
 <p>You can for their repo here: <a href="https://github.com/two10degrees/AzureSpeedTest" target="_blank" rel="noopener">two10degress / AzureSpeedTest</a></p>
 <p>Jon</p>
@@ -238,7 +264,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -346,7 +372,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -418,20 +444,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

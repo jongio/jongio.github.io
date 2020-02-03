@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#">
+    <meta name="keywords" content="c#" />
     
     <meta name="description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’ You get this error if">
-<meta name="keywords" content="c#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[object Object]">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/implementation-query-source-type/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’ You get this error if">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2016-12-29T03:37:00.000Z">
+<meta property="article:published_time" content="2012-07-31T06:38:00.000Z">
+<meta property="article:modified_time" content="2016-12-29T03:37:00.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[object Object]">
-<meta name="twitter:description" content="Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’ You get this error if">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c#</a></li></ul>
 
             </div>
         
@@ -202,11 +223,24 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’</p>
 <p>You get this error if you try to do a LINQ query on a collection that doesn’t have an explicit type:</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISubSection</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">string</span> Title &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">string</span> Description &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    IList Items &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x  =  <span class="keyword">from</span> c <span class="keyword">in</span> FailingBuilds.Items</span><br></pre></td></tr></table></figure>
-<p><img src="/images/blog/3db7faf53f1b_5B45/image.png" alt></p>
+<pre><code class="language-csharp">public interface ISubSection
+{
+    string Title { get; set; }
+
+    string Description { get; set; }
+
+    IList Items { get; set; }
+}
+</code></pre>
+<pre><code class="language-csharp">var x  =  from c in FailingBuilds.Items
+
+</code></pre>
+<p><img src="/images/blog/3db7faf53f1b_5B45/image.png" alt=""></p>
 <p>The simplest way to fix this (if you know the type at render time) is to cast the property to the concrete type in the LINQ statement: List&lt;Build&gt; below</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">from</span> c <span class="title">in</span> (<span class="params">List&amp;lt;Build&amp;gt;</span>)FailingBuilds.Items</span></span><br><span class="line"><span class="function">        <span class="keyword">where</span> c.Committers.<span class="title">Count</span>(<span class="params"></span>) &amp;gt</span>; <span class="number">0</span></span><br><span class="line">        <span class="keyword">select</span> c;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-csharp">var x = from c in (List&amp;lt;Build&amp;gt;)FailingBuilds.Items
+        where c.Committers.Count() &amp;gt; 0
+        select c;
+</code></pre>
 <p>Jon</p>
 
         </div>
@@ -219,7 +253,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -327,7 +361,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -399,20 +433,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

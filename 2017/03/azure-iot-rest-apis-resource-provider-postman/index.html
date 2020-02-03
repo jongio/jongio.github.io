@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,60 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,iot,postman,rest">
+    <meta name="keywords" content="azure,iot,postman,rest" />
     
     <meta name="description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
-<meta name="keywords" content="azure,iot,postman,rest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
 <meta property="og:url" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/000119.png">
-<meta property="og:updated_time" content="2018-12-10T12:33:03.000Z">
+<meta property="article:published_time" content="2017-03-19T10:54:23.000Z">
+<meta property="article:modified_time" content="2018-12-10T12:33:03.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="iot">
+<meta property="article:tag" content="postman">
+<meta property="article:tag" content="rest">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Use and Execute the Azure IoT Resource Provider REST APIs with Postman">
-<meta name="twitter:description" content="I was recently working with a partner that was having some difficulty integrating with the Azure IoT REST APIs. You can read about that experience here: How to Use the Azure IoT Hub Device Twins REST">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/03/azure-iot-rest-apis-resource-provider-postman/000119.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +83,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +162,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +218,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/">rest</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/" rel="tag">iot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/" rel="tag">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/" rel="tag">rest</a></li></ul>
 
             </div>
         
@@ -205,7 +229,9 @@
 <blockquote>
 <p>Click the following “Run with Postman” image if you want to skip right to the Azure IoT REST APIs Postman Collection</p>
 </blockquote>
-<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="84a38008cd07accf565e"></div>
+<div class="postman-run-button"
+data-postman-action="collection/import"
+data-postman-var-1="84a38008cd07accf565e"></div>
 <script type="text/javascript">
   (function (p,o,s,t,m,a,n) {
     !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
@@ -225,33 +251,33 @@
 <blockquote>
 <p>See <a href="#Option-2-View-and-Execute-Requests">Option 2: View and Execute Requests</a> below.</p>
 </blockquote>
-<h2 id="install-postman"><a class="header-anchor" href="#install-postman"></a>Install Postman</h2>
+<h2 id="Install-Postman"><a class="header-anchor" href="#Install-Postman"></a>Install Postman</h2>
 <p>With either approach below, you will need to install Postman, which you can do here: <a href="http://getpostman.com" target="_blank" rel="noopener">Install Postman</a>.  I use the Desktop version, but the Chrome version should work fine as well.</p>
-<h2 id="option-1-view-requests-only"><a class="header-anchor" href="#option-1-view-requests-only"></a>Option 1: View Requests Only</h2>
+<h2 id="Option-1-View-Requests-Only"><a class="header-anchor" href="#Option-1-View-Requests-Only"></a>Option 1: View Requests Only</h2>
 <p>If all you want to do is view the requests in Postman without executing anything, then jump to the <a href="#Open-Postman-Collection">Open Postman Collection</a> section below.</p>
-<h2 id="option-2-view-and-execute-requests"><a class="header-anchor" href="#option-2-view-and-execute-requests"></a>Option 2: View and Execute Requests</h2>
+<h2 id="Option-2-View-and-Execute-Requests"><a class="header-anchor" href="#Option-2-View-and-Execute-Requests"></a>Option 2: View and Execute Requests</h2>
 <p>If you want to view the requests <strong>and execute</strong> them against your Azure Subscription, then you will need to do the following.</p>
-<h2 id="set-postman-environment-variables"><a class="header-anchor" href="#set-postman-environment-variables"></a>Set Postman Environment Variables</h2>
+<h2 id="Set-Postman-Environment-Variables"><a class="header-anchor" href="#Set-Postman-Environment-Variables"></a>Set Postman Environment Variables</h2>
 <p>Postman allows you to setup variables and allows you to group them by “Environment”.  For this exercise, you will create a new Environment and add the required variables.</p>
 <p>1. In Postman, click the Manage Environments option under the gears icon in the upper right.<br>
-<img src="000110.png" alt></p>
+<img src="000110.png" alt=""></p>
 <p>2. Click Add, then Click Bulk Edit</p>
-<p><img src="000111.png" alt><br>
-<img src="000112.png" alt></p>
+<p><img src="000111.png" alt=""><br>
+<img src="000112.png" alt=""></p>
 <p>3. Paste the following into the textbox:</p>
 <script src="https://gist.github.com/jongio/4cc9f764b844d69125a92ae04a718017.js"></script>
 <p>4. Give it a name like “Azure IoT Hub”</p>
-<p><img src="000116.png" alt></p>
+<p><img src="000116.png" alt=""></p>
 <p>5. We will now work on creating Azure resources and getting all of the variables needed to execute the Postman collection.</p>
-<p><img src="000117.png" alt></p>
-<h2 id="setup-azure-resources"><a class="header-anchor" href="#setup-azure-resources"></a>Setup Azure Resources</h2>
-<h3 id="1-create-azure-subscription"><a class="header-anchor" href="#1-create-azure-subscription"></a>1. Create Azure Subscription</h3>
+<p><img src="000117.png" alt=""></p>
+<h2 id="Setup-Azure-Resources"><a class="header-anchor" href="#Setup-Azure-Resources"></a>Setup Azure Resources</h2>
+<h3 id="1-Create-Azure-Subscription"><a class="header-anchor" href="#1-Create-Azure-Subscription"></a>1. Create Azure Subscription</h3>
 <p>You will likely already have an Azure Subscription, but if you don’t, you can create one in the <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a>.</p>
 <p>Whether you just created an Azure Subscription or are using an existing one, you will need your Subscription Id to execute these REST API calls.</p>
 <blockquote>
 <p>Copy your <strong>Subscription Id</strong>, which is a GUID, to the <strong>subscriptionId</strong> Postman Environment variable.</p>
 </blockquote>
-<h3 id="2-create-azure-active-directory-aad-app"><a class="header-anchor" href="#2-create-azure-active-directory-aad-app"></a>2. Create Azure Active Directory (AAD) App</h3>
+<h3 id="2-Create-Azure-Active-Directory-AAD-App"><a class="header-anchor" href="#2-Create-Azure-Active-Directory-AAD-App"></a>2. Create Azure Active Directory (AAD) App</h3>
 <p>You will need an AAD app to call any of the Resource Provider REST APIs. Please follow this blog post to create your AAD app: <a href="/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a>.</p>
 <p>When you come back to this post, you will have the following variables.</p>
 <ul>
@@ -263,7 +289,7 @@
 <p>Copy these variables into the corresponding Postman Environment variables.</p>
 </blockquote>
 <p>If you do not have those 3 things, then please go back to the above blog post to get them.</p>
-<h3 id="3-create-azure-blob-storage-account"><a class="header-anchor" href="#3-create-azure-blob-storage-account"></a>3. Create Azure Blob Storage Account</h3>
+<h3 id="3-Create-Azure-Blob-Storage-Account"><a class="header-anchor" href="#3-Create-Azure-Blob-Storage-Account"></a>3. Create Azure Blob Storage Account</h3>
 <p>You will need an Azure Blob Storage Account to use the Device Bulk Export, Import, Update and Delete REST APIs.</p>
 <blockquote>
 <p>You can skip this step if you don’t need to test Device Bulk operations, but just keep in mind that those requests will fail.</p>
@@ -271,9 +297,9 @@
 <p>1. Create the Blob Storage Account, feel free to use <a href="http://storageexplorer.com" target="_blank" rel="noopener">Azure Storage Explorer</a> to do so.<br>
 2. Create two containers, one called ‘export’ and one called ‘import’.</p>
 <p>This is what your Blob Account will look like when you are done with this step:<br>
-<img src="000108.png" alt></p>
+<img src="000108.png" alt=""></p>
 <p>Find your account name and key:</p>
-<p><img src="000109.png" alt></p>
+<p><img src="000109.png" alt=""></p>
 <p>When you are done with this step, you will have the following:</p>
 <ul>
 <li><strong>deviceStorageAccountName</strong></li>
@@ -282,7 +308,7 @@
 <blockquote>
 <p>Copy these variables into the corresponding Postman Environment variables.</p>
 </blockquote>
-<h3 id="4-create-iot-hub"><a class="header-anchor" href="#4-create-iot-hub"></a>4. Create IoT Hub</h3>
+<h3 id="4-Create-IoT-Hub"><a class="header-anchor" href="#4-Create-IoT-Hub"></a>4. Create IoT Hub</h3>
 <p>You will likely already have an IoT Hub, but in case you don’t please go to the Azure Portal and create one.</p>
 <p>When you are done with this step, you will have the following variables.</p>
 <ul>
@@ -293,14 +319,16 @@
 <blockquote>
 <p>Copy these variables into the corresponding Postman Environment variables.</p>
 </blockquote>
-<h4 id="choose-an-iot-hub-name-to-create-and-delete"><a class="header-anchor" href="#choose-an-iot-hub-name-to-create-and-delete"></a>Choose an IoT Hub name to create and delete.</h4>
+<h4 id="Choose-an-IoT-Hub-name-to-create-and-delete"><a class="header-anchor" href="#Choose-an-IoT-Hub-name-to-create-and-delete"></a>Choose an IoT Hub name to create and delete.</h4>
 <blockquote>
 <p>The only other remaining required variable is <strong>“iotHubCreateDeleteName”</strong>.  I made this a seperate variable so people don’t inadvertently delete an IoT Hub.  You can set this variable to whatever you want, but it has to be unique.</p>
 </blockquote>
-<h2 id="open-postman-collection"><a class="header-anchor" href="#open-postman-collection"></a>Open Postman Collection</h2>
+<h2 id="Open-Postman-Collection"><a class="header-anchor" href="#Open-Postman-Collection"></a>Open Postman Collection</h2>
 <p>Postman provides the ability for you to share a Postman collection via URL and a “Run in Postman” button that you can embed in your documentation.</p>
 <p>If you’d like to open the entire Azure IoT Postman collection, then click on the “Run in Postman” button below.  It will open Postman, where you can execute each request or just have a look around.</p>
-<div class="postman-run-button" data-postman-action="collection/import" data-postman-var-1="84a38008cd07accf565e"></div>
+<div class="postman-run-button"
+data-postman-action="collection/import"
+data-postman-var-1="84a38008cd07accf565e"></div>
 <script type="text/javascript">
   (function (p,o,s,t,m,a,n) {
     !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
@@ -311,44 +339,47 @@
   }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
 </script>
 <p>When you open the collection you will see the following:<br>
-<img src="openpostmancollection.png" alt></p>
+<img src="openpostmancollection.png" alt=""></p>
 <p>Feel free to poke around and drill into whatever API you’d like to or execute them if you have done the setup steps above.</p>
-<h2 id="run-postman-collection"><a class="header-anchor" href="#run-postman-collection"></a>Run Postman Collection</h2>
+<h2 id="Run-Postman-Collection"><a class="header-anchor" href="#Run-Postman-Collection"></a>Run Postman Collection</h2>
 <p>1. Select the Environment that you create earlier, you may have called it Azure IoT Hub</p>
-<p><img src="000118.png" alt></p>
+<p><img src="000118.png" alt=""></p>
 <p>2. Click the ‘Run’ Button</p>
-<p><img src="000119.png" alt></p>
+<p><img src="000119.png" alt=""></p>
 <p>This will load the Postman Collection Runner window.</p>
-<p><img src="000120.png" alt></p>
+<p><img src="000120.png" alt=""></p>
 <p>3. Click ‘Start Test’</p>
 <p>You will immediately start to see the request results</p>
-<p><img src="000121.png" alt></p>
+<p><img src="000121.png" alt=""></p>
 <blockquote>
 <p>With the current configuration, the tests will take a while to execute because I am running the “Create IoT Hub” request and the “Verify IoT Hub” request, which is a polling request that returns a “Success” code when the IoT Hub is created.</p>
 </blockquote>
-<h2 id="run-postman-collection-via-newman"><a class="header-anchor" href="#run-postman-collection-via-newman"></a>Run Postman Collection via Newman</h2>
+<h2 id="Run-Postman-Collection-via-Newman"><a class="header-anchor" href="#Run-Postman-Collection-via-Newman"></a>Run Postman Collection via Newman</h2>
 <p><a href="https://github.com/postmanlabs/newman" target="_blank" rel="noopener">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
 <p>For example, the following will execute a Postman Collection with a given set of Environment variables.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run postman-collection.json -e environment-variables.json</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">newman run postman-collection.json -e environment-variables.json
+</code></pre>
 <p>Here’s how to run the Azure IoT Hub collection with Newman.</p>
 <p>0. Install Newman</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i -g newman</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">npm i -g newman
+</code></pre>
 <p>1. Export the Postman Collection</p>
-<p><img src="000124.png" alt></p>
-<p><img src="000125.png" alt></p>
+<p><img src="000124.png" alt=""></p>
+<p><img src="000125.png" alt=""></p>
 <p>2. Export the Environment Variables</p>
 <p>Click the gear icon in the upper right hand corner of Postman and select Manage Environments and then click the Download Environment button.</p>
-<p><img src="000126.png" alt></p>
-<p><img src="000127.png" alt></p>
-<p><img src="000128.png" alt></p>
+<p><img src="000126.png" alt=""></p>
+<p><img src="000127.png" alt=""></p>
+<p><img src="000128.png" alt=""></p>
 <p>3. Open a CMD and execute the following command:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">newman run <span class="string">"Azure IoT Hub.postman_collection.json"</span> -e <span class="string">"Azure IoT Hub.postman_environment.json"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">newman run &quot;Azure IoT Hub.postman_collection.json&quot; -e &quot;Azure IoT Hub.postman_environment.json&quot;
+</code></pre>
 <p>You will see the following when the run completes</p>
-<p><img src="000129.png" alt></p>
+<p><img src="000129.png" alt=""></p>
 <blockquote>
 <p>There’s a chance you will get errors when running these, especially the Export/Import Device requests.  I’m following up with the Azure IoT team on this. If you do run into this issue, just run again or try again after some time.</p>
 </blockquote>
-<h2 id="setup-postman-monitor"><a class="header-anchor" href="#setup-postman-monitor"></a>Setup Postman Monitor</h2>
+<h2 id="Setup-Postman-Monitor"><a class="header-anchor" href="#Setup-Postman-Monitor"></a>Setup Postman Monitor</h2>
 <p>I haven’t tried this yet, but Postman offers a PRO feature called “Monitor”, which allows you to schedule the Collection Run.  I am more interested in integration with existing continuous integration software, which I will be exploring very soon.</p>
 <p>In the meantime, checkout their post <a href="https://www.getpostman.com/docs/integrating_with_jenkins" target="_blank" rel="noopener">Integrating automated API tests with Jenkins</a>.</p>
 <p>Jon</p>
@@ -363,7 +394,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -471,7 +502,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -543,20 +574,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

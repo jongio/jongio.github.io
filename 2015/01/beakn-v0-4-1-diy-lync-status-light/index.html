@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iot">
+    <meta name="keywords" content="iot" />
     
     <meta name="description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
-<meta name="keywords" content="iot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box">
 <meta property="og:url" content="https://blog.jongallant.com/2015/01/beakn-v0-4-1-diy-lync-status-light/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:54:22.000Z">
+<meta property="article:published_time" content="2015-01-21T19:18:00.000Z">
+<meta property="article:modified_time" content="2018-05-16T20:54:22.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="iot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="beakn v0.4.1 - DIY Lync Status Light with a Spark Core, Onboard LED, Ping Pong Ball and a Cardboard Box">
-<meta name="twitter:description" content="Here’s a quick update to beakn – my Lync status light maker project – this version uses the Spark Core onboard RGB led. Joe Shirey tweeted his version of beakn which uses the onboard led – I was super">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/" rel="tag">iot</a></li></ul>
 
             </div>
         
@@ -217,8 +238,8 @@
 <script src="http://gist-it.appspot.com/github/jongio/beakn-sparkcore/blob/master/firmware/examples/beakn-sparkcore-onboard-led.ino"></script>
 <p>9. Install the beakn Windows application. It’s an app that runs in the background and calls the Spark Core function setStatus when your Lync status changes.</p>
 <blockquote>
-<p>To install the desktop app you can:</p><p>1. Get the source, build it and run it: <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener">https://github.com/jongio/beakn/tree/master/desktop</a></p><p>2. Install via the v0.4 MSI: <a href="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi" target="_blank" rel="noopener">https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi</a></p><p>After you install it you are going to need to modify the config to use your Spark Core keys.</p><p>1. If beakn.exe is running you’ll need to stop it.</p><p>2. Open notepad as Admin open beakn.exe.config</p><p>3. Change the Protocol setting to “SparkCore&quot;</p><p>4. Change the AccessToken and DeviceId to the IDs you get from <a href="http://Spark.io" target="_blank" rel="noopener">Spark.io</a></p><p>    &lt;add key=“SparkCoreAccessToken” value=”&quot;/&gt; // <a href="http://spark.io/" target="_blank" rel="noopener">http://spark.io</a> – click on settings in lower left<br>
-&lt;add key=“SparkCoreDeviceId” value=&quot;&quot;/&gt; // <a href="http://spark.io/" target="_blank" rel="noopener">http://spark.io</a> – click on cores in lower left, select your core</p><p>5. Save it.</p><p>6. Double-click on beakn.exe to restart it.</p>
+<p>To install the desktop app you can:<p>1. Get the source, build it and run it: <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener">https://github.com/jongio/beakn/tree/master/desktop</a><p>2. Install via the v0.4 MSI: <a href="https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi" target="_blank" rel="noopener">https://github.com/jongio/beakn/releases/download/v0.4/beakn.v0.4.msi</a><p>After you install it you are going to need to modify the config to use your Spark Core keys.<p>1. If beakn.exe is running you’ll need to stop it.<p>2. Open notepad as Admin open beakn.exe.config<p>3. Change the Protocol setting to “SparkCore&quot;<p>4. Change the AccessToken and DeviceId to the IDs you get from <a href="http://Spark.io" target="_blank" rel="noopener">Spark.io</a><p>    &lt;add key=“SparkCoreAccessToken” value=”&quot;/&gt; // <a href="http://spark.io/" target="_blank" rel="noopener">http://spark.io</a> – click on settings in lower left<br>
+&lt;add key=“SparkCoreDeviceId” value=&quot;&quot;/&gt; // <a href="http://spark.io/" target="_blank" rel="noopener">http://spark.io</a> – click on cores in lower left, select your core<p>5. Save it.<p>6. Double-click on beakn.exe to restart it.</p>
 </blockquote>
 <p>Congrats! Your beakn with onboard led should now be working.</p>
 <p><a href="/images/blog/23994ddf1868_10F1E/P-1025_thumb3.jpg"><img src="/images/blog/23994ddf1868_10F1E/P-1025_thumb3_thumb.jpg" alt="P-1025_thumb[3]" title="P-1025_thumb[3]"></a></p>
@@ -234,7 +255,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -342,7 +363,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -414,20 +435,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

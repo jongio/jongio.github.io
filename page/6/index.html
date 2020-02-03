@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -10,40 +10,52 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
+    <meta name="description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jon Gallant">
 <meta property="og:url" content="https://blog.jongallant.com/page/6/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jon Gallant">
-<meta name="twitter:description" content="Dev Manager at Microsoft for Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http://aka.ms/IoTEdgeDev - Always Hiring">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -61,7 +73,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -134,7 +152,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -173,6 +193,153 @@
         
         <div class="article-row">
             
+            <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/09/powerbi-custom-visual-from-existing-d3-2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2016/09/powerbi-custom-visual-from-existing-d3-2/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="date"><time datetime="2016-09-29T15:51:00.000Z" itemprop="datePublished">
+                    2016-09-29</time></p>
+            <p class="category">
+                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Power-BI/">Power BI</a>
+            </p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/09/powerbi-custom-visual-from-existing-d3-2/">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 2 - Capabilities, dataRoles and dataViewMappings</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            UPDATE: The Liquid Fill Gauge visual is now available to download from the Power BI Custom Visual Gallery!
+–
+This is a continuation of my attempt at creating a Power BI Custom Visual from an OSS d3 vi
+        </p>
+    </div>
+</article>
+            
+        
+
+
+        
+        
+            <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/09/powerbi-cant-contact-visual-server/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Solution: Power BI - &#34;Can&#39;t contact visual server. Please make sure the visual server is running and configured correctly.&#34;" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2016/09/powerbi-cant-contact-visual-server/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="date"><time datetime="2016-09-29T15:05:00.000Z" itemprop="datePublished">
+                    2016-09-29</time></p>
+            <p class="category">
+                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
+            </p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/09/powerbi-cant-contact-visual-server/">Solution: Power BI - &#34;Can&#39;t contact visual server. Please make sure the visual server is running and configured correctly.&#34;</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            You might see this error message when trying to load the Power BI Custom Visual “Development Visual”
+
+“Can’t contact visual server. Please make sure the visual server is running and configured correct
+        </p>
+    </div>
+</article>
+            
+        </div>
+        
+        
+
+
+        
+        
+        <div class="article-row">
+            
+            <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/09/how-to-create-power-bi-custom-visual/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2016/09/how-to-create-power-bi-custom-visual/">0</span>
+    
+</span>
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <p class="date"><time datetime="2016-09-25T12:09:00.000Z" itemprop="datePublished">
+                    2016-09-25</time></p>
+            <p class="category">
+                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Power-BI/">Power BI</a>
+            </p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/09/how-to-create-power-bi-custom-visual/">How to Create a Power BI Custom Visual Based on an Existing d3 Visual - Part 1 - Dev Env Setup, Reference and Testing</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            The purpose of this post is to show you how to take an existing open source d3 visual and create a Power BI Custom Visual from it.
+I’ve been digging into the new Power BI Custom Visual SDK and just cr
+        </p>
+    </div>
+</article>
+            
+        
+
+
+        
+        
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -217,11 +384,15 @@ Jon
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -265,15 +436,11 @@ How this report was
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -315,18 +482,22 @@ How this report was
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
         <a href="/2016/09/solution-you-cannot-use-this-account/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Solution: &quot;You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one.&quot; when trying to signing to a Visual Studio Team Services project from within Visual Studio" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Solution: &#34;You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one.&#34; when trying to signing to a Visual Studio Team Services project from within Visual Studio" class="thumbnail-image"></span>
     
     
         
@@ -351,7 +522,7 @@ How this report was
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/09/solution-you-cannot-use-this-account/">Solution: &quot;You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one.&quot; when trying to signing to a Visual Studio Team Services project from within Visual Studio</a>
+        <a href="/2016/09/solution-you-cannot-use-this-account/">Solution: &#34;You cannot use this account for this purpose because it belongs to an organization. Please choose a different account or sign up for a new one.&#34; when trying to signing to a Visual Studio Team Services project from within Visual Studio</a>
         </h1>
     
 
@@ -363,15 +534,11 @@ How this report was
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -413,11 +580,15 @@ How this report was
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -457,29 +628,26 @@ How this report was
             Here’s how to install Node.js on Raspberry Pi (originally posted as a SoF answer for Ubuntu here)
 Install curl
 sudo apt-get install curl -y
+
 Install node
 v4
-curl -sL https://deb.nodesource.com/setup_4.
+curl -sL https://deb.nodesource.com/setup_4
         </p>
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
         <a href="/2016/08/rpi3-no-bluetooth-adapter-found/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Solution to &quot;No Bluetooth adapter found&quot; on RaspberryPi 3" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Solution to &#34;No Bluetooth adapter found&#34; on RaspberryPi 3" class="thumbnail-image"></span>
     
     
         
@@ -504,7 +672,7 @@ curl -sL https://deb.nodesource.com/setup_4.
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/08/rpi3-no-bluetooth-adapter-found/">Solution to &quot;No Bluetooth adapter found&quot; on RaspberryPi 3</a>
+        <a href="/2016/08/rpi3-no-bluetooth-adapter-found/">Solution to &#34;No Bluetooth adapter found&#34; on RaspberryPi 3</a>
         </h1>
     
 
@@ -514,18 +682,24 @@ curl -sL https://deb.nodesource.com/setup_4.
 It probably means your Bluetooth service is stopped:
 Try this:
 sudo service bluetooth start
+
 then
 sudo service bluetooth status
-If that doesn’t work, try this:https://www.pi-supply.co
+
+If that doesn’t work, try this:https://www.pi-supply.
         </p>
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -569,15 +743,11 @@ As of 5/30/2017, you can now get the underlying Event Hub connection string by e
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -619,11 +789,15 @@ As of 5/30/2017, you can now get the underlying Event Hub connection string by e
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -666,15 +840,11 @@ Individual IoT devices will connect to t
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -720,11 +890,15 @@ Do not go to t
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -768,15 +942,11 @@ Go to Win
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -822,11 +992,15 @@ Web – Crea
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -869,15 +1043,11 @@ Click “Add
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -923,11 +1093,15 @@ Nam
     </div>
 </article>
             
+        </div>
+        
         
 
 
         
         
+        <div class="article-row">
+            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -971,15 +1145,11 @@ For PowerBI-Fiddler, I wanted to re-use the J
     </div>
 </article>
             
-        </div>
-        
         
 
 
         
         
-        <div class="article-row">
-            
             <article class="article article-summary">
     <div class="article-summary-inner">
         
@@ -1022,154 +1192,6 @@ The rest of the devs on my
     </div>
 </article>
             
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/07/huzzah-esp8266-visual-micro/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="How to use Visual Micro (Arduino VS Extension) as your Adafruit HUZZAH ESP8266 IDE" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2016/07/huzzah-esp8266-visual-micro/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2016-07-08T11:10:00.000Z" itemprop="datePublished">
-                    2016-07-08</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/07/huzzah-esp8266-visual-micro/">How to use Visual Micro (Arduino VS Extension) as your Adafruit HUZZAH ESP8266 IDE</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I’ve been using the Adafruit Feather HUZZAH ESP8266 board and Visual Micro quite a bit lately. The Huzzah is a board that includes the ESP8266 WiFi module and a LiPo battery jack – making it really ea
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/06/azure-iot-hub-traffic-monitor/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="How to Monitor Azure IoT Hub Traffic" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2016/06/azure-iot-hub-traffic-monitor/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2016-06-12T00:55:00.000Z" itemprop="datePublished">
-                    2016-06-12</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Azure/">Azure</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/06/azure-iot-hub-traffic-monitor/">How to Monitor Azure IoT Hub Traffic</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            You have a couple different options to monitor your incoming and outgoing Azure IoT Hub traffic.
-Azure CLI IoT Extension
-See this ref for more info:
-
-https://aka.ms/iotcli
-https://docs.microsoft.com/e
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/06/asa-duplicate-property/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Fix for Azure Stream Analytics–Duplicate property names are not allowed" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2016/06/asa-duplicate-property/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2016-06-09T23:00:00.000Z" itemprop="datePublished">
-                    2016-06-09</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Bugs/">Bugs</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/06/asa-duplicate-property/">Fix for Azure Stream Analytics–Duplicate property names are not allowed</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            If you see the error &quot;Duplicate property names are not allowed ‘avg’ in your Stream Analytics query it is likely because you aren’t setting up an alias for that property.
-Here’s what you may see:
-        </p>
-    </div>
-</article>
-            
         </div>
         
         
@@ -1182,7 +1204,7 @@ Here’s what you may see:
     <span class="pages">
         Page 6 
         of 26</span>
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/7/">&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/7/">&amp;raquo;</a>
 </nav>
 
                             
@@ -1255,7 +1277,7 @@ Here’s what you may see:
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -1325,20 +1347,40 @@ Here’s what you may see:
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

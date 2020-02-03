@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,60 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="c#,howto,dev,visual studio">
+    <meta name="keywords" content="c#,howto,dev,visual studio" />
     
     <meta name="description" content="I recently created a custom Fiddler extension called PowerBIFiddler. Here are a few tricks that I learned along the way. Re-use Default Fiddler Inspectors For PowerBI-Fiddler, I wanted to re-use the J">
-<meta name="keywords" content="c#,howto,dev,visual studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fiddler Extension Development Tips">
 <meta property="og:url" content="https://blog.jongallant.com/2016/07/fiddler-extension-tips/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I recently created a custom Fiddler extension called PowerBIFiddler. Here are a few tricks that I learned along the way. Re-use Default Fiddler Inspectors For PowerBI-Fiddler, I wanted to re-use the J">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-05-16T20:39:33.000Z">
+<meta property="article:published_time" content="2016-07-27T10:52:00.000Z">
+<meta property="article:modified_time" content="2018-05-16T20:39:33.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="dev">
+<meta property="article:tag" content="visual studio">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fiddler Extension Development Tips">
-<meta name="twitter:description" content="I recently created a custom Fiddler extension called PowerBIFiddler. Here are a few tricks that I learned along the way. Re-use Default Fiddler Inspectors For PowerBI-Fiddler, I wanted to re-use the J">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +83,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +162,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,31 +218,34 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visual-studio/">visual studio</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visual-studio/" rel="tag">visual studio</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
             <p>I recently created a custom <a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a> extension called <a href="https://github.com/jongio/PowerBIFiddler" target="_blank" rel="noopener">PowerBIFiddler</a>. Here are a few tricks that I learned along the way.</p>
-<h2 id="re-use-default-fiddler-inspectors"><a class="header-anchor" href="#re-use-default-fiddler-inspectors"></a><strong>Re-use Default Fiddler Inspectors</strong></h2>
-<p>For PowerBI-Fiddler, I wanted to re-use the JSONResponseViewer that Fiddler uses for their “JSON” inspector. I used <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">JustDecompile</a> to decompile Fiddler.exe and discovered that the default inspectors are located in this DLL: C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll. The JSONResponseViewer is sealed, so you have to use a composition pattern instead of inheritance. You can see an example here: <a href="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" title="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" target="_blank" rel="noopener">https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs</a></p>
-<p><img src="/images/blog/8eabae91e1ff_D2C8/image_3.png" alt></p>
-<h2 id="inspector-loading"><a class="header-anchor" href="#inspector-loading"></a><strong>Inspector loading</strong></h2>
+<h2 id="Re-use-Default-Fiddler-Inspectors"><a class="header-anchor" href="#Re-use-Default-Fiddler-Inspectors"></a><strong>Re-use Default Fiddler Inspectors</strong></h2>
+<p>For PowerBI-Fiddler, I wanted to re-use the JSONResponseViewer that Fiddler uses for their “JSON” inspector. I used <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">JustDecompile</a> to decompile Fiddler.exe and discovered that the default inspectors are located in this DLL: C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll. The JSONResponseViewer is sealed, so you have to use a composition pattern instead of inheritance. You can see an example here: <a href="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" target="_blank" rel="noopener" title="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs">https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs</a></p>
+<p><img src="/images/blog/8eabae91e1ff_D2C8/image_3.png" alt=""></p>
+<h2 id="Inspector-loading"><a class="header-anchor" href="#Inspector-loading"></a><strong>Inspector loading</strong></h2>
 <p>Fiddler searches %userprofile%\Documents\Fiddler2\Inspectors and C:\Program Files (x86)\Fiddler2\Inspectors for Inspectors when it launches. You’ll want to copy your custom Inspectors into either of those folders. I setup the following Post-build event to automatically copy the DLL over after each build.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;</span><br><span class="line">copy &quot;$(TargetPath)&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\$(TargetFilename)&quot;</span><br><span class="line">copy &quot;Newtonsoft.Json.dll&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/blog/8eabae91e1ff_D2C8/image_4.png" alt></p>
-<h2 id="debugging"><a class="header-anchor" href="#debugging"></a><strong>Debugging</strong></h2>
+<pre><code>mkdir &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;
+copy &quot;$(TargetPath)&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\$(TargetFilename)&quot;
+copy &quot;Newtonsoft.Json.dll&quot; &quot;%userprofile%\My Documents\Fiddler2\Inspectors\&quot;
+</code></pre>
+<p><img src="/images/blog/8eabae91e1ff_D2C8/image_4.png" alt=""></p>
+<h2 id="Debugging"><a class="header-anchor" href="#Debugging"></a><strong>Debugging</strong></h2>
 <p>To get F5 debugging, you’ll want to set your Start Action to Fiddler.exe, like this:</p>
-<p><img src="/images/blog/8eabae91e1ff_D2C8/image.png" alt></p>
+<p><img src="/images/blog/8eabae91e1ff_D2C8/image.png" alt=""></p>
 <p>**<br>
 **</p>
-<h2 id="learn-by-decompiling-existing-extensions"><a class="header-anchor" href="#learn-by-decompiling-existing-extensions"></a><strong>Learn by Decompiling Existing Extensions</strong></h2>
-<p>You’ll find a bunch of good examples here: <a href="http://www.telerik.com/fiddler/add-ons" title="http://www.telerik.com/fiddler/add-ons" target="_blank" rel="noopener">http://www.telerik.com/fiddler/add-ons</a>. You can install them and then use JustDecompile to see how they were built.</p>
-<h2 id="helpful-links"><a class="header-anchor" href="#helpful-links"></a><strong>Helpful Links</strong></h2>
+<h2 id="Learn-by-Decompiling-Existing-Extensions"><a class="header-anchor" href="#Learn-by-Decompiling-Existing-Extensions"></a><strong>Learn by Decompiling Existing Extensions</strong></h2>
+<p>You’ll find a bunch of good examples here: <a href="http://www.telerik.com/fiddler/add-ons" target="_blank" rel="noopener" title="http://www.telerik.com/fiddler/add-ons">http://www.telerik.com/fiddler/add-ons</a>. You can install them and then use JustDecompile to see how they were built.</p>
+<h2 id="Helpful-Links"><a class="header-anchor" href="#Helpful-Links"></a><strong>Helpful Links</strong></h2>
 <ul>
-<li>Fiddler Extensions on Codeplex: <a href="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2" title="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2" target="_blank" rel="noopener">https://www.codeplex.com/site/search?query=fiddler&amp;ac=2</a></li>
-<li>Fiddler Extensions on GitHub: <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults" title="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults" target="_blank" rel="noopener">https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults</a></li>
+<li>Fiddler Extensions on Codeplex: <a href="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2" target="_blank" rel="noopener" title="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2">https://www.codeplex.com/site/search?query=fiddler&amp;ac=2</a></li>
+<li>Fiddler Extensions on GitHub: <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults" target="_blank" rel="noopener" title="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults">https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults</a></li>
 <li>Fiddler Extension Docs: <a href="http://docs.telerik.com/fiddler/extend-fiddler/extendwithdotnet" target="_blank" rel="noopener">http://docs.telerik.com/fiddler/extend-fiddler/extendwithdotnet</a></li>
 </ul>
 <p>Jon</p>
@@ -233,7 +260,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -341,7 +368,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -413,20 +440,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,58 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azureiot,powerbi">
+    <meta name="keywords" content="azureiot,powerbi" />
     
     <meta name="description" content="What do you do when you find a static table online that you want to quickly slice and dice? Enter Power BI. Here’s the resulting Power BI report…details on how I created it below…  How this report was">
-<meta name="keywords" content="azureiot,powerbi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Explore the Azure IoT Certified Devices with Power BI">
 <meta property="og:url" content="https://blog.jongallant.com/2016/09/azure-iot-certified-devices-power-bi/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="What do you do when you find a static table online that you want to quickly slice and dice? Enter Power BI. Here’s the resulting Power BI report…details on how I created it below…  How this report was">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2016-12-28T08:16:17.000Z">
+<meta property="article:published_time" content="2016-09-16T11:56:00.000Z">
+<meta property="article:modified_time" content="2016-12-28T08:16:17.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azureiot">
+<meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Explore the Azure IoT Certified Devices with Power BI">
-<meta name="twitter:description" content="What do you do when you find a static table online that you want to quickly slice and dice? Enter Power BI. Here’s the resulting Power BI report…details on how I created it below…  How this report was">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +81,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +160,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +216,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azureiot/">azureiot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/">powerbi</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azureiot/" rel="tag">azureiot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/" rel="tag">powerbi</a></li></ul>
 
             </div>
         
@@ -203,7 +225,7 @@
             <p>What do you do when you find a static table online that you want to quickly slice and dice? Enter <a href="http://powerbi.com" target="_blank" rel="noopener">Power BI</a>. Here’s the resulting Power BI report…details on how I created it below…</p>
 <iframe width="800" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiOGY4ZmZkOGItYWRjMy00MmNiLWJjNzItY2RlYjU2NDBhN2MzIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9" frameborder="0" allowfullscreen="true"></iframe>
 <p><strong>How this report was created…</strong></p>
-<p>The Azure IoT Certified Device list is published by the Azure IoT team here: <a href="https://azure.microsoft.com/en-us/documentation/articles/iot-hub-tested-configurations/#certified-for-iot-devices" title="https://azure.microsoft.com/en-us/documentation/articles/iot-hub-tested-configurations/#certified-for-iot-devices" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/documentation/articles/iot-hub-tested-configurations/#certified-for-iot-devices</a></p>
+<p>The Azure IoT Certified Device list is published by the Azure IoT team here: <a href="https://azure.microsoft.com/en-us/documentation/articles/iot-hub-tested-configurations/#certified-for-iot-devices" target="_blank" rel="noopener" title="https://azure.microsoft.com/en-us/documentation/articles/iot-hub-tested-configurations/#certified-for-iot-devices">https://azure.microsoft.com/en-us/documentation/articles/iot-hub-tested-configurations/#certified-for-iot-devices</a></p>
 <p>I used <a href="https://powerbi.microsoft.com/en-us/desktop/" target="_blank" rel="noopener">Power BI Desktop</a> - Get Data -&gt; Web Connector. Entered that URL and it presented me with all the tables on that page.</p>
 <p><img src="/images/blog/azure-iot-certified-devices-power-bi_A7B4/image_thumb11.png" alt="image[11]" title="image[11]"></p>
 <p><img src="/images/blog/azure-iot-certified-devices-power-bi_A7B4/image_thumb12.png" alt="image[12]" title="image[12]"><br>
@@ -235,7 +257,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -343,7 +365,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -415,20 +437,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

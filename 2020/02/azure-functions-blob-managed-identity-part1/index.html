@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>
+        
+        How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 1) |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,functions,identity,.net,linux,dotnet" />
+    
+    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 1)">
+<meta property="og:url" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
+<meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
+<meta property="article:modified_time" content="2020-02-03T05:00:08.066Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="functions">
+<meta property="article:tag" content="identity">
+<meta property="article:tag" content=".net">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="dotnet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
+    
+
+    
+    <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/videos/">Videos</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-azure-functions-blob-managed-identity-part1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 1)
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2020/02/azure-functions-blob-managed-identity-part1/" class="article-date">
+    <time datetime="2020-02-02T08:32:07.000Z" itemprop="datePublished">2020-02-02</time>
+</a>
+
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/net/" rel="tag">.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dotnet/" rel="tag">dotnet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functions/" rel="tag">functions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/identity/" rel="tag">identity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdkpackages" target="_blank" rel="noopener">Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential</a>. We’ll first get everything running locally without any cloud dependencies via a Storage Emulator. We’ll then run the same code locally, but configure it to upload blobs to Azure Storage using a Service Principal. And lastly, we’ll learn how to deploy an Azure Function to Azure, that uses Azure Storage and <a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">Managed Identities</a>. The three different setups allow you to iteratively develop Azure Functions without the cost and inner-loop dev cylce overhead of deploying everything to Azure on every code change.</p>
+<p>If you haven’t worked with <a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">Managed Identities</a> before I highly recommend that you do. It works wonderfully in conjunction with the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener"><code>Azure Identity DefaultAzureCredential</code></a>.  The <code>DefaultAzureCredential</code> object contains a collection of credential objects that enables you to dev with a Service Principal (and other credential types) locally and then deploy to Azure and use Managed Identity without any code changes.</p>
+<blockquote>
+<p>Code: The code for this series can be found here: <a href="https://github.com/jongio/azure-blob-functions-managedid" target="_blank" rel="noopener">https://github.com/jongio/azure-blob-functions-managedid</a></p>
+</blockquote>
+<p>Here are the 3 development scenarios that we are going to cover in this series:</p>
+<p>Part 1: Local Function with Storage Emulator (local function, local storage)<br>
+Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and Service Principal (local function, cloud storage)</a><br>
+Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function with Azure Storage and Managed Identity (cloud function, cloud storage)</a></p>
+<blockquote>
+<p>This series makes use of the Azure CLI, because that is my preference for interacting with Azure. You can also do all of the Azure related steps with the Portal, ARM, Powershell, or REST.</p>
+</blockquote>
+<blockquote>
+<p>I’m also using .NET Core and Linux, because that is what my customer was using when I was helping them figure this out. This same flow can be used for any language and any OS.</p>
+</blockquote>
+<h2 id="Local-Function-with-Storage-Emulator-local-function-local-storage"><a class="header-anchor" href="#Local-Function-with-Storage-Emulator-local-function-local-storage"></a>Local Function with Storage Emulator (local function, local storage)</h2>
+<h3 id="Local-Machine-Setup"><a class="header-anchor" href="#Local-Machine-Setup"></a>Local Machine Setup</h3>
+<p>Let’s get our local machine setup to run the function locally using the Azure Storage Emulator</p>
+<ol>
+<li><a href="https://go.microsoft.com/fwlink/?linkid=717179&amp;clcid=0x409" target="_blank" rel="noopener">Install Azure Storage Emulator (Windows)</a> or <a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite (Linux)</a></li>
+</ol>
+<p>You will need this to run the function locally as the Function needs a place to store its metadata.  We’ll also write our blobs here for this ‘local only’ scenario. I have not tested this on Linux, so comments on your experience with Azurite would be appreciated.</p>
+<p>Versions:</p>
+<ul>
+<li>Azure Storage Emulator: 5.10</li>
+<li>Azuite: 3.4.0</li>
+</ul>
+<ol start="2">
+<li>Start Emulator</li>
+</ol>
+<p>Hit the Windows keys, type ‘storage emulator’ or ‘azurite’, and click on it to start it. You can find more info about Storage Emulator here: <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator" target="_blank" rel="noopener">Use the Azure storage emulator for development and testing</a></p>
+<ol start="3">
+<li><a href="https://storageexplorer.com/" target="_blank" rel="noopener">Install Azure Storage Explorer</a></li>
+</ol>
+<p>You’ll use this to view the blobs that have been created.  You can find more info about Storage Explorer here: <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a></p>
+<p>Version: 1.12</p>
+<ol start="4">
+<li><a href="https://dotnet.microsoft.com/download" target="_blank" rel="noopener">Install .NET Core SDK</a></li>
+</ol>
+<p>This is needed to code the Azure Function in .NET Core.  (You won’t need this if you create a Function in a different language)</p>
+<p>Version: 3.1.101</p>
+<ol start="5">
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Install Node.js</a></li>
+</ol>
+<p>This is required for the Azure Function Core Tools in the next step. Ensure you have Node.js 10+ with the <code>node -v</code> command.</p>
+<p>Version: 12.13</p>
+<ol start="6">
+<li><a href="https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows#install-the-azure-functions-core-tools" target="_blank" rel="noopener">Install Azure Functions Core Tools</a></li>
+</ol>
+<p>The Core Tools allow you to create projects, functions, and host them locally.</p>
+<pre><code class="hljs plain">npm install -g azure-functions-core-tools@3</code></pre>
+<p>Version: 3.0.2106</p>
+<ol start="7">
+<li><a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">Install VS Code</a></li>
+</ol>
+<p>This is my main editor, but feel free to use something else.</p>
+<p>Version: VS Code Insiders: 1.42</p>
+<ol start="8">
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions" target="_blank" rel="noopener">Install Azure Functions VS Code Extension (Optional)</a></li>
+</ol>
+<ul>
+<li>Optional, but useful to start streaming logs.</li>
+</ul>
+<p>Version: 0.20.2</p>
+<h3 id="Create-the-Azure-Function"><a class="header-anchor" href="#Create-the-Azure-Function"></a>Create the Azure Function</h3>
+<ol>
+<li>Open Terminal</li>
+</ol>
+<p>Open a terminal and navigate to a folder where you want to place your code.  Feel free to use the VS Code terminal.</p>
+<ol start="2">
+<li>Create Function App Project</li>
+</ol>
+<p>This created the main project to house the functions.</p>
+<pre><code class="hljs plain">func init FUNCTION_APP_NAME --csharp --worker-runtime dotnet</code></pre>
+<p>Parameters:</p>
+<ul>
+<li><code>FUNCTION_APP_NAME</code> This is a unique name that you create.</li>
+<li><code>--worker-runtime</code> We’re using dotnet, but feel free to use a different language.</li>
+</ul>
+<p>If you have all the latest versions of the SDKs and tools installed, as of 2/2/2020, your csproj file will look like the following:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.0<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">AzureFunctionsVersion</span>&gt;</span>v3<span class="hljs-tag">&lt;/<span class="hljs-name">AzureFunctionsVersion</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.NET.Sdk.Functions"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"3.0.1"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"host.json"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>PreserveNewest<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"local.settings.json"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>PreserveNewest<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToPublishDirectory</span>&gt;</span>Never<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToPublishDirectory</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span></code></pre>
+<blockquote>
+<p>It’s okay that it lists <code>netcoreapp3.0</code> instead of <code>netcoreapp3.1</code>, but feel free to change it if you need to.  I created a bug here to track that issue: <a href="https://github.com/Azure/azure-functions-core-tools/issues/1792" target="_blank" rel="noopener">[v3] func init created project with netcoreapp3.0 not netcoreapp3.1 #1792</a></p>
+</blockquote>
+<ol start="3">
+<li>Change Directory</li>
+</ol>
+<p>After the project is created, navigate to that new directory.</p>
+<pre><code class="hljs plain">cd FUNCTION_APP_NAME</code></pre>
+<p>Parameters:</p>
+<ul>
+<li><code>FUNCTION_APP_NAME</code> The name of the Function app that you just created.</li>
+</ul>
+<ol start="4">
+<li>Create Function</li>
+</ol>
+<p>This creates a single function in your project.</p>
+<blockquote>
+<p>Make sure you are in the root of the project before you run this.</p>
+</blockquote>
+<pre><code class="hljs plain">func new --name FUNCTION_NAME --template &quot;Http Trigger&quot;</code></pre>
+<p>Parameters:</p>
+<ul>
+<li><code>FUNCTION_APP_NAME</code> The name of the Function app that you just created.</li>
+<li><code>--template</code> We’re using Http Trigger, but feel free to use a different trigger.</li>
+</ul>
+<ol start="5">
+<li>VS Code Prompts</li>
+</ol>
+<p>If you see a “Restore” Vs Code Prompt or a prompt like below, select Restore and Yes.</p>
+<p><img src="000057.png" alt=""></p>
+<ol start="6">
+<li>Add Azure SDK Dependencies</li>
+</ol>
+<pre><code class="hljs plain">dotnet add package Azure.Identity
+dotnet add package Azure.Storage.Blobs</code></pre>
+<p>Versions:</p>
+<ul>
+<li>Identity: 1.1.0</li>
+<li>Storage.Blobs: 12.2.0</li>
+</ul>
+<ol start="7">
+<li>Open Function Project in VS Code</li>
+</ol>
+<p>Open the project in VS Code and open the function file.</p>
+<ol start="8">
+<li>Add <code>using</code> Statements</li>
+</ol>
+<pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System.Text;
+<span class="hljs-keyword">using</span> Azure.Identity;
+<span class="hljs-keyword">using</span> Azure.Storage.Blobs;</code></pre>
+<ol start="9">
+<li>Add Code</li>
+</ol>
+<p>Replace the body of the <code>Run</code> function with the following code.  This code will instantiate a new BlobContainerClient, create the container, and upload a blob.</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> connection = Environment.GetEnvironmentVariable(<span class="hljs-string">"AzureWebJobsStorage"</span>);
+<span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
+<span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
+<span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
+<span class="hljs-keyword">var</span> emulator = connection.Contains(<span class="hljs-string">"UseDevelopmentStorage=true"</span>) &amp;&amp; account == <span class="hljs-string">"devstorageaccount1"</span>;
+<span class="hljs-keyword">var</span> path = emulator ? <span class="hljs-string">$"https://<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span> : <span class="hljs-string">$"https://<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span>;
+
+<span class="hljs-keyword">var</span> content = Guid.NewGuid().ToString(<span class="hljs-string">"n"</span>).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>);
+<span class="hljs-keyword">var</span> file = <span class="hljs-string">$"<span class="hljs-subst">&#123;content&#125;</span>.txt"</span>;
+
+<span class="hljs-comment">// DefaultAzureCredential does not currently support HTTP endpoints, so we have to do this hack.  Hopefully it will soon.</span>
+<span class="hljs-comment">// Use BlobContainerClient(connectionString, container) ctor for emulator and BlobContainerClient(uri, TokenCredential) for Azure</span>
+<span class="hljs-keyword">var</span> client = emulator ?
+    <span class="hljs-keyword">new</span> BlobContainerClient(connection, container) :
+    <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(path), <span class="hljs-keyword">new</span> DefaultAzureCredential());
+
+
+<span class="hljs-keyword">await</span> client.CreateIfNotExistsAsync();
+
+<span class="hljs-keyword">using</span> (MemoryStream stream = <span class="hljs-keyword">new</span> MemoryStream(Encoding.ASCII.GetBytes(content)))
+&#123;
+    <span class="hljs-keyword">await</span> client.UploadBlobAsync(file, stream);
+&#125;
+
+<span class="hljs-keyword">return</span> (ActionResult)<span class="hljs-keyword">new</span> OkObjectResult(<span class="hljs-string">$"<span class="hljs-subst">&#123;file&#125;</span> uploaded."</span>);</code></pre>
+<p>Notes:</p>
+<ul>
+<li>You’ll noticed that we have some hackery with instantiating the <code>BlobContainerClient</code> object. Unfortunately, the Storage Emulator and Azurite <strong>don’t support</strong> HTTPS and <code>DefaultAzureCredential</code> <strong>only supports</strong> HTTPS.  I’m working with the Identity team here at Microsoft to come up with a solution for that.  We have a bug filed here: <a href="https://github.com/Azure/azure-sdk-for-net/issues/9729" target="_blank" rel="noopener">[Feature] Allow HTTPS check bypass with TokenCredential #9729</a></li>
+</ul>
+<ol start="10">
+<li>Set Local Settings</li>
+</ol>
+<p>Open local.settings.json and ensure the following values are set:</p>
+<pre><code class="hljs json">&#123;
+    <span class="hljs-attr">"IsEncrypted"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"Values"</span>: &#123;
+        <span class="hljs-attr">"AzureWebJobsStorage"</span>: <span class="hljs-string">"UseDevelopmentStorage=true"</span>,
+        <span class="hljs-attr">"FUNCTIONS_WORKER_RUNTIME"</span>: <span class="hljs-string">"dotnet"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_HOST"</span>: <span class="hljs-string">"127.0.0.1:10000"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_ACCOUNT"</span>: <span class="hljs-string">"devstorageaccount1"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_CONTAINER"</span>: <span class="hljs-string">"azfuncblobs"</span>
+    &#125;
+&#125;</code></pre>
+<p>Notes:</p>
+<ul>
+<li><code>AZURE_STORAGE_HOST</code> Storage Emulator and Azurite host the Blob endpoints at <code>127.0.0.1:10000</code> by default.</li>
+<li><code>AZURE_STORAGE_ACCOUNT</code> set to “devstorageaccount1” will tell our code to write our blobs to the storage emulator instead of Azure.  We’ll change this to our actual storage account name later on.</li>
+<li><code>AZURE_STORAGE_CONTAINER</code> can be “azfuncblobs” or any container name you want.  The container will automatically be created the first time the function is run.</li>
+</ul>
+<ol start="9">
+<li>Start and Run the Function</li>
+</ol>
+<p>Run the following command from the root of the project:</p>
+<pre><code class="hljs plain">func start</code></pre>
+<p>When it has finished starting it will output the URL to run the function, like this:</p>
+<pre><code class="hljs plain">funcblobtest: [GET,POST] http:&#x2F;&#x2F;localhost:7071&#x2F;api&#x2F;funcblobtest</code></pre>
+<p>Open that link in a browser. Your function will run and you will see output like the following:</p>
+<pre><code class="hljs plain">00e7d1bd.txt uploaded.</code></pre>
+<p><img src="000055.png" alt=""></p>
+<ol start="11">
+<li>Verify Success with Storage Explorer</li>
+</ol>
+<p>Open Storage Explorer and navigate to: <code>Local &amp; Attached -&gt; Storage Accounts -&gt; (Emulator - Default Ports) (Key) -&gt; Blob Containers -&gt; azfuncblobs</code></p>
+<p>Verify that your file has been successfully uploaded.</p>
+<p><img src="000063.png" alt=""></p>
+<h4 id="Debugging"><a class="header-anchor" href="#Debugging"></a>Debugging</h4>
+<p>If you see an error like this, that means that your Azure Storage Emulator has not been started.  See above for instructions on how to start your Storage Emulator.</p>
+<pre><code class="hljs plain">[1&#x2F;31&#x2F;2020 7:55:30 PM] System.Private.CoreLib: Exception while executing function: function1. Azure.Core: Retry failed after 6 tries. (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine 
+actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.). Azure.Core: No connection could be made because the target machine actively refused it. System.Net.Http: No connection could be made because the target machine actively refused it. System.Private.CoreLib: No connection could be made because the target machine actively refused it.</code></pre>
+<p>Now that we have everything working locally,  lets move on to setting up our Azure resources.  Click on the Part 2 link below to get started.</p>
+<p>Part 1: Local Function with Storage Emulator (local function, local storage)<br>
+Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and Service Principal (local function, cloud storage)</a><br>
+Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function with Azure Storage and Managed Identity (cloud function, cloud storage)</a></p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                            
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+            <a href="/2020/02/azure-functions-blob-managed-identity-part2/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">
+                    newer
+                </strong>
+                <p class="article-nav-title">
+                    
+                        How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 2)
+                            
+                </p>
+                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+
+            </a>
+            
+                
+                    <a href="/2020/01/python-loop-range-single-item/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            How to loop over a Python range that has a single item - zero length range
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="7222147978"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- rail -->
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="1523952970"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+    <!-- banner -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="8838481977"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2020
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+
+</html>

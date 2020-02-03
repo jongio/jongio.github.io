@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,60 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,iot,howto,azureiot">
+    <meta name="keywords" content="azure,iot,howto,azureiot" />
     
     <meta name="description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub. Individual IoT devices will connect to t">
-<meta name="keywords" content="azure,iot,howto,azureiot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Run the Azure IoT Field Gateway on a Raspberry Pi 3">
 <meta property="og:url" content="https://blog.jongallant.com/2016/08/azure-iot-gateway-raspberry-pi-3/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub. Individual IoT devices will connect to t">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-10T22:08:36.000Z">
+<meta property="article:published_time" content="2016-08-05T13:02:00.000Z">
+<meta property="article:modified_time" content="2018-12-10T22:08:36.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="iot">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="azureiot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Run the Azure IoT Field Gateway on a Raspberry Pi 3">
-<meta name="twitter:description" content="The Azure IoT Field Gateway SDK is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub. Individual IoT devices will connect to t">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +83,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +162,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +218,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azureiot/">azureiot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/">iot</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azureiot/" rel="tag">azureiot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iot/" rel="tag">iot</a></li></ul>
 
             </div>
         
@@ -203,40 +227,47 @@
             <p>The <a href="https://github.com/Azure/azure-iot-gateway-sdk" target="_blank" rel="noopener">Azure IoT Field Gateway SDK</a> is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.</p>
 <p>Individual IoT devices will connect to the Gateway via some transport layer (BLE, NFC, etc) and the Gateway will forward the device data to IoT Hub. The Gateway will usually aggregate many messages into a single message or convert it to a data protocol (MQTT, AMQP, etc) that IoT Hub understands.</p>
 <p>Here’s how to get it the Field Gateway running on a Raspberry Pi 3.</p>
-<h2 id="download-raspbian"><a class="header-anchor" href="#download-raspbian"></a>Download Raspbian</h2>
+<h2 id="Download-Raspbian"><a class="header-anchor" href="#Download-Raspbian"></a>Download Raspbian</h2>
 <p>I’m using <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">Raspbian Jessie</a> full desktop image.</p>
-<h2 id="get-a-microsd-card-and-microsd-usb-card-reader"><a class="header-anchor" href="#get-a-microsd-card-and-microsd-usb-card-reader"></a>Get a MicroSD Card and MicroSD USB Card Reader</h2>
+<h2 id="Get-a-MicroSD-Card-and-MicroSD-USB-Card-Reader"><a class="header-anchor" href="#Get-a-MicroSD-Card-and-MicroSD-USB-Card-Reader"></a>Get a MicroSD Card and MicroSD USB Card Reader</h2>
 <p>I have a <a href="https://www.amazon.com/Kingston-Digital-microSDHC-SDC10-32GB/dp/B00519BEQY" target="_blank" rel="noopener">Kingston 32GB Class 10</a> MicroSD card and a <a href="https://www.amazon.com/Transcend-microSDHC-Reader-TS-RDF5K-Black/dp/B009D79VH4/" target="_blank" rel="noopener">Transcend USB 3.0 Card Reader</a></p>
-<h2 id="install-win32diskimager"><a class="header-anchor" href="#install-win32diskimager"></a>Install Win32DiskImager</h2>
+<h2 id="Install-Win32DiskImager"><a class="header-anchor" href="#Install-Win32DiskImager"></a>Install Win32DiskImager</h2>
 <p>This will be used to write Raspbian to the MicroSD card</p>
-<p><a href="https://sourceforge.net/projects/win32diskimager/" title="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener">https://sourceforge.net/projects/win32diskimager/</a></p>
-<h2 id="copy-raspbian-to-microsd-card"><a class="header-anchor" href="#copy-raspbian-to-microsd-card"></a>Copy Raspbian to MicroSD card</h2>
+<p><a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener" title="https://sourceforge.net/projects/win32diskimager/">https://sourceforge.net/projects/win32diskimager/</a></p>
+<h2 id="Copy-Raspbian-to-MicroSD-card"><a class="header-anchor" href="#Copy-Raspbian-to-MicroSD-card"></a>Copy Raspbian to MicroSD card</h2>
 <p>Open Win32DiskImager. Find the yyyy-mm-dd-raspbian-jessie.img file. Select your USB drive. Click Write. This took about 5 minutes on my machine.</p>
-<p><img src="/images/blog/533c87e4ef7b_9338/image.png" alt></p>
-<h2 id="get-raspberry-pi-ready"><a class="header-anchor" href="#get-raspberry-pi-ready"></a>Get Raspberry Pi Ready</h2>
+<p><img src="/images/blog/533c87e4ef7b_9338/image.png" alt=""></p>
+<h2 id="Get-Raspberry-Pi-Ready"><a class="header-anchor" href="#Get-Raspberry-Pi-Ready"></a>Get Raspberry Pi Ready</h2>
 <p>Plug in HDMI monitor, keyboard, mouse and Ethernet cable (you can also use Wifi instead)</p>
-<h2 id="configure-remote-access-to-pi"><a class="header-anchor" href="#configure-remote-access-to-pi"></a>Configure Remote Access to Pi</h2>
+<h2 id="Configure-Remote-Access-to-Pi"><a class="header-anchor" href="#Configure-Remote-Access-to-Pi"></a>Configure Remote Access to Pi</h2>
 <p>TightVNC allows you to remote desktop into the Raspberry Pi from your Windows desktop. This step is optional. You could also just use the monitor, mouse and keyboard that is connected to the Pi, but that gets old quick. There are other options here, but I’ve found TightVNC to be the most reliable when you just need to connect to the Pi from the same wireless network. If the Pi is on a difference network, then use Weaved.</p>
-<p>All your remote options are located here: <a href="https://www.raspberrypi.org/documentation/remote-access/" title="https://www.raspberrypi.org/documentation/remote-access/" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/remote-access/</a>. Feel free to use one that best suits your needs. SSH with Putty is a good option if you don’t need to access the desktop.</p>
-<h2 id="go-to-azure-iot-field-gateway-sdk-github-page"><a class="header-anchor" href="#go-to-azure-iot-field-gateway-sdk-github-page"></a>Go to Azure IoT Field Gateway SDK GitHub Page</h2>
+<p>All your remote options are located here: <a href="https://www.raspberrypi.org/documentation/remote-access/" target="_blank" rel="noopener" title="https://www.raspberrypi.org/documentation/remote-access/">https://www.raspberrypi.org/documentation/remote-access/</a>. Feel free to use one that best suits your needs. SSH with Putty is a good option if you don’t need to access the desktop.</p>
+<h2 id="Go-to-Azure-IoT-Field-Gateway-SDK-GitHub-Page"><a class="header-anchor" href="#Go-to-Azure-IoT-Field-Gateway-SDK-GitHub-Page"></a>Go to Azure IoT Field Gateway SDK GitHub Page</h2>
 <p>If you are using TightVNC, on the Pi, open the web browser and go to <a href="http://bit.ly/azuregatewaypi" target="_blank" rel="noopener">http://bit.ly/azuregatewaypi</a> – that will redirect you to this page on your Pi, so you can easily copy and paste the following commands.</p>
 <p>If you are using SSH, then just execute the commands below in your SSH window.</p>
-<h2 id="install-packages"><a class="header-anchor" href="#install-packages"></a>Install Packages</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev`</span><br></pre></td></tr></table></figure>
-<h2 id="clone-the-azure-iot-field-gateway-repo"><a class="header-anchor" href="#clone-the-azure-iot-field-gateway-repo"></a>Clone the Azure IoT Field Gateway Repo</h2>
+<h2 id="Install-Packages"><a class="header-anchor" href="#Install-Packages"></a>Install Packages</h2>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev`
+</code></pre>
+<h2 id="Clone-the-Azure-IoT-Field-Gateway-Repo"><a class="header-anchor" href="#Clone-the-Azure-IoT-Field-Gateway-Repo"></a>Clone the Azure IoT Field Gateway Repo</h2>
 <p>You can clone into any directly you want. I usually put everything in a /code folder.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/Azure/azure-iot-gateway-sdk.git</span><br></pre></td></tr></table></figure>
-<h2 id="checkout-the-develop-branch"><a class="header-anchor" href="#checkout-the-develop-branch"></a>Checkout the Develop Branch</h2>
+<pre><code class="language-bash">git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git
+</code></pre>
+<h2 id="Checkout-the-Develop-Branch"><a class="header-anchor" href="#Checkout-the-Develop-Branch"></a>Checkout the Develop Branch</h2>
 <p>This is the branch that contains a fix that allows the Gateway to be built on the Pi</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git checkout develop</span><br></pre></td></tr></table></figure>
-<h2 id="init-submodules"><a class="header-anchor" href="#init-submodules"></a>Init Submodules</h2>
+<pre><code class="language-bash">git checkout develop
+</code></pre>
+<h2 id="Init-Submodules"><a class="header-anchor" href="#Init-Submodules"></a>Init Submodules</h2>
 <p>I like to execute this command after I checkout a branch to be sure I have the latest submodule bits that correspond to my current branch.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-<h2 id="run-build-sh"><a class="header-anchor" href="#run-build-sh"></a>Run <a href="http://Build.sh" target="_blank" rel="noopener">Build.sh</a></h2>
+<pre><code class="language-bash">git submodule update --init --recursive
+</code></pre>
+<h2 id="Run-Build-sh"><a class="header-anchor" href="#Run-Build-sh"></a>Run <a href="http://Build.sh" target="_blank" rel="noopener">Build.sh</a></h2>
 <p>Change to the /tools directory and excute <a href="http://build.sh" target="_blank" rel="noopener">build.sh</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> tools</span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">cd tools
+./build.sh
+</code></pre>
 <p>This will take a while. Come back in 30 mins or so.</p>
-<h2 id="test-failures"><a class="header-anchor" href="#test-failures"></a>Test Failures</h2>
+<h2 id="Test-Failures"><a class="header-anchor" href="#Test-Failures"></a>Test Failures</h2>
 <p>You will likely see these test failures, which are known issues reported on GitHub. The e2e tests fail because we didn’t setup the IoT Hub connection. That’ll be the topic of a different blog post.</p>
 <p>The following tests FAILED:<br>
 27 - constbuffer_unittests (Failed)<br>
@@ -248,21 +279,23 @@
 81 - iothubclient_amqp_e2etests (Failed)<br>
 109 - gw_e2etests (Failed)</p>
 <p>Errors while running CTest</p>
-<h2 id="copy-json-settings-file-to-build-folder"><a class="header-anchor" href="#copy-json-settings-file-to-build-folder"></a>Copy JSON Settings File to Build Folder</h2>
+<h2 id="Copy-JSON-Settings-File-to-Build-Folder"><a class="header-anchor" href="#Copy-JSON-Settings-File-to-Build-Folder"></a>Copy JSON Settings File to Build Folder</h2>
 <p>From the root of the repo run this command to copy the sample JSON settings file to the build output folder.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp ./samples/hello_world/src/hello_world_lin.json ./build/samples/hello_world/hello_world_lin.json`</span><br></pre></td></tr></table></figure>
-<h2 id="run-hello-world-sample"><a class="header-anchor" href="#run-hello-world-sample"></a>Run Hello_World_Sample</h2>
+<pre><code class="language-bash">    cp ./samples/hello_world/src/hello_world_lin.json ./build/samples/hello_world/hello_world_lin.json`
+</code></pre>
+<h2 id="Run-Hello-World-Sample"><a class="header-anchor" href="#Run-Hello-World-Sample"></a>Run Hello_World_Sample</h2>
 <p>Change to the /build folder</p>
 <p>Run the following command to start the sample.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./samples/hello_world/hello_world_sample ./samples/hello_world/hello_world_lin.json</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">    ./samples/hello_world/hello_world_sample ./samples/hello_world/hello_world_lin.json
+</code></pre>
 <p>You should now see this output.</p>
-<p><img src="/images/blog/533c87e4ef7b_9338/image_3.png" alt></p>
+<p><img src="/images/blog/533c87e4ef7b_9338/image_3.png" alt=""></p>
 <p>This sample writes an entry to the /build/log.txt file. If you open that file you will see the entries. From the /build folder just enter “vi log.txt” to view the file.</p>
-<p><img src="/images/blog/533c87e4ef7b_9338/image_4.png" alt></p>
+<p><img src="/images/blog/533c87e4ef7b_9338/image_4.png" alt=""></p>
 <blockquote>
-<h3 id="you-now-have-the-azure-iot-gateway-running-on-a-raspberry-pi-3"><a class="header-anchor" href="#you-now-have-the-azure-iot-gateway-running-on-a-raspberry-pi-3"></a>You now have the Azure IoT Gateway Running on a Raspberry Pi 3!</h3>
+<h3 id="You-now-have-the-Azure-IoT-Gateway-Running-on-a-Raspberry-Pi-3"><a class="header-anchor" href="#You-now-have-the-Azure-IoT-Gateway-Running-on-a-Raspberry-Pi-3"></a>You now have the Azure IoT Gateway Running on a Raspberry Pi 3!</h3>
 </blockquote>
-<h2 id="error-when-stopped"><a class="header-anchor" href="#error-when-stopped"></a>Error When Stopped</h2>
+<h2 id="Error-When-Stopped"><a class="header-anchor" href="#Error-When-Stopped"></a>Error When Stopped</h2>
 <p>You might see this error when you stop the gateway – it appears that you can ignore it because it is still writing data to the log file.</p>
 <blockquote>
 <p>Error: Time:Fri Aug  5 19:41:42 2016 File:/home/pi/code/azure-iot-gateway-sdk/deps/azure-c-shared-utility/src/consolelogger.c Func:consolelogger_log Line:31 byte array is not a gateway message serialization</p>
@@ -279,7 +312,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -387,7 +420,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -459,20 +492,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

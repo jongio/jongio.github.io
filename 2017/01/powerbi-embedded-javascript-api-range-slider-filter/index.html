@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="powerbi">
+    <meta name="keywords" content="powerbi" />
     
     <meta name="description" content="I was recently asked to help build a “Range Slider” Power BI Custom Visual that simply filters a report based on the slider value. Unfortunately “filtering” is not currently supported in the new Power">
-<meta name="keywords" content="powerbi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API">
 <meta property="og:url" content="https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="I was recently asked to help build a “Range Slider” Power BI Custom Visual that simply filters a report based on the slider value. Unfortunately “filtering” is not currently supported in the new Power">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/000009.png">
-<meta property="og:updated_time" content="2018-05-16T20:53:58.000Z">
+<meta property="article:published_time" content="2017-01-03T14:20:05.000Z">
+<meta property="article:modified_time" content="2018-05-16T20:53:58.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API">
-<meta name="twitter:description" content="I was recently asked to help build a “Range Slider” Power BI Custom Visual that simply filters a report based on the slider value. Unfortunately “filtering” is not currently supported in the new Power">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/000009.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/">powerbi</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/powerbi/" rel="tag">powerbi</a></li></ul>
 
             </div>
         
@@ -204,77 +225,98 @@
 <p>Since this customer is already using <a href="https://azure.microsoft.com/en-us/services/power-bi-embedded/" target="_blank" rel="noopener">Power BI Embedded</a>, I suggested that they use the new <a href="https://powerbi.microsoft.com/en-us/blog/intro-pbi-js-api/" target="_blank" rel="noopener">Power BI Embedded JavaScript API</a> to send filter commands from the hosting webpage to the embedded Power BI report.</p>
 <p>It wasn’t as easy as it should be to get this implemented.  There’s the new <a href="https://microsoft.github.io/PowerBI-JavaScript/demo/code-demo/index.html" target="_blank" rel="noopener">demo site</a>, that helped with syntax, but it doesn’t allow you to change the filters.  <em>I hacked a version together that does allow you to edit the filter text, but uses JavaScript eval(), so the PR was denied, but the code still works. You can find my fork here: <a href="https://github.com/jongio/PowerBI-JavaScript" target="_blank" rel="noopener">jongio / PowerBI-JavaScript</a>.</em></p>
 <p>You can find all of the working code from this walkthrough here: <a href="https://github.com/jongio/powerbi-embedded-javascript-api-range-slider-filter" target="_blank" rel="noopener">jongio / powerbi-embedded-javascript-api-range-slider-filter</a>.</p>
-<h2 id="create-report-in-power-bi-desktop"><a class="header-anchor" href="#create-report-in-power-bi-desktop"></a>Create Report in Power BI Desktop</h2>
+<h2 id="Create-Report-in-Power-BI-Desktop"><a class="header-anchor" href="#Create-Report-in-Power-BI-Desktop"></a>Create Report in Power BI Desktop</h2>
 <p>The first thing you are going to want to do is create a Power BI report using <a href="https://powerbi.microsoft.com/en-us/desktop/" target="_blank" rel="noopener">Power BI Desktop</a> that you can later embed and filter.  For this example, we are going to use a very simple table.</p>
 <p>You can download this sample pbix from GitHub here: <a href="https://github.com/jongio/powerbi-embedded-javascript-api-range-slider-filter/blob/master/powerbi-embedded-sample.pbix" target="_blank" rel="noopener">powerbi-embedded-sample.pbix</a></p>
-<p><img src="000002.png" alt></p>
+<p><img src="000002.png" alt=""></p>
 <p>I added a simple pie chart<br>
-<img src="000007.png" alt></p>
+<img src="000007.png" alt=""></p>
 <p>1. Open Power BI Desktop. Create a table and enter some data.<br>
 2. Save the .pbix file for later.</p>
-<h2 id="create-power-bi-embedded-assets-in-azure"><a class="header-anchor" href="#create-power-bi-embedded-assets-in-azure"></a>Create Power BI Embedded Assets in Azure</h2>
+<h2 id="Create-Power-BI-Embedded-Assets-in-Azure"><a class="header-anchor" href="#Create-Power-BI-Embedded-Assets-in-Azure"></a>Create Power BI Embedded Assets in Azure</h2>
 <p>The topology of the Power BI Embedded implementation is as follows: Power BI Workspace Collections contain Power BI Workspaces which contain Reports. You create the Workspace Collection on Azure and then use the Node.js CLI to add Workspaces to the Collection and then add Reports to the Workspace.  You’ll get the Access Key from the Azure Portal under the Workspace Collection.</p>
-<h3 id="create-power-bi-workspace-collection"><a class="header-anchor" href="#create-power-bi-workspace-collection"></a>Create Power BI Workspace Collection</h3>
+<h3 id="Create-Power-BI-Workspace-Collection"><a class="header-anchor" href="#Create-Power-BI-Workspace-Collection"></a>Create Power BI Workspace Collection</h3>
 <p>You have 3 options to create a Power BI Workspace Collection:</p>
-<h4 id="1-azure-cli-1-0"><a class="header-anchor" href="#1-azure-cli-1-0"></a>1. Azure CLI 1.0</h4>
+<h4 id="1-Azure-CLI-1-0"><a class="header-anchor" href="#1-Azure-CLI-1-0"></a>1. Azure CLI 1.0</h4>
 <p>This allows you to create the Workspace Collection without having to use the Azure Portal. Following this tutorial to create the Workspace Collection, get your Access Key and then come back to this post.</p>
 <p><a href="/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0">How to Create a Power BI Embedded Workspace Collection with the Azure Command Line Interface (CLI) 1.0</a></p>
-<h4 id="2-azure-portal"><a class="header-anchor" href="#2-azure-portal"></a>2. Azure Portal</h4>
+<h4 id="2-Azure-Portal"><a class="header-anchor" href="#2-Azure-Portal"></a>2. Azure Portal</h4>
 <p>1. Go to the <a href="https://portal.azure.com/#create/Microsoft.PowerBI" target="_blank" rel="noopener">Azure Portal</a> and create a new Power BI Workspace Collection.<br>
-<img src="000004.png" alt><br>
-<img src="000005.png" alt></p>
+<img src="000004.png" alt=""><br>
+<img src="000005.png" alt=""></p>
 <p>2. Copy your Access Key to Notepad, you’ll need it later.<br>
-<img src="000006.png" alt></p>
-<h4 id="3-azure-cli-2-0"><a class="header-anchor" href="#3-azure-cli-2-0"></a>3. Azure CLI 2.0</h4>
+<img src="000006.png" alt=""></p>
+<h4 id="3-Azure-CLI-2-0"><a class="header-anchor" href="#3-Azure-CLI-2-0"></a>3. Azure CLI 2.0</h4>
 <p>This option allows you to create the Power BI Workspace Collection, but there is currently no way to get the Access Keys via the CLI 2.0.  I do not recommend this approach at this time, but it will be the way going forward.  I will update this post once that support is added.</p>
 <p><a href="/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-2-0">How to Create a Power BI Embedded Workspace Collection with the new Azure Command Line Interface (CLI) 2.0</a></p>
-<h3 id="install-the-power-bi-cli"><a class="header-anchor" href="#install-the-power-bi-cli"></a>Install the Power BI CLI</h3>
+<h3 id="Install-the-Power-BI-CLI"><a class="header-anchor" href="#Install-the-Power-BI-CLI"></a>Install the Power BI CLI</h3>
 <p>You just created the Workspace Collection, now we’ll create the Workspaces in that collection.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i -g powerbi-cli</span><br></pre></td></tr></table></figure>
-<h3 id="create-power-bi-workspace"><a class="header-anchor" href="#create-power-bi-workspace"></a>Create Power BI Workspace</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">powerbi create-workspace -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==</span><br></pre></td></tr></table></figure>
+<pre><code>npm i -g powerbi-cli
+</code></pre>
+<h3 id="Create-Power-BI-Workspace"><a class="header-anchor" href="#Create-Power-BI-Workspace"></a>Create Power BI Workspace</h3>
+<pre><code>powerbi create-workspace -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==
+</code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll then see the workspace Id:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ powerbi ] Workspace created: d66d8e42-b92a-4576-9072-fbaafb872ae7</span><br></pre></td></tr></table></figure>
-<h3 id="get-workspaces"><a class="header-anchor" href="#get-workspaces"></a>Get Workspaces</h3>
+<pre><code>[ powerbi ] Workspace created: d66d8e42-b92a-4576-9072-fbaafb872ae7
+</code></pre>
+<h3 id="Get-Workspaces"><a class="header-anchor" href="#Get-Workspaces"></a>Get Workspaces</h3>
 <p>You could also use the get-workspaces command to get the workspace Id.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">powerbi get-workspaces -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==</span><br></pre></td></tr></table></figure>
+<pre><code>powerbi get-workspaces -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==
+</code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll then see the workspaces in the provided collection</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ powerbi ] ================================================</span><br><span class="line">[ powerbi ] Gettings workspaces for Collection: pbiejssample</span><br><span class="line">[ powerbi ] ================================================</span><br><span class="line">[ powerbi ] d66d8e42-b92a-4576-9072-fbaafb872ae7</span><br></pre></td></tr></table></figure>
+<pre><code>[ powerbi ] ================================================
+[ powerbi ] Gettings workspaces for Collection: pbiejssample
+[ powerbi ] ================================================
+[ powerbi ] d66d8e42-b92a-4576-9072-fbaafb872ae7
+</code></pre>
 <p>Copy that workspace Id to Notepad.</p>
-<h3 id="import-report-into-workspace"><a class="header-anchor" href="#import-report-into-workspace"></a>Import Report Into Workspace</h3>
+<h3 id="Import-Report-Into-Workspace"><a class="header-anchor" href="#Import-Report-Into-Workspace"></a>Import Report Into Workspace</h3>
 <p>Use the import command to add the report you created earlier to the workspace you just created. You’ll need to pass in collection, accesskey, workspace id, name and the path to the pbix file.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">powerbi import -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -n &quot;Sample Data&quot; -f powerbi-embedded-sample.pbix</span><br></pre></td></tr></table></figure>
+<pre><code>powerbi import -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -n &quot;Sample Data&quot; -f powerbi-embedded-sample.pbix
+</code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 <li>Replace -w with the workspace Id</li>
 </ul>
 <p>You’ll then see the success message</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ powerbi ] Importing powerbi-embedded-sample.pbix to workspace: d66d8e42-b92a-4576-9072-fbaafb872ae7</span><br><span class="line">[ powerbi ] File uploaded successfully</span><br><span class="line">[ powerbi ] Import ID: c0dfa1c9-cc24-4330-b215-5d5e57cb39c7</span><br><span class="line">[ powerbi ] Checking import state: Publishing</span><br><span class="line">[ powerbi ] Checking import state: Succeeded</span><br><span class="line">[ powerbi ] Import succeeded</span><br></pre></td></tr></table></figure>
+<pre><code>[ powerbi ] Importing powerbi-embedded-sample.pbix to workspace: d66d8e42-b92a-4576-9072-fbaafb872ae7
+[ powerbi ] File uploaded successfully
+[ powerbi ] Import ID: c0dfa1c9-cc24-4330-b215-5d5e57cb39c7
+[ powerbi ] Checking import state: Publishing
+[ powerbi ] Checking import state: Succeeded
+[ powerbi ] Import succeeded
+</code></pre>
 <blockquote>
 <p>Do not confuse Import ID above with the Report ID. They aren’t the same thing.</p>
 </blockquote>
-<h3 id="get-report-id"><a class="header-anchor" href="#get-report-id"></a>Get Report ID</h3>
+<h3 id="Get-Report-ID"><a class="header-anchor" href="#Get-Report-ID"></a>Get Report ID</h3>
 <p>Now that you have the report added to the Workspace, you need to get the report Id.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">powerbi get-reports -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7</span><br></pre></td></tr></table></figure>
+<pre><code>powerbi get-reports -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7
+</code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll see the reports with Ids outputted</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ powerbi ] =========================================</span><br><span class="line">[ powerbi ] Gettings reports for Collection: d66d8e42-b92a-4576-9072-fbaafb872ae7</span><br><span class="line">[ powerbi ] =========================================</span><br><span class="line">[ powerbi ] ID: 4964a947-857f-4c14-914d-c66e1c5713cd | Name: Sample Data</span><br></pre></td></tr></table></figure>
+<pre><code>[ powerbi ] =========================================
+[ powerbi ] Gettings reports for Collection: d66d8e42-b92a-4576-9072-fbaafb872ae7
+[ powerbi ] =========================================
+[ powerbi ] ID: 4964a947-857f-4c14-914d-c66e1c5713cd | Name: Sample Data
+</code></pre>
 <p>Save that report Id to Notepad.</p>
-<h3 id="get-embed-token"><a class="header-anchor" href="#get-embed-token"></a>Get Embed Token</h3>
+<h3 id="Get-Embed-Token"><a class="header-anchor" href="#Get-Embed-Token"></a>Get Embed Token</h3>
 <p>You will need this token to embed a report into an HTML page.  In production scenarios you will generate this in real-time after you have authenticated your user.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">powerbi create-embed-token -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -r 4964a947-857f-4c14-914d-c66e1c5713cd</span><br></pre></td></tr></table></figure>
+<pre><code>powerbi create-embed-token -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -r 4964a947-857f-4c14-914d-c66e1c5713cd
+</code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
@@ -282,21 +324,56 @@
 <li>Replace -r with the report Id</li>
 </ul>
 <p>That will output the embed token. Copy it to Notepad.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ powerbi ] Embed Token:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY</span><br></pre></td></tr></table></figure>
+<pre><code>[ powerbi ] Embed Token:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY
+</code></pre>
 <blockquote>
 <p>If at any point you get a permission denied or content doesn’t exist error, just rerun the create-embed-token command and use the new one that is created.  I think it expires in 20 minutes by default.</p>
 </blockquote>
 <p>You now have everything from Power BI that you that need to embed your report.</p>
-<h2 id="create-webpage-to-host-power-bi-report"><a class="header-anchor" href="#create-webpage-to-host-power-bi-report"></a>Create Webpage to Host Power BI Report</h2>
-<h3 id="install-the-power-bi-client-side-javascript-api"><a class="header-anchor" href="#install-the-power-bi-client-side-javascript-api"></a>Install the Power BI Client Side JavaScript API</h3>
+<h2 id="Create-Webpage-to-Host-Power-BI-Report"><a class="header-anchor" href="#Create-Webpage-to-Host-Power-BI-Report"></a>Create Webpage to Host Power BI Report</h2>
+<h3 id="Install-the-Power-BI-Client-Side-JavaScript-API"><a class="header-anchor" href="#Install-the-Power-BI-Client-Side-JavaScript-API"></a>Install the Power BI Client Side JavaScript API</h3>
 <p>Find a good directory on your computer to create the website and install the powerbi-client npm package.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i powerbi-client --save</span><br></pre></td></tr></table></figure>
-<h3 id="create-a-webpage-that-contains-the-following-code"><a class="header-anchor" href="#create-a-webpage-that-contains-the-following-code"></a>Create a Webpage that contains the following code.</h3>
+<pre><code>npm i powerbi-client --save
+</code></pre>
+<h3 id="Create-a-Webpage-that-contains-the-following-code"><a class="header-anchor" href="#Create-a-Webpage-that-contains-the-following-code"></a>Create a Webpage that contains the following code.</h3>
 <ul>
 <li>Replace embedToken value with the embed token you created earlier.</li>
 <li>Replace reportId value with the report Id you created earlier.</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"reportContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/powerbi-client/dist/powerbi.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> embedToken = <span class="string">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY'</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> reportId = <span class="string">'4964a947-857f-4c14-914d-c66e1c5713cd'</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> embedUrl = <span class="string">'https://embedded.powerbi.com/appTokenReportEmbed?reportId='</span> + reportId;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> config = &#123;</span></span><br><span class="line"><span class="javascript">                type: <span class="string">'report'</span>,</span></span><br><span class="line">                accessToken: embedToken,</span><br><span class="line">                embedUrl: embedUrl,</span><br><span class="line">                id: reportId,</span><br><span class="line">                settings: &#123;</span><br><span class="line"><span class="javascript">                    filterPaneEnabled: <span class="literal">false</span>,</span></span><br><span class="line"><span class="javascript">                    navContentPaneEnabled: <span class="literal">false</span></span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            powerbi.embed(<span class="built_in">document</span>.getElementById(<span class="string">'reportContainer'</span>), config);</span></span><br><span class="line"></span><br><span class="line">        &#125;)();</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-html">&lt;html&gt;
+
+&lt;body&gt;
+    &lt;div id=&quot;reportContainer&quot;&gt;&lt;/div&gt;
+
+    &lt;script src=&quot;./node_modules/powerbi-client/dist/powerbi.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+        (function () {
+            var embedToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY';
+            var reportId = '4964a947-857f-4c14-914d-c66e1c5713cd';
+            var embedUrl = 'https://embedded.powerbi.com/appTokenReportEmbed?reportId=' + reportId;
+
+            var config = {
+                type: 'report',
+                accessToken: embedToken,
+                embedUrl: embedUrl,
+                id: reportId,
+                settings: {
+                    filterPaneEnabled: false,
+                    navContentPaneEnabled: false
+                }
+            };
+
+            powerbi.embed(document.getElementById('reportContainer'), config);
+
+        })();
+
+    &lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
 <blockquote>
 <p>The above code won’t work in IE. Please see full example below for a version that works in IE.</p>
 </blockquote>
@@ -307,29 +384,178 @@
 <li>You called powerbi.embed to bind the report to the div.</li>
 </ul>
 <p>You should now see your report embedded into the webpage.  You can use http-server to serve the current folder from localhost.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i -g http-server</span><br></pre></td></tr></table></figure>
-<p><img src="000008.png" alt></p>
-<h2 id="filter-report-with-range-slider"><a class="header-anchor" href="#filter-report-with-range-slider"></a>Filter Report with Range Slider</h2>
+<pre><code>npm i -g http-server
+</code></pre>
+<p><img src="000008.png" alt=""></p>
+<h2 id="Filter-Report-with-Range-Slider"><a class="header-anchor" href="#Filter-Report-with-Range-Slider"></a>Filter Report with Range Slider</h2>
 <p>We are now going to filter the report with a <a href="https://jqueryui.com/slider/" target="_blank" rel="noopener">jQuery UI Slider control</a>.</p>
 <p>1. Install the jquery and jquery-ui npm packages</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i jquery --save</span><br><span class="line">npm i jqueryui --save</span><br><span class="line">npm i es6-promise --save</span><br></pre></td></tr></table></figure>
+<pre><code class="language-bash">npm i jquery --save
+npm i jqueryui --save
+npm i es6-promise --save
+</code></pre>
 <p>2. Reference the jquery and jquery-ui js and the css.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">// before end of <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/jquery/dist/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/jqueryui/jquery-ui.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/es6-promise/dist/es6-promise.auto.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// in <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./node_modules/jqueryui/jquery-ui.min.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-html">
+// before end of &lt;body&gt;
+&lt;script src=&quot;./node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./node_modules/jqueryui/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./node_modules/es6-promise/dist/es6-promise.auto.min.js&quot;&gt;&lt;/script&gt;
+
+// in &lt;head&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./node_modules/jqueryui/jquery-ui.min.css&quot;&gt;
+</code></pre>
 <p>3. Add a new div to your html page</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"slider"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-html">&lt;div id=&quot;slider&quot; /&gt;
+</code></pre>
 <p>4. Add a new filter method to be called when your filter changes.</p>
 <p>You can learn all about the JavaScript API <a href="https://github.com/Microsoft/PowerBI-JavaScript" target="_blank" rel="noopener">here</a>.</p>
 <blockquote>
 <p>The important thing to observe here is the table and column values.  Those are set to match the table and column names you created in Power BI Desktop earlier.</p>
 </blockquote>
 <p>The code will construct a filter based on the value passed to it and call the setFilters method on the report.</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">values</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> filter = &#123;</span><br><span class="line">        $schema: <span class="string">"http://powerbi.com/product/schema#basic"</span>,</span><br><span class="line">        target: &#123;</span><br><span class="line">            table: <span class="string">"Data"</span>,</span><br><span class="line">            column: <span class="string">"Value"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        operator: <span class="string">"In"</span>,</span><br><span class="line">        values: values</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> report = powerbi.embeds[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (report) &#123;</span><br><span class="line">        report.setFilters([filter])</span><br><span class="line">            .then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(result);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(<span class="function"><span class="keyword">function</span> (<span class="params">errors</span>) </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(errors);</span><br><span class="line">            &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="language-javascript">function filter(values) {
+    const filter = {
+        $schema: &quot;http://powerbi.com/product/schema#basic&quot;,
+        target: {
+            table: &quot;Data&quot;,
+            column: &quot;Value&quot;
+        },
+        operator: &quot;In&quot;,
+        values: values
+    };
+
+    var report = powerbi.embeds[0];
+    if (report) {
+        report.setFilters([filter])
+            .then(function (result) {
+                console.log(result);
+            })
+            .catch(function (errors) {
+                console.log(errors);
+            });
+    }
+}
+</code></pre>
 <p>6. Instantiate the slider</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">$(e =&gt; &#123;</span><br><span class="line">    $(<span class="string">"#slider"</span>).slider(&#123;</span><br><span class="line">        min: <span class="number">3</span>,</span><br><span class="line">        max: <span class="number">5</span>,</span><br><span class="line">        step: <span class="number">1</span>,</span><br><span class="line">        slide: <span class="function"><span class="keyword">function</span> (<span class="params">event, ui</span>) </span>&#123;</span><br><span class="line">            filter([ui.value]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="language-javascript">$(e =&gt; {
+    $(&quot;#slider&quot;).slider({
+        min: 3,
+        max: 5,
+        step: 1,
+        slide: function (event, ui) {
+            filter([ui.value]);
+        }
+    });
+});
+</code></pre>
 <p>7. When you now run the webpage you will see a slider control at the top and when you select “3” it will filter the pie chart to only those value that are equal to “3”</p>
-<p><img src="000009.png" alt></p>
+<p><img src="000009.png" alt=""></p>
 <p>Here’s a full working sample that you should be able to just copy and paste into your application after install the npm packages.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Power BI Embedded with Filtering Sample<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./node_modules/jqueryui/jquery-ui.min.css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">    <span class="selector-id">#slider</span> &#123;</span></span><br><span class="line">        width: 500px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#reportContainer</span> &#123;</span></span><br><span class="line">        height: 500px;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="css">    <span class="selector-id">#custom-handle</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">width</span>: 1<span class="selector-class">.6em</span>;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">height</span>: 1<span class="selector-class">.6em</span>;</span></span><br><span class="line">        top: 50%;</span><br><span class="line"><span class="css">        <span class="selector-tag">margin-top</span>: <span class="selector-tag">-</span><span class="selector-class">.8em</span>;</span></span><br><span class="line">        text-align: center;</span><br><span class="line"><span class="css">        <span class="selector-tag">line-height</span>: 1<span class="selector-class">.6em</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"slider"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"custom-handle"</span> <span class="attr">class</span>=<span class="string">"ui-slider-handle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"reportContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/jquery/dist/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/jqueryui/jquery-ui.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/es6-promise/dist/es6-promise.auto.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./node_modules/powerbi-client/dist/powerbi.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> handle = $(<span class="string">"#custom-handle"</span>);</span></span><br><span class="line"><span class="javascript">            $(<span class="string">"#slider"</span>).slider(&#123;</span></span><br><span class="line">                min: 1,</span><br><span class="line">                max: 25,</span><br><span class="line">                step: 1,</span><br><span class="line"><span class="javascript">                create: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    handle.text($(<span class="keyword">this</span>).slider(<span class="string">"value"</span>));</span></span><br><span class="line">                &#125;,</span><br><span class="line"><span class="javascript">                slide: <span class="function"><span class="keyword">function</span> (<span class="params">event, ui</span>) </span>&#123;</span></span><br><span class="line">                    handle.text(ui.value);</span><br><span class="line">                    filter([ui.value]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">            (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> embedToken = <span class="string">'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzY2MTY4OSwiZXhwIjoxNDgzNjY1Mjg5fQ.-g6Zh5AthZDCfZLEtvnl7mXDMBYjwauZyBORer--xb0'</span>;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> reportId = <span class="string">'4964a947-857f-4c14-914d-c66e1c5713cd'</span>;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> embedUrl = <span class="string">'https://embedded.powerbi.com/appTokenReportEmbed?reportId='</span> + reportId;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> config = &#123;</span></span><br><span class="line"><span class="javascript">                    type: <span class="string">'report'</span>,</span></span><br><span class="line">                    accessToken: embedToken,</span><br><span class="line">                    embedUrl: embedUrl,</span><br><span class="line">                    id: reportId,</span><br><span class="line">                    settings: &#123;</span><br><span class="line"><span class="javascript">                        filterPaneEnabled: <span class="literal">false</span>,</span></span><br><span class="line"><span class="javascript">                        navContentPaneEnabled: <span class="literal">false</span></span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">                powerbi.embed($(<span class="string">'#reportContainer'</span>)[<span class="number">0</span>], config);</span></span><br><span class="line"></span><br><span class="line">            &#125;)();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">values</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> filter = &#123;</span></span><br><span class="line"><span class="javascript">                $schema: <span class="string">"http://powerbi.com/product/schema#basic"</span>,</span></span><br><span class="line">                target: &#123;</span><br><span class="line"><span class="javascript">                    table: <span class="string">"Data"</span>,</span></span><br><span class="line"><span class="javascript">                    column: <span class="string">"Value"</span></span></span><br><span class="line">                &#125;,</span><br><span class="line"><span class="javascript">                operator: <span class="string">"In"</span>,</span></span><br><span class="line">                values: values</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> report = powerbi.embeds[<span class="number">0</span>];</span></span><br><span class="line">            if (report) &#123;</span><br><span class="line">                report.setFilters([filter])</span><br><span class="line"><span class="javascript">                    .then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(result);</span></span><br><span class="line">                    &#125;)</span><br><span class="line"><span class="javascript">                    .catch(<span class="function"><span class="keyword">function</span> (<span class="params">errors</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="built_in">console</span>.log(errors);</span></span><br><span class="line">                    &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="language-html">&lt;!doctype html&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;Power BI Embedded with Filtering Sample&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./node_modules/jqueryui/jquery-ui.min.css&quot;&gt;
+    &lt;style&gt;
+    #slider {
+        width: 500px;
+    }
+    #reportContainer {
+        height: 500px;
+    }
+    #custom-handle {
+        width: 1.6em;
+        height: 1.6em;
+        top: 50%;
+        margin-top: -.8em;
+        text-align: center;
+        line-height: 1.6em;
+    }
+    &lt;/style&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+
+    &lt;div id=&quot;slider&quot;&gt;
+        &lt;div id=&quot;custom-handle&quot; class=&quot;ui-slider-handle&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;reportContainer&quot;&gt;&lt;/div&gt;
+
+    &lt;script src=&quot;./node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/jqueryui/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/es6-promise/dist/es6-promise.auto.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./node_modules/powerbi-client/dist/powerbi.min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+
+        $(function () {
+            var handle = $(&quot;#custom-handle&quot;);
+            $(&quot;#slider&quot;).slider({
+                min: 1,
+                max: 25,
+                step: 1,
+                create: function () {
+                    handle.text($(this).slider(&quot;value&quot;));
+                },
+                slide: function (event, ui) {
+                    handle.text(ui.value);
+                    filter([ui.value]);
+                }
+            });
+
+            (function () {
+                var embedToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzY2MTY4OSwiZXhwIjoxNDgzNjY1Mjg5fQ.-g6Zh5AthZDCfZLEtvnl7mXDMBYjwauZyBORer--xb0';
+                var reportId = '4964a947-857f-4c14-914d-c66e1c5713cd';
+                var embedUrl = 'https://embedded.powerbi.com/appTokenReportEmbed?reportId=' + reportId;
+
+                var config = {
+                    type: 'report',
+                    accessToken: embedToken,
+                    embedUrl: embedUrl,
+                    id: reportId,
+                    settings: {
+                        filterPaneEnabled: false,
+                        navContentPaneEnabled: false
+                    }
+                };
+
+                powerbi.embed($('#reportContainer')[0], config);
+
+            })();
+        });
+
+        function filter(values) {
+            const filter = {
+                $schema: &quot;http://powerbi.com/product/schema#basic&quot;,
+                target: {
+                    table: &quot;Data&quot;,
+                    column: &quot;Value&quot;
+                },
+                operator: &quot;In&quot;,
+                values: values
+            };
+
+            var report = powerbi.embeds[0];
+            if (report) {
+                report.setFilters([filter])
+                    .then(function (result) {
+                        console.log(result);
+                    })
+                    .catch(function (errors) {
+                        console.log(errors);
+                    });
+            }
+        }
+
+    &lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
 
         </div>
         <footer>
@@ -341,7 +567,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -449,7 +675,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -521,20 +747,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>

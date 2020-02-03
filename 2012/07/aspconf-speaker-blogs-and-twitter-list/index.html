@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     
     <title>
@@ -12,44 +12,57 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="dev">
+    <meta name="keywords" content="dev" />
     
     <meta name="description" content="There are a lot of great devs speaking at aspConf 2012 and most of them have great blogs and twitter feeds. I want the dev community (including myself) to follow these speakers and continue to learn f">
-<meta name="keywords" content="dev">
 <meta property="og:type" content="article">
 <meta property="og:title" content="aspConf 2012 Speaker Blogs and Twitter accounts: An OPML file for bulk blog feed subscription and a Twitter list for easy Following">
 <meta property="og:url" content="https://blog.jongallant.com/2012/07/aspconf-speaker-blogs-and-twitter-list/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="There are a lot of great devs speaking at aspConf 2012 and most of them have great blogs and twitter feeds. I want the dev community (including myself) to follow these speakers and continue to learn f">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
-<meta property="og:updated_time" content="2018-12-11T02:15:59.000Z">
+<meta property="article:published_time" content="2012-07-18T01:50:00.000Z">
+<meta property="article:modified_time" content="2018-12-11T02:15:59.000Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="dev">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="aspConf 2012 Speaker Blogs and Twitter accounts: An OPML file for bulk blog feed subscription and a Twitter list for easy Following">
-<meta name="twitter:description" content="There are a lot of great devs speaking at aspConf 2012 and most of them have great blogs and twitter feeds. I want the dev community (including myself) to follow these speakers and continue to learn f">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
     
-    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant" type="application/atom+xml">
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
     
 
     
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
 
-    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
     
     
         <script type="text/javascript">
@@ -67,7 +80,13 @@
     
     
 
-</head></html>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
     <div id="wrap">
@@ -140,7 +159,9 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -194,7 +215,7 @@
 </a>
 
                 
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/">dev</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dev/" rel="tag">dev</a></li></ul>
 
             </div>
         
@@ -203,9 +224,9 @@
             <p>There are a lot of great devs speaking at aspConf 2012 and most of them have great blogs and twitter feeds. I want the dev community (including myself) to follow these speakers and continue to learn from their posts and tweets. Following all those speakers isn’t easy. This post solves that.</p>
 <p>&lt;technical&gt;The aspConf speaker page has the name, twitter and description of the speakers, but doesn’t have links to their blogs or their blog’s feed. It would be awesome if the aspConf site provided an easy way for people to follow all the speakers and subscribe to all the blogs, but it doesn’t. So I whipped up a app that executes a Bing search for “[speaker name] blog” (using the new Azure Marketplace endpoint), grabbed the first url, did a sanity check, found the feed url and then aggregated it all up so you can easily digest it. I also wrote another app, using <a href="https://github.com/Twitterizer/Twitterizer" target="_blank" rel="noopener">Twitterizer</a> (which was really easy btw), that adds all the speaker twitter handles to a new twitter list I created. &lt;/technical&gt;</p>
 <p>There are now two ways you can now easily connect with the speakers:</p>
-<h2 id="speaker-blog-opml-for-bulk-blog-feed-import"><a class="header-anchor" href="#speaker-blog-opml-for-bulk-blog-feed-import"></a>Speaker Blog OPML for bulk blog feed import</h2>
+<h2 id="Speaker-Blog-OPML-for-bulk-blog-feed-import"><a class="header-anchor" href="#Speaker-Blog-OPML-for-bulk-blog-feed-import"></a>Speaker Blog OPML for bulk blog feed import</h2>
 <p>I created an aspConf2012SpeakerBlogs.xml <a href="http://en.wikipedia.org/wiki/OPML" target="_blank" rel="noopener">OPML file</a> that contains all the feed urls from all the speaker blogs. If you aren’t familiar with OPML, it is an xml file that contains feed urls. You can easily import an OPML file into your feed reader and subscribe to all the feeds in bulk. If you don’t know how to do this then just search for “OPML import [feed reader name]” (replace [feed reader name] with the feed reader you use). If you can’t find out how to do this then ping me and I’ll try to help you out.</p>
-<h2 id="speaker-twitter-list-for-bulk-following"><a class="header-anchor" href="#speaker-twitter-list-for-bulk-following"></a>Speaker Twitter List for bulk following</h2>
+<h2 id="Speaker-Twitter-List-for-bulk-following"><a class="header-anchor" href="#Speaker-Twitter-List-for-bulk-following"></a>Speaker Twitter List for bulk following</h2>
 <p>[<img src="/images/blog/ffb9f50452ac_6FD/twitter-bird-blue-on-white_thumb.png" alt="twitter-bird-blue-on-white" title="twitter-bird-blue-on-white">I also created an twitter list and added all the aspConf 2012 speakers to it. To follow all the speakers, just load up the list and click the “Follow” button 48 times. I couldn’t find an easy way to Follow them all in bulk…according to Tweepi it is against Twitter policy to do so</p>
 <p>The complete speaker list with links to blog, feed and twitter is below. LMK if you see anything that is incorrect.</p>
 <p>Hopefully this helps you out and saves you some time.</p>
@@ -221,7 +242,7 @@
     
         
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
 
     
@@ -309,7 +330,7 @@
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Solution to the exception: &quot;Read-only application cannot POST&quot; from the Twitter API
+                            Solution to the exception: &#34;Read-only application cannot POST&#34; from the Twitter API
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -329,7 +350,7 @@
         <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
         
-        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         
         
 
@@ -401,20 +422,40 @@
 
 
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
     
 
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
     </div>
 </body>
