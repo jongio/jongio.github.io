@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
 <meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
-<meta property="article:modified_time" content="2020-02-03T05:00:08.066Z">
+<meta property="article:modified_time" content="2020-02-04T05:45:49.871Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -382,7 +382,7 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
 <span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
 <span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
-<span class="hljs-keyword">var</span> emulator = connection.Contains(<span class="hljs-string">"UseDevelopmentStorage=true"</span>) &amp;&amp; account == <span class="hljs-string">"devstorageaccount1"</span>;
+<span class="hljs-keyword">var</span> emulator = connection.Contains(<span class="hljs-string">"UseDevelopmentStorage=true"</span>) &amp;&amp; account == <span class="hljs-string">"devstoreaccount1"</span>;
 <span class="hljs-keyword">var</span> path = emulator ? <span class="hljs-string">$"https://<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span> : <span class="hljs-string">$"https://<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span>;
 
 <span class="hljs-keyword">var</span> content = Guid.NewGuid().ToString(<span class="hljs-string">"n"</span>).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>);
@@ -417,7 +417,7 @@ dotnet add package Azure.Storage.Blobs</code></pre>
         <span class="hljs-attr">"AzureWebJobsStorage"</span>: <span class="hljs-string">"UseDevelopmentStorage=true"</span>,
         <span class="hljs-attr">"FUNCTIONS_WORKER_RUNTIME"</span>: <span class="hljs-string">"dotnet"</span>,
         <span class="hljs-attr">"AZURE_STORAGE_HOST"</span>: <span class="hljs-string">"127.0.0.1:10000"</span>,
-        <span class="hljs-attr">"AZURE_STORAGE_ACCOUNT"</span>: <span class="hljs-string">"devstorageaccount1"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_ACCOUNT"</span>: <span class="hljs-string">"devstoreaccount1"</span>,
         <span class="hljs-attr">"AZURE_STORAGE_CONTAINER"</span>: <span class="hljs-string">"azfuncblobs"</span>
     &#125;
 &#125;</code></pre>
