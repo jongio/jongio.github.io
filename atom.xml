@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-02-03T05:00:16.426Z</updated>
+  <updated>2020-02-05T09:43:16.404Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation</title>
+    <link href="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/"/>
+    <id>https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/</id>
+    <published>2020-02-05T01:42:47.000Z</published>
+    <updated>2020-02-05T09:43:16.404Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with &lt;a href=&quot;https://github.com/Azure/Azurite&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azurite&lt;/a&gt; and you
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tutorials" scheme="https://blog.jongallant.com/category/Tech/Tutorials/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/"/>
+    
+      <category term="http" scheme="https://blog.jongallant.com/tags/http/"/>
+    
+      <category term="azurite" scheme="https://blog.jongallant.com/tags/azurite/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 3)</title>
@@ -685,42 +720,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
       <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
     
       <category term="web" scheme="https://blog.jongallant.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Create a Microsoft To-Do Task from a Tweet using the iOS Share Menu and IFTTT</title>
-    <link href="https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/"/>
-    <id>https://blog.jongallant.com/2019/01/twitter-share-microsoft-todo-with-ifttt/</id>
-    <published>2019-01-24T21:32:14.000Z</published>
-    <updated>2019-01-31T22:04:21.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;One way to keep track of tweets that you want to follow up on is to “like” them to review at a later time.  I posted my method for that here: &lt;a href=&quot;/twitter-likes-microsoft-todo-with-ifttt&quot;&gt;How to Create a Microsoft To-Do Task from a Liked Tweet using IFTTT&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;But we all don’t want
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="productivity" scheme="https://blog.jongallant.com/tags/productivity/"/>
-    
-      <category term="todo" scheme="https://blog.jongallant.com/tags/todo/"/>
-    
-      <category term="twitter" scheme="https://blog.jongallant.com/tags/twitter/"/>
-    
-      <category term="ifttt" scheme="https://blog.jongallant.com/tags/ifttt/"/>
     
   </entry>
   

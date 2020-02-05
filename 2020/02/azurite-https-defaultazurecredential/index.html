@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>
+        
+        Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,sdk,http,azurite" />
+    
+    <meta name="description" content="If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation">
+<meta property="og:url" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
+<meta property="article:published_time" content="2020-02-05T01:42:47.000Z">
+<meta property="article:modified_time" content="2020-02-05T09:43:16.404Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="sdk">
+<meta property="article:tag" content="http">
+<meta property="article:tag" content="azurite">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
+    
+
+    
+    <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/videos/">Videos</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-azurite-https-defaultazurecredential" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2020/02/azurite-https-defaultazurecredential/" class="article-date">
+    <time datetime="2020-02-05T01:42:47.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azurite/" rel="tag">azurite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/" rel="tag">sdk</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a href="https://github.com/Azure/Azurite" target="_blank" rel="noopener">Azurite</a> and you can peak into your storage account with <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a>. Second, you love the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
+<p>Here are the problems in a nutshell:</p>
+<ol>
+<li>
+<p>HTTPS Issue: DefaultAzureCredential requires HTTPS. Azurite and Storage Explorer do not support HTTPS.</p>
+</li>
+<li>
+<p>Token Issue: DefaultAzureCredential uses “Bearer Tokens”. Azurite does not support “Bearer Tokens”</p>
+</li>
+</ol>
+<p>But fear not, I have a solution for you.  By the end of this post you’ll be all setup to use DefaultAzureCredential with Azurite and Storage Explorer.</p>
+<p>I’m going to break this post into two parts, one for the HTTPS issue and one for the Token Credential issue.</p>
+<p>I’ll show you:</p>
+<ol>
+<li>How to support HTTPS with Azurite</li>
+<li>How to use Azure Identity’s DefaultAzureCredential and TokenCredential with Azurite</li>
+</ol>
+<blockquote>
+<p>I’m using on Azurite instead of Azure Storage Emulator in this post because Azurite is open source and I figured out what needs to be done to get this to work.</p>
+</blockquote>
+<blockquote>
+<p>If you find this any of this post useful, then it is important that you either comment below or send me an email here: <a href="https://jongio/contact" target="_blank" rel="noopener">https://jongio/contact</a> so we know that it is important to you, which will help us prioritize.</p>
+</blockquote>
+<p>Here’s a table that summarizes the issues with each of the tools:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Desc</th>
+<th>HTTPS</th>
+<th>Token Support</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure SDK: DefaultAzureCredential</a></td>
+<td>Allows you to use the same credential objects for Dev and Production environments without code changes.</td>
+<td>Required</td>
+<td>Yes</td>
+<td>The only way to use DefaultAzureCredential is with token based auth and it only supports HTTPs - which Azurite and Storage Explorer do not support.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite</a></td>
+<td>Azurite is the open source Azure Storage emulator.  It starts a local server that behaves like Azure Storage, so you can dev against it like you would Azure.</td>
+<td>No <br/> <a href="https://github.com/Azure/Azurite/issues/38" target="_blank" rel="noopener">#38</a></td>
+<td>No <br/> <a href="https://github.com/Azure/Azurite/issues/389" target="_blank" rel="noopener">#389</a></td>
+<td>Azurite is based on Express, so could easily support HTTPS, but they don’t emulate AAD, so supporting Bearer Tokens is likely not a native option. As I mention in the linked bug, it would be great if we could figure out a way to have a standard Bearer Token (like we do Azurite account key and then use that in DefaultAzureCredential.</td>
+</tr>
+<tr>
+<td><a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a></td>
+<td>Allows you to locally view Azure Storage accounts and contents, including Azurite.</td>
+<td>No <br/> <a href="https://github.com/microsoft/AzureStorageExplorer/issues/2598" target="_blank" rel="noopener">#2598</a></td>
+<td>Not needed</td>
+<td>Storage explorer is hard-coded to use HTTP for emulators. Linked a bug to the left to change that. We don’t need token support becuase it can connect natively to the endpoints.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Issues"><a class="header-anchor" href="#Issues"></a>Issues</h2>
+<p>Let’s dig into each of the issues further and learn about a workaround that I created.</p>
+<h3 id="HTTPS-Issue"><a class="header-anchor" href="#HTTPS-Issue"></a>HTTPS Issue</h3>
+<p>We have a mismatch in HTTPS support amongst Azurite, Storage Explorer, and Azure SDKs. As it stands right now, you cannot use the Azure Identity’s DefaultAzureCredential with Azurite because Azurite doesn’t support HTTPS or TokenCredentials - which DefaultAzureCredential requires. If you run Azurite as an HTTPS server, then Azure Storage Explorer (to read blobs) won’t work becuase it is hard-coded to HTTP and doesn’t allow you to change it. I spent some time trying to get Azurite to natively support HTTPS, but ran into some issues and don’t have time to invesitgate it further. I got HTTPS working with Azurite, but was blocked on Storage Explorer’s lack of HTTPS support. If you leave a comment below that you want Azurite to support HTTPS, then that will help us prioritize.</p>
+<p>Here’s the error you’ll get if you try to run DefaultAzureCredential against Azurite HTTP endpoint:</p>
+<pre><code class="hljs plain">[2&#x2F;5&#x2F;2020 7:36:20 AM] System.Private.CoreLib: Exception while executing function: func1. Azure.Storage.Blobs: Cannot use TokenCredential without HTTPS.</code></pre>
+<h3 id="HTTPS-Issue-Resolution-HTTPS-to-HTTP-Reverse-Proxy"><a class="header-anchor" href="#HTTPS-Issue-Resolution-HTTPS-to-HTTP-Reverse-Proxy"></a>HTTPS Issue Resolution: HTTPS to HTTP Reverse Proxy</h3>
+<p>Like I mentioned before, you could update Azurite codebase to support HTTPS natively, but then Azure Storage Explorer won’t work. You could setup an HTTP (Azure Storage Explorer) to HTTPS (Azurite) reverse proxy, but again I couldn’t get that fullly functioning in the time allotted for this problem, so I decided to show you how to setup a simple HTTPS to HTTP proxy. With that DefaultAzureCredential gets an HTTPS endpoint via the redirection and Azure Storage Explorer get the HTTP endpoint via direct access to Azurite HTTP endpoints.</p>
+<h5 id="Local-SSL-Cert"><a class="header-anchor" href="#Local-SSL-Cert"></a>Local SSL Cert</h5>
+<p>You need a cert because in the next step we’ll create an HTTPS to HTTP Reverse Proxy. Anytime you publish a server that accepts HTTPS you need a cert, even if it is self-signed. Otherwise, you’ll get an insecure error when you access the site.</p>
+<p>There are good reasons to not setup an SSL cert for <code>localhost</code>, read this article by <a href="https://letsencrypt.org/docs/certificates-for-localhost/" target="_blank" rel="noopener">Let’s Crypt: Certificates for localhost</a> if interested in learning more about that.</p>
+<p>You can use OpenSSL, but I’m on a Windows machine and there are workarounds to get that to work.  I found the two following scripted options that I liked better.</p>
+<ol>
+<li><a href="https://www.hanselman.com/blog/DevelopingLocallyWithASPNETCoreUnderHTTPSSSLAndSelfSignedCerts.aspx" target="_blank" rel="noopener">dotnet dev-certs</a> - I haven’t tried this option, but it should work. Let me know in the comments if you got this working.</li>
+<li><a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a> - This is the option I went with because I found it before the <code>dotnet dev-certs</code> option.</li>
+</ol>
+<p>Read up on mkcert and dotnet dev-certs and determine which one is best for you.</p>
+<p>Here are the mkcert commands I ran:</p>
+<pre><code class="hljs plain">choco install mkcert
+mkcert -install
+mkcert 127.0.0.1</code></pre>
+<p>That outputs a 127.0.0.1.pem cert file and a 127.0.0.1-key.pem file locally.  Save those in a secure location, don’t share with anyone.</p>
+<p><img src="000075.png" alt=""></p>
+<h5 id="HTTPS-to-HTTP-Reverse-Proxy"><a class="header-anchor" href="#HTTPS-to-HTTP-Reverse-Proxy"></a>HTTPS to HTTP Reverse Proxy</h5>
+<p>As mentioned above, DefaultAzureCredential and any TokenCredential only support HTTPS (not HTTP), so we need a Reverse Proxy to direct all DefaultAzureCredential HTTPS calls to the Azurite HTTP endpoints.</p>
+<p>We are going to use the <a href="https://github.com/http-party/node-http-proxy" target="_blank" rel="noopener">Node.js http-party/node-http-proxy</a> module to do so. You could also use nginx or any other server.  This Node.js was the quickest way for me to get this to work.</p>
+<ol start="0">
+<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Install Node.js</a></li>
+<li>Install http-proxy</li>
+</ol>
+<pre><code class="hljs plain">npm install http-proxy --save</code></pre>
+<ol start="2">
+<li>Create a <code>proxy.js</code> file with the following code:</li>
+</ol>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> httpProxy = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http-proxy'</span>),
+    fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+
+httpProxy.createProxyServer(&#123;
+    <span class="hljs-attr">target</span>: <span class="hljs-string">'http://127.0.0.1:10000'</span>,
+    <span class="hljs-attr">ssl</span>: &#123;
+        <span class="hljs-attr">key</span>: fs.readFileSync(<span class="hljs-string">'127.0.0.1-key.pem'</span>, <span class="hljs-string">'utf8'</span>),
+        <span class="hljs-attr">cert</span>: fs.readFileSync(<span class="hljs-string">'127.0.0.1.pem'</span>, <span class="hljs-string">'utf8'</span>)
+    &#125;
+&#125;).listen(<span class="hljs-number">10010</span>);
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Reverse Proxy from https://127.0.0.1:10010 (DefaultAzureCredential HTTPS) to http://127.0.0.1:10000 (Azurite HTTP) now running."</span>)</code></pre>
+<blockquote>
+<p>Not that this sample only supports blob, you can create a new file called proxy-queue.js with the queue endpoints and run that as well.  Leave a comment if you need help with that.</p>
+</blockquote>
+<blockquote>
+<p>I’m copying the code here just to get this out there to you quicker.  Let me know if you want me to create an npm package or a docker container that wraps all this up for you.</p>
+</blockquote>
+<ol start="3">
+<li>Start the Reverse Proxy with the following code:</li>
+</ol>
+<pre><code class="hljs plain">node proxy.js</code></pre>
+<p>You will see the following message outputed to your terminal.</p>
+<pre><code class="hljs plain">Reverse Proxy from https:&#x2F;&#x2F;127.0.0.1:10010 to http:&#x2F;&#x2F;127.0.0.1:10000 now running.</code></pre>
+<h5 id="DefaultAzureCredential-Code-Configuration"><a class="header-anchor" href="#DefaultAzureCredential-Code-Configuration"></a>DefaultAzureCredential Code Configuration</h5>
+<p>The following example is in the context of an Azure Function, but the concepts apply to any type of application.</p>
+<ol>
+<li>Configure Port</li>
+</ol>
+<p>We need to instantiate the Azure SDK Client objects with the port number that is the HTTPS enabled one from our reverse proxy, which in this example is 10010 (HTTPS), not 10000 (HTTP)</p>
+<p>Your local.settings.json file should look like this with the 10010 port.</p>
+<pre><code class="hljs json">&#123;
+    <span class="hljs-attr">"IsEncrypted"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"Values"</span>: &#123;
+        <span class="hljs-attr">"AzureWebJobsStorage"</span>: <span class="hljs-string">"UseDevelopmentStorage=true"</span>,
+        <span class="hljs-attr">"FUNCTIONS_WORKER_RUNTIME"</span>: <span class="hljs-string">"dotnet"</span>,
+        <span class="hljs-attr">"AZURE_CLIENT_ID"</span>: <span class="hljs-string">"SERVICE_PRINCIPAL_APP_ID"</span>,
+        <span class="hljs-attr">"AZURE_CLIENT_SECRET"</span>: <span class="hljs-string">"SERVICE_PRINCIPAL_PASSWORD"</span>,
+        <span class="hljs-attr">"AZURE_TENANT_ID"</span>: <span class="hljs-string">"SERVICE_PRINCIPAL_TENANT_ID"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_HOST"</span>: <span class="hljs-string">"127.0.0.1:10010"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_ACCOUNT"</span>: <span class="hljs-string">"devstoreaccount1"</span>,
+        <span class="hljs-attr">"AZURE_STORAGE_CONTAINER"</span>: <span class="hljs-string">"azfuncblobs"</span>
+    &#125;
+&#125;</code></pre>
+<p>You’ll notice that we are using a service principal here.  We do need to let DefaultAzureCredntial get a token from somewhere, so a service principal will be required.  See the following post for instructions on setting up a service principal: <a href="/azure-functions-blob-managed-identity-part2">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities - (Part 2): Local Function with Azure Storage and Service Principal (local function, cloud storage)</a></p>
+<ol start="2">
+<li>Update Code</li>
+</ol>
+<p>Then your function code will detect if an emulator is being used and use the HTTPS endpoint and port that it pulls from AZURE_STORAGE_HOST.</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> connection = Environment.GetEnvironmentVariable(<span class="hljs-string">"AzureWebJobsStorage"</span>);
+<span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
+<span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
+<span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
+<span class="hljs-keyword">var</span> emulator = connection.Contains(<span class="hljs-string">"UseDevelopmentStorage=true"</span>) &amp;&amp; account == <span class="hljs-string">"devstoreaccount1"</span>;
+<span class="hljs-keyword">var</span> path = emulator ? <span class="hljs-string">$"https://<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span> : <span class="hljs-string">$"https://<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span>;
+
+<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(path), <span class="hljs-keyword">new</span> DefaultAzureCredential());</code></pre>
+<p>If you run that code as is right now you’ll get an exception. Keep reading for a solution for that.</p>
+<h3 id="Tokens-Issue"><a class="header-anchor" href="#Tokens-Issue"></a>Tokens Issue</h3>
+<p>We also have a mismatch in credential type support.  Azurite supports Shared Key and Shared Access Signature (SAS) tokens, but DefaultAzureCredential only supports Bearer Tokens.  So when you try to make the above code as-is, you will get and error:</p>
+<pre><code class="hljs plain">[2&#x2F;5&#x2F;2020 7:42:04 AM] System.Private.CoreLib: Exception while executing function: func1. Azure.Storage.Blobs: Server failed to authenticate the request. Make sure the value of 
+the Authorization header is formed correctly including the signature.
+RequestId:9cf40e52-1818-4207-a02f-bd2b3f5b6f85
+Time:2020-02-05T07:42:03.652Z
+[2&#x2F;5&#x2F;2020 7:42:04 AM] Status: 403 (Server failed to authenticate the request. Make sure the value of the Authorization header is formed correctly including the signature.)     
+[2&#x2F;5&#x2F;2020 7:42:04 AM]
+[2&#x2F;5&#x2F;2020 7:42:04 AM] ErrorCode: AuthorizationFailure</code></pre>
+<h4 id="Tokens-Issue-Resolution"><a class="header-anchor" href="#Tokens-Issue-Resolution"></a>Tokens Issue Resolution</h4>
+<blockquote>
+<p>Keep in mind that the below is just a prototype to unblock the customers that are blocked and they understand that using this approach is not final, not supported, and only to be used as an example.  It is not secure as it only checks for the existance of a Bearer token and does not validate it any way.  Please follow along at this issue for updates on the conversation with the Azurite team: <a href="https://github.com/Azure/Azurite/issues/389" target="_blank" rel="noopener">Support Bearer Token Credentials #389</a></p>
+</blockquote>
+<p>Azurite doesn’t support Token based auth, so I have implemented a BlobTokenAuthenticator in this commit here: <a href="https://github.com/jongio/Azurite/commit/273e3b11e53c6eddd7f2c1e4ace8f68120e15213" target="_blank" rel="noopener">Add support for Bearer tokens</a>.</p>
+<blockquote>
+<p>I only did BlobTokenAuthenticator. I’ll implement Queue support if you need it and leave a comment below or on my fork.</p>
+</blockquote>
+<p>Let’s learn how to use it as-is while I work out getting this official supported with the Azurite team.</p>
+<h5 id="Clone-my-Azurite-Fork"><a class="header-anchor" href="#Clone-my-Azurite-Fork"></a>Clone my Azurite Fork</h5>
+<p>You’ll first want to get my Azurite fork locally:</p>
+<pre><code class="hljs plain">git clone https:&#x2F;&#x2F;github.com&#x2F;jongio&#x2F;Azurite</code></pre>
+<h5 id="Install-and-Run-Azurite"><a class="header-anchor" href="#Install-and-Run-Azurite"></a>Install and Run Azurite</h5>
+<p>You’ll then want to install and run from that fork:</p>
+<blockquote>
+<p>Make sure you stop any running Azurite or Storage Emulator instances are you will get a PORT in use error.</p>
+</blockquote>
+<ol>
+<li>npm install and run</li>
+</ol>
+<pre><code class="hljs plain">npm ci
+npm run build
+npm install -g
+azurite --loose</code></pre>
+<ol start="2">
+<li>Debug in VS Code</li>
+</ol>
+<p>Open the project in VS code, select the “Loose” debug profile and hit F5.</p>
+<p>Notes:</p>
+<ul>
+<li>You need to use the <code>--loose</code> command because DefaultAzureCredential uses headers that aren’t yet supported by Azurite.</li>
+</ul>
+<h2 id="Test-it"><a class="header-anchor" href="#Test-it"></a>Test it</h2>
+<p>Now that you have the HTTPS-&gt;HTTP reverse proxy setup, and my fork of Azurite with BlobTokenAuthentication, it is time to test out your code.</p>
+<p>Re-run your code, the same code that I posted above with BlobContainerClient and it will work.</p>
+<p>In the case of Azure Functions, you should see a successful output from the app, like this:</p>
+<pre><code class="hljs plain">[2&#x2F;5&#x2F;2020 9:21:27 AM] Executed HTTP request: &#123;
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   &quot;requestId&quot;: &quot;4b570fbd-d058-4d2b-8c1d-093f8bb05d34&quot;,
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   &quot;method&quot;: &quot;GET&quot;,
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   &quot;uri&quot;: &quot;&#x2F;api&#x2F;func1&quot;,
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   &quot;identities&quot;: [
+[2&#x2F;5&#x2F;2020 9:21:27 AM]     &#123;
+[2&#x2F;5&#x2F;2020 9:21:27 AM]       &quot;type&quot;: &quot;WebJobsAuthLevel&quot;,
+[2&#x2F;5&#x2F;2020 9:21:27 AM]       &quot;level&quot;: &quot;Admin&quot;
+[2&#x2F;5&#x2F;2020 9:21:27 AM]     &#125;
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   ],
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   &quot;status&quot;: 200,
+[2&#x2F;5&#x2F;2020 9:21:27 AM]   &quot;duration&quot;: 1924
+[2&#x2F;5&#x2F;2020 9:21:27 AM] &#125;</code></pre>
+<p>And then when you load up Storage Explorer, you’ll now see the blobs that you uploaded or whatever you did in your code.</p>
+<p><img src="000076.png" alt=""></p>
+<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
+<p>We covered two main things:</p>
+<ol>
+<li>HTTPS with Azurite - solved with http-proxy</li>
+<li>Token Credential support with Azurite - stopgapped short term solved with my impl of BlobTokenAuthenticator.</li>
+</ol>
+<p>I really hope you find this useful. I want to remind you that you should leave a comment on this blog or any of the GitHub issues mentioend above if this was useful, so we know if we should prioritize this.</p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                            
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2020/02/azure-functions-blob-managed-identity-part3/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 3)
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="7222147978"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- rail -->
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="1523952970"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+    <!-- banner -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="8838481977"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2020
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+
+</html>
