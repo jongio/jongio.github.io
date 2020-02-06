@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
 <meta property="article:published_time" content="2020-02-05T01:42:47.000Z">
-<meta property="article:modified_time" content="2020-02-05T09:43:16.404Z">
+<meta property="article:modified_time" content="2020-02-06T02:45:47.045Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -224,7 +224,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a href="https://github.com/Azure/Azurite" target="_blank" rel="noopener">Azurite</a> and you can peak into your storage account with <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a>. Second, you love the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
+            <p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a href="https://github.com/Azure/Azurite" target="_blank" rel="noopener">Azurite</a> and you can peek into your storage account with <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a>. Second, you love the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
 <p>Here are the problems in a nutshell:</p>
 <ol>
 <li>
@@ -245,7 +245,7 @@
 <p>I’m using on Azurite instead of Azure Storage Emulator in this post because Azurite is open source and I figured out what needs to be done to get this to work.</p>
 </blockquote>
 <blockquote>
-<p>If you find this any of this post useful, then it is important that you either comment below or send me an email here: <a href="https://jongio/contact" target="_blank" rel="noopener">https://jongio/contact</a> so we know that it is important to you, which will help us prioritize.</p>
+<p>If you find any of this post useful, then it is important that you either comment below or send me an email here: <a href="https://jongio/contact" target="_blank" rel="noopener">https://jongio/contact</a> so we know that it is important to you, which will help us prioritize.</p>
 </blockquote>
 <p>Here’s a table that summarizes the issues with each of the tools:</p>
 <table>
@@ -264,11 +264,11 @@
 <td>Allows you to use the same credential objects for Dev and Production environments without code changes.</td>
 <td>Required</td>
 <td>Yes</td>
-<td>The only way to use DefaultAzureCredential is with token based auth and it only supports HTTPs - which Azurite and Storage Explorer do not support.</td>
+<td>The only way to use DefaultAzureCredential is with token based auth and it only supports HTTPS - which Azurite and Storage Explorer do not support.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite</a></td>
-<td>Azurite is the open source Azure Storage emulator.  It starts a local server that behaves like Azure Storage, so you can dev against it like you would Azure.</td>
+<td>Azurite is an open source Azure Storage emulator that supports Windows and Linux.  It starts a local server that behaves like Azure Storage, so you can dev against it like you would Azure.</td>
 <td>No <br/> <a href="https://github.com/Azure/Azurite/issues/38" target="_blank" rel="noopener">#38</a></td>
 <td>No <br/> <a href="https://github.com/Azure/Azurite/issues/389" target="_blank" rel="noopener">#389</a></td>
 <td>Azurite is based on Express, so could easily support HTTPS, but they don’t emulate AAD, so supporting Bearer Tokens is likely not a native option. As I mention in the linked bug, it would be great if we could figure out a way to have a standard Bearer Token (like we do Azurite account key and then use that in DefaultAzureCredential.</td>
@@ -280,16 +280,23 @@
 <td>Not needed</td>
 <td>Storage explorer is hard-coded to use HTTP for emulators. Linked a bug to the left to change that. We don’t need token support becuase it can connect natively to the endpoints.</td>
 </tr>
+<tr>
+<td><a href="https://docs.microsoft.com/azure/storage/common/storage-use-emulator" target="_blank" rel="noopener">Azure Storage Emulator</a></td>
+<td>Similar to Azurite, but closed source and Windows only.</td>
+<td>No</td>
+<td>No</td>
+<td>I didn’t spend a lot of time with Azure Storage Emulator becuase I knew I would need to make changes to it to get this all working.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="Issues"><a class="header-anchor" href="#Issues"></a>Issues</h2>
 <p>Let’s dig into each of the issues further and learn about a workaround that I created.</p>
 <h3 id="HTTPS-Issue"><a class="header-anchor" href="#HTTPS-Issue"></a>HTTPS Issue</h3>
-<p>We have a mismatch in HTTPS support amongst Azurite, Storage Explorer, and Azure SDKs. As it stands right now, you cannot use the Azure Identity’s DefaultAzureCredential with Azurite because Azurite doesn’t support HTTPS or TokenCredentials - which DefaultAzureCredential requires. If you run Azurite as an HTTPS server, then Azure Storage Explorer (to read blobs) won’t work becuase it is hard-coded to HTTP and doesn’t allow you to change it. I spent some time trying to get Azurite to natively support HTTPS, but ran into some issues and don’t have time to invesitgate it further. I got HTTPS working with Azurite, but was blocked on Storage Explorer’s lack of HTTPS support. If you leave a comment below that you want Azurite to support HTTPS, then that will help us prioritize.</p>
+<p>We have a mismatch in HTTPS support amongst Azurite, Storage Explorer, and Azure SDKs. As it stands right now, you cannot use the Azure Identity’s DefaultAzureCredential with Azurite because Azurite doesn’t support HTTPS or TokenCredentials - which DefaultAzureCredential requires. If you run Azurite as an HTTPS server, then Azure Storage Explorer (to read blobs) won’t work becuase it is hard-coded to HTTP and doesn’t allow you to change it. I spent some time trying to get Azurite to natively support HTTPS, but ran into some issues and don’t have time to invesitgate it further. I got HTTPS working with Azurite via the <code>https</code> node package, but was blocked on Storage Explorer’s lack of HTTPS support. If you leave a comment below that you want Azurite to support HTTPS, then that will help us prioritize.</p>
 <p>Here’s the error you’ll get if you try to run DefaultAzureCredential against Azurite HTTP endpoint:</p>
 <pre><code class="hljs plain">[2&#x2F;5&#x2F;2020 7:36:20 AM] System.Private.CoreLib: Exception while executing function: func1. Azure.Storage.Blobs: Cannot use TokenCredential without HTTPS.</code></pre>
 <h3 id="HTTPS-Issue-Resolution-HTTPS-to-HTTP-Reverse-Proxy"><a class="header-anchor" href="#HTTPS-Issue-Resolution-HTTPS-to-HTTP-Reverse-Proxy"></a>HTTPS Issue Resolution: HTTPS to HTTP Reverse Proxy</h3>
-<p>Like I mentioned before, you could update Azurite codebase to support HTTPS natively, but then Azure Storage Explorer won’t work. You could setup an HTTP (Azure Storage Explorer) to HTTPS (Azurite) reverse proxy, but again I couldn’t get that fullly functioning in the time allotted for this problem, so I decided to show you how to setup a simple HTTPS to HTTP proxy. With that DefaultAzureCredential gets an HTTPS endpoint via the redirection and Azure Storage Explorer get the HTTP endpoint via direct access to Azurite HTTP endpoints.</p>
+<p>Like I mentioned before, you could update Azurite codebase to support HTTPS natively, but then Azure Storage Explorer won’t work. You could setup an HTTP (Azure Storage Explorer) to HTTPS (Azurite) reverse proxy, but again I couldn’t get that fullly functioning in the time allotted for this problem, so I decided to show you how to setup a simple HTTPS to HTTP proxy. With that, DefaultAzureCredential gets an HTTPS endpoint via the redirection and Azure Storage Explorer get the HTTP endpoint via direct access to Azurite HTTP endpoints.</p>
 <h5 id="Local-SSL-Cert"><a class="header-anchor" href="#Local-SSL-Cert"></a>Local SSL Cert</h5>
 <p>You need a cert because in the next step we’ll create an HTTPS to HTTP Reverse Proxy. Anytime you publish a server that accepts HTTPS you need a cert, even if it is self-signed. Otherwise, you’ll get an insecure error when you access the site.</p>
 <p>There are good reasons to not setup an SSL cert for <code>localhost</code>, read this article by <a href="https://letsencrypt.org/docs/certificates-for-localhost/" target="_blank" rel="noopener">Let’s Crypt: Certificates for localhost</a> if interested in learning more about that.</p>
@@ -360,11 +367,14 @@ httpProxy.createProxyServer(&#123;
         <span class="hljs-attr">"AZURE_STORAGE_CONTAINER"</span>: <span class="hljs-string">"azfuncblobs"</span>
     &#125;
 &#125;</code></pre>
-<p>You’ll notice that we are using a service principal here.  We do need to let DefaultAzureCredntial get a token from somewhere, so a service principal will be required.  See the following post for instructions on setting up a service principal: <a href="/azure-functions-blob-managed-identity-part2">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities - (Part 2): Local Function with Azure Storage and Service Principal (local function, cloud storage)</a></p>
+<p>You’ll notice that we are using a service principal here.  We do need to let DefaultAzureCredntial get a token from somewhere, so a service principal will be required.  See the following post for instructions on setting up a service principal: <a href="/azure-functions-blob-managed-identity-part2">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities - (Part 2): Local Function with Azure Storage and Service Principal (local function, cloud storage)</a>.  You will see in that post how to give that Service Principal the appropriate permissions to access Azure Storage.</p>
 <ol start="2">
 <li>Update Code</li>
 </ol>
 <p>Then your function code will detect if an emulator is being used and use the HTTPS endpoint and port that it pulls from AZURE_STORAGE_HOST.</p>
+<blockquote>
+<p>See my post <a href="/azure-functions-blob-managed-identity-part1">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities - (Part 1): Local Function with Storage Emulator (local function, local storage)</a> for instructions on setting up the complete Azure Function dev environment.</p>
+</blockquote>
 <pre><code class="hljs csharp"><span class="hljs-keyword">var</span> connection = Environment.GetEnvironmentVariable(<span class="hljs-string">"AzureWebJobsStorage"</span>);
 <span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
 <span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
@@ -389,7 +399,7 @@ Time:2020-02-05T07:42:03.652Z
 </blockquote>
 <p>Azurite doesn’t support Token based auth, so I have implemented a BlobTokenAuthenticator in this commit here: <a href="https://github.com/jongio/Azurite/commit/273e3b11e53c6eddd7f2c1e4ace8f68120e15213" target="_blank" rel="noopener">Add support for Bearer tokens</a>.</p>
 <blockquote>
-<p>I only did BlobTokenAuthenticator. I’ll implement Queue support if you need it and leave a comment below or on my fork.</p>
+<p>I only implemented BlobTokenAuthenticator. I’ll implement Queue support if you need it and leave a comment below or on my fork.</p>
 </blockquote>
 <p>Let’s learn how to use it as-is while I work out getting this official supported with the Azurite team.</p>
 <h5 id="Clone-my-Azurite-Fork"><a class="header-anchor" href="#Clone-my-Azurite-Fork"></a>Clone my Azurite Fork</h5>

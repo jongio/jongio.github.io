@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
 <meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
-<meta property="article:modified_time" content="2020-02-04T05:45:49.871Z">
+<meta property="article:modified_time" content="2020-02-06T02:49:23.097Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -378,6 +378,9 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <li>Add Code</li>
 </ol>
 <p>Replace the body of the <code>Run</code> function with the following code.  This code will instantiate a new BlobContainerClient, create the container, and upload a blob.</p>
+<blockquote>
+<p>Since creating this post, I did a follow up post that shows you how to use Azurite with HTTPS.  Please view that post if you’d like to use HTTPS and simplify the BlobContainerClient to only use DefaultAzureCredential: <a href="/azurite-https-defaultazurecredential">Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation</a></p>
+</blockquote>
 <pre><code class="hljs csharp"><span class="hljs-keyword">var</span> connection = Environment.GetEnvironmentVariable(<span class="hljs-string">"AzureWebJobsStorage"</span>);
 <span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
 <span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
@@ -405,7 +408,7 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <span class="hljs-keyword">return</span> (ActionResult)<span class="hljs-keyword">new</span> OkObjectResult(<span class="hljs-string">$"<span class="hljs-subst">&#123;file&#125;</span> uploaded."</span>);</code></pre>
 <p>Notes:</p>
 <ul>
-<li>You’ll noticed that we have some hackery with instantiating the <code>BlobContainerClient</code> object. Unfortunately, the Storage Emulator and Azurite <strong>don’t support</strong> HTTPS and <code>DefaultAzureCredential</code> <strong>only supports</strong> HTTPS.  I’m working with the Identity team here at Microsoft to come up with a solution for that.  We have a bug filed here: <a href="https://github.com/Azure/azure-sdk-for-net/issues/9729" target="_blank" rel="noopener">[Feature] Allow HTTPS check bypass with TokenCredential #9729</a></li>
+<li>You’ll noticed that we have some hackery with instantiating the <code>BlobContainerClient</code> object. Unfortunately, the Storage Emulator and Azurite <strong>don’t support</strong> HTTPS and <code>DefaultAzureCredential</code> <strong>only supports</strong> HTTPS.  I’m working with the Identity team here at Microsoft to come up with a solution for that.  We have a bug filed here: <a href="https://github.com/Azure/azure-sdk-for-net/issues/9729" target="_blank" rel="noopener">[Feature] Support Emulators such as Azurite and Azure Storage Explorer #9729</a></li>
 </ul>
 <ol start="10">
 <li>Set Local Settings</li>
