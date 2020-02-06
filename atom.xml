@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-02-06T02:45:47.045Z</updated>
+  <updated>2020-02-06T07:14:30.721Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Find the Amazon Prime Annual Membership Signup Option</title>
+    <link href="https://blog.jongallant.com/2020/02/amazon-prime-annual-payment-option/"/>
+    <id>https://blog.jongallant.com/2020/02/amazon-prime-annual-payment-option/</id>
+    <published>2020-02-05T22:51:34.000Z</published>
+    <updated>2020-02-06T07:14:30.721Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Not sure how, but Amazon charged my Prime membership to the wrong card. I contacted them via chat to credit that card and charge my primary card.  They had to make an exception to give me the credit and in order to give me the credit they had to cancel my Prime membership. They then asked me to
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="amazon" scheme="https://blog.jongallant.com/tags/amazon/"/>
+    
+  </entry>
   
   <entry>
     <title>Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation</title>
@@ -670,40 +699,6 @@ Working on a Vue.js and TypeScript project.&lt;/p&gt;
 &lt;p&gt;And got this error:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Avoid mutating a prop directly since the value will be
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/"/>
-    
-      <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
-    
-      <category term="web" scheme="https://blog.jongallant.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Vue.js Not Binding Complex View Model Objects</title>
-    <link href="https://blog.jongallant.com/2019/01/vuejs-data-not-binding/"/>
-    <id>https://blog.jongallant.com/2019/01/vuejs-data-not-binding/</id>
-    <published>2019-01-25T22:14:21.000Z</published>
-    <updated>2019-01-26T06:34:07.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.&lt;/p&gt;
-&lt;p&gt;For example, with this code, I define &lt;code&gt;data: { vm: {} }&lt;/code&gt;, but don’t have the &lt;code&gt;items&lt;/code&gt; property and then later set the
         
       
     
