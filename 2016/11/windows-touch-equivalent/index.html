@@ -6,7 +6,7 @@
     
     <title>
         
-        Linux Touch Equivalent for Windows AKA How to Create a File Without a Name in Windows |
+        Linux/UNIX &#39;touch&#39; Equivalent on Windows aka How to Create a File Without a Name on Windows |
         
         Jon Gallant
     </title>
@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="howto,dev" />
     
-    <meta name="description" content="Windows Explorer doesn’t allow you to create a file without a name:  Windows doesn’t have a native “touch” equivalent, which is a native Linux program that allows you to create empty files and change">
+    <meta name="description" content="Windows Explorer doesn’t allow you to create files that start with . because it interprets that as not having a file name.  On Linux&#x2F;UNIX you would simply use: touch .gitignore.  Windows doesn’t have">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux Touch Equivalent for Windows AKA How to Create a File Without a Name in Windows">
+<meta property="og:title" content="Linux&#x2F;UNIX &#39;touch&#39; Equivalent on Windows aka How to Create a File Without a Name on Windows">
 <meta property="og:url" content="https://blog.jongallant.com/2016/11/windows-touch-equivalent/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Windows Explorer doesn’t allow you to create a file without a name:  Windows doesn’t have a native “touch” equivalent, which is a native Linux program that allows you to create empty files and change">
+<meta property="og:description" content="Windows Explorer doesn’t allow you to create files that start with . because it interprets that as not having a file name.  On Linux&#x2F;UNIX you would simply use: touch .gitignore.  Windows doesn’t have">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2016-11-29T15:45:00.000Z">
-<meta property="article:modified_time" content="2016-12-29T03:36:59.000Z">
+<meta property="article:modified_time" content="2020-02-14T14:50:36.454Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="howto">
 <meta property="article:tag" content="dev">
@@ -202,7 +202,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Linux Touch Equivalent for Windows AKA How to Create a File Without a Name in Windows
+        Linux/UNIX &#39;touch&#39; Equivalent on Windows aka How to Create a File Without a Name on Windows
         </h1>
     
 
@@ -222,24 +222,28 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Windows Explorer doesn’t allow you to create a file without a name:</p>
-<p><img src="/images/blog/f08ef4d9b803_DBCF/image.png" alt=""></p>
-<p>Windows doesn’t have a native “touch” equivalent, which is a native Linux program that allows you to create empty files and change timestamps.</p>
-<p>But…</p>
-<p>If you run <strong>“touch&gt;.gitignore”</strong> (or any of the other options below) from the command line, the file is created. Also, if you run it again, the file’s timestamp will be updated. It won’t change attributes like touch on Linux does.</p>
-<p><img src="/images/blog/f08ef4d9b803_DBCF/image_3.png" alt=""></p>
-<p>Here are some other ways that work as well.</p>
+            <p>Windows Explorer doesn’t allow you to create files that start with <code>.</code> because it interprets that as not having a file name.</p>
+<p><img src="/images/blog/f08ef4d9b803_DBCF/image.png" alt="&quot;You must type a file name.&quot;"></p>
+<p>On Linux/UNIX you would simply use: <code>touch .gitignore</code>.</p>
+<p><img src="/images/blog/f08ef4d9b803_DBCF/000092.png" alt="&quot;Linux touch output&quot;"></p>
+<p>Windows doesn’t have a <code>touch</code> command.</p>
+<p>But if you run an invalid command and pipe that to a file that starts with a dot, the file will be created.</p>
+<p>For example,</p>
+<p>If you run <code>foo&gt;.gitignore</code> the .gitignore file will still be created - even though <code>foo</code> is not a valid command.  Feel free to try with any command, such as <code>bar&gt;.gitignore</code>.</p>
+<p>Even though the command outputs an error, the file is still created.</p>
+<p><img src="/images/blog/f08ef4d9b803_DBCF/000091.png" alt="&quot;Viewing the file&quot;"></p>
+<p>Here are some other ways that work as well:</p>
 <ol>
-<li>copy nul .gitignore</li>
-<li>copy con .gitignore, hit enter, then hit ctrl+z</li>
-<li>cat&gt;.gitignore, hit enter, then hit ctrl+c</li>
-<li>echo &gt; .gitignore</li>
-<li>touch&gt;.gitignore</li>
-<li>fsutil file createnew .gitignore 0</li>
-<li>nul &gt; .gitignore</li>
-<li>notepad .gitignore</li>
-<li>In Windows Explorer, name the file “.gitignore.” and Windows will rename it to “.gitignore”</li>
-<li>bash -c “touch .gitignore”</li>
+<li><code>copy nul .gitignore</code></li>
+<li><code>copy con .gitignore</code> hit enter, then hit ctrl+z</li>
+<li><code>cat&gt;.gitignore</code> hit enter, then hit ctrl+c</li>
+<li><code>echo &gt; .gitignore</code></li>
+<li><code>foo&gt;.gitignore</code></li>
+<li><code>fsutil file createnew .gitignore 0</code></li>
+<li><code>nul &gt; .gitignore</code></li>
+<li><code>notepad .gitignore</code></li>
+<li>In Windows Explorer, name the file <code>.gitignore.</code> (with a period at the end of the file name) and Windows will rename it to <code>.gitignore</code></li>
+<li><code>bash -c &quot;touch .gitignore&quot;</code></li>
 </ol>
 <p>Let me know if you know of any other ways and I’ll add them to the list.</p>
 <p>Jon</p>
