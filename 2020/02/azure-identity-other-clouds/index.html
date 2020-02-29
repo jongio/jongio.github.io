@@ -6,30 +6,31 @@
     
     <title>
         
-        Solution to: &#34;Unbound classpath container: JRE System Library [JavaSE-11] in project&#34; in VSCode |
+        How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,vscode,java" />
+    <meta name="keywords" content="azure,sdk,government,cloud" />
     
-    <meta name="description" content="I’m working on Java &#x2F; VS Code project and was getting this error: &quot;Unbound classpath container: &#39;JRE System Library [JavaSE-11]&#39; in project&quot; I’m new to Java and pom.xml files, so it took me">
+    <meta name="description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command az cloud list. I">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to: &quot;Unbound classpath container: JRE System Library [JavaSE-11] in project&quot; in VSCode">
-<meta property="og:url" content="https://blog.jongallant.com/2020/02/vscode-java-unbound-classpath-container/index.html">
+<meta property="og:title" content="How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud">
+<meta property="og:url" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m working on Java &#x2F; VS Code project and was getting this error: &quot;Unbound classpath container: &#39;JRE System Library [JavaSE-11]&#39; in project&quot; I’m new to Java and pom.xml files, so it took me">
+<meta property="og:description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command az cloud list. I">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2020/02/vscode-java-unbound-classpath-container/000098.png">
-<meta property="article:published_time" content="2020-02-29T09:01:52.000Z">
-<meta property="article:modified_time" content="2020-02-29T17:10:46.430Z">
+<meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
+<meta property="article:published_time" content="2020-02-29T13:46:26.000Z">
+<meta property="article:modified_time" content="2020-02-29T22:07:27.187Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
-<meta property="article:tag" content="vscode">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="sdk">
+<meta property="article:tag" content="government">
+<meta property="article:tag" content="cloud">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.jongallant.com/2020/02/vscode-java-unbound-classpath-container/000098.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -196,14 +197,14 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-vscode-java-unbound-classpath-container" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-azure-identity-other-clouds" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution to: &#34;Unbound classpath container: JRE System Library [JavaSE-11] in project&#34; in VSCode
+        How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud
         </h1>
     
 
@@ -212,97 +213,85 @@
         
             <div class="article-subtitle">
                 
-<a href="/2020/02/vscode-java-unbound-classpath-container/" class="article-date">
-    <time datetime="2020-02-29T09:01:52.000Z" itemprop="datePublished">2020-02-29</time>
+<a href="/2020/02/azure-identity-other-clouds/" class="article-date">
+    <time datetime="2020-02-29T13:46:26.000Z" itemprop="datePublished">2020-02-29</time>
 </a>
 
                 
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloud/" rel="tag">cloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/government/" rel="tag">government</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdk/" rel="tag">sdk</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m working on Java / VS Code project and was getting this error:</p>
-<p><code>&quot;Unbound classpath container: 'JRE System Library [JavaSE-11]' in project&quot;</code></p>
-<p>I’m new to Java and pom.xml files, so it took me a while to figure this out.  Ultimately, I used the VS Code Maven extension to generate a new Maven project with the <code>maven-archetype-quickstart</code> template to see what a proper pom.xml file looks like and it generated this:</p>
-<p>You should be able to copy the <code>properties</code> and <code>build</code> sections to your project to resolve the above issue.  LMK if it works for you.</p>
-<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+            <p>Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command <code>az cloud list</code>.</p>
+<p>If you try to use the new Azure Identity SDK with one of those clouds, you will get this error:</p>
+<pre><code class="hljs bash">AADSTS900382: Confidential Client is not supported <span class="hljs-keyword">in</span> Cross Cloud request</code></pre>
+<p>That is because all of the SDKs default to using <code>https://login.microsoftonline.com</code> as the Azure Active Diretory authority host.  Each of the other clouds have different authority host endpoints, as you can see from the Azure Government profile here:</p>
+<p>The <code>activeDirectory</code> property doesn’t end with <code>.com</code> it ends with <code>.us</code>, and every cloud is different.</p>
+<pre><code class="hljs json">&#123;
+    "endpoints": &#123;
+      "activeDirectory": "https://login.microsoftonline.us",
+      "activeDirectoryDataLakeResourceId": null,
+      "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+      "activeDirectoryResourceId": "https://management.core.usgovcloudapi.net/",
+      "batchResourceId": "https://batch.core.usgovcloudapi.net/",
+      "gallery": "https://gallery.usgovcloudapi.net/",
+      "management": "https://management.core.usgovcloudapi.net/",
+      "mediaResourceId": "https://rest.media.usgovcloudapi.net",
+      "microsoftGraphResourceId": "https://graph.microsoft.us/",
+      "ossrdbmsResourceId": "https://ossrdbms-aad.database.usgovcloudapi.net",
+      "resourceManager": "https://management.usgovcloudapi.net/",
+      "sqlManagement": "https://management.core.usgovcloudapi.net:8443/",
+      "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json"
+    &#125;,
+    "isActive": true,
+    "name": "AzureUSGovernment",
+    "profile": "latest",
+    "suffixes": &#123;
+      "acrLoginServerEndpoint": ".azurecr.us",
+      "azureDatalakeAnalyticsCatalogAndJobEndpoint": null,
+      "azureDatalakeStoreFileSystemEndpoint": null,
+      "keyvaultDns": ".vault.usgovcloudapi.net",
+      "sqlServerHostname": ".database.usgovcloudapi.net",
+      "storageEndpoint": "core.usgovcloudapi.net"
+    &#125;
+  &#125;,</code></pre>
+<p>When you instantiate <code>Azure.Identity.DefaultAzureCredential()</code> without any parameters:</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential();</code></pre>
+<p>You will get the following error:</p>
+<pre><code class="hljs bash">AADSTS900382: Confidential Client is not supported <span class="hljs-keyword">in</span> Cross Cloud request</code></pre>
+<p>What you need to do is instantiate DefaultAzureCredential with the proper authority host for the cloud you are targeting. Run <code>az cloud list</code> to find the appropriate <code>activeDirectory</code> endpoint.</p>
+<p>Here’s what you need to do for each language:</p>
+<blockquote>
+<p>You will notice that Python has the concept of KnownAuthorities and the other languages require you to enter the full URL.  I have filed issues with each of the other languages to support KnownAuthorities as well: <a href="https://github.com/Azure/azure-sdk/issues/1054" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk/issues/1054</a></p>
+</blockquote>
+<h2 id="NET"><a class="header-anchor" href="#NET"></a>.NET</h2>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> options = <span class="hljs-keyword">new</span> DefaultAzureCredentialOptions &#123; AuthorityHost = <span class="hljs-keyword">new</span> Uri(<span class="hljs-string">"https://login.microsoftonline.us/"</span>) &#125;;
+<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> KeyClient(<span class="hljs-keyword">new</span> Uri(keyVaultUrl), <span class="hljs-keyword">new</span> DefaultAzureCredential(options));</code></pre>
+<h2 id="Java"><a class="header-anchor" href="#Java"></a>Java</h2>
+<p>The Azure Java SDK doesn’t currently let you set the authority host on DefaultAzureCredential, so you have two options:</p>
+<blockquote>
+<p>I have filed an issue to fix this here: <a href="https://github.com/Azure/azure-sdk-for-java/issues/8626" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk-for-java/issues/8626</a></p>
+</blockquote>
+<h3 id="Option-1"><a class="header-anchor" href="#Option-1"></a>Option 1</h3>
+<p>Use reflection to set the underlying <code>identityClientOptions</code> property:</p>
+<pre><code class="hljs java">IdentityClientOptions options = <span class="hljs-keyword">new</span> IdentityClientOptions().setAuthorityHost(<span class="hljs-string">"https://login.microsoftonline.us/"</span>);
+DefaultAzureCredentialBuilder cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder();
+Field identityClientOptions = cred.getClass().getSuperclass().getDeclaredField(<span class="hljs-string">"identityClientOptions"</span>);
+identityClientOptions.setAccessible(<span class="hljs-keyword">true</span>);
+identityClientOptions.set(cred, options);
 
-<span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0"</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-  <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.jongallant<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>azgov-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>azgov-java<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- FIXME change it to the project's website --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://www.example.com<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>1.7<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>1.7<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
-
-     <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.11<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">pluginManagement</span>&gt;</span><span class="hljs-comment">&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-clean-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-resources-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.8.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.22.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-jar-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-install-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.5.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-deploy-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.8.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-site-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.7.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-project-info-reports-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">pluginManagement</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre>
+KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(dotenv.get(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
+        .credential(cred.build()).buildClient();</code></pre>
+<h3 id="Option-2"><a class="header-anchor" href="#Option-2"></a>Option 2</h3>
+<p>Use the EnvironmentCredentialBuilder class instead of DefaultAzureCredentialBuilder:</p>
+<pre><code class="hljs java">KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(dotenv.get(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
+     .credential(<span class="hljs-keyword">new</span> EnvironmentCredentialBuilder().authorityHost(<span class="hljs-string">"https://login.microsoftonline.us/"</span>).build()).buildClient();</code></pre>
+<h2 id="Python"><a class="header-anchor" href="#Python"></a>Python</h2>
+<pre><code class="hljs python">credential = DefaultAzureCredential(authority=KnownAuthorities.AZURE_GOVERNMENT)</code></pre>
+<h2 id="TypeScript"><a class="header-anchor" href="#TypeScript"></a>TypeScript</h2>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential(&#123; <span class="hljs-attr">authorityHost</span>: <span class="hljs-string">"https://login.microsoftonline.us"</span> &#125;);</code></pre>
 
         </div>
         <footer>
@@ -383,26 +372,13 @@
     
     <nav id="article-nav">
         
-            <a href="/2020/02/azure-identity-other-clouds/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2020/02/amazon-prime-annual-payment-option/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2020/02/vscode-java-unbound-classpath-container/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            How to Find the Amazon Prime Annual Membership Signup Option
+                            Solution to: &#34;Unbound classpath container: JRE System Library [JavaSE-11] in project&#34; in VSCode
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -480,7 +456,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2020/02/vscode-java-unbound-classpath-container/';
+    var disqus_url = 'https://blog.jongallant.com/2020/02/azure-identity-other-clouds/';
     
     (function() {
     var dsq = document.createElement('script');

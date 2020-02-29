@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-02-29T17:10:46.430Z</updated>
+  <updated>2020-02-29T22:07:27.187Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud</title>
+    <link href="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/"/>
+    <id>https://blog.jongallant.com/2020/02/azure-identity-other-clouds/</id>
+    <published>2020-02-29T13:46:26.000Z</published>
+    <updated>2020-02-29T22:07:27.187Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command &lt;code&gt;az cloud list&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If you try to use the new Azure Identity SDK with one of those clouds, you
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/"/>
+    
+      <category term="government" scheme="https://blog.jongallant.com/tags/government/"/>
+    
+      <category term="cloud" scheme="https://blog.jongallant.com/tags/cloud/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to: &quot;Unbound classpath container: JRE System Library [JavaSE-11] in project&quot; in VSCode</title>
@@ -668,44 +704,6 @@ export default class CategoryRating extends Vue {
       <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
     
       <category term="typescript" scheme="https://blog.jongallant.com/tags/typescript/"/>
-    
-      <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
-    
-      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How I Resolved Vue.js, VSCode, Vetur, Prettyhtml, and Prettier Formatting and ES Lint Issues</title>
-    <link href="https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/"/>
-    <id>https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/</id>
-    <published>2019-02-04T09:56:45.000Z</published>
-    <updated>2019-02-05T19:14:53.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;vuevscode.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I spent way too much time this weekend debugging Vue.js - Vetur - Prettyhtml - Prettier - Beautify - Eslint issues.&lt;/p&gt;
-&lt;p&gt;Here’s what I discovered:&lt;/p&gt;
-&lt;p&gt;By default, &lt;a href=&quot;https://vuejs.github.io/vetur/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vetur&lt;/a&gt; (The
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/"/>
-    
-      <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
     
       <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
     
