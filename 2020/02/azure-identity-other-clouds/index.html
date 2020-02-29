@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="azure,sdk,government,cloud" />
     
-    <meta name="description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command az cloud list. I">
+    <meta name="description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command az cloud list. I">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud">
 <meta property="og:url" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command az cloud list. I">
+<meta property="og:description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command az cloud list. I">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta property="article:published_time" content="2020-02-29T13:46:26.000Z">
-<meta property="article:modified_time" content="2020-02-29T22:07:27.187Z">
+<meta property="article:modified_time" content="2020-02-29T23:45:45.847Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -224,7 +224,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command <code>az cloud list</code>.</p>
+            <p>Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command <code>az cloud list</code>.</p>
 <p>If you try to use the new Azure Identity SDK with one of those clouds, you will get this error:</p>
 <pre><code class="hljs bash">AADSTS900382: Confidential Client is not supported <span class="hljs-keyword">in</span> Cross Cloud request</code></pre>
 <p>That is because all of the SDKs default to using <code>https://login.microsoftonline.com</code> as the Azure Active Diretory authority host.  Each of the other clouds have different authority host endpoints, as you can see from the Azure Government profile here:</p>

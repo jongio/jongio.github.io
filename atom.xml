@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-02-29T22:07:27.187Z</updated>
+  <updated>2020-02-29T23:45:45.847Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/"/>
     <id>https://blog.jongallant.com/2020/02/azure-identity-other-clouds/</id>
     <published>2020-02-29T13:46:26.000Z</published>
-    <updated>2020-02-29T22:07:27.187Z</updated>
+    <updated>2020-02-29T23:45:45.847Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full CLOUD list and associated endpoints via the Azure CLI command &lt;code&gt;az cloud list&lt;/code&gt;.&lt;/p&gt;
+          &lt;p&gt;Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command &lt;code&gt;az cloud list&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;If you try to use the new Azure Identity SDK with one of those clouds, you
         
       
