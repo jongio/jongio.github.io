@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
 <meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
-<meta property="article:modified_time" content="2020-02-29T03:57:46.668Z">
+<meta property="article:modified_time" content="2020-03-05T17:58:13.940Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -308,11 +308,11 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <p>If you have all the latest versions of the SDKs and tools installed, as of 2/2/2020, your csproj file will look like the following:</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.0<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.1<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">AzureFunctionsVersion</span>&gt;</span>v3<span class="hljs-tag">&lt;/<span class="hljs-name">AzureFunctionsVersion</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.NET.Sdk.Functions"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"3.0.1"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.NET.Sdk.Functions"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"3.0.3"</span> /&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"host.json"</span>&gt;</span>
@@ -324,10 +324,6 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
     <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span></code></pre>
-<blockquote>
-<p>It’s okay that it lists <code>netcoreapp3.0</code> instead of <code>netcoreapp3.1</code>, but feel free to change it if you need to.  I created a bug here to track that issue: <a href="https://github.com/Azure/azure-functions-core-tools/issues/1792" target="_blank" rel="noopener">[v3] func init created project with netcoreapp3.0 not netcoreapp3.1 #1792</a><br>
-Update 2/28/2020: That issue has been resolved with Function Core Tools release 3.0.2245: <a href="https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2245" target="_blank" rel="noopener">https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2245</a>.  It now defaults to netcoreapp3.1 and Microsoft.NET.Sdk.Functions 3.0.3.</p>
-</blockquote>
 <ol start="3">
 <li>Change Directory</li>
 </ol>
