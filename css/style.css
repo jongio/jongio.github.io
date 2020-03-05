@@ -18,7 +18,7 @@
   font-size: 2em;
   position: relative;
   padding-bottom: 5px;
-  border-bottom: 1px solid #28405c;
+  border-bottom: 4px solid #28405c;
 }
 .widget h2:before,
 .article-entry h2:before {
@@ -33,16 +33,18 @@
 }
 .widget h3,
 .article-entry h3 {
-  font-size: 1.3em;
+  font-size: 1.5em;
   border-bottom: 3px solid #28405c;
 }
 .widget h4,
 .article-entry h4 {
-  font-size: 1em;
+  font-size: 1.3em;
+  border-bottom: 2px solid #28405c;
 }
 .widget h5,
 .article-entry h5 {
   font-size: 1em;
+  border-bottom: 1px solid #28405c;
 }
 .widget h6,
 .article-entry h6 {
@@ -91,6 +93,10 @@
 }
 .article-entry .highlight {
   background-color: #f6f8fa;
+}
+.article-entry code:not(.hljs) {
+  background-color: #f8f8f8;
+  padding: 3px;
 }
 .article-tag-list {
   list-style: none;
@@ -1085,8 +1091,19 @@ a.article-title:hover {
 .article-entry ul {
   list-style: disc inside;
 }
+.article-entry ul li {
+  padding-left: 10px;
+}
 .article-entry ol {
   list-style: decimal inside;
+}
+.article-entry ol li {
+  padding-top: 10px;
+  font-weight: bold;
+}
+.article-entry ol + pre,
+.article-entry ul li pre {
+  padding-top: 10px;
 }
 .article-entry ol li p,
 .article-entry ul li p {
