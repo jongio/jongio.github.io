@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-03-14T06:09:12.021Z</updated>
+  <updated>2020-04-12T21:14:52.078Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to play Ticket To Ride online with Steam</title>
+    <link href="https://blog.jongallant.com/2020/04/ticket-to-ride-steam/"/>
+    <id>https://blog.jongallant.com/2020/04/ticket-to-ride-steam/</id>
+    <published>2020-04-12T09:08:53.000Z</published>
+    <updated>2020-04-12T21:14:52.078Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://www.daysofwonder.com/tickettoride&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Ticket to Ride&lt;/a&gt; is the “go to” board game for me and my family. We’ve been playing for years and like it a lot because it is easy to learn, has a good amount of both luck and strategy, and it is fun for all
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Gaming" scheme="https://blog.jongallant.com/category/Tech/Gaming/"/>
+    
+    
+      <category term="gaming" scheme="https://blog.jongallant.com/tags/gaming/"/>
+    
+      <category term="steam" scheme="https://blog.jongallant.com/tags/steam/"/>
+    
+      <category term="tickettoride" scheme="https://blog.jongallant.com/tags/tickettoride/"/>
+    
+  </entry>
   
   <entry>
     <title>How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud</title>
@@ -666,48 +699,6 @@
       <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
     
       <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Experimental support for decorators is a feature that is subject to change in a future release. Set the &#39;experimentalDecorators&#39; option to remove this warning.</title>
-    <link href="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/"/>
-    <id>https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/</id>
-    <published>2019-02-06T16:06:23.000Z</published>
-    <updated>2019-02-07T00:14:48.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;With this code:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;@Component
-export default class CategoryRating extends Vue {
-  @Prop({default: {}}) category: any;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I kept getting this VS Code error:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Experimental support for decorators is a feature that is subject
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
-    
-      <category term="typescript" scheme="https://blog.jongallant.com/tags/typescript/"/>
-    
-      <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
-    
-      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
     
   </entry>
   
