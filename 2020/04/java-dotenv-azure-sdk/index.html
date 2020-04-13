@@ -6,23 +6,30 @@
     
     <title>
         
-        Archive: 2020 |
+        How to use .env files with the Azure SDK for Java |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/archives/2020/index.html">
+    <meta name="keywords" content="azure,java,azuresdk" />
+    
+    <meta name="description" content="I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level. Today, if you try to use the Azure SDKs with the java-dotenv pac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use .env files with the Azure SDK for Java">
+<meta property="og:url" content="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
+<meta property="og:description" content="I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level. Today, if you try to use the Azure SDKs with the java-dotenv pac">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/002.png">
+<meta property="article:published_time" content="2020-04-13T13:38:17.000Z">
+<meta property="article:modified_time" content="2020-04-13T22:05:55.684Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="azuresdk">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/002.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -174,7 +181,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    Archive: 2020
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -189,362 +196,129 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
+                            <article id="post-java-dotenv-azure-sdk" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
     
-    <div class="archive-year-wrap">
-        <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>
-            2020</a>
-    </div>
-    
-    <div class="archives">
-        
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-04-13T13:38:17.000Z" itemprop="datePublished">
-                    2020-04-13</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/04/java-dotenv-azure-sdk/">How to use .env files with the Azure SDK for Java</a>
+        <h1 class="article-title" itemprop="name">
+        How to use .env files with the Azure SDK for Java
         </h1>
     
 
-        <p class="article-excerpt">
-            I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level. Today, if you try to use the Azure SDKs with the java-dotenv pac
-        </p>
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2020/04/java-dotenv-azure-sdk/" class="article-date">
+    <time datetime="2020-04-13T13:38:17.000Z" itemprop="datePublished">2020-04-13</time>
+</a>
+
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azuresdk/" rel="tag">azuresdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level. Today, if you try to use the Azure SDKs with the <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">java-dotenv package</a>, it will not work because java-dotenv does not write to System environment variables or System properties. The TLDR is at the bottom, so you can scroll down to get the solution to use .env with Azure SDK for Java.</p>
+<h2 id="How-env-files-work"><a class="header-anchor" href="#How-env-files-work"></a>How .env files work</h2>
+<p>Here’s an example of a .env file.</p>
+<pre><code class="hljs bash">AZURE_CLIENT_ID=d40990d4
+AZURE_CLIENT_SECRET=9eb93866
+AZURE_TENANT_ID=63296244-
+AZURE_KEYVAULT_URL=https://jongkv2.vault.usgovcloudapi.net/
+AZURE_AUTHORITY_HOST=login.microsoftonline.us</code></pre>
+<p>I then use a standard .env package to load the values into the currently running process, like this:</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.Dotenv;
+
+Dotenv dotenv = Dotenv.load();
+
+dotenv.get(<span class="hljs-string">"AZURE_CLIENT_ID"</span>)</code></pre>
+<p>That uses this java-dotenv package: <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">https://github.com/cdimascio/java-dotenv</a> to load the .env file and then read the value from <code>AZURE_CLIENT_ID</code></p>
+<h2 id="The-issue-with-Java-and-env-files"><a class="header-anchor" href="#The-issue-with-Java-and-env-files"></a>The issue with Java and .env files</h2>
+<p>All other languages I work with also automatically stuff those values into the standard machine environment variables and can be access like this C# example:</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> clientId = System.GetEnvironmentVariable(<span class="hljs-string">"AZURE_CLIENT_ID"</span>);</code></pre>
+<p>But that doesn’t work in Java.  This code…</p>
+<pre><code class="hljs java">Dotenv dotenv = Dotenv.load();
+String clientId = System.getenv(<span class="hljs-string">"AZURE_CLIENT_ID"</span>);</code></pre>
+<p>…will return <code>null</code> for clientId, because the Java library java-dotenv does not stuff environment variables and it doesn’t look like there’s an easy way to do so with Java.  I found some hacks, but they were rough.  Here’s a link to the java-dotenv FAQ on this: <a href="https://github.com/cdimascio/java-dotenv#faq" target="_blank" rel="noopener">https://github.com/cdimascio/java-dotenv#faq</a></p>
+<blockquote>
+<p>Q: Why should I use dotenv.get(“MY_ENV_VAR”) instead of System.getenv(“MY_ENV_VAR”)<br>
+A: Since Java does not provide a way to set environment variables on a currently running process, vars listed in .env cannot be set and thus cannot be retrieved using System.getenv(…).</p>
+</blockquote>
+<h2 id="The-issue-with-Azure-SDK-and-java-dotenv"><a class="header-anchor" href="#The-issue-with-Azure-SDK-and-java-dotenv"></a>The issue with Azure SDK and java-dotenv</h2>
+<p>If you try to use any of the Azure SDK classes that depend on environment variables, like <a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#authenticating-with-defaultazurecredential" target="_blank" rel="noopener"><code>DefaultAzureCredential</code></a>, they will not work with java-dotenv out of the box.</p>
+<p>This is because java-dotenv does not write to system environment variables or system properties - it stuffs the variables in the Dotenv class and stops there.</p>
+<p>The Azure SDK obviously doesn’t know to look for settings in the Dotenv instance.</p>
+<h2 id="The-solution-to-using-Azure-SDK-with-java-dotenv"><a class="header-anchor" href="#The-solution-to-using-Azure-SDK-with-java-dotenv"></a>The solution to using Azure SDK with java-dotenv</h2>
+<h3 id="Azure-SDK-for-Java-reads-from-both-System-properties-and-environment-variables"><a class="header-anchor" href="#Azure-SDK-for-Java-reads-from-both-System-properties-and-environment-variables"></a>Azure SDK for Java reads from both System properties and environment variables</h3>
+<p>Luckily, the Azure SDK for Java reads from both environment variables and system properties.  As you can see in the <a href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/Configuration.java" target="_blank" rel="noopener"><code>Configuration.java</code> file</a>, both <code>System::getProperty</code> and <code>System::getenv</code> are implemented as configuration loaders:</p>
+<pre><code class="hljs java"><span class="hljs-comment">/*
+    * System property loader.
+    */</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Function&lt;String, String&gt; PROPERTY_LOADER = System::getProperty;
+
+<span class="hljs-comment">/*
+    * Environment variable loader.
+    */</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Function&lt;String, String&gt; ENV_VAR_LOADER = System::getenv;
+
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> List&lt;Function&lt;String, String&gt;&gt; LOADERS = Arrays.asList(PROPERTY_LOADER, ENV_VAR_LOADER);</code></pre>
+<p>And then the Azure SDK configuration object loads from both locations here:</p>
+<pre><code class="hljs java"><span class="hljs-comment">/*
+* Attempts to load the configuration from the environment.
+*
+* The runtime parameters are checked first followed by the environment variables.
+*
+* @param name Name of the configuration.
+* @return If found the loaded configuration, otherwise null.
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">load</span><span class="hljs-params">(String name)</span> </span>&#123;
+    <span class="hljs-keyword">for</span> (Function&lt;String, String&gt; loader : LOADERS) &#123;
+        String value = loader.apply(name);
+        <span class="hljs-keyword">if</span> (value != <span class="hljs-keyword">null</span>) &#123;
+            <span class="hljs-keyword">return</span> value;
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+&#125;</code></pre>
+<h3 id="Copy-java-dotenv-properties-to-System-properties"><a class="header-anchor" href="#Copy-java-dotenv-properties-to-System-properties"></a>Copy java-dotenv properties to System properties</h3>
+<p>Because Azure SDK reads from System properties - you can simply copy all of the java-dotenv properties to system properties and then the Azure SDK will read them.</p>
+<p>My fellow Azure SDK dev Srikanta wrote the following code to copy all properties from dotenv to system properties.  He is going to work with the java-dotenv project to see if we can get this implemented as a feature in the library itself. For now, copy this to your project.</p>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loadEnvironmentProperties</span><span class="hljs-params">()</span> </span>&#123;
+    Dotenv ENVIRONMENT = Dotenv.load();
+    ENVIRONMENT.entries().forEach(entry -&gt; System.setProperty(entry.getKey(), entry.getValue()));
+&#125;</code></pre>
+<p>Then call <code>loadEnvironmentProperties</code> before you use the Azure SDKs.</p>
+<pre><code class="hljs java">loadEnvironmentProperties();
+
+DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder().build();
+
+KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getProperty(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
+                .credential(cred).buildClient();</code></pre>
+<p>… and it should just work.</p>
+<p>Let me know if you run into any issues.</p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        
 
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-04-12T09:08:53.000Z" itemprop="datePublished">
-                    2020-04-12</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Gaming/">Gaming</a>
-        </div>
-        
+    <section id="comments">
     
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/04/ticket-to-ride-steam/">How to play Ticket To Ride online with Steam</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Ticket to Ride is the “go to” board game for me and my family. We’ve been playing for years and like it a lot because it is easy to learn, has a good amount of both luck and strategy, and it is fun fo
-        </p>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-            
-        </div>
-        
-        
 
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-29T13:46:26.000Z" itemprop="datePublished">
-                    2020-02-29</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
     
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/azure-identity-other-clouds/">How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command az cloud list.
-I
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-29T09:01:52.000Z" itemprop="datePublished">
-                    2020-02-29</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/vscode-java-unbound-classpath-container/">Solution to: &#34;Unbound classpath container: JRE System Library [JavaSE-11] in project&#34; in VSCode</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I’m working on Java / VS Code project and was getting this error:
-&quot;Unbound classpath container: 'JRE System Library [JavaSE-11]' in project&quot;
-I’m new to Java and pom.xml files, so it took me 
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-05T22:51:34.000Z" itemprop="datePublished">
-                    2020-02-05</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/amazon-prime-annual-payment-option/">How to Find the Amazon Prime Annual Membership Signup Option</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Not sure how, but Amazon charged my Prime membership to the wrong card. I contacted them via chat to credit that card and charge my primary card.  They had to make an exception to give me the credit a
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-05T01:42:47.000Z" itemprop="datePublished">
-                    2020-02-05</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/azurite-https-defaultazurecredential/">Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with 
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-02T13:35:43.000Z" itemprop="datePublished">
-                    2020-02-02</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/azure-functions-blob-managed-identity-part3/">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 3)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-02T13:35:38.000Z" itemprop="datePublished">
-                    2020-02-02</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/azure-functions-blob-managed-identity-part2/">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 2)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-02-02T08:32:07.000Z" itemprop="datePublished">
-                    2020-02-02</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/02/azure-functions-blob-managed-identity-part1/">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 1)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-01-18T06:28:25.000Z" itemprop="datePublished">
-                    2020-01-18</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/01/python-loop-range-single-item/">How to loop over a Python range that has a single item - zero length range</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I’m working on an app that accepts user input of a start year and end year, loops through those years, and outputs the year.
-For example, given the start year and end year of 2020, I want a loop to ex
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-01-17T09:13:18.000Z" itemprop="datePublished">
-                    2020-01-17</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/01/azure-data-explorer-rest/">How to use the Azure Data Explorer (kusto) REST API with Httpie</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I’m working on project that pulls gharchive data into Azure Data Explorer (kusto) and I decided to try to do all of my setup with the Azure CLI.  I could easily create my cluster and database with the
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2020-01-08T11:43:20.000Z" itemprop="datePublished">
-                    2020-01-08</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2020/01/onedrive-rename-remove-spaces-from-folder-name/">How to rename or remove spaces from OneDrive folder name</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format OneDrive - {
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-        
-    </div>
-</section>
+    </section>
 
 
                             
@@ -605,6 +379,24 @@ For example, given the start year and end year of 2020, I want a loop to ex
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2020/04/ticket-to-ride-steam/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            How to play Ticket To Ride online with Steam
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -675,11 +467,13 @@ For example, given the start year and end year of 2020, I want a loop to ex
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

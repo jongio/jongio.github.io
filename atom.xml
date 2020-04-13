@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-04-12T21:14:52.078Z</updated>
+  <updated>2020-04-13T22:05:55.684Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to use .env files with the Azure SDK for Java</title>
+    <link href="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/"/>
+    <id>https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/</id>
+    <published>2020-04-13T13:38:17.000Z</published>
+    <updated>2020-04-13T22:05:55.684Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level. Today, if you try to use the Azure SDKs with the &lt;a href=&quot;https://github.com/cdimascio/java-dotenv&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java-dotenv package&lt;/a&gt;, it
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
+    
+      <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
+    
+  </entry>
   
   <entry>
     <title>How to play Ticket To Ride online with Steam</title>
@@ -661,44 +694,6 @@
       <category term="consumer" scheme="https://blog.jongallant.com/tags/consumer/"/>
     
       <category term="insurance" scheme="https://blog.jongallant.com/tags/insurance/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Vue.js TypeError: Cannot set property &#39;render&#39; of undefined</title>
-    <link href="https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/"/>
-    <id>https://blog.jongallant.com/2019/02/vuejs-typeerror-cannot-set-property-render-of-undefined/</id>
-    <published>2019-02-11T11:22:21.000Z</published>
-    <updated>2019-02-11T19:29:57.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;000056.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Developing a Vue.js app and I was getting this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;Uncaught TypeError: Cannot set property &#39;render&#39; of undefined
-    at normalizeComponent (componentNormalizer.js:24)
-    at Module../src/App.vue (App.vue?180a:8)
-    at
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="javascript" scheme="https://blog.jongallant.com/tags/javascript/"/>
-    
-      <category term="vuejs" scheme="https://blog.jongallant.com/tags/vuejs/"/>
-    
-      <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
     
   </entry>
   
