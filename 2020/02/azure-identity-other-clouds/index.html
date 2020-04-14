@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta property="article:published_time" content="2020-02-29T13:46:26.000Z">
-<meta property="article:modified_time" content="2020-03-14T06:09:12.021Z">
+<meta property="article:modified_time" content="2020-04-14T01:29:04.172Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -274,7 +274,23 @@
 <span class="hljs-comment">// var options = new DefaultAzureCredentialOptions &#123; AuthorityHost =  new Uri("https://login.microsoftonline.us/") &#125;;</span>
 <span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> KeyClient(<span class="hljs-keyword">new</span> Uri(keyVaultUrl), <span class="hljs-keyword">new</span> DefaultAzureCredential(options));</code></pre>
 <h2 id="Java"><a class="header-anchor" href="#Java"></a>Java</h2>
-<h3 id="Option-1-Version-1-1-0-beta-2"><a class="header-anchor" href="#Option-1-Version-1-1-0-beta-2"></a>Option 1 (Version 1.1.0-beta.2 +)</h3>
+<h3 id="Option-1-Azure-Identity-Version-1-1-0-beta-3"><a class="header-anchor" href="#Option-1-Azure-Identity-Version-1-1-0-beta-3"></a>Option 1 (Azure Identity Version 1.1.0-beta.3)</h3>
+<p>NOTE: The <code>KnownAuthorityHosts</code> class was introduced in <code>azure-identity</code>version <code>1.1.0-beta.3</code>. Please include the following in your pom.xml file</p>
+<p>pom.xml</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.azure<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>azure-identity<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.1.0-beta.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre>
+<p>App.java</p>
+<pre><code class="hljs java"><span class="hljs-comment">// Version 1.1.0-beta.3 or greater</span>
+DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder().authorityHost(KnownAuthorityHosts.AZURE_US_GOVERNMENT).build();
+
+KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
+  .buildClient();</code></pre>
+<h3 id="Option-2-Azure-Identity-Version-1-1-0-beta-2"><a class="header-anchor" href="#Option-2-Azure-Identity-Version-1-1-0-beta-2"></a>Option 2 (Azure Identity Version 1.1.0-beta.2 +)</h3>
 <p>NOTE: The <code>DefaultAzureCredentialBuilder().authorityHost</code> method was introduced in <code>azure-identity</code>version <code>1.1.0-beta.2</code>. Please include the following in your pom.xml file</p>
 <p>pom.xml</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
@@ -285,15 +301,14 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre>
 <p>App.java</p>
-<pre><code class="hljs java">
-<span class="hljs-comment">// Version 1.1.0-beta.2 or greater</span>
+<pre><code class="hljs java"><span class="hljs-comment">// Version 1.1.0-beta.2 or greater</span>
 DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder()
   .authorityHost(<span class="hljs-string">"https://login.microsoftonline.us/"</span>).build();
 
-KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(dotenv.get(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
+KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
   .buildClient();</code></pre>
 <p>Prior to version 1.1.0-beta.2 it was not possible to set the DefefaultAzureCredential.authorityHost.  You have two options if you cannot use v1.1.0-beta.2</p>
-<h3 id="Option-2"><a class="header-anchor" href="#Option-2"></a>Option 2</h3>
+<h3 id="Option-3-Azure-Identity-Version-Before-1-1-0"><a class="header-anchor" href="#Option-3-Azure-Identity-Version-Before-1-1-0"></a>Option 3 (Azure Identity Version Before 1.1.0)</h3>
 <blockquote>
 <p>Only needed if you can’t use 1.1.0-beta.2+</p>
 </blockquote>
@@ -304,18 +319,22 @@ Field identityClientOptions = cred.getClass().getSuperclass().getDeclaredField(<
 identityClientOptions.setAccessible(<span class="hljs-keyword">true</span>);
 identityClientOptions.set(cred, options);
 
-KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(dotenv.get(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
+KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
   .credential(cred.build()).buildClient();</code></pre>
-<h3 id="Option-3"><a class="header-anchor" href="#Option-3"></a>Option 3</h3>
+<h3 id="Option-4-Only-if-you-can’t-use-above-options"><a class="header-anchor" href="#Option-4-Only-if-you-can’t-use-above-options"></a>Option 4 (Only if you can’t use above options)</h3>
 <blockquote>
 <p>Only needed if you can’t use reflection and can’t use 1.1.0-beta.2+</p>
 </blockquote>
 <p>Use the <code>EnvironmentCredentialBuilder</code> class instead of <code>DefaultAzureCredentialBuilder</code>:</p>
-<pre><code class="hljs java">KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(dotenv.get(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
+<pre><code class="hljs java">KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
   .credential(<span class="hljs-keyword">new</span> EnvironmentCredentialBuilder().authorityHost(<span class="hljs-string">"https://login.microsoftonline.us/"</span>).build()).buildClient();</code></pre>
 <h2 id="Python"><a class="header-anchor" href="#Python"></a>Python</h2>
 <pre><code class="hljs python">credential = DefaultAzureCredential(authority=KnownAuthorities.AZURE_GOVERNMENT)</code></pre>
-<h2 id="TypeScript"><a class="header-anchor" href="#TypeScript"></a>TypeScript</h2>
+<h2 id="JavaScript-TypeScript"><a class="header-anchor" href="#JavaScript-TypeScript"></a>JavaScript/TypeScript</h2>
+<h3 id="Option-1-Azure-Identity-Version-1-1-0-preview-2"><a class="header-anchor" href="#Option-1-Azure-Identity-Version-1-1-0-preview-2"></a>Option 1 (Azure Identity Version 1.1.0-preview.2+)</h3>
+<p>NOTE: The <code>KnownAuthorityHosts</code> class was introduced in <code>@azure/identity</code>version `1.1.0-preview.2.</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential(&#123; <span class="hljs-attr">authorityHost</span>: KnownAuthorityHosts.AzureGovernment &#125;);</code></pre>
+<h3 id="Option-2-Azure-Identity-Before-Version-1-1-0"><a class="header-anchor" href="#Option-2-Azure-Identity-Before-Version-1-1-0"></a>Option 2 (Azure Identity Before Version 1.1.0)</h3>
 <pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential(&#123; <span class="hljs-attr">authorityHost</span>: <span class="hljs-string">"https://login.microsoftonline.us"</span> &#125;);</code></pre>
 
         </div>
