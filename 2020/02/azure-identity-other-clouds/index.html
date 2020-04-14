@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta property="article:published_time" content="2020-02-29T13:46:26.000Z">
-<meta property="article:modified_time" content="2020-04-14T01:29:04.172Z">
+<meta property="article:modified_time" content="2020-04-14T01:44:29.591Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -266,15 +266,28 @@
 <blockquote>
 <p>You will notice that some languages allow you to use a KnownAuthority enum while others require that you enter the full URL.  I have filed issues with each of the other languages to support KnownAuthorities as well: <a href="https://github.com/Azure/azure-sdk/issues/1054" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk/issues/1054</a></p>
 </blockquote>
-<h2 id="NET"><a class="header-anchor" href="#NET"></a>.NET</h2>
+<h2 id="Setting-Authority-Host-via-the-AZURE-AUTHORITY-HOST-Environment-Variable"><a class="header-anchor" href="#Setting-Authority-Host-via-the-AZURE-AUTHORITY-HOST-Environment-Variable"></a>Setting Authority Host via the AZURE_AUTHORITY_HOST Environment Variable</h2>
+<p>As of the following releases, each Azure SDK library now supports setting authority host via the AZURE_AUTHORITY_HOST environment variable.</p>
+<p><strong>.NET</strong>: <a href="https://www.nuget.org/packages/Azure.Identity/1.2.0-preview.2" target="_blank" rel="noopener">Azure.Identity 1.2.0-preview.2</a></p>
+<p><strong>Python</strong>: <a href="https://pypi.org/project/azure-identity/1.4.0b2/" target="_blank" rel="noopener">azure-identity 1.4.0b2</a></p>
+<blockquote>
+<p>Known issue: Does not allow you to set authority host with URI scheme (https/http): <a href="https://github.com/Azure/azure-sdk-for-python/issues/10819" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk-for-python/issues/10819</a> - you need to set with <code>login.microsoftonline.us</code> instead of <code>https://login.microsoftonline.us</code></p>
+</blockquote>
+<p><strong>Java</strong>: <a href="https://search.maven.org/artifact/com.azure/azure-identity/1.1.0-beta.3/jar" target="_blank" rel="noopener">com.azure:azure-identity 1.1.0-beta.3</a></p>
+<p><strong>JavaScript</strong>: <a href="https://www.npmjs.com/package/@azure/identity/v/1.1.0-preview.2" target="_blank" rel="noopener">@azure/identity 1.1.0-preview.2</a></p>
+<blockquote>
+<p>Known issue: Does not follow standard order of precedence: <a href="https://github.com/Azure/azure-sdk-for-js/issues/8331" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk-for-js/issues/8331</a> - it honors the AZURE_AUTHORITY_HOST env var, even if explicitly set authorityHost property in code.</p>
+</blockquote>
+<h2 id="Setting-Authority-Host-via-the-“Authority-Host”-property-and-KnownAuthorityHosts-enums"><a class="header-anchor" href="#Setting-Authority-Host-via-the-“Authority-Host”-property-and-KnownAuthorityHosts-enums"></a>Setting Authority Host via the “Authority Host” property and KnownAuthorityHosts enums.</h2>
+<h3 id="NET"><a class="header-anchor" href="#NET"></a>.NET</h3>
 <pre><code class="hljs csharp"><span class="hljs-comment">// Version 1.2.0-preview.1 or greater</span>
 <span class="hljs-keyword">var</span> options = <span class="hljs-keyword">new</span> DefaultAzureCredentialOptions &#123; AuthorityHost = KnownAuthorityHosts.AzureUSGovernment &#125;;
 
 <span class="hljs-comment">// Versions prior to 1.2.0-preview.1</span>
 <span class="hljs-comment">// var options = new DefaultAzureCredentialOptions &#123; AuthorityHost =  new Uri("https://login.microsoftonline.us/") &#125;;</span>
 <span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> KeyClient(<span class="hljs-keyword">new</span> Uri(keyVaultUrl), <span class="hljs-keyword">new</span> DefaultAzureCredential(options));</code></pre>
-<h2 id="Java"><a class="header-anchor" href="#Java"></a>Java</h2>
-<h3 id="Option-1-Azure-Identity-Version-1-1-0-beta-3"><a class="header-anchor" href="#Option-1-Azure-Identity-Version-1-1-0-beta-3"></a>Option 1 (Azure Identity Version 1.1.0-beta.3)</h3>
+<h3 id="Java"><a class="header-anchor" href="#Java"></a>Java</h3>
+<h4 id="Option-1-Azure-Identity-Version-1-1-0-beta-3"><a class="header-anchor" href="#Option-1-Azure-Identity-Version-1-1-0-beta-3"></a>Option 1 (Azure Identity Version 1.1.0-beta.3)</h4>
 <p>NOTE: The <code>KnownAuthorityHosts</code> class was introduced in <code>azure-identity</code>version <code>1.1.0-beta.3</code>. Please include the following in your pom.xml file</p>
 <p>pom.xml</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
@@ -290,7 +303,7 @@ DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzure
 
 KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
   .buildClient();</code></pre>
-<h3 id="Option-2-Azure-Identity-Version-1-1-0-beta-2"><a class="header-anchor" href="#Option-2-Azure-Identity-Version-1-1-0-beta-2"></a>Option 2 (Azure Identity Version 1.1.0-beta.2 +)</h3>
+<h4 id="Option-2-Azure-Identity-Version-1-1-0-beta-2"><a class="header-anchor" href="#Option-2-Azure-Identity-Version-1-1-0-beta-2"></a>Option 2 (Azure Identity Version 1.1.0-beta.2 +)</h4>
 <p>NOTE: The <code>DefaultAzureCredentialBuilder().authorityHost</code> method was introduced in <code>azure-identity</code>version <code>1.1.0-beta.2</code>. Please include the following in your pom.xml file</p>
 <p>pom.xml</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
@@ -308,7 +321,7 @@ DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzure
 KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
   .buildClient();</code></pre>
 <p>Prior to version 1.1.0-beta.2 it was not possible to set the DefefaultAzureCredential.authorityHost.  You have two options if you cannot use v1.1.0-beta.2</p>
-<h3 id="Option-3-Azure-Identity-Version-Before-1-1-0"><a class="header-anchor" href="#Option-3-Azure-Identity-Version-Before-1-1-0"></a>Option 3 (Azure Identity Version Before 1.1.0)</h3>
+<h4 id="Option-3-Azure-Identity-Version-Before-1-1-0"><a class="header-anchor" href="#Option-3-Azure-Identity-Version-Before-1-1-0"></a>Option 3 (Azure Identity Version Before 1.1.0)</h4>
 <blockquote>
 <p>Only needed if you can’t use 1.1.0-beta.2+</p>
 </blockquote>
@@ -321,20 +334,20 @@ identityClientOptions.set(cred, options);
 
 KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
   .credential(cred.build()).buildClient();</code></pre>
-<h3 id="Option-4-Only-if-you-can’t-use-above-options"><a class="header-anchor" href="#Option-4-Only-if-you-can’t-use-above-options"></a>Option 4 (Only if you can’t use above options)</h3>
+<h4 id="Option-4-Only-if-you-can’t-use-above-options"><a class="header-anchor" href="#Option-4-Only-if-you-can’t-use-above-options"></a>Option 4 (Only if you can’t use above options)</h4>
 <blockquote>
 <p>Only needed if you can’t use reflection and can’t use 1.1.0-beta.2+</p>
 </blockquote>
 <p>Use the <code>EnvironmentCredentialBuilder</code> class instead of <code>DefaultAzureCredentialBuilder</code>:</p>
 <pre><code class="hljs java">KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getenv(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
   .credential(<span class="hljs-keyword">new</span> EnvironmentCredentialBuilder().authorityHost(<span class="hljs-string">"https://login.microsoftonline.us/"</span>).build()).buildClient();</code></pre>
-<h2 id="Python"><a class="header-anchor" href="#Python"></a>Python</h2>
+<h3 id="Python"><a class="header-anchor" href="#Python"></a>Python</h3>
 <pre><code class="hljs python">credential = DefaultAzureCredential(authority=KnownAuthorities.AZURE_GOVERNMENT)</code></pre>
-<h2 id="JavaScript-TypeScript"><a class="header-anchor" href="#JavaScript-TypeScript"></a>JavaScript/TypeScript</h2>
-<h3 id="Option-1-Azure-Identity-Version-1-1-0-preview-2"><a class="header-anchor" href="#Option-1-Azure-Identity-Version-1-1-0-preview-2"></a>Option 1 (Azure Identity Version 1.1.0-preview.2+)</h3>
+<h3 id="JavaScript-TypeScript"><a class="header-anchor" href="#JavaScript-TypeScript"></a>JavaScript/TypeScript</h3>
+<h4 id="Option-1-Azure-Identity-Version-1-1-0-preview-2"><a class="header-anchor" href="#Option-1-Azure-Identity-Version-1-1-0-preview-2"></a>Option 1 (Azure Identity Version 1.1.0-preview.2+)</h4>
 <p>NOTE: The <code>KnownAuthorityHosts</code> class was introduced in <code>@azure/identity</code>version `1.1.0-preview.2.</p>
 <pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential(&#123; <span class="hljs-attr">authorityHost</span>: KnownAuthorityHosts.AzureGovernment &#125;);</code></pre>
-<h3 id="Option-2-Azure-Identity-Before-Version-1-1-0"><a class="header-anchor" href="#Option-2-Azure-Identity-Before-Version-1-1-0"></a>Option 2 (Azure Identity Before Version 1.1.0)</h3>
+<h4 id="Option-2-Azure-Identity-Before-Version-1-1-0"><a class="header-anchor" href="#Option-2-Azure-Identity-Before-Version-1-1-0"></a>Option 2 (Azure Identity Before Version 1.1.0)</h4>
 <pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential(&#123; <span class="hljs-attr">authorityHost</span>: <span class="hljs-string">"https://login.microsoftonline.us"</span> &#125;);</code></pre>
 
         </div>
