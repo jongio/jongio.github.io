@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-04-13T22:05:55.684Z</updated>
+  <updated>2020-04-17T14:19:36.852Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution: Visual Studio: We could not refresh the credentials for the account MSAL V3 Deserialization failed to parse the cache contents. </title>
+    <link href="https://blog.jongallant.com/2020/04/vs-could-not-refresh-credentials-msal-v3-deserialization-failure/"/>
+    <id>https://blog.jongallant.com/2020/04/vs-could-not-refresh-credentials-msal-v3-deserialization-failure/</id>
+    <published>2020-04-17T06:57:30.000Z</published>
+    <updated>2020-04-17T14:19:36.852Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I ran into this error yesterday, not sure how I got Visual Studio into this state, but I thought I would post a quick fix - just in case you run into the same issue.  So you know, I have reported this to the Visual Studio team and am helping them figure out what is going on so we can get a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="identity" scheme="https://blog.jongallant.com/tags/identity/"/>
+    
+      <category term="visual studio" scheme="https://blog.jongallant.com/tags/visual-studio/"/>
+    
+      <category term="msal" scheme="https://blog.jongallant.com/tags/msal/"/>
+    
+  </entry>
   
   <entry>
     <title>How to use .env files with the Azure SDK for Java</title>
@@ -664,36 +697,6 @@
       <category term="typescript" scheme="https://blog.jongallant.com/tags/typescript/"/>
     
       <category term="webdev" scheme="https://blog.jongallant.com/tags/webdev/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How I Saved 31% on Insurance...and Other Insurance Tips</title>
-    <link href="https://blog.jongallant.com/2019/02/how-i-saved-31-percent-on-insurance-and-other-insurance-tips/"/>
-    <id>https://blog.jongallant.com/2019/02/how-i-saved-31-percent-on-insurance-and-other-insurance-tips/</id>
-    <published>2019-02-21T07:18:48.000Z</published>
-    <updated>2019-02-21T16:37:54.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;insurance.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I’ve had auto and home insurance with Pemco since 2003, but just switched to Safeco for 31% less.  I wasn’t unhappy with Pemco - as they were responsive to claims and reputable, but unfortunately, they jacked up my rates so much that I had to look around.
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/"/>
-    
-    
-      <category term="consumer" scheme="https://blog.jongallant.com/tags/consumer/"/>
-    
-      <category term="insurance" scheme="https://blog.jongallant.com/tags/insurance/"/>
     
   </entry>
   
