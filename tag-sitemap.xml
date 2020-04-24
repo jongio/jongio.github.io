@@ -3,6 +3,83 @@
 
 
     <url>
+        <loc>https://blog.jongallant.com/tags/devexp/</loc>
+        <lastmod>2020-04-24T02:25:52.970Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/azuresdk/</loc>
+        <lastmod>2020-04-24T02:25:52.970Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/azurite/</loc>
+        <lastmod>2020-04-24T02:25:52.970Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/azure/</loc>
+        <lastmod>2020-04-24T02:25:52.970Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/http/</loc>
+        <lastmod>2020-04-24T02:08:18.008Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/sdk/</loc>
+        <lastmod>2020-04-24T02:08:18.008Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/dotnet/</loc>
+        <lastmod>2020-04-18T01:44:31.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/linux/</loc>
+        <lastmod>2020-04-18T01:44:31.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/net/</loc>
+        <lastmod>2020-04-18T01:44:31.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/identity/</loc>
+        <lastmod>2020-04-18T01:44:31.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/functions/</loc>
+        <lastmod>2020-04-18T01:44:31.583Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://blog.jongallant.com/tags/msal/</loc>
         <lastmod>2020-04-17T14:19:36.852Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -11,13 +88,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/tags/visual-studio/</loc>
-        <lastmod>2020-04-17T14:19:36.852Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/identity/</loc>
         <lastmod>2020-04-17T14:19:36.852Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -33,27 +103,6 @@
     <url>
         <loc>https://blog.jongallant.com/tags/government/</loc>
         <lastmod>2020-04-14T01:44:29.591Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/sdk/</loc>
-        <lastmod>2020-04-14T01:44:29.591Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/azure/</loc>
-        <lastmod>2020-04-14T01:44:29.591Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/azuresdk/</loc>
-        <lastmod>2020-04-13T22:05:55.684Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -122,34 +171,6 @@
     </url>
 
     <url>
-        <loc>https://blog.jongallant.com/tags/dotnet/</loc>
-        <lastmod>2020-03-05T17:58:13.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/linux/</loc>
-        <lastmod>2020-03-05T17:58:13.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/net/</loc>
-        <lastmod>2020-03-05T17:58:13.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/functions/</loc>
-        <lastmod>2020-03-05T17:58:13.940Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://blog.jongallant.com/tags/vscode/</loc>
         <lastmod>2020-02-29T17:10:46.430Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -166,20 +187,6 @@
     <url>
         <loc>https://blog.jongallant.com/tags/amazon/</loc>
         <lastmod>2020-02-06T07:14:30.721Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/azurite/</loc>
-        <lastmod>2020-02-06T02:45:47.045Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/http/</loc>
-        <lastmod>2020-02-06T02:45:47.045Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

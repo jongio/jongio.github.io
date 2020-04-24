@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="azure,sdk,http,azurite" />
     
-    <meta name="description" content="If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with">
+    <meta name="description" content="UPDATE 04&#x2F;23&#x2F;2020 - Azurite now officially supports HTTPS and OAuth.  Please see my new blog here for all the details.  You won’t need to create a reverse-proxy anymore like I describe in this post b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation">
 <meta property="og:url" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with">
+<meta property="og:description" content="UPDATE 04&#x2F;23&#x2F;2020 - Azurite now officially supports HTTPS and OAuth.  Please see my new blog here for all the details.  You won’t need to create a reverse-proxy anymore like I describe in this post b">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
 <meta property="article:published_time" content="2020-02-05T01:42:47.000Z">
-<meta property="article:modified_time" content="2020-02-06T02:45:47.045Z">
+<meta property="article:modified_time" content="2020-04-24T02:08:18.008Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -224,7 +224,11 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a href="https://github.com/Azure/Azurite" target="_blank" rel="noopener">Azurite</a> and you can peek into your storage account with <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a>. Second, you love the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
+            <blockquote>
+<p>UPDATE 04/23/2020 - Azurite now officially supports HTTPS and OAuth.  Please see my new blog here for all the details.  You won’t need to create a reverse-proxy anymore like I describe in this post below. <a href="https://blog.jongallant.com/local-azure-storage-development-with-azurite-azuresdks-storage-explorer">https://blog.jongallant.com/local-azure-storage-development-with-azurite-azuresdks-storage-explorer</a></p>
+</blockquote>
+<hr>
+<p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a href="https://github.com/Azure/Azurite" target="_blank" rel="noopener">Azurite</a> and you can peek into your storage account with <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a>. Second, you love the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
 <p>Here are the problems in a nutshell:</p>
 <ol>
 <li>

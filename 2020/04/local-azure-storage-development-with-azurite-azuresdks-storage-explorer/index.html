@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>
+        
+        Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,azurite,azuresdk,devexp" />
+    
+    <meta name="description" content="Azurite, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer">
+<meta property="og:url" content="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Azurite, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storag">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/azuriteheader.png">
+<meta property="article:published_time" content="2020-04-23T16:21:12.000Z">
+<meta property="article:modified_time" content="2020-04-24T02:25:52.970Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="azurite">
+<meta property="article:tag" content="azuresdk">
+<meta property="article:tag" content="devexp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/azuriteheader.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
+    
+
+    
+    <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Musings/">Musings</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Gaming/">Gaming</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives/">Archive</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/videos/">Videos</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/contact/">Contact</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-local-azure-storage-development-with-azurite-azuresdks-storage-explorer" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/" class="article-date">
+    <time datetime="2020-04-23T16:21:12.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azuresdk/" rel="tag">azuresdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azurite/" rel="tag">azurite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devexp/" rel="tag">devexp</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite</a>, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storage development on your local machine, saving you time and money during all of your tight inner-loop cycles. Prior to the Azurite v3.7.0 release, you could not use any Bearer Token based authentication mechanism like what is provided with Azure Identity’s <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential</a>, because it requires both HTTPS and OAuth.  Now that Azurite supports both, we can new up a Storage client the same way regardless of whether we’re pointing to Azurite or Azure.</p>
+<p>In this post, I’ll show you the tools we have available and how to get everything setup.</p>
+<p>Here are the local dev Azure Storage tools we have available:</p>
+<ul>
+<li><strong>Emulation</strong>: <a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite v3.7.0+</a>: Cross-platform Azure Storage Emulator - a local process that adheres to the Azure Storage interfaces. Azurite V3 does not support Azure Tables yet. If you need Azure Tables, then use Azurite V2 or the Cosmos emulator.</li>
+<li><strong>Development</strong>: <a href="https://aka.ms/azsdk" target="_blank" rel="noopener">Azure SDKs</a>: Cross-platform, multi-language libraries that talk to either Azurite or Azure.  We’ll use the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential</a>, which under the covers, has a chain of credential options and with the <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">latest preview</a>, it will use your Azure CLI credentials.</li>
+<li><strong>Management</strong>: <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a>: Cross-platform application that lets you view and manage Azure Storage with Azurite or Azure.</li>
+</ul>
+<p>We’ll get to the nitty gritty details of getting everything setup in a minute. But in a nutshell, here’s what we’re going to do:</p>
+<h2 id="Local-Certificate"><a class="header-anchor" href="#Local-Certificate"></a>Local Certificate</h2>
+<ol>
+<li>Create a local self-signed certificate</li>
+</ol>
+<pre><code class="hljs bash">mkcert 127.0.0.1.pem</code></pre>
+<h2 id="Azurite"><a class="header-anchor" href="#Azurite"></a>Azurite</h2>
+<ol start="2">
+<li>Start Azurite with HTTPS and OAuth Support</li>
+</ol>
+<pre><code class="hljs bash">azurite --oauth basic --cert 127.0.0.1.pem --key 127.0.0.1-key.pem</code></pre>
+<h2 id="Azure-SDK"><a class="header-anchor" href="#Azure-SDK"></a>Azure SDK</h2>
+<ol start="3">
+<li>Use Azure SDKs to connect to Azurite</li>
+</ol>
+<p>You’ll notice here that we are using the Azurite HTTPS endpoint, and <code>DefaultAzureCredential()</code>, which automatically retrieves the appropriatly scoped Azure Storage token.</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerCient(
+  <span class="hljs-keyword">new</span> Uri(<span class="hljs-string">"https://127.0.0.1:10000/devstoreaccount1/container-name"</span>), 
+  <span class="hljs-keyword">new</span> DefaultAzureCredential()
+);</code></pre>
+<h2 id="Azure-Storage-Explorer"><a class="header-anchor" href="#Azure-Storage-Explorer"></a>Azure Storage Explorer</h2>
+<ol start="4">
+<li>Use Azure Storage Explorer to view the Azurite data</li>
+</ol>
+<p><img src="017.png" alt="'Blobs in storage explorer'"></p>
+<p>Now, let’s go through each step that you need to complete to get this all setup.</p>
+<h2 id="Create-an-Azurite-folder"><a class="header-anchor" href="#Create-an-Azurite-folder"></a>Create an Azurite folder</h2>
+<p>Azurite needs a place to store its metadata and the data you send to it.  You also need a place to store the certificate files we’ll create and it’s best they are in the same folder that you start Azurite.</p>
+<ol>
+<li>Create a folder, I like to put my Azurite files in c:\azurite</li>
+</ol>
+<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> c:\
+mkdir azurite
+<span class="hljs-built_in">cd</span> azurite</code></pre>
+<h2 id="Local-Certificate-Setup"><a class="header-anchor" href="#Local-Certificate-Setup"></a>Local Certificate Setup</h2>
+<p>You need a local self-signed certificate, which is super easy to create with <a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a>.  You have other certificate options available and detailed instructions for those options can be found on the <a href="https://github.com/Azure/Azurite#https-setup" target="_blank" rel="noopener">Azurite installation page</a>.</p>
+<ol>
+<li>Install mkcert</li>
+</ol>
+<p>The mkcert site has many <a href="https://github.com/FiloSottile/mkcert#installation" target="_blank" rel="noopener">installation methods</a>, but I like <a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolately</a>.</p>
+<pre><code class="hljs bash">choco install mkcert</code></pre>
+<ol start="2">
+<li>Trust the mkcert RootCA.pem</li>
+</ol>
+<p>This will add the RootCA created my mkcert to your Trusted Root Certificates.</p>
+<pre><code class="hljs bash">mkcert -install</code></pre>
+<ol start="3">
+<li>Create certificate</li>
+</ol>
+<pre><code class="hljs bash">mkcert 127.0.0.1</code></pre>
+<p>This will create the certificates and output the following:</p>
+<pre><code class="hljs bash">C:\azurite&gt;mkcert 127.0.0.1
+Using the <span class="hljs-built_in">local</span> CA at <span class="hljs-string">"C:\Users\Jon\AppData\Local\mkcert"</span> ✨
+
+Created a new certificate valid <span class="hljs-keyword">for</span> the following names 📜
+ - <span class="hljs-string">"127.0.0.1"</span>
+
+The certificate is at <span class="hljs-string">"./127.0.0.1.pem"</span> and the key at <span class="hljs-string">"./127.0.0.1-key.pem"</span> ✅</code></pre>
+<h2 id="Azurite-Setup"><a class="header-anchor" href="#Azurite-Setup"></a>Azurite Setup</h2>
+<ol>
+<li>Install Azurite</li>
+</ol>
+<p>We’ll use npm here, but you have other options listed on the <a href="https://github.com/Azure/Azurite#getting-started" target="_blank" rel="noopener">Azurite install page</a>.</p>
+<pre><code class="hljs bash">npm install azurite</code></pre>
+<ol start="2">
+<li>Start Azurite</li>
+</ol>
+<p>Run the <code>azurite</code> command and turn on OAuth with <code>--oauth basic</code> and turn on HTTPS with the <code>--cert</code> and <code>--key</code> options.</p>
+<pre><code class="hljs bash">azurite --oauth basic --cert 127.0.0.1.pem --key 127.0.0.1-key.pem</code></pre>
+<p>That will output the following:</p>
+<pre><code class="hljs bash">Azurite Blob service is starting at https://127.0.0.1:10000
+Azurite Blob service is successfully listening at https://127.0.0.1:10000
+Azurite Queue service is starting at https://127.0.0.1:10001
+Azurite Queue service is successfully listening at https://127.0.0.1:10001</code></pre>
+<p>Azurite is now running.</p>
+<h2 id="Azure-CLI-Setup"><a class="header-anchor" href="#Azure-CLI-Setup"></a>Azure CLI Setup</h2>
+<p>To avoid having to create service principals for local development, we’ll install the Azure CLI and login.</p>
+<ol>
+<li>Install the Azure CLI <a href="https://aka.ms/azcliget" target="_blank" rel="noopener">https://aka.ms/azcliget</a></li>
+<li>Run <code>az login</code> to login to the Azure CLI.</li>
+</ol>
+<p>NOTE: You’ll need to install the latest Azure Identity preview for Azure CLI authentication integratino with the Azure SDKs to work. See <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
+<h2 id="Azure-SDK-Setup"><a class="header-anchor" href="#Azure-SDK-Setup"></a>Azure SDK Setup</h2>
+<p>Now, we’ll run some code that hits our Azurite HTTPS endpoints.  All of the following code can be found here: <a href="https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer" target="_blank" rel="noopener">https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer</a></p>
+<p>NOTE: You will need the Azure Identity preview versions for this to work with Azure CLI Credentials, see <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> blobHost = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_BLOB_HOST"</span>);  <span class="hljs-comment">// 126.0.0.1:10000</span>
+<span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>); <span class="hljs-comment">// devstoreaccount1</span>
+<span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
+<span class="hljs-keyword">var</span> emulator = account == <span class="hljs-string">"devstoreaccount1"</span>;
+<span class="hljs-keyword">var</span> blobBaseUri = <span class="hljs-string">$"https://<span class="hljs-subst">&#123;(emulator ? <span class="hljs-string">$"<span class="hljs-subst">&#123;blobHost&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>"</span> : <span class="hljs-string">$"<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;blobHost&#125;</span>"</span>)&#125;</span>/"</span>;
+<span class="hljs-keyword">var</span> blobContainerUri = <span class="hljs-string">$"<span class="hljs-subst">&#123;blobBaseUri&#125;</span><span class="hljs-subst">&#123;container&#125;</span>"</span>;
+
+<span class="hljs-comment">// Generate random string for blob content and file name</span>
+<span class="hljs-keyword">var</span> content = Guid.NewGuid().ToString(<span class="hljs-string">"n"</span>).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>);
+<span class="hljs-keyword">var</span> file = <span class="hljs-string">$"<span class="hljs-subst">&#123;content&#125;</span>.txt"</span>;
+
+<span class="hljs-comment">// With container uri and DefaultAzureCredential</span>
+<span class="hljs-comment">// Since we are using the Azure Identity preview version, DefaultAzureCredential will use your Azure CLI token.</span>
+<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(blobContainerUri), <span class="hljs-keyword">new</span> DefaultAzureCredential());
+
+<span class="hljs-comment">// Create container</span>
+<span class="hljs-keyword">await</span> client.CreateIfNotExistsAsync();
+
+<span class="hljs-comment">// Get content stream</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> stream = <span class="hljs-keyword">new</span> MemoryStream(Encoding.ASCII.GetBytes(content));
+
+<span class="hljs-comment">// Upload blob</span>
+<span class="hljs-keyword">await</span> client.UploadBlobAsync(file, stream);</code></pre>
+<p>When you run the above code, a blob will be added to the container, and when you move to production you just need to update the environment variables to point to Azure instead of Azurite.</p>
+<h2 id="Azure-Storage-Explorer-Setup"><a class="header-anchor" href="#Azure-Storage-Explorer-Setup"></a>Azure Storage Explorer Setup</h2>
+<p>Now, we want to view the blob we just created.  That’s easy with Storage Explorer, but we have to take an extra few steps to add the Azurite HTTPS endpoints.</p>
+<ol>
+<li>Install Azure Storage Explorer</li>
+</ol>
+<p>Go to the <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a> install page and install it.</p>
+<ol start="2">
+<li>Import SSL Certificate</li>
+</ol>
+<p>We need to tell Azure Storage Explorer to use the mkcert RootCA.pem file.</p>
+<p>Run this command to find the mkcert RootCA.pem file</p>
+<pre><code class="hljs bash">mkcert -CAROOT</code></pre>
+<p>Mine is located here:</p>
+<pre><code class="hljs bash">C:\Users\Jon\AppData\Local\mkcert</code></pre>
+<p>In Storage Explorer, select Edit -&gt; SSL Certificates --&gt; Import Certificates</p>
+<p><img src="010.png" alt="'Import certificates'"></p>
+<p>Find the mkcert RootCA file at the location you got from <code>mkcert -CAROOT</code>.</p>
+<p><img src="015.png" alt="'Find RootCA'"></p>
+<p>Restart Storage Explorer</p>
+<p><img src="016.png" alt="'Restart storage explorer'"></p>
+<ol start="3">
+<li>Add Azurite HTTPS Endpoint</li>
+</ol>
+<ul>
+<li>In Storage Explorer, right-click on “Local &amp; Attached -&gt; Storage Accounts” and select “Connect to Azure Storage”</li>
+</ul>
+<p><img src="011.png" alt="'Connect to Azure storage'"></p>
+<ul>
+<li>Select “Use a connection string”</li>
+</ul>
+<p><img src="012.png" alt="'Use connection string'"></p>
+<ul>
+<li>Enter Azurite for the name, and enter the HTTPS connection string:</li>
+</ul>
+<pre><code class="hljs bash">DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;</code></pre>
+<p><img src="013.png" alt="'Use Azurite connection string'"></p>
+<ul>
+<li>Click Connect.</li>
+</ul>
+<p>You will now see Azurite in your list of connections and when you expand it, you will see the container and blobs that you created.</p>
+<p><img src="018.png" alt="'Blobs in storage explorer'"></p>
+<h2 id="Summary"><a class="header-anchor" href="#Summary"></a>Summary</h2>
+<p>In this post, we looked at all the local tools you need for a fast and free inner-loop Azure Storage dev cycle.  We setup Azurite, used the Azure SDKs to create blobs, and viewed them with Azure Storage Explorer.</p>
+<p>I hope this helps you out in your disconnected Azure dev exp.</p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                            
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2020/04/vs-could-not-refresh-credentials-msal-v3-deserialization-failure/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            Solution: Visual Studio: We could not refresh the credentials for the account MSAL V3 Deserialization failed to parse the cache contents. 
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="7222147978"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- rail -->
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="1523952970"
+                data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+    <!-- banner -->
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509" data-ad-slot="8838481977"
+        data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2020
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+
+</html>
