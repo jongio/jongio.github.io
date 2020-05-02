@@ -6,23 +6,28 @@
     
     <title>
         
-        Tag: azure |
+        How to Delete Multiple Azure Resource Groups with Tags, Bash via Azure Cloud Shell, and the Azure CLI |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/tags/azure/page/4/index.html">
+    <meta name="keywords" content="azure" />
+    
+    <meta name="description" content="Azure doesn’t currently provide a way to delete multiple resource groups at the same time. Here’s a method that works for me.  Open Azure Portal https:&#x2F;&#x2F;portal.azure.com Click on Resource Groups Selec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Delete Multiple Azure Resource Groups with Tags, Bash via Azure Cloud Shell, and the Azure CLI">
+<meta property="og:url" content="https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
+<meta property="og:description" content="Azure doesn’t currently provide a way to delete multiple resource groups at the same time. Here’s a method that works for me.  Open Azure Portal https:&#x2F;&#x2F;portal.azure.com Click on Resource Groups Selec">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/011.png">
+<meta property="article:published_time" content="2020-05-02T16:08:02.000Z">
+<meta property="article:modified_time" content="2020-05-02T23:37:46.818Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/011.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -174,7 +179,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em>azure</em>
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -189,127 +194,75 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
-    
-    <div class="archive-year-wrap">
-        <a href="/archives/2012" class="archive-year"><i class="icon fa fa-calendar-o"></i>
-            2012</a>
-    </div>
-    
-    <div class="archives">
+                            <article id="post-azure-delete-multiple-resource-groups" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2012/07/azure-msdn-offer-not-available/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Solution to &#34;This offer is not available&#34; when trying to activate Azure account for MSDN Subscriber...renew your MSDN Subscription." class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2012/07/azure-msdn-offer-not-available/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2012-07-23T22:30:00.000Z" itemprop="datePublished">
-                    2012-07-23</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Azure/">Azure</a>
-            </p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2012/07/azure-msdn-offer-not-available/">Solution to &#34;This offer is not available&#34; when trying to activate Azure account for MSDN Subscriber...renew your MSDN Subscription.</a>
+        How to Delete Multiple Azure Resource Groups with Tags, Bash via Azure Cloud Shell, and the Azure CLI
         </h1>
     
 
-        <p class="article-excerpt">
-            It is very cool that Azure is offering MSDN subscribersup to $3,700 of Azure Benefits (Cloud, SQL, CDN, etc), but the error message you get when your MSDN Subscription has expired needs more detail.
-I
-        </p>
-    </div>
-</article>
-            
-        
-
-
+            </header>
         
         
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2012/07/bing-search-api-azure-csharp/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="How to call the new Azure Marketplace Bing Search API using C#" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2012/07/bing-search-api-azure-csharp/">0</span>
-    
-</span>
-
-    
+            <div class="article-subtitle">
+                
+<a href="/2020/05/azure-delete-multiple-resource-groups/" class="article-date">
+    <time datetime="2020-05-02T16:08:02.000Z" itemprop="datePublished">2020-05-02</time>
 </a>
 
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2012-07-18T07:26:00.000Z" itemprop="datePublished">
-                    2012-07-18</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tutorials/">Tutorials</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2012/07/bing-search-api-azure-csharp/">How to call the new Azure Marketplace Bing Search API using C#</a>
-        </h1>
-    
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li></ul>
 
-        <p class="article-excerpt">
-            It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The Bing API to Azure Marketplace migration doc is a great resource for learning how to call the new Azure
-        </p>
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Azure doesn’t currently provide a way to delete multiple resource groups at the same time.</p>
+<p>Here’s a method that works for me.</p>
+<ol>
+<li>Open Azure Portal <a href="https://portal.azure.com" target="_blank" rel="noopener">https://portal.azure.com</a></li>
+<li>Click on Resource Groups</li>
+<li>Select the Resource Groups that you want to delete</li>
+<li>Click “Assign tags”<br>
+<img src="012.png" alt="&quot;Assign tags&quot;"></li>
+<li>Assign a new tag called “delete”. Click Save. You don’t need to provide a tag value.<br>
+<img src="010.png" alt="&quot;Assign delete tag&quot;"></li>
+<li>Open Azure Cloud Shell <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a> or click on the Azure Shell icon in the Azure Portal toolbar.</li>
+<li>Set active subscription <code>az account set -n {SUB_NAME}</code> (only required if you have more than one sub)</li>
+</ol>
+<blockquote>
+<p>IMPORTANT: By running the following script you understand that you can inadvertantly delete resources that you don’t intend to delete. You cannot hold me or any of my associates responsible for any actions you take against your own Azure subscription. Also, don’t run this in production. This is a dev helper script.</p>
+</blockquote>
+<ol start="8">
+<li>Paste the following script into Cloud Shell and hit enter.</li>
+</ol>
+<p>This script will loop through all resource groups that have the tag ‘delete’ and will prompt you to confirm deletion. If you type ‘y’, then the resource group will be deleted. If you type ‘n’ that resource group will be skipped.</p>
+<p>If you don’t want to be prompted for every resource group, then add a <code>-y</code> to the <code>az group delete -n ${rg}</code> command like so: <code>az group delete -n ${rg} -y</code>. I’m not going to publish that full command because I want you to explicitly understand what you are doing when you add that flag.</p>
+<h2 id="The-Amazing-Multiple-Resource-Group-Bash-Delete-Script"><a class="header-anchor" href="#The-Amazing-Multiple-Resource-Group-Bash-Delete-Script"></a>The Amazing Multiple Resource Group Bash Delete Script</h2>
+<pre><code class="hljs bash"><span class="hljs-keyword">for</span> rg <span class="hljs-keyword">in</span> $(az group list --tag delete --query <span class="hljs-string">'[].name'</span> | jq -r <span class="hljs-string">'.[]'</span>); <span class="hljs-keyword">do</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">"Delete Resource Group: <span class="hljs-variable">$&#123;rg&#125;</span>"</span>; az group delete -n <span class="hljs-variable">$&#123;rg&#125;</span>; <span class="hljs-keyword">done</span></code></pre>
+<p><img src="011.png" alt="&quot;Run delete script&quot;"></p>
+<p>Props to Ruben Koster for helping me figure out how to parse JSON arrays with Bash <a href="https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/" target="_blank" rel="noopener">https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/</a></p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        </div>
+
+    <section id="comments">
+    
         
-        
-        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</section>
 
+    
+    </section>
 
-<nav id="page-nav">
-    <span class="pages">
-        Page 4 
-        of 4</span>
-    <a class="extend prev" rel="prev" href="/tags/azure/page/3/">&amp;laquo;</a><a class="page-number" href="/tags/azure/">1</a><a class="page-number" href="/tags/azure/page/2/">2</a><a class="page-number" href="/tags/azure/page/3/">3</a><span class="page-number current">4</span>
-</nav>
 
                             
                         </div>
@@ -369,6 +322,24 @@ I
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -439,11 +410,13 @@ I
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

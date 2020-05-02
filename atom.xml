@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-04-24T02:25:52.970Z</updated>
+  <updated>2020-05-02T23:37:46.818Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Delete Multiple Azure Resource Groups with Tags, Bash via Azure Cloud Shell, and the Azure CLI</title>
+    <link href="https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/"/>
+    <id>https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/</id>
+    <published>2020-05-02T16:08:02.000Z</published>
+    <updated>2020-05-02T23:37:46.818Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Azure doesn’t currently provide a way to delete multiple resource groups at the same time.&lt;/p&gt;
+&lt;p&gt;Here’s a method that works for me.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Azure Portal &lt;a href=&quot;https://portal.azure.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://portal.azure.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click on Resource
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+  </entry>
   
   <entry>
     <title>Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer</title>
@@ -657,40 +690,6 @@
     
     
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
-    
-      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Postman Collection Created as Read only</title>
-    <link href="https://blog.jongallant.com/2019/03/postman-collection-readonly/"/>
-    <id>https://blog.jongallant.com/2019/03/postman-collection-readonly/</id>
-    <published>2019-03-29T16:05:10.000Z</published>
-    <updated>2019-03-29T23:21:54.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I just tried to create a Postman Collection and I wasn’t able to add any requests to it because it was created as read only.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;000070.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I did a bunch of Googling and Githubbing to no avail.&lt;/p&gt;
-&lt;p&gt;I happened to go to my accounts profile page and noticed this at
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
     
       <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
     
