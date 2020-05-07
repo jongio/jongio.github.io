@@ -6,21 +6,28 @@
     
     <title>
         
+        How to find all the Azure Built-In Roles for Azure RBAC with Azure CLI, PowerShell, Docs, or AzAdvertizer |
+        
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/page/27/index.html">
+    <meta name="keywords" content="azure" />
+    
+    <meta name="description" content="Here are a bunch of ways you can find which roles are built into Azure.  This will come in super handy when you need to assign a role to a service principal or user with Azure CLI commands like this:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to find all the Azure Built-In Roles for Azure RBAC with Azure CLI, PowerShell, Docs, or AzAdvertizer">
+<meta property="og:url" content="https://blog.jongallant.com/2020/05/azure-roles/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
+<meta property="og:description" content="Here are a bunch of ways you can find which roles are built into Azure.  This will come in super handy when you need to assign a role to a service principal or user with Azure CLI commands like this:">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2020/05/azure-roles/015.png">
+<meta property="article:published_time" content="2020-05-07T13:00:33.000Z">
+<meta property="article:modified_time" content="2020-05-07T20:40:53.287Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/05/azure-roles/015.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -169,6 +176,14 @@
                 <div class="main-body-inner">
                     <section id="main">
                         
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
                         <div class="main-body-content">
                             <div class="banner-ad">
                                 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -179,177 +194,76 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
-    
-    <div class="archives">
+                            <article id="post-azure-roles" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/vss-cloaking/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="VSS Cloaking" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/vss-cloaking/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-08T00:01:00.000Z" itemprop="datePublished">
-                    2004-10-08</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/vss-cloaking/">VSS Cloaking</a>
+        How to find all the Azure Built-In Roles for Azure RBAC with Azure CLI, PowerShell, Docs, or AzAdvertizer
         </h1>
     
 
-        <p class="article-excerpt">
-            I finally learned what the cloaking feature of VSS does and wanted to share.
-If you cloak a folder, you are marking it as a folder that you do not want to include in a recursive get.
-For example, lets
-        </p>
-    </div>
-</article>
-            
-        
-
-
+            </header>
         
         
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/name-that-control/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Name That Control" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/name-that-control/">0</span>
-    
-</span>
-
-    
+            <div class="article-subtitle">
+                
+<a href="/2020/05/azure-roles/" class="article-date">
+    <time datetime="2020-05-07T13:00:33.000Z" itemprop="datePublished">2020-05-07</time>
 </a>
 
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-04T10:32:00.000Z" itemprop="datePublished">
-                    2004-10-04</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/name-that-control/">Name That Control</a>
-        </h1>
-    
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li></ul>
 
-        <p class="article-excerpt">
-            What do naming convention do you prefer when naming controls and why?
-Hungarian:  lblUsername
-Pascal: UsernameLabel or Username
-Camel: username
- Other?
-        </p>
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Here are a bunch of ways you can find which roles are built into Azure.  This will come in super handy when you need to assign a role to a service principal or user with Azure CLI commands like this:</p>
+<pre><code class="hljs bash">az role assignment create --assignee 3db3ad97-06be-4c28-aa96-f1bac93aeed3 --role <span class="hljs-string">"Azure Maps Data Reader"</span></code></pre>
+<h2 id="Azure-CLI"><a class="header-anchor" href="#Azure-CLI"></a>Azure CLI</h2>
+<ol>
+<li>Query the big honking json</li>
+</ol>
+<pre><code class="hljs bash">az role definition list</code></pre>
+<ol start="2">
+<li>Query all, but only return Name and Id in a nice table</li>
+</ol>
+<pre><code class="hljs bash">az role definition list --query <span class="hljs-string">"sort_by([].&#123;Name:roleName,Id:name&#125;, &amp;Name)"</span> --output table</code></pre>
+<ol start="3">
+<li>Filter by name contains:</li>
+</ol>
+<p>This one filters for roles with “Map” in the name:</p>
+<pre><code class="hljs bash">az role definition list --query <span class="hljs-string">"sort_by([?contains(roleName, 'Map')].&#123;Name:roleName,Id:name&#125;, &amp;Name)"</span> --output table</code></pre>
+<h2 id="Azure-PowerShell"><a class="header-anchor" href="#Azure-PowerShell"></a>Azure PowerShell</h2>
+<p><a href="https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0</a></p>
+<pre><code class="hljs powershell"><span class="hljs-built_in">Get-AzRoleDefinition</span></code></pre>
+<h2 id="Docs"><a class="header-anchor" href="#Docs"></a>Docs</h2>
+<p>This page has all the built in roles:<br>
+<a href="https://docs.microsoft.com/azure/role-based-access-control/built-in-roles" target="_blank" rel="noopener">https://docs.microsoft.com/azure/role-based-access-control/built-in-roles</a></p>
+<h2 id="AzAdvertizer"><a class="header-anchor" href="#AzAdvertizer"></a>AzAdvertizer</h2>
+<p>Just found this site today by Julian Hayward.  It’s a great way to find roles</p>
+<p><a href="https://www.azadvertizer.net/azrolesadvertizer_all.html" target="_blank" rel="noopener">https://www.azadvertizer.net/azrolesadvertizer_all.html</a></p>
+<p><img src="013.png" alt="'AzAdvertizer'"></p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        </div>
-        
-        
 
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/beyond-compare/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Beyond Compare" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/beyond-compare/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-03T15:50:00.000Z" itemprop="datePublished">
-                    2004-10-03</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/beyond-compare/">Beyond Compare</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I am amazed at how many developers are still using windiff or VSS diff tool. Beyond Compare is great tool that I use almost daily. It allows you to diff files and folders using the context menu of Win
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-            
-        </div>
-        
-        
-        
-    </div>
-</section>
 
+    
+    </section>
 
-<nav id="page-nav">
-    <span class="pages">
-        Page 27 
-        of 27</span>
-    <a class="extend prev" rel="prev" href="/page/26/">&amp;laquo;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span>
-</nav>
 
                             
                         </div>
@@ -409,6 +323,24 @@ Camel: username
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2020/05/azure-delete-multiple-resource-groups/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            How to Delete Multiple Azure Resource Groups with Tags, Bash via Azure Cloud Shell, and the Azure CLI
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -479,11 +411,13 @@ Camel: username
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2020/05/azure-roles/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-05-02T23:37:46.818Z</updated>
+  <updated>2020-05-07T20:40:53.287Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to find all the Azure Built-In Roles for Azure RBAC with Azure CLI, PowerShell, Docs, or AzAdvertizer</title>
+    <link href="https://blog.jongallant.com/2020/05/azure-roles/"/>
+    <id>https://blog.jongallant.com/2020/05/azure-roles/</id>
+    <published>2020-05-07T13:00:33.000Z</published>
+    <updated>2020-05-07T20:40:53.287Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Here are a bunch of ways you can find which roles are built into Azure.  This will come in super handy when you need to assign a role to a service principal or user with Azure CLI commands like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs bash&quot;&gt;az role assignment create --assignee
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Delete Multiple Azure Resource Groups with Tags, Bash via Azure Cloud Shell, and the Azure CLI</title>
@@ -657,43 +687,6 @@
     
     
       <category term="jobs" scheme="https://blog.jongallant.com/tags/jobs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Call the Azure REST APIs with Postman In No Time Flat</title>
-    <link href="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/"/>
-    <id>https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/</id>
-    <published>2019-04-06T16:36:21.000Z</published>
-    <updated>2019-04-08T23:16:06.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;This post will show you the fastest way to call the Azure REST APIs using Postman.&lt;/p&gt;
-&lt;p&gt;We’ll use:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://getpostman.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Postman&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://shell.azure.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Cloud Shell&lt;/a&gt; - &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
-    
-      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
     
   </entry>
   
