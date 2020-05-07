@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
 <meta property="article:published_time" content="2020-02-05T01:42:47.000Z">
-<meta property="article:modified_time" content="2020-04-24T02:08:18.008Z">
+<meta property="article:modified_time" content="2020-05-07T20:52:28.436Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -273,16 +273,16 @@
 <tr>
 <td><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite</a></td>
 <td>Azurite is an open source Azure Storage emulator that supports Windows and Linux.  It starts a local server that behaves like Azure Storage, so you can dev against it like you would Azure.</td>
-<td>No <br/> <a href="https://github.com/Azure/Azurite/issues/38" target="_blank" rel="noopener">#38</a></td>
-<td>No <br/> <a href="https://github.com/Azure/Azurite/issues/389" target="_blank" rel="noopener">#389</a></td>
-<td>Azurite is based on Express, so could easily support HTTPS, but they don’t emulate AAD, so supporting Bearer Tokens is likely not a native option. As I mention in the linked bug, it would be great if we could figure out a way to have a standard Bearer Token (like we do Azurite account key and then use that in DefaultAzureCredential.</td>
+<td>Yes (v3.7)</td>
+<td>Yes (v3.7)</td>
+<td></td>
 </tr>
 <tr>
 <td><a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a></td>
 <td>Allows you to locally view Azure Storage accounts and contents, including Azurite.</td>
-<td>No <br/> <a href="https://github.com/microsoft/AzureStorageExplorer/issues/2598" target="_blank" rel="noopener">#2598</a></td>
+<td>Yes</td>
 <td>Not needed</td>
-<td>Storage explorer is hard-coded to use HTTP for emulators. Linked a bug to the left to change that. We don’t need token support becuase it can connect natively to the endpoints.</td>
+<td>You can point to HTTPS endpoints and import self-signed certs.  See <a href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/">this post</a> for more info.</td>
 </tr>
 <tr>
 <td><a href="https://docs.microsoft.com/azure/storage/common/storage-use-emulator" target="_blank" rel="noopener">Azure Storage Emulator</a></td>
