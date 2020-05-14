@@ -6,29 +6,30 @@
     
     <title>
         
-        How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant |
+        Updated: How to use .env files with the Azure SDK for Java |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,howto" />
+    <meta name="keywords" content="azure,java,azuresdk" />
     
-    <meta name="description" content="Remove Yourself from an Azure Subscription It is not possible to remove yourself from a Subscription.  You have to contact the Subscription owner to remove you.  IMO a user should be able to remove th">
+    <meta name="description" content="Exactly, one month ago, to the day, I wrote a post about how to use .env files with Java and Azure SDKs. The gist of the problem was that the package we use to read the .env files didn’t write those v">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant">
-<meta property="og:url" content="https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant-JONGHOME/index.html">
+<meta property="og:title" content="Updated: How to use .env files with the Azure SDK for Java">
+<meta property="og:url" content="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Remove Yourself from an Azure Subscription It is not possible to remove yourself from a Subscription.  You have to contact the Subscription owner to remove you.  IMO a user should be able to remove th">
+<meta property="og:description" content="Exactly, one month ago, to the day, I wrote a post about how to use .env files with Java and Azure SDKs. The gist of the problem was that the package we use to read the .env files didn’t write those v">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/000015.png">
-<meta property="article:published_time" content="2018-09-28T09:30:11.000Z">
-<meta property="article:modified_time" content="2019-12-30T05:44:57.000Z">
+<meta property="og:image" content="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/021.png">
+<meta property="article:published_time" content="2020-05-13T16:09:30.000Z">
+<meta property="article:modified_time" content="2020-05-14T00:07:03.977Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
-<meta property="article:tag" content="howto">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="azuresdk">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant/000015.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/021.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -180,7 +181,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tutorials/">Tutorials</a>
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -195,14 +196,14 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-remove-yourself-azure-subscription-tenant-JONGHOME" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-java-dotenv-azure-sdk-update" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant
+        Updated: How to use .env files with the Azure SDK for Java
         </h1>
     
 
@@ -211,46 +212,95 @@
         
             <div class="article-subtitle">
                 
-<a href="/2018/09/remove-yourself-azure-subscription-tenant-JONGHOME/" class="article-date">
-    <time datetime="2018-09-28T09:30:11.000Z" itemprop="datePublished">2018-09-28</time>
+<a href="/2020/05/java-dotenv-azure-sdk-update/" class="article-date">
+    <time datetime="2020-05-13T16:09:30.000Z" itemprop="datePublished">2020-05-13</time>
 </a>
 
                 
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azuresdk/" rel="tag">azuresdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="Remove-Yourself-from-an-Azure-Subscription"><a class="header-anchor" href="#Remove-Yourself-from-an-Azure-Subscription"></a>Remove Yourself from an Azure Subscription</h2>
-<p>It is not possible to remove yourself from a Subscription.  You have to contact the Subscription owner to remove you.  IMO a user should be able to remove themselves from a Subscription, so I’m following up with the Azure team on this.</p>
-<p>Here’s what Azure support told me:</p>
+            <p>Exactly, one month ago, to the day, I wrote a <a href="/java-dotenv-azure-sdk">post</a> about how to use <code>.env</code> files with Java and Azure SDKs. The gist of the problem was that the package we use to read the <code>.env</code> files didn’t write those values to System.getenv or System.properties, so you had to do that manually with something like this:</p>
+<h2 id="OLD"><a class="header-anchor" href="#OLD"></a>OLD</h2>
+<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loadEnvironmentProperties</span><span class="hljs-params">()</span> </span>&#123;
+    Dotenv ENVIRONMENT = Dotenv.load();
+    ENVIRONMENT.entries().forEach(entry -&gt; System.setProperty(entry.getKey(), entry.getValue()));
+&#125;</code></pre>
+<p>Well, I’m super happy to let you know that Carmine DiMascio, the <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">java-dotenv package</a> creator and maintainer, just implemented a feature that will tell <code>java-dotenv</code> to also write the values from <code>.env</code> to <code>System.properties</code> - which are read by the Azure SDKs.</p>
+<p>So instead of the above you just need to call <code>systemProperties()</code> when you load the <code>.env</code> file, like so:</p>
+<h2 id="NEW"><a class="header-anchor" href="#NEW"></a>NEW</h2>
+<pre><code class="hljs java">Dotenv.configure().systemProperties().load();</code></pre>
+<p>Here’s how to get everything setup.  I’m going to assume that you already have a Java project - but you can find all of the source code for this simple sample here: <a href="https://github.com/jongio/azsdkjavaenv" target="_blank" rel="noopener">https://github.com/jongio/azsdkjavaenv</a></p>
+<h2 id="1-Add-env-file-to-project"><a class="header-anchor" href="#1-Add-env-file-to-project"></a>1. Add .env file to project</h2>
+<p>Create <code>.env</code> file in your project and add the following settings:</p>
+<pre><code class="hljs plain">AZURE_CLIENT_ID&#x3D;
+AZURE_CLIENT_SECRET&#x3D;
+AZURE_TENANT_ID&#x3D;</code></pre>
+<p>These are the service principal settings that you get from calling <code>az ad sp create-for-rbac</code> to create a service principal - which will be used by DefaultAzureCredential. Make sure the service principal has the appropriate policy set to create a key. You can find those commands here: <a href="https://docs.microsoft.com/en-us/azure/key-vault/general/manage-with-cli2#authorizing-an-application-to-use-a-key-or-secret" target="_blank" rel="noopener">Authorizing an application to use a key or secret</a></p>
+<p>You can use this command to assign the right policy to your service principal.</p>
+<pre><code class="hljs bash">az keyvault <span class="hljs-built_in">set</span>-policy -n KEY_VAULT_NAME --spn AZURE_CLIENT_ID --secret-permissions get list <span class="hljs-built_in">set</span> delete --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey update</code></pre>
+<h2 id="2-Add-java-dotenv-Package"><a class="header-anchor" href="#2-Add-java-dotenv-Package"></a>2. Add java-dotenv Package</h2>
+<p>This package is used to read the <code>.env</code> file.</p>
 <blockquote>
-<p><em>I understand that you are wanting to remove your self from several subscriptions without contacting the subscription owner. I apologize but by design the best way to accomplish this is through the subscription owner. They are the one that is able to grant and remove permissions for account administrators etc.</em></p>
+<p>Make sure you add version 5.2.0</p>
 </blockquote>
-<h2 id="Remove-Yourself-from-an-Azure-Active-Directory-Tenant"><a class="header-anchor" href="#Remove-Yourself-from-an-Azure-Active-Directory-Tenant"></a>Remove Yourself from an Azure Active Directory Tenant</h2>
-<p>Here’s how to remove yourself from an Azure Active Directory Tenant:</p>
-<p>You can see below that I’m part of the Microsoft directory and Jon Gallant Test.  I want to remove myself from the latter.</p>
-<p><img src="000011.png" alt=""></p>
-<ol>
-<li>Go to <a href="https://myapps.microsoft.com" target="_blank" rel="noopener">https://myapps.microsoft.com</a></li>
-<li>Click on your name in upper right. Click on the gears icon.<br>
-<img src="000010.png" alt=""></li>
-<li>At the bottom of the page you will see “Organizations” list.  Click the “Sign in to leave Organization” link.<br>
-<img src="000012.png" alt=""></li>
-<li>That will redirect you to the following page:<br>
-<img src="000013.png" alt=""></li>
-<li>Click the browser’s back button.</li>
-<li>The link you click on before now says “Leave organization”. Click it.<br>
-<img src="000014.png" alt=""></li>
-<li>Click “Leave” button<br>
-<img src="000015.png" alt=""><br>
-<img src="000016.png" alt=""><br>
-The page will refresh and you will now be removed from that Active Directory.</li>
-<li>Confirm removal<br>
-You can go back to the portal and confirm that you were removed.<br>
-<img src="000017.png" alt=""></li>
-</ol>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.github.cdimascio<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>java-dotenv<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.2.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<h2 id="3-Add-java-dotnet-import"><a class="header-anchor" href="#3-Add-java-dotnet-import"></a>3. Add java-dotnet import</h2>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.Dotenv;</code></pre>
+<h2 id="4-Add-code-to-load-env"><a class="header-anchor" href="#4-Add-code-to-load-env"></a>4. Add code to load .env</h2>
+<p>Notice that we are now calling <code>systemProperties()</code>, which is the new method that will load the <code>.env</code> values into the Java System properties.</p>
+<pre><code class="hljs java">Dotenv.configure().systemProperties().load();
+System.out.print(System.getProperty(<span class="hljs-string">"AZURE_CLIENT_ID"</span>));</code></pre>
+<p>When you run the above code, it should print the value that you have for AZURE_CLIENT_ID in your <code>.env</code> file.</p>
+<h2 id="5-Add-Azure-SDK-Packages"><a class="header-anchor" href="#5-Add-Azure-SDK-Packages"></a>5. Add Azure SDK Packages</h2>
+<p>Now that we have java-dotenv set, let’s get it working with the Azure SDKs.  We’ll new up a DefaultAzureCredential, pass that to KeyClient, and create a key.</p>
+<p>Add these to pom.xml</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.azure<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>azure-security-keyvault-keys<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.azure<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>azure-identity<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<p>You can find all the Azure SDK for Java releases here: <a href="https://aka.ms/azsdk/java" target="_blank" rel="noopener">https://aka.ms/azsdk/java</a></p>
+<h2 id="6-Add-Azure-SDK-imports"><a class="header-anchor" href="#6-Add-Azure-SDK-imports"></a>6. Add Azure SDK imports</h2>
+<p>Add imports to your Java code file.</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> com.azure.identity.DefaultAzureCredential;
+<span class="hljs-keyword">import</span> com.azure.identity.DefaultAzureCredentialBuilder;
+<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.KeyClientBuilder;
+<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.models.KeyType;
+<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.models.*;
+<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.KeyClient;</code></pre>
+<h2 id="7-Create-Key-Vault"><a class="header-anchor" href="#7-Create-Key-Vault"></a>7. Create Key Vault</h2>
+<p>To run the sample, you are going to need to create an Azure Key Vault. You can do so with the Azure CLI <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create" target="_blank" rel="noopener"><code>az keyvault create</code></a> or Azure Portal.</p>
+<p>Add the following to your <code>.env</code> file and replace the URL with your Key Vault uri.</p>
+<pre><code class="hljs plain">AZURE_KEYVAULT_URL&#x3D;https:&#x2F;&#x2F;jongkv.vault.azure.net&#x2F;</code></pre>
+<h2 id="8-Add-Azure-SDK-Code"><a class="header-anchor" href="#8-Add-Azure-SDK-Code"></a>8. Add Azure SDK Code</h2>
+<p>We’ll first new up a DefaultAzureCredentail object, which under the covers will new up an EnvironmentCredential object, which will read the <code>AZURE_CLIENT_ID</code>, <code>AZURE_CLIENT_SECRET</code>, and <code>AZURE_TENANT_ID</code> values from System.properties which were written to by the java-dotenv package.</p>
+<p>We then new up a KeyClient, and then create a key.</p>
+<pre><code class="hljs java"><span class="hljs-comment">// Build new DAC, which will read from System.Properties</span>
+DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder().build();
+
+<span class="hljs-comment">// Use DAC when constructing a Key Vault client.</span>
+KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getProperty(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
+        .buildClient();
+
+KeyVaultKey key = keyClient.createKey(<span class="hljs-string">"key1"</span>, KeyType.RSA);
+
+System.out.printf(<span class="hljs-string">"Key created. Name %s Id %s"</span>, key.getName(), key.getId());</code></pre>
+<p>And that’s how you get it all working together.  Good stuff and much easier now that we have the systemProperties method.</p>
+<p>You can find all the code here: <a href="https://github.com/jongio/azsdkjavaenv" target="_blank" rel="noopener">https://github.com/jongio/azsdkjavaenv</a></p>
 <p>Jon</p>
 
         </div>
@@ -332,26 +382,13 @@ You can go back to the portal and confirm that you were removed.<br>
     
     <nav id="article-nav">
         
-            <a href="/2018/10/proactive-mentorship/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Proactive Mentorship
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2018/09/remove-yourself-azure-subscription-tenant/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2020/05/solution-autodesk-translation-services-failed-to-translate-the-current-document-to-stl-file/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            How to Remove Yourself from an Azure Subscription or Azure Active Directory Tenant
+                            Solution to Autodesk Translation Services failed to translate the current document to stl file
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -429,7 +466,7 @@ You can go back to the portal and confirm that you were removed.<br>
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2018/09/remove-yourself-azure-subscription-tenant-JONGHOME/';
+    var disqus_url = 'https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/';
     
     (function() {
     var dsq = document.createElement('script');

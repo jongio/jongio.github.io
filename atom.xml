@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-05-09T06:10:56.758Z</updated>
+  <updated>2020-05-14T00:07:03.977Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Updated: How to use .env files with the Azure SDK for Java</title>
+    <link href="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/"/>
+    <id>https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/</id>
+    <published>2020-05-13T16:09:30.000Z</published>
+    <updated>2020-05-14T00:07:03.977Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Exactly, one month ago, to the day, I wrote a &lt;a href=&quot;/java-dotenv-azure-sdk&quot;&gt;post&lt;/a&gt; about how to use &lt;code&gt;.env&lt;/code&gt; files with Java and Azure SDKs. The gist of the problem was that the package we use to read the &lt;code&gt;.env&lt;/code&gt; files didn’t write those values to System.getenv or
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
+    
+      <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to Autodesk Translation Services failed to translate the current document to stl file</title>
@@ -185,7 +218,7 @@
     <link href="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/"/>
     <id>https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/</id>
     <published>2020-04-13T13:38:17.000Z</published>
-    <updated>2020-04-13T22:05:55.684Z</updated>
+    <updated>2020-05-14T00:06:22.077Z</updated>
     
     <summary type="html">
     
@@ -193,7 +226,8 @@
       
         
         
-          &lt;p&gt;I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level. Today, if you try to use the Azure SDKs with the &lt;a href=&quot;https://github.com/cdimascio/java-dotenv&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java-dotenv package&lt;/a&gt;, it
+          &lt;blockquote&gt;
+&lt;p&gt;UPDATE 5/13/2020 - This is now outdated as of version 5.2.0 of java-dotnet package.  A systemProperties method was added to make all of this easier. You can find all of the updated details on the new post here: &lt;a
         
       
     
@@ -660,37 +694,6 @@
       <category term="dev" scheme="https://blog.jongallant.com/tags/dev/"/>
     
       <category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Azure CLI won&#39;t upgrade to latest version or it still works after uninstall</title>
-    <link href="https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/"/>
-    <id>https://blog.jongallant.com/2019/07/azure-cli-still-installed-after-uninstall/</id>
-    <published>2019-07-16T22:54:14.000Z</published>
-    <updated>2019-07-23T00:13:03.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;On Windows using the Windows Installer and Azure CLI wouldn’t update to the latest version - it was stuck on 2.0.44, but the latest is 2.0.66.&lt;/p&gt;
-&lt;p&gt;I uninstalled the Azure CLI via Apps, but it was still available via Terminal, cmd, and PowerShell.&lt;/p&gt;
-&lt;p&gt;I did some sluething and found these
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   
