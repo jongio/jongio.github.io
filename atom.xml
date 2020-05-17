@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-05-14T00:07:03.977Z</updated>
+  <updated>2020-05-17T22:39:23.079Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Power BI: How to Clear All Filters on a Power BI Report</title>
+    <link href="https://blog.jongallant.com/2020/05/powerbi-clear-all-filters/"/>
+    <id>https://blog.jongallant.com/2020/05/powerbi-clear-all-filters/</id>
+    <published>2020-05-17T15:01:55.000Z</published>
+    <updated>2020-05-17T22:39:23.079Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;It quite common to lose track of what filters you currently have applied to a Power BI report.  Also, there’s no out of the box way to clear them all.  So, here’s how to do it.&lt;/p&gt;
+&lt;p&gt;We’re going to add an image and a bookmark when no filters set. When a user CTRL+clicks on the image, the
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/"/>
+    
+  </entry>
   
   <entry>
     <title>Updated: How to use .env files with the Azure SDK for Java</title>
@@ -658,42 +688,6 @@
     
     
       <category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Introducing the New Azure SDKs</title>
-    <link href="https://blog.jongallant.com/2019/11/azure-sdks/"/>
-    <id>https://blog.jongallant.com/2019/11/azure-sdks/</id>
-    <published>2019-11-15T13:30:33.000Z</published>
-    <updated>2019-11-19T00:56:01.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: &lt;a href=&quot;https://azure.github.io/azure-sdk/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure SDK Releases&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Azure has had a tremendous amount of growth in a very short
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Azure" scheme="https://blog.jongallant.com/category/Tech/Azure/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="dev" scheme="https://blog.jongallant.com/tags/dev/"/>
-    
-      <category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/"/>
     
   </entry>
   
