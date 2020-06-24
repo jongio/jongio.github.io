@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-05-17T22:39:23.079Z</updated>
+  <updated>2020-06-24T16:24:49.045Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WSL: Disable &#39;ls&#39; folder highlighting</title>
+    <link href="https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/"/>
+    <id>https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/</id>
+    <published>2020-06-24T09:13:32.000Z</published>
+    <updated>2020-06-24T16:24:49.045Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;In WSL, when I ran &lt;code&gt;ls&lt;/code&gt; I was getting this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;031.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The folders were highlighted, not matter what theme I changed Terminal to.&lt;/p&gt;
+&lt;p&gt;I did a bunch of searching and found this:&lt;br&gt;
+&lt;a href=&quot;https://stackoverflow.com/a/43147778&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
+    
+      <category term="windows" scheme="https://blog.jongallant.com/tags/windows/"/>
+    
+      <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
+    
+  </entry>
   
   <entry>
     <title>Power BI: How to Clear All Filters on a Power BI Report</title>
@@ -655,39 +692,6 @@
     
     
       <category term="onedrive" scheme="https://blog.jongallant.com/tags/onedrive/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Power BI Desktop Missing Data Tab</title>
-    <link href="https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/"/>
-    <id>https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/</id>
-    <published>2019-12-29T21:21:48.000Z</published>
-    <updated>2019-12-30T05:57:24.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;When using Power BI Desktop you will see the “Data” tab on the left.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;000006.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;When you create a new DirectQuery connection, the “Data” tab disappears.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;000007.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;It wasn’t obvious to me that the “Data” tab disappeared because I
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/"/>
     
   </entry>
   
