@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-06-24T16:24:49.045Z</updated>
+  <updated>2020-07-23T20:38:54.591Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution for Error validating token IDX10223</title>
+    <link href="https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/"/>
+    <id>https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/</id>
+    <published>2020-07-23T13:33:04.000Z</published>
+    <updated>2020-07-23T20:38:54.591Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Got this error today when trying to set a secret with terraform.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&amp;#x3D;401 -- Original Error: autorest&amp;#x2F;azure: Service returned an error.
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
+    
+  </entry>
   
   <entry>
     <title>WSL: Disable &#39;ls&#39; folder highlighting</title>
@@ -663,35 +695,6 @@
       <category term="kusto" scheme="https://blog.jongallant.com/tags/kusto/"/>
     
       <category term="httpie" scheme="https://blog.jongallant.com/tags/httpie/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to rename or remove spaces from OneDrive folder name</title>
-    <link href="https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/"/>
-    <id>https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/</id>
-    <published>2020-01-08T11:43:20.000Z</published>
-    <updated>2020-01-09T00:32:13.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format &lt;code&gt;OneDrive - {Name}&lt;/code&gt;. Which causes endless issues as a dev, such as running &lt;code&gt;tox&lt;/code&gt; or
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="onedrive" scheme="https://blog.jongallant.com/tags/onedrive/"/>
     
   </entry>
   
