@@ -54,21 +54,6 @@
   </entry>
   
   <entry>
-    <title>draft</title>
-    <link href="https://blog.jongallant.com/2020/07/draft/"/>
-    <id>https://blog.jongallant.com/2020/07/draft/</id>
-    <published>2020-07-23T14:49:06.000Z</published>
-    <updated>2020-07-23T21:49:06.240Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Solution for Error validating token IDX10223</title>
     <link href="https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/"/>
     <id>https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/</id>
@@ -681,6 +666,37 @@
       <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
     
       <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to loop over a Python range that has a single item - zero length range</title>
+    <link href="https://blog.jongallant.com/2020/01/python-loop-range-single-item/"/>
+    <id>https://blog.jongallant.com/2020/01/python-loop-range-single-item/</id>
+    <published>2020-01-18T06:28:25.000Z</published>
+    <updated>2020-01-31T08:56:02.401Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’m working on an app that accepts user input of a start year and end year, loops through those years, and outputs the year.&lt;/p&gt;
+&lt;p&gt;For example, given the start year and end year of 2020, I want a loop to execute for 2020.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs python&quot;&gt;years = range(&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
     
   </entry>
   
