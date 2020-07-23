@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-07-23T20:38:54.591Z</updated>
+  <updated>2020-07-23T22:08:32.475Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to &#39;This value does not have any attributes.` with kubelet_identity.object_id</title>
+    <link href="https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/"/>
+    <id>https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/</id>
+    <published>2020-07-23T14:49:41.000Z</published>
+    <updated>2020-07-23T22:08:32.475Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Got this today when trying to assign access_policy to kubelet_identity&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;Error: Unsupported attribute
+
+  on main.tf line 59, in resource &amp;quot;azurerm_key_vault&amp;quot; &amp;quot;key_vault&amp;quot;:
+  59:     object_id &amp;#x3D;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
+    
+      <category term="aks" scheme="https://blog.jongallant.com/tags/aks/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>draft</title>
+    <link href="https://blog.jongallant.com/2020/07/draft/"/>
+    <id>https://blog.jongallant.com/2020/07/draft/</id>
+    <published>2020-07-23T14:49:06.000Z</published>
+    <updated>2020-07-23T21:49:06.240Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Solution for Error validating token IDX10223</title>
@@ -629,72 +681,6 @@
       <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
     
       <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to loop over a Python range that has a single item - zero length range</title>
-    <link href="https://blog.jongallant.com/2020/01/python-loop-range-single-item/"/>
-    <id>https://blog.jongallant.com/2020/01/python-loop-range-single-item/</id>
-    <published>2020-01-18T06:28:25.000Z</published>
-    <updated>2020-01-31T08:56:02.401Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m working on an app that accepts user input of a start year and end year, loops through those years, and outputs the year.&lt;/p&gt;
-&lt;p&gt;For example, given the start year and end year of 2020, I want a loop to execute for 2020.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs python&quot;&gt;years = range(&lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use the Azure Data Explorer (kusto) REST API with Httpie</title>
-    <link href="https://blog.jongallant.com/2020/01/azure-data-explorer-rest/"/>
-    <id>https://blog.jongallant.com/2020/01/azure-data-explorer-rest/</id>
-    <published>2020-01-17T09:13:18.000Z</published>
-    <updated>2020-01-17T19:19:25.231Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m working on project that pulls &lt;a href=&quot;https://www.gharchive.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;gharchive&lt;/a&gt; data into Azure Data Explorer (kusto) and I decided to try to do all of my setup with the Azure CLI.  I could easily create my cluster and database with the CLI, but could not
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="https://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-      <category term="kusto" scheme="https://blog.jongallant.com/tags/kusto/"/>
-    
-      <category term="httpie" scheme="https://blog.jongallant.com/tags/httpie/"/>
     
   </entry>
   
