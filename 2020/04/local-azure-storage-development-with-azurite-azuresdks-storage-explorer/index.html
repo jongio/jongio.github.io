@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/azuriteheader.png">
 <meta property="article:published_time" content="2020-04-23T16:21:12.000Z">
-<meta property="article:modified_time" content="2020-04-24T02:25:52.970Z">
+<meta property="article:modified_time" content="2020-08-31T20:54:20.488Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="azurite">
@@ -228,7 +228,7 @@
 <p>In this post, I’ll show you the tools we have available and how to get everything setup.</p>
 <p>Here are the local dev Azure Storage tools we have available:</p>
 <ul>
-<li><strong>Emulation</strong>: <a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite v3.7.0+</a>: Cross-platform Azure Storage Emulator - a local process that adheres to the Azure Storage interfaces. Azurite V3 does not support Azure Tables yet. If you need Azure Tables, then use Azurite V2 or the Cosmos emulator.</li>
+<li><strong>Emulation</strong>: <a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite v3.7.0+</a>: Cross-platform Azure Storage Emulator - a local process that adheres to the Azure Storage interfaces. Azurite V3 does not support Azure Tables yet. If you need Azure Tables, then use Azurite V2 or the Cosmos emulator.  Table support in Azurite is coming soon.  Follow along and contribute here: <a href="https://github.com/Azure/Azurite/projects/2" target="_blank" rel="noopener">https://github.com/Azure/Azurite/projects/2</a></li>
 <li><strong>Development</strong>: <a href="https://aka.ms/azsdk" target="_blank" rel="noopener">Azure SDKs</a>: Cross-platform, multi-language libraries that talk to either Azurite or Azure.  We’ll use the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential</a>, which under the covers, has a chain of credential options and with the <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">latest preview</a>, it will use your Azure CLI credentials.</li>
 <li><strong>Management</strong>: <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a>: Cross-platform application that lets you view and manage Azure Storage with Azurite or Azure.</li>
 </ul>
@@ -317,7 +317,7 @@ Azurite Queue service is successfully listening at https://127.0.0.1:10001</code
 <h2 id="Azure-SDK-Setup"><a class="header-anchor" href="#Azure-SDK-Setup"></a>Azure SDK Setup</h2>
 <p>Now, we’ll run some code that hits our Azurite HTTPS endpoints.  All of the following code can be found here: <a href="https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer" target="_blank" rel="noopener">https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer</a></p>
 <p>NOTE: You will need the Azure Identity preview versions for this to work with Azure CLI Credentials, see <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> blobHost = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_BLOB_HOST"</span>);  <span class="hljs-comment">// 126.0.0.1:10000</span>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> blobHost = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_BLOB_HOST"</span>);  <span class="hljs-comment">// 127.0.0.1:10000</span>
 <span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>); <span class="hljs-comment">// devstoreaccount1</span>
 <span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
 <span class="hljs-keyword">var</span> emulator = account == <span class="hljs-string">"devstoreaccount1"</span>;
@@ -369,19 +369,18 @@ Azurite Queue service is successfully listening at https://127.0.0.1:10001</code
 </ul>
 <p><img src="011.png" alt="'Connect to Azure storage'"></p>
 <ul>
-<li>Select “Use a connection string”</li>
+<li>Select “Attach to local emulator”</li>
 </ul>
-<p><img src="012.png" alt="'Use connection string'"></p>
+<p><img src="033.png" alt="'Attach to local emulator'"></p>
 <ul>
-<li>Enter Azurite for the name, and enter the HTTPS connection string:</li>
+<li>Select “https” for Protocol and give it a name</li>
 </ul>
-<pre><code class="hljs bash">DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;</code></pre>
-<p><img src="013.png" alt="'Use Azurite connection string'"></p>
+<p><img src="032.png" alt="'HTTPS selection'"></p>
 <ul>
-<li>Click Connect.</li>
+<li>Click Next and then click Connect.</li>
 </ul>
 <p>You will now see Azurite in your list of connections and when you expand it, you will see the container and blobs that you created.</p>
-<p><img src="018.png" alt="'Blobs in storage explorer'"></p>
+<p><img src="034.png" alt="'Blobs in storage explorer'"></p>
 <h2 id="Summary"><a class="header-anchor" href="#Summary"></a>Summary</h2>
 <p>In this post, we looked at all the local tools you need for a fast and free inner-loop Azure Storage dev cycle.  We setup Azurite, used the Azure SDKs to create blobs, and viewed them with Azure Storage Explorer.</p>
 <p>I hope this helps you out in your disconnected Azure dev exp.</p>

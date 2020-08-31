@@ -286,7 +286,7 @@
     <link href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/"/>
     <id>https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/</id>
     <published>2020-04-23T16:21:12.000Z</published>
-    <updated>2020-04-24T02:25:52.970Z</updated>
+    <updated>2020-08-31T20:54:20.488Z</updated>
     
     <summary type="html">
     
@@ -557,7 +557,7 @@
     <link href="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/"/>
     <id>https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/</id>
     <published>2020-02-02T13:35:43.000Z</published>
-    <updated>2020-02-29T04:03:41.916Z</updated>
+    <updated>2020-08-31T23:13:51.449Z</updated>
     
     <summary type="html">
     
@@ -565,7 +565,7 @@
       
         
         
-          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdkpackages&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential&lt;/a&gt;.
+          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdk/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage and Azure Identity Client
         
       
     
@@ -596,7 +596,7 @@
     <link href="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part2/"/>
     <id>https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part2/</id>
     <published>2020-02-02T13:35:38.000Z</published>
-    <updated>2020-02-03T05:00:12.364Z</updated>
+    <updated>2020-08-31T22:15:37.486Z</updated>
     
     <summary type="html">
     
@@ -604,7 +604,7 @@
       
         
         
-          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdkpackages&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential&lt;/a&gt;.
+          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdk/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage and Azure Identity Client
         
       
     
@@ -635,7 +635,7 @@
     <link href="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/"/>
     <id>https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/</id>
     <published>2020-02-02T08:32:07.000Z</published>
-    <updated>2020-04-18T01:44:31.583Z</updated>
+    <updated>2020-08-31T21:25:40.964Z</updated>
     
     <summary type="html">
     
@@ -643,7 +643,8 @@
       
         
         
-          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdkpackages&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential&lt;/a&gt;.
+          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdk/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage and Azure Identity Client Libraries&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here are the 3
         
       
     

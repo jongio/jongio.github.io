@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="azure,functions,identity,.net,linux,dotnet" />
     
-    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage and Azure Identity Client Libraries.  Co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 2)">
 <meta property="og:url" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part2/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage and Azure Identity Client Libraries.  Co">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part2/000072.png">
 <meta property="article:published_time" content="2020-02-02T13:35:38.000Z">
-<meta property="article:modified_time" content="2020-02-03T05:00:12.364Z">
+<meta property="article:modified_time" content="2020-08-31T22:15:37.486Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -226,7 +226,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdkpackages" target="_blank" rel="noopener">Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential</a>. We’ll first get everything running locally without any cloud dependencies via a Storage Emulator. We’ll then run the same code locally, but configure it to upload blobs to Azure Storage using a Service Principal. And lastly, we’ll learn how to deploy an Azure Function to Azure, that uses Azure Storage and <a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">Managed Identities</a>. The three different setups allow you to iteratively develop Azure Functions without the cost and inner-loop dev cylce overhead of deploying everything to Azure on every code change.</p>
+            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
 <blockquote>
 <p>Code: The code for this series can be found here: <a href="https://github.com/jongio/azure-blob-functions-managedid" target="_blank" rel="noopener">https://github.com/jongio/azure-blob-functions-managedid</a></p>
 </blockquote>
@@ -234,7 +234,7 @@
 Part 2: Local Function with Azure Storage and Service Principal (local function, cloud storage)<br>
 Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function with Azure Storage and Managed Identity (cloud function, cloud storage)</a></p>
 <h2 id="Local-Function-with-Azure-Storage-and-Service-Principal-local-function-cloud-storage"><a class="header-anchor" href="#Local-Function-with-Azure-Storage-and-Service-Principal-local-function-cloud-storage"></a>Local Function with Azure Storage and Service Principal (local function, cloud storage)</h2>
-<p>In Part 1 of this series, we got the local function setup to upload blobs to a local emulator.  Now, let’s setup our Azure resources so we can use that same code to send our blobs to Azure using a Service Principal.</p>
+<p>In Part 1 of this series, we got the local function setup to upload blobs to a Azurite a local storage emulator.  Now, let’s setup our Azure resources so we can use that same code to send our blobs to Azure using a Service Principal.</p>
 <h3 id="Azure-Setup"><a class="header-anchor" href="#Azure-Setup"></a>Azure Setup</h3>
 <p>Let’s get all our Azure resources created and configured.</p>
 <ol>
@@ -273,33 +273,32 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li><code>--sku</code> - List of available SKUs can be found here: <a href="https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types" target="_blank" rel="noopener">SKU Types</a></li>
 </ul>
 <ol start="6">
-<li>Create Service Principal</li>
+<li>Give your account Blob Storage permissions</li>
 </ol>
-<p>A Service Principal is an identity that acts upon Azure resources. You assign that identity “roles”, which you can see in the command below. By default the Service Principal is created with Contributor access, but we still need to explicitly give it permission to write to blob storage.</p>
-<p>Run the following command to create a Service Principal and assign it to the Storage Blob Data Contributor role.</p>
-<pre><code class="hljs plain">az ad sp create-for-rbac --role ba92f5b4-2d11-453d-a403-e96b0029c9fe --scope &#x2F;subscriptions&#x2F;SUBSCRIPTION_ID</code></pre>
+<p>The sample uses DefaultAzureCredential, which uses AzureCliCredential under the hood to get a token to use to communicate to Azure Storage.</p>
+<p>In order to talk with Azure Storage, your account needs to be in the Storage Blob Data Contributor role.</p>
+<p>Get your account id:</p>
+<pre><code class="hljs bash">az ad signed-in-user show --query <span class="hljs-string">'objectId'</span> -o tsv</code></pre>
+<p>Then run the following command to assign your id to the role</p>
+<pre><code class="hljs bash">az role assignment create --assignee &#123;id from last step&#125; --role ba92f5b4-2d11-453d-a403-e96b0029c9fe</code></pre>
 <p>Parameters:</p>
 <ul>
-<li><code>SUBSCRIPTION_ID</code> The subscription that you want to create the Service Principal in. You can get by running <code>az account show</code></li>
+<li><code>assignee</code> Your Azure account id.</li>
 <li><code>--role</code> - The GUID <code>ba92f5b4-2d11-453d-a403-e96b0029c9fe</code> is the ID for the Storage Blob Data Contributor role.  You can find all of the built-in Azure roles here: <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles" target="_blank" rel="noopener">Built-in roles for Azure resources</a></li>
 </ul>
-<p>That command will output all of the Service Principal metadata, which you will need for the next step.</p>
-<blockquote>
-<p>Save the output of this command, you’ll need it in the next step.</p>
-</blockquote>
 <h3 id="Configure-Function-App-to-use-Azure-Storage"><a class="header-anchor" href="#Configure-Function-App-to-use-Azure-Storage"></a>Configure Function App to use Azure Storage</h3>
 <ol>
 <li>Set Local Settings</li>
 </ol>
 <p>Open local.settings.json and ensure the following values are set:</p>
+<blockquote>
+<p>If you have cloned the repo, then take the settings from <code>local.settings.azure.json</code> and copy them to <code>'local.settings.json</code></p>
+</blockquote>
 <pre><code class="hljs plain">&#123;
     &quot;IsEncrypted&quot;: false,
     &quot;Values&quot;: &#123;
         &quot;AzureWebJobsStorage&quot;: &quot;UseDevelopmentStorage&#x3D;true&quot;,
         &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;dotnet&quot;,
-        &quot;AZURE_CLIENT_ID&quot;: &quot;SERVICE_PRINCIPAL_APP_ID&quot;,
-        &quot;AZURE_CLIENT_SECRET&quot;: &quot;SERVICE_PRINCIPAL_PASSWORD&quot;,
-        &quot;AZURE_TENANT_ID&quot;: &quot;SERVICE_PRINCIPAL_TENANT_ID&quot;,
         &quot;AZURE_STORAGE_HOST&quot;: &quot;blob.core.windows.net&quot;,
         &quot;AZURE_STORAGE_ACCOUNT&quot;: &quot;BLOB_STORAGE_ACCOUNT_NAME&quot;,
         &quot;AZURE_STORAGE_CONTAINER&quot;: &quot;azfuncblobs&quot;
@@ -307,15 +306,11 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 &#125;</code></pre>
 <p>Parameters:</p>
 <ul>
-<li><code>SERVICE_PRINCIPAL_APP_ID</code> The <code>appId</code> from the previous step.</li>
-<li><code>SERVICE_PRINCIPAL_PASSWORD</code> The <code>password</code> from the previous step.</li>
-<li><code>SERVICE_PRINCIPAL_TENANT_ID</code> The <code>tenant</code> from the previous step.</li>
 <li><code>BLOB_STORAGE_ACCOUNT_NAME</code> The same name that you gave the storage account you created earlier.</li>
 </ul>
 <p>Notes:</p>
 <ul>
-<li>You’ll notice that we added the Environment Variables settings (<code>AZURE_CLIENT_ID</code>, <code>AZURE_CLIENT_SECRET</code>, <code>AZURE_TENANT_ID</code>) that <code>DefaultAzureCredential</code> requires to authenticate with a Service Principal and updated the <code>AZURE_STORAGE_ACCOUNT</code> setting to the new storage account.</li>
-<li>We also updated <code>AZURE_STORAGE_HOST</code> to <code>blob.core.windows.net</code> instead of <code>127.0.0.1:10000</code>.  That setting is for Azure Public cloud, if you are using a different Azure cloud, then use <code>az cloud list</code> to find your storage host.</li>
+<li>We updated <code>AZURE_STORAGE_HOST</code> to <code>blob.core.windows.net</code> instead of <code>127.0.0.1:10000</code>.  That setting is for Azure Public cloud, if you are using a different Azure cloud, then use <code>az cloud list</code> to find your storage host.</li>
 </ul>
 <h3 id="Re-run-the-Azure-Function"><a class="header-anchor" href="#Re-run-the-Azure-Function"></a>Re-run the Azure Function</h3>
 <ol>

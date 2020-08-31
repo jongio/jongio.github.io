@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="azure,functions,identity,.net,linux,dotnet" />
     
-    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage and Azure Identity Client Libraries. Her">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 1)">
 <meta property="og:url" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage and Azure Identity Client Libraries. Her">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
 <meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
-<meta property="article:modified_time" content="2020-04-18T01:44:31.583Z">
+<meta property="article:modified_time" content="2020-08-31T21:25:40.964Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -226,15 +226,21 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdkpackages" target="_blank" rel="noopener">Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential</a>. We’ll first get everything running locally without any cloud dependencies via a Storage Emulator. We’ll then run the same code locally, but configure it to upload blobs to Azure Storage using a Service Principal. And lastly, we’ll learn how to deploy an Azure Function to Azure, that uses Azure Storage and <a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">Managed Identities</a>. The three different setups allow you to iteratively develop Azure Functions without the cost and inner-loop dev cylce overhead of deploying everything to Azure on every code change.</p>
-<p>If you haven’t worked with <a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">Managed Identities</a> before I highly recommend that you do. It works wonderfully in conjunction with the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener"><code>Azure Identity DefaultAzureCredential</code></a>.  The <code>DefaultAzureCredential</code> object contains a collection of credential objects that enables you to dev with a Service Principal (and other credential types) locally and then deploy to Azure and use Managed Identity without any code changes.</p>
+            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
+<p>Here are the 3 development scenarios that we are going to cover in this series:</p>
+<p>Part 1: Local Function with Azurite and AzureCliCredential (local function, local storage)<br>
+Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and AzureCliCredential (local function, cloud storage)</a><br>
+Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function with Azure Storage and ManagedIdentityCredential (cloud function, cloud storage)</a></p>
 <blockquote>
 <p>Code: The code for this series can be found here: <a href="https://github.com/jongio/azure-blob-functions-managedid" target="_blank" rel="noopener">https://github.com/jongio/azure-blob-functions-managedid</a></p>
 </blockquote>
-<p>Here are the 3 development scenarios that we are going to cover in this series:</p>
-<p>Part 1: Local Function with Storage Emulator (local function, local storage)<br>
-Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and Service Principal (local function, cloud storage)</a><br>
-Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function with Azure Storage and Managed Identity (cloud function, cloud storage)</a></p>
+<h2 id="Azure-Identity-and-DefaultAzureCredential"><a class="header-anchor" href="#Azure-Identity-and-DefaultAzureCredential"></a>Azure Identity and DefaultAzureCredential</h2>
+<p>With Azure Identity, we have many token credential types and allow you to chain them in any way that you please.  For example, if you want your app to try to use Managed Identity first and then fallback to Azure CLI credential, then you would do something like this:</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> cred = <span class="hljs-keyword">new</span> ChainedTokenCredential(<span class="hljs-keyword">new</span> ManagedIdentityCredential(), <span class="hljs-keyword">new</span> AzureCliCredential());</code></pre>
+<p>And then pass that into your client</p>
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobServiceClient(uri, cred);</code></pre>
+<p>When you call a method on that client, it will try to get tokens from each of the credential types that you instantiated ChainedTokenCredential with.</p>
+<p>Azure Identity also provides a default chain called <code>DefaultAzureCredential</code>, which will try many of the common credential types. The exact order can be found here: <a href="https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential Class</a>. DefaultAzureCredential includes ManagedIdentityCredential and AzureCliCredential, so you can use it to cover the local and cloud scenarios without changing code, but I have seen most customers start with DefaultAzureCredential and then create their own chain, so they know exactly what credentials are being tried and used.</p>
 <blockquote>
 <p>This series makes use of the Azure CLI, because that is my preference for interacting with Azure. You can also do all of the Azure related steps with the Portal, ARM, Powershell, or REST.</p>
 </blockquote>
@@ -243,30 +249,31 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 </blockquote>
 <h2 id="Local-Function-with-Storage-Emulator-local-function-local-storage"><a class="header-anchor" href="#Local-Function-with-Storage-Emulator-local-function-local-storage"></a>Local Function with Storage Emulator (local function, local storage)</h2>
 <h3 id="Local-Machine-Setup"><a class="header-anchor" href="#Local-Machine-Setup"></a>Local Machine Setup</h3>
-<p>Let’s get our local machine setup to run the function locally using the Azure Storage Emulator</p>
+<p>Let’s get our local machine setup to run the function locally using Azurite</p>
 <ol>
-<li><a href="https://go.microsoft.com/fwlink/?linkid=717179&amp;clcid=0x409" target="_blank" rel="noopener">Install Azure Storage Emulator (Windows)</a> or <a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite (Linux)</a></li>
+<li><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Install Azurite</a></li>
 </ol>
 <p>You will need this to run the function locally as the Function needs a place to store its metadata.  We’ll also write our blobs here for this ‘local only’ scenario. I have not tested this on Linux, so comments on your experience with Azurite would be appreciated.</p>
 <p>Versions:</p>
 <ul>
-<li>Azure Storage Emulator: 5.10</li>
-<li>Azuite: 3.4.0</li>
+<li>Azurite: 3.8.0</li>
 </ul>
 <ol start="2">
-<li>Start Emulator</li>
+<li>Start Azurite</li>
 </ol>
-<p>Hit the Windows keys, type ‘storage emulator’ or ‘azurite’, and click on it to start it. You can find more info about Storage Emulator here: <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator" target="_blank" rel="noopener">Use the Azure storage emulator for development and testing</a></p>
+<p>In order to work with the Azure SDKs, you need to start Azurite with a cert and OAuth enabled.  Here’s the command to do so:</p>
+<pre><code class="hljs bash">azurite --oauth basic --cert certname.pem --key certname-key.pem</code></pre>
+<p>Full steps, including how to generate the cert, can be found here: <a href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/">Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer</a></p>
 <ol start="3">
 <li><a href="https://storageexplorer.com/" target="_blank" rel="noopener">Install Azure Storage Explorer</a></li>
 </ol>
 <p>You’ll use this to view the blobs that have been created.  You can find more info about Storage Explorer here: <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a></p>
-<p>Version: 1.12</p>
+<p>Version: 1.15.0</p>
 <ol start="4">
 <li><a href="https://dotnet.microsoft.com/download" target="_blank" rel="noopener">Install .NET Core SDK</a></li>
 </ol>
 <p>This is needed to code the Azure Function in .NET Core.  (You won’t need this if you create a Function in a different language)</p>
-<p>Version: 3.1.101</p>
+<p>Version: 3.1.401</p>
 <ol start="5">
 <li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Install Node.js</a></li>
 </ol>
@@ -277,19 +284,19 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 </ol>
 <p>The Core Tools allow you to create projects, functions, and host them locally.</p>
 <pre><code class="hljs plain">npm install -g azure-functions-core-tools@3</code></pre>
-<p>Version: 3.0.2106</p>
+<p>Version: 3.0.2798</p>
 <ol start="7">
 <li><a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">Install VS Code</a></li>
 </ol>
 <p>This is my main editor, but feel free to use something else.</p>
-<p>Version: VS Code Insiders: 1.42</p>
+<p>Version: VS Code Insiders: 1.49</p>
 <ol start="8">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions" target="_blank" rel="noopener">Install Azure Functions VS Code Extension (Optional)</a></li>
 </ol>
 <ul>
 <li>Optional, but useful to start streaming logs.</li>
 </ul>
-<p>Version: 0.20.2</p>
+<p>Version: 0.24.0</p>
 <h3 id="Create-the-Azure-Function"><a class="header-anchor" href="#Create-the-Azure-Function"></a>Create the Azure Function</h3>
 <ol>
 <li>Open Terminal</li>
@@ -368,16 +375,19 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <ol start="6">
 <li>Add Azure SDK Dependencies</li>
 </ol>
-<pre><code class="hljs plain">dotnet add package Azure.Identity --version 1.2.0-preview.2
+<pre><code class="hljs plain">dotnet add package Azure.Identity
 dotnet add package Azure.Storage.Blobs</code></pre>
 <blockquote>
-<p>You need at least Azure.Identity --version 1.2.0-preview.2 for the Azure CLI authentication steps to work.</p>
+<p>You need at least Azure.Identity --version 1.2.2 for the Azure CLI authentication steps to work.</p>
 </blockquote>
 <p>Versions:</p>
 <ul>
-<li>Identity: 1.2.0-preview.2</li>
-<li>Storage.Blobs: 12.4.1</li>
+<li>Identity: 1.2.2</li>
+<li>Storage.Blobs: 12.5.1</li>
 </ul>
+<blockquote>
+<p>See <a href="https://aka.ms/azsdk" target="_blank" rel="noopener">https://aka.ms/azsdk</a> for latest versions.</p>
+</blockquote>
 <ol start="7">
 <li>Open Function Project in VS Code</li>
 </ol>
@@ -395,24 +405,28 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <blockquote>
 <p>Since creating this post, I did a follow up post that shows you how to use Azurite with HTTPS.  Please view that post if you’d like to use HTTPS and simplify the BlobContainerClient to only use DefaultAzureCredential: <a href="/azurite-https-defaultazurecredential">Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation</a></p>
 </blockquote>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> connection = Environment.GetEnvironmentVariable(<span class="hljs-string">"AzureWebJobsStorage"</span>);
-<span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
+<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
 <span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
 <span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
-<span class="hljs-keyword">var</span> emulator = connection.Contains(<span class="hljs-string">"UseDevelopmentStorage=true"</span>) &amp;&amp; account == <span class="hljs-string">"devstoreaccount1"</span>;
-<span class="hljs-keyword">var</span> path = emulator ? <span class="hljs-string">$"https://<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span> : <span class="hljs-string">$"https://<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span>;
+<span class="hljs-keyword">var</span> emulator = account == <span class="hljs-string">"devstoreaccount1"</span>;
+<span class="hljs-keyword">var</span> uri = <span class="hljs-string">$"https://<span class="hljs-subst">&#123;(emulator ? <span class="hljs-string">$"<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>"</span> : <span class="hljs-string">$"<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;host&#125;</span>"</span>)&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span>;
 
+<span class="hljs-comment">// Generate random string for blob content and file name</span>
 <span class="hljs-keyword">var</span> content = Guid.NewGuid().ToString(<span class="hljs-string">"n"</span>).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>);
 <span class="hljs-keyword">var</span> file = <span class="hljs-string">$"<span class="hljs-subst">&#123;content&#125;</span>.txt"</span>;
 
-<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(path), <span class="hljs-keyword">new</span> DefaultAzureCredential());
+<span class="hljs-comment">// For Azurite 3.7+ with HTTPS and OAuth enabled, you can run Azurite with the following</span>
+<span class="hljs-comment">// azurite --oauth basic --cert cert-name.pem --key cert-name-key.pem</span>
+<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(uri), <span class="hljs-keyword">new</span> DefaultAzureCredential());
 
+<span class="hljs-comment">// Create container</span>
 <span class="hljs-keyword">await</span> client.CreateIfNotExistsAsync();
 
-<span class="hljs-keyword">using</span> (MemoryStream stream = <span class="hljs-keyword">new</span> MemoryStream(Encoding.ASCII.GetBytes(content)))
-&#123;
-    <span class="hljs-keyword">await</span> client.UploadBlobAsync(file, stream);
-&#125;
+<span class="hljs-comment">// Get content stream</span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> stream = <span class="hljs-keyword">new</span> MemoryStream(Encoding.ASCII.GetBytes(content));
+
+<span class="hljs-comment">// Upload blob</span>
+<span class="hljs-keyword">await</span> client.UploadBlobAsync(file, stream);
 
 <span class="hljs-keyword">return</span> (ActionResult)<span class="hljs-keyword">new</span> OkObjectResult(<span class="hljs-string">$"<span class="hljs-subst">&#123;file&#125;</span> uploaded."</span>);</code></pre>
 <ol start="10">
@@ -434,8 +448,8 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 &#125;</code></pre>
 <p>Notes:</p>
 <ul>
-<li><code>AZURE_STORAGE_HOST</code> Storage Emulator and Azurite host the Blob endpoints at <code>127.0.0.1:10000</code> by default.</li>
-<li><code>AZURE_STORAGE_ACCOUNT</code> set to “devstoreaccount1” will tell our code to write our blobs to the storage emulator instead of Azure.  We’ll change this to our actual storage account name later on.</li>
+<li><code>AZURE_STORAGE_HOST</code> Azurite host the Blob endpoints at <code>127.0.0.1:10000</code> by default.</li>
+<li><code>AZURE_STORAGE_ACCOUNT</code> set to <code>devstoreaccount1</code> will tell our code to write our blobs to Azurite instead of Azure.  We’ll change this to our actual storage account name later on.</li>
 <li><code>AZURE_STORAGE_CONTAINER</code> can be “azfuncblobs” or any container name you want.  The container will automatically be created the first time the function is run.</li>
 </ul>
 <ol start="9">

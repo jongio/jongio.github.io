@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="azure,functions,identity,.net,linux,dotnet" />
     
-    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+    <meta name="description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage and Azure Identity Client Libraries.  Co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 3)">
 <meta property="og:url" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage SDK and the new Azure Identity SDK’s Def">
+<meta property="og:description" content="In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new Azure Blob Storage and Azure Identity Client Libraries.  Co">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/000067.png">
 <meta property="article:published_time" content="2020-02-02T13:35:43.000Z">
-<meta property="article:modified_time" content="2020-02-29T04:03:41.916Z">
+<meta property="article:modified_time" content="2020-08-31T23:13:51.449Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -226,7 +226,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdkpackages" target="_blank" rel="noopener">Azure Blob Storage SDK and the new Azure Identity SDK’s DefaultAzureCredential</a>. We’ll first get everything running locally without any cloud dependencies via a Storage Emulator. We’ll then run the same code locally, but configure it to upload blobs to Azure Storage using a Service Principal. And lastly, we’ll learn how to deploy an Azure Function to Azure, that uses Azure Storage and <a href="https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">Managed Identities</a>. The three different setups allow you to iteratively develop Azure Functions without the cost and inner-loop dev cylce overhead of deploying everything to Azure on every code change.</p>
+            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
 <blockquote>
 <p>Code: The code for this series can be found here: <a href="https://github.com/jongio/azure-blob-functions-managedid" target="_blank" rel="noopener">https://github.com/jongio/azure-blob-functions-managedid</a></p>
 </blockquote>
@@ -234,7 +234,7 @@
 Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and Service Principal (local function, cloud storage)</a><br>
 Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, cloud storage)</p>
 <h2 id="Azure-Function-with-Azure-Storage-and-Managed-Identity-cloud-function-cloud-storage"><a class="header-anchor" href="#Azure-Function-with-Azure-Storage-and-Managed-Identity-cloud-function-cloud-storage"></a>Azure Function with Azure Storage and Managed Identity (cloud function, cloud storage)</h2>
-<p>In Parts 1, we create a local function, wrote blobs to local storage and then in Part 2 we configured it to upload blobs to Azure Storage using a Service Principal. In Part 3 we are going to deploy our Azure Function to Azure and use Managed Identities instead of a Service Principal.  A Managed Identity is a Service Principal under the hood, but Azure takes care of regular maintainance of it and enables you to deploy your app with zero code or configuration changes.  You just use <code>DefaultAzureCredential</code> in your app and it will automatically pick up the Managed Identity and use it to authenticate with other Azure services.</p>
+<p>In Parts 1, we create a local function, wrote blobs to Azurite a local storage emulator and then in Part 2 we configured it to upload blobs to Azure Storage using AzureCliCredential. In Part 3 we are going to deploy our Azure Function to Azure and use Managed Identitiesl.  A Managed Identity is a Service Principal under the hood, but Azure takes care of regular maintenance of it and enables you to deploy your app with zero code or configuration changes.  You just use <code>DefaultAzureCredential</code> in your app and it will automatically pick up the Managed Identity and use it to authenticate with other Azure services.</p>
 <h3 id="Azure-Setup"><a class="header-anchor" href="#Azure-Setup"></a>Azure Setup</h3>
 <ol>
 <li>Create Azure Functions Storage Account</li>
@@ -266,7 +266,7 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Create Azure Function App</li>
 </ol>
 <p>This is the actual Function app that we will upload our Function app project.</p>
-<pre><code class="hljs plain">az functionapp create -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --storage-account FUNCTIONS_STORAGE_ACCOUNT_NAME --plan APP_SERVICE_PLAN_NAME --runtime dotnet --os-type Linux</code></pre>
+<pre><code class="hljs plain">az functionapp create -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --storage-account FUNCTIONS_STORAGE_ACCOUNT_NAME --plan APP_SERVICE_PLAN_NAME --runtime dotnet --os-type Linux --functions-version 3</code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> A name that you choose to call your function app.</li>
@@ -275,6 +275,7 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li><code>APP_SERVICE_PLAN_NAME</code> The name of the app service plan you created earlier.</li>
 <li><code>--runtime</code> We are using dotnet in this post, but you can use any of the available options. Obviously your code will need to change to reflect that option.</li>
 <li><code>--os-type</code> You can choose Windows and it should work exactly the same way.</li>
+<li><code>--functions-version</code> The default is 2, so we want to set to 3.</li>
 </ul>
 <ol start="4">
 <li>Set Function App Settings</li>
@@ -283,70 +284,13 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <pre><code class="hljs csharp"><span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
 <span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);</code></pre>
 <p>For local deployments, those are configured in the <code>local.settings.json</code> file.  When we deploy to Azure we’ll need those settings in the Function app.  Use the following commands to update those settings.</p>
-<pre><code class="hljs plain">az functionapp config appsettings set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --settings &quot;AZURE_STORAGE_ACCOUNT&#x3D;BLOB_STORAGE_ACCOUNT_NAME&quot; &quot;AZURE_STORAGE_CONTAINER&#x3D;azfuncblobs&quot; &quot;AZURE_STORAGE_HOST&#x3D;blob.core.windows.net&quot; &quot;FUNCTIONS_EXTENSION_VERSION&#x3D;~3&quot;</code></pre>
+<pre><code class="hljs plain">az functionapp config appsettings set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --settings &quot;AZURE_STORAGE_ACCOUNT&#x3D;BLOB_STORAGE_ACCOUNT_NAME&quot; &quot;AZURE_STORAGE_CONTAINER&#x3D;azfuncblobs&quot; &quot;AZURE_STORAGE_HOST&#x3D;blob.core.windows.net&quot;</code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> A name that you choose to call your function app.</li>
 <li><code>RESOURCE_GROUP_NAME</code> The same resource group name that you created earlier</li>
 <li><code>BLOB_STORAGE_ACCOUNT_NAME</code> The storage account name that you would like to store the blobs in.</li>
 <li><code>AZURE_STORAGE_CONTAINER</code> You can also change the name of the container.  For this post it is azfuncblobs.</li>
-<li><code>FUNCTIONS_EXTENSION_VERSION</code> Right now, when you create an Azure Function app via the CLI it creates it using v2 of the function runtime, but we are working with v3, so we need to manually update that setting.  We have a <a href="https://github.com/Azure/azure-cli/pull/11987" target="_blank" rel="noopener">PR open here</a> for this, so you may not need to set that parameter.  You can run this command to check its current value: <code>az functionapp config appsettings list -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME</code></li>
-</ul>
-<p>You will see the following output after you execute that command:</p>
-<pre><code class="hljs json">&#123;
-  "name": "AZURE_STORAGE_ACCOUNT",
-  "slotSetting": false,
-  "value": "jongstorage"
-&#125;,
-&#123;
-  "name": "AZURE_STORAGE_CONTAINER",
-  "slotSetting": false,
-  "value": "azfuncblobs"
-&#125;,
-&#123;
-  "name": "FUNCTIONS_EXTENSION_VERSION",
-  "slotSetting": false,
-  "value": "~3"
-&#125;,</code></pre>
-<ol start="5">
-<li>Update the Container to .NET Core 3</li>
-</ol>
-<p>When you create an Azure Function app via the CLI it doesn’t use the 3.0 version of the dotnet:x-appservice docker image.  So we have to manually update it.  We have a bug filed for this issue here: <a href="https://github.com/Azure/azure-functions-host/issues/5559" target="_blank" rel="noopener">Can’t change functions version for Linux App Service Plan app V2 =&gt; V3 #5559</a>.</p>
-<blockquote>
-<p>Update 2/28/2020: This issue should resolve this <a href="https://github.com/Azure/azure-cli/pull/12317" target="_blank" rel="noopener">https://github.com/Azure/azure-cli/pull/12317</a>, which will come in the next CLI release.</p>
-</blockquote>
-<p>To view the current settings:</p>
-<pre><code class="hljs plain">az functionapp config container show -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME</code></pre>
-<p>Which will return this until the bug is fixed:</p>
-<pre><code class="hljs json">[
-  &#123;
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"WEBSITES_ENABLE_APP_SERVICE_STORAGE"</span>,
-    <span class="hljs-attr">"slotSetting"</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">"value"</span>: <span class="hljs-string">"true"</span>
-  &#125;,
-  &#123;
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"DOCKER_CUSTOM_IMAGE_NAME"</span>,
-    <span class="hljs-attr">"value"</span>: <span class="hljs-string">"DOCKER|mcr.microsoft.com/azure-functions/dotnet:2.0-appservice"</span>
-  &#125;
-]</code></pre>
-<p>To update to the correct docker image:</p>
-<pre><code class="hljs plain">az functionapp config container set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --docker-custom-image-name mcr.microsoft.com&#x2F;azure-functions&#x2F;dotnet:3.0-appservice</code></pre>
-<p>Which will output the correct settings:</p>
-<pre><code class="hljs json">[
-  &#123;
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"WEBSITES_ENABLE_APP_SERVICE_STORAGE"</span>,
-    <span class="hljs-attr">"slotSetting"</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">"value"</span>: <span class="hljs-string">"false"</span>
-  &#125;,
-  &#123;
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"DOCKER_CUSTOM_IMAGE_NAME"</span>,
-    <span class="hljs-attr">"value"</span>: <span class="hljs-string">"DOCKER|mcr.microsoft.com/azure-functions/dotnet:3.0-appservice"</span>
-  &#125;
-]</code></pre>
-<p>Parameters:</p>
-<ul>
-<li><code>FUNCTION_APP_NAME</code> A name that you choose to call your function app.</li>
-<li><code>RESOURCE_GROUP_NAME</code> The same resource group name that you created earlier</li>
 </ul>
 <h3 id="Assign-Managed-Identity-to-Function-App"><a class="header-anchor" href="#Assign-Managed-Identity-to-Function-App"></a>Assign Managed Identity to Function App</h3>
 <p>You have two options when it comes to choosing a Managed Identity: System Assigned or User Assigned. With System Assigned Azure will create the identity on your behalf, with User Assigned, you first create the identity and then assign it.  User assigned is useful when you want to reuse the identity across multiple Azure resources.</p>
@@ -362,9 +306,6 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 </ul>
 <h4 id="Option-2-Assign-a-User-Assigned-Managed-Identity-to-Function-App"><a class="header-anchor" href="#Option-2-Assign-a-User-Assigned-Managed-Identity-to-Function-App"></a>Option 2: Assign a User Assigned Managed Identity to Function App</h4>
 <p>With this option, you first create the Managed Identity and then assign it to the Function App.  This is useful if you want to reuse the identity for multiple resources, but Azure still manages it the way it manages system assigned identities.</p>
-<blockquote>
-<p>This requires a few extra steps because the <code>az functionapp identity assign</code> command does not support user assigned identities yet.  We have a bug filed here: <a href="https://github.com/Azure/azure-cli/issues/9887" target="_blank" rel="noopener">Add support for User Assigned Identity for functionapp and webapp #9887</a></p>
-</blockquote>
 <ol>
 <li>Create the User Assigned Managed Identity</li>
 </ol>
@@ -374,7 +315,6 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li><code>RESOURCE_GROUP_NAME</code> The resource group you created earlier.</li>
 <li><code>USER_ASSIGNED_IDENTITY_NAME</code> A unique identity name that you create.</li>
 </ul>
-<p>Once this successfully completes, you can skip ahead to the “Deploy Function” section below.</p>
 <ol start="2">
 <li>Get the User Assigned Managed Identity Metadata</li>
 </ol>
@@ -384,6 +324,9 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <ul>
 <li><code>RESOURCE_GROUP_NAME</code> The resource group you created earlier.</li>
 </ul>
+<blockquote>
+<p>Copy the <code>clientId</code> and <code>id</code>, you will need it in later steps.</p>
+</blockquote>
 <ol start="3">
 <li>Assign the Storage Blob Data Contributor Role to the User Assigned Identity</li>
 </ol>
@@ -396,21 +339,12 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <ol start="4">
 <li>Assign the User Assigned Identity to the Function App</li>
 </ol>
-<p>We know this is messy and should just be part of the <code>az functionapp identity assign</code> call.  We have a <a href="https://github.com/Azure/azure-cli/issues/9887" target="_blank" rel="noopener">bug filed</a>. For now, you have to use this if you want to use the CLI.  You could also use the <a href="https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity?tabs=dotnet" target="_blank" rel="noopener">Azure portal or ARM</a> if you’d like.</p>
-<blockquote>
-<p>NOTE: USER_ASSIGNED_IDENTITY_RESOURCE_ID below is the complete path to the Resource in Azure, not a GUID, not a clientId, it looks something like this: <code>/subscriptions/25fd0362-aa79-488b-b37b-d6e892009fdf/resourcegroups/jgfnrg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/jgfnmanid1</code></p>
-</blockquote>
-<p>You can use the <code>az functionapp update</code> command:</p>
-<pre><code class="hljs plain">az functionapp update -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --set identity&#x3D;&quot;&#123;\&quot;type\&quot;: \&quot;UserAssigned\&quot;, \&quot;userAssignedIdentities\&quot;: &#123;\&quot;USER_ASSIGNED_IDENTITY_RESOURCE_ID\&quot;: &#123;&#125;&#125;&#125;&quot;</code></pre>
-<p>Or you can directly edit the Azure resource using the <code>az resource update</code> command:</p>
-<pre><code class="hljs plain">az resource update -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --resource-type &quot;Microsoft.Web&#x2F;sites&quot; --set identity&#x3D;&quot;&#123;\&quot;type\&quot;: \&quot;UserAssigned\&quot;, \&quot;userAssignedIdentities\&quot;: &#123;\&quot;USER_ASSIGNED_IDENTITY_RESOURCE_ID\&quot;: &#123;&#125;&#125;&#125;&quot;</code></pre>
-<p>Here’s an example of what the actual command looks like:</p>
-<pre><code class="hljs plain">az functionapp update -n jgfnapp1 -g jgfnrg1 --set identity&#x3D;&quot;&#123;\&quot;type\&quot;: \&quot;UserAssigned\&quot;, \&quot;userAssignedIdentities\&quot;: &#123;\&quot;&#x2F;subscriptions&#x2F;25fd0362-aa79-488b-b37b-d6e892009fdf&#x2F;resourcegroups&#x2F;jgfnrg1&#x2F;providers&#x2F;Microsoft.ManagedIdentity&#x2F;userAssignedIdentities&#x2F;jgfnmanid1\&quot;: &#123;&#125;&#125;&#125;&quot;</code></pre>
+<pre><code class="hljs plain">az functionapp identity assign -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --identities USER_ASSIGNED_IDENTITY_RESOURCE_ID</code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
 <li><code>RESOURCE_GROUP_NAME</code> The resource group you created earlier.</li>
-<li><code>USER_ASSIGNED_IDENTITY_RESOURCE_ID</code> The complete Azure resource id for the user assigned identity, which you retrieved earlier.</li>
+<li><code>USER_ASSIGNED_IDENTITY_RESOURCE_ID</code> The complete Azure resource id for the user assigned identity, which you retrieved earlier. USER_ASSIGNED_IDENTITY_RESOURCE_ID below is the complete path to the Resource in Azure, not a GUID, not a clientId, it looks something like this: <code>/subscriptions/25fd0362-aa79-488b-b37b-d6e892009fdf/resourcegroups/jgfnrg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/jgfnmanid1</code></li>
 </ul>
 <ol start="5">
 <li>Set Environment Variables</li>
@@ -422,7 +356,7 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
 <li><code>RESOURCE_GROUP_NAME</code> The resource group you created earlier.</li>
 <li><code>USER_ASSIGNED_IDENTITY_CLIENTID</code> This is the client id for the user assigned managed identity that you created earlier</li>
-<li><code>TENANT_ID</code> This is the Azure tenant that your subscription lives in - you can find this with <code>az account show</code>.</li>
+<li><code>TENANT_ID</code> This is the Azure tenant that your subscription lives in - you can find this with <code>az account show --query tenantId -o tsv</code>.</li>
 </ul>
 <p>If you don’t do this, then you’ll likely see the following exception later in the logstream.  (See below for info on how to view the logstream)</p>
 <pre><code class="hljs plain">&#123;&quot;statusCode&quot;:400,&quot;message&quot;:&quot;Unable to load requested managed identity.&quot;,&quot;correlationId&quot;:&quot;fc7504dd-c16c-4526-b8a8-667f6463d306&quot;&#125;</code></pre>
