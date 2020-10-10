@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-07-23T22:08:32.475Z</updated>
+  <updated>2020-10-10T17:02:01.439Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>azuresdk/azure-cli-python docker image has been retired. Here&#39;s the new location.</title>
+    <link href="https://blog.jongallant.com/2020/10/azure-cli-python-docker/"/>
+    <id>https://blog.jongallant.com/2020/10/azure-cli-python-docker/</id>
+    <published>2020-10-10T09:36:24.000Z</published>
+    <updated>2020-10-10T17:02:01.439Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;This Azure CLI docker image has been retired and is no longer available on Docker hub.&lt;br&gt;
+&lt;a href=&quot;https://hub.docker.com/r/azuresdk/azure-cli-python&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://hub.docker.com/r/azuresdk/azure-cli-python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;048.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Apologies if this
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to &#39;This value does not have any attributes.` with kubelet_identity.object_id</title>
@@ -667,37 +701,6 @@
       <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
     
       <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to loop over a Python range that has a single item - zero length range</title>
-    <link href="https://blog.jongallant.com/2020/01/python-loop-range-single-item/"/>
-    <id>https://blog.jongallant.com/2020/01/python-loop-range-single-item/</id>
-    <published>2020-01-18T06:28:25.000Z</published>
-    <updated>2020-01-31T08:56:02.401Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m working on an app that accepts user input of a start year and end year, loops through those years, and outputs the year.&lt;/p&gt;
-&lt;p&gt;For example, given the start year and end year of 2020, I want a loop to execute for 2020.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs python&quot;&gt;years = range(&lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
     
   </entry>
   

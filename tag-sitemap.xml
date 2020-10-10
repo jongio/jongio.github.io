@@ -3,6 +3,20 @@
 
 
     <url>
+        <loc>https://blog.jongallant.com/tags/cli/</loc>
+        <lastmod>2020-10-10T17:02:01.439Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://blog.jongallant.com/tags/azure/</loc>
+        <lastmod>2020-10-10T17:02:01.439Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://blog.jongallant.com/tags/dotnet/</loc>
         <lastmod>2020-08-31T23:13:51.449Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,13 +46,6 @@
 
     <url>
         <loc>https://blog.jongallant.com/tags/functions/</loc>
-        <lastmod>2020-08-31T23:13:51.449Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/azure/</loc>
         <lastmod>2020-08-31T23:13:51.449Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -404,13 +411,6 @@
     <url>
         <loc>https://blog.jongallant.com/tags/nvidia/</loc>
         <lastmod>2019-01-21T08:02:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://blog.jongallant.com/tags/cli/</loc>
-        <lastmod>2019-01-17T21:23:12.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
