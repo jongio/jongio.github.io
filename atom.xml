@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2020-10-10T17:02:01.439Z</updated>
+  <updated>2021-01-19T23:28:14.675Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to VS Code Codespaces Container is not running or /tmp Permission Denied error.</title>
+    <link href="https://blog.jongallant.com/2021/01/vscode-codespaces-container-is-not-running-permission-denied/"/>
+    <id>https://blog.jongallant.com/2021/01/vscode-codespaces-container-is-not-running-permission-denied/</id>
+    <published>2021-01-19T15:14:59.000Z</published>
+    <updated>2021-01-19T23:28:14.675Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I tried to open a VS Code Codespace devcontainer and got these errors:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Start: Run: docker ps -q -a --filter label=vsch.local.folder=d:\OneDriveMS\code\GitHub\jongio\memealyzer2 --filter label=vsch.quality=insider mount: /tmp: permission denied.&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Error
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
+    
+  </entry>
   
   <entry>
     <title>azuresdk/azure-cli-python docker image has been retired. Here&#39;s the new location.</title>
@@ -639,46 +671,6 @@
         
         
           &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdk/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage and Azure Identity Client
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="https://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="functions" scheme="https://blog.jongallant.com/tags/functions/"/>
-    
-      <category term="identity" scheme="https://blog.jongallant.com/tags/identity/"/>
-    
-      <category term=".net" scheme="https://blog.jongallant.com/tags/net/"/>
-    
-      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
-    
-      <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 1)</title>
-    <link href="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/"/>
-    <id>https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/</id>
-    <published>2020-02-02T08:32:07.000Z</published>
-    <updated>2020-08-31T21:25:40.964Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdk/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage and Azure Identity Client Libraries&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Here are the 3
         
       
     
