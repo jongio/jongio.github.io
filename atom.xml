@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-01-22T21:51:20.669Z</updated>
+  <updated>2021-01-28T20:44:03.596Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to GitHub CLI &#39;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.&#39; </title>
+    <link href="https://blog.jongallant.com/2021/01/gh-cli-graphql-error/"/>
+    <id>https://blog.jongallant.com/2021/01/gh-cli-graphql-error/</id>
+    <published>2021-01-28T12:36:16.000Z</published>
+    <updated>2021-01-28T20:44:03.596Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Ran a &lt;code&gt;gh clone&lt;/code&gt; today and got this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fixed it by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;gh auth
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Solution to VS Codespaces The workspace can not be opened in a container</title>
@@ -646,45 +676,6 @@
       <category term="http" scheme="https://blog.jongallant.com/tags/http/"/>
     
       <category term="azurite" scheme="https://blog.jongallant.com/tags/azurite/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities (Part 3)</title>
-    <link href="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/"/>
-    <id>https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/</id>
-    <published>2020-02-02T13:35:43.000Z</published>
-    <updated>2020-08-31T23:13:51.449Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new &lt;a href=&quot;https://aka.ms/azsdk/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure Blob Storage and Azure Identity Client
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tutorials" scheme="https://blog.jongallant.com/category/Tech/Tutorials/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="functions" scheme="https://blog.jongallant.com/tags/functions/"/>
-    
-      <category term="identity" scheme="https://blog.jongallant.com/tags/identity/"/>
-    
-      <category term=".net" scheme="https://blog.jongallant.com/tags/net/"/>
-    
-      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
-    
-      <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
     
   </entry>
   
