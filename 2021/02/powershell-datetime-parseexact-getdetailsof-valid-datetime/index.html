@@ -6,23 +6,27 @@
     
     <title>
         
-        Archive: 2021 |
+        Solution: String was not recognized as a valid DateTime when calling DateTime.ParseExact on results of GetDetailsOf call  |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/archives/2021/index.html">
+    <meta name="keywords" content="" />
+    
+    <meta name="description" content="This was time suck for me, hopefully not for you after reading this. I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solution: String was not recognized as a valid DateTime when calling DateTime.ParseExact on results of GetDetailsOf call ">
+<meta property="og:url" content="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Dev Manager at Microsoft - Azure, PowerBI, IoT, Bing, MSN, MSDN, &amp; Windows - Created http:&#x2F;&#x2F;aka.ms&#x2F;IoTEdgeDev">
+<meta property="og:description" content="This was time suck for me, hopefully not for you after reading this. I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but the">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/056.png">
+<meta property="article:published_time" content="2021-02-02T16:55:28.000Z">
+<meta property="article:modified_time" content="2021-02-03T01:59:08.367Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/056.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -174,7 +178,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    Archive: 2021
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -189,141 +193,67 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
+                            <article id="post-powershell-datetime-parseexact-getdetailsof-valid-datetime" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
     
-    <div class="archive-year-wrap">
-        <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>
-            2021</a>
-    </div>
-    
-    <div class="archives">
-        
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2021-02-02T16:55:28.000Z" itemprop="datePublished">
-                    2021-02-02</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/">Solution: String was not recognized as a valid DateTime when calling DateTime.ParseExact on results of GetDetailsOf call </a>
+        <h1 class="article-title" itemprop="name">
+        Solution: String was not recognized as a valid DateTime when calling DateTime.ParseExact on results of GetDetailsOf call 
         </h1>
     
 
-        <p class="article-excerpt">
-            This was time suck for me, hopefully not for you after reading this.
-I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but the
-        </p>
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/" class="article-date">
+    <time datetime="2021-02-02T16:55:28.000Z" itemprop="datePublished">2021-02-02</time>
+</a>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>This was time suck for me, hopefully not for you after reading this.</p>
+<p>I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but then got this error:</p>
+<pre><code class="hljs plain">Exception calling &quot;ParseExact&quot; with &quot;3&quot; argument(s): &quot;String &#39;‎1&#x2F;‎1&#x2F;‎2000 ‏‎12:12 AM&#39; was not recognized as a valid DateTime.&quot;</code></pre>
+<p><img src="056.png" alt="&quot;The error&quot;"></p>
+<p>To the eye this looks like a valid date string, but there’s some sneaky hidden chars in there.  See this:</p>
+<p>Using: <a href="https://www.babelstone.co.uk/Unicode/whatisit.html" target="_blank" rel="noopener">https://www.babelstone.co.uk/Unicode/whatisit.html</a></p>
+<p>You can see that we have some Left to right and right to left unicode chars:</p>
+<p><img src="057.png" alt="&quot;The hidden unicode chars&quot;"></p>
+<p>So, all you have to do is remove those nasty buggers:</p>
+<pre><code class="hljs powershell"><span class="hljs-variable">$dateString</span> = (<span class="hljs-variable">$dir</span>.GetDetailsOf( <span class="hljs-variable">$file</span>, <span class="hljs-number">12</span> ) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200e&#125;"</span>) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200f&#125;"</span></code></pre>
+<p>And use the format code “g”, like so:</p>
+<pre><code class="hljs powershell"><span class="hljs-variable">$date</span> = [<span class="hljs-built_in">DateTime</span>]::ParseExact(<span class="hljs-variable">$dateString</span>, <span class="hljs-string">"g"</span>, <span class="hljs-variable">$null</span>)</code></pre>
+<p>And it works.</p>
+<p>The code:</p>
+<pre><code class="hljs powershell"><span class="hljs-variable">$dateString</span> = (<span class="hljs-variable">$dir</span>.GetDetailsOf( <span class="hljs-variable">$file</span>, <span class="hljs-number">12</span> ) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200e&#125;"</span>) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200f&#125;"</span>
+    
+<span class="hljs-keyword">if</span> (<span class="hljs-variable">$dateString</span>) &#123;
+    <span class="hljs-variable">$date</span> = [<span class="hljs-built_in">DateTime</span>]::ParseExact(<span class="hljs-variable">$dateString</span>, <span class="hljs-string">"g"</span>, <span class="hljs-variable">$null</span>)
+&#125;</code></pre>
+<p>Hopefully this saved you time and money.</p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        
 
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2021-01-28T12:36:16.000Z" itemprop="datePublished">
-                    2021-01-28</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
+    <section id="comments">
     
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2021/01/gh-cli-graphql-error/">Solution to GitHub CLI &#39;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.&#39; </a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Ran a gh clone today and got this:
-GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.
-Fixed it by running:
-gh auth refresh
-        </p>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-            
-        </div>
-        
-        
 
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2021-01-22T13:36:56.000Z" itemprop="datePublished">
-                    2021-01-22</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
     
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2021/01/workspace-cannot-be-opened-in-a-container/">Solution to VS Codespaces The workspace can not be opened in a container</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I’m working on setting up Codespaces for my project and tried to open my workspace and got this error:
-The workspace can not be opened in a container. Folder &#123;folder&#125; is not a subfolder of s
-        </p>
-    </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        <div class="article-meta">
-            <p class="date"><time datetime="2021-01-19T15:14:59.000Z" itemprop="datePublished">
-                    2021-01-19</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-        </div>
-        
-    
-        <h1 class="article-title-slim" itemprop="name">
-        <a href="/2021/01/vscode-codespaces-container-is-not-running-permission-denied/">Solution to VS Code Codespaces Container is not running or /tmp Permission Denied error.</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I tried to open a VS Code Codespace devcontainer and got these errors:
-
-Start: Run: docker ps -q -a --filter label=vsch.local.folder=d:\OneDriveMS\code\GitHub\jongio\memealyzer2 --filter label=vsch.qu
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-        
-    </div>
-</section>
+    </section>
 
 
                             
@@ -384,6 +314,24 @@ Start: Run: docker ps -q -a --filter label=vsch.local.folder=d:\OneDriveMS\code\
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2021/01/gh-cli-graphql-error/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            Solution to GitHub CLI &#39;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.&#39; 
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -454,11 +402,13 @@ Start: Run: docker ps -q -a --filter label=vsch.local.folder=d:\OneDriveMS\code\
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
