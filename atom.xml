@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-02-03T01:59:08.367Z</updated>
+  <updated>2021-02-03T20:19:20.961Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to PNG files not rendering on GitHub </title>
+    <link href="https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/"/>
+    <id>https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/</id>
+    <published>2021-02-03T12:07:53.000Z</published>
+    <updated>2021-02-03T20:19:20.961Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I do most of my dev in WSL and occasionally I screw up line endings between Windows and WSL.  I wanted to solve the line ending changes so I added a &lt;code&gt;.gitattributes&lt;/code&gt; to root of repo file with this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;* text eol&amp;#x3D;lf&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Everything worked
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Solution: String was not recognized as a valid DateTime when calling DateTime.ParseExact on results of GetDetailsOf call </title>
@@ -640,35 +669,6 @@
       <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
     
       <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Find the Amazon Prime Annual Membership Signup Option</title>
-    <link href="https://blog.jongallant.com/2020/02/amazon-prime-annual-payment-option/"/>
-    <id>https://blog.jongallant.com/2020/02/amazon-prime-annual-payment-option/</id>
-    <published>2020-02-05T22:51:34.000Z</published>
-    <updated>2020-02-06T07:14:30.721Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Not sure how, but Amazon charged my Prime membership to the wrong card. I contacted them via chat to credit that card and charge my primary card.  They had to make an exception to give me the credit and in order to give me the credit they had to cancel my Prime membership. They then asked me to
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="amazon" scheme="https://blog.jongallant.com/tags/amazon/"/>
     
   </entry>
   
