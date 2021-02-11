@@ -14,16 +14,16 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="Every year or so I do an Azure REST APIs with Postman blog and video.  It’s 2021 and Postman has changed quite a bit since my last update, so here’s the latest and greatest info. Postman Postman is a">
+    <meta name="description" content="Every year or so I do an Azure REST APIs with Postman blog and video.  It’s 2021 and Postman has changed quite a bit since my last update, so here’s the latest and greatest info. Azure SDKs Before we">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure REST APIs with Postman (2021)">
 <meta property="og:url" content="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Every year or so I do an Azure REST APIs with Postman blog and video.  It’s 2021 and Postman has changed quite a bit since my last update, so here’s the latest and greatest info. Postman Postman is a">
+<meta property="og:description" content="Every year or so I do an Azure REST APIs with Postman blog and video.  It’s 2021 and Postman has changed quite a bit since my last update, so here’s the latest and greatest info. Azure SDKs Before we">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/azure-rest-apis-postman.png">
 <meta property="article:published_time" content="2021-02-10T13:10:48.000Z">
-<meta property="article:modified_time" content="2021-02-11T00:10:44.291Z">
+<meta property="article:modified_time" content="2021-02-11T04:06:33.592Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/azure-rest-apis-postman.png">
@@ -220,6 +220,13 @@
         <div class="article-entry" itemprop="articleBody">
             <p><img src="azure-rest-apis-postman.png" alt="Azure REST APIs with Postman 2021"></p>
 <p>Every year or so I do an <a href="https://docs.microsoft.com/rest/api/azure/" target="_blank" rel="noopener">Azure REST APIs</a> with <a href="https://www.postman.com/" target="_blank" rel="noopener">Postman</a> blog and video.  It’s 2021 and Postman has changed quite a bit since my last update, so here’s the latest and greatest info.</p>
+<h2 id="Azure-SDKs"><a class="header-anchor" href="#Azure-SDKs"></a>Azure SDKs</h2>
+<p>Before we go too far into this Azure REST APIs for Postman 2021 edition blog post, I want to make sure that you know you don’t need to use the Azure REST APIs to interact with Azure.  So many people have reached out to me over the years asking for Azure REST help who didn’t know we have SDKs in many languages, including .NET, Python, Java, JavaScript/TypeScript, Go, C++, C, Android, iOS, PHP, and Ruby - and that they work across operating systems - and are available in their favorite package managers.  In my opinion, if you don’t mind taking on the dependency of the Microsoft supported library, then it sure beats building the libraries yourself.  Also, the new Azure SDKs include features like logging, retries, and are fully supported by a sizable team at Microsoft.</p>
+<p>I understand if you want to use the REST APIs directly, but I just want you to know that the libraries exist as well.</p>
+<p>You can find the libraries here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a> and a 3 min “Introducing the Azure SDKs” video here: <a href="https://aka.ms/azsdk/intro" target="_blank" rel="noopener">https://aka.ms/azsdk/intro</a> and all the source for the libraries can be found here: <a href="https://github.com/azure/azure-sdk" target="_blank" rel="noopener">https://github.com/azure/azure-sdk</a></p>
+<h2 id="Azure-REST-APIs-for-Postman-2021-Video"><a class="header-anchor" href="#Azure-REST-APIs-for-Postman-2021-Video"></a>Azure REST APIs for Postman 2021 Video</h2>
+<p>I created a short 6 minute video that brings you through this post step-by-step.  Feel free to open up that video and follow along with this post:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6b1J03fDnOg" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 <h2 id="Postman"><a class="header-anchor" href="#Postman"></a>Postman</h2>
 <p>Postman is a tool that enables you to call the Azure REST APIs via a graphical interface.  You can install it here: <a href="https://www.postman.com/downloads/" target="_blank" rel="noopener">Download Postman</a>.  We are using Postman v8.0.5 for this post.</p>
 <h2 id="Azure-CLI"><a class="header-anchor" href="#Azure-CLI"></a>Azure CLI</h2>
@@ -238,7 +245,7 @@
 <li>Select your active Azure subscription with <code>az account set -n {name of your sub}</code></li>
 </ol>
 <h2 id="Authentication"><a class="header-anchor" href="#Authentication"></a>Authentication</h2>
-<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
+<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
 <p>We first need to create the service principal with the following Azure CLI command:</p>
 <pre><code class="hljs bash">az ad sp create-for-rbac</code></pre>
 <p>This will output the information you need to setup Postman - you will need it later, so save it to a safe location.</p>
