@@ -6,7 +6,7 @@
     
     <title>
         
-        Azure REST APIs with Postman in 2 Minutes |
+        Azure REST APIs with Postman (2017) |
         
         Jon Gallant
     </title>
@@ -16,14 +16,14 @@
     
     <meta name="description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure REST APIs with Postman in 2 Minutes">
+<meta property="og:title" content="Azure REST APIs with Postman (2017)">
 <meta property="og:url" content="https://blog.jongallant.com/2017/11/azure-rest-apis-postman/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="The Azure REST APIs require a Bearer Token Authorization header. The docs do a great job explaining every authentication requirement, but do not tell you how to quickly get started.  This post will ho">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-rest-apis-postman/AzurePostman2min.png">
 <meta property="article:published_time" content="2017-11-29T19:55:12.000Z">
-<meta property="article:modified_time" content="2020-01-20T12:21:15.140Z">
+<meta property="article:modified_time" content="2021-02-10T22:39:26.499Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="postman">
@@ -203,7 +203,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Azure REST APIs with Postman in 2 Minutes
+        Azure REST APIs with Postman (2017)
         </h1>
     
 
@@ -237,25 +237,21 @@
 <h4 id="Local-with-Azure-CLI"><a class="header-anchor" href="#Local-with-Azure-CLI"></a>Local with Azure CLI</h4>
 <p>Install <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="noopener">Azure CLI 2.0</a></p>
 <h3 id="Login"><a class="header-anchor" href="#Login"></a>Login</h3>
-<pre><code class="language-bash">az login
-</code></pre>
+<pre><code class="hljs bash">az login</code></pre>
 <p><img src="00.png" alt=""></p>
 <p>If a browser doesn’t automatically open, go to <a href="http://aka.ms/devicelogin" target="_blank" rel="noopener">http://aka.ms/devicelogin</a> and enter the code show in the console.</p>
 <h3 id="Set-Active-Subscription"><a class="header-anchor" href="#Set-Active-Subscription"></a>Set Active Subscription</h3>
-<pre><code class="language-bash">az account set --subscription &quot;your subscription name or id&quot;
-</code></pre>
+<pre><code class="hljs bash">az account <span class="hljs-built_in">set</span> --subscription <span class="hljs-string">"your subscription name or id"</span></code></pre>
 <p><img src="01.png" alt=""></p>
 <h3 id="Create-Service-Principal"><a class="header-anchor" href="#Create-Service-Principal"></a>Create Service Principal</h3>
-<pre><code class="language-bash">az ad sp create-for-rbac -n &quot;your service principal name&quot;
-</code></pre>
+<pre><code class="hljs bash">az ad sp create-for-rbac -n <span class="hljs-string">"your service principal name"</span></code></pre>
 <p><img src="02.png" alt=""></p>
 <blockquote>
 <p>Copy this output to a temp location, you will need the values in a minute.</p>
 </blockquote>
 <h3 id="Service-Principal-Password-Reset"><a class="header-anchor" href="#Service-Principal-Password-Reset"></a>Service Principal Password Reset</h3>
 <p>You can execute the following command if you ever need to reset your Service Principal password.</p>
-<pre><code class="language-bash">az ad sp reset-credentials --name &quot;your service principal name&quot;
-</code></pre>
+<pre><code class="hljs bash">az ad sp reset-credentials --name <span class="hljs-string">"your service principal name"</span></code></pre>
 <p>You can read more about Service Principals <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects" target="_blank" rel="noopener">here</a>.</p>
 <h2 id="Postman-Setup"><a class="header-anchor" href="#Postman-Setup"></a>Postman Setup</h2>
 <p>We are now going to use Postman to execute a REST call to get the Bearer Token and another to Get Resource Groups.</p>
@@ -296,11 +292,10 @@
 <ul>
 <li>Enter all your settings from the Service Principal we created earlier.  Here’s how they map:</li>
 </ul>
-<pre><code class="language-bash">tenant = tenantId
+<pre><code class="hljs bash">tenant = tenantId
 appId = clientId
 password = clientSecret
-subscriptionId = you can find your subscription id by running the following command:
-</code></pre>
+subscriptionId = you can find your subscription id by running the following <span class="hljs-built_in">command</span>:</code></pre>
 <p><code>az account show --query id</code></p>
 <p>When you are done it will look like this with all the values filled in:</p>
 <p><img src="24.png" alt=""></p>
@@ -313,39 +308,36 @@ subscriptionId = you can find your subscription id by running the following comm
 <li>Open the Get AAD Token request and click the <strong>Send</strong> button.</li>
 </ul>
 <p>You will see the following output:</p>
-<pre><code class="language-javascript"> {
-    &quot;token_type&quot;: &quot;Bearer&quot;,
-    &quot;expires_in&quot;: &quot;3599&quot;,
-    &quot;ext_expires_in&quot;: &quot;0&quot;,
-    &quot;expires_on&quot;: &quot;1512031433&quot;,
-    &quot;not_before&quot;: &quot;1512027533&quot;,
-    &quot;resource&quot;: &quot;https://management.azure.com/&quot;,
-    &quot;access_token&quot;: &quot;eyJ0eXAiOiJKV...tS-OmwIfRw&quot;
-}
-</code></pre>
+<pre><code class="hljs javascript"> &#123;
+    <span class="hljs-string">"token_type"</span>: <span class="hljs-string">"Bearer"</span>,
+    <span class="hljs-string">"expires_in"</span>: <span class="hljs-string">"3599"</span>,
+    <span class="hljs-string">"ext_expires_in"</span>: <span class="hljs-string">"0"</span>,
+    <span class="hljs-string">"expires_on"</span>: <span class="hljs-string">"1512031433"</span>,
+    <span class="hljs-string">"not_before"</span>: <span class="hljs-string">"1512027533"</span>,
+    <span class="hljs-string">"resource"</span>: <span class="hljs-string">"https://management.azure.com/"</span>,
+    <span class="hljs-string">"access_token"</span>: <span class="hljs-string">"eyJ0eXAiOiJKV...tS-OmwIfRw"</span>
+&#125;</code></pre>
 <p><img src="25.png" alt=""></p>
 <p>The <code>access_token</code> property is now stored a global variable, which was set in the “Tests” tab.</p>
-<pre><code class="language-bash">pm.globals.set(&quot;bearerToken&quot;, pm.response.json().access_token);
-</code></pre>
+<pre><code class="hljs bash">pm.globals.set(<span class="hljs-string">"bearerToken"</span>, pm.response.json().access_token);</code></pre>
 <h3 id="Execute-Get-Resource-Groups-Request"><a class="header-anchor" href="#Execute-Get-Resource-Groups-Request"></a>Execute Get Resource Groups Request</h3>
 <p>We’ll now execute any Azure REST API with that Bearer Token. Just as an exercise, we’ll execute the Get Resource Groups request.</p>
 <ul>
 <li>Open the Get Resource Groups request and click the Send button.</li>
 </ul>
 <p>You will see the following output:</p>
-<pre><code class="language-javascript">{
-    &quot;value&quot;: [
-        {
-            &quot;id&quot;: &quot;/subscriptions/.../resourceGroups/cloud-shell-storage-westus&quot;,
-            &quot;name&quot;: &quot;cloud-shell-storage-westus&quot;,
-            &quot;location&quot;: &quot;westus&quot;,
-            &quot;properties&quot;: {
-                &quot;provisioningState&quot;: &quot;Succeeded&quot;
-            }
-        }
+<pre><code class="hljs javascript">&#123;
+    <span class="hljs-string">"value"</span>: [
+        &#123;
+            <span class="hljs-string">"id"</span>: <span class="hljs-string">"/subscriptions/.../resourceGroups/cloud-shell-storage-westus"</span>,
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"cloud-shell-storage-westus"</span>,
+            <span class="hljs-string">"location"</span>: <span class="hljs-string">"westus"</span>,
+            <span class="hljs-string">"properties"</span>: &#123;
+                <span class="hljs-string">"provisioningState"</span>: <span class="hljs-string">"Succeeded"</span>
+            &#125;
+        &#125;
     ]
-}
-</code></pre>
+&#125;</code></pre>
 <p><img src="26.png" alt=""></p>
 <p>That’s all there is to it. Now you can go an explore all of the Azure REST APIs and use this same method to generate the required Bearer Token Authorization header.</p>
 <p>Please let me know if you run in to any issues.</p>

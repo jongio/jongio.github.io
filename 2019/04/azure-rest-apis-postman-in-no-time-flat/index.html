@@ -6,7 +6,7 @@
     
     <title>
         
-        How to Call the Azure REST APIs with Postman In No Time Flat |
+        Azure REST APIs with Postman (2019) |
         
         Jon Gallant
     </title>
@@ -16,14 +16,14 @@
     
     <meta name="description" content="This post will show you the fastest way to call the Azure REST APIs using Postman. We’ll use:  Postman Azure Cloud Shell - https:&#x2F;&#x2F;shell.azure.com  Create Postman Collection Let’s create a Postman Col">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Call the Azure REST APIs with Postman In No Time Flat">
+<meta property="og:title" content="Azure REST APIs with Postman (2019)">
 <meta property="og:url" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="This post will show you the fastest way to call the Azure REST APIs using Postman. We’ll use:  Postman Azure Cloud Shell - https:&#x2F;&#x2F;shell.azure.com  Create Postman Collection Let’s create a Postman Col">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/000095.png">
 <meta property="article:published_time" content="2019-04-06T16:36:21.000Z">
-<meta property="article:modified_time" content="2019-04-08T23:16:06.000Z">
+<meta property="article:modified_time" content="2021-02-10T22:40:13.311Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="postman">
@@ -203,7 +203,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        How to Call the Azure REST APIs with Postman In No Time Flat
+        Azure REST APIs with Postman (2019)
         </h1>
     
 
@@ -245,23 +245,22 @@
 <ol>
 <li>Copy this code block into your collections pre-request script block.</li>
 </ol>
-<pre><code class="language-javascript">pm.sendRequest({
-    url: 'https://login.microsoftonline.com/' + pm.variables.get(&quot;tenantId&quot;) + '/oauth2/token',
-    method: 'POST',
-    header: 'Content-Type: application/x-www-form-urlencoded',
-    body: {
-        mode: 'urlencoded',
-        urlencoded: [ 
-            {key: &quot;grant_type&quot;, value: &quot;client_credentials&quot;, disabled: false},
-            {key: &quot;client_id&quot;, value: pm.variables.get(&quot;clientId&quot;), disabled: false},
-            {key: &quot;client_secret&quot;, value: pm.variables.get(&quot;clientSecret&quot;), disabled: false},
-            {key: &quot;resource&quot;, value: pm.variables.get(&quot;resource&quot;), disabled: false}
+<pre><code class="hljs javascript">pm.sendRequest(&#123;
+    <span class="hljs-attr">url</span>: <span class="hljs-string">'https://login.microsoftonline.com/'</span> + pm.variables.get(<span class="hljs-string">"tenantId"</span>) + <span class="hljs-string">'/oauth2/token'</span>,
+    <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
+    <span class="hljs-attr">header</span>: <span class="hljs-string">'Content-Type: application/x-www-form-urlencoded'</span>,
+    <span class="hljs-attr">body</span>: &#123;
+        <span class="hljs-attr">mode</span>: <span class="hljs-string">'urlencoded'</span>,
+        <span class="hljs-attr">urlencoded</span>: [ 
+            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"grant_type"</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">"client_credentials"</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
+            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"client_id"</span>, <span class="hljs-attr">value</span>: pm.variables.get(<span class="hljs-string">"clientId"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
+            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"client_secret"</span>, <span class="hljs-attr">value</span>: pm.variables.get(<span class="hljs-string">"clientSecret"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
+            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"resource"</span>, <span class="hljs-attr">value</span>: pm.variables.get(<span class="hljs-string">"resource"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;
         ]
-    }
-}, function (err, res) {
-    pm.globals.set(&quot;bearerToken&quot;, res.json().access_token);
-});
-</code></pre>
+    &#125;
+&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, res</span>) </span>&#123;
+    pm.globals.set(<span class="hljs-string">"bearerToken"</span>, res.json().access_token);
+&#125;);</code></pre>
 <p><img src="000092.png" alt=""></p>
 <h3 id="Variables"><a class="header-anchor" href="#Variables"></a>Variables</h3>
 <p>Postman allows you to set variables at the collection level. We’ll put the variables required by the pre-request script and the Azure REST APIs in the “Variables” tab.</p>
@@ -271,12 +270,11 @@
 <blockquote>
 <p>Make sure you add the variable values to the <strong>CURRENT VALUE</strong> column NOT the Initial Value column.</p>
 </blockquote>
-<pre><code>clientId
+<pre><code class="hljs plain">clientId
 clientSecret
 tenantId
 subscriptionId
-resource: https://management.azure.com/
-</code></pre>
+resource: https:&#x2F;&#x2F;management.azure.com&#x2F;</code></pre>
 <p><img src="000102.png" alt=""></p>
 <p>Keep the “Create Collection” dialog open and continue to the next step.</p>
 <h2 id="Get-Azure-Variables"><a class="header-anchor" href="#Get-Azure-Variables"></a>Get Azure Variables</h2>
@@ -297,10 +295,9 @@ resource: https://management.azure.com/
 <ol start="3">
 <li>Copy the outputed variables to Postman Collection variables</li>
 </ol>
-<pre><code>clientId = appId
-clientSecret = password
-tenantId = tenant
-</code></pre>
+<pre><code class="hljs plain">clientId &#x3D; appId
+clientSecret &#x3D; password
+tenantId &#x3D; tenant</code></pre>
 <p><img src="000100.png" alt=""></p>
 <ol start="4">
 <li>Get Subscription Id</li>
@@ -344,20 +341,19 @@ tenantId = tenant
 </li>
 </ol>
 <p>You will see the REST request output in the bottom pane</p>
-<pre><code class="language-javascript">{
-    &quot;value&quot;: [
-        {
-            &quot;id&quot;: &quot;/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS&quot;,
-            &quot;name&quot;: &quot;DefaultResourceGroup-EUS&quot;,
-            &quot;location&quot;: &quot;eastus&quot;,
-            &quot;tags&quot;: {},
-            &quot;properties&quot;: {
-                &quot;provisioningState&quot;: &quot;Succeeded&quot;
-            }
-        }
+<pre><code class="hljs javascript">&#123;
+    <span class="hljs-string">"value"</span>: [
+        &#123;
+            <span class="hljs-string">"id"</span>: <span class="hljs-string">"/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS"</span>,
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"DefaultResourceGroup-EUS"</span>,
+            <span class="hljs-string">"location"</span>: <span class="hljs-string">"eastus"</span>,
+            <span class="hljs-string">"tags"</span>: &#123;&#125;,
+            <span class="hljs-string">"properties"</span>: &#123;
+                <span class="hljs-string">"provisioningState"</span>: <span class="hljs-string">"Succeeded"</span>
+            &#125;
+        &#125;
     ]
-}
-</code></pre>
+&#125;</code></pre>
 <p><img src="000089.png" alt=""></p>
 <p>And that is how to call the Azure REST APIs with Postman in no time flat!</p>
 <p>Jon</p>

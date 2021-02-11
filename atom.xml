@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-02-03T20:19:20.961Z</updated>
+  <updated>2021-02-11T00:10:44.291Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure REST APIs with Postman (2021)</title>
+    <link href="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/"/>
+    <id>https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/</id>
+    <published>2021-02-10T13:10:48.000Z</published>
+    <updated>2021-02-11T00:10:44.291Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;azure-rest-apis-postman.png&quot; alt=&quot;Azure REST APIs with Postman 2021&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Every year or so I do an &lt;a href=&quot;https://docs.microsoft.com/rest/api/azure/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure REST APIs&lt;/a&gt; with &lt;a href=&quot;https://www.postman.com/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Solution to PNG files not rendering on GitHub </title>
@@ -634,41 +662,6 @@
       <category term="government" scheme="https://blog.jongallant.com/tags/government/"/>
     
       <category term="cloud" scheme="https://blog.jongallant.com/tags/cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to: &quot;Unbound classpath container: JRE System Library [JavaSE-11] in project&quot; in VSCode</title>
-    <link href="https://blog.jongallant.com/2020/02/vscode-java-unbound-classpath-container/"/>
-    <id>https://blog.jongallant.com/2020/02/vscode-java-unbound-classpath-container/</id>
-    <published>2020-02-29T09:01:52.000Z</published>
-    <updated>2020-02-29T17:10:46.430Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m working on Java / VS Code project and was getting this error:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;quot;Unbound classpath container: &#39;JRE System Library [JavaSE-11]&#39; in project&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;I’m new to Java and pom.xml files, so it took me a while to figure this out.  Ultimately, I used the VS Code Maven
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
-    
-      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
     
   </entry>
   
