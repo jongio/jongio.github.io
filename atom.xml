@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-02-11T16:13:02.419Z</updated>
+  <updated>2021-02-20T20:12:06.835Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Zion National Park Tips - Where to stay, park, drive, &amp; hike.</title>
+    <link href="https://blog.jongallant.com/2021/02/zion-national-park-tips/"/>
+    <id>https://blog.jongallant.com/2021/02/zion-national-park-tips/</id>
+    <published>2021-02-20T11:35:16.000Z</published>
+    <updated>2021-02-20T20:12:06.835Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I just returned from a trip to &lt;a href=&quot;https://www.nps.gov/zion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Zion National Park&lt;/a&gt; in February 2021.  Here are some tips that will help if you are considering a trip to Zion in the winter.&lt;/p&gt;
+&lt;h2 id=&quot;Housing&quot;&gt;&lt;a class=&quot;header-anchor&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Review" scheme="https://blog.jongallant.com/category/Review/"/>
+    
+    
+      <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AirportParkingReservations.com Review</title>
+    <link href="https://blog.jongallant.com/2021/02/airportparkingreservations/"/>
+    <id>https://blog.jongallant.com/2021/02/airportparkingreservations/</id>
+    <published>2021-02-20T11:23:24.000Z</published>
+    <updated>2021-02-20T20:11:43.014Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I recently and successfully used &lt;a href=&quot;https://airportparkingreservations.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;AirportParkingReservations.com&lt;/a&gt; to park my car at Master Park at SeaTac - so I thought I would write a quick note to let my readers know that it’s a good service and worked out
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/"/>
+    
+    
+      <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure REST APIs with Postman (2021)</title>
@@ -599,75 +654,6 @@
       <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
     
       <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to play Ticket To Ride online with Steam</title>
-    <link href="https://blog.jongallant.com/2020/04/ticket-to-ride-steam/"/>
-    <id>https://blog.jongallant.com/2020/04/ticket-to-ride-steam/</id>
-    <published>2020-04-12T09:08:53.000Z</published>
-    <updated>2020-04-12T21:14:52.078Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://www.daysofwonder.com/tickettoride&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Ticket to Ride&lt;/a&gt; is the “go to” board game for me and my family. We’ve been playing for years and like it a lot because it is easy to learn, has a good amount of both luck and strategy, and it is fun for all
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Gaming" scheme="https://blog.jongallant.com/category/Tech/Gaming/"/>
-    
-    
-      <category term="gaming" scheme="https://blog.jongallant.com/tags/gaming/"/>
-    
-      <category term="steam" scheme="https://blog.jongallant.com/tags/steam/"/>
-    
-      <category term="tickettoride" scheme="https://blog.jongallant.com/tags/tickettoride/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud</title>
-    <link href="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/"/>
-    <id>https://blog.jongallant.com/2020/02/azure-identity-other-clouds/</id>
-    <published>2020-02-29T13:46:26.000Z</published>
-    <updated>2020-08-14T14:18:43.425Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command &lt;code&gt;az cloud list&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;If you try to use the new Azure Identity library with one of those clouds,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="sdk" scheme="https://blog.jongallant.com/tags/sdk/"/>
-    
-      <category term="government" scheme="https://blog.jongallant.com/tags/government/"/>
-    
-      <category term="cloud" scheme="https://blog.jongallant.com/tags/cloud/"/>
     
   </entry>
   
