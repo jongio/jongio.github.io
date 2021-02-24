@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-02-21T01:57:31.563Z</updated>
+  <updated>2021-02-24T20:48:42.839Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to Azure Kubernetes Service version not supported exception - Version x.x.x is not supported in this region.</title>
+    <link href="https://blog.jongallant.com/2021/02/aks-kubernetes-version/"/>
+    <id>https://blog.jongallant.com/2021/02/aks-kubernetes-version/</id>
+    <published>2021-02-24T12:14:56.000Z</published>
+    <updated>2021-02-24T20:48:42.839Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I got this error while deploying a new Azure Kubernetes Cluster.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs json&quot;&gt;&amp;#123;
+   &lt;span class=&quot;hljs-attr&quot;&gt;&quot;error&quot;&lt;/span&gt;:&amp;#123;
+      &lt;span class=&quot;hljs-attr&quot;&gt;&quot;code&quot;&lt;/span&gt;:&lt;span class=&quot;hljs-string&quot;&gt;&quot;InvalidTemplateDeployment&quot;&lt;/span&gt;,
+      &lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
+    
+  </entry>
   
   <entry>
     <title>Zion National Park Tips - Where to stay, park, drive, &amp; hike.</title>
@@ -76,7 +111,7 @@
     <link href="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/"/>
     <id>https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/</id>
     <published>2021-02-10T13:10:48.000Z</published>
-    <updated>2021-02-11T16:13:02.419Z</updated>
+    <updated>2021-02-23T00:19:36.672Z</updated>
     
     <summary type="html">
     
@@ -620,40 +655,6 @@
       <category term="visual studio" scheme="https://blog.jongallant.com/tags/visual-studio/"/>
     
       <category term="msal" scheme="https://blog.jongallant.com/tags/msal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to use .env files with the Azure SDK for Java</title>
-    <link href="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/"/>
-    <id>https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/</id>
-    <published>2020-04-13T13:38:17.000Z</published>
-    <updated>2020-05-14T00:06:22.077Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;UPDATE 5/13/2020 - This is now outdated as of version 5.2.0 of java-dotnet package.  A systemProperties method was added to make all of this easier. You can find all of the updated details on the new post here: &lt;a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
-    
-      <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
     
   </entry>
   
