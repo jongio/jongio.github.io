@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-02-24T20:48:42.839Z</updated>
+  <updated>2021-02-26T17:05:00.129Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure REST APIs with Insomnia</title>
+    <link href="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/"/>
+    <id>https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/</id>
+    <published>2021-02-26T06:50:46.000Z</published>
+    <updated>2021-02-26T17:05:00.129Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;azure-rest-apis-insomnia.png&quot; alt=&quot;Azure REST APIs with Insomnia&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Here’s how to call the &lt;a href=&quot;https://docs.microsoft.com/en-us/rest/api/azure/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure REST APIs&lt;/a&gt; with &lt;a href=&quot;https://insomnia.rest&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to Azure Kubernetes Service version not supported exception - Version x.x.x is not supported in this region.</title>
@@ -111,7 +143,7 @@
     <link href="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/"/>
     <id>https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/</id>
     <published>2021-02-10T13:10:48.000Z</published>
-    <updated>2021-02-23T00:19:36.672Z</updated>
+    <updated>2021-02-26T16:38:44.310Z</updated>
     
     <summary type="html">
     
@@ -622,39 +654,6 @@
       <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
     
       <category term="devexp" scheme="https://blog.jongallant.com/tags/devexp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution: Visual Studio: We could not refresh the credentials for the account MSAL V3 Deserialization failed to parse the cache contents. </title>
-    <link href="https://blog.jongallant.com/2020/04/vs-could-not-refresh-credentials-msal-v3-deserialization-failure/"/>
-    <id>https://blog.jongallant.com/2020/04/vs-could-not-refresh-credentials-msal-v3-deserialization-failure/</id>
-    <published>2020-04-17T06:57:30.000Z</published>
-    <updated>2020-04-17T14:19:36.852Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I ran into this error yesterday, not sure how I got Visual Studio into this state, but I thought I would post a quick fix - just in case you run into the same issue.  So you know, I have reported this to the Visual Studio team and am helping them figure out what is going on so we can get a
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="identity" scheme="https://blog.jongallant.com/tags/identity/"/>
-    
-      <category term="visual studio" scheme="https://blog.jongallant.com/tags/visual-studio/"/>
-    
-      <category term="msal" scheme="https://blog.jongallant.com/tags/msal/"/>
     
   </entry>
   

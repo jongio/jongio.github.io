@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script data-ad-client="ca-pub-7253926757222509" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FP3DVRSXN0"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FP3DVRSXN0');
+    </script>
+    <meta charset="utf-8">
+    
+    <title>
+        
+        Azure REST APIs with Insomnia |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,rest" />
+    
+    <meta name="description" content="Here’s how to call the Azure REST APIs with Insomnia - a modern lightweight REST API client. Azure SDKs Before we go too far into this Azure REST APIs for Insomnia post, I want to make sure that you">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure REST APIs with Insomnia">
+<meta property="og:url" content="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="Here’s how to call the Azure REST APIs with Insomnia - a modern lightweight REST API client. Azure SDKs Before we go too far into this Azure REST APIs for Insomnia post, I want to make sure that you">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/azure-rest-apis-insomnia.png">
+<meta property="article:published_time" content="2021-02-26T06:50:46.000Z">
+<meta property="article:modified_time" content="2021-02-26T17:05:00.129Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="rest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/azure-rest-apis-insomnia.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
+    
+
+    
+    <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/"
+                  >Home</a
+                >
+              </li>
+               <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Gaming/">Gaming</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul> 
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/archives/"
+                  >Archive</a
+                >
+              </li>
+              
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/videos/"
+                  >Videos</a
+                >
+              </li>
+              
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/contact/"
+                  >Contact</a
+                >
+              </li>
+              
+            </ul>
+            <nav id="sub-nav">
+                <script async src="https://cse.google.com/cse.js?cx=partner-pub-7253926757222509:9158994875"></script>
+                <div class="gcse-searchbox-only"></div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-azure-rest-apis-insomnia" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Azure REST APIs with Insomnia
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2021/02/azure-rest-apis-insomnia/" class="article-date">
+    <time datetime="2021-02-26T06:50:46.000Z" itemprop="datePublished">2021-02-26</time>
+</a>
+
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/" rel="tag">rest</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="azure-rest-apis-insomnia.png" alt="Azure REST APIs with Insomnia"></p>
+<p>Here’s how to call the <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">Azure REST APIs</a> with <a href="https://insomnia.rest" target="_blank" rel="noopener">Insomnia</a> - a modern lightweight REST API client.</p>
+<h2 id="Azure-SDKs"><a class="header-anchor" href="#Azure-SDKs"></a>Azure SDKs</h2>
+<p>Before we go too far into this Azure REST APIs for Insomnia post, I want to make sure that you know you don’t need to use the Azure REST APIs to interact with Azure resources.  So many people have reached out to me over the years asking for Azure REST help who didn’t know we have SDKs in many languages, including .NET, Python, Java, JavaScript/TypeScript, Go, C++, C, Android, iOS, PHP, and Ruby - and that they work across operating systems - and are available in their favorite package managers.  In my opinion, if you don’t mind taking on the dependency of the Microsoft supported library, then it sure beats building the libraries yourself.  Also, the new Azure SDKs include features like logging, retries, and are fully supported by a sizable team at Microsoft.</p>
+<p>I understand if you want to use the REST APIs directly, but I just want you to know that the libraries exist as well.</p>
+<p>You can find the libraries here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a> and a 3 min “Introducing the Azure SDKs” video here: <a href="https://aka.ms/azsdk/intro" target="_blank" rel="noopener">https://aka.ms/azsdk/intro</a> and all the source for the libraries can be found here: <a href="https://github.com/azure/azure-sdk" target="_blank" rel="noopener">https://github.com/azure/azure-sdk</a></p>
+<p>Alright, so you are sure you want to use the Azure REST APIs instead of the SDKs?  Here’s how to do so with Insomnia.</p>
+<h2 id="1-Install-Insomnia-Core"><a class="header-anchor" href="#1-Install-Insomnia-Core"></a>1. Install Insomnia Core</h2>
+<p>Download and install <a href="https://insomnia.rest/download" target="_blank" rel="noopener">Insomnia Core</a>.</p>
+<h2 id="2-Install-Insomnia-Default-Headers-Plugin"><a class="header-anchor" href="#2-Install-Insomnia-Default-Headers-Plugin"></a>2. Install Insomnia - Default Headers Plugin</h2>
+<p>We are going to send the “Authorization” header Bearer token with each request and need the Default Headers Plugin to do so. You can find the plugin here on npm: <a href="https://www.npmjs.com/package/insomnia-plugin-default-headers" target="_blank" rel="noopener">Insomnia Default Headers</a>.</p>
+<blockquote>
+<p>There are other ways to auth with Insomnia, including the built-in OAuth2 provider, but I found this Default Header method better because I don’t need to manually set the authentication header with each request. Insomnia has a <a href="https://github.com/Kong/insomnia/issues/1116" target="_blank" rel="noopener">feature request to add authentication header at the workspace or folder level</a>, but until then this is the best option IMO.</p>
+</blockquote>
+<ol>
+<li>Open Insomnia</li>
+<li>Go to Application -&gt; Preferences -&gt; Plugins</li>
+<li>Type <code>insomnia-plugin-default-headers</code> and click “Install Plugin”</li>
+<li>Close Preferences dialog.</li>
+</ol>
+<p><img src="072.png" alt="&quot;Default Headers Plugin&quot;"></p>
+<h2 id="3-Import-the-“Azure-REST-APIs-with-Insomnia-Workspace”"><a class="header-anchor" href="#3-Import-the-“Azure-REST-APIs-with-Insomnia-Workspace”"></a>3. Import the “Azure REST APIs with Insomnia Workspace”</h2>
+<ol>
+<li>Open Insomnia</li>
+<li>Go to Application -&gt; Preferences -&gt; Data -&gt; Import Data -&gt; From URL<br>
+<img src="062.png" alt="&quot;Import Export&quot;"></li>
+<li>Page the Workspace URL:</li>
+</ol>
+<p>Enter <code>https://aka.ms/azure-rest-apis-with-insomnia-workspace</code> if that doesn’t work for some reason, then use this full URL: <code>https://gist.githubusercontent.com/jongio/b13944eafa9a08b907e924010c2e47cd/raw/4d1a6bdbb8006a7cc8718ba70b42fba1b10bef04/azure-rest-apis-with-insomnia-workspace.json</code></p>
+<ol start="4">
+<li>Click “Fetch and Import”<br>
+<img src="064.png" alt="&quot;Import Export Workspace&quot;"><br>
+<img src="065.png" alt="&quot;Import Export Workspace Success&quot;"></li>
+</ol>
+<h2 id="4-Setup-Azure-CLI"><a class="header-anchor" href="#4-Setup-Azure-CLI"></a>4. Setup Azure CLI</h2>
+<p>The Azure CLI is a command line tool that allows you to manage and interact with Azure resources, including the ability to get the necessary accounts and tokens required to call the Azure REST APIs.  We’ll use it to create a service principal, which will be used to get the tokens we need to make Azure REST API requests.</p>
+<h3 id="Installation"><a class="header-anchor" href="#Installation"></a>Installation</h3>
+<p>You can either use the Azure Cloud Shell or install the Azure CLI locally.</p>
+<h4 id="Cloud-Shell"><a class="header-anchor" href="#Cloud-Shell"></a>Cloud Shell</h4>
+<p>The Azure Cloud shell is an in-browser terminal interface that allows you to execute Azure CLI commands without installing the Azure CLI locally.</p>
+<ol>
+<li>Go to <a href="https://shell.azure.com" target="_blank" rel="noopener">Azure Cloud Shell</a> - <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a></li>
+</ol>
+<h4 id="Azure-CLI-Local-Install"><a class="header-anchor" href="#Azure-CLI-Local-Install"></a>Azure CLI Local Install</h4>
+<ol>
+<li><a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank" rel="noopener">Install the Azure CLI</a></li>
+<li>Login with <code>az login</code></li>
+<li>Select your active Azure subscription with <code>az account set -n {name of your sub}</code></li>
+</ol>
+<h2 id="5-Authentication"><a class="header-anchor" href="#5-Authentication"></a>5. Authentication</h2>
+<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
+<p>We first need to create the service principal with the following Azure CLI command:</p>
+<pre><code class="hljs bash">az ad sp create-for-rbac</code></pre>
+<p>This will output the information you need to setup Insomnia - you will need it later, so save it to a safe location.</p>
+<p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
+<pre><code class="hljs json">&#123;
+  <span class="hljs-attr">"appId"</span>: <span class="hljs-string">"798256c4-bbdc-4f7a-a20a-"</span>,
+  <span class="hljs-attr">"displayName"</span>: <span class="hljs-string">"azure-cli-2021-02-10-22-47-08"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"http://azure-cli-2021-02-10-22-47-08"</span>,
+  <span class="hljs-attr">"password"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">"tenant"</span>: <span class="hljs-string">"72f988bf-86f1-41af-91ab-"</span>
+&#125;</code></pre>
+<h2 id="6-Update-Insomnia-Environment"><a class="header-anchor" href="#6-Update-Insomnia-Environment"></a>6. Update Insomnia Environment</h2>
+<ol>
+<li>Hit CTRL+E on your keyboard to open the Azure REST Insomnia environment.  This is where we’ll set the environment variables.</li>
+</ol>
+<p><img src="066.png" alt="&quot;Update Insomnia Environment&quot;"></p>
+<blockquote>
+<p>Ignore the error in this dialog. It is only showing that error because the tenantId value wasn’t populated when you opened it.</p>
+</blockquote>
+<ol start="2">
+<li>Update the environment variables as follows:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Default Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId</td>
+<td></td>
+<td>This is the value of <code>appId</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>clientSecret</td>
+<td></td>
+<td>This is the value of <code>password</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>tenantId</td>
+<td></td>
+<td>This is the value of <code>tenantId</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>subscriptionId</td>
+<td></td>
+<td>You can get this with this Azure CLI command <code>az account show --query id -o tsv</code></td>
+</tr>
+<tr>
+<td>resource</td>
+<td><a href="https://management.azure.com/" target="_blank" rel="noopener">https://management.azure.com/</a></td>
+<td>The default value is for managing Azure resources.</td>
+</tr>
+<tr>
+<td>tokenUrl</td>
+<td><a href="https://login.microsoftonline.com/" target="_blank" rel="noopener">https://login.microsoftonline.com/</a>{{tenantId}}/oauth2/token</td>
+<td>You do not need to modify this value, but can if you want to use a different token url.</td>
+</tr>
+<tr>
+<td>DEFAULT_HEADERS</td>
+<td></td>
+<td>Do not modify this value.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Execute-“Get-Resource-Groups”-Request"><a class="header-anchor" href="#Execute-“Get-Resource-Groups”-Request"></a>Execute “Get Resource Groups” Request</h2>
+<p>Now that we have auth setup, let’s execute our first GET request.</p>
+<ol>
+<li>Within the Insomnia workspace, find the “Resource Groups -&gt; Get Resource Groups” request.</li>
+<li>Click the “Send” button.</li>
+<li>You will see your Resource Groups in the response pane.</li>
+</ol>
+<p><img src="069.png" alt="&quot;Get Resource Groups&quot;"></p>
+<h2 id="Execute-“Create-Resource-Group”-Request"><a class="header-anchor" href="#Execute-“Create-Resource-Group”-Request"></a>Execute “Create Resource Group” Request</h2>
+<p>Now let’s execute a PUT request to create a new Resource Group.</p>
+<ol>
+<li>Within the Insomnia workspace, find the “Resource Groups -&gt; Create Resource Group” request.</li>
+<li>Modify the “Resource Group Name” in the URL.</li>
+<li>Notice that we set the request Body with the location with this JSON:</li>
+</ol>
+<pre><code class="hljs json">&#123;<span class="hljs-attr">"location"</span>: <span class="hljs-string">"westus"</span>&#125;</code></pre>
+<p><img src="071.png" alt="&quot;Body type&quot;"></p>
+<ol>
+<li>Click the “Send” button.</li>
+<li>You will see your Resource Groups in the response pane.</li>
+</ol>
+<p><img src="070.png" alt="&quot;Create Resource Group&quot;"></p>
+<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
+<p>From here you need to explore the <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">Azure REST APIs</a> and add the requests that you’d like to call.</p>
+<p>That’s the easiest way to get going with Azure REST APIs and Insomnia.  Hope this helps you out.</p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2021/02/aks-kubernetes-version/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            Solution to Azure Kubernetes Service version not supported exception - Version x.x.x is not supported in this region.
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7253926757222509"
+            data-ad-slot="7222147978"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7253926757222509"
+            data-ad-slot="1523952970"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+   <!-- footer -->
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-7253926757222509"
+    data-ad-slot="5729050190"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2021
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+
+</html>
