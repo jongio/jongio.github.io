@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/azure-rest-apis-postman.png">
 <meta property="article:published_time" content="2021-02-10T13:10:48.000Z">
-<meta property="article:modified_time" content="2021-02-26T16:38:44.310Z">
+<meta property="article:modified_time" content="2021-02-28T22:44:11.967Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="postman">
@@ -321,26 +321,8 @@
 <p>You don’t need to do anything here, just including it so you know what is going on.</p>
 </blockquote>
 <p>Click on the collection name, then click on the “Pre-request Script” tab. You’ll see the code we use to generate the Bearer token needed with each Azure REST API call.</p>
-<p><img src="060.png" alt="Postman pre-request script"></p>
 <p>Here’s that code if you ever need it:</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> resource = (<span class="hljs-keyword">typeof</span> pm.collectionVariables.get(<span class="hljs-string">"resource"</span>) !== <span class="hljs-string">"undefined"</span> ? pm.collectionVariables.get(<span class="hljs-string">"resource"</span>) : <span class="hljs-string">"https://management.azure.com/"</span>);
-
-pm.sendRequest(&#123;
-    <span class="hljs-attr">url</span>: <span class="hljs-string">'https://login.microsoftonline.com/'</span> + pm.collectionVariables.get(<span class="hljs-string">"tenantId"</span>) + <span class="hljs-string">'/oauth2/token'</span>,
-    <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
-    <span class="hljs-attr">header</span>: <span class="hljs-string">'Content-Type: application/x-www-form-urlencoded'</span>,
-    <span class="hljs-attr">body</span>: &#123;
-        <span class="hljs-attr">mode</span>: <span class="hljs-string">'urlencoded'</span>,
-        <span class="hljs-attr">urlencoded</span>: [ 
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"grant_type"</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">"client_credentials"</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"client_id"</span>, <span class="hljs-attr">value</span>: pm.collectionVariables.get(<span class="hljs-string">"clientId"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"client_secret"</span>, <span class="hljs-attr">value</span>: pm.collectionVariables.get(<span class="hljs-string">"clientSecret"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"resource"</span>, <span class="hljs-attr">value</span>: resource , <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;
-        ]
-    &#125;
-&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, res</span>) </span>&#123;
-    pm.collectionVariables.set(<span class="hljs-string">"bearerToken"</span>, res.json().access_token);
-&#125;);</code></pre>
+<script src="https://gist.github.com/jongio/3a5b543407577ba61a83ee74fedb88cd.js"></script>
 <h3 id="Authorization"><a class="header-anchor" href="#Authorization"></a>Authorization</h3>
 <blockquote>
 <p>You don’t need to do anything here, just including it so you know what is going on.</p>
