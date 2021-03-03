@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-02-26T17:36:37.920Z</updated>
+  <updated>2021-03-03T16:34:38.661Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Organize Photos by EXIF Date Taken with PowerShell</title>
+    <link href="https://blog.jongallant.com/2021/03/organize-photos-powershell/"/>
+    <id>https://blog.jongallant.com/2021/03/organize-photos-powershell/</id>
+    <published>2021-03-03T07:25:31.000Z</published>
+    <updated>2021-03-03T16:34:38.661Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;thumbnail.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I recently decided to organize all of my photos from the last 20 years.  Photos from various phones and cameras - all with many different formats, JPEG, RAW, PNG, etc.  They were all stored on my hard drive, but in random folders with random names.  I
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="powershell" scheme="https://blog.jongallant.com/tags/powershell/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure REST APIs with Insomnia</title>
@@ -619,41 +649,6 @@
     
     
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer</title>
-    <link href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/"/>
-    <id>https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/</id>
-    <published>2020-04-23T16:21:12.000Z</published>
-    <updated>2020-08-31T20:54:20.488Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://github.com/azure/azurite&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azurite&lt;/a&gt;, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storage development on
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="azurite" scheme="https://blog.jongallant.com/tags/azurite/"/>
-    
-      <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
-    
-      <category term="devexp" scheme="https://blog.jongallant.com/tags/devexp/"/>
     
   </entry>
   
