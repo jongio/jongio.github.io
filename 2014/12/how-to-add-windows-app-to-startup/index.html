@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -217,25 +223,25 @@
 <p>3. Right click on the Windows project. Add Item –&gt; Installer class</p>
 <p><img src="/images/blog/12077fd3b80a_13FA2/image_3.png" alt=""></p>
 <p>4. In the Installer class override both the Commit and Uninstall methods. Replace “windows-startup-example-app” with the name of your app and change the exe name.</p>
-<pre><code class="language-csharp">public override void Commit(System.Collections.IDictionary savedState)
+<pre class="line-numbers language-csharp"><code class="language-csharp">public override void Commit(System.Collections.IDictionary savedState)
 {
     base.Commit(savedState);
-    using (RegistryKey key = Registry.CurrentUser.OpenSubKey(&quot;SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run&quot;, true))
+    using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
     {
-        key.SetValue(&quot;windows-startup-example-app&quot;, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + &quot;\\windows-startup-example-app.exe&quot;);
+        key.SetValue("windows-startup-example-app", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\windows-startup-example-app.exe");
     }
 }
 
        public override void Uninstall(System.Collections.IDictionary savedState)
 {
     base.Uninstall(savedState);
-   using (RegistryKey key = Registry.CurrentUser.OpenSubKey(&quot;SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run&quot;, true))
+   using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
     {
-        key.DeleteValue(&quot;windows-startup-example-app&quot;, false);
+        key.DeleteValue("windows-startup-example-app", false);
     }
 }
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>5\. Right click on Installer project and view Custom Actions
 <p><img src="/images/blog/12077fd3b80a_13FA2/image_4.png" alt=""></p>
 <p>6. Right click Commit and select Add Custom Action</p>
@@ -486,6 +492,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

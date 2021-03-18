@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2015-10-25T21:00:00.000Z">
-<meta property="article:modified_time" content="2018-12-10T12:53:46.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:49:23.608Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="howto">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -231,11 +237,11 @@
 <p>and will reference the LiquidCrystal library</p>
 <p><img src="/images/blog/60df869b7a82_1178E/image_7.png" alt=""></p>
 <p>6. In spark-hellosparky.cpp change the following line</p>
-<pre><code>#include &quot;LiquidCrystal.h&quot;
-</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp">#include "LiquidCrystal.h"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>to</p>
-<pre><code>#include &quot;LiquidCrystal/LiquidCrystal.h&quot;
-</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp">#include "LiquidCrystal/LiquidCrystal.h"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>7. Click the Flash button</p>
 <p><img src="/images/blog/60df869b7a82_1178E/image_8.png" alt=""></p>
 <p>That will deploy the code to your Photon and you should see “Hello, Sparky!” on your LCD. If you don’t, then you will likely need to adjust the potentiometer until you do.</p>
@@ -478,6 +484,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

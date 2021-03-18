@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,iot,azureiotedge,edge" />
+    <meta name="keywords" content="azure,iot,edge,azureiotedge" />
     
     <meta name="description" content="When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run iotedgectl setup with the --config-file option and don’t want to force passwords with the --auto-ce">
 <meta property="og:type" content="article">
@@ -33,12 +33,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-iot-edge-config-file-force-no-passwords-msg/01.png">
 <meta property="article:published_time" content="2017-11-28T10:31:44.000Z">
-<meta property="article:modified_time" content="2018-05-16T20:39:23.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:42:09.269Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="iot">
-<meta property="article:tag" content="azureiotedge">
 <meta property="article:tag" content="edge">
+<meta property="article:tag" content="azureiotedge">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/11/azure-iot-edge-config-file-force-no-passwords-msg/01.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,7 +219,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>When setting up Azure IoT Edge, you will most likely want to use an external config file. If you run <code>iotedgectl setup</code> with the <code>--config-file</code> option and don’t want to force passwords with the <code>--auto-cert-gen-force-no-passwords</code> option, you will get the following message:</p>
-<pre><code>INFO: Generating self signed certificates at: C:\ProgramData\azure-iot-edge\certs      
+<pre class="line-numbers language-bash"><code class="language-bash">INFO: Generating self signed certificates at: C:\ProgramData\azure-iot-edge\certs      
                                                                                        
                                                                                        
 ********************************************************************************       
@@ -228,7 +234,7 @@ line options --device-ca-passphrase or --device-ca-passphrase-file.
 ********************************************************************************       
 Press CTRL-C at anytime to exit.                                                       
 Please enter the Edge Device private key passphrase. Length should be &gt;= 4 and &lt;= 1023:
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="01.png" alt=""></p>
 <p>The message doesn’t tell you exactly what you need to do to get around this.</p>
 <p>Here’s what you need to do:</p>
@@ -237,47 +243,47 @@ Please enter the Edge Device private key passphrase. Length should be &gt;= 4 an
 <li>Find the <code>security.certificates.selfSigned.forceNoPasswords</code> setting and set it to <code>true</code></li>
 <li>Re-run <code>iotedgectl setup</code></li>
 </ol>
-<pre><code class="language-javascript">{
-  &quot;deployment&quot;: {
-    &quot;docker&quot;: {
-      &quot;edgeRuntimeImage&quot;: &quot;[[enter ACR URI]]/azureiotedge-agent:1.0-preview&quot;, 
-      &quot;loggingOptions&quot;: {
-        &quot;log-driver&quot;: &quot;json-file&quot;, 
-        &quot;log-opts&quot;: {
-          &quot;max-size&quot;: &quot;10m&quot;
+<pre class="line-numbers language-javascript"><code class="language-javascript">{
+  "deployment": {
+    "docker": {
+      "edgeRuntimeImage": "[[enter ACR URI]]/azureiotedge-agent:1.0-preview", 
+      "loggingOptions": {
+        "log-driver": "json-file", 
+        "log-opts": {
+          "max-size": "10m"
         }
       }, 
-      &quot;registries&quot;: [
+      "registries": [
         {
-          &quot;address&quot;: &quot;[[enter ACR URI]]&quot;, 
-          &quot;password&quot;: &quot;[[enter ACR password]]&quot;, 
-          &quot;username&quot;: &quot;[[enter ACR username]]&quot;
+          "address": "[[enter ACR URI]]", 
+          "password": "[[enter ACR password]]", 
+          "username": "[[enter ACR username]]"
         }
       ], 
-      &quot;uri&quot;: &quot;unix:///var/run/docker.sock&quot;
+      "uri": "unix:///var/run/docker.sock"
     }, 
-    &quot;type&quot;: &quot;docker&quot;
+    "type": "docker"
   }, 
-  &quot;deviceConnectionString&quot;: &quot;[[enter device connection string]]&quot;, 
-  &quot;homeDir&quot;: &quot;C:\\ProgramData\\azure-iot-edge&quot;, 
-  &quot;hostName&quot;: &quot;[[enter hostname]]&quot;, 
-  &quot;logLevel&quot;: &quot;info&quot;, 
-  &quot;schemaVersion&quot;: &quot;1&quot;, 
-  &quot;security&quot;: {
-    &quot;certificates&quot;: {
-      &quot;option&quot;: &quot;selfSigned&quot;, 
-      &quot;preInstalled&quot;: {
-        &quot;deviceCACertificateFilePath&quot;: &quot;&quot;, 
-        &quot;serverCertificateFilePath&quot;: &quot;&quot;
+  "deviceConnectionString": "[[enter device connection string]]", 
+  "homeDir": "C:\\ProgramData\\azure-iot-edge", 
+  "hostName": "[[enter hostname]]", 
+  "logLevel": "info", 
+  "schemaVersion": "1", 
+  "security": {
+    "certificates": {
+      "option": "selfSigned", 
+      "preInstalled": {
+        "deviceCACertificateFilePath": "", 
+        "serverCertificateFilePath": ""
       }, 
-      &quot;selfSigned&quot;: {
-        &quot;forceNoPasswords&quot;: true, 
-        &quot;forceRegenerate&quot;: false
+      "selfSigned": {
+        "forceNoPasswords": true, 
+        "forceRegenerate": false
       }
     }
   }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -514,6 +520,10 @@ Please enter the Edge Device private key passphrase. Length should be &gt;= 4 an
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

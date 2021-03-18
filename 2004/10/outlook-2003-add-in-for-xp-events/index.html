@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2004-10-19T16:39:00.000Z">
-<meta property="article:modified_time" content="2016-12-27T06:15:09.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:49:16.036Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
@@ -68,6 +68,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -91,12 +95,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -209,7 +215,7 @@
             <p>In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working great on my 2003 server dev box, but when installed on XP they did not fire. I tried many workarounds, but nothing was working, so I posted at <a href="http://www.outlookcode.com/threads.aspx?forumid=5&amp;messageid=7859" target="_blank" rel="noopener">OutlookCode.com</a> and Robert Halstead was nice enough to share a work around with me.</p>
 <p>What you have to do is add the “static” modifier to the variable declaration. It is hard to believe that I could not find this online somewhere and I hope someone with the same issue finds this post.</p>
 <p>Here is some sample code with the workaround.</p>
-<pre><code>public class Connect : Object, Extensibility.IDTExtensibility2
+<pre class="line-numbers language-cs"><code class="language-cs">public class Connect : Object, Extensibility.IDTExtensibility2
 {
     private static Microsoft.Office.Interop.Outlook.Items sentFolderItems;
     public void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)
@@ -217,7 +223,7 @@
         sentFolderItems = applicationObject.Session.GetDefaultFolder(OlDefaultFolders.olFolderSentMail).Items;
         sentFolderItems.ItemAdd += new ItemsEvents_ItemAddEventHandler(SentItems_ItemAdd);
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -454,6 +460,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="howto,nodejs,particle" />
+    <meta name="keywords" content="howto,particle,nodejs" />
     
     <meta name="description" content="Here’s a quick post to show you how to get your Particle Photon setup with Node.js. I also have instructions for doing so with PuTTY here. Put Photon in Listening Mode 1. Plug Photon into your compute">
 <meta property="og:type" content="article">
@@ -33,11 +33,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2015-08-12T11:44:00.000Z">
-<meta property="article:modified_time" content="2020-03-05T19:24:02.454Z">
+<meta property="article:modified_time" content="2021-03-18T06:50:15.260Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="howto">
-<meta property="article:tag" content="nodejs">
 <meta property="article:tag" content="particle">
+<meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -219,34 +225,40 @@
 <h2 id="Setup-Node"><a class="header-anchor" href="#Setup-Node"></a>Setup Node</h2>
 <p>1\. Install [Node.js](https://nodejs.org/). Make sure you include Node.js in your PATH during install.
 <p>2. Install the particle-cli Node.js package. Open a command prompt</p>
-<pre><code class="hljs plain">npm install -g particle-cli</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm install -g particle-cli
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Connect-Photon-to-WiFi-Network"><a class="header-anchor" href="#Connect-Photon-to-WiFi-Network"></a>Connect Photon to WiFi Network</h2>
 <p>1. Enter the following command into the command prompt and enter your WiFi SSID and Password</p>
-<pre><code class="hljs plain">particle setup wifi</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">particle setup wifi
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>If all goes well, you will see a message that looks like this:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image.png" alt=""></p>
 <p>If your Photon is not pulsing cyan (aka breathing cyan) then try this step over again.</p>
 <h2 id="Get-Photon-Id"><a class="header-anchor" href="#Get-Photon-Id"></a>Get Photon Id</h2>
 <p>1. Enter the following command into the command prompt</p>
-<pre><code class="hljs plain">particle identify</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">particle identify
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>That will print out your Photon’s unique id to the console.</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_3.png" alt=""></p>
 <p>You will need that later, so copy it over into Notepad.</p>
 <h2 id="Login-to-Particle"><a class="header-anchor" href="#Login-to-Particle"></a>Login to Particle</h2>
 <p>1. Enter the following command into the command prompt</p>
-<pre><code class="hljs plain">particle login</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">particle login
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>It will prompt you to enter your Particle account email and password. Please do so.</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_4.png" alt=""></p>
 <h2 id="Add-Photon-to-your-Particle-Account"><a class="header-anchor" href="#Add-Photon-to-your-Particle-Account"></a>Add Photon to your Particle Account</h2>
 <p>Your Photon must be breathing cyan before you attempt this step. If it isn’t, then follow the WiFi steps above.</p>
 <p>1. Enter the following command into the command prompt</p>
-<pre><code class="hljs plain">particle device add [your photon id from above]</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">particle device add [your photon id from above]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>If all goes well you will see a message like this:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_5.png" alt=""></p>
 <h2 id="Get-Particle-Access-Token"><a class="header-anchor" href="#Get-Particle-Access-Token"></a>Get Particle Access Token</h2>
 <p>You will need an access token to call any of the Particle APIs.</p>
 <p>1. Execute the following command into the command prompt</p>
-<pre><code class="hljs plain">particle token list</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">particle token list
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2. Enter your credentials and find the token that doesn’t have an expiration date:</p>
 <p><img src="/images/blog/6d56fbfccda3_9D69/image_6.png" alt=""></p>
 <p>3. Copy that access token to Notepad. You’ll need it later when you call the Particle APIs.</p>
@@ -487,6 +499,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

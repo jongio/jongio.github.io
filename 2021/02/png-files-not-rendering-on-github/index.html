@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/056.png">
 <meta property="article:published_time" content="2021-02-03T12:07:53.000Z">
-<meta property="article:modified_time" content="2021-02-03T20:19:20.961Z">
+<meta property="article:modified_time" content="2021-03-18T06:50:21.682Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/056.png">
@@ -68,6 +68,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -91,12 +95,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -207,15 +213,18 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I do most of my dev in WSL and occasionally I screw up line endings between Windows and WSL.  I wanted to solve the line ending changes so I added a <code>.gitattributes</code> to root of repo file with this:</p>
-<pre><code class="hljs plain">* text eol&#x3D;lf</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">* text eol=lf
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Everything worked great locally, but when I pushed to GitHub all of my pngs were borked.</p>
 <p>So I did some sleuthing and discovered that I should add this to my <code>.gitattributes</code> file so pngs are treated as binary files.</p>
-<pre><code class="hljs plain">* text&#x3D;auto
-* text eol&#x3D;lf
-*.png binary</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">* text=auto
+* text eol=lf
+*.png binary
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>In order for those changes to take effect, I had to run the following:</p>
-<pre><code class="hljs plain">git rm --cached -r .
-git add -A</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git rm --cached -r .
+git add -A
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>I then committed and pushed to GitHub and that resolved the problem.</p>
 <p>Jon</p>
 
@@ -454,6 +463,10 @@ git add -A</code></pre>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

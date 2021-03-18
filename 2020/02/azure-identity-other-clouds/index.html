@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta property="article:published_time" content="2020-02-29T13:46:26.000Z">
-<meta property="article:modified_time" content="2020-08-14T14:18:43.425Z">
+<meta property="article:modified_time" content="2021-03-18T06:41:59.508Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -214,11 +220,12 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command <code>az cloud list</code>.</p>
 <p>If you try to use the new Azure Identity library with one of those clouds, you will get this error:</p>
-<pre><code class="hljs bash">AADSTS900382: Confidential Client is not supported <span class="hljs-keyword">in</span> Cross Cloud request</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">AADSTS900382: Confidential Client is not supported in Cross Cloud request
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>That is because all of the libraries default to using <code>https://login.microsoftonline.com</code> as the Azure Active Diretory authority host.  Each of the other clouds have different authority host endpoints, as you can see from the Azure Government profile here:</p>
 <p>The <code>activeDirectory</code> property doesn’t end with <code>.com</code> it ends with <code>.us</code>, and every cloud is different.</p>
-<pre><code class="hljs json">&#123;
-    "endpoints": &#123;
+<pre class="line-numbers language-json"><code class="language-json">{
+    "endpoints": {
       "activeDirectory": "https://login.microsoftonline.us",
       "activeDirectoryDataLakeResourceId": null,
       "activeDirectoryGraphResourceId": "https://graph.windows.net/",
@@ -232,23 +239,26 @@
       "resourceManager": "https://management.usgovcloudapi.net/",
       "sqlManagement": "https://management.core.usgovcloudapi.net:8443/",
       "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json"
-    &#125;,
+    },
     "isActive": true,
     "name": "AzureUSGovernment",
     "profile": "latest",
-    "suffixes": &#123;
+    "suffixes": {
       "acrLoginServerEndpoint": ".azurecr.us",
       "azureDatalakeAnalyticsCatalogAndJobEndpoint": null,
       "azureDatalakeStoreFileSystemEndpoint": null,
       "keyvaultDns": ".vault.usgovcloudapi.net",
       "sqlServerHostname": ".database.usgovcloudapi.net",
       "storageEndpoint": "core.usgovcloudapi.net"
-    &#125;
-  &#125;,</code></pre>
+    }
+  },
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>When you instantiate <code>Azure.Identity.DefaultAzureCredential()</code> without any parameters:</p>
-<pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential();</code></pre>
+<pre class="line-numbers language-js"><code class="language-js">const credential = new DefaultAzureCredential();
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will get the following error:</p>
-<pre><code class="hljs bash">AADSTS900382: Confidential Client is not supported <span class="hljs-keyword">in</span> Cross Cloud request</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">AADSTS900382: Confidential Client is not supported in Cross Cloud request
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>What you need to do is instantiate <code>DefaultAzureCredential</code> with the proper authority host for the cloud you are targeting. Run <code>az cloud list</code> to find the appropriate <code>activeDirectory</code> endpoint.</p>
 <p>You can set via the <code>AZURE_AUTHORITY_HOST</code> environment variable or use the <code>AzureAuthorityHosts</code> enums.</p>
 <p>Here’s what you need to do for each language:</p>
@@ -260,38 +270,47 @@
 <p><strong>JavaScript/TypeScript</strong>: <a href="https://www.npmjs.com/package/@azure/identity/v/1.1.0" target="_blank" rel="noopener">@azure/identity 1.1.0</a></p>
 <h2 id="Setting-Authority-Host-via-the-“AuthorityHost”-property-and-AzureAuthorityHosts-enums"><a class="header-anchor" href="#Setting-Authority-Host-via-the-“AuthorityHost”-property-and-AzureAuthorityHosts-enums"></a>Setting Authority Host via the “AuthorityHost” property and AzureAuthorityHosts enums.</h2>
 <h3 id="NET"><a class="header-anchor" href="#NET"></a>.NET</h3>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> options = <span class="hljs-keyword">new</span> DefaultAzureCredentialOptions &#123; AuthorityHost = AzureAuthorityHosts.AzureGovernment &#125;;
-<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> KeyClient(<span class="hljs-keyword">new</span> Uri(keyVaultUrl), <span class="hljs-keyword">new</span> DefaultAzureCredential(options));</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var options = new DefaultAzureCredentialOptions { AuthorityHost = AzureAuthorityHosts.AzureGovernment };
+var client = new KeyClient(new Uri(keyVaultUrl), new DefaultAzureCredential(options));
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>With service version number:</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> KeyClient(<span class="hljs-keyword">new</span> Uri(keyVaultUrl), <span class="hljs-keyword">new</span> DefaultAzureCredential(options), <span class="hljs-keyword">new</span> KeyClientOptions(KeyClientOptions.ServiceVersion.V7_0));</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new KeyClient(new Uri(keyVaultUrl), new DefaultAzureCredential(options), new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_0));
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Java"><a class="header-anchor" href="#Java"></a>Java</h3>
-<pre><code class="hljs java">DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder()
+<pre class="line-numbers language-java"><code class="language-java">DefaultAzureCredential cred = new DefaultAzureCredentialBuilder()
     .authorityHost(AzureAuthorityHosts.AZURE_GOVERNMENT)
     .build();
 
-KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder()
+KeyClient keyClient = new KeyClientBuilder()
     .vaultUrl(keyVaultUrl)
     .credential(cred)
-    .buildClient();</code></pre>
+    .buildClient();
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>With service version number:</p>
-<pre><code class="hljs java">KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder()
+<pre class="line-numbers language-java"><code class="language-java">KeyClient keyClient = new KeyClientBuilder()
     .vaultUrl(keyVaultUrl)
     .serviceVersion(KeyServiceVersion.V7_0)
     .credential(cred)
-    .buildClient();</code></pre>
+    .buildClient();
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Python"><a class="header-anchor" href="#Python"></a>Python</h3>
-<pre><code class="hljs python">credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)
-client = KeyClient(vault_url=VAULT_URL, credential=credential)</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">credential = DefaultAzureCredential(authority=AzureAuthorityHosts.AZURE_GOVERNMENT)
+client = KeyClient(vault_url=VAULT_URL, credential=credential)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>With service version number:</p>
-<pre><code class="hljs python">client = KeyClient(vault_url=VAULT_URL, credential=credential, api_version=<span class="hljs-string">"7.0"</span>)</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">client = KeyClient(vault_url=VAULT_URL, credential=credential, api_version="7.0")
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="JavaScript-TypeScript"><a class="header-anchor" href="#JavaScript-TypeScript"></a>JavaScript/TypeScript</h3>
-<pre><code class="hljs js"><span class="hljs-keyword">const</span> credential = <span class="hljs-keyword">new</span> DefaultAzureCredential(&#123; <span class="hljs-attr">authorityHost</span>: KnownAuthorityHosts.AzureGovernment &#125;);
-<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> KeyClient(url, credential);</code></pre>
+<pre class="line-numbers language-js"><code class="language-js">const credential = new DefaultAzureCredential({ authorityHost: KnownAuthorityHosts.AzureGovernment });
+const client = new KeyClient(url, credential);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>With service version number:</p>
-<pre><code class="hljs js"><span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> KeyClient(url, credential, &#123; <span class="hljs-attr">serviceVersion</span>: <span class="hljs-string">"7.0"</span> &#125;);</code></pre>
+<pre class="line-numbers language-js"><code class="language-js">const client = new KeyClient(url, credential, { serviceVersion: "7.0" });
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Service-Version-Error"><a class="header-anchor" href="#Service-Version-Error"></a>Service Version Error</h2>
 <p>If you get the following error, then you’ll need to explicitly set the version number. Both examples are shown above for each language.</p>
-<pre><code class="hljs plain">The specified version (7.1) is not recognized. Consider using the latest supported version (2016-10-01).</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">The specified version (7.1) is not recognized. Consider using the latest supported version (2016-10-01).
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -528,6 +547,10 @@ client = KeyClient(vault_url=VAULT_URL, credential=credential)</code></pre>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-03-16T20:03:22.912Z</updated>
+  <updated>2021-03-18T06:56:14.235Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.jongallant.com/2021/03/the-case-of-the-last-t/"/>
     <id>https://blog.jongallant.com/2021/03/the-case-of-the-last-t/</id>
     <published>2021-03-15T16:22:14.000Z</published>
-    <updated>2021-03-16T20:03:22.912Z</updated>
+    <updated>2021-03-18T06:56:14.235Z</updated>
     
     <summary type="html">
     
@@ -49,7 +49,7 @@
     <link href="https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/"/>
     <id>https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/</id>
     <published>2021-03-11T11:13:35.000Z</published>
-    <updated>2021-03-11T19:36:37.211Z</updated>
+    <updated>2021-03-18T02:41:16.457Z</updated>
     
     <summary type="html">
     
@@ -58,7 +58,7 @@
         
         
           &lt;p&gt;Was getting this error today:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;Liquid Exception: Could not locate the included file &amp;#39;app_insights.html&amp;#39; in any of [&amp;quot;D:&amp;#x2F;OneDriveMS&amp;#x2F;code&amp;#x2F;GitHub&amp;#x2F;jongio&amp;#x2F;azure-sdk&amp;#x2F;_includes&amp;quot;,
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:/OneDriveMS/code/GitHub/jongio/azure-sdk/_includes&quot;,
         
       
     
@@ -77,7 +77,7 @@
     <link href="https://blog.jongallant.com/2021/03/organize-photos-powershell/"/>
     <id>https://blog.jongallant.com/2021/03/organize-photos-powershell/</id>
     <published>2021-03-03T07:25:31.000Z</published>
-    <updated>2021-03-03T16:34:38.661Z</updated>
+    <updated>2021-03-18T06:48:57.983Z</updated>
     
     <summary type="html">
     
@@ -139,7 +139,7 @@
     <link href="https://blog.jongallant.com/2021/02/aks-kubernetes-version/"/>
     <id>https://blog.jongallant.com/2021/02/aks-kubernetes-version/</id>
     <published>2021-02-24T12:14:56.000Z</published>
-    <updated>2021-02-24T20:48:42.839Z</updated>
+    <updated>2021-03-18T06:36:29.231Z</updated>
     
     <summary type="html">
     
@@ -148,10 +148,10 @@
         
         
           &lt;p&gt;I got this error while deploying a new Azure Kubernetes Cluster.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs json&quot;&gt;&amp;#123;
-   &lt;span class=&quot;hljs-attr&quot;&gt;&quot;error&quot;&lt;/span&gt;:&amp;#123;
-      &lt;span class=&quot;hljs-attr&quot;&gt;&quot;code&quot;&lt;/span&gt;:&lt;span class=&quot;hljs-string&quot;&gt;&quot;InvalidTemplateDeployment&quot;&lt;/span&gt;,
-      &lt;span
+&lt;pre class=&quot;line-numbers language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;{
+   &quot;error&quot;:{
+      &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,
+      &quot;message&quot;:&quot;The template deployment &#39;memealyzerdev3&#39; is not valid according to the validation
         
       
     
@@ -263,7 +263,7 @@
     <link href="https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/"/>
     <id>https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/</id>
     <published>2021-02-03T12:07:53.000Z</published>
-    <updated>2021-02-03T20:19:20.961Z</updated>
+    <updated>2021-03-18T06:50:21.682Z</updated>
     
     <summary type="html">
     
@@ -272,8 +272,7 @@
         
         
           &lt;p&gt;I do most of my dev in WSL and occasionally I screw up line endings between Windows and WSL.  I wanted to solve the line ending changes so I added a &lt;code&gt;.gitattributes&lt;/code&gt; to root of repo file with this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;* text eol&amp;#x3D;lf&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Everything worked
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;* text
         
       
     
@@ -292,7 +291,7 @@
     <link href="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/"/>
     <id>https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/</id>
     <published>2021-02-02T16:55:28.000Z</published>
-    <updated>2021-02-03T01:59:08.367Z</updated>
+    <updated>2021-03-18T06:52:35.027Z</updated>
     
     <summary type="html">
     
@@ -302,7 +301,7 @@
         
           &lt;p&gt;This was time suck for me, hopefully not for you after reading this.&lt;/p&gt;
 &lt;p&gt;I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but then got this error:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;Exception calling
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code
         
       
     
@@ -321,7 +320,7 @@
     <link href="https://blog.jongallant.com/2021/01/gh-cli-graphql-error/"/>
     <id>https://blog.jongallant.com/2021/01/gh-cli-graphql-error/</id>
     <published>2021-01-28T12:36:16.000Z</published>
-    <updated>2021-01-28T20:44:03.596Z</updated>
+    <updated>2021-03-18T06:46:23.813Z</updated>
     
     <summary type="html">
     
@@ -330,9 +329,8 @@
         
         
           &lt;p&gt;Ran a &lt;code&gt;gh clone&lt;/code&gt; today and got this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Fixed it by running:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;gh auth
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.
+&lt;span aria-hidden=&quot;true&quot;
         
       
     
@@ -351,7 +349,7 @@
     <link href="https://blog.jongallant.com/2021/01/workspace-cannot-be-opened-in-a-container/"/>
     <id>https://blog.jongallant.com/2021/01/workspace-cannot-be-opened-in-a-container/</id>
     <published>2021-01-22T13:36:56.000Z</published>
-    <updated>2021-01-22T21:51:20.669Z</updated>
+    <updated>2021-03-18T06:55:30.098Z</updated>
     
     <summary type="html">
     
@@ -360,8 +358,8 @@
         
         
           &lt;p&gt;I’m working on setting up Codespaces for my project and tried to open my workspace and got this error:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;The workspace can not be opened in a container. Folder &amp;#123;folder&amp;#125; is not a subfolder of shared root folder &amp;#123;folder&amp;#125;.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;The workspace can not be opened in a container. Folder {folder} is not a subfolder of shared root folder {folder}.
+&lt;span
         
       
     
@@ -414,7 +412,7 @@
     <link href="https://blog.jongallant.com/2020/10/azure-cli-python-docker/"/>
     <id>https://blog.jongallant.com/2020/10/azure-cli-python-docker/</id>
     <published>2020-10-10T09:36:24.000Z</published>
-    <updated>2020-10-10T17:02:01.439Z</updated>
+    <updated>2020-10-10T17:02:01.000Z</updated>
     
     <summary type="html">
     
@@ -448,7 +446,7 @@
     <link href="https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/"/>
     <id>https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/</id>
     <published>2020-07-23T14:49:41.000Z</published>
-    <updated>2020-07-23T22:08:32.475Z</updated>
+    <updated>2021-03-18T06:54:05.582Z</updated>
     
     <summary type="html">
     
@@ -457,10 +455,10 @@
         
         
           &lt;p&gt;Got this today when trying to assign access_policy to kubelet_identity&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;Error: Unsupported attribute
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Error: Unsupported attribute
 
-  on main.tf line 59, in resource &amp;quot;azurerm_key_vault&amp;quot; &amp;quot;key_vault&amp;quot;:
-  59:     object_id &amp;#x3D;
+  on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:
+  59:     object_id =
         
       
     
@@ -485,7 +483,7 @@
     <link href="https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/"/>
     <id>https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/</id>
     <published>2020-07-23T13:33:04.000Z</published>
-    <updated>2020-07-23T20:38:54.591Z</updated>
+    <updated>2021-03-18T06:53:55.846Z</updated>
     
     <summary type="html">
     
@@ -494,7 +492,7 @@
         
         
           &lt;p&gt;Got this error today when trying to set a secret with terraform.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&amp;#x3D;401 -- Original Error: autorest&amp;#x2F;azure: Service returned an error.
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode=401 -- Original Error: autorest/azure:
         
       
     
@@ -517,7 +515,7 @@
     <link href="https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/"/>
     <id>https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/</id>
     <published>2020-06-24T09:13:32.000Z</published>
-    <updated>2020-06-24T16:24:49.045Z</updated>
+    <updated>2020-06-24T16:24:49.000Z</updated>
     
     <summary type="html">
     
@@ -541,9 +539,9 @@
       <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
     
-      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
-    
       <category term="windows" scheme="https://blog.jongallant.com/tags/windows/"/>
+    
+      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
     
       <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
     
@@ -554,7 +552,7 @@
     <link href="https://blog.jongallant.com/2020/05/powerbi-clear-all-filters/"/>
     <id>https://blog.jongallant.com/2020/05/powerbi-clear-all-filters/</id>
     <published>2020-05-17T15:01:55.000Z</published>
-    <updated>2020-05-17T22:39:23.079Z</updated>
+    <updated>2020-05-17T22:39:23.000Z</updated>
     
     <summary type="html">
     
@@ -584,7 +582,7 @@
     <link href="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/"/>
     <id>https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/</id>
     <published>2020-05-13T16:09:30.000Z</published>
-    <updated>2020-05-14T00:07:03.977Z</updated>
+    <updated>2021-03-18T06:47:35.349Z</updated>
     
     <summary type="html">
     
@@ -606,9 +604,9 @@
     
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
-      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
-    
       <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
+    
+      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
     
   </entry>
   
@@ -617,7 +615,7 @@
     <link href="https://blog.jongallant.com/2020/05/solution-autodesk-translation-services-failed-to-translate-the-current-document-to-stl-file/"/>
     <id>https://blog.jongallant.com/2020/05/solution-autodesk-translation-services-failed-to-translate-the-current-document-to-stl-file/</id>
     <published>2020-05-08T23:02:58.000Z</published>
-    <updated>2020-05-09T06:10:56.758Z</updated>
+    <updated>2020-05-09T06:10:56.000Z</updated>
     
     <summary type="html">
     

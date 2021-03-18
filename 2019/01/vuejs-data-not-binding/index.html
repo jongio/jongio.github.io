@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,15 +219,15 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I’m new to Vue.js and didn’t realize that you have to fully define the structure of your view model object or bindings will not work.</p>
 <p>For example, with this code, I define <code>data: { vm: {} }</code>, but don’t have the <code>items</code> property and then later set the <code>items</code> property in the <code>mounted</code> function.</p>
-<pre><code class="language-html">&lt;html&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;html&gt;
 
 &lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
+    &lt;div id="app"&gt;
         &lt;h2&gt;Items&lt;/h2&gt;
-        &lt;div v-for=&quot;item in vm.items&quot;&gt;{{item}}&lt;/div&gt;
+        &lt;div v-for="item in vm.items"&gt;{{item}}&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;
 
     &lt;script&gt;
         var app = new Vue({
@@ -231,7 +237,7 @@
             },
             mounted: function () {
                 this.vm.items = [{
-                    &quot;key&quot;: &quot;key1&quot;
+                    "key": "key1"
                 }];
             }
         });
@@ -239,20 +245,20 @@
 &lt;/body&gt;
 
 &lt;/html&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000044.png" alt="'Without items rendered'"><br>
 You can see that the items are not rendered, but they do appear in the Vue data model.</p>
 <p>It took me a while to figure this out, but when you define “data”, you have to specify the entire schema of the object. It will not work with dynamic objects - at least not to my current knowledge. LMK if there’s a way.</p>
 <p>So, I updated my code, like this:</p>
-<pre><code class="language-html">&lt;html&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;html&gt;
 
 &lt;body&gt;
-    &lt;div id=&quot;app&quot;&gt;
+    &lt;div id="app"&gt;
         &lt;h2&gt;Items&lt;/h2&gt;
-        &lt;div v-for=&quot;item in vm.items&quot;&gt;{{item}}&lt;/div&gt;
+        &lt;div v-for="item in vm.items"&gt;{{item}}&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;
 
     &lt;script&gt;
         var app = new Vue({
@@ -264,7 +270,7 @@ You can see that the items are not rendered, but they do appear in the Vue data 
             },
             mounted: function () {
                 this.vm.items = [{
-                    &quot;key&quot;: &quot;key1&quot;
+                    "key": "key1"
                 }];
             }
         });
@@ -272,7 +278,7 @@ You can see that the items are not rendered, but they do appear in the Vue data 
 &lt;/body&gt;
 
 &lt;/html&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000045.png" alt="'With items rendered'"></p>
 <p>And, as you can see the “items” property is now bound and rendered.</p>
 <p>I burned a at least an hour on this today. I hope I save that time for you with this post.</p>
@@ -513,6 +519,10 @@ You can see that the items are not rendered, but they do appear in the Vue data 
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

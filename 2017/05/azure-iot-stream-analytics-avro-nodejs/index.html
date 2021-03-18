@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -236,28 +242,28 @@
 <p>Follow the steps <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli" target="_blank" rel="noopener">here to create an Azure IoT Hub using the Azure CLI 2.0</a>.</p>
 <h3 id="Get-IoT-Hub-Connection-String"><a class="header-anchor" href="#Get-IoT-Hub-Connection-String"></a>Get IoT Hub Connection String</h3>
 <p>Execute the following command to get the connection string for the IoT Hub you just created.</p>
-<pre><code class="language-bash">az iot hub show-connection-string --hub-name [your IoT Hub name]
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az iot hub show-connection-string --hub-name [your IoT Hub name]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Copy that connection string to a safe place. You will need it later.</p>
 <h3 id="Create-IoT-Hub-Device"><a class="header-anchor" href="#Create-IoT-Hub-Device"></a>Create IoT Hub Device</h3>
 <p>Execute the following command to create a new IoT Hub device.</p>
-<pre><code class="language-bash">az iot device create --hub-name [your IoT Hub name] --device-id [your IoT Hub device name]
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az iot device create --hub-name [your IoT Hub name] --device-id [your IoT Hub device name]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Get-Device-Connection-String"><a class="header-anchor" href="#Get-Device-Connection-String"></a>Get Device Connection String</h3>
-<pre><code class="language-bash">az iot device show-connection-string --hub-name [your IoT Hub name] --device-id [your IoT Hub device name]
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az iot device show-connection-string --hub-name [your IoT Hub name] --device-id [your IoT Hub device name]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Copy that device’s connection string to a safe place. You will need it later.</p>
 <h3 id="Create-IoT-Hub-Consumer-Group"><a class="header-anchor" href="#Create-IoT-Hub-Consumer-Group"></a>Create IoT Hub Consumer Group</h3>
 <p>You will need a new IoT Hub consumer group when you configure ASA later.  Let’s create it now with the following command:</p>
-<pre><code class="language-bash">az iot hub consumer-group create --hub-name [your IoT Hub name] --name avrocg
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az iot hub consumer-group create --hub-name [your IoT Hub name] --name avrocg
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Start-Monitoring-Events"><a class="header-anchor" href="#Start-Monitoring-Events"></a>Start Monitoring Events</h2>
 <p>Execute the following command to monitor events for the device you just created:</p>
-<pre><code class="language-bash">iothub-explorer monitor-events [your IoT Hub device name] --login &quot;[your IoT Hub connection string goes here]&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">iothub-explorer monitor-events [your IoT Hub device name] --login "[your IoT Hub connection string goes here]"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the following output:</p>
-<pre><code class="language-bash">Monitoring events from device avro-device...
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">Monitoring events from device avro-device...
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Keep that command open, we’ll come back to it in a minute.</p>
 <h2 id="Run-Avro-Script"><a class="header-anchor" href="#Run-Avro-Script"></a>Run Avro Script</h2>
 <p>We will now get the Node.js code that will compress messages with Avro and send them to IoT Hub.</p>
@@ -266,64 +272,64 @@
 <p>Make sure you have <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> and <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git</a> installed.</p>
 <h3 id="Clone-Repo"><a class="header-anchor" href="#Clone-Repo"></a>Clone Repo</h3>
 <p>Open up a command prompt, navigate to an empty folder and execute the following command.  This will copy the code to a local folder.</p>
-<pre><code class="language-bash">git clone https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs.git
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git clone https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs.git
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Install-Node-js-Packages"><a class="header-anchor" href="#Install-Node-js-Packages"></a>Install Node.js Packages</h3>
 <p>Change to the directory that contains the code you just cloned and execute the following command to get the Node.js packages locally.</p>
-<pre><code class="language-bash">npm i
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Setup-Config"><a class="header-anchor" href="#Setup-Config"></a>Setup Config</h3>
 <p>This script uses <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener">dotenv</a> to allow you to set an IoT Hub connection string in a .env file.</p>
 <p>Rename “.env.sample” to “.env” and paste your <strong>device</strong> connection string that you saved earlier. If you are using Windows, then name the file .env. (with the . at the end) and Windows will automatically change it to .env for you.</p>
-<pre><code class="language-bash">iotHubConnectionString=[your device's connection string goes here]
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">iotHubConnectionString=[your device's connection string goes here]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Run-Script"><a class="header-anchor" href="#Run-Script"></a>Run Script</h3>
 <p>Execute the following to start sending messages to IoT Hub.</p>
-<pre><code class="language-bash">node index.js
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">node index.js
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will now see the following output:</p>
-<pre><code class="language-bash">Connected to IoT Hub
-Sending message: Obj╔╝avro.schema�╔{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate }4똑�%��
+<pre class="line-numbers language-bash"><code class="language-bash">Connected to IoT Hub
+Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate }4똑�%��
                                                                                                                                                                                     ��E��x╗�KI-�LN5��
 }4똑�%��
         ��E��x
 send status: MessageEnqueued
-Sending message: Obj╔╝avro.schema�╔{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate �7�zXNObQU}��╗�KI-�LN5�=�
+Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate �7�zXNObQU}��╗�KI-�LN5�=�
 �7�zXNObQU}��
 send status: MessageEnqueued
-Sending message: Obj╔╝avro.schema�╔{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate ��b�zj����[���╗�KI-�LN5
+Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate ��b�zj����[���╗�KI-�LN5
                                                                                                                                                                                                    �
 
 p╝ ��b�zj����[���
 send status: MessageEnqueued
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Monitor-Messages-Coming-into-IoT-Hub"><a class="header-anchor" href="#Monitor-Messages-Coming-into-IoT-Hub"></a>Monitor Messages Coming into IoT Hub</h3>
 <p>Switch back to the command prompt with iothub-explorer open and you will now start to see events outputted:</p>
-<pre><code class="language-bash">==== From: avro ====
-Objavro.schema�{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate K=�8h{�!���ng�q�KI-�LN5��1r K=�8h{�!���ng�q
+<pre class="line-numbers language-bash"><code class="language-bash">==== From: avro ====
+Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate K=�8h{�!���ng�q�KI-�LN5��1r K=�8h{�!���ng�q
 ====================
 ==== From: avro ====
-Objavro.schema�{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate ӣ ��މ�]#��T���KI-�LN5\��� ӣ ��މ�]#��T��
+Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate ӣ ��މ�]#��T���KI-�LN5\��� ӣ ��މ�]#��T��
 ====================
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Inspect-Avro-Script"><a class="header-anchor" href="#Inspect-Avro-Script"></a>Inspect Avro Script</h2>
 <p>Now that we have it running, let’s take a look at the script to see how it works.</p>
 <p>You can see the full code on GitHub <a href="https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs/blob/master/index.js" target="_blank" rel="noopener">here</a>. There are lots of comments inline that should help you see how it all works together.</p>
 <p>The script uses following npm packages: <a href="https://www.npmjs.com/package/avsc" target="_blank" rel="noopener">avsc</a>, <a href="https://www.npmjs.com/package/memory-streams" target="_blank" rel="noopener">memory-streams</a>, <a href="https://www.npmjs.com/package/azure-iot-device" target="_blank" rel="noopener">azure-iot-device</a> and <a href="https://www.npmjs.com/package/azure-iot-device-amqp" target="_blank" rel="noopener">azure-iot-device-amqp</a>.</p>
 <p>With Avro, you can embed the payload schema into the Avro Container file.  In this repo, we have a file called <code>schema.avsc</code>, which looks like this:</p>
-<pre><code class="language-json">{
-    &quot;name&quot;: &quot;telemetry&quot;,
-    &quot;type&quot;: &quot;record&quot;,
-    &quot;fields&quot;: [
-        { &quot;name&quot;: &quot;deviceId&quot;, &quot;type&quot;: &quot;string&quot; },
-        { &quot;name&quot;: &quot;windSpeed&quot;, &quot;type&quot;: &quot;float&quot; }
+<pre class="line-numbers language-json"><code class="language-json">{
+    "name": "telemetry",
+    "type": "record",
+    "fields": [
+        { "name": "deviceId", "type": "string" },
+        { "name": "windSpeed", "type": "float" }
     ]
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>In fact, ASA requires the schema to be embedded into the message payload.</p>
 <p>This file Avro type is loaded via the parse method like this:</p>
-<pre><code class="language-javascript">const type = avro.parse(__dirname + '/schema.avsc');
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">const type = avro.parse(__dirname + '/schema.avsc');
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>At the moment, ASA does not support ENUMs in your Avro schema. Convert the ENUM to string if you are having issues.  I will update this post when that has been resolved.</p>
 <p>The meat of the code is as follows:</p>
 <ul>
@@ -333,7 +339,7 @@ Objavro.schema�{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&q
 <li>Call BlockEncoder.end();</li>
 <li>Send IoT Hub message in the ‘end’ event handler, which calls WriateableStream.toBuffer()</li>
 </ul>
-<pre><code class="language-javascript">// Instantiate a BlockEncoder, which allows you to write avro into a buffer.
+<pre class="line-numbers language-javascript"><code class="language-javascript">// Instantiate a BlockEncoder, which allows you to write avro into a buffer.
 var avroEncoder = new avro.streams.BlockEncoder(type, { codec: 'deflate' }); // Choose 'deflate' or it will default to 'null'
 
 // Instantiate a stream to write the avro buffer to, which we'll send to IoT Hub
@@ -360,7 +366,7 @@ avroEncoder.on('end', function () {
     console.log('Sending message: ' + message.getData());
     client.sendEvent(message, printResultFor('send'));
 })
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>While this seems like a pretty straight forward script, it took me a while to get it all working.  In the process, I collected the following Avro related resources:</p>
 <ul>
 <li><a href="https://github.com/mtth/avsc/" target="_blank" rel="noopener">Avro Node.js Library: mtth/avsc</a></li>
@@ -376,8 +382,8 @@ avroEncoder.on('end', function () {
 <h2 id="Azure-Blob-Storage"><a class="header-anchor" href="#Azure-Blob-Storage"></a>Azure Blob Storage</h2>
 <p>For this contrived exercise, we’re going to configure a Blob Storage account that ASA sends all messages to.  Let’s create the account and then wire up ASA.</p>
 <h2 id="Create-Azure-Blob-Storage"><a class="header-anchor" href="#Create-Azure-Blob-Storage"></a>Create Azure Blob Storage</h2>
-<pre><code class="language-bash">az storage account create --sku Standard_LRS --resource-group [your resource group] --location eastus --name [enter storage name here]
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az storage account create --sku Standard_LRS --resource-group [your resource group] --location eastus --name [enter storage name here]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the storage account meta data outputted to the screen.</p>
 <h2 id="Azure-Stream-Analytics"><a class="header-anchor" href="#Azure-Stream-Analytics"></a>Azure Stream Analytics</h2>
 <h3 id="Create-Azure-Stream-Analytics-Job"><a class="header-anchor" href="#Create-Azure-Stream-Analytics-Job"></a>Create Azure Stream Analytics Job</h3>
@@ -403,13 +409,13 @@ avroEncoder.on('end', function () {
 </ul>
 <h3 id="Write-ASA-Query"><a class="header-anchor" href="#Write-ASA-Query"></a>Write ASA Query</h3>
 <p>4. Click on Query, then enter the following query into the query text box.</p>
-<pre><code class="language-bash">SELECT
+<pre class="line-numbers language-bash"><code class="language-bash">SELECT
     *
 INTO
     avrooutput
 FROM
     avroinput
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000184.png" alt=""></p>
 <p>This query is intentionally simple because this post is about wiring everything up and not sophisticated ASA queries.</p>
 <p>5. Click Save</p>
@@ -424,51 +430,51 @@ FROM
 <p>1. Open Azure Storage Explorer, sign-in and navigate to the Blob Storage account you created earlier. Expand the Blob Containers node. Click on ‘avros’ and you will see a JSON file in the right pane.</p>
 <p><img src="000187.png" alt=""></p>
 <p>2. Double-click on that file to download it. Open it and you will see the JSON messages.</p>
-<pre><code class="language-javascript">{
-    &quot;deviceId&quot;: &quot;device1&quot;,
-    &quot;windSpeed&quot;: 11.22899055480957,
-    &quot;EventProcessedUtcTime&quot;: &quot;2017-05-05T05:52:52.0236378Z&quot;,
-    &quot;PartitionId&quot;: 0,
-    &quot;EventEnqueuedUtcTime&quot;: &quot;2017-05-05T05:51:52.7660000Z&quot;,
-    &quot;IoTHub&quot;: {
-        &quot;MessageId&quot;: null,
-        &quot;CorrelationId&quot;: null,
-        &quot;ConnectionDeviceId&quot;: &quot;avro-device&quot;,
-        &quot;ConnectionDeviceGenerationId&quot;: &quot;636295329478829335&quot;,
-        &quot;EnqueuedTime&quot;: &quot;2017-05-05T05:51:53.2330000Z&quot;,
-        &quot;StreamId&quot;: null
+<pre class="line-numbers language-javascript"><code class="language-javascript">{
+    "deviceId": "device1",
+    "windSpeed": 11.22899055480957,
+    "EventProcessedUtcTime": "2017-05-05T05:52:52.0236378Z",
+    "PartitionId": 0,
+    "EventEnqueuedUtcTime": "2017-05-05T05:51:52.7660000Z",
+    "IoTHub": {
+        "MessageId": null,
+        "CorrelationId": null,
+        "ConnectionDeviceId": "avro-device",
+        "ConnectionDeviceGenerationId": "636295329478829335",
+        "EnqueuedTime": "2017-05-05T05:51:53.2330000Z",
+        "StreamId": null
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
 <p>We now have all of the services setup and running that enable Avro compression in an Azure IoT solution.</p>
 <p>1. <strong>Avro Node.js Script</strong> is sending messages to IoT Hub</p>
-<pre><code class="language-bash">Sending message: Obj╔╝avro.schema�╔{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate x║���N;:i&gt;&amp;�N��╗�KI-�LN5&lt;r
+<pre class="line-numbers language-bash"><code class="language-bash">Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate x║���N;:i&gt;&amp;�N��╗�KI-�LN5&lt;r
 0� x║���N;:i&gt;&amp;�N��
 send status: MessageEnqueued
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>2. <strong>IoT Hub</strong> is receiving messages.</p>
-<pre><code class="language-bash">==== From: avro-device ====
-Objavro.schema�{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&quot;record&quot;,&quot;fields&quot;:[{&quot;name&quot;:&quot;deviceId&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;name&quot;:&quot;windSpeed&quot;,&quot;type&quot;:&quot;float&quot;}]}avro.codecdeflate u+q��?�Bw�F�_�KI-�LN5ly� u+q��?�Bw�F�_
+<pre class="line-numbers language-bash"><code class="language-bash">==== From: avro-device ====
+Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate u+q��?�Bw�F�_�KI-�LN5ly� u+q��?�Bw�F�_
 ====================
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>3. <strong>Azure Stream Analytics</strong> is picking up messages from IoT Hub and saving them as JSON to Blob Storage</p>
-<pre><code class="language-javascript">{
-    &quot;deviceId&quot;: &quot;device1&quot;,
-    &quot;windSpeed&quot;: 11.22899055480957,
-    &quot;EventProcessedUtcTime&quot;: &quot;2017-05-05T05:52:52.0236378Z&quot;,
-    &quot;PartitionId&quot;: 0,
-    &quot;EventEnqueuedUtcTime&quot;: &quot;2017-05-05T05:51:52.7660000Z&quot;,
-    &quot;IoTHub&quot;: {
-        &quot;MessageId&quot;: null,
-        &quot;CorrelationId&quot;: null,
-        &quot;ConnectionDeviceId&quot;: &quot;avro-device&quot;,
-        &quot;ConnectionDeviceGenerationId&quot;: &quot;636295329478829335&quot;,
-        &quot;EnqueuedTime&quot;: &quot;2017-05-05T05:51:53.2330000Z&quot;,
-        &quot;StreamId&quot;: null
+<pre class="line-numbers language-javascript"><code class="language-javascript">{
+    "deviceId": "device1",
+    "windSpeed": 11.22899055480957,
+    "EventProcessedUtcTime": "2017-05-05T05:52:52.0236378Z",
+    "PartitionId": 0,
+    "EventEnqueuedUtcTime": "2017-05-05T05:51:52.7660000Z",
+    "IoTHub": {
+        "MessageId": null,
+        "CorrelationId": null,
+        "ConnectionDeviceId": "avro-device",
+        "ConnectionDeviceGenerationId": "636295329478829335",
+        "EnqueuedTime": "2017-05-05T05:51:53.2330000Z",
+        "StreamId": null
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Hope this helps you out.</p>
 <p>Jon</p>
 
@@ -707,6 +713,10 @@ Objavro.schema�{&quot;name&quot;:&quot;telemetry&quot;,&quot;type&quot;:&q
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

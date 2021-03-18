@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -215,7 +221,7 @@
 <p><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png" alt=""></p>
 <p><em>(Showing that DbContext implements IDisposable)</em></p>
 <p>I started the conversation with the EF team by proclaiming that the industry needs to stop teaching people to use DbContext objects as private members without disposing of them properly. <a href="http://romiller.com/" target="_blank" rel="noopener">Rowan Miller</a>’s first response, was that yes, we do encourage it and try to make sure we dispose of all our DbContext objects anytime we have a demo or sample code. So I thought “yes, I’m right!” let me code up an example that demonstrates to my blog readers the difference calling Dispose makes to our User Connections count. So I setup perfmon to monitor User Connections and ran the sample below. I was surprised to see that the User Connection numbers were exactly the same. I didn’t matter if I called Dispose or not!</p>
-<pre><code class="language-csharp">static void Main(string[] args)
+<pre class="line-numbers language-csharp"><code class="language-csharp">static void Main(string[] args)
         {
             bool useUsing = args.Length == 0 || bool.Parse(args[0]);
             Call(useUsing);
@@ -246,11 +252,11 @@
             var data = from d in db.Data select d;
             foreach (var datum in data)
             {
-                Console.WriteLine(string.Concat(datum.Id, &quot;:&quot;, datum.Name));
+                Console.WriteLine(string.Concat(datum.Id, ":", datum.Name));
             }
         }
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>So I pinged Rowan again with my code snippet to see if they had any other code samples that accurately demonstrated the effect on User Connections. In the meantime I was watching the MVC4 PluralSight course and saw Scott Allen use a DbContext object without calling Dispose. I thought, man I totally respect Scott Allen and if he’s not calling Dispose then something must be wrong with my thinking, so I sent this along to Rowan as well.</p>
 <p><a href="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/clip_image002.jpg"><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/clip_image002_thumb.jpg" alt="clip_image002" title="clip_image002"></a></p>
 <p>Rowan forwarded my mail to <a href="http://blogs.msdn.com/diego/" target="_blank" rel="noopener">Diego Vega</a> (the Senior SDE Lead on EF) and here is his response</p>
@@ -507,6 +513,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

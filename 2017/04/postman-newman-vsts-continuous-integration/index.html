@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/04/postman-newman-vsts-continuous-integration/000175.png">
 <meta property="article:published_time" content="2017-04-26T12:07:05.000Z">
-<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:51:14.709Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="postman">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -226,8 +232,8 @@
 <p>3. Clone the repo. Click ‘Code’ tab, click the project, and then click the Clone link in the upper right to find the clone URI.</p>
 <p><img src="000154.png" alt=""></p>
 <p><img src="000155.png" alt=""></p>
-<pre><code>git clone [your vsts project clone uri]
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git clone [your vsts project clone uri]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Export-Postman-Collection-and-Environment-Variables"><a class="header-anchor" href="#Export-Postman-Collection-and-Environment-Variables"></a>Export Postman Collection and Environment Variables</h2>
 <p>You will commit your Postman collection definition file and environment variables to VSTS.  You will be committing secrets to source control, but in this case I could not find a good workaround for this because Postman expects a local file for Environment variables. You can control permissions to this repo if you are concerned with the secrets getting exposed - or maybe get Azure Key Vault or Blob Storage into your build process.</p>
 <blockquote>
@@ -243,10 +249,10 @@
 <h2 id="Push-File-to-VSTS-Project"><a class="header-anchor" href="#Push-File-to-VSTS-Project"></a>Push File to VSTS Project</h2>
 <p>You now need to push the Postman Collection and Environment Variables file to VSTS, so the build process can pick them up.</p>
 <p>Execute the following from the repo root:</p>
-<pre><code>git add .
-git commit -m &quot;Init commit&quot;
+<pre class="line-numbers language-bash"><code class="language-bash">git add .
+git commit -m "Init commit"
 git push
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>You can verify that your files have been pushed to the repo via <a href="http://visualstudio.com" target="_blank" rel="noopener">visualstudio.com</a></p>
 <p><img src="000163.png" alt=""></p>
 <h2 id="Create-VSTS-Build-Definition"><a class="header-anchor" href="#Create-VSTS-Build-Definition"></a>Create VSTS Build Definition</h2>
@@ -264,8 +270,8 @@ git push
 <p><img src="000168.png" alt=""></p>
 <p><img src="000169.png" alt=""></p>
 <p>6. Select “Run newman” in the built task list and enter the following into the “arguments” textbox.</p>
-<pre><code>run $(Build.SourcesDirectory)\iot.json -e $(Build.SourcesDirectory)\env.json
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">run $(Build.SourcesDirectory)\iot.json -e $(Build.SourcesDirectory)\env.json
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000170.png" alt=""></p>
 <blockquote>
 <p>The first argument is the Postman Collection file and the second argument (-e) is the Environment Variables file.</p>
@@ -286,14 +292,14 @@ git push
 <p><img src="000174.png" alt=""></p>
 <p>The request returns a 500 and the test is looking for a 200.</p>
 <h3 id="Postman-Test-Code"><a class="header-anchor" href="#Postman-Test-Code"></a>Postman Test Code</h3>
-<pre><code>var responseJSON;
+<pre class="line-numbers language-js"><code class="language-js">var responseJSON;
 try {
     responseJSON = JSON.parse(responseBody); 
-    tests[&quot;Status equals 200&quot;] = responseJSON.status === 200;
+    tests["Status equals 200"] = responseJSON.status === 200;
 }
 catch (e) { }
-tests[&quot;Body contains status&quot;] = responseBody.has(&quot;status&quot;);
-</code></pre>
+tests["Body contains status"] = responseBody.has("status");
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
 <p>So that’s it. You now have a source controlled Postman collection that is part of your CI process and setup to run on a schedule to suit your needs.</p>
 <p>My next post will wrap up everything I’ve learned with Postman and my pitch for using it as an “Executable Documentation” engine.</p>
@@ -534,6 +540,10 @@ tests[&quot;Body contains status&quot;] = responseBody.has(&quot;status&quot;);
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

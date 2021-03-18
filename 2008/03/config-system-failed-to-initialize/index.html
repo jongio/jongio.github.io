@@ -24,12 +24,12 @@
     
     <meta name="keywords" content="asp.net" />
     
-    <meta name="description" content="I got this error today: “Configuration system failed to initialize” while loading a config file. Looking at the web.config file it wasn’t obvious what the problem was. &lt;?xml version&#x3D;&quot;1.0&quot;">
+    <meta name="description" content="I got this error today: “Configuration system failed to initialize” while loading a config file. Looking at the web.config file it wasn’t obvious what the problem was. &lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to &quot;Configuration system failed to initialize&quot;">
 <meta property="og:url" content="https://blog.jongallant.com/2008/03/config-system-failed-to-initialize/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I got this error today: “Configuration system failed to initialize” while loading a config file. Looking at the web.config file it wasn’t obvious what the problem was. &lt;?xml version&#x3D;&quot;1.0&quot;">
+<meta property="og:description" content="I got this error today: “Configuration system failed to initialize” while loading a config file. Looking at the web.config file it wasn’t obvious what the problem was. &lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2008-03-01T23:53:00.000Z">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -210,36 +216,36 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I got this error today: “Configuration system failed to initialize” while loading a config file. Looking at the web.config file it wasn’t obvious what the problem was.</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt; 
+<pre class="line-numbers language-xml"><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt; 
 &lt;configuration&gt; 
   &lt;appSettings&gt; 
-    &lt;add key=&quot;PhotoDirectory&quot; value=&quot;C:\_my\_dev\x\x\Photos\Members\&quot;/&gt; 
+    &lt;add key="PhotoDirectory" value="C:\_my\_dev\x\x\Photos\Members\"/&gt; 
   &lt;/appSettings&gt; 
   &lt;configSections&gt; 
   &lt;/configSections&gt; 
   &lt;connectionStrings&gt; 
-    &lt;add name=&quot;MicrosoftSocialConnectionString&quot;
-            connectionString=&quot;Data Source=(local);Initial Catalog=x;Integrated Security=True&quot;
-            providerName=&quot;System.Data.SqlClient&quot; /&gt; 
+    &lt;add name="MicrosoftSocialConnectionString"
+            connectionString="Data Source=(local);Initial Catalog=x;Integrated Security=True"
+            providerName="System.Data.SqlClient" /&gt; 
     &lt;/connectionStrings&gt; 
 &lt;/configuration&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I then remembered that I ran into a similiar problem before when I configSections wasn’t the firstChild of the configuration node. Moving appSettings under configSections solved this problem.</p>
 <p>I know there are other solutions to this error message, but this one worked for me.</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt; 
+<pre class="line-numbers language-xml"><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8" ?&gt; 
 &lt;configuration&gt; 
   &lt;configSections&gt; 
   &lt;/configSections&gt; 
   &lt;appSettings&gt; 
-    &lt;add key=&quot;PhotoDirectory&quot; value=&quot;C:\_my\_dev\x\x\Photos\Members\&quot;/&gt; 
+    &lt;add key="PhotoDirectory" value="C:\_my\_dev\x\x\Photos\Members\"/&gt; 
   &lt;/appSettings&gt; 
   &lt;connectionStrings&gt; 
-    &lt;add name=&quot;MicrosoftSocialConnectionString&quot;
-            connectionString=&quot;Data Source=(local);Initial Catalog=x;Integrated Security=True&quot;
-            providerName=&quot;System.Data.SqlClient&quot; /&gt; 
+    &lt;add name="MicrosoftSocialConnectionString"
+            connectionString="Data Source=(local);Initial Catalog=x;Integrated Security=True"
+            providerName="System.Data.SqlClient" /&gt; 
     &lt;/connectionStrings&gt; 
 &lt;/configuration&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -476,6 +482,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

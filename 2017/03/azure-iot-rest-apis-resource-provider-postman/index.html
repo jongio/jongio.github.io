@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -345,12 +351,12 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 <h2 id="Run-Postman-Collection-via-Newman"><a class="header-anchor" href="#Run-Postman-Collection-via-Newman"></a>Run Postman Collection via Newman</h2>
 <p><a href="https://github.com/postmanlabs/newman" target="_blank" rel="noopener">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
 <p>For example, the following will execute a Postman Collection with a given set of Environment variables.</p>
-<pre><code class="language-bash">newman run postman-collection.json -e environment-variables.json
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">newman run postman-collection.json -e environment-variables.json
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Here’s how to run the Azure IoT Hub collection with Newman.</p>
 <p>0. Install Newman</p>
-<pre><code class="language-bash">npm i -g newman
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i -g newman
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>1. Export the Postman Collection</p>
 <p><img src="000124.png" alt=""></p>
 <p><img src="000125.png" alt=""></p>
@@ -360,8 +366,8 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 <p><img src="000127.png" alt=""></p>
 <p><img src="000128.png" alt=""></p>
 <p>3. Open a CMD and execute the following command:</p>
-<pre><code class="language-bash">newman run &quot;Azure IoT Hub.postman_collection.json&quot; -e &quot;Azure IoT Hub.postman_environment.json&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">newman run "Azure IoT Hub.postman_collection.json" -e "Azure IoT Hub.postman_environment.json"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the following when the run completes</p>
 <p><img src="000129.png" alt=""></p>
 <blockquote>
@@ -607,6 +613,10 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

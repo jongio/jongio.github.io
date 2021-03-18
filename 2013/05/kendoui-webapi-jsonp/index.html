@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -222,30 +228,30 @@
 <p><a href="http://nuget.org/packages/KendoUIWeb/" target="_blank" rel="noopener">KendoUIWeb</a> – This adds the KendoUI controls to the project.</p>
 <p><strong>Register Formatter</strong><br>
 3. Add the following line of code to the Application_Start() method of the Global.asax file</p>
-<pre><code class="language-csharp">GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpMediaTypeFormatter());
+<pre class="line-numbers language-csharp"><code class="language-csharp">GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpMediaTypeFormatter());
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><strong>Create Model</strong></p>
 <p>4. Add the following Employee class to the /Models folder</p>
-<pre><code class="language-csharp">public class Employee
+<pre class="line-numbers language-csharp"><code class="language-csharp">public class Employee
 {
     public int EmployeeId { get; set; }
     public string FullName { get; set; }
     public bool HasEmployees { get; set; }
     public int? ReportsTo { get; set; }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Create Controller</strong></p>
 <p>5. Add the following Controller to the /Controllers folder</p>
-<pre><code class="language-csharp">public class EmployeesController : ApiController
+<pre class="line-numbers language-csharp"><code class="language-csharp">public class EmployeesController : ApiController
 {
     private readonly List&lt;Employee&gt; _employees = new List&lt;Employee&gt; 
     {
-        new Employee{ FullName = &quot;Jon Gallant&quot;, EmployeeId = 1, HasEmployees = true, ReportsTo = null},
-        new Employee{ FullName = &quot;Scott Hanselman&quot;, EmployeeId = 2, HasEmployees = false, ReportsTo = 1},
-        new Employee {FullName = &quot;Howard Dierking&quot;, EmployeeId = 3, HasEmployees = false, ReportsTo = 1},
-        new Employee {FullName = &quot;Drew Miller&quot;, EmployeeId = 4, HasEmployees = false, ReportsTo = 1},
-        new Employee { FullName = &quot;Jeff Atwood&quot;, EmployeeId = 5, HasEmployees = false, ReportsTo = 1}
+        new Employee{ FullName = "Jon Gallant", EmployeeId = 1, HasEmployees = true, ReportsTo = null},
+        new Employee{ FullName = "Scott Hanselman", EmployeeId = 2, HasEmployees = false, ReportsTo = 1},
+        new Employee {FullName = "Howard Dierking", EmployeeId = 3, HasEmployees = false, ReportsTo = 1},
+        new Employee {FullName = "Drew Miller", EmployeeId = 4, HasEmployees = false, ReportsTo = 1},
+        new Employee { FullName = "Jeff Atwood", EmployeeId = 5, HasEmployees = false, ReportsTo = 1}
     };
 
     public IEnumerable&lt;Employee&gt; Get()
@@ -258,42 +264,42 @@
         return _employees.Where(e =&gt; e.ReportsTo == employeeId);
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Create View</strong></p>
 <p>6. Add the following View to the /Views/Home/Index.cshtml file.</p>
-<pre><code class="language-html">&lt;link href=&quot;~/Content/kendo/2013.1.319/kendo.common.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
-&lt;link href=&quot;~/Content/kendo/2013.1.319/kendo.default.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
-&lt;script src=&quot;~/Scripts/kendo/2013.1.319/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;~/Scripts/kendo/2013.1.319/kendo.web.min.js&quot;&gt;&lt;/script&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;link href="~/Content/kendo/2013.1.319/kendo.common.min.css" rel="stylesheet" /&gt;
+&lt;link href="~/Content/kendo/2013.1.319/kendo.default.min.css" rel="stylesheet" /&gt;
+&lt;script src="~/Scripts/kendo/2013.1.319/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="~/Scripts/kendo/2013.1.319/kendo.web.min.js"&gt;&lt;/script&gt;
 
-&lt;div id=&quot;treeview&quot; class=&quot;demo-section&quot;&gt;&lt;/div&gt;
+&lt;div id="treeview" class="demo-section"&gt;&lt;/div&gt;
 
 &lt;script&gt;
-    //var serviceRoot = &quot;http://demos.kendoui.com/service&quot;;
-    var serviceRoot = &quot;api&quot;;
+    //var serviceRoot = "http://demos.kendoui.com/service";
+    var serviceRoot = "api";
 
     homogeneous = new kendo.data.HierarchicalDataSource({
         transport: {
             read: {
-                url: serviceRoot + &quot;/Employees&quot;,
-                dataType: &quot;jsonp&quot;
+                url: serviceRoot + "/Employees",
+                dataType: "jsonp"
             }
         },
         schema: {
             model: {
-                id: &quot;EmployeeId&quot;,
-                hasChildren: &quot;HasEmployees&quot;
+                id: "EmployeeId",
+                hasChildren: "HasEmployees"
             }
         }
     });
 
-    $(&quot;#treeview&quot;).kendoTreeView({
+    $("#treeview").kendoTreeView({
         dataSource: homogeneous,
-        dataTextField: &quot;FullName&quot;
+        dataTextField: "FullName"
     });
 &lt;/script&gt;
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Run it!</strong></p>
 <p>Run it and this is what you should see.</p>
 <p><img src="/images/blog/5a9bdccb8987_93A7/image.png" alt=""></p>
@@ -534,6 +540,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

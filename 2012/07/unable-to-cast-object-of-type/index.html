@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,7 +219,7 @@
             <p>Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with <a href="http://blogs.msdn.com/b/csharpfaq/archive/2010/02/16/covariance-and-contravariance-faq.aspx" target="_blank" rel="noopener">covariance and contravariance</a>.</p>
 <p>I struggled with this for way too long, hope you save you some time.</p>
 <p>I have a list that contains a Heavy object that I don’t want to serialize down to the client. So I created a Slim version of it with an explicit operator to convert from Heavy to Slim.</p>
-<pre><code class="language-csharp">public class WorkItem
+<pre class="line-numbers language-csharp"><code class="language-csharp">public class WorkItem
 {
     public int Id { get; set; }
 }
@@ -228,19 +234,19 @@ public class WorkItemSlim
         return wis;
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>This works great when explicitly casting a single Heavy object to a Slim object like so:</p>
-<pre><code class="language-csharp">var workItem = new WorkItem();
+<pre class="line-numbers language-csharp"><code class="language-csharp">var workItem = new WorkItem();
 workItem.Id = 1;
 
 WorkItemSlim wis = (WorkItemSlim)workItem;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>But you get “Unable to cast object of type ‘[type1]’ to type ‘[type2]’.” when you try to cast a List&lt;WorkItem&gt; to List&lt;WorkItemSlim&gt;</p>
 <p><img src="/images/blog/Solution-to-Unable-to-cast-object-of-ty_8698/image.png" alt=""></p>
 <p>I spent a lot of timing looking at my explicit operator trying to figure out what I did wrong, but after some searching I discovered that a List&lt;T&gt; isn’t supported at runtime.</p>
 <p>So the (not so great) solution is to convert each object of the list (one by one) to the other type.</p>
-<pre><code class="language-csharp">var workItemSlimList2 = workItemList.ConvertAll(m =&amp;gt; (WorkItemSlim)m);
-</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var workItemSlimList2 = workItemList.ConvertAll(m =&amp;gt; (WorkItemSlim)m);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>I hope I saved you some time.</p>
 <p>Jon</p>
 
@@ -479,6 +485,10 @@ WorkItemSlim wis = (WorkItemSlim)workItem;
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

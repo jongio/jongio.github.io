@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="dev,reviews" />
+    <meta name="keywords" content="reviews,dev" />
     
     <meta name="description" content="What is the best way to develop an application to support multiple platforms (Apple, Android, Microsoft)?  Like so many devs out there, I was recently faced with that exact question. It turns out that">
 <meta property="og:type" content="article">
@@ -35,8 +35,8 @@
 <meta property="article:published_time" content="2013-02-26T00:37:00.000Z">
 <meta property="article:modified_time" content="2021-02-21T01:57:59.158Z">
 <meta property="article:author" content="Jon Gallant">
-<meta property="article:tag" content="dev">
 <meta property="article:tag" content="reviews">
+<meta property="article:tag" content="dev">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -217,23 +223,24 @@
 <p>Back in Visual Studio, I select the Mobile project and hit F5 to open it in the simulator.  <p>[<img src="/images/blog/dxtreme_CE2A/clip_image0054_thumb.jpg" alt="clip_image005[4]" title="clip_image005[4]"></p>
 <h3 id="What’s-in-the-Project"><a class="header-anchor" href="#What’s-in-the-Project"></a>What’s in the Project?</h3>
  <p>Let's get back into Visual Studio and dig around the projects a bit. In the Desktop project you see a project reference to the Shared project. No other DLLs are required. That is good.  <p>[![clip_image007[4]](/images/blog/dxtreme_CE2A/clip_image0074_thumb.png "clip_image007[4]")  <p>I poke around and find a file called app.js in the root of the project. Cracking that open I find this code snippet, which uses the DXTREME framework to new up an HtmlApplication object.
- <pre><code class="hljs javascript"> $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+<pre class="line-numbers language-javascript"><code class="language-javascript">$(function() {
 
-     Application2.app = <span class="hljs-keyword">new</span> DevExpress.framework.html.HtmlApplication(&#123;
+    Application2.app = new DevExpress.framework.html.HtmlApplication({
 
-       <span class="hljs-attr">ns</span>: Application2,
+      ns: Application2,
 
-       <span class="hljs-attr">viewPortNode</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"viewPort"</span>),
+      viewPortNode: document.getElementById("viewPort"),
 
-       <span class="hljs-attr">defaultLayout</span>: Application2.config.defaultLayout,
+      defaultLayout: Application2.config.defaultLayout,
 
-       <span class="hljs-attr">navigation</span>: Application2.config.navigation
+      navigation: Application2.config.navigation
 
-     &#125;);
+    });
 
-     Application2.app.router.register(<span class="hljs-string">":view/:id"</span>, &#123; <span class="hljs-attr">view</span>: <span class="hljs-string">"About"</span>, <span class="hljs-attr">id</span>: <span class="hljs-literal">undefined</span> &#125;);
+    Application2.app.router.register(":view/:id", { view: "About", id: undefined });
 
-&#125;);</code></pre>
+});
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The other projects are more of the same. Common logic is shared between applications, but you can dig into the individual files to tweak or enhance platform or device-specific features. 
 <p>One cool thing I notice is that they implemented a custom editor for their views. It allows you to preview the views from within Visual Studio. That is nice. 
 <p>[![clip_image010[4]](/images/blog/dxtreme_CE2A/clip_image0104_thumb.png "clip_image010[4]") 
@@ -250,52 +257,62 @@
 <p>[![clip_image016[4]](/images/blog/dxtreme_CE2A/clip_image0164_thumb.png "clip_image016[4]") 
 <p>And look like this...a basic Knockout ViewModel. 
 <p>[ShipperViewModel.js]
-<pre><code class="hljs javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+<pre class="line-numbers language-javascript"><code class="language-javascript">(function() {
 
-     DXCRM.ShipperViewModel = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;
+     DXCRM.ShipperViewModel = function(data) {
 
-       <span class="hljs-keyword">this</span>.ShipperID = ko.observable();
+       this.ShipperID = ko.observable();
 
-       <span class="hljs-keyword">this</span>.CompanyName = ko.observable();
+       this.CompanyName = ko.observable();
 
-       <span class="hljs-keyword">this</span>.Phone = ko.observable();
+       this.Phone = ko.observable();
 
-       <span class="hljs-keyword">if</span>(data)
+       if(data)
 
-       <span class="hljs-keyword">this</span>.fromJS(data);
+       this.fromJS(data);
 
-     &#125;;
-&#125;)();</code></pre>
+     };
+})();
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And they are used in the application views: 
 <p>[![clip_image017[4]](/images/blog/dxtreme_CE2A/clip_image0174_thumb.png "clip_image017[4]") 
 <p>Here's Shippers.js as an example. 
 <p>[Shippers.js]
-<pre><code class="hljs javascript">DXCRM.Shippers = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">params</span>) </span>&#123;
-     <span class="hljs-keyword">return</span> &#123;
-       <span class="hljs-attr">dataSource</span>: <span class="hljs-keyword">new</span> DevExpress.data.SimpleDataSource(&#123;
-       <span class="hljs-attr">store</span>: DXCRM.db.Shippers,
-       <span class="hljs-attr">map</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;
-         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DXCRM.ShipperViewModel(item);
-       &#125;
-     &#125;)&#125;;
-&#125;;</code></pre>
-<p>Those same ViewModels are being used in the WinJS project. That is great. I can see that there is code reuse going on between the HTML based projects. 
-<p>The demo applications are generated automatically via the DXTREME Project Wizard using the Microsoft NorthWind sample database. Obviously you can use your own data, but this is a nice way to get data into the application as you experiment. 
-<p>I then focused on the separate XAML solution for the Win8 app. It looks like a standard Win8 app that uses DXTREME controls. 
-<h3 id="Deployment"><a class="header-anchor" href="#Deployment"></a>Deployment</h3>
-<p>So now that you have the app developed you need to package it up and get it ready to ship to Microsoft, Apple and Google. 
-<p>So, let's say I built the CRM app and I want to deploy it. There are two solutions, one for Win8 and one for everything else. Let's try the deploying the latter. 
-<p>I go to the first project in the solution, the "Desktop" project. Right clicking on that gives me a "Build Native Package" option: 
-<p>[![clip_image018[4]](/images/blog/dxtreme_CE2A/clip_image0184_thumb.png "clip_image018[4]") 
-<p>Which launches this dialog: 
-<p>[![clip_image020[4]](/images/blog/dxtreme_CE2A/clip_image0204_thumb.jpg "clip_image020[4]")](/images/blog/dxtreme_CE2A/clip_image0204.jpg) 
-<p>Like most .NET devs, let's say I've never shipped an Android or iOS application. I would have no idea what to do with this screen. I then wander over to the DXTREME help docs because I remember seeing something about deployment in that earlier. I find the "Native Packages" section here: [http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages](http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages) 
-<p>It turns out that I need to register for the Apple and Google developer programs and I can get my certificate files from them. DXTREME provides a link to the Apple and Google program and a link to XCA to generate the certificate. 
-<p>There's some platform-specific knowledge you're going to need before deploying on multiple platforms. Because Apple, Google and Microsoft have their own stores, registration requirements, certificates and so on, you'll have to spend some time learning about that. DXTREME simplifies much of the cross-platform coding experience, but there's not a one-click solution for deployment. 
-<p>  
-<h3 id="Final-Thoughts"><a class="header-anchor" href="#Final-Thoughts"></a>Final Thoughts</h3>
-<p>After spending a couple of hours with DXTREME it looks like a good step in the right direction towards cross-platform application development. It's great that I can utilize the technologies that I already know and having the DXTREME controls adaptively render based on platform is great. I spent a little time looking into what it would take to ramp up on iOS and Android development and as a .NET developer I would definitely rather take the time to ramp up on DXTREME. I look forward to digging into DXTREME a little more and to seeing where they go with it in future releases. 
-<p>Jon 
+```javascript
+DXCRM.Shippers = function(params) {
+     return {
+       dataSource: new DevExpress.data.SimpleDataSource({
+       store: DXCRM.db.Shippers,
+       map: function(item) {
+         return new DXCRM.ShipperViewModel(item);
+       }
+     })};
+};
+<pre><code>&lt;p&gt;Those same ViewModels are being used in the WinJS project. That is great. I can see that there is code reuse going on between the HTML based projects. 
+&lt;p&gt;The demo applications are generated automatically via the DXTREME Project Wizard using the Microsoft NorthWind sample database. Obviously you can use your own data, but this is a nice way to get data into the application as you experiment. 
+&lt;p&gt;I then focused on the separate XAML solution for the Win8 app. It looks like a standard Win8 app that uses DXTREME controls. 
+
+
+
+### Deployment
+
+&lt;p&gt;So now that you have the app developed you need to package it up and get it ready to ship to Microsoft, Apple and Google. 
+&lt;p&gt;So, let's say I built the CRM app and I want to deploy it. There are two solutions, one for Win8 and one for everything else. Let's try the deploying the latter. 
+&lt;p&gt;I go to the first project in the solution, the &quot;Desktop&quot; project. Right clicking on that gives me a &quot;Build Native Package&quot; option: 
+&lt;p&gt;[![clip_image018[4]](/images/blog/dxtreme_CE2A/clip_image0184_thumb.png &quot;clip_image018[4]&quot;) 
+&lt;p&gt;Which launches this dialog: 
+&lt;p&gt;[![clip_image020[4]](/images/blog/dxtreme_CE2A/clip_image0204_thumb.jpg &quot;clip_image020[4]&quot;)](/images/blog/dxtreme_CE2A/clip_image0204.jpg) 
+&lt;p&gt;Like most .NET devs, let's say I've never shipped an Android or iOS application. I would have no idea what to do with this screen. I then wander over to the DXTREME help docs because I remember seeing something about deployment in that earlier. I find the &quot;Native Packages&quot; section here: [http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages](http://help.devexpress.com/HTML/#!Overview/Application/Native%20Packages) 
+&lt;p&gt;It turns out that I need to register for the Apple and Google developer programs and I can get my certificate files from them. DXTREME provides a link to the Apple and Google program and a link to XCA to generate the certificate. 
+&lt;p&gt;There's some platform-specific knowledge you're going to need before deploying on multiple platforms. Because Apple, Google and Microsoft have their own stores, registration requirements, certificates and so on, you'll have to spend some time learning about that. DXTREME simplifies much of the cross-platform coding experience, but there's not a one-click solution for deployment. 
+&lt;p&gt;  
+
+### Final Thoughts
+
+&lt;p&gt;After spending a couple of hours with DXTREME it looks like a good step in the right direction towards cross-platform application development. It's great that I can utilize the technologies that I already know and having the DXTREME controls adaptively render based on platform is great. I spent a little time looking into what it would take to ramp up on iOS and Android development and as a .NET developer I would definitely rather take the time to ramp up on DXTREME. I look forward to digging into DXTREME a little more and to seeing where they go with it in future releases. 
+&lt;p&gt;Jon </code></pre>
+
         </div>
         <footer>
         </footer>
@@ -531,6 +548,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

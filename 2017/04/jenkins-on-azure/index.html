@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/04/jenkins-on-azure/000062.png">
 <meta property="article:published_time" content="2017-04-05T18:51:13.000Z">
-<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:47:55.328Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="ci">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -256,8 +262,8 @@
 <blockquote>
 <p>You can connect via command line using the following command. This will open the secure channel as well.</p>
 </blockquote>
-<pre><code>putty.exe -ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">putty.exe -ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="Option-2-Putty-UI"><a class="header-anchor" href="#Option-2-Putty-UI"></a>Option 2: Putty UI</h4>
 <p>1. Enter the Jenkins VM Public IP, enter a name ‘jenkinsvm’ and then click Save.</p>
 <p><img src="000054.png" alt=""></p>
@@ -275,7 +281,7 @@
 <p><img src="000057.png" alt=""></p>
 <p>7. Login using the username and password you used to create the Jenkins VM.</p>
 <p>You will see an output like the following:</p>
-<pre><code>login as: jongadmin
+<pre class="line-numbers language-bash"><code class="language-bash">login as: jongadmin
 jongadmin@40.83.216.117's password:
 Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-53-generic x86_64)
 
@@ -301,24 +307,24 @@ Your Hardware Enablement Stack (HWE) is supported until April 2019.
 
 Last login: Thu Apr  6 21:23:30 2017 from 167.220.1.142
 jongadmin@jenkinsVM:~$
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Connect-via-bash"><a class="header-anchor" href="#Connect-via-bash"></a>Connect via bash</h3>
 <p>1. Open a bash command prompt and run the following command:</p>
 <blockquote>
 <p>Replace jongadmin with the username you created the Jenkins VM with. Replace 40.83.216.117 with your Jenkins VM IP Address</p>
 </blockquote>
-<pre><code>ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>See my <a href="/2016/08/linux-on-windows/">blog post here</a>, for instructions on how to run bash on Windows.</p>
 <p>This will create an ssh connection and create a secure tunnel to port 8080 (the Jenkins Admin app)</p>
 <p>2. Enter yes and hit enter if you see the following:</p>
-<pre><code>jong@JONGHPDESKTOP:/mnt/c/Windows/System32$ ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117
+<pre class="line-numbers language-bash"><code class="language-bash">jong@JONGHPDESKTOP:/mnt/c/Windows/System32$ ssh -L 8080:127.0.0.1:8080 jongadmin@40.83.216.117
 The authenticity of host '40.83.216.117 (40.83.216.117)' can't be established.
 ECDSA key fingerprint is 02:25:0e:74:b1:01:e6:f1:96:73:7b:b6:42:dd:c4:e0.
 Are you sure you want to continue connecting (yes/no)?
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>You will see an output similar to the following:</p>
-<pre><code>jong@JONGHPDESKTOP:~$ ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117
+<pre class="line-numbers language-bash"><code class="language-bash">jong@JONGHPDESKTOP:~$ ssh -L 127.0.0.1:8080:40.83.216.117:8080 jongadmin@40.83.216.117
 jongadmin@40.83.216.117's password:
 Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 4.4.0-53-generic x86_64)
 
@@ -344,12 +350,12 @@ Your Hardware Enablement Stack (HWE) is supported until April 2019.
 
 Last login: Thu Apr  6 21:22:42 2017 from 167.220.1.142
 jongadmin@jenkinsVM:~$
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Get-Temp-Admin-Password-via-SSH"><a class="header-anchor" href="#Get-Temp-Admin-Password-via-SSH"></a>Get Temp Admin Password via SSH</h2>
 <p>The next step is to connect to the Jenkins Admin app, but we first need to get the temp password that is stored on the VM.</p>
 <p>1. In SSH terminal, enter the following command to get the temp admin password</p>
-<pre><code>sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000147.png" alt=""></p>
 <p>2. Copy that password to your clipboard.</p>
 <h2 id="Launch-Jenkins-Admin-App"><a class="header-anchor" href="#Launch-Jenkins-Admin-App"></a>Launch Jenkins Admin App</h2>
@@ -606,6 +612,10 @@ jongadmin@jenkinsVM:~$
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

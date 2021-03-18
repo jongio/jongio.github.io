@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-embedded-javascript-api-range-slider-filter/000009.png">
 <meta property="article:published_time" content="2017-01-03T14:20:05.000Z">
-<meta property="article:modified_time" content="2018-05-16T20:53:58.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:52:30.372Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -239,72 +245,72 @@
 <p><a href="/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-2-0">How to Create a Power BI Embedded Workspace Collection with the new Azure Command Line Interface (CLI) 2.0</a></p>
 <h3 id="Install-the-Power-BI-CLI"><a class="header-anchor" href="#Install-the-Power-BI-CLI"></a>Install the Power BI CLI</h3>
 <p>You just created the Workspace Collection, now we’ll create the Workspaces in that collection.</p>
-<pre><code>npm i -g powerbi-cli
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i -g powerbi-cli
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Create-Power-BI-Workspace"><a class="header-anchor" href="#Create-Power-BI-Workspace"></a>Create Power BI Workspace</h3>
-<pre><code>powerbi create-workspace -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">powerbi create-workspace -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll then see the workspace Id:</p>
-<pre><code>[ powerbi ] Workspace created: d66d8e42-b92a-4576-9072-fbaafb872ae7
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">[ powerbi ] Workspace created: d66d8e42-b92a-4576-9072-fbaafb872ae7
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Get-Workspaces"><a class="header-anchor" href="#Get-Workspaces"></a>Get Workspaces</h3>
 <p>You could also use the get-workspaces command to get the workspace Id.</p>
-<pre><code>powerbi get-workspaces -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">powerbi get-workspaces -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA==
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll then see the workspaces in the provided collection</p>
-<pre><code>[ powerbi ] ================================================
+<pre class="line-numbers language-bash"><code class="language-bash">[ powerbi ] ================================================
 [ powerbi ] Gettings workspaces for Collection: pbiejssample
 [ powerbi ] ================================================
 [ powerbi ] d66d8e42-b92a-4576-9072-fbaafb872ae7
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Copy that workspace Id to Notepad.</p>
 <h3 id="Import-Report-Into-Workspace"><a class="header-anchor" href="#Import-Report-Into-Workspace"></a>Import Report Into Workspace</h3>
 <p>Use the import command to add the report you created earlier to the workspace you just created. You’ll need to pass in collection, accesskey, workspace id, name and the path to the pbix file.</p>
-<pre><code>powerbi import -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -n &quot;Sample Data&quot; -f powerbi-embedded-sample.pbix
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">powerbi import -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -n "Sample Data" -f powerbi-embedded-sample.pbix
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 <li>Replace -w with the workspace Id</li>
 </ul>
 <p>You’ll then see the success message</p>
-<pre><code>[ powerbi ] Importing powerbi-embedded-sample.pbix to workspace: d66d8e42-b92a-4576-9072-fbaafb872ae7
+<pre class="line-numbers language-bash"><code class="language-bash">[ powerbi ] Importing powerbi-embedded-sample.pbix to workspace: d66d8e42-b92a-4576-9072-fbaafb872ae7
 [ powerbi ] File uploaded successfully
 [ powerbi ] Import ID: c0dfa1c9-cc24-4330-b215-5d5e57cb39c7
 [ powerbi ] Checking import state: Publishing
 [ powerbi ] Checking import state: Succeeded
 [ powerbi ] Import succeeded
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>Do not confuse Import ID above with the Report ID. They aren’t the same thing.</p>
 </blockquote>
 <h3 id="Get-Report-ID"><a class="header-anchor" href="#Get-Report-ID"></a>Get Report ID</h3>
 <p>Now that you have the report added to the Workspace, you need to get the report Id.</p>
-<pre><code>powerbi get-reports -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">powerbi get-reports -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
 </ul>
 <p>You’ll see the reports with Ids outputted</p>
-<pre><code>[ powerbi ] =========================================
+<pre class="line-numbers language-bash"><code class="language-bash">[ powerbi ] =========================================
 [ powerbi ] Gettings reports for Collection: d66d8e42-b92a-4576-9072-fbaafb872ae7
 [ powerbi ] =========================================
 [ powerbi ] ID: 4964a947-857f-4c14-914d-c66e1c5713cd | Name: Sample Data
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Save that report Id to Notepad.</p>
 <h3 id="Get-Embed-Token"><a class="header-anchor" href="#Get-Embed-Token"></a>Get Embed Token</h3>
 <p>You will need this token to embed a report into an HTML page.  In production scenarios you will generate this in real-time after you have authenticated your user.</p>
-<pre><code>powerbi create-embed-token -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -r 4964a947-857f-4c14-914d-c66e1c5713cd
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">powerbi create-embed-token -c pbiejssample -k vq+0LR5JIod/7ztPI1iTWAqpc9dGVZWxsNSls8a2EORS43536VS0v275RBJMIMFB91/sHmxz7nJC+w2YOSixDA== -w d66d8e42-b92a-4576-9072-fbaafb872ae7 -r 4964a947-857f-4c14-914d-c66e1c5713cd
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Replace -c value with your collection name</li>
 <li>Replace -k with the Access Key for your Workspace Collection you created earlier. You can get that value from the Azure portal.</li>
@@ -312,8 +318,8 @@
 <li>Replace -r with the report Id</li>
 </ul>
 <p>That will output the embed token. Copy it to Notepad.</p>
-<pre><code>[ powerbi ] Embed Token:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">[ powerbi ] Embed Token:  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIwLjIuMCIsImF1ZCI6Imh0dHBzOi8vYW5hbHlzaXMud2luZG93cy5uZXQvcG93ZXJiaS9hcGkiLCJpc3MiOiJQb3dlciBCSSBOb2RlIFNESyIsIndjbiI6InBiaWVqc3NhbXBsZSIsIndpZCI6ImQ2NmQ4ZTQyLWI5MmEtNDU3Ni05MDcyLWZiYWFmYjg3MmFlNyIsInJpZCI6IjQ5NjRhOTQ3LTg1N2YtNGMxNC05MTRkLWM2NmUxYzU3MTNjZCIsIm5iZiI6MTQ4MzQ4NTYzNywiZXhwIjoxNDgzNDg5MjM3fQ._2ziDo37r_9LqSBvur-azWjOlVmXAznd6NROWdjejfY
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>If at any point you get a permission denied or content doesn’t exist error, just rerun the create-embed-token command and use the new one that is created.  I think it expires in 20 minutes by default.</p>
 </blockquote>
@@ -321,19 +327,19 @@
 <h2 id="Create-Webpage-to-Host-Power-BI-Report"><a class="header-anchor" href="#Create-Webpage-to-Host-Power-BI-Report"></a>Create Webpage to Host Power BI Report</h2>
 <h3 id="Install-the-Power-BI-Client-Side-JavaScript-API"><a class="header-anchor" href="#Install-the-Power-BI-Client-Side-JavaScript-API"></a>Install the Power BI Client Side JavaScript API</h3>
 <p>Find a good directory on your computer to create the website and install the powerbi-client npm package.</p>
-<pre><code>npm i powerbi-client --save
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i powerbi-client --save
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Create-a-Webpage-that-contains-the-following-code"><a class="header-anchor" href="#Create-a-Webpage-that-contains-the-following-code"></a>Create a Webpage that contains the following code.</h3>
 <ul>
 <li>Replace embedToken value with the embed token you created earlier.</li>
 <li>Replace reportId value with the report Id you created earlier.</li>
 </ul>
-<pre><code class="language-html">&lt;html&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;html&gt;
 
 &lt;body&gt;
-    &lt;div id=&quot;reportContainer&quot;&gt;&lt;/div&gt;
+    &lt;div id="reportContainer"&gt;&lt;/div&gt;
 
-    &lt;script src=&quot;./node_modules/powerbi-client/dist/powerbi.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src="./node_modules/powerbi-client/dist/powerbi.min.js"&gt;&lt;/script&gt;
 
     &lt;script&gt;
         (function () {
@@ -361,7 +367,7 @@
 &lt;/body&gt;
 
 &lt;/html&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>The above code won’t work in IE. Please see full example below for a version that works in IE.</p>
 </blockquote>
@@ -372,43 +378,43 @@
 <li>You called powerbi.embed to bind the report to the div.</li>
 </ul>
 <p>You should now see your report embedded into the webpage.  You can use http-server to serve the current folder from localhost.</p>
-<pre><code>npm i -g http-server
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i -g http-server
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000008.png" alt=""></p>
 <h2 id="Filter-Report-with-Range-Slider"><a class="header-anchor" href="#Filter-Report-with-Range-Slider"></a>Filter Report with Range Slider</h2>
 <p>We are now going to filter the report with a <a href="https://jqueryui.com/slider/" target="_blank" rel="noopener">jQuery UI Slider control</a>.</p>
 <p>1. Install the jquery and jquery-ui npm packages</p>
-<pre><code class="language-bash">npm i jquery --save
+<pre class="line-numbers language-bash"><code class="language-bash">npm i jquery --save
 npm i jqueryui --save
 npm i es6-promise --save
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>2. Reference the jquery and jquery-ui js and the css.</p>
-<pre><code class="language-html">
+<pre class="line-numbers language-html"><code class="language-html">
 // before end of &lt;body&gt;
-&lt;script src=&quot;./node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;./node_modules/jqueryui/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;./node_modules/es6-promise/dist/es6-promise.auto.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src="./node_modules/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="./node_modules/jqueryui/jquery-ui.min.js"&gt;&lt;/script&gt;
+&lt;script src="./node_modules/es6-promise/dist/es6-promise.auto.min.js"&gt;&lt;/script&gt;
 
 // in &lt;head&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;./node_modules/jqueryui/jquery-ui.min.css&quot;&gt;
-</code></pre>
+&lt;link rel="stylesheet" href="./node_modules/jqueryui/jquery-ui.min.css"&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>3. Add a new div to your html page</p>
-<pre><code class="language-html">&lt;div id=&quot;slider&quot; /&gt;
-</code></pre>
+<pre class="line-numbers language-html"><code class="language-html">&lt;div id="slider" /&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>4. Add a new filter method to be called when your filter changes.</p>
 <p>You can learn all about the JavaScript API <a href="https://github.com/Microsoft/PowerBI-JavaScript" target="_blank" rel="noopener">here</a>.</p>
 <blockquote>
 <p>The important thing to observe here is the table and column values.  Those are set to match the table and column names you created in Power BI Desktop earlier.</p>
 </blockquote>
 <p>The code will construct a filter based on the value passed to it and call the setFilters method on the report.</p>
-<pre><code class="language-javascript">function filter(values) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">function filter(values) {
     const filter = {
-        $schema: &quot;http://powerbi.com/product/schema#basic&quot;,
+        $schema: "http://powerbi.com/product/schema#basic",
         target: {
-            table: &quot;Data&quot;,
-            column: &quot;Value&quot;
+            table: "Data",
+            column: "Value"
         },
-        operator: &quot;In&quot;,
+        operator: "In",
         values: values
     };
 
@@ -423,10 +429,10 @@ npm i es6-promise --save
             });
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>6. Instantiate the slider</p>
-<pre><code class="language-javascript">$(e =&gt; {
-    $(&quot;#slider&quot;).slider({
+<pre class="line-numbers language-javascript"><code class="language-javascript">$(e =&gt; {
+    $("#slider").slider({
         min: 3,
         max: 5,
         step: 1,
@@ -435,17 +441,17 @@ npm i es6-promise --save
         }
     });
 });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>7. When you now run the webpage you will see a slider control at the top and when you select “3” it will filter the pie chart to only those value that are equal to “3”</p>
 <p><img src="000009.png" alt=""></p>
 <p>Here’s a full working sample that you should be able to just copy and paste into your application after install the npm packages.</p>
-<pre><code class="language-html">&lt;!doctype html&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;!doctype html&gt;
 
 &lt;html&gt;
 
 &lt;head&gt;
     &lt;title&gt;Power BI Embedded with Filtering Sample&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;./node_modules/jqueryui/jquery-ui.min.css&quot;&gt;
+    &lt;link rel="stylesheet" href="./node_modules/jqueryui/jquery-ui.min.css"&gt;
     &lt;style&gt;
     #slider {
         width: 500px;
@@ -467,27 +473,27 @@ npm i es6-promise --save
 
 &lt;body&gt;
 
-    &lt;div id=&quot;slider&quot;&gt;
-        &lt;div id=&quot;custom-handle&quot; class=&quot;ui-slider-handle&quot;&gt;&lt;/div&gt;
+    &lt;div id="slider"&gt;
+        &lt;div id="custom-handle" class="ui-slider-handle"&gt;&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div id=&quot;reportContainer&quot;&gt;&lt;/div&gt;
+    &lt;div id="reportContainer"&gt;&lt;/div&gt;
 
-    &lt;script src=&quot;./node_modules/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./node_modules/jqueryui/jquery-ui.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./node_modules/es6-promise/dist/es6-promise.auto.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;./node_modules/powerbi-client/dist/powerbi.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src="./node_modules/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="./node_modules/jqueryui/jquery-ui.min.js"&gt;&lt;/script&gt;
+    &lt;script src="./node_modules/es6-promise/dist/es6-promise.auto.min.js"&gt;&lt;/script&gt;
+    &lt;script src="./node_modules/powerbi-client/dist/powerbi.min.js"&gt;&lt;/script&gt;
 
     &lt;script&gt;
 
         $(function () {
-            var handle = $(&quot;#custom-handle&quot;);
-            $(&quot;#slider&quot;).slider({
+            var handle = $("#custom-handle");
+            $("#slider").slider({
                 min: 1,
                 max: 25,
                 step: 1,
                 create: function () {
-                    handle.text($(this).slider(&quot;value&quot;));
+                    handle.text($(this).slider("value"));
                 },
                 slide: function (event, ui) {
                     handle.text(ui.value);
@@ -518,12 +524,12 @@ npm i es6-promise --save
 
         function filter(values) {
             const filter = {
-                $schema: &quot;http://powerbi.com/product/schema#basic&quot;,
+                $schema: "http://powerbi.com/product/schema#basic",
                 target: {
-                    table: &quot;Data&quot;,
-                    column: &quot;Value&quot;
+                    table: "Data",
+                    column: "Value"
                 },
-                operator: &quot;In&quot;,
+                operator: "In",
                 values: values
             };
 
@@ -543,7 +549,7 @@ npm i es6-promise --save
 &lt;/body&gt;
 
 &lt;/html&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -780,6 +786,10 @@ npm i es6-promise --save
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

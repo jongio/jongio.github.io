@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="dotnet,iot,raspberrypi" />
+    <meta name="keywords" content="iot,dotnet,raspberrypi" />
     
     <meta name="description" content="The .NET Core SDK is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is not currently working on supporting it. As mentioned in the announcement, the SDK doesn’t fit">
 <meta property="og:type" content="article">
@@ -33,10 +33,10 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/error.png">
 <meta property="article:published_time" content="2017-11-08T06:55:44.000Z">
-<meta property="article:modified_time" content="2017-11-08T21:52:48.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:45:58.427Z">
 <meta property="article:author" content="Jon Gallant">
-<meta property="article:tag" content="dotnet">
 <meta property="article:tag" content="iot">
+<meta property="article:tag" content="dotnet">
 <meta property="article:tag" content="raspberrypi">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/11/dotnetcore-sdk-arm/error.png">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,14 +219,14 @@
         <div class="article-entry" itemprop="articleBody">
             <p>The .NET Core <strong>SDK</strong> is not supported on ARM based devices such as the Raspberry Pi and the .NET Core team is <strong>not</strong> currently working on supporting it. As mentioned in the <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="noopener">announcement</a>, the SDK doesn’t fit within a reasonable performance profile envelope for ARM based devices. They have prioritized getting the Runtime working on ARM over the SDK, which is reasonable as most people will dev on a x64 machine and deploy to ARM devices.</p>
 <p>If you try to install the SDK on a Raspberry Pi you will see the following error:</p>
-<pre><code>pi@raspberrypi:~ $ sudo apt install dotnet-sdk-2.0.2
+<pre class="line-numbers language-bash"><code class="language-bash">pi@raspberrypi:~ $ sudo apt install dotnet-sdk-2.0.2
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 E: Unable to locate package dotnet-sdk-2.0.2
 E: Couldn't find any package by glob 'dotnet-sdk-2.0.2'
 E: Couldn't find any package by regex 'dotnet-sdk-2.0.2'
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="error.png" alt=""></p>
 <p>However, the .NET Core <strong>Runtime</strong> <a href="https://github.com/dotnet/announcements/issues/29" target="_blank" rel="noopener">does support ARM</a>, so you can develop on a <a href="https://github.com/dotnet/core/blob/master/release-notes/2.0/2.0-supported-os.md" target="_blank" rel="noopener">supported OS/Arch</a> and then deploy to an ARM device.  You will find instructions for deploying to Raspberry Pi <a href="https://github.com/dotnet/core/blob/master/samples/RaspberryPiInstructions.md" target="_blank" rel="noopener">here</a>. You can find the list of .NET Core Runtime on ARM issues <a href="https://github.com/dotnet/coreclr/issues?utf8=%E2%9C%93&amp;q=label%3Aarch-arm32%20" target="_blank" rel="noopener">here</a>.</p>
 <p><strong>References</strong></p>
@@ -468,6 +474,10 @@ E: Couldn't find any package by regex 'dotnet-sdk-2.0.2'
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

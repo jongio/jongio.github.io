@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="vscode" />
     
-    <meta name="description" content="I’m working on setting up Codespaces for my project and tried to open my workspace and got this error: The workspace can not be opened in a container. Folder &amp;#123;folder&amp;#125; is not a subfolder of s">
+    <meta name="description" content="I’m working on setting up Codespaces for my project and tried to open my workspace and got this error: The workspace can not be opened in a container. Folder {folder} is not a subfolder of shared root">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to VS Codespaces The workspace can not be opened in a container">
 <meta property="og:url" content="https://blog.jongallant.com/2021/01/workspace-cannot-be-opened-in-a-container/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m working on setting up Codespaces for my project and tried to open my workspace and got this error: The workspace can not be opened in a container. Folder &amp;#123;folder&amp;#125; is not a subfolder of s">
+<meta property="og:description" content="I’m working on setting up Codespaces for my project and tried to open my workspace and got this error: The workspace can not be opened in a container. Folder {folder} is not a subfolder of shared root">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/01/workspace-cannot-be-opened-in-a-container/055.png">
 <meta property="article:published_time" content="2021-01-22T13:36:56.000Z">
-<meta property="article:modified_time" content="2021-01-22T21:51:20.669Z">
+<meta property="article:modified_time" content="2021-03-18T06:55:30.098Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -210,7 +216,8 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on setting up Codespaces for my project and tried to open my workspace and got this error:</p>
-<pre><code class="hljs plain">The workspace can not be opened in a container. Folder &#123;folder&#125; is not a subfolder of shared root folder &#123;folder&#125;.</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">The workspace can not be opened in a container. Folder {folder} is not a subfolder of shared root folder {folder}.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="055.png" alt="&quot;Error message&quot;"></p>
 <p>It’s a little cryptic, but what the message means is that you have folder(s) in your workspace that are not in sub-folders from the location of your code-workspace file.</p>
 <p>The documentation for this limitation is here: <a href="https://code.visualstudio.com/docs/remote/containers#_open-an-existing-workspace-in-a-container" target="_blank" rel="noopener">https://code.visualstudio.com/docs/remote/containers#_open-an-existing-workspace-in-a-container</a></p>
@@ -455,6 +462,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

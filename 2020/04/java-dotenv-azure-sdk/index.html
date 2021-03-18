@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,java,azuresdk" />
+    <meta name="keywords" content="azure,azuresdk,java" />
     
     <meta name="description" content="UPDATE 5&#x2F;13&#x2F;2020 - This is now outdated as of version 5.2.0 of java-dotnet package.  A systemProperties method was added to make all of this easier. You can find all of the updated details on the new">
 <meta property="og:type" content="article">
@@ -33,11 +33,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/002.png">
 <meta property="article:published_time" content="2020-04-13T13:38:17.000Z">
-<meta property="article:modified_time" content="2020-05-14T00:06:22.077Z">
+<meta property="article:modified_time" content="2020-05-14T00:06:22.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
-<meta property="article:tag" content="java">
 <meta property="article:tag" content="azuresdk">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2020/04/java-dotenv-azure-sdk/002.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -218,24 +224,29 @@
 <p><s>Today, if you try to use the Azure SDKs with the <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">java-dotenv package</a>, it will not work because java-dotenv does not write to System environment variables or System properties. The TLDR is at the bottom, so you can scroll down to get the solution to use .env with Azure SDK for Java.</s></p>
 <h2 id="How-env-files-work"><a class="header-anchor" href="#How-env-files-work"></a>How .env files work</h2>
 <p>Here’s an example of a .env file.</p>
-<pre><code class="hljs bash">AZURE_CLIENT_ID=d40990d4
+<pre class="line-numbers language-bash"><code class="language-bash">AZURE_CLIENT_ID=d40990d4
 AZURE_CLIENT_SECRET=9eb93866
 AZURE_TENANT_ID=63296244-
 AZURE_KEYVAULT_URL=https://jongkv2.vault.usgovcloudapi.net/
-AZURE_AUTHORITY_HOST=login.microsoftonline.us</code></pre>
+AZURE_AUTHORITY_HOST=login.microsoftonline.us
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I then use a standard .env package to load the values into the currently running process, like this:</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.Dotenv;
+<pre class="line-numbers language-java"><code class="language-java">import io.github.cdimascio.dotenv.Dotenv;
 
 Dotenv dotenv = Dotenv.load();
 
-dotenv.get(<span class="hljs-string">"AZURE_CLIENT_ID"</span>)</code></pre>
+dotenv.get("AZURE_CLIENT_ID")
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>That uses this java-dotenv package: <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">https://github.com/cdimascio/java-dotenv</a> to load the .env file and then read the value from <code>AZURE_CLIENT_ID</code></p>
 <h2 id="The-issue-with-Java-and-env-files"><a class="header-anchor" href="#The-issue-with-Java-and-env-files"></a>The issue with Java and .env files</h2>
 <p>All other languages I work with also automatically stuff those values into the standard machine environment variables and can be access like this C# example:</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> clientId = System.GetEnvironmentVariable(<span class="hljs-string">"AZURE_CLIENT_ID"</span>);</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var clientId = System.GetEnvironmentVariable("AZURE_CLIENT_ID");
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>But that doesn’t work in Java.  This code…</p>
-<pre><code class="hljs java">Dotenv dotenv = Dotenv.load();
-String clientId = System.getenv(<span class="hljs-string">"AZURE_CLIENT_ID"</span>);</code></pre>
+<pre class="line-numbers language-java"><code class="language-java">Dotenv dotenv = Dotenv.load();
+String clientId = System.getenv("AZURE_CLIENT_ID");
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>…will return <code>null</code> for clientId, because the Java library java-dotenv does not stuff environment variables and it doesn’t look like there’s an easy way to do so with Java.  I found some hacks, but they were rough.  Here’s a link to the java-dotenv FAQ on this: <a href="https://github.com/cdimascio/java-dotenv#faq" target="_blank" rel="noopener">https://github.com/cdimascio/java-dotenv#faq</a></p>
 <blockquote>
 <p>Q: Why should I use dotenv.get(“MY_ENV_VAR”) instead of System.getenv(“MY_ENV_VAR”)<br>
@@ -248,50 +259,54 @@ A: Since Java does not provide a way to set environment variables on a currently
 <h2 id="The-solution-to-using-Azure-SDK-with-java-dotenv"><a class="header-anchor" href="#The-solution-to-using-Azure-SDK-with-java-dotenv"></a>The solution to using Azure SDK with java-dotenv</h2>
 <h3 id="Azure-SDK-for-Java-reads-from-both-System-properties-and-environment-variables"><a class="header-anchor" href="#Azure-SDK-for-Java-reads-from-both-System-properties-and-environment-variables"></a>Azure SDK for Java reads from both System properties and environment variables</h3>
 <p>Luckily, the Azure SDK for Java reads from both environment variables and system properties.  As you can see in the <a href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/Configuration.java" target="_blank" rel="noopener"><code>Configuration.java</code> file</a>, both <code>System::getProperty</code> and <code>System::getenv</code> are implemented as configuration loaders:</p>
-<pre><code class="hljs java"><span class="hljs-comment">/*
+<pre class="line-numbers language-java"><code class="language-java">/*
     * System property loader.
-    */</span>
-<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Function&lt;String, String&gt; PROPERTY_LOADER = System::getProperty;
+    */
+private static final Function&lt;String, String&gt; PROPERTY_LOADER = System::getProperty;
 
-<span class="hljs-comment">/*
+/*
     * Environment variable loader.
-    */</span>
-<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Function&lt;String, String&gt; ENV_VAR_LOADER = System::getenv;
+    */
+private static final Function&lt;String, String&gt; ENV_VAR_LOADER = System::getenv;
 
-<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> List&lt;Function&lt;String, String&gt;&gt; LOADERS = Arrays.asList(PROPERTY_LOADER, ENV_VAR_LOADER);</code></pre>
+private static final List&lt;Function&lt;String, String&gt;&gt; LOADERS = Arrays.asList(PROPERTY_LOADER, ENV_VAR_LOADER);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And then the Azure SDK configuration object loads from both locations here:</p>
-<pre><code class="hljs java"><span class="hljs-comment">/*
+<pre class="line-numbers language-java"><code class="language-java">/*
 * Attempts to load the configuration from the environment.
 *
 * The runtime parameters are checked first followed by the environment variables.
 *
 * @param name Name of the configuration.
 * @return If found the loaded configuration, otherwise null.
-*/</span>
-<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">load</span><span class="hljs-params">(String name)</span> </span>&#123;
-    <span class="hljs-keyword">for</span> (Function&lt;String, String&gt; loader : LOADERS) &#123;
+*/
+private static String load(String name) {
+    for (Function&lt;String, String&gt; loader : LOADERS) {
         String value = loader.apply(name);
-        <span class="hljs-keyword">if</span> (value != <span class="hljs-keyword">null</span>) &#123;
-            <span class="hljs-keyword">return</span> value;
-        &#125;
-    &#125;
+        if (value != null) {
+            return value;
+        }
+    }
 
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-&#125;</code></pre>
+    return null;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Copy-java-dotenv-properties-to-System-properties"><a class="header-anchor" href="#Copy-java-dotenv-properties-to-System-properties"></a>Copy java-dotenv properties to System properties</h3>
 <p>Because Azure SDK reads from System properties - you can simply copy all of the java-dotenv properties to system properties and then the Azure SDK will read them.</p>
 <p>My fellow Azure SDK dev Srikanta wrote the following code to copy all properties from dotenv to system properties.  He is going to work with the java-dotenv project to see if we can get this implemented as a feature in the library itself. For now, copy this to your project.</p>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loadEnvironmentProperties</span><span class="hljs-params">()</span> </span>&#123;
+<pre class="line-numbers language-java"><code class="language-java">static void loadEnvironmentProperties() {
     Dotenv ENVIRONMENT = Dotenv.load();
     ENVIRONMENT.entries().forEach(entry -&gt; System.setProperty(entry.getKey(), entry.getValue()));
-&#125;</code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Then call <code>loadEnvironmentProperties</code> before you use the Azure SDKs.</p>
-<pre><code class="hljs java">loadEnvironmentProperties();
+<pre class="line-numbers language-java"><code class="language-java">loadEnvironmentProperties();
 
-DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder().build();
+DefaultAzureCredential cred = new DefaultAzureCredentialBuilder().build();
 
-KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getProperty(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>))
-                .credential(cred).buildClient();</code></pre>
+KeyClient keyClient = new KeyClientBuilder().vaultUrl(System.getProperty("AZURE_KEYVAULT_URL"))
+                .credential(cred).buildClient();
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>… and it should just work.</p>
 <p>Let me know if you run into any issues.</p>
 <p>Jon</p>
@@ -531,6 +546,10 @@ KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().v
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

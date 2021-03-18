@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,azurite,azuresdk,devexp" />
+    <meta name="keywords" content="azure,azuresdk,azurite,devexp" />
     
     <meta name="description" content="Azurite, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storag">
 <meta property="og:type" content="article">
@@ -33,11 +33,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/azuriteheader.png">
 <meta property="article:published_time" content="2020-04-23T16:21:12.000Z">
-<meta property="article:modified_time" content="2020-08-31T20:54:20.488Z">
+<meta property="article:modified_time" content="2020-08-31T20:54:20.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
-<meta property="article:tag" content="azurite">
 <meta property="article:tag" content="azuresdk">
+<meta property="article:tag" content="azurite">
 <meta property="article:tag" content="devexp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/azuriteheader.png">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -225,21 +231,24 @@
 <ol>
 <li>Create a local self-signed certificate</li>
 </ol>
-<pre><code class="hljs bash">mkcert 127.0.0.1.pem</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mkcert 127.0.0.1.pem
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Azurite"><a class="header-anchor" href="#Azurite"></a>Azurite</h2>
 <ol start="2">
 <li>Start Azurite with HTTPS and OAuth Support</li>
 </ol>
-<pre><code class="hljs bash">azurite --oauth basic --cert 127.0.0.1.pem --key 127.0.0.1-key.pem</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azurite --oauth basic --cert 127.0.0.1.pem --key 127.0.0.1-key.pem
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Azure-SDK"><a class="header-anchor" href="#Azure-SDK"></a>Azure SDK</h2>
 <ol start="3">
 <li>Use Azure SDKs to connect to Azurite</li>
 </ol>
 <p>You’ll notice here that we are using the Azurite HTTPS endpoint, and <code>DefaultAzureCredential()</code>, which automatically retrieves the appropriatly scoped Azure Storage token.</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerCient(
-  <span class="hljs-keyword">new</span> Uri(<span class="hljs-string">"https://127.0.0.1:10000/devstoreaccount1/container-name"</span>), 
-  <span class="hljs-keyword">new</span> DefaultAzureCredential()
-);</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new BlobContainerCient(
+  new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"), 
+  new DefaultAzureCredential()
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Azure-Storage-Explorer"><a class="header-anchor" href="#Azure-Storage-Explorer"></a>Azure Storage Explorer</h2>
 <ol start="4">
 <li>Use Azure Storage Explorer to view the Azurite data</li>
@@ -251,49 +260,57 @@
 <ol>
 <li>Create a folder, I like to put my Azurite files in c:\azurite</li>
 </ol>
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> c:\
+<pre class="line-numbers language-bash"><code class="language-bash">cd c:\
 mkdir azurite
-<span class="hljs-built_in">cd</span> azurite</code></pre>
+cd azurite
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="Local-Certificate-Setup"><a class="header-anchor" href="#Local-Certificate-Setup"></a>Local Certificate Setup</h2>
 <p>You need a local self-signed certificate, which is super easy to create with <a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a>.  You have other certificate options available and detailed instructions for those options can be found on the <a href="https://github.com/Azure/Azurite#https-setup" target="_blank" rel="noopener">Azurite installation page</a>.</p>
 <ol>
 <li>Install mkcert</li>
 </ol>
 <p>The mkcert site has many <a href="https://github.com/FiloSottile/mkcert#installation" target="_blank" rel="noopener">installation methods</a>, but I like <a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolately</a>.</p>
-<pre><code class="hljs bash">choco install mkcert</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">choco install mkcert
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>Trust the mkcert RootCA.pem</li>
 </ol>
 <p>This will add the RootCA created my mkcert to your Trusted Root Certificates.</p>
-<pre><code class="hljs bash">mkcert -install</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mkcert -install
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>Create certificate</li>
 </ol>
-<pre><code class="hljs bash">mkcert 127.0.0.1</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mkcert 127.0.0.1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>This will create the certificates and output the following:</p>
-<pre><code class="hljs bash">C:\azurite&gt;mkcert 127.0.0.1
-Using the <span class="hljs-built_in">local</span> CA at <span class="hljs-string">"C:\Users\Jon\AppData\Local\mkcert"</span> ✨
+<pre class="line-numbers language-bash"><code class="language-bash">C:\azurite&gt;mkcert 127.0.0.1
+Using the local CA at "C:\Users\Jon\AppData\Local\mkcert" ✨
 
-Created a new certificate valid <span class="hljs-keyword">for</span> the following names 📜
- - <span class="hljs-string">"127.0.0.1"</span>
+Created a new certificate valid for the following names 📜
+ - "127.0.0.1"
 
-The certificate is at <span class="hljs-string">"./127.0.0.1.pem"</span> and the key at <span class="hljs-string">"./127.0.0.1-key.pem"</span> ✅</code></pre>
+The certificate is at "./127.0.0.1.pem" and the key at "./127.0.0.1-key.pem" ✅
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Azurite-Setup"><a class="header-anchor" href="#Azurite-Setup"></a>Azurite Setup</h2>
 <ol>
 <li>Install Azurite</li>
 </ol>
 <p>We’ll use npm here, but you have other options listed on the <a href="https://github.com/Azure/Azurite#getting-started" target="_blank" rel="noopener">Azurite install page</a>.</p>
-<pre><code class="hljs bash">npm install azurite</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm install azurite
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>Start Azurite</li>
 </ol>
 <p>Run the <code>azurite</code> command and turn on OAuth with <code>--oauth basic</code> and turn on HTTPS with the <code>--cert</code> and <code>--key</code> options.</p>
-<pre><code class="hljs bash">azurite --oauth basic --cert 127.0.0.1.pem --key 127.0.0.1-key.pem</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azurite --oauth basic --cert 127.0.0.1.pem --key 127.0.0.1-key.pem
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>That will output the following:</p>
-<pre><code class="hljs bash">Azurite Blob service is starting at https://127.0.0.1:10000
+<pre class="line-numbers language-bash"><code class="language-bash">Azurite Blob service is starting at https://127.0.0.1:10000
 Azurite Blob service is successfully listening at https://127.0.0.1:10000
 Azurite Queue service is starting at https://127.0.0.1:10001
-Azurite Queue service is successfully listening at https://127.0.0.1:10001</code></pre>
+Azurite Queue service is successfully listening at https://127.0.0.1:10001
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Azurite is now running.</p>
 <h2 id="Azure-CLI-Setup"><a class="header-anchor" href="#Azure-CLI-Setup"></a>Azure CLI Setup</h2>
 <p>To avoid having to create service principals for local development, we’ll install the Azure CLI and login.</p>
@@ -305,29 +322,30 @@ Azurite Queue service is successfully listening at https://127.0.0.1:10001</code
 <h2 id="Azure-SDK-Setup"><a class="header-anchor" href="#Azure-SDK-Setup"></a>Azure SDK Setup</h2>
 <p>Now, we’ll run some code that hits our Azurite HTTPS endpoints.  All of the following code can be found here: <a href="https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer" target="_blank" rel="noopener">https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer</a></p>
 <p>NOTE: You will need the Azure Identity preview versions for this to work with Azure CLI Credentials, see <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> blobHost = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_BLOB_HOST"</span>);  <span class="hljs-comment">// 127.0.0.1:10000</span>
-<span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>); <span class="hljs-comment">// devstoreaccount1</span>
-<span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
-<span class="hljs-keyword">var</span> emulator = account == <span class="hljs-string">"devstoreaccount1"</span>;
-<span class="hljs-keyword">var</span> blobBaseUri = <span class="hljs-string">$"https://<span class="hljs-subst">&#123;(emulator ? <span class="hljs-string">$"<span class="hljs-subst">&#123;blobHost&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>"</span> : <span class="hljs-string">$"<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;blobHost&#125;</span>"</span>)&#125;</span>/"</span>;
-<span class="hljs-keyword">var</span> blobContainerUri = <span class="hljs-string">$"<span class="hljs-subst">&#123;blobBaseUri&#125;</span><span class="hljs-subst">&#123;container&#125;</span>"</span>;
+<pre class="line-numbers language-csharp"><code class="language-csharp">var blobHost = Environment.GetEnvironmentVariable("AZURE_STORAGE_BLOB_HOST");  // 127.0.0.1:10000
+var account = Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"); // devstoreaccount1
+var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
+var emulator = account == "devstoreaccount1";
+var blobBaseUri = $"https://{(emulator ? $"{blobHost}/{account}" : $"{account}.{blobHost}")}/";
+var blobContainerUri = $"{blobBaseUri}{container}";
 
-<span class="hljs-comment">// Generate random string for blob content and file name</span>
-<span class="hljs-keyword">var</span> content = Guid.NewGuid().ToString(<span class="hljs-string">"n"</span>).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>);
-<span class="hljs-keyword">var</span> file = <span class="hljs-string">$"<span class="hljs-subst">&#123;content&#125;</span>.txt"</span>;
+// Generate random string for blob content and file name
+var content = Guid.NewGuid().ToString("n").Substring(0, 8);
+var file = $"{content}.txt";
 
-<span class="hljs-comment">// With container uri and DefaultAzureCredential</span>
-<span class="hljs-comment">// Since we are using the Azure Identity preview version, DefaultAzureCredential will use your Azure CLI token.</span>
-<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(blobContainerUri), <span class="hljs-keyword">new</span> DefaultAzureCredential());
+// With container uri and DefaultAzureCredential
+// Since we are using the Azure Identity preview version, DefaultAzureCredential will use your Azure CLI token.
+var client = new BlobContainerClient(new Uri(blobContainerUri), new DefaultAzureCredential());
 
-<span class="hljs-comment">// Create container</span>
-<span class="hljs-keyword">await</span> client.CreateIfNotExistsAsync();
+// Create container
+await client.CreateIfNotExistsAsync();
 
-<span class="hljs-comment">// Get content stream</span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> stream = <span class="hljs-keyword">new</span> MemoryStream(Encoding.ASCII.GetBytes(content));
+// Get content stream
+using var stream = new MemoryStream(Encoding.ASCII.GetBytes(content));
 
-<span class="hljs-comment">// Upload blob</span>
-<span class="hljs-keyword">await</span> client.UploadBlobAsync(file, stream);</code></pre>
+// Upload blob
+await client.UploadBlobAsync(file, stream);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>When you run the above code, a blob will be added to the container, and when you move to production you just need to update the environment variables to point to Azure instead of Azurite.</p>
 <h2 id="Azure-Storage-Explorer-Setup"><a class="header-anchor" href="#Azure-Storage-Explorer-Setup"></a>Azure Storage Explorer Setup</h2>
 <p>Now, we want to view the blob we just created.  That’s easy with Storage Explorer, but we have to take an extra few steps to add the Azurite HTTPS endpoints.</p>
@@ -340,9 +358,11 @@ Azurite Queue service is successfully listening at https://127.0.0.1:10001</code
 </ol>
 <p>We need to tell Azure Storage Explorer to use the mkcert RootCA.pem file.</p>
 <p>Run this command to find the mkcert RootCA.pem file</p>
-<pre><code class="hljs bash">mkcert -CAROOT</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">mkcert -CAROOT
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Mine is located here:</p>
-<pre><code class="hljs bash">C:\Users\Jon\AppData\Local\mkcert</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">C:\Users\Jon\AppData\Local\mkcert
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>In Storage Explorer, select Edit -&gt; SSL Certificates --&gt; Import Certificates</p>
 <p><img src="010.png" alt="'Import certificates'"></p>
 <p>Find the mkcert RootCA file at the location you got from <code>mkcert -CAROOT</code>.</p>
@@ -609,6 +629,10 @@ Azurite Queue service is successfully listening at https://127.0.0.1:10001</code
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

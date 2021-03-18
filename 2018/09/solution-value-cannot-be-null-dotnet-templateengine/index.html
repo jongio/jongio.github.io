@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2018/09/solution-value-cannot-be-null-dotnet-templateengine/000009.png">
 <meta property="article:published_time" content="2018-09-25T15:48:30.000Z">
-<meta property="article:modified_time" content="2018-09-25T22:54:48.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:54:30.199Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azuredevops">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -210,7 +216,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>In Azure DevOps, got this error:</p>
-<pre><code class="language-bash">2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
+<pre class="line-numbers language-bash"><code class="language-bash">2018-09-25T21:24:45.2778646Z ERROR: Error: Value cannot be null.
 2018-09-25T21:24:45.2791049Z Parameter name: paths
 2018-09-25T21:24:45.2804472Z    at System.IO.Path.Combine(String[] paths)
 2018-09-25T21:24:45.2818339Z    at Microsoft.TemplateEngine.Utils.EngineEnvironmentSettings.DefaultPathInfo.get_BaseDir()
@@ -222,13 +228,13 @@
 2018-09-25T21:24:45.2902455Z    at Microsoft.TemplateEngine.Cli.New3Command.ExecuteAsync()
 2018-09-25T21:24:45.2915947Z    at Microsoft.TemplateEngine.Cli.CommandParsing.NewCommandInputCli.&lt;&gt;c__DisplayClass19_0.&lt;&lt;OnExecute&gt;b__0&gt;d.MoveNext()
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Tracked it down to this line of code:<br>
 <a href="https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60" target="_blank" rel="noopener">https://github.com/dotnet/templating/blob/4bd80f0577550c7f36867b53d0c074f8f3dcde17/src/Microsoft.TemplateEngine.Utils/EngineEnvironmentSettings.cs#L60</a></p>
-<pre><code>string profileDir = _parent.Environment.GetEnvironmentVariable(isWindows
-                            ? &quot;USERPROFILE&quot;
-                            : &quot;HOME&quot;);
-</code></pre>
+<pre class="line-numbers language-cs"><code class="language-cs">string profileDir = _parent.Environment.GetEnvironmentVariable(isWindows
+                            ? "USERPROFILE"
+                            : "HOME");
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Which assumes that either USERPROFILE or HOME will be set.</p>
 <p>I’m running tox in my Azure DevOps build from a Linux agent and wasn’t passing HOME in passenv.</p>
 <p>Add HOME to passenv in your tox.ini and this error should go away.</p>
@@ -470,6 +476,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

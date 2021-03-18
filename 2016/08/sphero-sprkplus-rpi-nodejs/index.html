@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2016-08-29T16:31:00.000Z">
-<meta property="article:modified_time" content="2018-12-11T02:17:31.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:54:48.892Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -222,11 +228,11 @@
 <p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" target="_blank" rel="noopener" title="http://www.tightvnc.com/download.php">http://www.tightvnc.com/download.php</a></p>
 <p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="noopener" title="https://www.raspberrypi.org/documentation/remote-access/vnc/">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
 <p>Use the following to start VNC Server on your RPI3</p>
-<pre><code>vncserver :1
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">vncserver :1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Use the following to get your RPI3 IP Address.</p>
-<pre><code>hostname -I
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">hostname -I
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id=""><a class="header-anchor" href="#"></a><img src="/images/blog/d15999e44a95_CFB4/image_3.png" alt=""></h2>
 <p>Then use that IP when connecting from your desktop</p>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_4.png" alt=""></p>
@@ -240,24 +246,24 @@
 <p><img src="/images/blog/d15999e44a95_CFB4/image_8.png" alt=""></p>
 <h2 id="Get-SPRK-BLE-Address"><a class="header-anchor" href="#Get-SPRK-BLE-Address"></a>Get SPRK+ BLE Address</h2>
 <p>Run this in Terminal</p>
-<pre><code>bluetoothctl
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">bluetoothctl
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_9.png" alt=""></p>
 <p>Copy the SPRK+ BLE Address. You will need it later.</p>
 <h2 id="Install-Node-js-on-RPI3"><a class="header-anchor" href="#Install-Node-js-on-RPI3"></a>Install Node.js on RPI3</h2>
 <p>Follow instructions in <a href="/2016/08/install-nodejs-raspbian.html">this blog post</a> to get Node.js onto the RPI3</p>
 <h2 id="Install-Sphero-SDK"><a class="header-anchor" href="#Install-Sphero-SDK"></a>Install Sphero SDK</h2>
-<pre><code>sudo npm install sphero
+<pre class="line-numbers language-bash"><code class="language-bash">sudo npm install sphero
 sudo npm install noble
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>You can ignore any errors you get with the noble install</p>
 <h2 id="Create-Node-js-File"><a class="header-anchor" href="#Create-Node-js-File"></a>Create Node.js File</h2>
-<pre><code>cd ~
+<pre class="line-numbers language-bash"><code class="language-bash">cd ~
 mkdir sphero
 cd sphero
 touch sphero.js
 leafpad sphero.js
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_10.png" alt=""></p>
 <h2 id="Copy-Code-to-Node-js-File"><a class="header-anchor" href="#Copy-Code-to-Node-js-File"></a>Copy Code to Node.js File</h2>
 <script src="https://gist.github.com/jongio/0f354313489ccd7a138df3c902d00cdb.js"></script>
@@ -265,8 +271,8 @@ leafpad sphero.js
 <p>Open the sphero.js file and change the BLE Address to your SPRK+ BLE Address</p>
 <p><img src="/images/blog/d15999e44a95_CFB4/image_11.png" alt=""></p>
 <h2 id="Run-and-Watch-with-Delight"><a class="header-anchor" href="#Run-and-Watch-with-Delight"></a>Run and Watch with Delight!</h2>
-<pre><code>sudo node sphero.js
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo node sphero.js
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <iframe width="420" height="315" src="https://www.youtube.com/embed/jrO-nhmAC_I" frameborder="0" allowfullscreen=""></iframe>
         </div>
         <footer>
@@ -503,6 +509,10 @@ leafpad sphero.js
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

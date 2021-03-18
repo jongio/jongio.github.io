@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -216,7 +222,7 @@ This was the exception:</p>
 <blockquote>
 <p><em>Cannot delete this folder. Right-click the folder, and then click Properties to check your permissions for the folder. See the folder owner or your administrator to change your permissions. You don’t have appropriate permission to perform this operation.</em></p>
 </blockquote>
-<pre><code class="language-csharp">using System;
+<pre class="line-numbers language-csharp"><code class="language-csharp">using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -226,7 +232,7 @@ namespace OutlookRssDelete {
  class Program {
   static void Main(string[] args) {
    Application app = new Application();
-   NameSpace ns = app.GetNamespace(&quot;MAPI&quot;);
+   NameSpace ns = app.GetNamespace("MAPI");
 
    MAPIFolder feeds = ns.GetDefaultFolder(OlDefaultFolders.olFolderRssFeeds);
    MAPIFolder delitems = ns.GetDefaultFolder(OlDefaultFolders.olFolderDeletedItems);
@@ -244,10 +250,10 @@ namespace OutlookRssDelete {
      f.Delete();
     } catch {
      try {
-      Console.WriteLine(&quot;Delete failed.Try Moving to Deleted Items&quot;);
+      Console.WriteLine("Delete failed.Try Moving to Deleted Items");
       f.MoveTo(delitems);
      } catch (System.Exception ex1) {
-      Console.WriteLine(&quot;Move to Deleted Items Failed.Call Helpdesk: )&quot; + ex1.ToString());
+      Console.WriteLine("Move to Deleted Items Failed.Call Helpdesk: )" + ex1.ToString());
     }
 
    }
@@ -255,7 +261,7 @@ namespace OutlookRssDelete {
  }
 }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -492,6 +498,10 @@ namespace OutlookRssDelete {
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

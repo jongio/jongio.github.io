@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2015-11-02T22:15:00.000Z">
-<meta property="article:modified_time" content="2018-05-16T20:39:20.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:39:43.259Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="asp.net">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -211,7 +217,7 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Truth be told – I haven’t done a lot of <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> dev over the last couple of years, but since I do a good amount of maker projects that involve webhooks, I had to checkout the <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx" target="_blank" rel="noopener">new ASP.NET WebHooks feature</a>.</p>
 <p>I went to install the Nuget packages recommended by <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/15/sending-webhooks-with-asp-net-webhooks-preview.aspx" target="_blank" rel="noopener">this article</a> and got this error:</p>
-<pre><code>Install-Package : Failed to add reference to 'System.IO'. Please make sure that it is in the Global Assembly Cache.
+<pre class="line-numbers language-bash"><code class="language-bash">Install-Package : Failed to add reference to 'System.IO'. Please make sure that it is in the Global Assembly Cache.
 
 At C:\users\jong\documents\visual studio 2015\Projects\webhookstest1\nuget-install.ps1:2 char:1
 
@@ -226,11 +232,11 @@ Install-Package Microsoft.AspNet.WebHooks.Custom.AzureStorage -Includ …
 Install failed. Rolling back…
 
 Package 'Microsoft.AspNet.DataProtection 1.0.0-beta6' does not exist in project 'webhookstest1'
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It could have surfaced via the following exception as well:</p>
-<pre><code>Error    CS1061    'HttpConfiguration' does not contain a definition for 'InitializeCustomWebHooksAzureStorage' and no extension method 'InitializeCustomWebHooksAzureStorage' accepting a first argument of type 'HttpConfiguration' could be found (are you missing a using directive or an assembly reference?)   
+<pre class="line-numbers language-bash"><code class="language-bash">Error    CS1061    'HttpConfiguration' does not contain a definition for 'InitializeCustomWebHooksAzureStorage' and no extension method 'InitializeCustomWebHooksAzureStorage' accepting a first argument of type 'HttpConfiguration' could be found (are you missing a using directive or an assembly reference?)   
  WebApplication4    c:\users\jong\documents\visual studio 2015\Projects\WebApplication4\WebApplication4\App_Start\WebApiConfig.cs    24
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>It looks like Microsoft.AspNet.DataProtection is also required. I created a gist that includes all the dependencies you need.<script src="https://gist.github.com/jongio/793c29a3511e9ebe56f3.js"></script></p>
 <p>Just copy that ps1 file to your solution folder and run it in the Package Manager Console</p>
 <p>Hope this help</p>
@@ -471,6 +477,10 @@ Package 'Microsoft.AspNet.DataProtection 1.0.0-beta6' does not exist in project 
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

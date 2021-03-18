@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/install-git-ftp-windows/000028.png">
 <meta property="article:published_time" content="2017-01-21T00:36:03.000Z">
-<meta property="article:modified_time" content="2019-01-06T07:40:34.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:47:09.627Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -212,17 +218,17 @@
             <p>I use <a href="https://github.com/git-ftp/git-ftp" target="_blank" rel="noopener">git-ftp</a> to deploy my <a href="http://hexo.io" target="_blank" rel="noopener">hexo</a> blog from a git repo to an FTP site.  Getting it setup on Windows was non-trivial.  Here’s how I got it working.</p>
 <p>1. Install Chocolatey <a href="https://chocolatey.org/install" target="_blank" rel="noopener">https://chocolatey.org/install</a></p>
 <p>2. Install git</p>
-<pre><code>choco install git
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">choco install git
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3. Install cygwin</p>
-<pre><code>choco install cygwin
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">choco install cygwin
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000023.png" alt=""></p>
 <blockquote>
 <p>Run this twice if it fails the first time. Here’s how it failed for me.</p>
 </blockquote>
 <p><img src="000024.png" alt=""></p>
-<pre><code>ERROR: Running [&quot;C:\Users\jong\AppData\Local\Temp\Cygwin\2.6.1\setup-x86_64.exe&quot; --quiet-mode --site http://mirrors.kernel.org/sourceware/cygwin/ --packages default --root C:\tools\cygwin --local-package-dir C:\tools\cygwin --no-desktop ] was not successful. Exit code was '1'. See log for possible error messages.
+<pre class="line-numbers language-bash"><code class="language-bash">ERROR: Running ["C:\Users\jong\AppData\Local\Temp\Cygwin\2.6.1\setup-x86_64.exe" --quiet-mode --site http://mirrors.kernel.org/sourceware/cygwin/ --packages default --root C:\tools\cygwin --local-package-dir C:\tools\cygwin --no-desktop ] was not successful. Exit code was '1'. See log for possible error messages.
 Environment Vars (like PATH) have changed. Close/reopen your shell to
  see the changes (or in powershell/cmd.exe just type `refreshenv`).
 The install of cygwin was NOT successful.
@@ -235,7 +241,7 @@ Chocolatey installed 1/2 packages. 1 packages failed.
 Failures
  - cygwin (exited 1) - Error while running 'C:\ProgramData\chocolatey\lib\Cygwin\tools\chocolateyInstall.ps1'.
  See log for details.
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>If you get this error: “Please ensure you have Cygwin installed” then follow the steps <a href="https://github.com/chocolatey/chocolatey-coreteampackages/issues/176#issuecomment-212939458" target="_blank" rel="noopener">here</a></p>
 </blockquote>
@@ -244,30 +250,30 @@ Failures
 <p>If you can’t get cygwin to install, then just install it directly from the cygwin website here: <a href="https://cygwin.com/install.html" target="_blank" rel="noopener">https://cygwin.com/install.html</a></p>
 </blockquote>
 <p>4. Install cyg-get</p>
-<pre><code>choco install cyg-get
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">choco install cyg-get
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>5. Install cyg-get curl package</p>
-<pre><code>cyg-get curl
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">cyg-get curl
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>6. Open Cygwin Terminal</p>
 <p>7. Get git-ftp</p>
-<pre><code>curl https://raw.githubusercontent.com/git-ftp/git-ftp/develop/git-ftp &gt; /bin/git-ftp
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">curl https://raw.githubusercontent.com/git-ftp/git-ftp/develop/git-ftp &gt; /bin/git-ftp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>8. Make git-ftp Executable</p>
-<pre><code>chmod +x /bin/git-ftp
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">chmod +x /bin/git-ftp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>9. Run git-ftp</p>
-<pre><code>git ftp
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git ftp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the following output.<br>
 <img src="000026.png" alt=""></p>
 <p>10. Add cygwin to Windows PATH Environment Variable</p>
 <p>So you can execute cygwin command from a Windows Command Prompt, open up Environment variables and add this to your path.</p>
-<pre><code class="language-bash">C:\tools\cygwin\bin
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">C:\tools\cygwin\bin
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>11. Open a Windows Command Prompt and run git ftp</p>
-<pre><code class="language-bash">git ftp
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git ftp
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Once again, you will see the output, but this time from Windows instead of the cygwin Terminal.<br>
 <img src="000028.png" alt=""></p>
 <p>See the <a href="https://github.com/git-ftp/git-ftp/" target="_blank" rel="noopener">git-ftp GitHub repo</a> for usage instructions.</p>
@@ -508,6 +514,10 @@ Failures
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

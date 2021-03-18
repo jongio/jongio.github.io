@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -214,29 +220,29 @@
 <h2 id="Create-a-File-Share"><a class="header-anchor" href="#Create-a-File-Share"></a>Create a File Share</h2>
 <p>This allows you to access your Raspberry Pi files from your desktop machine.</p>
 <h3 id="Run-Update"><a class="header-anchor" href="#Run-Update"></a>Run Update</h3>
-<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt full-upgrade -y
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo apt update &amp;&amp; sudo apt full-upgrade -y
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Install-Samba"><a class="header-anchor" href="#Install-Samba"></a>Install Samba</h3>
 <p>Open Terminal and run the following:</p>
-<pre><code class="language-bash">sudo apt install -y samba
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo apt install -y samba
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Configure-Samba"><a class="header-anchor" href="#Configure-Samba"></a>Configure Samba</h3>
-<pre><code class="language-bash">sudo nano /etc/samba/smb.conf
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo nano /etc/samba/smb.conf
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="Configure-Network-Name"><a class="header-anchor" href="#Configure-Network-Name"></a>Configure Network Name</h4>
 <p>Scroll down to the Global Settings section:</p>
 <ul>
 <li>Set workgroup to the name of your workgroup or domain name</li>
 <li>Change ‘wins support’ from ‘no’ to ‘yes’</li>
 </ul>
-<pre><code class="language-bash">[global]
+<pre class="line-numbers language-bash"><code class="language-bash">[global]
    workgroup = WORKGROUP
    wins support = yes
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><img src="000256.png" alt=""></p>
 <h4 id="Configure-File-Share"><a class="header-anchor" href="#Configure-File-Share"></a>Configure File Share</h4>
 <p>Scroll down to the bottom of the /etc/samba/smb.conf file and paste in the following:</p>
-<pre><code class="language-bash">[pishare]
+<pre class="line-numbers language-bash"><code class="language-bash">[pishare]
   comment=pishare
   path=/home/pi/
   browseable=yes
@@ -245,7 +251,7 @@
   create mask=0777
   directory mask=0777
   public=no
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000258.png" alt=""></p>
 <blockquote>
 <p>This will share your entire home directory. If you’d like to limit access to a subdirectory, just create a directory and change the ‘path’ variable.</p>
@@ -258,12 +264,12 @@ Then Hit CTRL+X to exit nano.</p>
 <blockquote>
 <p>This password can be different than the regular Pi user password.</p>
 </blockquote>
-<pre><code class="language-bash">sudo smbpasswd -a pi
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo smbpasswd -a pi
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You’ll need to enter the password twice.</p>
 <p>Restart the samba service.</p>
-<pre><code class="language-bash">sudo service smbd restart
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo service smbd restart
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Access-Pi-File-Share-from-Windows"><a class="header-anchor" href="#Access-Pi-File-Share-from-Windows"></a>Access Pi File Share from Windows</h3>
 <p>You can now access the file share you just created on your desktop machine</p>
 <ul>
@@ -526,6 +532,10 @@ Then Hit CTRL+X to exit nano.</p>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

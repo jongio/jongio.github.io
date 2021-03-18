@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -215,27 +221,27 @@ I started with Reflector, but it doesn’t have a simple API needed to generate 
 I came across [JustDecompile](<a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">http://www.telerik.com/products/decompiler.aspx</a>. from Telerik and found that they do have a command line API that works great. I could have just invoked the EXE with Process.Start, but I figured I should see how they are doing and see if I could do everything inproc. So I decompiled the JustDecompile.exe file and found a very simple DLL method that they use to output C# files.</p>
 <p>1. Download <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">JustDecompile</a><br>
 2. Open up your project and Add References to these two DLLs.</p>
-<pre><code class="language-csharp">C:\Program Files (x86)\Telerik\JustDecompile\Libraries\JustDecompile.Tools.MSBuildProjectBuilder.dll
+<pre class="line-numbers language-csharp"><code class="language-csharp">C:\Program Files (x86)\Telerik\JustDecompile\Libraries\JustDecompile.Tools.MSBuildProjectBuilder.dll
 C:\Program Files (x86)\Telerik\JustDecompile\Libraries\JustDecompiler.dll
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>3. Add the following namespaces:</p>
-<pre><code class="language-csharp">using JustDecompile.Tools.MSBuildProjectBuilder;       
+<pre class="line-numbers language-csharp"><code class="language-csharp">using JustDecompile.Tools.MSBuildProjectBuilder;       
 using Telerik.JustDecompiler.Languages.CSharp;        
 using System.Threading;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>4. Add this code to your project where you want to programmatically decompile code</p>
-<pre><code class="language-csharp">MSBuildProjectBuilder projectBuilder = new MSBuildProjectBuilder([path to dll], outfolder, new CSharpV4());
+<pre class="line-numbers language-csharp"><code class="language-csharp">MSBuildProjectBuilder projectBuilder = new MSBuildProjectBuilder([path to dll], outfolder, new CSharpV4());
 projectBuilder.ProjectFileCreated += new EventHandler&lt;ProjectFileCreatedEvent&gt;(projectBuilder_ProjectFileCreated);&lt;/ProjectFileCreatedEvent&gt;
 projectBuilder.BuildProject(new CancellationToken());
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Where [path to dll] is the path to the dll that you want to decompile and outfolder is the folder you want to output the C# files.</p>
 <p>5. Add this event handler to be notified when the Visual Studio Project file has been created</p>
-<pre><code class="language-csharp">static void projectBuilder_ProjectFileCreated(object sender, ProjectFileCreatedEvent e)
+<pre class="line-numbers language-csharp"><code class="language-csharp">static void projectBuilder_ProjectFileCreated(object sender, ProjectFileCreatedEvent e)
 {
   //throw new NotImplementedException();
 }
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Hope this saves you some time.</p>
 <p>Jon</p>
 
@@ -474,6 +480,10 @@ projectBuilder.BuildProject(new CancellationToken());
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

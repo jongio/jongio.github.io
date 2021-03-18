@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="azure,terraform,aks" />
     
-    <meta name="description" content="Got this today when trying to assign access_policy to kubelet_identity Error: Unsupported attribute    on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:   59:     ob">
+    <meta name="description" content="Got this today when trying to assign access_policy to kubelet_identity Error: Unsupported attribute    on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:   59:     object_id &#x3D; azurerm_ku">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to &#39;This value does not have any attributes.&#96; with kubelet_identity.object_id">
 <meta property="og:url" content="https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Got this today when trying to assign access_policy to kubelet_identity Error: Unsupported attribute    on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:   59:     ob">
+<meta property="og:description" content="Got this today when trying to assign access_policy to kubelet_identity Error: Unsupported attribute    on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:   59:     object_id &#x3D; azurerm_ku">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/033.png">
 <meta property="article:published_time" content="2020-07-23T14:49:41.000Z">
-<meta property="article:modified_time" content="2020-07-23T22:08:32.475Z">
+<meta property="article:modified_time" content="2021-03-18T06:54:05.582Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="terraform">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -212,21 +218,23 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Got this today when trying to assign access_policy to kubelet_identity</p>
-<pre><code class="hljs plain">Error: Unsupported attribute
+<pre class="line-numbers language-bash"><code class="language-bash">Error: Unsupported attribute
 
-  on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:
-  59:     object_id &#x3D; azurerm_kubernetes_cluster.aks.kubelet_identity.object_id
+  on main.tf line 59, in resource "azurerm_key_vault" "key_vault":
+  59:     object_id = azurerm_kubernetes_cluster.aks.kubelet_identity.object_id
 
-This value does not have any attributes.</code></pre>
+This value does not have any attributes.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>This fixed it:</p>
-<pre><code class="hljs plain">access_policy &#123;
-    tenant_id &#x3D; data.azurerm_client_config.current.tenant_id
-    object_id &#x3D; azurerm_kubernetes_cluster.aks.kubelet_identity.0.object_id
+<pre class="line-numbers language-yaml"><code class="language-yaml">access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = azurerm_kubernetes_cluster.aks.kubelet_identity.0.object_id
 
-    secret_permissions &#x3D; [
-      &quot;get&quot;, &quot;set&quot;, &quot;list&quot;, &quot;delete&quot;
+    secret_permissions = [
+      "get", "set", "list", "delete"
     ]
-&#125;</code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Looks like <code>kubelet_identity</code> is a list, so you need an index <code>0</code> before <code>object_id</code></p>
 
         </div>
@@ -464,6 +472,10 @@ This value does not have any attributes.</code></pre>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

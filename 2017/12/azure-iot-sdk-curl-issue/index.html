@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -212,15 +218,15 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>A bunch of people have reported the following issue with the Azure IoT Python SDK:</p>
-<pre><code class="language-bash">azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure-iot-sdk-python/c/c-utility/adapters/httpapi_curl.c Func:HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Here’s a workaround:</p>
 <blockquote>
 <p>Please do not go to production with this workaround as it has not been fully tested.  The Azure IoT team will release a permanent fix soon.</p>
 </blockquote>
 <h2 id="Linux"><a class="header-anchor" href="#Linux"></a>Linux</h2>
 <p>From the <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#compile-the-python-modules-1" target="_blank" rel="noopener">Python Dev Box Setup Page</a> you’ll get to the “Compile the Python Modules” step. Right after you run <code>./setup.sh</code>, you’ll need to remove <code>openssl</code> and replace it with <code>gnutls</code></p>
-<pre><code class="language-bash">cd build_all/linux
+<pre class="line-numbers language-bash"><code class="language-bash">cd build_all/linux
 
 ./setup.sh
 
@@ -228,7 +234,7 @@ sudo apt remove libcurl4-openssl-dev
 sudo apt install libcurl4-gnutls-dev
 
 ./build.sh
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>You will then be able to run any of the samples by following the instructions <a href="https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples" target="_blank" rel="noopener">here</a>.</p>
 <h2 id="Mac"><a class="header-anchor" href="#Mac"></a>Mac</h2>
 <p>We don’t have a workaround at this time. A permanent fix should be rolled out soon. Please let me know if you find a workaround to swap out openssl for gnutls.</p>
@@ -473,6 +479,10 @@ sudo apt install libcurl4-gnutls-dev
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

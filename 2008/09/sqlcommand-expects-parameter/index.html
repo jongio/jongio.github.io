@@ -68,6 +68,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -91,12 +95,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -210,14 +216,14 @@
 <em>Test method x threw exception: System.Data.SqlClient.SqlException: Procedure or function ‘sp_get_x’ expects parameter ‘@x’, which was not supplied…</em><br>
 I was 100% certain that the parameter was there, so I ran a SQL profile and noticed it was treating the cmd as plain text.<br>
 Turns out that I forgot to set the CommandType property to StoredProcedure.</p>
-<pre><code class="language-csharp">List profileContacts = null;
-using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[&quot;ConnectionString&quot;].ConnectionString))
-using (SqlCommand cmd = new SqlCommand(&quot;sp_get_x&quot;, conn))
+<pre class="line-numbers language-csharp"><code class="language-csharp">List profileContacts = null;
+using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+using (SqlCommand cmd = new SqlCommand("sp_get_x", conn))
 using (DataSet ds = new DataSet())
 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
 {
     //cmd.CommandType = CommandType.StoredProcedure;
-    cmd.Parameters.AddWithValue(&quot;@x&quot;, profiles.ToXml());
+    cmd.Parameters.AddWithValue("@x", profiles.ToXml());
 
     adapter.Fill(ds);
     if (ds != null &amp;&amp; ds.Tables.Count &gt; 0 &amp;&amp; ds.Tables[0].Rows.Count &gt; 0)
@@ -232,16 +238,16 @@ using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
 }
 
 return profileContacts;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Should be…</p>
-<pre><code class="language-csharp">List profileContacts = null;
-using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings[&quot;ConnectionString&quot;].ConnectionString))
-using (SqlCommand cmd = new SqlCommand(&quot;sp_get_x&quot;, conn))
+<pre class="line-numbers language-csharp"><code class="language-csharp">List profileContacts = null;
+using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+using (SqlCommand cmd = new SqlCommand("sp_get_x", conn))
 using (DataSet ds = new DataSet())
 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
 {
     cmd.CommandType = CommandType.StoredProcedure;
-    cmd.Parameters.AddWithValue(&quot;@x&quot;, profiles.ToXml());
+    cmd.Parameters.AddWithValue("@x", profiles.ToXml());
 
     adapter.Fill(ds);
     if (ds != null &amp;&amp; ds.Tables.Count &gt; 0 &amp;&amp; ds.Tables[0].Rows.Count &gt; 0)
@@ -257,7 +263,7 @@ using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
 
 return profileContacts;
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Jon</p>
 
         </div>
@@ -495,6 +501,10 @@ return profileContacts;
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

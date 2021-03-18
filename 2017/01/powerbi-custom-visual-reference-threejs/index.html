@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/000009.png">
 <meta property="article:published_time" content="2017-01-20T11:53:12.000Z">
-<meta property="article:modified_time" content="2018-07-24T14:15:34.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:51:54.158Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -215,48 +221,48 @@
 </blockquote>
 <p>1. Setup your dev environment by following the instructions in this post: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="noopener">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <p>2. Create visual and navigate to the new directory.</p>
-<pre><code>pbiviz new threejstest
+<pre class="line-numbers language-bash"><code class="language-bash">pbiviz new threejstest
 cd threejstest
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>3. Install three.js</p>
-<pre><code>npm i three --save
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i three --save
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>4. Install typings</p>
-<pre><code>npm i -g typings
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i -g typings
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>5. Install three typings</p>
-<pre><code>typings install dt~three --save --global
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">typings install dt~three --save --global
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>6. Open in VS Code (or any editor)</p>
-<pre><code>code .
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">code .
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>7. Open tsconfig.json and add references to the three.js files</p>
-<pre><code class="language-json">{
-  &quot;compilerOptions&quot;: {
-    &quot;allowJs&quot;: true,
-    &quot;emitDecoratorMetadata&quot;: true,
-    &quot;experimentalDecorators&quot;: true,
-    &quot;target&quot;: &quot;ES5&quot;,
-    &quot;sourceMap&quot;: true,
-    &quot;out&quot;: &quot;./.tmp/build/visual.js&quot;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "compilerOptions": {
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES5",
+    "sourceMap": true,
+    "out": "./.tmp/build/visual.js"
   },
-  &quot;files&quot;: [
-    &quot;.api/v1.4.0/PowerBI-visuals.d.ts&quot;,
-    &quot;node_modules/three/build/three.js&quot;,
-    &quot;typings/index.d.ts&quot;,
-    &quot;src/visual.ts&quot;
+  "files": [
+    ".api/v1.4.0/PowerBI-visuals.d.ts",
+    "node_modules/three/build/three.js",
+    "typings/index.d.ts",
+    "src/visual.ts"
   ]
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>8. Add three.d.ts to /src folder and copy this code to that file</p>
-<pre><code>declare var three: any;
-</code></pre>
+<pre class="line-numbers language-js"><code class="language-js">declare var three: any;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>9. Open src/visual.ts and add this line to the top of the file</p>
-<pre><code>/// &lt;amd-dependency path='three'&gt;
-</code></pre>
+<pre class="line-numbers language-js"><code class="language-js">/// &lt;amd-dependency path='three'&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>10. Instantiate a new THREE.Scene(); object in your constructor</p>
-<pre><code>let scene = new THREE.Scene();
-</code></pre>
+<pre class="line-numbers language-js"><code class="language-js">let scene = new THREE.Scene();
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000009.png" alt=""></p>
 
         </div>
@@ -494,6 +500,10 @@ cd threejstest
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2016-09-01T15:38:00.000Z">
-<meta property="article:modified_time" content="2017-01-21T09:21:18.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:54:35.268Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="dev">
 <meta property="article:tag" content="visual studio">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -217,11 +223,11 @@
 <p>[<img src="/images/blog/15262229c434_D99C/2016-09-01_thumb.png" alt="2016-09-01" title="2016-09-01"></p>
 <p>Open a cmd prompt as administrator and run the following:</p>
 <p>For VS2015</p>
-<pre><code> reg add HKCU\Software\Microsoft\VisualStudio\14.0\TeamFoundation /v LegacyMSA /t REG_SZ /d True
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"> reg add HKCU\Software\Microsoft\VisualStudio\14.0\TeamFoundation /v LegacyMSA /t REG_SZ /d True
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>For VS2013</p>
-<pre><code>reg add HKCU\Software\Microsoft\VisualStudio\12.0\TeamFoundation /v LegacyMSA /t REG_SZ /d True
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">reg add HKCU\Software\Microsoft\VisualStudio\12.0\TeamFoundation /v LegacyMSA /t REG_SZ /d True
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Restart VS and try to signin again.</p>
 <p>You should now see this auth dialog</p>
 <p>[<img src="/images/blog/15262229c434_D99C/newvs_thumb.png" alt="newvs" title="newvs"></p>
@@ -462,6 +468,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

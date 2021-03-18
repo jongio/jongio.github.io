@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="javascript,vuejs,webdev,vscode" />
+    <meta name="keywords" content="webdev,javascript,vuejs,vscode" />
     
     <meta name="description" content="I spent way too much time this weekend debugging Vue.js - Vetur - Prettyhtml - Prettier - Beautify - Eslint issues. Here’s what I discovered: By default, Vetur (The VS Code Vue.js Extension) uses Pre">
 <meta property="og:type" content="article">
@@ -35,9 +35,9 @@
 <meta property="article:published_time" content="2019-02-04T09:56:45.000Z">
 <meta property="article:modified_time" content="2019-02-05T19:14:53.000Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="webdev">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="vuejs">
-<meta property="article:tag" content="webdev">
 <meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/000051.png">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -228,57 +234,57 @@
 <p>So, when open a .vue file in VS Code and Format Document with Vetur, it uses Prettyhtml by default, which violates prettier ES Lint rules.</p>
 <p>For example,</p>
 <p>When you open App.vue, you get this…notice the space after <code>router-view</code> and the space after <code>router-link&gt;</code>…</p>
-<pre><code class="language-html">&lt;template&gt;
- &lt;div id=&quot;app&quot;&gt;
-  &lt;div id=&quot;nav&quot;&gt;
-   &lt;router-link to=&quot;/&quot;&gt;Home&lt;/router-link&gt; |
-   &lt;router-link to=&quot;/about&quot;&gt;About&lt;/router-link&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;template&gt;
+ &lt;div id="app"&gt;
+  &lt;div id="nav"&gt;
+   &lt;router-link to="/"&gt;Home&lt;/router-link&gt; |
+   &lt;router-link to="/about"&gt;About&lt;/router-link&gt;
   &lt;/div&gt;
   &lt;router-view /&gt;
  &lt;/div&gt;
 &lt;/template&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Then you format the doc and get this:</p>
-<pre><code class="language-html">&lt;template&gt;
- &lt;div id=&quot;app&quot;&gt;
-  &lt;div id=&quot;nav&quot;&gt;
-   &lt;router-link to=&quot;/&quot;&gt;Home&lt;/router-link&gt;|
-   &lt;router-link to=&quot;/about&quot;&gt;About&lt;/router-link&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;template&gt;
+ &lt;div id="app"&gt;
+  &lt;div id="nav"&gt;
+   &lt;router-link to="/"&gt;Home&lt;/router-link&gt;|
+   &lt;router-link to="/about"&gt;About&lt;/router-link&gt;
   &lt;/div&gt;
   &lt;router-view/&gt;
  &lt;/div&gt;
 &lt;/template&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>As you can see, those spaces are removed after <code>router-view</code> and <code>/router-link&gt;</code></p>
 <p>This is bad for me. I need the first space for proper formatting and I prefer the whitespace before the self-closing bracket.</p>
 <p>Then when you run <code>yarn serve</code> you get this warning.</p>
-<pre><code class="language-html">Module Warning (from ./node_modules/eslint-loader/index.js):
+<pre class="line-numbers language-html"><code class="language-html">Module Warning (from ./node_modules/eslint-loader/index.js):
 warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:
-  5 |    &lt;router-link to=&quot;/about&quot;&gt;About&lt;/router-link&gt;
+  5 |    &lt;router-link to="/about"&gt;About&lt;/router-link&gt;
   6 |   &lt;/div&gt;
 &gt; 7 |   &lt;router-view/&gt;
    |         ^
   8 |  &lt;/div&gt;
   9 | &lt;/template&gt;
  10 |
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I searched for many hours and could not find a way to tell Prettyhtml to preserve those spaces. I could tell ES Lint to ignore those rules, but I <em>want</em> those spaces.</p>
 <p>So, I had to abandon Prettyhtml.</p>
 <p>I tried to go with Prettier directly using this VS Code setting:</p>
-<pre><code class="language-json">&quot;vetur.format.defaultFormatter.html&quot;: &quot;prettier&quot;
-</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">"vetur.format.defaultFormatter.html": "prettier"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>(VS Code will tell you it is not a valid setting, but it actually runs Prettier)</p>
 <p>But Prettier always wraps attributes and there’s no way to tell it to not do that.</p>
 <p>For example, Prettier, will turn this:</p>
-<pre><code class="language-html">&lt;a href=&quot;https://cli.vuejs.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;vue-cli documentation&lt;/a&gt;.
-</code></pre>
+<pre class="line-numbers language-html"><code class="language-html">&lt;a href="https://cli.vuejs.org" target="_blank" rel="noopener"&gt;vue-cli documentation&lt;/a&gt;.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Into this:</p>
-<pre><code class="language-html">&lt;a
-  href=&quot;https://cli.vuejs.org&quot;
-  target=&quot;_blank&quot;
-  rel=&quot;noopener&quot;
+<pre class="line-numbers language-html"><code class="language-html">&lt;a
+  href="https://cli.vuejs.org"
+  target="_blank"
+  rel="noopener"
   &gt;vue-cli documentation&lt;/a&gt;.
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Which, to me, is not desirable. I have a huge monitor and don’t want to wrap every single attribute.</p>
 <p>From what I could find, there’s no way to tell Prettier to not wrap.</p>
 <p>So, I had to abandon Prettier as well.</p>
@@ -289,42 +295,42 @@ warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:
 </ul>
 <p>I decided that I want to continue to use Vetur (The VS Code Extension) and the the only remaining option is <code>js-beautify-html</code> instead of Prettyhtml or Prettier.</p>
 <p>I added this setting:</p>
-<pre><code class="language-json">&quot;vetur.format.defaultFormatter.html&quot;: &quot;js-beautify-html&quot;
-</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">"vetur.format.defaultFormatter.html": "js-beautify-html"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Did a format…and whitespace was retained in my .vue files, but attributes were still being wrapped, so I dug and found the <code>wrap_attributes</code> settings and added this:</p>
-<pre><code class="language-json">{
-  &quot;vetur.format.defaultFormatter.html&quot;: &quot;js-beautify-html&quot;,
-  &quot;vetur.format.defaultFormatterOptions&quot;: {
-    &quot;js-beautify-html&quot;: {
-     &quot;wrap_attributes&quot;: &quot;auto&quot;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+     "wrap_attributes": "auto"
     }
    }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And that setting disables wrap_attributes.</p>
 <p>So, I’m golden with Formatting…now onto ES Lint issues.</p>
 <p>Then I run <code>yarn serve</code> and get this:</p>
-<pre><code class="language-bash">warning: Replace `·href=&quot;https://github.com/vuejs/awesome-vue&quot;·target=&quot;_blank&quot;·rel=&quot;noopener&quot;&gt;awesome-vue&lt;/a` with `⏎··········href=&quot;https://github.com/vuejs/awesome-vue&quot;⏎··········target=&quot;_blank&quot;⏎··········rel=&quot;noopener&quot;⏎··········&gt;awesome-vue&lt;/a⏎········` (prettier/prettier) at src\components\HelloWorld.vue:63:11:
+<pre class="line-numbers language-bash"><code class="language-bash">warning: Replace `·href="https://github.com/vuejs/awesome-vue"·target="_blank"·rel="noopener"&gt;awesome-vue&lt;/a` with `⏎··········href="https://github.com/vuejs/awesome-vue"⏎··········target="_blank"⏎··········rel="noopener"⏎··········&gt;awesome-vue&lt;/a⏎········` (prettier/prettier) at src\components\HelloWorld.vue:63:11:
  61 |    &lt;/li&gt;
  62 |    &lt;li&gt;
-&gt; 63 |     &lt;a href=&quot;https://github.com/vuejs/awesome-vue&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;awesome-vue&lt;/a&gt;
+&gt; 63 |     &lt;a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener"&gt;awesome-vue&lt;/a&gt;
    |      ^
  64 |    &lt;/li&gt;
  65 |   &lt;/ul&gt;
  66 |  &lt;/div&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The issue is that ES Lint is configured to use Prettier, which wants attributes on new lines.</p>
 <p>I could have disabled that setting, but I’m now using es-beautifer, so I better switch to the ES Lint rules for that.</p>
 <p>I found the ES Lint beautifier plugin here: <a href="https://github.com/dai-shi/es-beautifier#usage-eslint-plugin" target="_blank" rel="noopener">https://github.com/dai-shi/es-beautifier#usage-eslint-plugin</a></p>
 <p>And I installed it:</p>
 <p><code>yarn add eslint eslint-plugin-es-beautifier</code></p>
 <p>And then opened <code>.eslintrc.js</code> and added that plugin:</p>
-<pre><code class="language-json">plugins: [&quot;es-beautifier&quot;],
-extends: [&quot;plugin:vue/essential&quot;, &quot;plugin:es-beautifier/standard&quot;, &quot;@vue/typescript&quot;],
-</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">plugins: ["es-beautifier"],
+extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>Re-ran <code>yarn serve</code></p>
 <p>And got this error:</p>
-<pre><code class="language-bash">error: Missing trailing comma (comma-dangle) at src\views\Home.vue:15:4:
+<pre class="line-numbers language-bash"><code class="language-bash">error: Missing trailing comma (comma-dangle) at src\views\Home.vue:15:4:
  13 |  components: {
  14 |   HelloWorld
 &gt; 15 |  }
@@ -332,32 +338,32 @@ extends: [&quot;plugin:vue/essential&quot;, &quot;plugin:es-beautifier/standard&
  16 | })
  17 | export default class Home extends Vue {}
  18 | &lt;/script&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It’s looking for a dangling comman, which I don’t want to add to my code, so I disable it with this:</p>
-<pre><code class="language-json">rules: {
-  &quot;no-console&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
-  &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
-  &quot;comma-dangle&quot;: [&quot;error&quot;, &quot;never&quot;]
+<pre class="line-numbers language-json"><code class="language-json">rules: {
+  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+  "comma-dangle": ["error", "never"]
  },
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I re-run <code>yarn serve</code> and get this:</p>
-<pre><code class="language-bash">error: Expected linebreaks to be 'LF' but found 'CRLF' (linebreak-style) at src\main.ts:13:19:
+<pre class="line-numbers language-bash"><code class="language-bash">error: Expected linebreaks to be 'LF' but found 'CRLF' (linebreak-style) at src\main.ts:13:19:
  11 |  store,
  12 |  render: h =&gt; h(App)
-&gt; 13 | }).$mount(&quot;#app&quot;);
+&gt; 13 | }).$mount("#app");
    |          ^
  14 |
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It is checking for consistent linebreaks. At this point, I don’t really care, so I just disable that rule with this:</p>
-<pre><code class="language-json"> rules: {
-  &quot;no-console&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
-  &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
-  &quot;comma-dangle&quot;: [&quot;error&quot;, &quot;never&quot;],
-  &quot;linebreak-style&quot;: &quot;off&quot;
+<pre class="line-numbers language-json"><code class="language-json"> rules: {
+  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+  "comma-dangle": ["error", "never"],
+  "linebreak-style": "off"
  },
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>AND BOOM!</em></p>
-<pre><code class="language-bash">DONE Compiled successfully in 5661ms                                                                              10:20:40 AM
+<pre class="line-numbers language-bash"><code class="language-bash">DONE Compiled successfully in 5661ms                                                                              10:20:40 AM
 No type errors found
 Version: typescript 3.2.4
 Time: 3210ms
@@ -368,46 +374,46 @@ Time: 3210ms
 
  Note that the development build is not optimized.
  To create a production build, run yarn build.
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>As I went about creating more sophisticated TypeScript, the default Prettier formatter didn’t work for me there either, so I swapped that out with this:</p>
-<pre><code class="language-json">  &quot;vetur.format.defaultFormatter.ts&quot;: &quot;vscode-typescript&quot;
-</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">  "vetur.format.defaultFormatter.ts": "vscode-typescript"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>I now finally have .vue files being formatted correctly (at least the way I want them to be) and ES Lint passing successfully.</p>
 <p>Now, time to get to the fun part. Actually coding the app.</p>
 <p>I REALLY hope this post saves you some time.</p>
 <p>Jon</p>
 <p>Here are the files:</p>
 <p><strong>.eslintrc.js</strong></p>
-<pre><code class="language-json">module.exports = {
+<pre class="line-numbers language-json"><code class="language-json">module.exports = {
  root: true,
  env: {
   node: true
  },
- plugins: [&quot;es-beautifier&quot;],
- extends: [&quot;plugin:vue/essential&quot;, &quot;plugin:es-beautifier/standard&quot;, &quot;@vue/typescript&quot;],
+ plugins: ["es-beautifier"],
+ extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],
  rules: {
-  &quot;no-console&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
-  &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,
-  &quot;comma-dangle&quot;: [&quot;error&quot;, &quot;never&quot;],
-  &quot;linebreak-style&quot;: &quot;off&quot;
+  "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+  "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+  "comma-dangle": ["error", "never"],
+  "linebreak-style": "off"
  },
  parserOptions: {
-  parser: &quot;@typescript-eslint/parser&quot;
+  parser: "@typescript-eslint/parser"
  }
 };
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>VS Code User Settings</strong></p>
-<pre><code class="language-json">{
-  &quot;window.zoomLevel&quot;: 2,
-  &quot;vetur.format.defaultFormatter.html&quot;: &quot;js-beautify-html&quot;,
-  &quot;vetur.format.defaultFormatterOptions&quot;: {
-    &quot;js-beautify-html&quot;: {
-      &quot;wrap_attributes&quot;: &quot;auto&quot;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "window.zoomLevel": 2,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "auto"
     }
   },
-  &quot;vetur.format.defaultFormatter.ts&quot;: &quot;vscode-typescript&quot;
+  "vetur.format.defaultFormatter.ts": "vscode-typescript"
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -644,6 +650,10 @@ Time: 3210ms
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

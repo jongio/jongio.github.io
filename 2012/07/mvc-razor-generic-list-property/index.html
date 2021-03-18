@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -212,9 +218,9 @@
         <div class="article-entry" itemprop="articleBody">
             <p>You have a model that has a property of type List<T>. You write a view and your first inclination is to create a cshtml file called List.cshtml, but that doesn’t work. There’s a trick and it has to do with the way List&lt;Tis expressed as a type in reflection form.</p>
 <p>You can see this by calling GetType().Name on a List<Tobject></p>
-<pre><code class="language-csharp">List&lt;string&gt; strings = new List&lt;string&gt;();
+<pre class="line-numbers language-csharp"><code class="language-csharp">List&lt;string&gt; strings = new List&lt;string&gt;();
 Console.WriteLine(strings.GetType().Name);
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="/images/blog/f4404b5bad30_DE9C/image.png" alt=""></p>
 <p>As you can see, the reflected name is List`1, NOT List.</p>
 <p>MVC (by default) will try to map the property to List`1.cshmlt, not List.cshtml.</p>
@@ -223,8 +229,8 @@ Console.WriteLine(strings.GetType().Name);
 <p>@Html.DisplayFor(m =&gt; ss.Items);</p>
 <p><img src="/images/blog/f4404b5bad30_DE9C/image_3.png" alt=""></p>
 <h2 id="2-Specify-a-Template-Name-when-calling-DisplayFor"><a class="header-anchor" href="#2-Specify-a-Template-Name-when-calling-DisplayFor"></a>2. Specify a Template Name when calling DisplayFor</h2>
-<pre><code class="language-csharp">@Html.DisplayFor(m =&gt; ss.Items, &quot;Items&quot;);
-</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">@Html.DisplayFor(m =&gt; ss.Items, "Items");
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/blog/f4404b5bad30_DE9C/image_4.png" alt=""></p>
 <p>When you reference the @model in the view use either IList or List<object> or if you know the type at design time then just use that i.e. List<yourobject></p>
 <p>My preference is to use option #2 because you’ll likely have many other classes that use List&lt;Tand you’ll likely want to specify a different display template for each of them.</p>
@@ -465,6 +471,10 @@ Console.WriteLine(strings.GetType().Name);
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

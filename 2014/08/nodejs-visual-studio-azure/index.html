@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2014-08-13T15:47:00.000Z">
-<meta property="article:modified_time" content="2016-12-29T04:05:59.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:48:52.918Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="dev">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -244,7 +250,7 @@
 <p>I went into the FTP of the site and found the log file &quot;Logging-errors.txt</p>
 <p><img src="/images/blog/Node.js-Express_D498/image_15.png" alt=""></p>
 <p>Which had this error:</p>
-<pre><code>Wed Aug 13 2014 22:35:53 GMT+0000 (Coordinated Universal Time): Unaught exception: Error: Cannot find module 'debug'
+<pre class="line-numbers language-bash"><code class="language-bash">Wed Aug 13 2014 22:35:53 GMT+0000 (Coordinated Universal Time): Unaught exception: Error: Cannot find module 'debug'
      at Function.Module._resolveFilename (module.js:338:15)
      at Function.Module._load (module.js:280:25)
      at Module.require (module.js:364:17)
@@ -255,15 +261,15 @@
      at Module.load (module.js:356:32)
      at Function.Module._load (module.js:312:12)
      at Module.require (module.js:364:17)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>which means that npm didn’t install the “debug” module which is a dependency of “stylus”. I think the problem is related to this: <a href="http://stackoverflow.com/questions/18401606/npm-doesnt-install-module-dependencies" target="_blank" rel="noopener" title="http://stackoverflow.com/questions/18401606/npm-doesnt-install-module-dependencies">http://stackoverflow.com/questions/18401606/npm-doesnt-install-module-dependencies</a>. So, I added “debug” to my package.json file.</p>
-<pre><code>&quot;dependencies&quot;: {
-     &quot;express&quot;: &quot;3.4.4&quot;,
-     &quot;jade&quot;: &quot;&quot;,
-     &quot;stylus&quot;: &quot;&quot;,
-     &quot;debug&quot;:  &quot;*&quot;
+<pre class="line-numbers language-json"><code class="language-json">"dependencies": {
+     "express": "3.4.4",
+     "jade": "",
+     "stylus": "",
+     "debug":  "*"
    }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Committed those changes and sync’d.</p>
 <p><img src="/images/blog/Node.js-Express_D498/image_16.png" alt=""></p>
 <p>And now the site works</p>
@@ -504,6 +510,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

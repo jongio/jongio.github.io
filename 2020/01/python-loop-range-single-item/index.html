@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/01/python-loop-range-single-item/000047.png">
 <meta property="article:published_time" content="2020-01-18T06:28:25.000Z">
-<meta property="article:modified_time" content="2020-01-31T08:56:02.401Z">
+<meta property="article:modified_time" content="2021-03-18T06:53:25.210Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -211,35 +217,41 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on an app that accepts user input of a start year and end year, loops through those years, and outputs the year.</p>
 <p>For example, given the start year and end year of 2020, I want a loop to execute for 2020.</p>
-<pre><code class="hljs python">years = range(<span class="hljs-number">2020</span>, <span class="hljs-number">2020</span>)
-<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> years:
-    print(y)</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">years = range(2020, 2020)
+for y in years:
+    print(y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>But the python <code>range</code> object doesn’t recognize this as a single range item and won’t output anything.  The source for the range object is here: <a href="https://github.com/python/cpython/blob/master/Objects/rangeobject.c" target="_blank" rel="noopener">https://github.com/python/cpython/blob/master/Objects/rangeobject.c</a> and I believe it is this conditional statement that causes range to return a length of zero.</p>
-<pre><code class="hljs c++"><span class="hljs-comment">/* if (lo &gt;= hi), return length of 0. */</span>
+<pre class="line-numbers language-c++"><code class="language-c++">/* if (lo &gt;= hi), return length of 0. */
 cmp_result = PyObject_RichCompareBool(lo, hi, Py_GE);
-<span class="hljs-keyword">if</span> (cmp_result != <span class="hljs-number">0</span>) &#123;
-    Py_DECREF(<span class="hljs-built_in">step</span>);
-    <span class="hljs-keyword">if</span> (cmp_result &lt; <span class="hljs-number">0</span>)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
-    <span class="hljs-keyword">return</span> PyLong_FromLong(<span class="hljs-number">0</span>);
-&#125;</code></pre>
+if (cmp_result != 0) {
+    Py_DECREF(step);
+    if (cmp_result &lt; 0)
+        return NULL;
+    return PyLong_FromLong(0);
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>As Amy mentions in the comments below, this is because the <code>stop</code> parameter of the <code>range</code> object is exclusive - meaning it does a &lt; compare, not a &lt;= compare. So a great option is to always just add 1 to the stop parameter to include it.</p>
 </blockquote>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lte_range_plusone</span><span class="hljs-params">(start, stop, step=<span class="hljs-number">1</span>)</span>:</span>
-    <span class="hljs-keyword">return</span> range(start, stop + <span class="hljs-number">1</span>, step)</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">def lte_range_plusone(start, stop, step=1):
+    return range(start, stop + 1, step)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>An alternate solution to this was to create a custom function that uses the python <code>yield</code> keyword to return an item even if the start and end are equal, with this code:</p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">lte_range_yield</span><span class="hljs-params">(start, stop, step=<span class="hljs-number">1</span>)</span>:</span>
-    <span class="hljs-keyword">while</span> start &lt;= stop:
-        <span class="hljs-keyword">yield</span> start
-        start += step</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">def lte_range_yield(start, stop, step=1):
+    while start &lt;= stop:
+        yield start
+        start += step
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>This code will yield aka return the start value even if it is equal to the end value.</p>
 <p>So, this code:</p>
-<pre><code class="hljs python">years = lte_range_yield(<span class="hljs-number">2020</span>, <span class="hljs-number">2020</span>)
-<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> years:
-    print(y)</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">years = lte_range_yield(2020, 2020)
+for y in years:
+    print(y)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Will output:</p>
-<pre><code class="hljs plain">2020</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">2020
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <hr>
 <p>Hope this helps you out.  Let me know in the comments if you know of a better way to achieve this.</p>
 <p>Thanks,<br>
@@ -480,6 +492,10 @@ Jon</p>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

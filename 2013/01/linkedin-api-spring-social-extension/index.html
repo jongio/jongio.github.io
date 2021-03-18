@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -229,27 +235,27 @@
 <ol start="4">
 <li>Copied the 4 following strings into my project:</li>
 </ol>
-<pre><code class="language-csharp">private const string LinkedInApiKey = &quot;[copy from your linked in app details page]&quot;;
-private const string LinkedInApiSecret = &quot;[copy from your linked in app details page]&quot;; 
-private const string LinkedInUserToken = &quot;[copy from your linked in app details page]&quot;; 
-private const string LinkedInUserSecret = &quot;[copy from your linked in app details page]&quot;; 
-</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">private const string LinkedInApiKey = "[copy from your linked in app details page]";
+private const string LinkedInApiSecret = "[copy from your linked in app details page]"; 
+private const string LinkedInUserToken = "[copy from your linked in app details page]"; 
+private const string LinkedInUserSecret = "[copy from your linked in app details page]"; 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
 <li>Created this SearchAsync method</li>
 </ol>
-<pre><code class="language-csharp">public async Task&lt;LinkedInProfiles&gt; SearchAsync(string queryText)
+<pre class="line-numbers language-csharp"><code class="language-csharp">public async Task&lt;LinkedInProfiles&gt; SearchAsync(string queryText)
 {
      var l = new LinkedInServiceProvider(LinkedInApiKey, LinkedInApiSecret);
      var a = l.GetApi(LinkedInUserToken, LinkedInUserSecret);
      var sp = new SearchParameters() { Keywords = queryText };
      return await a.ProfileOperations.SearchAsync(sp);
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>6. Called SearchAsync method from another method</p>
-<pre><code class="language-csharp">var p = SearchAsync(queryText);
+<pre class="line-numbers language-csharp"><code class="language-csharp">var p = SearchAsync(queryText);
 foreach (LinkedInProfile pr in p.Result.Profiles){}
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>I hope this saves you some time.</p>
 <p>Jon</p>
 
@@ -488,6 +494,10 @@ foreach (LinkedInProfile pr in p.Result.Profiles){}
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

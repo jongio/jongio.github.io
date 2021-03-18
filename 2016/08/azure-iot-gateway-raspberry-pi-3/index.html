@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -234,26 +240,26 @@
 <p>If you are using TightVNC, on the Pi, open the web browser and go to <a href="http://bit.ly/azuregatewaypi" target="_blank" rel="noopener">http://bit.ly/azuregatewaypi</a> – that will redirect you to this page on your Pi, so you can easily copy and paste the following commands.</p>
 <p>If you are using SSH, then just execute the commands below in your SSH window.</p>
 <h2 id="Install-Packages"><a class="header-anchor" href="#Install-Packages"></a>Install Packages</h2>
-<pre><code class="language-bash">sudo apt-get update
+<pre class="line-numbers language-bash"><code class="language-bash">sudo apt-get update
 sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev`
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="Clone-the-Azure-IoT-Field-Gateway-Repo"><a class="header-anchor" href="#Clone-the-Azure-IoT-Field-Gateway-Repo"></a>Clone the Azure IoT Field Gateway Repo</h2>
 <p>You can clone into any directly you want. I usually put everything in a /code folder.</p>
-<pre><code class="language-bash">git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Checkout-the-Develop-Branch"><a class="header-anchor" href="#Checkout-the-Develop-Branch"></a>Checkout the Develop Branch</h2>
 <p>This is the branch that contains a fix that allows the Gateway to be built on the Pi</p>
-<pre><code class="language-bash">git checkout develop
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git checkout develop
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Init-Submodules"><a class="header-anchor" href="#Init-Submodules"></a>Init Submodules</h2>
 <p>I like to execute this command after I checkout a branch to be sure I have the latest submodule bits that correspond to my current branch.</p>
-<pre><code class="language-bash">git submodule update --init --recursive
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git submodule update --init --recursive
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Run-Build-sh"><a class="header-anchor" href="#Run-Build-sh"></a>Run <a href="http://Build.sh" target="_blank" rel="noopener">Build.sh</a></h2>
 <p>Change to the /tools directory and excute <a href="http://build.sh" target="_blank" rel="noopener">build.sh</a></p>
-<pre><code class="language-bash">cd tools
+<pre class="line-numbers language-bash"><code class="language-bash">cd tools
 ./build.sh
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>This will take a while. Come back in 30 mins or so.</p>
 <h2 id="Test-Failures"><a class="header-anchor" href="#Test-Failures"></a>Test Failures</h2>
 <p>You will likely see these test failures, which are known issues reported on GitHub. The e2e tests fail because we didn’t setup the IoT Hub connection. That’ll be the topic of a different blog post.</p>
@@ -269,13 +275,13 @@ sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-
 <p>Errors while running CTest</p>
 <h2 id="Copy-JSON-Settings-File-to-Build-Folder"><a class="header-anchor" href="#Copy-JSON-Settings-File-to-Build-Folder"></a>Copy JSON Settings File to Build Folder</h2>
 <p>From the root of the repo run this command to copy the sample JSON settings file to the build output folder.</p>
-<pre><code class="language-bash">    cp ./samples/hello_world/src/hello_world_lin.json ./build/samples/hello_world/hello_world_lin.json`
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">    cp ./samples/hello_world/src/hello_world_lin.json ./build/samples/hello_world/hello_world_lin.json`
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Run-Hello-World-Sample"><a class="header-anchor" href="#Run-Hello-World-Sample"></a>Run Hello_World_Sample</h2>
 <p>Change to the /build folder</p>
 <p>Run the following command to start the sample.</p>
-<pre><code class="language-bash">    ./samples/hello_world/hello_world_sample ./samples/hello_world/hello_world_lin.json
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">    ./samples/hello_world/hello_world_sample ./samples/hello_world/hello_world_lin.json
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You should now see this output.</p>
 <p><img src="/images/blog/533c87e4ef7b_9338/image_3.png" alt=""></p>
 <p>This sample writes an entry to the /build/log.txt file. If you open that file you will see the entries. From the /build folder just enter “vi log.txt” to view the file.</p>
@@ -525,6 +531,10 @@ sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

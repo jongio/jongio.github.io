@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2014-12-19T14:17:00.000Z">
-<meta property="article:modified_time" content="2020-03-05T19:23:35.234Z">
+<meta property="article:modified_time" content="2021-03-18T06:43:27.539Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="iot">
 <meta property="article:tag" content="beakn">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -260,16 +266,19 @@
 <h2 id="Step-4-Modify-the-RaspberryPi-beakn-exe-config-file"><a class="header-anchor" href="#Step-4-Modify-the-RaspberryPi-beakn-exe-config-file"></a>Step 4: Modify the RaspberryPi beakn.exe.config file</h2>
 <p>Open the config file and change the MqttPairingCode to the same code you used in Step 2 above. You can do this directly on the Pi with “sudo nano beakn.exe.config” or you can do on desktop and copy over.</p>
 <h2 id="Step-5-Run-the-RaspberryPi-beakn-exe-using-this-command"><a class="header-anchor" href="#Step-5-Run-the-RaspberryPi-beakn-exe-using-this-command"></a>Step 5: Run the RaspberryPi beakn.exe using this command.</h2>
-<pre><code class="hljs plain">sudo mono beakn.exe</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo mono beakn.exe
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You should see something like this:</p>
 <p><img src="/images/blog/bdbd95e2151d_B728/image.png" alt=""></p>
 <h2 id="Step-6-Make-RaspberryPi-beakn-automatically-start"><a class="header-anchor" href="#Step-6-Make-RaspberryPi-beakn-automatically-start"></a>Step 6: Make RaspberryPi beakn automatically start</h2>
 <p>Linux uses /etc/rc.local to list projects that automatically start when the Pi is started.</p>
 <p>This link was helpful: <a href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs" target="_blank" rel="noopener" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/auto-running-programs</a></p>
 <p>Open rc.local to edit.</p>
-<pre><code class="hljs plain">sudo nano &#x2F;etc&#x2F;rc.local</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo nano /etc/rc.local
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Add this line, your path to beakn.exe is where you copied it to – likely different than below.</p>
-<pre><code class="hljs plain">sudo mono &#x2F;home&#x2F;pi&#x2F;beakn&#x2F;beakn.exe &amp;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo mono /home/pi/beakn/beakn.exe &amp;amp;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>That’s it! You should now see your beakn change color when your Lync status changes.</p>
 <p>Jon</p>
 
@@ -508,6 +517,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

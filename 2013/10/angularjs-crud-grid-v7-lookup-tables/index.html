@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2013-10-29T19:14:00.000Z">
-<meta property="article:modified_time" content="2018-12-10T22:17:40.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:38:54.297Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="angularjs">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -218,22 +224,22 @@
 <p><img src="/images/blog/angularjs-crud-grid-v7_A732/image.png" alt=""></p>
 <p>The most interesting thing about this release is the use of $broadcast and $on to push events from one directive to another. That way when I update data in the Place table that is immediately reflected in the Person table’s Place dropdown.</p>
 <p>I get a reference to the document scope:</p>
-<pre><code class="language-javascript">var $docScope = angular.element(document).scope();
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">var $docScope = angular.element(document).scope();
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Then issue a broadcast call after data has been updated. I pass $broadcast the table name so that my other directives don’t refresh all lookup tables.</p>
-<pre><code class="language-javascript">var successCallback = function (e, cb) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">var successCallback = function (e, cb) {
     notificationFactory.success();
     $docScope.$broadcast('lookupDataCh ange', [$attrs.table]);
     $scope.getData(cb);
 };
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I then listen for the ‘lookupDataChange’ event and refresh the lookup data:</p>
-<pre><code class="language-javascript">$scope.$on('lookupDataChange', function (scope,  table) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.$on('lookupDataChange', function (scope,  table) {
     $scope.resetLookupData(table[0]);
 });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>You define the lookup attributes for the column in the directive element:</p>
-<pre><code class="language-javascript">lookup
+<pre class="line-numbers language-javascript"><code class="language-javascript">lookup
 {
     table:'name of the table you want to pull data from',
     key: 'the column that you want to use as your select key',
@@ -243,13 +249,11 @@
         field: 'the field to sort by',
         asc: 'true|false - the direction to sort by'
     }
-}```
-
-See Index.html for a working example.
-
-I'm happy with the way this turned out. I hope you are too.
-
-Jon</code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>See Index.html for a working example.</p>
+<p>I’m happy with the way this turned out. I hope you are too.</p>
+<p>Jon</p>
 
         </div>
         <footer>
@@ -486,6 +490,10 @@ Jon</code></pre>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

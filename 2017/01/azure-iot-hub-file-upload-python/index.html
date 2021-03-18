@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -250,8 +256,8 @@
 <p>Follow the instructions <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python" target="_blank" rel="noopener">here</a> to get the Python SDK on your machine. You can <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#pypi-wheels" target="_blank" rel="noopener">use pip</a> or compile it yourself.</p>
 <h2 id="Get-Python-Sample"><a class="header-anchor" href="#Get-Python-Sample"></a>Get Python Sample</h2>
 <p>1. Clone the Python SDK</p>
-<pre><code class="language-bash">git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Run-Python-Sample"><a class="header-anchor" href="#Run-Python-Sample"></a>Run Python Sample</h2>
 <p>0. Open a command prompt.<br>
 1. Navigate to the  <code>device/samples</code> folder.<br>
@@ -259,32 +265,32 @@
 <blockquote>
 <p>Replace [device connection string] with the <strong>device’s</strong> (NOT iotowner) connection string that you copied in step 1 above.</p>
 </blockquote>
-<pre><code class="language-bash">python iothub_client_sample_class.py -p mqtt -c &quot;[device connection string]&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">python iothub_client_sample_class.py -p mqtt -c "[device connection string]"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>If everything is setup correctly, you will see the following message:</p>
-<pre><code class="language-bash">Blob upload confirmation[1001] received for message with result = OK
+<pre class="line-numbers language-bash"><code class="language-bash">Blob upload confirmation[1001] received for message with result = OK
 Total calls confirmed: 1
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="Code-Details"><a class="header-anchor" href="#Code-Details"></a>Code Details</h2>
 <p>Here’s the meat of the code for this sample.</p>
-<pre><code class="language-python">def upload_to_blob(self, destinationfilename, source, size, usercontext):
+<pre class="line-numbers language-python"><code class="language-python">def upload_to_blob(self, destinationfilename, source, size, usercontext):
         self.client.upload_blob_async(
             destinationfilename, source, size,
             self._blob_upload_confirmation_callback, usercontext)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And here’s the code that calls that method:</p>
-<pre><code class="language-python">filename= &quot;hello_python_blob.txt&quot;
-content = &quot;Hello World from Python Blob APi&quot;
+<pre class="line-numbers language-python"><code class="language-python">filename= "hello_python_blob.txt"
+content = "Hello World from Python Blob APi"
 hub_manager.upload_to_blob(filename, content, len(content), 1001)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>If you want to upload files, you need to read them into memory first like this:</p>
-<pre><code class="language-python">filename = &quot;myimage.png&quot;
-f = open(&quot;C:\Temp\myimage.png&quot;, &quot;rb&quot;)
+<pre class="line-numbers language-python"><code class="language-python">filename = "myimage.png"
+f = open("C:\Temp\myimage.png", "rb")
 content = f.read()
 
-print(&quot;IoTHubClient is uploading blob to storage&quot;)
+print("IoTHubClient is uploading blob to storage")
 iotHubClient.upload_blob_async(filename, content, len(content), blob_upload_confirmation_callback, 1001)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="File-Upload-Notifications"><a class="header-anchor" href="#File-Upload-Notifications"></a>File Upload Notifications</h2>
 <p>Please reference the following article to learn how to handle the File Upload Notification event on the server-side.  This is helpful when you want to kick-off a backend process when a file has been uploaded.</p>
 <p><a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification</a></p>
@@ -292,21 +298,21 @@ iotHubClient.upload_blob_async(filename, content, len(content), blob_upload_conf
 <h3 id="1-Invalid-Syntax"><a class="header-anchor" href="#1-Invalid-Syntax"></a>1. Invalid Syntax</h3>
 <p>If you see the following error…you will need to open up the sample file in your IDE and add a comma after ‘size’ like this:</p>
 <p><img src="000047.png" alt=""></p>
-<pre><code class="language-bash">File &quot;iothub_client_sample_class.py&quot;, line 158
+<pre class="line-numbers language-bash"><code class="language-bash">File "iothub_client_sample_class.py", line 158
     self._send_reported_state_callback, user_context)
        ^
 SyntaxError: invalid syntax
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-Unable-to-IoTHubClient-LL-UploadToBlob"><a class="header-anchor" href="#2-Unable-to-IoTHubClient-LL-UploadToBlob"></a>2. Unable to IoTHubClient_LL_UploadToBlob</h3>
 <p>1. You don’t have a storage account associated with your IoT Hub.<br>
 2. You are using a “Premium Storage” Account. Solution: Change your storage account to Standard Storage.<br>
 3. You didn’t click Save on the File Upload Blob. Make sure the File Upload pane has your Storage container listed.</p>
-<pre><code class="language-bash">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_step3 Line:649 HTTP code was 400
+<pre class="line-numbers language-bash"><code class="language-bash">Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_step3 Line:649 HTTP code was 400
 Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client_ll_uploadtoblob.c Func:IoTHubClient_LL_UploadToBlob_Impl Line:843 IoTHubClient_LL_UploadToBlob_step3 failed
 Error: Time:Thu Jan 26 12:23:05 2017 File:E:\GitRepos\azure-iot-sdk-python\c\iothub_client\src\iothub_client.c Func:uploadingThread Line:1500 unable to IoTHubClient_LL_UploadToBlob
 Blob upload confirmation[1001] received for message with result = ERROR
     Total calls confirmed: 1
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-HTTPAPI-ExecuteRequest-Line-552-curl-easy-perform-failed-Out-of-memory"><a class="header-anchor" href="#3-HTTPAPI-ExecuteRequest-Line-552-curl-easy-perform-failed-Out-of-memory"></a>3. HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory</h3>
 <p>This is due to a bug in the Azure IoT Python SDK.  The issue is being tracked on GitHub <a href="https://github.com/Azure/azure-iot-sdk-python/issues/80" target="_blank" rel="noopener">here</a>.  In the meantime, you can use the sample code found here: <a href="https://github.com/jongio/azure-iot-rest" target="_blank" rel="noopener">https://github.com/jongio/azure-iot-rest</a>. You will find a Python sample that shows you how to upload files via the Azure IoT REST APIs.</p>
 <h3 id="4-ImportError-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-No-such-file-or-directory"><a class="header-anchor" href="#4-ImportError-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-No-such-file-or-directory"></a>4. ImportError: libboost_python-py27.so.1.55.0: cannot open shared object file: No such file or directory</h3>
@@ -564,6 +570,10 @@ Blob upload confirmation[1001] received for message with result = ERROR
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

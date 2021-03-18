@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -240,16 +246,18 @@
 <h2 id="Authentication"><a class="header-anchor" href="#Authentication"></a>Authentication</h2>
 <p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
 <p>We first need to create the service principal with the following Azure CLI command:</p>
-<pre><code class="hljs bash">az ad sp create-for-rbac</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az ad sp create-for-rbac
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>This will output the information you need to setup Postman - you will need it later, so save it to a safe location.</p>
 <p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
-<pre><code class="hljs json">&#123;
-  <span class="hljs-attr">"appId"</span>: <span class="hljs-string">"798256c4-bbdc-4f7a-a20a-"</span>,
-  <span class="hljs-attr">"displayName"</span>: <span class="hljs-string">"azure-cli-2021-02-10-22-47-08"</span>,
-  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"http://azure-cli-2021-02-10-22-47-08"</span>,
-  <span class="hljs-attr">"password"</span>: <span class="hljs-string">""</span>,
-  <span class="hljs-attr">"tenant"</span>: <span class="hljs-string">"72f988bf-86f1-41af-91ab-"</span>
-&#125;</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">{
+  "appId": "798256c4-bbdc-4f7a-a20a-",
+  "displayName": "azure-cli-2021-02-10-22-47-08",
+  "name": "http://azure-cli-2021-02-10-22-47-08",
+  "password": "",
+  "tenant": "72f988bf-86f1-41af-91ab-"
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Postman-Setup"><a class="header-anchor" href="#Postman-Setup"></a>Postman Setup</h2>
 <p>Now that we have the service principal created, it is time to configure Postman.</p>
 <p>I created this sample collection to help you get started.  Click on the following “Run in Postman” button to open that collection.</p>
@@ -352,7 +360,8 @@
 <li>Select “JSON” in the Content-Type dropdown</li>
 <li>Enter the JSON body into the Body textbox:</li>
 </ol>
-<pre><code class="hljs json">&#123;<span class="hljs-attr">"location"</span>: <span class="hljs-string">"westus"</span>&#125;</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">{"location": "westus"}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="071.png" alt="Postman body content type"></p>
 <p>All parameters for all requests can be found in the <a href="https://docs.microsoft.com/rest/api/azure/" target="_blank" rel="noopener">Azure REST documentation</a>.</p>
 <p>Now you can click the blue “Send” button and then see the output in the response output pane:</p>
@@ -597,6 +606,10 @@ Jon</p>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

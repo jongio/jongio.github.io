@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -222,22 +228,22 @@
 </blockquote>
 <p>2. <strong>Install Python &amp;&amp; pip</strong> - The Azure IoT Edge Runtime is a Python pip, so Python and pip are required on your edge device.</p>
 <p>Raspbian comes with Python 2.7, but run the following to make sure you have it installed.</p>
-<pre><code class="language-python">python --version
-</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">python --version
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>It should output <code>Python 2.7.13</code>.  Python 3 will also work.</p>
 <p>Raspbian Full also comes with pip 9.0.1, but run the following to make sure you have it installed.  Raspbian Lite does not come with pip, so skip to the install command below to install it.</p>
-<pre><code class="language-python">pip --version
-</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">pip --version
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>It should output <code>pip 9.0.1 from /usr/lib/python2.7/dist-packages (python 2.7)</code>.</p>
 <p>If you do not have either of those, then you can install with the following command:</p>
-<pre><code class="language-python">sudo apt install python-pip -y
-</code></pre>
+<pre class="line-numbers language-python"><code class="language-python">sudo apt install python-pip -y
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3. <strong>Upgrade Setup Tools</strong><br>
 You will find the Azure IoT Edge Runtime on PyPI <a href="https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl" target="_blank" rel="noopener">here</a>, which has the Raspbian specific steps, which I’ve included here as well.  I’ve asked the team to include these steps in the <a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux" target="_blank" rel="noopener">Linux setup tutorial guide</a>. This issue is being tracked on GitHub <a href="https://github.com/Azure/iot-edge/issues/419" target="_blank" rel="noopener">here</a>.</p>
 <p>Open a Terminal and run the following:</p>
-<pre><code class="language-bash">sudo pip install --upgrade setuptools pip
+<pre class="line-numbers language-bash"><code class="language-bash">sudo pip install --upgrade setuptools pip
 sudo apt install python2.7-dev libffi-dev libssl-dev -y
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>3. <a href="/raspberrypi-docker"><strong>Install Docker</strong></a> - The Azure IoT Edge Runtime runs as a container and each module is a container, so Docker is required.</p>
 <h2 id="Azure-IoT-and-Azure-IoT-Edge-Setup"><a class="header-anchor" href="#Azure-IoT-and-Azure-IoT-Edge-Setup"></a>Azure IoT and Azure IoT Edge Setup</h2>
 <p>Now that you have your Raspberry Pi all setup, you can now follow the instructions on the official Azure IoT Edge docs site: <a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-Linux" target="_blank" rel="noopener"><strong>Deploy Azure IoT Edge on a simulated device in Linux</strong></a></p>
@@ -246,23 +252,23 @@ sudo apt install python2.7-dev libffi-dev libssl-dev -y
 <h2 id="Troubleshooting"><a class="header-anchor" href="#Troubleshooting"></a>Troubleshooting</h2>
 <p>1. <strong>Upgrade Setup Tools</strong></p>
 <p>If you see any of the following errors, then please run the <strong>Upgrade Setup Tools</strong> step above.</p>
-<pre><code class="language-bash">Failed cleaning build dir for cryptography
+<pre class="line-numbers language-bash"><code class="language-bash">Failed cleaning build dir for cryptography
 
-</code></pre>
-<pre><code class="language-bash">Failed building wheel for cffi
-</code></pre>
-<pre><code class="language-bash"> c/_cffi_backend.c:15:17: fatal error: ffi.h: No such file or directory
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">Failed building wheel for cffi
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"> c/_cffi_backend.c:15:17: fatal error: ffi.h: No such file or directory
      #include &lt;ffi.h&gt;
                      ^
     compilation terminated.
     error: command 'arm-linux-gnueabihf-gcc' failed with exit status 1
 
     ----------------------------------------
-Command &quot;/usr/bin/python -u -c &quot;import setuptools, tokenize;__file__='/tmp/pip-build-14Rowp/cffi/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))&quot; install --record /tmp/pip-kaIjHU-record/install-record.txt --single-version-externally-managed --compile&quot; failed with error code 1 in /tmp/pip-build-14Rowp/cffi/
-</code></pre>
+Command "/usr/bin/python -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-14Rowp/cffi/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-kaIjHU-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-build-14Rowp/cffi/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>2. <strong>RocksDB Issue</strong></p>
 <p>You will see the following error when you run Azure IoT Edge on Pi.  It is a known issue and being tracked on GitHub here: <a href="https://github.com/Azure/iot-edge/issues/417" target="_blank" rel="noopener">https://github.com/Azure/iot-edge/issues/417</a>. The result is that you won’t have store-and-forward capabilities (doesn’t persist messages to disk) on Raspberry Pi. The Azure IoT Edge team is working on a fix.</p>
-<pre><code class="language-bash">2017-11-16 19:03:53 [ERR] - Error creating RocksDB store. Falling back to in-memory store.
+<pre class="line-numbers language-bash"><code class="language-bash">2017-11-16 19:03:53 [ERR] - Error creating RocksDB store. Falling back to in-memory store.
 System.TypeInitializationException: The type initializer for 'Microsoft.Azure.Devices.Edge.Storage.RocksDb.ColumnFamilyStorageRocksDbWrapper' threw an exception. ---&gt; System.TypeInitializationException: The type initializer for 'RocksDbSharp.Native' threw an exception. ---&gt; NativeImport.NativeLoadException: Unable to locate rocksdb native library, either install it, or use RocksDbNative nuget package
 Searched:
 /app/native/arm/librocksdb-5.4.6.so: (DllNotFoundException) Unable to load DLL 'libdl': The specified module or one of its dependencies could not be found.
@@ -278,58 +284,58 @@ Searched:
    at Microsoft.Azure.Devices.Edge.Storage.RocksDb.ColumnFamilyStorageRocksDbWrapper.Create(String path, IEnumerable`1 partitionsList) in /opt/vsts/work/1/s/edge-util/src/Microsoft.Azure.Devices.Edge.Storage.RocksDb/ColumnFamilyStorageRocksDbWrapper.cs:line 48
    at Microsoft.Azure.Devices.Edge.Storage.RocksDb.DbStoreProvider.Create(String path, IEnumerable`1 partitionsList) in /opt/vsts/work/1/s/edge-util/src/Microsoft.Azure.Devices.Edge.Storage.RocksDb/DbStoreProvider.cs:line 44
    at Microsoft.Azure.Devices.Edge.Hub.Service.Modules.RoutingModule.&lt;Load&gt;b__11_18(IComponentContext c) in /opt/vsts/work/1/s/edge-hub/src/Microsoft.Azure.Devices.Edge.Hub.Service/modules/RoutingModule.cs:line 231
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>3. <strong>KeyNotFoundException</strong></p>
 <p>If you see the following error and you aren’t receiving messages, then stop the runtime, rerun setup and restart it.  Instructions for doing so can be found here.  This issue is being tracked on GitHub here: <a href="https://github.com/Azure/iot-edge/issues/418" target="_blank" rel="noopener">https://github.com/Azure/iot-edge/issues/418</a></p>
-<pre><code class="language-bash">2017-11-16 19:32:18 [INF] - Updating reported properties for jongpi5/$edgeHub in cloud failed with error System.Collections.Generic.KeyNotFoundException The given key was not present in the dictionary.
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">2017-11-16 19:32:18 [INF] - Updating reported properties for jongpi5/$edgeHub in cloud failed with error System.Collections.Generic.KeyNotFoundException The given key was not present in the dictionary.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>4. <strong>TypeError: unsupported operand type(s) for -=: ‘Retry’ and 'int’</strong></p>
 <p>If you see the following error when installing the runtime, then restart the runtime.  I only saw this once and I’m not sure what caused this issue, but I have reported it on GitHub here: <a href="https://github.com/Azure/iot-edge/issues/420" target="_blank" rel="noopener">https://github.com/Azure/iot-edge/issues/420</a></p>
-<pre><code class="language-bash">sudo pip install -U azure-iot-edge-runtime-ctl
+<pre class="line-numbers language-bash"><code class="language-bash">sudo pip install -U azure-iot-edge-runtime-ctl
 
-Collecting cffi&gt;=1.7 (from cryptography&gt;=1.3.4; extra == &quot;tls&quot;-&gt;docker[tls]==2.6-&gt;azure-iot-edge-runtime-ctl)
+Collecting cffi&gt;=1.7 (from cryptography&gt;=1.3.4; extra == "tls"-&gt;docker[tls]==2.6-&gt;azure-iot-edge-runtime-ctl)
 Exception:
 Traceback (most recent call last):
-  File &quot;/usr/lib/python2.7/dist-packages/pip/basecommand.py&quot;, line 215, in main
+  File "/usr/lib/python2.7/dist-packages/pip/basecommand.py", line 215, in main
     status = self.run(options, args)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/commands/install.py&quot;, line 353, in run
+  File "/usr/lib/python2.7/dist-packages/pip/commands/install.py", line 353, in run
     wb.build(autobuilding=True)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/wheel.py&quot;, line 749, in build
+  File "/usr/lib/python2.7/dist-packages/pip/wheel.py", line 749, in build
     self.requirement_set.prepare_files(self.finder)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/req/req_set.py&quot;, line 380, in prepare_files
+  File "/usr/lib/python2.7/dist-packages/pip/req/req_set.py", line 380, in prepare_files
     ignore_dependencies=self.ignore_dependencies))
-  File &quot;/usr/lib/python2.7/dist-packages/pip/req/req_set.py&quot;, line 554, in _prepare_file
+  File "/usr/lib/python2.7/dist-packages/pip/req/req_set.py", line 554, in _prepare_file
     require_hashes
-  File &quot;/usr/lib/python2.7/dist-packages/pip/req/req_install.py&quot;, line 278, in populate_link
+  File "/usr/lib/python2.7/dist-packages/pip/req/req_install.py", line 278, in populate_link
     self.link = finder.find_requirement(self, upgrade)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/index.py&quot;, line 465, in find_requirement
+  File "/usr/lib/python2.7/dist-packages/pip/index.py", line 465, in find_requirement
     all_candidates = self.find_all_candidates(req.name)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/index.py&quot;, line 423, in find_all_candidates
+  File "/usr/lib/python2.7/dist-packages/pip/index.py", line 423, in find_all_candidates
     for page in self._get_pages(url_locations, project_name):
-  File &quot;/usr/lib/python2.7/dist-packages/pip/index.py&quot;, line 568, in _get_pages
+  File "/usr/lib/python2.7/dist-packages/pip/index.py", line 568, in _get_pages
     page = self._get_page(location)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/index.py&quot;, line 683, in _get_page
+  File "/usr/lib/python2.7/dist-packages/pip/index.py", line 683, in _get_page
     return HTMLPage.get_page(link, session=self.session)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/index.py&quot;, line 792, in get_page
-    &quot;Cache-Control&quot;: &quot;max-age=600&quot;,
-  File &quot;/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/sessions.py&quot;, line 501, in get
+  File "/usr/lib/python2.7/dist-packages/pip/index.py", line 792, in get_page
+    "Cache-Control": "max-age=600",
+  File "/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/sessions.py", line 501, in get
     return self.request('GET', url, **kwargs)
-  File &quot;/usr/lib/python2.7/dist-packages/pip/download.py&quot;, line 386, in request
+  File "/usr/lib/python2.7/dist-packages/pip/download.py", line 386, in request
     return super(PipSession, self).request(method, url, *args, **kwargs)
-  File &quot;/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/sessions.py&quot;, line 488, in request
+  File "/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/sessions.py", line 488, in request
     resp = self.send(prep, **send_kwargs)
-  File &quot;/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/sessions.py&quot;, line 609, in send
+  File "/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/sessions.py", line 609, in send
     r = adapter.send(request, **kwargs)
-  File &quot;/usr/share/python-wheels/CacheControl-0.11.7-py2.py3-none-any.whl/cachecontrol/adapter.py&quot;, line 47, in send
+  File "/usr/share/python-wheels/CacheControl-0.11.7-py2.py3-none-any.whl/cachecontrol/adapter.py", line 47, in send
     resp = super(CacheControlAdapter, self).send(request, **kw)
-  File &quot;/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/adapters.py&quot;, line 423, in send
+  File "/usr/share/python-wheels/requests-2.12.4-py2.py3-none-any.whl/requests/adapters.py", line 423, in send
     timeout=timeout
-  File &quot;/usr/share/python-wheels/urllib3-1.19.1-py2.py3-none-any.whl/urllib3/connectionpool.py&quot;, line 643, in urlopen
+  File "/usr/share/python-wheels/urllib3-1.19.1-py2.py3-none-any.whl/urllib3/connectionpool.py", line 643, in urlopen
     _stacktrace=sys.exc_info()[2])
-  File &quot;/usr/share/python-wheels/urllib3-1.19.1-py2.py3-none-any.whl/urllib3/util/retry.py&quot;, line 315, in increment
+  File "/usr/share/python-wheels/urllib3-1.19.1-py2.py3-none-any.whl/urllib3/util/retry.py", line 315, in increment
     total -= 1
 TypeError: unsupported operand type(s) for -=: 'Retry' and 'int'
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -566,6 +572,10 @@ TypeError: unsupported operand type(s) for -=: 'Retry' and 'int'
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

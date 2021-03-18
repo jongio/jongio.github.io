@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -226,7 +232,7 @@
 <p>PM&gt; Install-Package EntityFramework -Pre</p>
 </blockquote>
 <p>3. Add this code to your app:</p>
-<pre><code class="language-csharp">using System;
+<pre class="line-numbers language-csharp"><code class="language-csharp">using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -267,7 +273,7 @@ namespace GuidComb
     }
 }
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>4. Run the following in Package Manager Console</p>
 <blockquote>
 <p>PM&gt; Enable-Migrations</p>
@@ -277,7 +283,7 @@ namespace GuidComb
 <p>PM&gt; Add-Migration Comb</p>
 </blockquote>
 <p>6. Open the /Migrations/[Timestamp]_Comb.cs that was created by the Add-Migration command and add defaultValueSql: “newsequentialid()” to the Item table Column builder.</p>
-<pre><code class="language-csharp">namespace GuidComb.Migrations
+<pre class="line-numbers language-csharp"><code class="language-csharp">namespace GuidComb.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -287,10 +293,10 @@ namespace GuidComb
         public override void Up()
         {
             CreateTable(
-                &quot;dbo.Items&quot;,
+                "dbo.Items",
                 c =&amp;gt; new
                     {
-                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: &quot;newsequentialid()&quot;),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                     })
                 .PrimaryKey(t =&amp;gt; t.Id);
 
@@ -298,12 +304,12 @@ namespace GuidComb
 
         public override void Down()
         {
-            DropTable(&quot;dbo.Items&quot;);
+            DropTable("dbo.Items");
         }
     }
 }
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>7. Hit F5 and you should see this:</p>
 <p><img src="/images/blog/343c5f9b6c9a_661C/image.png" alt=""></p>
 <p>As you can see the Guid are being generated sequentially.</p>
@@ -544,6 +550,10 @@ namespace GuidComb
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

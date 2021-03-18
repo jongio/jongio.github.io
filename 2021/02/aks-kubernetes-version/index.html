@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="azure,cli" />
     
-    <meta name="description" content="I got this error while deploying a new Azure Kubernetes Cluster. &amp;#123;    &quot;error&quot;:&amp;#123;       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memealyzerdev3&#39; is not val">
+    <meta name="description" content="I got this error while deploying a new Azure Kubernetes Cluster. {    &quot;error&quot;:{       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memealyzerdev3&#39; is not valid accordi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to Azure Kubernetes Service version not supported exception - Version x.x.x is not supported in this region.">
 <meta property="og:url" content="https://blog.jongallant.com/2021/02/aks-kubernetes-version/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I got this error while deploying a new Azure Kubernetes Cluster. &amp;#123;    &quot;error&quot;:&amp;#123;       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memealyzerdev3&#39; is not val">
+<meta property="og:description" content="I got this error while deploying a new Azure Kubernetes Cluster. {    &quot;error&quot;:{       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memealyzerdev3&#39; is not valid accordi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/aks-kubernetes-version/063.png">
 <meta property="article:published_time" content="2021-02-24T12:14:56.000Z">
-<meta property="article:modified_time" content="2021-02-24T20:48:42.839Z">
+<meta property="article:modified_time" content="2021-03-18T06:36:29.231Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="cli">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -211,23 +217,25 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I got this error while deploying a new Azure Kubernetes Cluster.</p>
-<pre><code class="hljs json">&#123;
-   <span class="hljs-attr">"error"</span>:&#123;
-      <span class="hljs-attr">"code"</span>:<span class="hljs-string">"InvalidTemplateDeployment"</span>,
-      <span class="hljs-attr">"message"</span>:<span class="hljs-string">"The template deployment 'memealyzerdev3' is not valid according to the validation procedure. The tracking id is 'f9b96b8f-de17-4c81-be8f-e7e0d8253e29'. See inner errors for details."</span>,
-      <span class="hljs-attr">"details"</span>:[
-         &#123;
-            <span class="hljs-attr">"code"</span>:<span class="hljs-string">"AgentPoolK8sVersionNotSupported"</span>,
-            <span class="hljs-attr">"message"</span>:<span class="hljs-string">"Provisioning of resource(s) for container service memealyzerdev3aks in resource group memealyzerdev3rg failed. Message: &#123;\n  \"code\": \"AgentPoolK8sVersionNotSupported\",\n  \"message\": \"Version 1.19.3 is not supported in this region. Please use [az aks get-versions] command to get the supported version list in this region. For more information, please check https://aka.ms/supported-version-list\"\n &#125;. Details: "</span>
-         &#125;
+<pre class="line-numbers language-json"><code class="language-json">{
+   "error":{
+      "code":"InvalidTemplateDeployment",
+      "message":"The template deployment 'memealyzerdev3' is not valid according to the validation procedure. The tracking id is 'f9b96b8f-de17-4c81-be8f-e7e0d8253e29'. See inner errors for details.",
+      "details":[
+         {
+            "code":"AgentPoolK8sVersionNotSupported",
+            "message":"Provisioning of resource(s) for container service memealyzerdev3aks in resource group memealyzerdev3rg failed. Message: {\n  \"code\": \"AgentPoolK8sVersionNotSupported\",\n  \"message\": \"Version 1.19.3 is not supported in this region. Please use [az aks get-versions] command to get the supported version list in this region. For more information, please check https://aka.ms/supported-version-list\"\n }. Details: "
+         }
       ]
-   &#125;
-&#125;</code></pre>
+   }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The error message recommends using <code>az aks get-versions</code>, but that just dumps a bunch of JSON without much direction.</p>
 <p>Here’s the Azure CLI command I used to get the version.</p>
-<pre><code class="hljs bash">az aks get-versions --location westus2 --query <span class="hljs-string">"orchestrators"</span> -o table</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az aks get-versions --location westus2 --query "orchestrators" -o table
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>This tells the Azure CLI to only output the orchestrators array in table format.</p>
-<pre><code class="hljs bash">OrchestratorType    OrchestratorVersion    Default    IsPreview
+<pre class="line-numbers language-bash"><code class="language-bash">OrchestratorType    OrchestratorVersion    Default    IsPreview
 ------------------  ---------------------  ---------  -----------
 Kubernetes          1.17.13
 Kubernetes          1.17.16
@@ -235,7 +243,8 @@ Kubernetes          1.18.10
 Kubernetes          1.18.14                True
 Kubernetes          1.19.6
 Kubernetes          1.19.7
-Kubernetes          1.20.2                            True</code></pre>
+Kubernetes          1.20.2                            True
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>From there you can decide which version you want to use and if you want to use the <code>IsPreview</code> version.</p>
 <p>Jon</p>
 
@@ -474,6 +483,10 @@ Kubernetes          1.20.2                            True</code></pre>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

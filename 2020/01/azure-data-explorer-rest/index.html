@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/01/azure-data-explorer-rest/000040.png">
 <meta property="article:published_time" content="2020-01-17T09:13:18.000Z">
-<meta property="article:modified_time" content="2020-01-17T19:19:25.231Z">
+<meta property="article:modified_time" content="2021-03-18T06:40:09.411Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="rest">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -217,28 +223,28 @@
 <p>If you want to follow along, then you’ll need to create the cluster and database as described here: <a href="https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-cli" target="_blank" rel="noopener">Create an Azure Data Explorer cluster and database by using Azure CLI<br>
 </a></p>
 <p>After the cluster and database have been created, then we’ll want to create a table and a mapping - but that’s not possible with the CLI.</p>
-<pre><code>.create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)
-</code></pre>
-<pre><code>.create table GithubEvent ingestion json mapping &quot;GitMapping&quot; '[{&quot;column&quot;:&quot;Id&quot;,&quot;path&quot;:&quot;$.id&quot;},{&quot;column&quot;:&quot;Type&quot;,&quot;path&quot;:&quot;$.type&quot;},{&quot;column&quot;:&quot;Actor&quot;,&quot;path&quot;:&quot;$.actor&quot;},{&quot;column&quot;:&quot;Repo&quot;,&quot;path&quot;:&quot;$.repo&quot;},{&quot;column&quot;:&quot;Payload&quot;,&quot;path&quot;:&quot;$.payload&quot;},{&quot;column&quot;:&quot;Public&quot;,&quot;path&quot;:&quot;$.public&quot;},{&quot;column&quot;:&quot;CreatedAt&quot;,&quot;path&quot;:&quot;$.created_at&quot;}]'
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">.create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">.create table GithubEvent ingestion json mapping "GitMapping" '[{"column":"Id","path":"$.id"},{"column":"Type","path":"$.type"},{"column":"Actor","path":"$.actor"},{"column":"Repo","path":"$.repo"},{"column":"Payload","path":"$.payload"},{"column":"Public","path":"$.public"},{"column":"CreatedAt","path":"$.created_at"}]'
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>BTW, the original code for this is from: <a href="https://medium.com/microsoftazure/exploring-github-events-with-azure-data-explorer-69f28eb705b9" target="_blank" rel="noopener">https://medium.com/microsoftazure/exploring-github-events-with-azure-data-explorer-69f28eb705b9</a></p>
 <h2 id="Get-Access-Token"><a class="header-anchor" href="#Get-Access-Token"></a>Get Access Token</h2>
 <p>You need to pass a bearer token in the Authorization header, you can get one that is scoped to the kusto cluster by executing the following Azure CLI command:</p>
-<pre><code>az account get-access-token --resource https://{cluster}.{location}.kusto.windows.net --query accessToken --output tsv
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az account get-access-token --resource https://{cluster}.{location}.kusto.windows.net --query accessToken --output tsv
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Install-httpie"><a class="header-anchor" href="#Install-httpie"></a>Install httpie</h2>
 <p><a href="https://httpie.org/" target="_blank" rel="noopener">httpie</a> is alternative to curl: <code>pip install httpie</code>.</p>
 <h2 id="Create-GitHubEvents-Table-and-Mapping"><a class="header-anchor" href="#Create-GitHubEvents-Table-and-Mapping"></a>Create GitHubEvents Table and Mapping</h2>
 <p>You can use the /v1/rest/mgmt endpoint to create a table and mapping, the body payload schema is:</p>
-<pre><code class="language-json">{
-  &quot;db&quot;:&quot;database&quot;,
-  &quot;csl&quot;:&quot;command&quot;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "db":"database",
+  "csl":"command"
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Create-Table"><a class="header-anchor" href="#Create-Table"></a>Create Table</h3>
 <h4 id="httpie"><a class="header-anchor" href="#httpie"></a>httpie</h4>
-<pre><code>http POST https://{cluster}.{location}.kusto.windows.net/v1/rest/mgmt db={database} csl=&quot;.create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)&quot; Authorization:&quot;Bearer {bearer_token}&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">http POST https://{cluster}.{location}.kusto.windows.net/v1/rest/mgmt db={database} csl=".create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)" Authorization:"Bearer {bearer_token}"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>Replace cluster, location, database, and bearer_token before running the following commands.</p>
 </blockquote>
@@ -246,8 +252,8 @@
 <p>Execute that command and the table will be created.</p>
 <h3 id="Create-Mapping"><a class="header-anchor" href="#Create-Mapping"></a>Create Mapping</h3>
 <h4 id="httpie-v2"><a class="header-anchor" href="#httpie-v2"></a>httpie</h4>
-<pre><code>http POST https://{cluster}.{location}.kusto.windows.net/v1/rest/mgmt db=gharchive csl=&quot;.create table GithubEvent ingestion json mapping \&quot;GitMapping\&quot; '[{\&quot;column\&quot;:\&quot;Id\&quot;,\&quot;path\&quot;:\&quot;$.id\&quot;},{\&quot;column\&quot;:\&quot;Type\&quot;,\&quot;path\&quot;:\&quot;$.type\&quot;},{\&quot;column\&quot;:\&quot;Actor\&quot;,\&quot;path\&quot;:\&quot;$.actor\&quot;},{\&quot;column\&quot;:\&quot;Repo\&quot;,\&quot;path\&quot;:\&quot;$.repo\&quot;},{\&quot;column\&quot;:\&quot;Payload\&quot;,\&quot;path\&quot;:\&quot;$.payload\&quot;},{\&quot;column\&quot;:\&quot;Public\&quot;,\&quot;path\&quot;:\&quot;$.public\&quot;},{\&quot;column\&quot;:\&quot;CreatedAt\&quot;,\&quot;path\&quot;:\&quot;$.created_at\&quot;}]'&quot; Authorization:&quot;Bearer {bearer_token}&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">http POST https://{cluster}.{location}.kusto.windows.net/v1/rest/mgmt db=gharchive csl=".create table GithubEvent ingestion json mapping \"GitMapping\" '[{\"column\":\"Id\",\"path\":\"$.id\"},{\"column\":\"Type\",\"path\":\"$.type\"},{\"column\":\"Actor\",\"path\":\"$.actor\"},{\"column\":\"Repo\",\"path\":\"$.repo\"},{\"column\":\"Payload\",\"path\":\"$.payload\"},{\"column\":\"Public\",\"path\":\"$.public\"},{\"column\":\"CreatedAt\",\"path\":\"$.created_at\"}]'" Authorization:"Bearer {bearer_token}"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>Replace cluster, location, database, and bearer_token before running the following commands.</p>
 </blockquote>
@@ -492,6 +498,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -216,13 +222,13 @@
 <p>1. Moved all the angular code to the /Scripts folder:</p>
 <p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image_3.png" alt=""></p>
 <p>2. app.js only contains this one line of code to initialize the app:</p>
-<pre><code class="language-javascript">var app = angular.module('app', ['ngResource']);
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">var app = angular.module('app', ['ngResource']);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3. I put the notification factory under /Services</p>
 <p>4. I created the crud-grid-directive.js file and put the directive code. I renamed person to object so that we can reuse the directive for multiple tables.</p>
 <p>scope: true – tells angular to create a new scope for each instance of the directive</p>
 <p>$attrs.tableName is set in the view…see how below.</p>
-<pre><code class="language-javascript">app.directive('crudGrid', function () {
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.directive('crudGrid', function () {
     return {
         restrict: 'A',
         replace: false,
@@ -280,66 +286,66 @@
             }]
     }
 });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>5. Moved the factory code to /Directives/Services. It now accepts a type and builds the URL from that so we can reuse for multiple tables.</p>
-<pre><code class="language-javascript">app.factory('crudGridDataFactory', ['$http', '$resource', function ($http, $resource) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.factory('crudGridDataFactory', ['$http', '$resource', function ($http, $resource) {
     return function (type) {
         return $resource('api/' + type + '/:id', { id: '@id' }, { 'update': { method: 'PUT' } }, { 'query': { method: 'GET', isArray: false } });
     };
 }]);
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>6. As you can see in the code above I created a new template for the directive in Directives/Templates called crud-grid-directive-template.html, which contains the HTML markup that the grid will render.</p>
-<pre><code class="language-html">&lt;table class=&quot;crud-grid table table-striped table-bordered table-condensed table-hover&quot;&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;table class="crud-grid table table-striped table-bordered table-condensed table-hover"&gt;
     &lt;tr&gt;
-        &lt;th style=&quot;width: 100px;&quot;&gt;
-            &lt;div class=&quot;btn-toolbar&quot;&gt;&lt;i class=&quot;btn icon-plus&quot; ng-click=&quot;toggleAddMode()&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+        &lt;th style="width: 100px;"&gt;
+            &lt;div class="btn-toolbar"&gt;&lt;i class="btn icon-plus" ng-click="toggleAddMode()"&gt;&lt;/i&gt;&lt;/div&gt;
         &lt;/th&gt;
-        &lt;th style=&quot;width: 50px;&quot;&gt;Id&lt;/th&gt;
+        &lt;th style="width: 50px;"&gt;Id&lt;/th&gt;
         &lt;th&gt;Name&lt;/th&gt;
     &lt;/tr&gt;
-    &lt;tr ng-show=&quot;addMode&quot;&gt;
+    &lt;tr ng-show="addMode"&gt;
         &lt;td&gt;
-            &lt;div class=&quot;btn-toolbar&quot;&gt;
-                &lt;div class=&quot;btn-group&quot;&gt;
-                    &lt;i class=&quot;btn icon-save&quot; ng-click=&quot;addObject()&quot;&gt;&lt;/i&gt;
-                    &lt;i class=&quot;btn icon-remove&quot; ng-click=&quot;toggleAddMode()&quot;&gt;&lt;/i&gt;
+            &lt;div class="btn-toolbar"&gt;
+                &lt;div class="btn-group"&gt;
+                    &lt;i class="btn icon-save" ng-click="addObject()"&gt;&lt;/i&gt;
+                    &lt;i class="btn icon-remove" ng-click="toggleAddMode()"&gt;&lt;/i&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/td&gt;
         &lt;td&gt;&lt;/td&gt;
         &lt;td&gt;
-            &lt;input ng-model=&quot;object.Name&quot; /&gt;
+            &lt;input ng-model="object.Name" /&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
-    &lt;tr ng-repeat=&quot;object in objects | orderBy:'Id':true&quot;&gt;
+    &lt;tr ng-repeat="object in objects | orderBy:'Id':true"&gt;
         &lt;td&gt;
-            &lt;div class=&quot;btn-toolbar&quot; ng-show=&quot;object.editMode == null || object.editMode == false&quot;&gt;
-                &lt;div class=&quot;btn-group&quot;&gt;
-                    &lt;i class=&quot;btn icon-edit&quot; ng-click=&quot;toggleEditMode(object)&quot;&gt;&lt;/i&gt;
-                    &lt;i class=&quot;btn icon-trash&quot; ng-click=&quot;deleteObject(object)&quot;&gt;&lt;/i&gt;
+            &lt;div class="btn-toolbar" ng-show="object.editMode == null || object.editMode == false"&gt;
+                &lt;div class="btn-group"&gt;
+                    &lt;i class="btn icon-edit" ng-click="toggleEditMode(object)"&gt;&lt;/i&gt;
+                    &lt;i class="btn icon-trash" ng-click="deleteObject(object)"&gt;&lt;/i&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div class=&quot;btn-toolbar&quot; ng-show=&quot;object.editMode == true&quot;&gt;
-                &lt;div class=&quot;btn-group&quot;&gt;
-                    &lt;i class=&quot;btn icon-save&quot; ng-click=&quot;updateObject(object)&quot;&gt;&lt;/i&gt;
-                    &lt;i class=&quot;btn icon-remove&quot; ng-click=&quot;toggleEditMode(object)&quot;&gt;&lt;/i&gt;
+            &lt;div class="btn-toolbar" ng-show="object.editMode == true"&gt;
+                &lt;div class="btn-group"&gt;
+                    &lt;i class="btn icon-save" ng-click="updateObject(object)"&gt;&lt;/i&gt;
+                    &lt;i class="btn icon-remove" ng-click="toggleEditMode(object)"&gt;&lt;/i&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
         &lt;/td&gt;
         &lt;td&gt;&lt;/td&gt;
         &lt;td&gt;
-            &lt;span ng-show=&quot;object.editMode == null || object.editMode == false&quot;&gt;&lt;/span&gt;
-            &lt;input ng-model=&quot;object.Name&quot; ng-show=&quot;object.editMode == true&quot; /&gt;
+            &lt;span ng-show="object.editMode == null || object.editMode == false"&gt;&lt;/span&gt;
+            &lt;input ng-model="object.Name" ng-show="object.editMode == true" /&gt;
         &lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>7. Now all that is left in the view is this, which defines two crud grids and assigns the corresponding tables.</p>
-<pre><code class="language-html">&lt;h1&gt;People&lt;/h1&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;h1&gt;People&lt;/h1&gt;
 &lt;div crud-grid table-name='person'&gt;&lt;/div&gt;
 &lt;h1&gt;Places&lt;/h1&gt;
 &lt;div crud-grid table-name='place'&gt;&lt;/div&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>(I also created a new “Place” model and controller)</p>
 <p>Hope this helps you ramp up on AngularJS directives.</p>
 <p>Jon</p>
@@ -579,6 +585,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

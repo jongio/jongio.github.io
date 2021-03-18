@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,13 +219,13 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Sometimes you want to update a read only system field in TFS, such as System.CreatedDate or System.ResolvedDate. There is no way to do that with TFS 2010 by using the UI or the object model because both of those methods execute validation rules and you can’t disable them. I heard that you can bypass them in TFS 2012 using the object model, but with TFS 2010 you have to use the WorkItemServer.Update method and pass in the values in an xml package with BypassRules set to true.</p>
 <p>Most people will first try to set the property directly using the object model like this:</p>
-<pre><code class="language-csharp">item.CreatedDate = date;
-</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">item.CreatedDate = date;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image.png" alt=""></p>
 <p>But you get the error: “The property ‘Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.CreatedDate’ has no setter” OR “Property or indexer ‘Microsoft.TeamFoundation.WorkItemTracking.Client.WorkItem.CreatedDate’ cannot be assigned to – it is read only”</p>
 <p>Then you’ll try to bypass the build time error by setting the property using the Fields name value pair by doing something like this:</p>
-<pre><code class="language-csharp">item.Fields[&quot;System.CreatedDate&quot;].Value = date.ToString()
-</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">item.Fields["System.CreatedDate"].Value = date.ToString()
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_3.png" alt=""></p>
 <p>But you get the “InvalidNotOldValue” validation error when calling Validate() and “TF237124: Work Item is not ready to save”</p>
 <p><img src="/images/blog/tfs-how-to-update-readonly-fields_5878/image_4.png" alt=""></p>
@@ -230,7 +236,7 @@
 <li>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.Client.dll<li>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.WorkItemTracking.Client.dll<li>c:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.WorkItemTracking.Proxy.dll</li>
 </ul>
 <p>2. Copy the following code into your project or take snippets to meet your needs. The inline comments explain what everything does.</p>
-<pre><code class="language-csharp">namespace ChangeReadonlyField
+<pre class="line-numbers language-csharp"><code class="language-csharp">namespace ChangeReadonlyField
 {
     using System;
     using System.Text;
@@ -243,7 +249,7 @@
     {
         static void Main(string[] args)
         {
-            var tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri(&quot;[tfs url&quot;));
+            var tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri("[tfs url"));
             var store = tfs.GetService&lt;WorkItemStore&gt;();
             var server = tfs.GetService&lt;WorkItemServer&gt;();
             var date = new DateTime(2012, 1, 31, 1, 1, 1);
@@ -259,12 +265,12 @@
             // Make sure you pass in the date using XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local)
             // You won't get the correct date if you just call date.ToString()
             var sb = new StringBuilder();
-            sb.Append(&quot;&lt;Package&gt;&quot;);
-            sb.AppendFormat(&quot;&lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='{0}' Revision='{1}'&gt;&quot;, id, revision);
-            sb.Append(&quot;&lt;Columns&gt;&quot;);
-            sb.AppendFormat(&quot;&lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;{0}&lt;/Value&gt;&lt;/Column&gt;&quot;,
+            sb.Append("&lt;Package&gt;");
+            sb.AppendFormat("&lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='{0}' Revision='{1}'&gt;", id, revision);
+            sb.Append("&lt;Columns&gt;");
+            sb.AppendFormat("&lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;{0}&lt;/Value&gt;&lt;/Column&gt;",
                 XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local));
-            sb.Append(&quot;&lt;/Columns&gt;&lt;/UpdateWorkItem&gt;&lt;/Package&gt;&quot;);
+            sb.Append("&lt;/Columns&gt;&lt;/UpdateWorkItem&gt;&lt;/Package&gt;");
 
             /* This is what the XML looks like
                 &lt;Package&gt;
@@ -297,7 +303,7 @@
         }
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Jon</p>
 
         </div>
@@ -535,6 +541,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

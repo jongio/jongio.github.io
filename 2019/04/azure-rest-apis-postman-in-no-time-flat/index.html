@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2019/04/azure-rest-apis-postman-in-no-time-flat/000095.png">
 <meta property="article:published_time" content="2019-04-06T16:36:21.000Z">
-<meta property="article:modified_time" content="2021-02-14T23:06:01.067Z">
+<meta property="article:modified_time" content="2021-03-18T06:42:38.254Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="postman">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -237,22 +243,23 @@
 <ol>
 <li>Copy this code block into your collections pre-request script block.</li>
 </ol>
-<pre><code class="hljs javascript">pm.sendRequest(&#123;
-    <span class="hljs-attr">url</span>: <span class="hljs-string">'https://login.microsoftonline.com/'</span> + pm.variables.get(<span class="hljs-string">"tenantId"</span>) + <span class="hljs-string">'/oauth2/token'</span>,
-    <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
-    <span class="hljs-attr">header</span>: <span class="hljs-string">'Content-Type: application/x-www-form-urlencoded'</span>,
-    <span class="hljs-attr">body</span>: &#123;
-        <span class="hljs-attr">mode</span>: <span class="hljs-string">'urlencoded'</span>,
-        <span class="hljs-attr">urlencoded</span>: [ 
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"grant_type"</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">"client_credentials"</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"client_id"</span>, <span class="hljs-attr">value</span>: pm.variables.get(<span class="hljs-string">"clientId"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"client_secret"</span>, <span class="hljs-attr">value</span>: pm.variables.get(<span class="hljs-string">"clientSecret"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;,
-            &#123;<span class="hljs-attr">key</span>: <span class="hljs-string">"resource"</span>, <span class="hljs-attr">value</span>: pm.variables.get(<span class="hljs-string">"resource"</span>), <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>&#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript">pm.sendRequest({
+    url: 'https://login.microsoftonline.com/' + pm.variables.get("tenantId") + '/oauth2/token',
+    method: 'POST',
+    header: 'Content-Type: application/x-www-form-urlencoded',
+    body: {
+        mode: 'urlencoded',
+        urlencoded: [ 
+            {key: "grant_type", value: "client_credentials", disabled: false},
+            {key: "client_id", value: pm.variables.get("clientId"), disabled: false},
+            {key: "client_secret", value: pm.variables.get("clientSecret"), disabled: false},
+            {key: "resource", value: pm.variables.get("resource"), disabled: false}
         ]
-    &#125;
-&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, res</span>) </span>&#123;
-    pm.globals.set(<span class="hljs-string">"bearerToken"</span>, res.json().access_token);
-&#125;);</code></pre>
+    }
+}, function (err, res) {
+    pm.globals.set("bearerToken", res.json().access_token);
+});
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000092.png" alt=""></p>
 <h3 id="Variables"><a class="header-anchor" href="#Variables"></a>Variables</h3>
 <p>Postman allows you to set variables at the collection level. We’ll put the variables required by the pre-request script and the Azure REST APIs in the “Variables” tab.</p>
@@ -262,11 +269,12 @@
 <blockquote>
 <p>Make sure you add the variable values to the <strong>CURRENT VALUE</strong> column NOT the Initial Value column.</p>
 </blockquote>
-<pre><code class="hljs plain">clientId
+<pre class="line-numbers language-bash"><code class="language-bash">clientId
 clientSecret
 tenantId
 subscriptionId
-resource: https:&#x2F;&#x2F;management.azure.com&#x2F;</code></pre>
+resource: https://management.azure.com/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000102.png" alt=""></p>
 <p>Keep the “Create Collection” dialog open and continue to the next step.</p>
 <h2 id="Get-Azure-Variables"><a class="header-anchor" href="#Get-Azure-Variables"></a>Get Azure Variables</h2>
@@ -287,9 +295,10 @@ resource: https:&#x2F;&#x2F;management.azure.com&#x2F;</code></pre>
 <ol start="3">
 <li>Copy the outputed variables to Postman Collection variables</li>
 </ol>
-<pre><code class="hljs plain">clientId &#x3D; appId
-clientSecret &#x3D; password
-tenantId &#x3D; tenant</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">clientId = appId
+clientSecret = password
+tenantId = tenant
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><img src="000100.png" alt=""></p>
 <ol start="4">
 <li>Get Subscription Id</li>
@@ -333,19 +342,20 @@ tenantId &#x3D; tenant</code></pre>
 </li>
 </ol>
 <p>You will see the REST request output in the bottom pane</p>
-<pre><code class="hljs javascript">&#123;
-    <span class="hljs-string">"value"</span>: [
-        &#123;
-            <span class="hljs-string">"id"</span>: <span class="hljs-string">"/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS"</span>,
-            <span class="hljs-string">"name"</span>: <span class="hljs-string">"DefaultResourceGroup-EUS"</span>,
-            <span class="hljs-string">"location"</span>: <span class="hljs-string">"eastus"</span>,
-            <span class="hljs-string">"tags"</span>: &#123;&#125;,
-            <span class="hljs-string">"properties"</span>: &#123;
-                <span class="hljs-string">"provisioningState"</span>: <span class="hljs-string">"Succeeded"</span>
-            &#125;
-        &#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript">{
+    "value": [
+        {
+            "id": "/subscriptions/f9766876-e50b-436f-9ad3-/resourceGroups/DefaultResourceGroup-EUS",
+            "name": "DefaultResourceGroup-EUS",
+            "location": "eastus",
+            "tags": {},
+            "properties": {
+                "provisioningState": "Succeeded"
+            }
+        }
     ]
-&#125;</code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000089.png" alt=""></p>
 <p>And that is how to call the Azure REST APIs with Postman in no time flat!</p>
 <p>Jon</p>
@@ -585,6 +595,10 @@ tenantId &#x3D; tenant</code></pre>
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

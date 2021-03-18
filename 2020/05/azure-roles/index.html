@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/05/azure-roles/015.png">
 <meta property="article:published_time" content="2020-05-07T13:00:33.000Z">
-<meta property="article:modified_time" content="2020-05-07T20:40:53.287Z">
+<meta property="article:modified_time" content="2020-05-07T20:40:53.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -210,24 +216,29 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Here are a bunch of ways you can find which roles are built into Azure.  This will come in super handy when you need to assign a role to a service principal or user with Azure CLI commands like this:</p>
-<pre><code class="hljs bash">az role assignment create --assignee 3db3ad97-06be-4c28-aa96-f1bac93aeed3 --role <span class="hljs-string">"Azure Maps Data Reader"</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az role assignment create --assignee 3db3ad97-06be-4c28-aa96-f1bac93aeed3 --role "Azure Maps Data Reader"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Azure-CLI"><a class="header-anchor" href="#Azure-CLI"></a>Azure CLI</h2>
 <ol>
 <li>Query the big honking json</li>
 </ol>
-<pre><code class="hljs bash">az role definition list</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az role definition list
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>Query all, but only return Name and Id in a nice table</li>
 </ol>
-<pre><code class="hljs bash">az role definition list --query <span class="hljs-string">"sort_by([].&#123;Name:roleName,Id:name&#125;, &amp;Name)"</span> --output table</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az role definition list --query "sort_by([].{Name:roleName,Id:name}, &amp;Name)" --output table
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>Filter by name contains:</li>
 </ol>
 <p>This one filters for roles with “Map” in the name:</p>
-<pre><code class="hljs bash">az role definition list --query <span class="hljs-string">"sort_by([?contains(roleName, 'Map')].&#123;Name:roleName,Id:name&#125;, &amp;Name)"</span> --output table</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az role definition list --query "sort_by([?contains(roleName, 'Map')].{Name:roleName,Id:name}, &amp;Name)" --output table
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Azure-PowerShell"><a class="header-anchor" href="#Azure-PowerShell"></a>Azure PowerShell</h2>
 <p><a href="https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0</a></p>
-<pre><code class="hljs powershell"><span class="hljs-built_in">Get-AzRoleDefinition</span></code></pre>
+<pre class="line-numbers language-powershell"><code class="language-powershell">Get-AzRoleDefinition
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Docs"><a class="header-anchor" href="#Docs"></a>Docs</h2>
 <p>This page has all the built in roles:<br>
 <a href="https://docs.microsoft.com/azure/role-based-access-control/built-in-roles" target="_blank" rel="noopener">https://docs.microsoft.com/azure/role-based-access-control/built-in-roles</a></p>
@@ -471,6 +482,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

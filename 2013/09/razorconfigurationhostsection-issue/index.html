@@ -68,6 +68,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -91,12 +95,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -208,15 +214,15 @@
         <div class="article-entry" itemprop="articleBody">
             <h4 id="A-System-Web-WebPages-Razor-Configuration-HostSection-cannot-be-cast-to-B-System-Web-WebPages-Razor-Configuration-HostSection-Type-A-originates-from-‘System-Web-WebPages-Razor-Version-2-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-windows-Microsoft-Net-assembly-GAC-MSIL-System-Web-WebPages-Razor-v4-0-2-0-0-0-31bf3856ad364e35-System-Web-WebPages-Razor-dll’-Type-B-originates-from-‘System-Web-WebPages-Razor-Version-3-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-Users-jong-AppData-Local-Temp-Temporary-ASP-NET-Files-root-6f8c444d-f737f6f4-assembly-dl3-dde55404-3dbcbf4e-cab0ce01-System-Web-WebPages-Razor-dll’"><a class="header-anchor" href="#A-System-Web-WebPages-Razor-Configuration-HostSection-cannot-be-cast-to-B-System-Web-WebPages-Razor-Configuration-HostSection-Type-A-originates-from-‘System-Web-WebPages-Razor-Version-2-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-windows-Microsoft-Net-assembly-GAC-MSIL-System-Web-WebPages-Razor-v4-0-2-0-0-0-31bf3856ad364e35-System-Web-WebPages-Razor-dll’-Type-B-originates-from-‘System-Web-WebPages-Razor-Version-3-0-0-0-Culture-neutral-PublicKeyToken-31bf3856ad364e35’-in-the-context-‘Default’-at-location-‘C-Users-jong-AppData-Local-Temp-Temporary-ASP-NET-Files-root-6f8c444d-f737f6f4-assembly-dl3-dde55404-3dbcbf4e-cab0ce01-System-Web-WebPages-Razor-dll’"></a><em>[A]System.Web.WebPages.Razor.Configuration.HostSection cannot be cast to [B]System.Web.WebPages.Razor.Configuration.HostSection. Type A originates from ‘System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35’ in the context ‘Default’ at location ‘C:\windows\<a href="http://Microsoft.Net" target="_blank" rel="noopener">Microsoft.Net</a>\assembly\GAC_MSIL\System.Web.WebPages.Razor\v4.0_2.0.0.0__31bf3856ad364e35\System.Web.WebPages.Razor.dll’. Type B originates from ‘System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35’ in the context ‘Default’ at location ‘C:\Users\jong\AppData\Local\Temp\Temporary <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Files\root\6f8c444d\f737f6f4\assembly\dl3\dde55404\3dbcbf4e_cab0ce01\System.Web.WebPages.Razor.dll’.</em></h4>
 <p>Add this to Web.config</p>
-<pre><code class="language-xml">&lt;runtime&gt;
-  &lt;assemblyBinding xmlns=&quot;urn:schemas-microsoft-com:asm.v1&quot;&gt;
+<pre class="line-numbers language-xml"><code class="language-xml">&lt;runtime&gt;
+  &lt;assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1"&gt;
     &lt;dependentAssembly&gt;
-      &lt;assemblyIdentity name=&quot;System.Web.WebPages.Razor&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
-      &lt;bindingRedirect oldVersion=&quot;0.0.0.0-3.0.0.0&quot; newVersion=&quot;3.0.0.0&quot;/&gt;
+      &lt;assemblyIdentity name="System.Web.WebPages.Razor" publicKeyToken="31bf3856ad364e35" /&gt;
+      &lt;bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0"/&gt;
     &lt;/dependentAssembly&gt;
   &lt;/assemblyBinding&gt;
 &lt;/runtime&gt;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -453,6 +459,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

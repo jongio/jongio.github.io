@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="vuejs,typescript,webdev,vscode" />
+    <meta name="keywords" content="webdev,vuejs,typescript,vscode" />
     
     <meta name="description" content="With this code: @Component export default class CategoryRating extends Vue {   @Prop({default: {}}) category: any;  I kept getting this VS Code error:  Experimental support for decorators is a feature">
 <meta property="og:type" content="article">
@@ -35,9 +35,9 @@
 <meta property="article:published_time" content="2019-02-06T16:06:23.000Z">
 <meta property="article:modified_time" content="2019-02-07T00:14:48.000Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="webdev">
 <meta property="article:tag" content="vuejs">
 <meta property="article:tag" content="typescript">
-<meta property="article:tag" content="webdev">
 <meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/000054.png">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,22 +219,22 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>With this code:</p>
-<pre><code class="language-typescript">@Component
+<pre class="line-numbers language-typescript"><code class="language-typescript">@Component
 export default class CategoryRating extends Vue {
   @Prop({default: {}}) category: any;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>I kept getting this VS Code error:</p>
 <blockquote>
 <p>Experimental support for decorators is a feature that is subject to change in a future release. Set the ‘experimentalDecorators’ option to remove this warning.</p>
 </blockquote>
 <p><img src="000054.png" alt=""></p>
 <p>Even though I have experimentalDecorators set to true in my tsconfig</p>
-<pre><code class="language-json">{
-  &quot;compilerOptions&quot;: {
-    &quot;experimentalDecorators&quot;: true,
+<pre class="line-numbers language-json"><code class="language-json">{
+  "compilerOptions": {
+    "experimentalDecorators": true,
   }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Turns out I had the parent folder open in VS Code,</p>
 <p><code>\code\project\</code></p>
 <p>But I needed to have the actual project as my root in VS Code</p>
@@ -473,6 +479,10 @@ export default class CategoryRating extends Vue {
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

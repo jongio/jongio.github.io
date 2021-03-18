@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/056.png">
 <meta property="article:published_time" content="2021-02-02T16:55:28.000Z">
-<meta property="article:modified_time" content="2021-02-03T01:59:08.367Z">
+<meta property="article:modified_time" content="2021-03-18T06:52:35.027Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/056.png">
@@ -68,6 +68,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -91,12 +95,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -208,23 +214,27 @@
         <div class="article-entry" itemprop="articleBody">
             <p>This was time suck for me, hopefully not for you after reading this.</p>
 <p>I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but then got this error:</p>
-<pre><code class="hljs plain">Exception calling &quot;ParseExact&quot; with &quot;3&quot; argument(s): &quot;String &#39;‎1&#x2F;‎1&#x2F;‎2000 ‏‎12:12 AM&#39; was not recognized as a valid DateTime.&quot;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">Exception calling "ParseExact" with "3" argument(s): "String '‎1/‎1/‎2000 ‏‎12:12 AM' was not recognized as a valid DateTime."
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="056.png" alt="&quot;The error&quot;"></p>
 <p>To the eye this looks like a valid date string, but there’s some sneaky hidden chars in there.  See this:</p>
 <p>Using: <a href="https://www.babelstone.co.uk/Unicode/whatisit.html" target="_blank" rel="noopener">https://www.babelstone.co.uk/Unicode/whatisit.html</a></p>
 <p>You can see that we have some Left to right and right to left unicode chars:</p>
 <p><img src="057.png" alt="&quot;The hidden unicode chars&quot;"></p>
 <p>So, all you have to do is remove those nasty buggers:</p>
-<pre><code class="hljs powershell"><span class="hljs-variable">$dateString</span> = (<span class="hljs-variable">$dir</span>.GetDetailsOf( <span class="hljs-variable">$file</span>, <span class="hljs-number">12</span> ) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200e&#125;"</span>) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200f&#125;"</span></code></pre>
+<pre class="line-numbers language-powershell"><code class="language-powershell">$dateString = ($dir.GetDetailsOf( $file, 12 ) -replace "`u{200e}") -replace "`u{200f}"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>And use the format code “g”, like so:</p>
-<pre><code class="hljs powershell"><span class="hljs-variable">$date</span> = [<span class="hljs-built_in">DateTime</span>]::ParseExact(<span class="hljs-variable">$dateString</span>, <span class="hljs-string">"g"</span>, <span class="hljs-variable">$null</span>)</code></pre>
+<pre class="line-numbers language-powershell"><code class="language-powershell">$date = [DateTime]::ParseExact($dateString, "g", $null)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>And it works.</p>
 <p>The code:</p>
-<pre><code class="hljs powershell"><span class="hljs-variable">$dateString</span> = (<span class="hljs-variable">$dir</span>.GetDetailsOf( <span class="hljs-variable">$file</span>, <span class="hljs-number">12</span> ) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200e&#125;"</span>) <span class="hljs-operator">-replace</span> <span class="hljs-string">"`u&#123;200f&#125;"</span>
+<pre class="line-numbers language-powershell"><code class="language-powershell">$dateString = ($dir.GetDetailsOf( $file, 12 ) -replace "`u{200e}") -replace "`u{200f}"
     
-<span class="hljs-keyword">if</span> (<span class="hljs-variable">$dateString</span>) &#123;
-    <span class="hljs-variable">$date</span> = [<span class="hljs-built_in">DateTime</span>]::ParseExact(<span class="hljs-variable">$dateString</span>, <span class="hljs-string">"g"</span>, <span class="hljs-variable">$null</span>)
-&#125;</code></pre>
+if ($dateString) {
+    $date = [DateTime]::ParseExact($dateString, "g", $null)
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Hopefully this saved you time and money.</p>
 
         </div>
@@ -462,6 +472,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

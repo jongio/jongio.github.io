@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/poll-long-running-async-requests-postman/000135.png">
 <meta property="article:published_time" content="2017-03-23T22:08:34.000Z">
-<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:51:01.947Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="postman">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -211,21 +217,21 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Some HTTP requests are long running and instead of asking users to wait for the long running operation to complete, they will return a “request status URI” that, when requested, will return a running/success/failure message.</p>
 <p>For example, when you create a new Azure IoT Hub via this request:</p>
-<pre><code>https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName?api-version={{api-version}}
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName?api-version={{api-version}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>It will return an Azure-AsyncOperation header with the following URI:</p>
-<pre><code>https://management.azure.com/subscriptions/f9766876-e50b-006f-9ad3-5afb7bb8cf45/resourceGroups/jongtrash/providers/Microsoft.Devices/IotHubs/jongiothubtest2/operationResults/NzRkNDQ3NGUtN2NmNS00YWLWIyZGEtNTMxZjEwYzJjNWI4?api-version=2016-02-03&amp;asyncinfo
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">https://management.azure.com/subscriptions/f9766876-e50b-006f-9ad3-5afb7bb8cf45/resourceGroups/jongtrash/providers/Microsoft.Devices/IotHubs/jongiothubtest2/operationResults/NzRkNDQ3NGUtN2NmNS00YWLWIyZGEtNTMxZjEwYzJjNWI4?api-version=2016-02-03&amp;asyncinfo
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Which will have a payload like this when still running:</p>
-<pre><code class="language-javascript">{
-  &quot;status&quot;: &quot;Running&quot;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "status": "Running"
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Or this when the IoT Hub has been created:</p>
-<pre><code class="language-javascript">{
-  &quot;status&quot;: &quot;Succeeded&quot;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "status": "Succeeded"
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Here’s how to deal with this scenario in Postman.</p>
 <p>The flow of requests will be executed in this order:</p>
 <p>1. Execute the long running request.<br>
@@ -234,61 +240,61 @@
 <h2 id="Create-a-“Delay”-Request"><a class="header-anchor" href="#Create-a-“Delay”-Request"></a>Create a “Delay” Request</h2>
 <p>This will create a Postman timeout that doesn’t chew up your CPU.</p>
 <h3 id="URI"><a class="header-anchor" href="#URI"></a>URI</h3>
-<pre><code>https://echo.getpostman.com/delay/{{delay}}
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">https://echo.getpostman.com/delay/{{delay}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>“delay” is the number of minutes to delay before the next execution.</p>
 <h3 id="Tests"><a class="header-anchor" href="#Tests"></a>Tests</h3>
 <p>After the request is delayed it will execute this “test” which checks to see if there’s a “nextRequest” environment variable and then calls the “setNextRequest” method to execute it.</p>
-<pre><code class="language-javascript">var next = postman.getEnvironmentVariable('nextRequest');
+<pre class="line-numbers language-javascript"><code class="language-javascript">var next = postman.getEnvironmentVariable('nextRequest');
 if(next !== ''){
     postman.setNextRequest(next);
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Create-Long-Running-HTTP-request"><a class="header-anchor" href="#Create-Long-Running-HTTP-request"></a>Create Long Running HTTP request</h2>
 <h3 id="URI-v2"><a class="header-anchor" href="#URI-v2"></a>URI</h3>
 <p><img src="000130.png" alt=""></p>
-<pre><code>https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName?api-version={{api-version}}
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Devices/IotHubs/:resourceName?api-version={{api-version}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Headers"><a class="header-anchor" href="#Headers"></a>Headers</h3>
 <p><img src="000131.png" alt=""></p>
-<pre><code class="language-javascript">Authorization:Bearer {{bearerToken}}
+<pre class="line-numbers language-javascript"><code class="language-javascript">Authorization:Bearer {{bearerToken}}
 Content-Type:application/json
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <blockquote>
 <p>See <a href="/2017/03/azure-active-directory-access-tokens-postman/">How to Use Azure Active Directory (AAD) Access Tokens in Postman</a> for instructions on how to get a bearer token.</p>
 </blockquote>
 <h3 id="Body"><a class="header-anchor" href="#Body"></a>Body</h3>
 <p><img src="000132.png" alt=""></p>
-<pre><code class="language-javascript">{
-  &quot;location&quot;: &quot;West US&quot;,
-  &quot;sku&quot;: {
-    &quot;name&quot;: &quot;S1&quot;,
-    &quot;tier&quot;: &quot;Standard&quot;,
-    &quot;capacity&quot;: 1
+<pre class="line-numbers language-javascript"><code class="language-javascript">{
+  "location": "West US",
+  "sku": {
+    "name": "S1",
+    "tier": "Standard",
+    "capacity": 1
   }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Tests-v2"><a class="header-anchor" href="#Tests-v2"></a>Tests</h3>
 <p>This will first see if the request was successful and then put the Azure-AsyncOperation URI into an Environment Variable (to be executed later).  It then sets the “nextRequest” environment variable that will be executed by</p>
-<pre><code class="language-javascript">var json = JSON.parse(responseBody);
-tests[&quot;Create or Update IoT Hub&quot;] = !json.error &amp;&amp; responseBody !== '' &amp;&amp; responseBody !== '{}';
+<pre class="line-numbers language-javascript"><code class="language-javascript">var json = JSON.parse(responseBody);
+tests["Create or Update IoT Hub"] = !json.error &amp;&amp; responseBody !== '' &amp;&amp; responseBody !== '{}';
 
-postman.setEnvironmentVariable(&quot;createUpdateIoTHubResponseUrl&quot;, postman.getResponseHeader(&quot;Azure-AsyncOperation&quot;));
-postman.setEnvironmentVariable(&quot;nextRequest&quot;, 'Verify Create or Update IoT Hub');
+postman.setEnvironmentVariable("createUpdateIoTHubResponseUrl", postman.getResponseHeader("Azure-AsyncOperation"));
+postman.setEnvironmentVariable("nextRequest", 'Verify Create or Update IoT Hub');
 postman.setNextRequest('Verify Create or Update IoT Hub');
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Setup-Long-Running-Status-Check-Request"><a class="header-anchor" href="#Setup-Long-Running-Status-Check-Request"></a>Setup Long Running Status Check Request</h2>
 <p>This request will call the “Azure-AsyncOperation” URI, check the status, call Delay, which will then execute the status check again.</p>
 <h3 id="URI-v3"><a class="header-anchor" href="#URI-v3"></a>URI</h3>
-<pre><code class="language-javascript">{{createUpdateIoTHubResponseUrl}}
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">{{createUpdateIoTHubResponseUrl}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000134.png" alt=""></p>
 <h3 id="Headers-v2"><a class="header-anchor" href="#Headers-v2"></a>Headers</h3>
-<pre><code class="language-javascript">Authorization:Bearer {{bearerToken}}
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">Authorization:Bearer {{bearerToken}}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Tests-v3"><a class="header-anchor" href="#Tests-v3"></a>Tests</h3>
 <p>Add the following test to check the status and if still running will set the next request to ‘Delay’, which in turn will execute this request again.</p>
-<pre><code class="language-javascript">var test = 'Verify Create or Update IoT Hub';
+<pre class="line-numbers language-javascript"><code class="language-javascript">var test = 'Verify Create or Update IoT Hub';
 var json = JSON.parse(responseBody);
 
 if(json.error){
@@ -301,7 +307,7 @@ if(json.error){
         postman.setNextRequest('Delay');
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Execute-Requests"><a class="header-anchor" href="#Execute-Requests"></a>Execute Requests</h2>
 <p>When you execute the tests in Collection Running, the output will look like the following:</p>
 <p><img src="000138.png" alt=""></p>
@@ -547,6 +553,10 @@ if(json.error){
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

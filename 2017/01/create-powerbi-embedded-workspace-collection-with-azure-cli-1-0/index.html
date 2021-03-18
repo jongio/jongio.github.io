@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/create-powerbi-embedded-workspace-collection-with-azure-cli-1-0/000002.png">
 <meta property="article:published_time" content="2017-01-10T07:02:13.000Z">
-<meta property="article:modified_time" content="2018-01-13T15:54:08.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:45:13.588Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="power bi">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -214,33 +220,33 @@
 <p>For now, here’s how to create a Power BI Workspace Collection (and get Access Keys) via the <a href="https://docs.microsoft.com/en-us/azure/xplat-cli-install" target="_blank" rel="noopener">Azure CLI 1.0</a>.</p>
 <h2 id="1-Install-the-Azure-CLI"><a class="header-anchor" href="#1-Install-the-Azure-CLI"></a>1. Install the Azure CLI</h2>
 <p>Open a command prompt and execute the following:</p>
-<pre><code>npm i -g azure-cli
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm i -g azure-cli
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="2-Login-to-Azure-CLI"><a class="header-anchor" href="#2-Login-to-Azure-CLI"></a>2. Login to Azure CLI</h2>
-<pre><code>azure login
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure login
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>That will output a URL and a code to enter there.</p>
 <p><strong>To sign in, use a web browser to open the page <a href="https://aka.ms/devicelogin" target="_blank" rel="noopener">https://aka.ms/devicelogin</a> and enter the code B3L4ZYLGA to authenticate.</strong></p>
 <p>Go back to your command line and you will now see this:</p>
-<pre><code>info:    login command OK
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">info:    login command OK
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="3-Set-Current-Azure-Subscription"><a class="header-anchor" href="#3-Set-Current-Azure-Subscription"></a>3. Set Current Azure Subscription</h2>
 <p>By default, the first Azure Subscription returned is the one that all future actions will be taken on.  You can find your subscription list by executing the following:</p>
-<pre><code>azure account list
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure account list
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Find the Id of the Subscription you want to work with and then execute the following:</p>
-<pre><code>azure account set {id}
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure account set {id}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the following output:</p>
-<pre><code>info:    account set command OK
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">info:    account set command OK
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="4-Create-Azure-Resource-Group"><a class="header-anchor" href="#4-Create-Azure-Resource-Group"></a>4. Create Azure Resource Group</h2>
 <p>You can either create a new resource group or use an existing one. To create a new one, execute the following:</p>
 <blockquote>
 <p>Replace jong-rg1 with your desired resource group name</p>
 </blockquote>
-<pre><code>azure group create jong-rg1 westus
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure group create jong-rg1 westus
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="5-Create-Power-BI-Workspace-Collection"><a class="header-anchor" href="#5-Create-Power-BI-Workspace-Collection"></a>5. Create Power BI Workspace Collection</h2>
 <p>Enter the following:</p>
 <blockquote>
@@ -248,10 +254,10 @@
 Replace jong-pbie4 with your desired Power BI Workspace Collection name<br>
 Replace westus with your desired location</p>
 </blockquote>
-<pre><code>azure powerbi create jong-rg1 jong-pbie4 westus
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure powerbi create jong-rg1 jong-pbie4 westus
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the following output:</p>
-<pre><code>info:    Executing command powerbi create
+<pre class="line-numbers language-bash"><code class="language-bash">info:    Executing command powerbi create
 + Creating workspace collection: jong-pbie4
 info:    WorkspaceCollection created:
 data:    Property  Value
@@ -260,23 +266,23 @@ data:    name      jong-pbie4
 data:    location  West US
 data:    tags      null
 info:    powerbi create command OK
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="6-Get-Access-Keys"><a class="header-anchor" href="#6-Get-Access-Keys"></a>6. Get Access Keys</h2>
 <blockquote>
 <p>Replace jong-rg1 with your resource group name<br>
 Replace jong-pbie4 with your Workspace Collection name</p>
 </blockquote>
-<pre><code>azure powerbi keys list jong-rg1 jong-pbie4
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azure powerbi keys list jong-rg1 jong-pbie4
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will see the following output.</p>
-<pre><code>info:    Executing command powerbi keys list
+<pre class="line-numbers language-bash"><code class="language-bash">info:    Executing command powerbi keys list
 + Getting workspace collection access keys...
 data:    Name              Key
 data:    ----------------  ----------------------------------------------------------------------------------------
 data:    key1 (Primary)    1bCTtlodCxqivFexuaHpKX37jqvHJr2cGbeXmXtwfNOxgG8blGoAxSLhlBpr4UwrbSNDfOiw6+4HvWjmIcLqA==
 data:    key2 (Secondary)  yRLu57/T67nsAPbt4AuypDu78Gvi4PNitEOGrXaVAg/hYxK7tksAOnLCIegsM1VryzTf4qL2pxcwVCJLA6Dpw==
 info:    powerbi keys list command OK
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>When you go to the Azure Portal, you will now see your newly created Power BI Workspace Collection.</p>
 <p><img src="000025.png" alt=""></p>
 <p>Now that you have your Workspace Collection and Access Keys, you can follow along with my <a href="/2017/01/powerbi-embedded-javascript-api-range-slider-filter/">How to Embed and Filter a Power BI Report with the new Power BI Embedded JavaScript API</a> to learn how to use your keys to embed a Power BI report into your application.</p>
@@ -517,6 +523,10 @@ info:    powerbi keys list command OK
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

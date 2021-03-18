@@ -64,6 +64,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -87,12 +91,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -282,10 +288,10 @@ Before we go too far into this Azure REST APIs for Insomnia post, I want to make
 
         <p class="article-excerpt">
             I got this error while deploying a new Azure Kubernetes Cluster.
-&#123;
-   "error":&#123;
+{
+   "error":{
       "code":"InvalidTemplateDeployment",
-      "message":"The template deployment 'memealyzerdev3' is not val
+      "message":"The template deployment 'memealyzerdev3' is not valid accordi
         </p>
     </div>
 </article>
@@ -453,8 +459,8 @@ The new Azure CLI
             Got this today when trying to assign access_policy to kubelet_identity
 Error: Unsupported attribute
 
-  on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:
-  59:     ob
+  on main.tf line 59, in resource "azurerm_key_vault" "key_vault":
+  59:     object_id = azurerm_ku
         </p>
     </div>
 </article>
@@ -505,7 +511,7 @@ Error: Unsupported attribute
 
         <p class="article-excerpt">
             Got this error today when trying to set a secret with terraform.
-Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&#x3D;401 -- Ori
+Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode=401 -- Original
         </p>
     </div>
 </article>
@@ -1414,6 +1420,10 @@ I uninstalled the Azure CLI via Apps, but it was still av
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="visual studio" />
     
-    <meta name="description" content="I was running the following post-build scripts in VS2013… $(FrameworkDir)\installutil.exe &#x2F;u &quot;$(TargetPath)&quot; $(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;  and was getting this e">
+    <meta name="description" content="I was running the following post-build scripts in VS2013… $(FrameworkDir)\installutil.exe &#x2F;u &quot;$(TargetPath)&quot; $(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;  and was getting this error… &quot;System.Securi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[object Object]">
 <meta property="og:url" content="https://blog.jongallant.com/2014/11/solution-to-systemsecuritysecurityexcep/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I was running the following post-build scripts in VS2013… $(FrameworkDir)\installutil.exe &#x2F;u &quot;$(TargetPath)&quot; $(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;  and was getting this e">
+<meta property="og:description" content="I was running the following post-build scripts in VS2013… $(FrameworkDir)\installutil.exe &#x2F;u &quot;$(TargetPath)&quot; $(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;  and was getting this error… &quot;System.Securi">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2014-11-14T12:44:00.000Z">
-<meta property="article:modified_time" content="2016-12-27T06:51:47.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:54:22.127Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="visual studio">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -210,12 +216,12 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I was running the following post-build scripts in VS2013…</p>
-<pre><code>$(FrameworkDir)\installutil.exe /u &quot;$(TargetPath)&quot;
-$(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">$(FrameworkDir)\installutil.exe /u "$(TargetPath)"
+$(FrameworkDir)\installutil.exe "$(TargetPath)"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>and was getting this error…</p>
-<pre><code>&quot;System.Security.SecurityException: The source was not found, but some or all event logs could not be searched. Inaccessible logs: Security.&quot;
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">"System.Security.SecurityException: The source was not found, but some or all event logs could not be searched. Inaccessible logs: Security."
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Turns out I just needed to <strong>open VS as admin</strong>. Easy solution that took too long to figure out. Hope this helps.</p>
 
         </div>
@@ -453,6 +459,10 @@ $(FrameworkDir)\installutil.exe &quot;$(TargetPath)&quot;
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
 <meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
-<meta property="article:modified_time" content="2020-08-31T21:25:40.964Z">
+<meta property="article:modified_time" content="2021-03-18T06:40:39.734Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -74,6 +74,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -97,12 +101,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -224,9 +230,11 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 </blockquote>
 <h2 id="Azure-Identity-and-DefaultAzureCredential"><a class="header-anchor" href="#Azure-Identity-and-DefaultAzureCredential"></a>Azure Identity and DefaultAzureCredential</h2>
 <p>With Azure Identity, we have many token credential types and allow you to chain them in any way that you please.  For example, if you want your app to try to use Managed Identity first and then fallback to Azure CLI credential, then you would do something like this:</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> cred = <span class="hljs-keyword">new</span> ChainedTokenCredential(<span class="hljs-keyword">new</span> ManagedIdentityCredential(), <span class="hljs-keyword">new</span> AzureCliCredential());</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var cred = new ChainedTokenCredential(new ManagedIdentityCredential(), new AzureCliCredential());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>And then pass that into your client</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobServiceClient(uri, cred);</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new BlobServiceClient(uri, cred);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>When you call a method on that client, it will try to get tokens from each of the credential types that you instantiated ChainedTokenCredential with.</p>
 <p>Azure Identity also provides a default chain called <code>DefaultAzureCredential</code>, which will try many of the common credential types. The exact order can be found here: <a href="https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential Class</a>. DefaultAzureCredential includes ManagedIdentityCredential and AzureCliCredential, so you can use it to cover the local and cloud scenarios without changing code, but I have seen most customers start with DefaultAzureCredential and then create their own chain, so they know exactly what credentials are being tried and used.</p>
 <blockquote>
@@ -250,7 +258,8 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li>Start Azurite</li>
 </ol>
 <p>In order to work with the Azure SDKs, you need to start Azurite with a cert and OAuth enabled.  Here’s the command to do so:</p>
-<pre><code class="hljs bash">azurite --oauth basic --cert certname.pem --key certname-key.pem</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">azurite --oauth basic --cert certname.pem --key certname-key.pem
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Full steps, including how to generate the cert, can be found here: <a href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/">Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer</a></p>
 <ol start="3">
 <li><a href="https://storageexplorer.com/" target="_blank" rel="noopener">Install Azure Storage Explorer</a></li>
@@ -271,7 +280,8 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li><a href="https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows#install-the-azure-functions-core-tools" target="_blank" rel="noopener">Install Azure Functions Core Tools</a></li>
 </ol>
 <p>The Core Tools allow you to create projects, functions, and host them locally.</p>
-<pre><code class="hljs plain">npm install -g azure-functions-core-tools@3</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">npm install -g azure-functions-core-tools@3
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Version: 3.0.2798</p>
 <ol start="7">
 <li><a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">Install VS Code</a></li>
@@ -294,7 +304,8 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li>Create Function App Project</li>
 </ol>
 <p>The following command will create the main function project to house the functions.</p>
-<pre><code class="hljs plain">func init FUNCTION_APP_NAME --csharp --worker-runtime dotnet</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">func init FUNCTION_APP_NAME --csharp --worker-runtime dotnet
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> This is a unique name that you create.</li>
@@ -303,29 +314,31 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <p>This is what your directory structure will look like after you have created the function app.</p>
 <p><img src="005.png" alt="&quot;Function project folder&quot;"></p>
 <p>If you have all the latest versions of the SDKs and tools installed, as of 2/2/2020, your csproj file will look like the following:</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Project</span> <span class="hljs-attr">Sdk</span>=<span class="hljs-string">"Microsoft.NET.Sdk"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">PropertyGroup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">TargetFramework</span>&gt;</span>netcoreapp3.1<span class="hljs-tag">&lt;/<span class="hljs-name">TargetFramework</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">AzureFunctionsVersion</span>&gt;</span>v3<span class="hljs-tag">&lt;/<span class="hljs-name">AzureFunctionsVersion</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">PropertyGroup</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">PackageReference</span> <span class="hljs-attr">Include</span>=<span class="hljs-string">"Microsoft.NET.Sdk.Functions"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"3.0.3"</span> /&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">ItemGroup</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"host.json"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>PreserveNewest<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">None</span> <span class="hljs-attr">Update</span>=<span class="hljs-string">"local.settings.json"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>PreserveNewest<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToOutputDirectory</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">CopyToPublishDirectory</span>&gt;</span>Never<span class="hljs-tag">&lt;/<span class="hljs-name">CopyToPublishDirectory</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">None</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ItemGroup</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">Project</span>&gt;</span></code></pre>
+<pre class="line-numbers language-xml"><code class="language-xml">&lt;Project Sdk="Microsoft.NET.Sdk"&gt;
+  &lt;PropertyGroup&gt;
+    &lt;TargetFramework&gt;netcoreapp3.1&lt;/TargetFramework&gt;
+    &lt;AzureFunctionsVersion&gt;v3&lt;/AzureFunctionsVersion&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.3" /&gt;
+  &lt;/ItemGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;None Update="host.json"&gt;
+      &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;
+    &lt;/None&gt;
+    &lt;None Update="local.settings.json"&gt;
+      &lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;
+      &lt;CopyToPublishDirectory&gt;Never&lt;/CopyToPublishDirectory&gt;
+    &lt;/None&gt;
+  &lt;/ItemGroup&gt;
+&lt;/Project&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>Change Directory</li>
 </ol>
 <p>After the project is created, navigate to that new directory.</p>
-<pre><code class="hljs plain">cd FUNCTION_APP_NAME</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">cd FUNCTION_APP_NAME
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The name of the Function app that you just created.</li>
@@ -337,7 +350,8 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <blockquote>
 <p>Make sure you are in the root of the function project (run the CD command above) before you run this.</p>
 </blockquote>
-<pre><code class="hljs plain">func new --name FUNCTION_NAME --template &quot;Http Trigger&quot;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">func new --name FUNCTION_NAME --template "Http Trigger"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The name of the Function app that you just created.</li>
@@ -363,8 +377,9 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <ol start="6">
 <li>Add Azure SDK Dependencies</li>
 </ol>
-<pre><code class="hljs plain">dotnet add package Azure.Identity
-dotnet add package Azure.Storage.Blobs</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">dotnet add package Azure.Identity
+dotnet add package Azure.Storage.Blobs
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <blockquote>
 <p>You need at least Azure.Identity --version 1.2.2 for the Azure CLI authentication steps to work.</p>
 </blockquote>
@@ -383,9 +398,10 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <ol start="8">
 <li>Add <code>using</code> Statements</li>
 </ol>
-<pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System.Text;
-<span class="hljs-keyword">using</span> Azure.Identity;
-<span class="hljs-keyword">using</span> Azure.Storage.Blobs;</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">using System.Text;
+using Azure.Identity;
+using Azure.Storage.Blobs;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="9">
 <li>Add Code</li>
 </ol>
@@ -393,30 +409,31 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <blockquote>
 <p>Since creating this post, I did a follow up post that shows you how to use Azurite with HTTPS.  Please view that post if you’d like to use HTTPS and simplify the BlobContainerClient to only use DefaultAzureCredential: <a href="/azurite-https-defaultazurecredential">Use HTTPS and DefaultAzureCredential with Azurite for Local Azure Storage Emulation</a></p>
 </blockquote>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> host = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_HOST"</span>);
-<span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
-<span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);
-<span class="hljs-keyword">var</span> emulator = account == <span class="hljs-string">"devstoreaccount1"</span>;
-<span class="hljs-keyword">var</span> uri = <span class="hljs-string">$"https://<span class="hljs-subst">&#123;(emulator ? <span class="hljs-string">$"<span class="hljs-subst">&#123;host&#125;</span>/<span class="hljs-subst">&#123;account&#125;</span>"</span> : <span class="hljs-string">$"<span class="hljs-subst">&#123;account&#125;</span>.<span class="hljs-subst">&#123;host&#125;</span>"</span>)&#125;</span>/<span class="hljs-subst">&#123;container&#125;</span>"</span>;
+<pre class="line-numbers language-csharp"><code class="language-csharp">var host = Environment.GetEnvironmentVariable("AZURE_STORAGE_HOST");
+var account = Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT");
+var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
+var emulator = account == "devstoreaccount1";
+var uri = $"https://{(emulator ? $"{host}/{account}" : $"{account}.{host}")}/{container}";
 
-<span class="hljs-comment">// Generate random string for blob content and file name</span>
-<span class="hljs-keyword">var</span> content = Guid.NewGuid().ToString(<span class="hljs-string">"n"</span>).Substring(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>);
-<span class="hljs-keyword">var</span> file = <span class="hljs-string">$"<span class="hljs-subst">&#123;content&#125;</span>.txt"</span>;
+// Generate random string for blob content and file name
+var content = Guid.NewGuid().ToString("n").Substring(0, 8);
+var file = $"{content}.txt";
 
-<span class="hljs-comment">// For Azurite 3.7+ with HTTPS and OAuth enabled, you can run Azurite with the following</span>
-<span class="hljs-comment">// azurite --oauth basic --cert cert-name.pem --key cert-name-key.pem</span>
-<span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> BlobContainerClient(<span class="hljs-keyword">new</span> Uri(uri), <span class="hljs-keyword">new</span> DefaultAzureCredential());
+// For Azurite 3.7+ with HTTPS and OAuth enabled, you can run Azurite with the following
+// azurite --oauth basic --cert cert-name.pem --key cert-name-key.pem
+var client = new BlobContainerClient(new Uri(uri), new DefaultAzureCredential());
 
-<span class="hljs-comment">// Create container</span>
-<span class="hljs-keyword">await</span> client.CreateIfNotExistsAsync();
+// Create container
+await client.CreateIfNotExistsAsync();
 
-<span class="hljs-comment">// Get content stream</span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">var</span> stream = <span class="hljs-keyword">new</span> MemoryStream(Encoding.ASCII.GetBytes(content));
+// Get content stream
+using var stream = new MemoryStream(Encoding.ASCII.GetBytes(content));
 
-<span class="hljs-comment">// Upload blob</span>
-<span class="hljs-keyword">await</span> client.UploadBlobAsync(file, stream);
+// Upload blob
+await client.UploadBlobAsync(file, stream);
 
-<span class="hljs-keyword">return</span> (ActionResult)<span class="hljs-keyword">new</span> OkObjectResult(<span class="hljs-string">$"<span class="hljs-subst">&#123;file&#125;</span> uploaded."</span>);</code></pre>
+return (ActionResult)new OkObjectResult($"{file} uploaded.");
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="10">
 <li>Set Local Settings</li>
 </ol>
@@ -424,16 +441,17 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <blockquote>
 <p>If you have cloned the repo, then take the settings from <code>local.settings.local.json</code> and copy them to <code>'local.settings.json</code></p>
 </blockquote>
-<pre><code class="hljs json">&#123;
-    <span class="hljs-attr">"IsEncrypted"</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">"Values"</span>: &#123;
-        <span class="hljs-attr">"AzureWebJobsStorage"</span>: <span class="hljs-string">"UseDevelopmentStorage=true"</span>,
-        <span class="hljs-attr">"FUNCTIONS_WORKER_RUNTIME"</span>: <span class="hljs-string">"dotnet"</span>,
-        <span class="hljs-attr">"AZURE_STORAGE_HOST"</span>: <span class="hljs-string">"127.0.0.1:10000"</span>,
-        <span class="hljs-attr">"AZURE_STORAGE_ACCOUNT"</span>: <span class="hljs-string">"devstoreaccount1"</span>,
-        <span class="hljs-attr">"AZURE_STORAGE_CONTAINER"</span>: <span class="hljs-string">"azfuncblobs"</span>
-    &#125;
-&#125;</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "AZURE_STORAGE_HOST": "127.0.0.1:10000",
+        "AZURE_STORAGE_ACCOUNT": "devstoreaccount1",
+        "AZURE_STORAGE_CONTAINER": "azfuncblobs"
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Notes:</p>
 <ul>
 <li><code>AZURE_STORAGE_HOST</code> Azurite host the Blob endpoints at <code>127.0.0.1:10000</code> by default.</li>
@@ -444,11 +462,13 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <li>Start and Run the Function</li>
 </ol>
 <p>Hit F5 in VS Code and you’ll see the following:</p>
-<pre><code class="hljs plain">funcblobtest: [GET,POST] http:&#x2F;&#x2F;localhost:7071&#x2F;api&#x2F;funcblobtest</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">funcblobtest: [GET,POST] http://localhost:7071/api/funcblobtest
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>If you see the following, click “Debug Anyway”</p>
 <p><img src="007.png" alt="&quot;Function project folder with function&quot;"></p>
 <p>Ctrl+Click that link to open it in a browser. Your function will run and you will see output like the following:</p>
-<pre><code class="hljs plain">00e7d1bd.txt uploaded.</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">00e7d1bd.txt uploaded.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000055.png" alt=""></p>
 <ol start="11">
 <li>Verify Success with Storage Explorer</li>
@@ -458,8 +478,9 @@ dotnet add package Azure.Storage.Blobs</code></pre>
 <p><img src="000063.png" alt=""></p>
 <h4 id="Debugging"><a class="header-anchor" href="#Debugging"></a>Debugging</h4>
 <p>If you see an error like this, that means that your Azure Storage Emulator has not been started.  See above for instructions on how to start your Storage Emulator.</p>
-<pre><code class="hljs plain">[1&#x2F;31&#x2F;2020 7:55:30 PM] System.Private.CoreLib: Exception while executing function: function1. Azure.Core: Retry failed after 6 tries. (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine 
-actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.). Azure.Core: No connection could be made because the target machine actively refused it. System.Net.Http: No connection could be made because the target machine actively refused it. System.Private.CoreLib: No connection could be made because the target machine actively refused it.</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">[1/31/2020 7:55:30 PM] System.Private.CoreLib: Exception while executing function: function1. Azure.Core: Retry failed after 6 tries. (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine 
+actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.) (No connection could be made because the target machine actively refused it.). Azure.Core: No connection could be made because the target machine actively refused it. System.Net.Http: No connection could be made because the target machine actively refused it. System.Private.CoreLib: No connection could be made because the target machine actively refused it.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>Now that we have everything working locally,  lets move on to setting up our Azure resources.  Click on the Part 2 link below to get started.</p>
 <p>Part 1: Local Function with Storage Emulator (local function, local storage)<br>
 Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and Service Principal (local function, cloud storage)</a><br>
@@ -701,6 +722,10 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

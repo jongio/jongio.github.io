@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
 <meta property="article:published_time" content="2017-12-22T13:39:50.000Z">
-<meta property="article:modified_time" content="2017-12-30T16:20:50.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:45:54.609Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="dotnet">
 <meta property="article:tag" content="python">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -212,20 +218,20 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>When running Python unit tests with tox, you might see the following errors:</p>
-<pre><code class="language-bash">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
+<pre class="line-numbers language-bash"><code class="language-bash">C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Value cannot be null. 
 C:\Program Files\dotnet\sdk\2.0.0\NuGet.targets(466,5): error : Parameter name: path1 
-</code></pre>
-<pre><code class="language-bash">System.ArgumentNullException: Value cannot be null.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">System.ArgumentNullException: Value cannot be null.
 Parameter name: path1
    at System.IO.Path.Combine(String path1, String path2)
    at Microsoft.DotNet.Configurer.CliFallbackFolderPathCalculator.get_DotnetUserProfileFolderPath()
    at Microsoft.DotNet.Configurer.FirstTimeUseNoticeSentinel..ctor(CliFallbackFolderPathCalculator cliFallbackFolderPathCalculator)
    at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, ITelemetry telemetryClient)
    at Microsoft.DotNet.Cli.Program.Main(String[] args)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>That is happening because all environment variables are not passed to tox by default.</p>
 <p>Open <code>tox.ini</code> and add the <code>passenv = APPDATA ProgramFiles USERPROFILE</code> line:</p>
-<pre><code>[testenv]
+<pre class="line-numbers language-bash"><code class="language-bash">[testenv]
 setenv =
     PYTHONPATH = {toxinidir}
 
@@ -233,7 +239,7 @@ commands =
     python setup.py test
 
 passenv = APPDATA ProgramFiles USERPROFILE
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Rerun <code>tox</code> and you should be good.</p>
 
         </div>
@@ -471,6 +477,10 @@ passenv = APPDATA ProgramFiles USERPROFILE
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

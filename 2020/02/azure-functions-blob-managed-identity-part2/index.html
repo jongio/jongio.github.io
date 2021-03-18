@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part2/000072.png">
 <meta property="article:published_time" content="2020-02-02T13:35:38.000Z">
-<meta property="article:modified_time" content="2020-08-31T22:15:37.486Z">
+<meta property="article:modified_time" content="2021-03-18T06:41:02.843Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -74,6 +74,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -97,12 +101,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -229,12 +235,14 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li><a href="https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank" rel="noopener">Install Azure CLI</a></li>
 <li>Login to Azure CLI</li>
 </ol>
-<pre><code class="hljs plain">az login</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az login
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>Set Active Azure Subscription</li>
 </ol>
 <p>This ensures that all of the subsequent commands run under the intended subscription.</p>
-<pre><code class="hljs plain">az account set -s SUBSCRIPTION_NAME_OR_ID</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az account set -s SUBSCRIPTION_NAME_OR_ID
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>SUBSCRIPTION_NAME_OR_ID</code> The subscription that you want to activate. You can use <code>az account show</code> to show the currently set subscription.</li>
@@ -243,7 +251,8 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li>Create Resource Group</li>
 </ol>
 <p>This is a grouping for all of your Azure resources.</p>
-<pre><code class="hljs plain">az group create -n RESOURCE_GROUP_NAME -l LOCATION</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az group create -n RESOURCE_GROUP_NAME -l LOCATION
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>RESOURCE_GROUP_NAME</code> A unique name that you create.</li>
@@ -253,7 +262,8 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li>Create Blob Storage Account</li>
 </ol>
 <p>This account will hold the blobs that you upload via your Azure Function.</p>
-<pre><code class="hljs plain">az storage account create -n BLOB_STORAGE_ACCOUNT_NAME -g RESOURCE_GROUP_NAME --kind StorageV2 --sku Standard_LRS</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az storage account create -n BLOB_STORAGE_ACCOUNT_NAME -g RESOURCE_GROUP_NAME --kind StorageV2 --sku Standard_LRS 
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>BLOB_STORAGE_ACCOUNT_NAME</code> A unique name that you create.</li>
@@ -266,9 +276,11 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <p>The sample uses DefaultAzureCredential, which uses AzureCliCredential under the hood to get a token to use to communicate to Azure Storage.</p>
 <p>In order to talk with Azure Storage, your account needs to be in the Storage Blob Data Contributor role.</p>
 <p>Get your account id:</p>
-<pre><code class="hljs bash">az ad signed-in-user show --query <span class="hljs-string">'objectId'</span> -o tsv</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az ad signed-in-user show --query 'objectId' -o tsv
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Then run the following command to assign your id to the role</p>
-<pre><code class="hljs bash">az role assignment create --assignee &#123;id from last step&#125; --role ba92f5b4-2d11-453d-a403-e96b0029c9fe</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az role assignment create --assignee {id from last step} --role ba92f5b4-2d11-453d-a403-e96b0029c9fe
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>assignee</code> Your Azure account id.</li>
@@ -282,16 +294,17 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <blockquote>
 <p>If you have cloned the repo, then take the settings from <code>local.settings.azure.json</code> and copy them to <code>'local.settings.json</code></p>
 </blockquote>
-<pre><code class="hljs plain">&#123;
-    &quot;IsEncrypted&quot;: false,
-    &quot;Values&quot;: &#123;
-        &quot;AzureWebJobsStorage&quot;: &quot;UseDevelopmentStorage&#x3D;true&quot;,
-        &quot;FUNCTIONS_WORKER_RUNTIME&quot;: &quot;dotnet&quot;,
-        &quot;AZURE_STORAGE_HOST&quot;: &quot;blob.core.windows.net&quot;,
-        &quot;AZURE_STORAGE_ACCOUNT&quot;: &quot;BLOB_STORAGE_ACCOUNT_NAME&quot;,
-        &quot;AZURE_STORAGE_CONTAINER&quot;: &quot;azfuncblobs&quot;
-    &#125;
-&#125;</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "AZURE_STORAGE_HOST": "blob.core.windows.net",
+        "AZURE_STORAGE_ACCOUNT": "BLOB_STORAGE_ACCOUNT_NAME",
+        "AZURE_STORAGE_CONTAINER": "azfuncblobs"
+    }
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>BLOB_STORAGE_ACCOUNT_NAME</code> The same name that you gave the storage account you created earlier.</li>
@@ -305,11 +318,14 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <li>Start and Run the Function</li>
 </ol>
 <p>Run the following command from the root of the project:</p>
-<pre><code class="hljs plain">func start</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">func start
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>When it has finished starting it will output the URL to run the function, like this:</p>
-<pre><code class="hljs plain">funcblobtest: [GET,POST] http:&#x2F;&#x2F;localhost:7071&#x2F;api&#x2F;funcblobtest</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">funcblobtest: [GET,POST] http://localhost:7071/api/funcblobtest
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Open that link in a browser. Your function will run and you will see output like the following:</p>
-<pre><code class="hljs plain">00e7d1bd.txt uploaded.</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">00e7d1bd.txt uploaded.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
 <li>Verify Success with Storage Explorer</li>
 </ol>
@@ -557,6 +573,10 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="javascript,vuejs,typescript,webdev" />
+    <meta name="keywords" content="webdev,javascript,vuejs,typescript" />
     
     <meta name="description" content="I’m building a recursive Vue.js component and ran into this error: Unknown custom element: &lt;Categories&gt; - did you register the component correctly? For recursive components, make sure to provide">
 <meta property="og:type" content="article">
@@ -35,10 +35,10 @@
 <meta property="article:published_time" content="2019-03-07T23:27:42.000Z">
 <meta property="article:modified_time" content="2019-03-08T07:48:17.000Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="webdev">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="vuejs">
 <meta property="article:tag" content="typescript">
-<meta property="article:tag" content="webdev">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/03/vuejs-unknown-custom-element/000063.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -72,6 +72,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -95,12 +99,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,21 +219,21 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m building a recursive Vue.js component and ran into this error:</p>
-<pre><code class="language-javascript">Unknown custom element: &lt;Categories&gt; - did you register the component correctly? For recursive components, make sure to provide the &quot;name&quot; option.
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">Unknown custom element: &lt;Categories&gt; - did you register the component correctly? For recursive components, make sure to provide the "name" option.
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000063.png" alt=""></p>
 <p>My @Component registration looked like this:</p>
-<pre><code class="language-javascript">@Component({
+<pre class="line-numbers language-javascript"><code class="language-javascript">@Component({
   components: {
     RatingBar,
     Items,
     Categories
   }
 })
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The solution is super-simple, but non-obvious.</p>
 <p>You just need to add a name property like so:</p>
-<pre><code class="language-javascript">@Component({
+<pre class="line-numbers language-javascript"><code class="language-javascript">@Component({
   name: 'Categories',
   components: {
     RatingBar,
@@ -235,7 +241,7 @@
     Categories
   }
 })
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And the problem is solved.</p>
 <p>Hope this helps.</p>
 <p>Jon</p>
@@ -475,6 +481,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

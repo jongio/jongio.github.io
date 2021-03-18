@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/000067.png">
 <meta property="article:published_time" content="2020-02-02T13:35:43.000Z">
-<meta property="article:modified_time" content="2020-08-31T23:13:51.449Z">
+<meta property="article:modified_time" content="2021-03-18T06:41:53.253Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -74,6 +74,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -97,12 +101,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -231,7 +237,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <p><strong>Options:</strong></p>
 <p>Option 1. Use the same storage account that you created above and skip this step.</p>
 <p>Option 2. Create a new storage account for Function metadata using the following command:</p>
-<pre><code class="hljs plain">az storage account create -n FUNCTIONS_STORAGE_ACCOUNT_NAME -g RESOURCE_GROUP_NAME --kind StorageV2 --sku Standard_LRS</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az storage account create -n FUNCTIONS_STORAGE_ACCOUNT_NAME -g RESOURCE_GROUP_NAME --kind StorageV2 --sku Standard_LRS 
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTIONS_STORAGE_ACCOUNT_NAME</code> This is the name of the storage account that you want to store your Azure Functions metadata in.</li>
@@ -242,7 +249,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Create App Service Plan</li>
 </ol>
 <p>We are going to put our Function in an App Service Plan because that enables log streaming (among other features), whereas a Consumption based Azure Function (Linux) does not - at least not yet.</p>
-<pre><code class="hljs plain">az appservice plan create -n APP_SERVICE_PLAN_NAME -g RESOURCE_GROUP_NAME --is-linux --sku B1</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az appservice plan create -n APP_SERVICE_PLAN_NAME -g RESOURCE_GROUP_NAME --is-linux --sku B1
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>APP_SERVICE_PLAN_NAME</code> A name that you choose to give your app service plan.</li>
@@ -254,7 +262,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Create Azure Function App</li>
 </ol>
 <p>This is the actual Function app that we will upload our Function app project.</p>
-<pre><code class="hljs plain">az functionapp create -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --storage-account FUNCTIONS_STORAGE_ACCOUNT_NAME --plan APP_SERVICE_PLAN_NAME --runtime dotnet --os-type Linux --functions-version 3</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az functionapp create -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --storage-account FUNCTIONS_STORAGE_ACCOUNT_NAME --plan APP_SERVICE_PLAN_NAME --runtime dotnet --os-type Linux --functions-version 3
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> A name that you choose to call your function app.</li>
@@ -269,10 +278,13 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Set Function App Settings</li>
 </ol>
 <p>As you saw above, our code depends on two environment variables:</p>
-<pre><code class="hljs csharp"><span class="hljs-keyword">var</span> account = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_ACCOUNT"</span>);
-<span class="hljs-keyword">var</span> container = Environment.GetEnvironmentVariable(<span class="hljs-string">"AZURE_STORAGE_CONTAINER"</span>);</code></pre>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var account = Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT");
+var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>For local deployments, those are configured in the <code>local.settings.json</code> file.  When we deploy to Azure we’ll need those settings in the Function app.  Use the following commands to update those settings.</p>
-<pre><code class="hljs plain">az functionapp config appsettings set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --settings &quot;AZURE_STORAGE_ACCOUNT&#x3D;BLOB_STORAGE_ACCOUNT_NAME&quot; &quot;AZURE_STORAGE_CONTAINER&#x3D;azfuncblobs&quot; &quot;AZURE_STORAGE_HOST&#x3D;blob.core.windows.net&quot;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az functionapp config appsettings set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --settings "AZURE_STORAGE_ACCOUNT=BLOB_STORAGE_ACCOUNT_NAME" "AZURE_STORAGE_CONTAINER=azfuncblobs" "AZURE_STORAGE_HOST=blob.core.windows.net"
+ 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> A name that you choose to call your function app.</li>
@@ -284,7 +296,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <p>You have two options when it comes to choosing a Managed Identity: System Assigned or User Assigned. With System Assigned Azure will create the identity on your behalf, with User Assigned, you first create the identity and then assign it.  User assigned is useful when you want to reuse the identity across multiple Azure resources.</p>
 <h4 id="Option-1-Assign-a-System-Assigned-Managed-Identity-to-Function-App"><a class="header-anchor" href="#Option-1-Assign-a-System-Assigned-Managed-Identity-to-Function-App"></a>Option 1: Assign a System Assigned Managed Identity to Function App</h4>
 <p>This will enabled a Managed Identity for the Function App and assign it the Storage Blob Data Contributor role.  You don’t have to individually create a Managed Identity and assign it roles - you can do it all in this one command.</p>
-<pre><code class="hljs plain">az functionapp identity assign -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --role ba92f5b4-2d11-453d-a403-e96b0029c9fe --scope &#x2F;subscriptions&#x2F;SUBSCRIPTION_ID</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az functionapp identity assign -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --role ba92f5b4-2d11-453d-a403-e96b0029c9fe --scope /subscriptions/SUBSCRIPTION_ID
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
@@ -297,7 +310,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <ol>
 <li>Create the User Assigned Managed Identity</li>
 </ol>
-<pre><code class="hljs plain">az identity create -g RESOURCE_GROUP_NAME -n USER_ASSIGNED_IDENTITY_NAME</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az identity create -g RESOURCE_GROUP_NAME -n USER_ASSIGNED_IDENTITY_NAME
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>RESOURCE_GROUP_NAME</code> The resource group you created earlier.</li>
@@ -307,7 +321,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Get the User Assigned Managed Identity Metadata</li>
 </ol>
 <p>We are going to need the resource id and client id in a minute, so let’s get them now.</p>
-<pre><code class="hljs plain">az identity list -g RESOURCE_GROUP_NAME</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az identity list -g RESOURCE_GROUP_NAME
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>RESOURCE_GROUP_NAME</code> The resource group you created earlier.</li>
@@ -318,7 +333,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <ol start="3">
 <li>Assign the Storage Blob Data Contributor Role to the User Assigned Identity</li>
 </ol>
-<pre><code class="hljs plain">az role assignment create --assignee USER_ASSIGNED_IDENTITY_CLIENT_ID --role ba92f5b4-2d11-453d-a403-e96b0029c9fe</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az role assignment create --assignee USER_ASSIGNED_IDENTITY_CLIENT_ID --role ba92f5b4-2d11-453d-a403-e96b0029c9fe
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>USER_ASSIGNED_IDENTITY_CLIENT_ID</code> This is the “clientId” property that you retrieved in the last step.</li>
@@ -327,7 +343,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <ol start="4">
 <li>Assign the User Assigned Identity to the Function App</li>
 </ol>
-<pre><code class="hljs plain">az functionapp identity assign -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --identities USER_ASSIGNED_IDENTITY_RESOURCE_ID</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az functionapp identity assign -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --identities USER_ASSIGNED_IDENTITY_RESOURCE_ID
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
@@ -338,7 +355,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Set Environment Variables</li>
 </ol>
 <p>Because you are using a User Assigned Managed Identity, we are going to have to manually set some Environment Variables to explicitly tell Azure which Identity to use:</p>
-<pre><code class="hljs plain">az functionapp config appsettings set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --settings &quot;AZURE_CLIENT_ID&#x3D;USER_ASSIGNED_IDENTITY_CLIENTID&quot; &quot;AZURE_TENANT_ID&#x3D;TENANT_ID&quot;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az functionapp config appsettings set -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME --settings "AZURE_CLIENT_ID=USER_ASSIGNED_IDENTITY_CLIENTID" "AZURE_TENANT_ID=TENANT_ID"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
@@ -347,7 +365,8 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li><code>TENANT_ID</code> This is the Azure tenant that your subscription lives in - you can find this with <code>az account show --query tenantId -o tsv</code>.</li>
 </ul>
 <p>If you don’t do this, then you’ll likely see the following exception later in the logstream.  (See below for info on how to view the logstream)</p>
-<pre><code class="hljs plain">&#123;&quot;statusCode&quot;:400,&quot;message&quot;:&quot;Unable to load requested managed identity.&quot;,&quot;correlationId&quot;:&quot;fc7504dd-c16c-4526-b8a8-667f6463d306&quot;&#125;</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">{"statusCode":400,"message":"Unable to load requested managed identity.","correlationId":"fc7504dd-c16c-4526-b8a8-667f6463d306"}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Now that you have your Managed Identity configured it is time to deploy our Function to Azure.</p>
 <h3 id="Deploy-Azure-Function-to-Azure"><a class="header-anchor" href="#Deploy-Azure-Function-to-Azure"></a>Deploy Azure Function to Azure</h3>
 <p>We are now FINALLY ready to deploy the Azure Function to Azure and test it out.</p>
@@ -355,7 +374,9 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <li>Deploy the Function</li>
 </ol>
 <p>Open a terminal and execute the following command to deploy your local function to Azure.  There are many ways to deploy an Azure Function, for this example we’ll use the <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=windows#publish" target="_blank" rel="noopener">Azure Function Core Tools</a></p>
-<pre><code class="hljs plain">func azure functionapp publish FUNCTION_APP_NAME</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">func azure functionapp publish FUNCTION_APP_NAME
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
@@ -364,12 +385,13 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 <ul>
 <li>If you see the following exception, then try again in a few minutes.  I got this error. Waiting a few minutes, ran it again and it worked:</li>
 </ul>
-<pre><code class="hljs plain">Getting site publishing info...
+<pre class="line-numbers language-bash"><code class="language-bash">Getting site publishing info...
 Creating archive for current directory...
 Uploading 3.19 MB [###############################################################################]
 Upload completed successfully.
 Deployment completed successfully.
-Response status code does not indicate success: 400 (Bad Request).</code></pre>
+Response status code does not indicate success: 400 (Bad Request).
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>This step can take a few minutes and may not work the first time.  If you don’t get back a URL, then keep trying until you do.  You may see output like this last doesn’t include the URL. Just try again.</li>
 </ul>
@@ -377,14 +399,15 @@ Response status code does not indicate success: 400 (Bad Request).</code></pre>
 <li>Test the Function</li>
 </ol>
 <p>Once it has been successfully deployed, it will output the Function URL</p>
-<pre><code class="hljs plain">Getting site publishing info...
+<pre class="line-numbers language-bash"><code class="language-bash">Getting site publishing info...
 Creating archive for current directory...
 Uploading 2.97 MB [###############################################################################]
 Upload completed successfully.
 Deployment completed successfully.
 Functions in jgfnapp1:
     upload - [httpTrigger]
-        Invoke url: https:&#x2F;&#x2F;jgfnapp1.azurewebsites.net&#x2F;api&#x2F;upload?code&#x3D;CR</code></pre>
+        Invoke url: https://jgfnapp1.azurewebsites.net/api/upload?code=CR
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Go to that URL to execute the function and verify that a file was uploaded.</p>
 <p><img src="000071.png" alt=""></p>
 <p>Notes:</p>
@@ -392,30 +415,33 @@ Functions in jgfnapp1:
 <li>If it doesn’t succeed right away, give it a few minutes to cycle, restart the app, and try again.</li>
 <li>If you see the following error, you’ll want to verify that your Managed Identity is configured correctly.</li>
 </ul>
-<pre><code class="hljs plain">2020-01-31T23:38:19.117 [Error] Executed &#39;func1&#39; (Failed, Id&#x3D;09062b19-c7e8-45f6-a9bc-d828d47adbb2)
-Environment variables not fully configured. AZURE_TENANT_ID and AZURE_CLIENT_ID must be set, along with either AZURE_CLIENT_SECRET or AZURE_USERNAME and AZURE_PASSWORD. Currently set variables [  ]</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">2020-01-31T23:38:19.117 [Error] Executed 'func1' (Failed, Id=09062b19-c7e8-45f6-a9bc-d828d47adbb2)
+Environment variables not fully configured. AZURE_TENANT_ID and AZURE_CLIENT_ID must be set, along with either AZURE_CLIENT_SECRET or AZURE_USERNAME and AZURE_PASSWORD. Currently set variables [  ]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>You can view the Managed Identities assigned to your Function by executing the following command:</p>
-<pre><code class="hljs plain">az resource list -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az resource list -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Which will output something like this:</p>
-<pre><code class="hljs json">&#123;
-    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"/subscriptions/25fd0362-aa79-488b-b37b-d6e892009fdf/resourceGroups/jgfnrg1/providers/Microsoft.Web/sites/jgfnapp1"</span>,
-    <span class="hljs-attr">"identity"</span>: &#123;
-      <span class="hljs-attr">"principalId"</span>: <span class="hljs-string">"ca9937fe-2967-443b-99c1-c480bf6000dd"</span>,
-      <span class="hljs-attr">"tenantId"</span>: <span class="hljs-string">"72f988bf-86f1-41af-91ab-2d7cd011db47"</span>,
-      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"SystemAssigned"</span>,
-      <span class="hljs-attr">"userAssignedIdentities"</span>: <span class="hljs-literal">null</span>
-    &#125;,
-    <span class="hljs-attr">"kind"</span>: <span class="hljs-string">"functionapp,linux,container"</span>,
-    <span class="hljs-attr">"location"</span>: <span class="hljs-string">"westus2"</span>,
-    <span class="hljs-attr">"managedBy"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"jgfnapp1"</span>,
-    <span class="hljs-attr">"plan"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"properties"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"resourceGroup"</span>: <span class="hljs-string">"jgfnrg1"</span>,
-    <span class="hljs-attr">"sku"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"tags"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Microsoft.Web/sites"</span>
-&#125;</code></pre>
+<pre class="line-numbers language-json"><code class="language-json">{
+    "id": "/subscriptions/25fd0362-aa79-488b-b37b-d6e892009fdf/resourceGroups/jgfnrg1/providers/Microsoft.Web/sites/jgfnapp1",
+    "identity": {
+      "principalId": "ca9937fe-2967-443b-99c1-c480bf6000dd",
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "type": "SystemAssigned",
+      "userAssignedIdentities": null
+    },
+    "kind": "functionapp,linux,container",
+    "location": "westus2",
+    "managedBy": null,
+    "name": "jgfnapp1",
+    "plan": null,
+    "properties": null,
+    "resourceGroup": "jgfnrg1",
+    "sku": null,
+    "tags": null,
+    "type": "Microsoft.Web/sites"
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>Debug the Function</li>
 </ol>
@@ -429,7 +455,8 @@ Environment variables not fully configured. AZURE_TENANT_ID and AZURE_CLIENT_ID 
 <p>You can install the VS Code extension here: <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions" target="_blank" rel="noopener">Install Azure Functions VS Code Extension (Optional)</a></p>
 <p><strong>Option 3: Azure Functions Core Tools</strong></p>
 <p>You can also view the logstream via the terminal using the Azure Function Core Tools</p>
-<pre><code class="hljs plain">func azure functionapp logstream FUNCTION_APP_NAME</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">func azure functionapp logstream FUNCTION_APP_NAME
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>FUNCTION_APP_NAME</code> The function app name you created earlier.</li>
@@ -684,6 +711,10 @@ Part 3: Azure Function with Azure Storage and Managed Identity (cloud function, 
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

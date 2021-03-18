@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="" />
     
-    <meta name="description" content="Was getting this error today: Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:&#x2F;OneDriveMS&#x2F;code&#x2F;GitHub&#x2F;jongio&#x2F;azure-sdk&amp;#x2F">
+    <meta name="description" content="Was getting this error today: Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:&#x2F;OneDriveMS&#x2F;code&#x2F;GitHub&#x2F;jongio&#x2F;azure-sdk&#x2F;_includes&quot;, &quot;C:&#x2F;Ruby26-x64&#x2F;lib&#x2F;ruby&#x2F;gems&#x2F;2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution to Could not locate the included file jekyll-theme-primer">
 <meta property="og:url" content="https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Was getting this error today: Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:&#x2F;OneDriveMS&#x2F;code&#x2F;GitHub&#x2F;jongio&#x2F;azure-sdk&amp;#x2F">
+<meta property="og:description" content="Was getting this error today: Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:&#x2F;OneDriveMS&#x2F;code&#x2F;GitHub&#x2F;jongio&#x2F;azure-sdk&#x2F;_includes&quot;, &quot;C:&#x2F;Ruby26-x64&#x2F;lib&#x2F;ruby&#x2F;gems&#x2F;2">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/064.png">
 <meta property="article:published_time" content="2021-03-11T11:13:35.000Z">
-<meta property="article:modified_time" content="2021-03-11T19:36:37.211Z">
+<meta property="article:modified_time" content="2021-03-18T02:41:16.457Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/064.png">
@@ -68,6 +68,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -91,12 +95,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -207,13 +213,16 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Was getting this error today:</p>
-<pre><code class="hljs plain">Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:&#x2F;OneDriveMS&#x2F;code&#x2F;GitHub&#x2F;jongio&#x2F;azure-sdk&#x2F;_includes&quot;, &quot;C:&#x2F;Ruby26-x64&#x2F;lib&#x2F;ruby&#x2F;gems&#x2F;2.6.0&#x2F;gems&#x2F;jekyll-theme-primer-0.5.4&#x2F;_includes&quot;]. Ensure it exists in one of those directories and is not a symlink as those are not allowed in safe mode. in &#x2F;_layouts&#x2F;post_redirect.html
-jekyll 3.9.0 | Error:  Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:&#x2F;OneDriveMS&#x2F;code&#x2F;GitHub&#x2F;jongio&#x2F;azure-sdk&#x2F;_includes&quot;, &quot;C:&#x2F;Ruby26-x64&#x2F;lib&#x2F;ruby&#x2F;gems&#x2F;2.6.0&#x2F;gems&#x2F;jekyll-theme-primer-0.5.4&#x2F;_includes&quot;]. Ensure it exists in one of those directories and is not a symlink as those are not allowed in safe mode.</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">Liquid Exception: Could not locate the included file 'app_insights.html' in any of ["D:/OneDriveMS/code/GitHub/jongio/azure-sdk/_includes", "C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/jekyll-theme-primer-0.5.4/_includes"]. Ensure it exists in one of those directories and is not a symlink as those are not allowed in safe mode. in /_layouts/post_redirect.html
+jekyll 3.9.0 | Error:  Could not locate the included file 'app_insights.html' in any of ["D:/OneDriveMS/code/GitHub/jongio/azure-sdk/_includes", "C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/jekyll-theme-primer-0.5.4/_includes"]. Ensure it exists in one of those directories and is not a symlink as those are not allowed in safe mode.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>I did a ton of searching to resolve this, but nothing helped.  Until I realized that I’m actually using a symlink like the error message stated.</p>
 <p>I run my code out of:</p>
-<p><code>D:/OneDriveMS</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash">D:/OneDriveMS
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Which is a symlink to:</p>
-<p><code>D:/OneDrive - Microsoft</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash">D:/OneDrive - Microsoft
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>and I usually code out of the symlink because lots of build tools don’t like spaces in folder names. See more about why I do this in this post: <a href="https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/">How to rename or remove spaces from OneDrive folder name</a></p>
 <p>So I just opened this project in the non-symlink location and it worked.</p>
 
@@ -452,6 +461,10 @@ jekyll 3.9.0 | Error:  Could not locate the included file &#39;app_insights.html
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

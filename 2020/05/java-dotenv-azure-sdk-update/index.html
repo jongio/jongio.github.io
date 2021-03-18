@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,java,azuresdk" />
+    <meta name="keywords" content="azure,azuresdk,java" />
     
     <meta name="description" content="Exactly, one month ago, to the day, I wrote a post about how to use .env files with Java and Azure SDKs. The gist of the problem was that the package we use to read the .env files didn’t write those v">
 <meta property="og:type" content="article">
@@ -33,11 +33,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/021.png">
 <meta property="article:published_time" content="2020-05-13T16:09:30.000Z">
-<meta property="article:modified_time" content="2020-05-14T00:07:03.977Z">
+<meta property="article:modified_time" content="2021-03-18T06:47:35.349Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
-<meta property="article:tag" content="java">
 <meta property="article:tag" content="azuresdk">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/021.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,80 +219,91 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Exactly, one month ago, to the day, I wrote a <a href="/java-dotenv-azure-sdk">post</a> about how to use <code>.env</code> files with Java and Azure SDKs. The gist of the problem was that the package we use to read the <code>.env</code> files didn’t write those values to System.getenv or System.properties, so you had to do that manually with something like this:</p>
 <h2 id="OLD"><a class="header-anchor" href="#OLD"></a>OLD</h2>
-<pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">loadEnvironmentProperties</span><span class="hljs-params">()</span> </span>&#123;
+<pre class="line-numbers language-java"><code class="language-java">static void loadEnvironmentProperties() {
     Dotenv ENVIRONMENT = Dotenv.load();
     ENVIRONMENT.entries().forEach(entry -&gt; System.setProperty(entry.getKey(), entry.getValue()));
-&#125;</code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Well, I’m super happy to let you know that Carmine DiMascio, the <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">java-dotenv package</a> creator and maintainer, just implemented a feature that will tell <code>java-dotenv</code> to also write the values from <code>.env</code> to <code>System.properties</code> - which are read by the Azure SDKs.</p>
 <p>So instead of the above you just need to call <code>systemProperties()</code> when you load the <code>.env</code> file, like so:</p>
 <h2 id="NEW"><a class="header-anchor" href="#NEW"></a>NEW</h2>
-<pre><code class="hljs java">Dotenv.configure().systemProperties().load();</code></pre>
+<pre class="line-numbers language-java"><code class="language-java">Dotenv.configure().systemProperties().load();
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Here’s how to get everything setup.  I’m going to assume that you already have a Java project - but you can find all of the source code for this simple sample here: <a href="https://github.com/jongio/azsdkjavaenv" target="_blank" rel="noopener">https://github.com/jongio/azsdkjavaenv</a></p>
 <h2 id="1-Add-env-file-to-project"><a class="header-anchor" href="#1-Add-env-file-to-project"></a>1. Add .env file to project</h2>
 <p>Create <code>.env</code> file in your project and add the following settings:</p>
-<pre><code class="hljs plain">AZURE_CLIENT_ID&#x3D;
-AZURE_CLIENT_SECRET&#x3D;
-AZURE_TENANT_ID&#x3D;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">AZURE_CLIENT_ID=
+AZURE_CLIENT_SECRET=
+AZURE_TENANT_ID=
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>These are the service principal settings that you get from calling <code>az ad sp create-for-rbac</code> to create a service principal - which will be used by DefaultAzureCredential. Make sure the service principal has the appropriate policy set to create a key. You can find those commands here: <a href="https://docs.microsoft.com/en-us/azure/key-vault/general/manage-with-cli2#authorizing-an-application-to-use-a-key-or-secret" target="_blank" rel="noopener">Authorizing an application to use a key or secret</a></p>
 <p>You can use this command to assign the right policy to your service principal.</p>
-<pre><code class="hljs bash">az keyvault <span class="hljs-built_in">set</span>-policy -n KEY_VAULT_NAME --spn AZURE_CLIENT_ID --secret-permissions get list <span class="hljs-built_in">set</span> delete --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey update</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az keyvault set-policy -n KEY_VAULT_NAME --spn AZURE_CLIENT_ID --secret-permissions get list set delete --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey update
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="2-Add-java-dotenv-Package"><a class="header-anchor" href="#2-Add-java-dotenv-Package"></a>2. Add java-dotenv Package</h2>
 <p>This package is used to read the <code>.env</code> file.</p>
 <blockquote>
 <p>Make sure you add version 5.2.0</p>
 </blockquote>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.github.cdimascio<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>java-dotenv<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.2.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<pre class="line-numbers language-xml"><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.github.cdimascio&lt;/groupId&gt;
+    &lt;artifactId&gt;java-dotenv&lt;/artifactId&gt;
+    &lt;version&gt;5.2.0&lt;/version&gt;
+&lt;/dependency&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="3-Add-java-dotnet-import"><a class="header-anchor" href="#3-Add-java-dotnet-import"></a>3. Add java-dotnet import</h2>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> io.github.cdimascio.dotenv.Dotenv;</code></pre>
+<pre class="line-numbers language-java"><code class="language-java">import io.github.cdimascio.dotenv.Dotenv;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="4-Add-code-to-load-env"><a class="header-anchor" href="#4-Add-code-to-load-env"></a>4. Add code to load .env</h2>
 <p>Notice that we are now calling <code>systemProperties()</code>, which is the new method that will load the <code>.env</code> values into the Java System properties.</p>
-<pre><code class="hljs java">Dotenv.configure().systemProperties().load();
-System.out.print(System.getProperty(<span class="hljs-string">"AZURE_CLIENT_ID"</span>));</code></pre>
+<pre class="line-numbers language-java"><code class="language-java">Dotenv.configure().systemProperties().load();
+System.out.print(System.getProperty("AZURE_CLIENT_ID"));
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>When you run the above code, it should print the value that you have for AZURE_CLIENT_ID in your <code>.env</code> file.</p>
 <h2 id="5-Add-Azure-SDK-Packages"><a class="header-anchor" href="#5-Add-Azure-SDK-Packages"></a>5. Add Azure SDK Packages</h2>
 <p>Now that we have java-dotenv set, let’s get it working with the Azure SDKs.  We’ll new up a DefaultAzureCredential, pass that to KeyClient, and create a key.</p>
 <p>Add these to pom.xml</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.azure<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>azure-security-keyvault-keys<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>4.1.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre class="line-numbers language-xml"><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.azure&lt;/groupId&gt;
+    &lt;artifactId&gt;azure-security-keyvault-keys&lt;/artifactId&gt;
+    &lt;version&gt;4.1.3&lt;/version&gt;
+&lt;/dependency&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.azure<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>azure-identity<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+&lt;dependency&gt;
+    &lt;groupId&gt;com.azure&lt;/groupId&gt;
+    &lt;artifactId&gt;azure-identity&lt;/artifactId&gt;
+    &lt;version&gt;1.0.6&lt;/version&gt;
+&lt;/dependency&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>You can find all the Azure SDK for Java releases here: <a href="https://aka.ms/azsdk/java" target="_blank" rel="noopener">https://aka.ms/azsdk/java</a></p>
 <h2 id="6-Add-Azure-SDK-imports"><a class="header-anchor" href="#6-Add-Azure-SDK-imports"></a>6. Add Azure SDK imports</h2>
 <p>Add imports to your Java code file.</p>
-<pre><code class="hljs java"><span class="hljs-keyword">import</span> com.azure.identity.DefaultAzureCredential;
-<span class="hljs-keyword">import</span> com.azure.identity.DefaultAzureCredentialBuilder;
-<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.KeyClientBuilder;
-<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.models.KeyType;
-<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.models.*;
-<span class="hljs-keyword">import</span> com.azure.security.keyvault.keys.KeyClient;</code></pre>
+<pre class="line-numbers language-java"><code class="language-java">import com.azure.identity.DefaultAzureCredential;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.*;
+import com.azure.security.keyvault.keys.KeyClient;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="7-Create-Key-Vault"><a class="header-anchor" href="#7-Create-Key-Vault"></a>7. Create Key Vault</h2>
 <p>To run the sample, you are going to need to create an Azure Key Vault. You can do so with the Azure CLI <a href="https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create" target="_blank" rel="noopener"><code>az keyvault create</code></a> or Azure Portal.</p>
 <p>Add the following to your <code>.env</code> file and replace the URL with your Key Vault uri.</p>
-<pre><code class="hljs plain">AZURE_KEYVAULT_URL&#x3D;https:&#x2F;&#x2F;jongkv.vault.azure.net&#x2F;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">AZURE_KEYVAULT_URL=https://jongkv.vault.azure.net/
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="8-Add-Azure-SDK-Code"><a class="header-anchor" href="#8-Add-Azure-SDK-Code"></a>8. Add Azure SDK Code</h2>
 <p>We’ll first new up a DefaultAzureCredentail object, which under the covers will new up an EnvironmentCredential object, which will read the <code>AZURE_CLIENT_ID</code>, <code>AZURE_CLIENT_SECRET</code>, and <code>AZURE_TENANT_ID</code> values from System.properties which were written to by the java-dotenv package.</p>
 <p>We then new up a KeyClient, and then create a key.</p>
-<pre><code class="hljs java"><span class="hljs-comment">// Build new DAC, which will read from System.Properties</span>
-DefaultAzureCredential cred = <span class="hljs-keyword">new</span> DefaultAzureCredentialBuilder().build();
+<pre class="line-numbers language-java"><code class="language-java">// Build new DAC, which will read from System.Properties
+DefaultAzureCredential cred = new DefaultAzureCredentialBuilder().build();
 
-<span class="hljs-comment">// Use DAC when constructing a Key Vault client.</span>
-KeyClient keyClient = <span class="hljs-keyword">new</span> KeyClientBuilder().vaultUrl(System.getProperty(<span class="hljs-string">"AZURE_KEYVAULT_URL"</span>)).credential(cred)
+// Use DAC when constructing a Key Vault client.
+KeyClient keyClient = new KeyClientBuilder().vaultUrl(System.getProperty("AZURE_KEYVAULT_URL")).credential(cred)
         .buildClient();
 
-KeyVaultKey key = keyClient.createKey(<span class="hljs-string">"key1"</span>, KeyType.RSA);
+KeyVaultKey key = keyClient.createKey("key1", KeyType.RSA);
 
-System.out.printf(<span class="hljs-string">"Key created. Name %s Id %s"</span>, key.getName(), key.getId());</code></pre>
+System.out.printf("Key created. Name %s Id %s", key.getName(), key.getId());
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And that’s how you get it all working together.  Good stuff and much easier now that we have the systemProperties method.</p>
 <p>You can find all the code here: <a href="https://github.com/jongio/azsdkjavaenv" target="_blank" rel="noopener">https://github.com/jongio/azsdkjavaenv</a></p>
 <p>Jon</p>
@@ -526,6 +543,10 @@ System.out.printf(<span class="hljs-string">"Key created. Name %s Id %s"</span>,
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

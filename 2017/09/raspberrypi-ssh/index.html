@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -214,11 +220,11 @@
 <p>Here’s how to get SSH setup on your Pi.</p>
 <h2 id="Enable-SSH"><a class="header-anchor" href="#Enable-SSH"></a>Enable SSH</h2>
 <h3 id="Via-Pi-Terminal"><a class="header-anchor" href="#Via-Pi-Terminal"></a>Via Pi Terminal</h3>
-<pre><code class="language-bash">sudo nano /boot/ssh
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo nano /boot/ssh
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Hit CTRL+O to Save, Hit Enter, Hit CTRL+X to exit.</p>
-<pre><code class="language-bash">sudo reboot
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">sudo reboot
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Via-Boot-Disk"><a class="header-anchor" href="#Via-Boot-Disk"></a>Via Boot Disk</h3>
 <p>1. Insert SD card with Raspbian onto your host machine (laptop, desktop)<br>
 2. Create an empty file without an extension called `ssh`` in the root of your boot drive.</p>
@@ -227,11 +233,11 @@
 <h5 id="Windows"><a class="header-anchor" href="#Windows"></a>Windows</h5>
 <p><code>cd</code> into the SD card drive letter, i.e. <code>g:</code></p>
 <h5 id="Linux"><a class="header-anchor" href="#Linux"></a>Linux</h5>
-<pre><code class="language-bash">cd /Volumes/boot
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">cd /Volumes/boot
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="Create-SSH-file"><a class="header-anchor" href="#Create-SSH-file"></a>Create SSH file</h4>
-<pre><code class="language-bash">touch ssh
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">touch ssh
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Insert SD Card into Raspberry Pi and boot it. SSH will be enabled.</li>
 </ul>
@@ -262,8 +268,8 @@
 <p>You can install Putty <a href="http://www.putty.org/" target="_blank" rel="noopener">here</a>.</p>
 <h4 id="Create-SSH-Connection-v3"><a class="header-anchor" href="#Create-SSH-Connection-v3"></a>Create SSH Connection</h4>
 <p>Open a command prompt and execute the following:</p>
-<pre><code class="language-bash">putty.exe -ssh pi@raspberrypi
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">putty.exe -ssh pi@raspberrypi
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will now be connected to your Pi over SSH.</p>
 <p><img src="000291.png" alt=""></p>
 
@@ -502,6 +508,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

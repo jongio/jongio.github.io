@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="azure,terraform" />
     
-    <meta name="description" content="Got this error today when trying to set a secret with terraform. Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&#x3D;401 -- Ori">
+    <meta name="description" content="Got this error today when trying to set a secret with terraform. Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&#x3D;401 -- Original">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution for Error validating token IDX10223">
 <meta property="og:url" content="https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Got this error today when trying to set a secret with terraform. Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&#x3D;401 -- Ori">
+<meta property="og:description" content="Got this error today when trying to set a secret with terraform. Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&#x3D;401 -- Original">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/032.png">
 <meta property="article:published_time" content="2020-07-23T13:33:04.000Z">
-<meta property="article:modified_time" content="2020-07-23T20:38:54.591Z">
+<meta property="article:modified_time" content="2021-03-18T06:53:55.846Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="terraform">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -211,7 +217,8 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Got this error today when trying to set a secret with terraform.</p>
-<pre><code class="hljs plain">Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode&#x3D;401 -- Original Error: autorest&#x2F;azure: Service returned an error. Status&#x3D;401 Code&#x3D;&quot;Unauthorized&quot; Message&#x3D;&quot;Error validating token: IDX10223&quot;</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode=401 -- Original Error: autorest/azure: Service returned an error. Status=401 Code="Unauthorized" Message="Error validating token: IDX10223"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>I did an <code>az logout</code> and then an <code>az login</code> and it seems to have fixed it.</p>
 
         </div>
@@ -449,6 +456,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

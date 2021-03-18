@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -229,21 +235,25 @@
 <h4 id="Local-with-Azure-CLI"><a class="header-anchor" href="#Local-with-Azure-CLI"></a>Local with Azure CLI</h4>
 <p>Install <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="noopener">Azure CLI 2.0</a></p>
 <h3 id="Login"><a class="header-anchor" href="#Login"></a>Login</h3>
-<pre><code class="hljs bash">az login</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az login
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="00.png" alt=""></p>
 <p>If a browser doesn’t automatically open, go to <a href="http://aka.ms/devicelogin" target="_blank" rel="noopener">http://aka.ms/devicelogin</a> and enter the code show in the console.</p>
 <h3 id="Set-Active-Subscription"><a class="header-anchor" href="#Set-Active-Subscription"></a>Set Active Subscription</h3>
-<pre><code class="hljs bash">az account <span class="hljs-built_in">set</span> --subscription <span class="hljs-string">"your subscription name or id"</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az account set --subscription "your subscription name or id"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="01.png" alt=""></p>
 <h3 id="Create-Service-Principal"><a class="header-anchor" href="#Create-Service-Principal"></a>Create Service Principal</h3>
-<pre><code class="hljs bash">az ad sp create-for-rbac -n <span class="hljs-string">"your service principal name"</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az ad sp create-for-rbac -n "your service principal name"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="02.png" alt=""></p>
 <blockquote>
 <p>Copy this output to a temp location, you will need the values in a minute.</p>
 </blockquote>
 <h3 id="Service-Principal-Password-Reset"><a class="header-anchor" href="#Service-Principal-Password-Reset"></a>Service Principal Password Reset</h3>
 <p>You can execute the following command if you ever need to reset your Service Principal password.</p>
-<pre><code class="hljs bash">az ad sp reset-credentials --name <span class="hljs-string">"your service principal name"</span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">az ad sp reset-credentials --name "your service principal name"
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You can read more about Service Principals <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects" target="_blank" rel="noopener">here</a>.</p>
 <h2 id="Postman-Setup"><a class="header-anchor" href="#Postman-Setup"></a>Postman Setup</h2>
 <p>We are now going to use Postman to execute a REST call to get the Bearer Token and another to Get Resource Groups.</p>
@@ -284,10 +294,11 @@
 <ul>
 <li>Enter all your settings from the Service Principal we created earlier.  Here’s how they map:</li>
 </ul>
-<pre><code class="hljs bash">tenant = tenantId
+<pre class="line-numbers language-bash"><code class="language-bash">tenant = tenantId
 appId = clientId
 password = clientSecret
-subscriptionId = you can find your subscription id by running the following <span class="hljs-built_in">command</span>:</code></pre>
+subscriptionId = you can find your subscription id by running the following command:
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>az account show --query id</code></p>
 <p>When you are done it will look like this with all the values filled in:</p>
 <p><img src="24.png" alt=""></p>
@@ -300,36 +311,39 @@ subscriptionId = you can find your subscription id by running the following <spa
 <li>Open the Get AAD Token request and click the <strong>Send</strong> button.</li>
 </ul>
 <p>You will see the following output:</p>
-<pre><code class="hljs javascript"> &#123;
-    <span class="hljs-string">"token_type"</span>: <span class="hljs-string">"Bearer"</span>,
-    <span class="hljs-string">"expires_in"</span>: <span class="hljs-string">"3599"</span>,
-    <span class="hljs-string">"ext_expires_in"</span>: <span class="hljs-string">"0"</span>,
-    <span class="hljs-string">"expires_on"</span>: <span class="hljs-string">"1512031433"</span>,
-    <span class="hljs-string">"not_before"</span>: <span class="hljs-string">"1512027533"</span>,
-    <span class="hljs-string">"resource"</span>: <span class="hljs-string">"https://management.azure.com/"</span>,
-    <span class="hljs-string">"access_token"</span>: <span class="hljs-string">"eyJ0eXAiOiJKV...tS-OmwIfRw"</span>
-&#125;</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"> {
+    "token_type": "Bearer",
+    "expires_in": "3599",
+    "ext_expires_in": "0",
+    "expires_on": "1512031433",
+    "not_before": "1512027533",
+    "resource": "https://management.azure.com/",
+    "access_token": "eyJ0eXAiOiJKV...tS-OmwIfRw"
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="25.png" alt=""></p>
 <p>The <code>access_token</code> property is now stored a global variable, which was set in the “Tests” tab.</p>
-<pre><code class="hljs bash">pm.globals.set(<span class="hljs-string">"bearerToken"</span>, pm.response.json().access_token);</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">pm.globals.set("bearerToken", pm.response.json().access_token);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Execute-Get-Resource-Groups-Request"><a class="header-anchor" href="#Execute-Get-Resource-Groups-Request"></a>Execute Get Resource Groups Request</h3>
 <p>We’ll now execute any Azure REST API with that Bearer Token. Just as an exercise, we’ll execute the Get Resource Groups request.</p>
 <ul>
 <li>Open the Get Resource Groups request and click the Send button.</li>
 </ul>
 <p>You will see the following output:</p>
-<pre><code class="hljs javascript">&#123;
-    <span class="hljs-string">"value"</span>: [
-        &#123;
-            <span class="hljs-string">"id"</span>: <span class="hljs-string">"/subscriptions/.../resourceGroups/cloud-shell-storage-westus"</span>,
-            <span class="hljs-string">"name"</span>: <span class="hljs-string">"cloud-shell-storage-westus"</span>,
-            <span class="hljs-string">"location"</span>: <span class="hljs-string">"westus"</span>,
-            <span class="hljs-string">"properties"</span>: &#123;
-                <span class="hljs-string">"provisioningState"</span>: <span class="hljs-string">"Succeeded"</span>
-            &#125;
-        &#125;
+<pre class="line-numbers language-javascript"><code class="language-javascript">{
+    "value": [
+        {
+            "id": "/subscriptions/.../resourceGroups/cloud-shell-storage-westus",
+            "name": "cloud-shell-storage-westus",
+            "location": "westus",
+            "properties": {
+                "provisioningState": "Succeeded"
+            }
+        }
     ]
-&#125;</code></pre>
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="26.png" alt=""></p>
 <p>That’s all there is to it. Now you can go an explore all of the Azure REST APIs and use this same method to generate the required Bearer Token Authorization header.</p>
 <p>Please let me know if you run in to any issues.</p>
@@ -570,6 +584,10 @@ subscriptionId = you can find your subscription id by running the following <spa
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

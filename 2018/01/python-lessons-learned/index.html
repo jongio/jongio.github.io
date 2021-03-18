@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2018/01/python-lessons-learned/python.png">
 <meta property="article:published_time" content="2018-01-04T06:14:25.000Z">
-<meta property="article:modified_time" content="2018-12-10T07:40:15.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:53:20.439Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -220,9 +226,9 @@
 <p>I discovered <a href="https://github.com/audreyr/cookiecutter" target="_blank" rel="noopener">Cookiecutter</a>, the Python package project scaffolding tool, about half way through the creation of my pip package.  I wish I would have known about it earlier, because it is really helpful. It will scaffold out an entire project for you with unit tests, Travis integration, setuptools and so on.  I used the <a href="https://github.com/audreyr/cookiecutter-pypackage" target="_blank" rel="noopener">Cookiecutter PyPackage</a> template, but you can find a lot more of them here: <a href="https://cookiecutter.readthedocs.io/en/latest/readme.html#a-pantry-full-of-cookiecutters" target="_blank" rel="noopener">A Pantry Full of Cookiecutters<br>
 </a></p>
 <h3 id="Create-Project"><a class="header-anchor" href="#Create-Project"></a>Create Project</h3>
-<pre><code class="language-bash">pip install -U cookiecutter
+<pre class="line-numbers language-bash"><code class="language-bash">pip install -U cookiecutter
 cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="03.png" alt=""></p>
 <h3 id="Project-Name"><a class="header-anchor" href="#Project-Name"></a>Project Name</h3>
 <p>I wanted to use <code>iotedgedev</code> as my PyPI name <strong>and</strong> GitHub repo and I also wanted <code>iotedgedev</code> to be the command line name. The cookiecutter template didn’t allow that directly so I had to make a few manual edits.  I created a project named <code>iotedgedev</code> and then made these changes:</p>
@@ -254,29 +260,29 @@ cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git
 <ol>
 <li>
 <p>Push Changes</p>
-<pre><code class="language-bash">git add .
-git commit -m &quot;&quot;
+<pre class="line-numbers language-bash"><code class="language-bash">git add .
+git commit -m ""
 git push
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>Bumpversion and create Wheel</p>
-<pre><code class="language-bash">bumpversion minor &amp;&amp; python setup.py bdist_wheel
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">bumpversion minor &amp;&amp; python setup.py bdist_wheel
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li>
 <p>Push Tags</p>
-<pre><code class="language-bash">git push --tags
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">git push --tags
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li>
 <p>Upload with Twine</p>
-<pre><code class="language-bash">#test
+<pre class="line-numbers language-bash"><code class="language-bash">#test
 twine upload -r pypitest dist/azure_iot_edge_dev_tool-0.50.0-py2.py3-none-any.whl
 
 #production
 twine upload -r pypi dist/azure_iot_edge_dev_tool-0.52.0-py2.py3-none-any.whl
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>This will read from .pypirc file in the root of your project.</p>
 </blockquote>
@@ -284,7 +290,7 @@ twine upload -r pypi dist/azure_iot_edge_dev_tool-0.52.0-py2.py3-none-any.whl
 </ol>
 <h3 id="Store-PyPI-Settings-in-pypirc"><a class="header-anchor" href="#Store-PyPI-Settings-in-pypirc"></a>Store PyPI Settings in .pypirc</h3>
 <p>Store your PyPI settings in a .pypirc file in the root of your project, which looks something like this:</p>
-<pre><code>[distutils]
+<pre class="line-numbers language-bash"><code class="language-bash">[distutils]
 index-servers =
   pypi
   pypitest
@@ -298,54 +304,54 @@ password=
 repository=https://test.pypi.org/legacy/
 username=yourusername
 password=
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>That way when you call <code>twine upload -r pypi ...</code> it will use the repository, username and password in the file instead of typing it every time you push to PyPI.</p>
 <h3 id="Test-Pip-Install"><a class="header-anchor" href="#Test-Pip-Install"></a>Test Pip Install</h3>
 <p>When you run pip install it will point to production by default, you need to pass <code>--no-cache-dir</code>, <code>--index-url</code> and an <code>--extra-index-url</code> for it to ignore local packages, point to the test env, and use the production env for project dependencies.</p>
-<pre><code>pip --no-cache-dir install --index-url https://test.pypi.org/simple/ iotedgedev --extra-index-url https://pypi.org/simple
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">pip --no-cache-dir install --index-url https://test.pypi.org/simple/ iotedgedev --extra-index-url https://pypi.org/simple
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Command-Line-Arguments-Click"><a class="header-anchor" href="#Command-Line-Arguments-Click"></a>Command Line Arguments: Click</h2>
 <p>I started off with <a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">argparse</a> and evaluated a few others, but landed on <a href="http://click.pocoo.org" target="_blank" rel="noopener">Click</a> because I like how it is integrated into the code. I had everything working with argparse and it was fine, but one I started writing tests I really appreciated that Click came with a <code>CLiRunner</code> object that was really helpful. I converted everything to Click in an hour or so.  You can see the final result here: <a href="https://github.com/azure/iotedgedev/blob/master/iotedgedev/cli.py" target="_blank" rel="noopener">iotedgedev/iotedgedev/cli.py</a>. You can view the full command structure on GitHub here: <a href="https://github.com/azure/iotedgedev#commands" target="_blank" rel="noopener">iotedgedev/README.md</a></p>
 <h3 id="Help-with-h-and-help"><a class="header-anchor" href="#Help-with-h-and-help"></a>Help with -h and --help</h3>
 <p>You can get both -h and --help for help commands if you pass this <code>CONTEXT_SETTINGS = dict(help_option_names=[&quot;-h&quot;, &quot;--help&quot;])</code> into the <code>@click.group</code> statement.</p>
-<pre><code>CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+<pre class="line-numbers language-py"><code class="language-py">CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 
 @click.group(context_settings=CONTEXT_SETTINGS, invoke_without_command=True)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Version-Command"><a class="header-anchor" href="#Version-Command"></a>Version Command</h3>
 <p>You can easily get a --version command by adding <code>@click.version_option()</code> above your main method:</p>
-<pre><code>@click.version_option()
+<pre class="line-numbers language-py"><code class="language-py">@click.version_option()
 def main():
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="Help-Print"><a class="header-anchor" href="#Help-Print"></a>Help Print</h3>
 <p>You can print out the help message using the following code. In my main Package, I want to print help if not commands are passed in and I want there to be an option hanging off the root.  This is the only way I could figure out how to do that.</p>
-<pre><code>def main(set_config):
+<pre class="line-numbers language-py"><code class="language-py">def main(set_config):
     if(set_config):
         utility.set_config()
     else:
         ctx = click.get_current_context()
         if ctx.invoked_subcommand == None:
             click.echo(ctx.get_help())
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Echo-instead-of-Print-Statements"><a class="header-anchor" href="#Echo-instead-of-Print-Statements"></a>Echo instead of Print Statements</h3>
 <p>Click comes with an echo method that allows you to colorize your print statements and is Python 2/3 safe.  One of the last things I did in the project was convert all of my statements to use click.secho. Coloring my output helps differentiate it from the output of the out of proc calls I make.</p>
 <p>Here, I’m using a mixture of Yellow and White, which looks White and Grey with my current ConEmu color scheme.</p>
 <p><img src="05.png" alt=""></p>
 <h2 id="Out-of-Process-Calls-subprocess-Popen"><a class="header-anchor" href="#Out-of-Process-Calls-subprocess-Popen"></a>Out of Process Calls: subprocess.Popen</h2>
 <p>My script makes a bunch of out of process calls to things like <code>dotnet</code>, <code>docker</code> and <code>iotedgectl</code>.  I toyed around with a bunch of ways to do this and finally landed on subprocess.Popen because I could get both the status code and the result (print statements) from the call.  I wrapped mine in a method like this:</p>
-<pre><code> def exe_proc(self, params, shell=False):
+<pre class="line-numbers language-py"><code class="language-py"> def exe_proc(self, params, shell=False):
         proc = subprocess.Popen(
             params, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=shell)
 
         stdout_data, stderr_data = proc.communicate()
-        if stdout_data != &quot;&quot;:
+        if stdout_data != "":
             self.output.procout(self.decode(stdout_data))
 
         if proc.returncode != 0:
             self.output.error(self.decode(stderr_data))
             sys.exit()
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24" target="_blank" rel="noopener">https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24</a></p>
 <h2 id="PyPI-Readme"><a class="header-anchor" href="#PyPI-Readme"></a>PyPI Readme</h2>
 <p>PyPI does not natively support Markdown, although the website says it does, after many hours of trying I could not get it to work.  They do support RST and there are ways to convert Markdown to RST - but nothing was working for me. The Markdown to RST converter I was using <code>pyandoc</code> was not generating valid RST and I was not interested in maintaining two versions (Markdown &amp; RST) of my Readme. If this project was officially supported by Microsoft, then I would have figured it out, but this is a proof-of-concept project, so I decided to abandon the PyPI readme in favor of GitHub markdown and then linked to GitHub from PyPI.</p>
@@ -354,11 +360,11 @@ def main():
 <h2 id="Environment-Variables-Python-DotEnv"><a class="header-anchor" href="#Environment-Variables-Python-DotEnv"></a>Environment Variables: Python-DotEnv</h2>
 <p>My package heavily relies on Environment Variables so I can have a very simple command interface.  I did not want to ask the user to type all them in at the command line.  I used dotenv in my node projects and was happy to see that there’s one available for Python as well: <a href="https://github.com/theskumar/python-dotenv" target="_blank" rel="noopener">Python-DotEnv</a>. You can view my .env file here:<a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/template/.env.tmp" target="_blank" rel="noopener">iotedgedev/template/.env.tmp</a> and you can see how I’m loading it here: <a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/envvars.py#L59" target="_blank" rel="noopener">iotedgedev/envvars.py</a></p>
 <p>This will load the .env from the current directory:</p>
-<pre><code>from dotenv import load_dotenv
+<pre class="line-numbers language-py"><code class="language-py">from dotenv import load_dotenv
 
 dotenv_path = os.path.join(os.getcwd(), '.env')
 load_dotenv(dotenv_path)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And make all the Variables available via <code>os.environ[&quot;NAME&quot;]</code></p>
 <blockquote>
 <p>Make sure you add <code>.env</code> to your .gitignore file.</p>
@@ -605,6 +611,10 @@ load_dotenv(dotenv_path)
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

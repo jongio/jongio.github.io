@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/powerbi-custom-slicer/vizpane.png">
 <meta property="article:published_time" content="2017-03-01T12:01:27.000Z">
-<meta property="article:modified_time" content="2018-05-16T20:39:40.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:51:23.267Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="powerbi">
 <meta property="article:tag" content="javascript">
@@ -70,6 +70,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -93,12 +97,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -249,8 +255,8 @@
 <p>You can use Power BI Desktop, Excel, Streaming Datasets, SQL or whatever you prefer.  I’ve provided an <a href="https://github.com/jongio/PowerBI-visuals-radioSlicer/raw/master/assets/data.xlsx" target="_blank" rel="noopener">excel spreadsheet here</a> that you can use.  Just import it into Power BI using the web interface, or use Power BI Desktop and Publish it to the web.</p>
 <h2 id="Step-1-Create-Visual-pbiviz-new"><a class="header-anchor" href="#Step-1-Create-Visual-pbiviz-new"></a>Step 1: Create Visual: pbiviz new</h2>
 <p>If you have no idea what pbiviz new means, then see my <a href="http://bit.ly/pbicustomviz" target="_blank" rel="noopener">How to Get Started with Power BI Custom Visuals</a> for general custom visual development tutorials.</p>
-<pre><code>pbiviz new radioSlicer
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">pbiviz new radioSlicer
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Open this folder in <a href="https://code.visualstudio.com" target="_blank" rel="noopener">VS Code</a> or your preferred IDE.</p>
 <h2 id="Step-2-Update-Settings-capabilities-json"><a class="header-anchor" href="#Step-2-Update-Settings-capabilities-json"></a>Step 2: Update Settings: capabilities.json</h2>
 <p>Open capabilities.json and add replace its contents with the following json.</p>
@@ -274,8 +280,8 @@
 <script src="https://gist.github.com/jongio/9d250e330c176669317794117b34e7a5.js"></script>
 <h2 id="Step-4-Package-pbiviz-package"><a class="header-anchor" href="#Step-4-Package-pbiviz-package"></a>Step 4: Package: pbiviz package</h2>
 <p>Run the following command to package the visual and share it as a pbiviz file.</p>
-<pre><code>pbiviz package
-</code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">pbiviz package
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Hopefully this post helps you get started building slicer visuals.</p>
 <p>Jon</p>
 
@@ -514,6 +520,10 @@
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2018/01/azure-iot-edge-wsl/edgedevtoolwsl.png">
 <meta property="article:published_time" content="2018-01-10T13:32:15.000Z">
-<meta property="article:modified_time" content="2018-01-12T16:54:20.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:42:25.103Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="iot">
@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -212,36 +218,30 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>If you try to run the Azure IoT Edge Runtime or the <a href="https://aka.ms/iotedgedev" target="_blank" rel="noopener">Azure IoT Edge Dev Tool</a> on <a href="https://docs.microsoft.com/en-us/windows/wsl/about" target="_blank" rel="noopener">Windows Subsystem for Linux (WSL)</a>, then you will run into the following errors:</p>
-<pre><code>ERROR: Could not login to Container Registry. Please verify your credentials in CONTAINER_REGISTRY_ environment variables. 
+<pre class="line-numbers language-bash"><code class="language-bash">ERROR: Could not login to Container Registry. Please verify your credentials in CONTAINER_REGISTRY_ environment variables. 
 If you are using WSL, then please set DOCKER_HOST Environment Variable. See the projects readme for full instructions.
-</code></pre>
-<pre><code>('Connection aborted.', error(2, 'No such file or directory'))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">('Connection aborted.', error(2, 'No such file or directory'))
 ERROR: Could not connect to docker daemon.
 ERROR: Docker is unavailable
 CRITICAL: IoT Edge dependency not available: docker
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Here’s how to fix that:</p>
 <div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/k5ZtTmHgs_8?rel=0&amp;ecver=2" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
 <ol>
-<li>
-<p><strong>Do not</strong> install Docker in WSL, you can use Docker on your Windows machine by modifying the path.</p>
-</li>
-<li>
-<p>In Docker Settings/General, Check “Expose Daemon on tcp:// without TLS”</p>
-</li>
-<li>
-<p>Execute the following in a Bash terminal. This will make <code>docker</code> available in your Bash terminal.</p>
-<pre><code>echo &quot;PATH=\&quot;$PATH:$HOME/bin:$HOME/.local/bin:/mnt/c/Program\ Files/Docker/Docker/resources/bin\&quot;&quot; &gt;&gt; ~/.bashrc
-echo &quot;alias docker=docker.exe&quot; &gt;&gt; ~/.bashrc
-echo &quot;alias docker-machine=docker-machine.exe&quot; &gt;&gt; ~/.bashrc
-echo &quot;alias docker-compose=docker-compose.exe&quot; &gt;&gt; ~/.bashrc
-echo &quot;export DOCKER_HOST='tcp://localhost:2375'&quot; &gt;&gt; ~/.bashrc
+<li><strong>Do not</strong> install Docker in WSL, you can use Docker on your Windows machine by modifying the path.</li>
+<li>In Docker Settings/General, Check “Expose Daemon on tcp:// without TLS”</li>
+<li>Execute the following in a Bash terminal. This will make <code>docker</code> available in your Bash terminal.</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">echo "PATH=\"$PATH:$HOME/bin:$HOME/.local/bin:/mnt/c/Program\ Files/Docker/Docker/resources/bin\"" &gt;&gt; ~/.bashrc
+echo "alias docker=docker.exe" &gt;&gt; ~/.bashrc
+echo "alias docker-machine=docker-machine.exe" &gt;&gt; ~/.bashrc
+echo "alias docker-compose=docker-compose.exe" &gt;&gt; ~/.bashrc
+echo "export DOCKER_HOST='tcp://localhost:2375'" &gt;&gt; ~/.bashrc
 source ~/.bashrc
 
-sudo sh -c &quot;echo Defaults  env_keep += \&quot;DOCKER_HOST\&quot; &gt;&gt; /etc/sudoers.d/docker&quot;
-</code></pre>
-</li>
-</ol>
+sudo sh -c "echo Defaults  env_keep += \"DOCKER_HOST\" &gt;&gt; /etc/sudoers.d/docker"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>This will add Docker to your PATH, create aliases for the docker*.exe files and create a sudoers file so you don’t have to pass -E into the command every time you run it.</p>
 <p>Let me know if you run into any issues.</p>
 <p>Jon</p>
@@ -481,6 +481,10 @@ sudo sh -c &quot;echo Defaults  env_keep += \&quot;DOCKER_HOST\&quot; &gt;&gt; /
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

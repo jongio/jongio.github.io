@@ -94,10 +94,6 @@
 .article-entry .highlight {
   background-color: #f6f8fa;
 }
-.article-entry code:not(.hljs) {
-  background-color: #f8f8f8;
-  padding: 3px;
-}
 .article-tag-list {
   list-style: none;
 }

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
 <meta property="article:published_time" content="2018-07-30T09:50:30.000Z">
-<meta property="article:modified_time" content="2018-09-21T04:09:28.000Z">
+<meta property="article:modified_time" content="2021-03-18T06:52:41.380Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -255,14 +261,14 @@ If you see “Unable to find dataset the-psf:pypi”, then that means you probab
 <img src="000004.png" alt=""></li>
 <li>Copy and Paste this query into New Query</li>
 </ol>
-<pre><code>SELECT
-  REGEXP_EXTRACT(details.python, r&quot;[0-9]+\.[0-9]+&quot;) AS python_version,
+<pre class="line-numbers language-sql"><code class="language-sql">SELECT
+  REGEXP_EXTRACT(details.python, r"[0-9]+\.[0-9]+") AS python_version,
   COUNT(*) AS downloads
 FROM `the-psf.pypi.downloads*`
-WHERE file.project=&quot;iotedgedev&quot;
+WHERE file.project="iotedgedev"
 GROUP BY python_version
 ORDER BY downloads DESC
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="000005.png" alt=""></p>
 <ol>
 <li>Change ‘iotedgedev’ to the name of your PyPI Package</li>
@@ -527,6 +533,10 @@ null = downloads from PyPI using clients that do not support sending the statist
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

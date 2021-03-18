@@ -71,6 +71,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -94,12 +98,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -213,23 +219,23 @@
         <div class="article-entry" itemprop="articleBody">
             <p>The <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.uihintattribute.uihint.aspx" target="_blank" rel="noopener">UIHint Attribute</a> is a great way to pass metadata from a model to a view. I was looking around for a simple way to get the value of the attribute from my razor view. I could be missing something obvious, but I couldn’t find anything. <a href="http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-2-modelmetadata.html/" target="_blank" rel="noopener">Brad Wilson has some great posts</a> about ModelMetadata if you want to look at in more depth.</p>
 <p>You set UIHint Attributes in your model like this:</p>
-<pre><code class="language-csharp">[DataMember]
-[UIHint(&quot;Hidden&quot;)]
+<pre class="line-numbers language-csharp"><code class="language-csharp">[DataMember]
+[UIHint("Hidden")]
 public string Key { get; set; }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>You could write a custom ModelMetadata provider and so on to get it or you can do what I did and write a simple extension method on PropertyInfo to grab the data. I will expand on the design later, but it meets my needs right now.</p>
-<pre><code class="language-csharp">public static class PropertyInfoExtensions
+<pre class="line-numbers language-csharp"><code class="language-csharp">public static class PropertyInfoExtensions
 {
     public static bool IsHidden(this PropertyInfo property)
     {
         return string.Compare(ModelMetadataProviders.
             Current.GetMetadataForProperty(null, property.DeclaringType, 
-            property.Name).TemplateHint, &quot;Hidden&quot;) == 0;
+            property.Name).TemplateHint, "Hidden") == 0;
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And then in your view you just call IsHidden</p>
-<pre><code class="language-csharp">@foreach (var prop in Model.GetType().GetProperties())
+<pre class="line-numbers language-csharp"><code class="language-csharp">@foreach (var prop in Model.GetType().GetProperties())
 {
     &lt;td&gt;
         if(!prop.IsHidden())
@@ -238,7 +244,7 @@ public string Key { get; set; }
         }
     &lt;/td&gt;
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -475,6 +481,10 @@ public string Key { get; set; }
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -69,6 +69,10 @@
     
 <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
 
+    <!-- 
+<script src="/libs/prism/prism.js"></script>
+ -->
+
     
     
         
@@ -92,12 +96,14 @@
     
 
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
-    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script> -->
 
-    <script>hljs.initHighlightingOnLoad();</script>
+    <!-- <script>hljs.initHighlightingOnLoad();</script> -->
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 
 <body>
     <div id="wrap">
@@ -218,7 +224,7 @@
 <p><strong>The $http methods that call WebAPI</strong></p>
 <p>You could also do this with <a href="http://docs.angularjs.org/api/ngResource.$resource" target="_blank" rel="noopener">$resource</a> or <a href="https://github.com/mgonto/restangular" target="_blank" rel="noopener">Restangular</a>, but I just stuck with <a href="http://docs.angularjs.org/api/ng.$http" target="_blank" rel="noopener">$http</a> for this example because it is easier to grok.</p>
 <p>Each of the methods below perform $http actions and return a promise.</p>
-<pre><code class="language-javascript">var url = 'api/person/';
+<pre class="line-numbers language-javascript"><code class="language-javascript">var url = 'api/person/';
 
 app.factory('personFactory', function ($http) {
     return {
@@ -236,9 +242,9 @@ app.factory('personFactory', function ($http) {
         }
     };
 });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The personFactory is injected into the IndexCtrl and called like so. Provide “success” and “error” callbacks to process the promise.</p>
-<pre><code class="language-javascript">app.controller('IndexCtrl', function ($scope, personFactory, notificationFactory) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.controller('IndexCtrl', function ($scope, personFactory, notificationFactory) {
     $scope.people = [];
 
     var successCallback = function (data, status, headers, config) {
@@ -263,19 +269,19 @@ app.factory('personFactory', function ($http) {
     };
 
 });
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>HTML/JavaScript</strong></p>
-<pre><code class="language-html">&lt;!doctype html&gt;
-&lt;html ng-app=&quot;app&quot;&gt;
+<pre class="line-numbers language-html"><code class="language-html">&lt;!doctype html&gt;
+&lt;html ng-app="app"&gt;
 &lt;head&gt;
     &lt;title&gt;AngularJS-WebApi-EF&lt;/title&gt;
 
-    @Scripts.Render(&quot;~/bundles/jquery&quot;)
-    @Scripts.Render(&quot;~/bundles/angular&quot;)
-    @Scripts.Render(&quot;~/bundles/toastr&quot;)
-    @Scripts.Render(&quot;~/bundles/bootstrap&quot;)
-    @Styles.Render(&quot;~/content/bootstrap&quot;)
-    @Styles.Render(&quot;~/content/toastr&quot;)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/content/bootstrap")
+    @Styles.Render("~/content/toastr")
 
     &lt;style&gt;
         i {
@@ -284,48 +290,48 @@ app.factory('personFactory', function ($http) {
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;div ng-controller=&quot;IndexCtrl&quot; ng-cloak&gt;
-        &lt;div style=&quot;width: 500px;&quot;&gt;
-            &lt;table class=&quot;table table-striped table-bordered table-condensed table-hover&quot;&gt;
+    &lt;div ng-controller="IndexCtrl" ng-cloak&gt;
+        &lt;div style="width: 500px;"&gt;
+            &lt;table class="table table-striped table-bordered table-condensed table-hover"&gt;
                 &lt;tr&gt;
-                    &lt;th style=&quot;width: 100px;&quot;&gt;
-                        &lt;div class=&quot;btn-toolbar&quot;&gt;&lt;i class=&quot;btn icon-plus&quot; ng-click=&quot;toggleAddMode()&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                    &lt;th style="width: 100px;"&gt;
+                        &lt;div class="btn-toolbar"&gt;&lt;i class="btn icon-plus" ng-click="toggleAddMode()"&gt;&lt;/i&gt;&lt;/div&gt;
                     &lt;/th&gt;
-                    &lt;th style=&quot;width: 50px;&quot;&gt;Id&lt;/th&gt;
+                    &lt;th style="width: 50px;"&gt;Id&lt;/th&gt;
                     &lt;th&gt;Name&lt;/th&gt;
                 &lt;/tr&gt;
-                &lt;tr ng-show=&quot;addMode&quot;&gt;
+                &lt;tr ng-show="addMode"&gt;
                     &lt;td&gt;
-                        &lt;div class=&quot;btn-toolbar&quot;&gt;
-                            &lt;div class=&quot;btn-group&quot;&gt;
-                                &lt;i class=&quot;btn icon-save&quot; ng-click=&quot;addPerson()&quot;&gt;&lt;/i&gt;
-                                &lt;i class=&quot;btn icon-remove&quot; ng-click=&quot;toggleAddMode()&quot;&gt;&lt;/i&gt;
+                        &lt;div class="btn-toolbar"&gt;
+                            &lt;div class="btn-group"&gt;
+                                &lt;i class="btn icon-save" ng-click="addPerson()"&gt;&lt;/i&gt;
+                                &lt;i class="btn icon-remove" ng-click="toggleAddMode()"&gt;&lt;/i&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/td&gt;
                     &lt;td&gt;&lt;/td&gt;
                     &lt;td&gt;
-                        &lt;input ng-model=&quot;person.Name&quot; /&gt;&lt;/td&gt;
+                        &lt;input ng-model="person.Name" /&gt;&lt;/td&gt;
                 &lt;/tr&gt;
-                &lt;tr ng-repeat=&quot;person in people | orderBy:'Id':true&quot;&gt;
+                &lt;tr ng-repeat="person in people | orderBy:'Id':true"&gt;
                     &lt;td&gt;
-                        &lt;div class=&quot;btn-toolbar&quot; ng-show=&quot;person.editMode == null || person.editMode == false&quot;&gt;
-                            &lt;div class=&quot;btn-group&quot;&gt;
-                                &lt;i class=&quot;btn icon-edit&quot; ng-click=&quot;toggleEditMode(person)&quot;&gt;&lt;/i&gt;
-                                &lt;i class=&quot;btn icon-trash&quot; ng-click=&quot;deletePerson(person)&quot;&gt;&lt;/i&gt;
+                        &lt;div class="btn-toolbar" ng-show="person.editMode == null || person.editMode == false"&gt;
+                            &lt;div class="btn-group"&gt;
+                                &lt;i class="btn icon-edit" ng-click="toggleEditMode(person)"&gt;&lt;/i&gt;
+                                &lt;i class="btn icon-trash" ng-click="deletePerson(person)"&gt;&lt;/i&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
-                        &lt;div class=&quot;btn-toolbar&quot; ng-show=&quot;person.editMode == true&quot;&gt;
-                            &lt;div class=&quot;btn-group&quot;&gt;
-                                &lt;i class=&quot;btn icon-save&quot; ng-click=&quot;updatePerson(person)&quot;&gt;&lt;/i&gt;
-                                &lt;i class=&quot;btn icon-remove&quot; ng-click=&quot;toggleEditMode(person)&quot;&gt;&lt;/i&gt;
+                        &lt;div class="btn-toolbar" ng-show="person.editMode == true"&gt;
+                            &lt;div class="btn-group"&gt;
+                                &lt;i class="btn icon-save" ng-click="updatePerson(person)"&gt;&lt;/i&gt;
+                                &lt;i class="btn icon-remove" ng-click="toggleEditMode(person)"&gt;&lt;/i&gt;
                             &lt;/div&gt;
                         &lt;/div&gt;
                     &lt;/td&gt;
                     &lt;td&gt;&lt;/td&gt;
                     &lt;td&gt;
-                        &lt;span ng-show=&quot;person.editMode == null || person.editMode == false&quot;&gt;&lt;/span&gt;
-                        &lt;input ng-model=&quot;person.Name&quot; ng-show=&quot;person.editMode == true&quot; /&gt;
+                        &lt;span ng-show="person.editMode == null || person.editMode == false"&gt;&lt;/span&gt;
+                        &lt;input ng-model="person.Name" ng-show="person.editMode == true" /&gt;
                     &lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/table&gt;
@@ -358,10 +364,10 @@ app.factory('personFactory', function ($http) {
 
             return {
                 success: function () {
-                    toastr.success(&quot;Success&quot;);
+                    toastr.success("Success");
                 },
                 error: function (text) {
-                    toastr.error(text, &quot;Error!&quot;);
+                    toastr.error(text, "Error!");
                 }
             };
         });
@@ -417,10 +423,10 @@ app.factory('personFactory', function ($http) {
 &lt;/body&gt;
 &lt;/html&gt;
 
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>WebAPI</strong></p>
 <p>This is just the scaffolding code generated by VS</p>
-<pre><code class="language-csharp">using System;
+<pre class="line-numbers language-csharp"><code class="language-csharp">using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -491,7 +497,7 @@ namespace AngularJS_WebApi_EF.Models
                 db.SaveChanges();
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, person);
-                response.Headers.Location = new Uri(Url.Link(&quot;DefaultApi&quot;, new { id = person.Id }));
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = person.Id }));
                 return response;
             }
             else
@@ -530,7 +536,7 @@ namespace AngularJS_WebApi_EF.Models
         }
     }
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
         <footer>
@@ -767,6 +773,10 @@ namespace AngularJS_WebApi_EF.Models
 
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
 </body>
 
 </html>
