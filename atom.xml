@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-03-27T23:42:39.595Z</updated>
+  <updated>2021-03-31T17:33:42.656Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -17,11 +17,78 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Azure REST APIs with Postman&#39;s OAuth 2.0 Provider</title>
+    <link href="https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/"/>
+    <id>https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/</id>
+    <published>2021-03-31T09:10:51.000Z</published>
+    <updated>2021-03-31T17:33:42.656Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;azure-rest-apis-postman-oauth2.png&quot; alt=&quot;Azure REST APIs with Postman&#39;s OAuth 2.0 Provider&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
+    
+      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Azure REST APIs with Postman&#39;s OAuth 2.0 Provider</title>
+    <link href="https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/"/>
+    <id>https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/</id>
+    <published>2021-03-31T09:10:51.000Z</published>
+    <updated>2021-03-31T16:43:48.882Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you use the provider you have to manually click the “Get New Access Token” button in Postman to get the token,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
+    
+      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
+    
+  </entry>
+  
+  <entry>
     <title>McDonald&#39;s No Salt</title>
     <link href="https://blog.jongallant.com/2021/03/mcdonalds-no-salt/"/>
     <id>https://blog.jongallant.com/2021/03/mcdonalds-no-salt/</id>
     <published>2021-03-27T16:22:38.000Z</published>
-    <updated>2021-03-27T23:42:39.595Z</updated>
+    <updated>2021-03-31T17:04:21.298Z</updated>
     
     <summary type="html">
     
@@ -572,69 +639,6 @@
       <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
     
       <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Power BI: How to Clear All Filters on a Power BI Report</title>
-    <link href="https://blog.jongallant.com/2020/05/powerbi-clear-all-filters/"/>
-    <id>https://blog.jongallant.com/2020/05/powerbi-clear-all-filters/</id>
-    <published>2020-05-17T15:01:55.000Z</published>
-    <updated>2020-05-17T22:39:23.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;It quite common to lose track of what filters you currently have applied to a Power BI report.  Also, there’s no out of the box way to clear them all.  So, here’s how to do it.&lt;/p&gt;
-&lt;p&gt;We’re going to add an image and a bookmark when no filters set. When a user CTRL+clicks on the image, the
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Updated: How to use .env files with the Azure SDK for Java</title>
-    <link href="https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/"/>
-    <id>https://blog.jongallant.com/2020/05/java-dotenv-azure-sdk-update/</id>
-    <published>2020-05-13T16:09:30.000Z</published>
-    <updated>2021-03-18T06:47:35.349Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Exactly, one month ago, to the day, I wrote a &lt;a href=&quot;/java-dotenv-azure-sdk&quot;&gt;post&lt;/a&gt; about how to use &lt;code&gt;.env&lt;/code&gt; files with Java and Azure SDKs. The gist of the problem was that the package we use to read the &lt;code&gt;.env&lt;/code&gt; files didn’t write those values to System.getenv or
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="azuresdk" scheme="https://blog.jongallant.com/tags/azuresdk/"/>
-    
-      <category term="java" scheme="https://blog.jongallant.com/tags/java/"/>
     
   </entry>
   

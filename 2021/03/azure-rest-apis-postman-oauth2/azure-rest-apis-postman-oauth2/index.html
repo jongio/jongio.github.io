@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script data-ad-client="ca-pub-7253926757222509" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FP3DVRSXN0"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FP3DVRSXN0');
+    </script>
+    <meta charset="utf-8">
+    
+    <title>
+        
+        Azure REST APIs with Postman&#39;s OAuth 2.0 Provider |
+        
+        Jon Gallant
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="azure,postman,rest" />
+    
+    <meta name="description" content="I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you use the provi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure REST APIs with Postman&#39;s OAuth 2.0 Provider">
+<meta property="og:url" content="https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/index.html">
+<meta property="og:site_name" content="Jon Gallant">
+<meta property="og:description" content="I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you use the provi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/000.png">
+<meta property="article:published_time" content="2021-03-31T09:10:51.000Z">
+<meta property="article:modified_time" content="2021-03-31T16:43:48.882Z">
+<meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="postman">
+<meta property="article:tag" content="rest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/000.png">
+<meta name="twitter:creator" content="@jongallant">
+    
+
+    
+    <link rel="alternate" href="http://feeds.feedburner.com/jongallant" title="Jon Gallant"
+        type="application/atom+xml" />
+    
+
+    
+    <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="//fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    
+    
+        <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-1148981-8', 'auto');
+    ga('send', 'pageview');
+
+</script>
+    
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/"
+                  >Home</a
+                >
+              </li>
+               <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/">Leadership</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Career-Model/">Career Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Proactive-Mentorship/">Proactive Mentorship</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Productivity/">Productivity</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Review-Model/">Review Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Leadership/Work-Life-Balance/">Work:Life Balance</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/">Tech</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/3D-Printing/">3D Printing</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Announcements/">Announcements</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Azure/">Azure</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Bugs/">Bugs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Career/">Career</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Conferences/">Conferences</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Gaming/">Gaming</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/IoT/">IoT</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Jobs/">Jobs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Microsoft/">Microsoft</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Power-BI/">Power BI</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Reviews/">Reviews</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Story/">Story</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tips/">Tips</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/category/Tech/Tutorials/">Tutorials</a></li></ul></li></ul> 
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/archives/"
+                  >Archive</a
+                >
+              </li>
+              
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/videos/"
+                  >Videos</a
+                >
+              </li>
+              
+              <li class="main-nav-list-item">
+                <a
+                  class="main-nav-list-link"
+                  href="/contact/"
+                  >Contact</a
+                >
+              </li>
+              
+            </ul>
+            <nav id="sub-nav">
+                <script async src="https://cse.google.com/cse.js?cx=partner-pub-7253926757222509:9158994875"></script>
+                <div class="gcse-searchbox-only"></div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
+                        <div class="main-body-content">
+                            <div class="banner-ad">
+                                <!-- banner -->
+                                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7253926757222509"
+                                    data-ad-slot="8838481977" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                            <article id="post-azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Azure REST APIs with Postman&#39;s OAuth 2.0 Provider
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-subtitle">
+                
+<a href="/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/" class="article-date">
+    <time datetime="2021-03-31T09:10:51.000Z" itemprop="datePublished">2021-03-31</time>
+</a>
+
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/" rel="tag">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/" rel="tag">rest</a></li></ul>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you use the provider you have to manually click the “Get New Access Token” button in Postman to get the token, which isn’t possible when I need to automate the execution of my Postman collections.</p>
+<p>If you are fine with clicking that button when your token expires, then this post is for you, if you would like to use the pre-request script that auto-fetches a new token when it expires, then check out my <a href="azure-rest-apis-with-postman-2021">Azure REST APIs with Postman</a> blog.</p>
+<p>Here’s how to use Postman’s OAuth2 provider with Azure REST APIs.</p>
+<h2 id="Azure-SDKs"><a class="header-anchor" href="#Azure-SDKs"></a>Azure SDKs</h2>
+<p>Before we go too far into this Azure REST APIs with Postman OAuth 2.0 edition blog post, I want to make sure that you know you don’t need to use the Azure REST APIs to interact with Azure resources.  So many people have reached out to me over the years asking for Azure REST help who didn’t know we have SDKs in many languages, including .NET, Python, Java, JavaScript/TypeScript, Go, C++, C, Android, iOS, PHP, and Ruby - and that they work across operating systems - and are available in their favorite package managers.  In my opinion, if you don’t mind taking on the dependency of the Microsoft supported library, then it sure beats building the libraries yourself.  Also, the new Azure SDKs include features like logging, retries, and are fully supported by a sizable team at Microsoft.</p>
+<p>I understand if you want to use the REST APIs directly, but I just want you to know that the libraries exist as well.</p>
+<p>You can find the libraries here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a> and a 3 min “Introducing the Azure SDKs” video here: <a href="https://aka.ms/azsdk/intro" target="_blank" rel="noopener">https://aka.ms/azsdk/intro</a> and all the source for the libraries can be found here: <a href="https://github.com/azure/azure-sdk" target="_blank" rel="noopener">https://github.com/azure/azure-sdk</a></p>
+<h2 id="Postman"><a class="header-anchor" href="#Postman"></a>Postman</h2>
+<p>Postman is a tool that enables you to call the Azure REST APIs via a graphical interface.  You can install it here: <a href="https://www.postman.com/downloads/" target="_blank" rel="noopener">Download Postman</a>.  We are using Postman v8.0.5 for this post.</p>
+<h2 id="Azure-CLI"><a class="header-anchor" href="#Azure-CLI"></a>Azure CLI</h2>
+<p>The Azure CLI is a command line tool that allows you to manage and interact with Azure resources, including the ability to get the necessary accounts and tokens required to call the Azure REST APIs.  We’ll use it to create a service principal, which will be used to get the tokens we need to make Azure REST API requests.</p>
+<h3 id="Installation"><a class="header-anchor" href="#Installation"></a>Installation</h3>
+<p>You can either use the Azure Cloud Shell or install the Azure CLI locally.</p>
+<h4 id="Cloud-Shell"><a class="header-anchor" href="#Cloud-Shell"></a>Cloud Shell</h4>
+<p>The Azure Cloud shell is an in-browser terminal interface that allows you to execute Azure CLI commands without installing the Azure CLI locally.</p>
+<ol>
+<li>Go to <a href="https://shell.azure.com" target="_blank" rel="noopener">Azure Cloud Shell</a> - <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a></li>
+</ol>
+<h4 id="Azure-CLI-Local-Install"><a class="header-anchor" href="#Azure-CLI-Local-Install"></a>Azure CLI Local Install</h4>
+<ol>
+<li><a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank" rel="noopener">Install the Azure CLI</a></li>
+<li>Login with <code>az login</code></li>
+<li>Select your active Azure subscription with <code>az account set -n {name of your sub}</code></li>
+</ol>
+<h2 id="Authentication"><a class="header-anchor" href="#Authentication"></a>Authentication</h2>
+<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
+<p>We first need to create the service principal with the following Azure CLI command:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">az ad sp create-for-rbac
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>This will output the information you need to setup Postman - you will need it later, so save it to a safe location.</p>
+<p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
+<pre class="line-numbers language-json"><code class="language-json">{
+  "appId": "798256c4-bbdc-4f7a-a20a-",
+  "displayName": "azure-cli-2021-02-10-22-47-08",
+  "name": "http://azure-cli-2021-02-10-22-47-08",
+  "password": "",
+  "tenant": "72f988bf-86f1-41af-91ab-"
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Postman-Setup"><a class="header-anchor" href="#Postman-Setup"></a>Postman Setup</h2>
+<p>Now that we have the service principal created, it is time to configure Postman.</p>
+<p>I created this sample collection to help you get started.  Click on the following “Run in Postman” button to open that collection.</p>
+<p><a href="https://app.getpostman.com/run-collection/f7a84bebc6c08df804ec" target="_blank" rel="noopener"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman"></a></p>
+<p>Here’s the direct link, just in case that button doesn’t work for you: <a href="https://app.getpostman.com/run-collection/f7a84bebc6c08df804ec" target="_blank" rel="noopener">https://app.getpostman.com/run-collection/f7a84bebc6c08df804ec</a></p>
+<ol>
+<li>Choose “Postman for Windows”</li>
+</ol>
+<p><img src="058.png" alt="Postman run in options"></p>
+<ol start="2">
+<li>Choose the workspace you want to import the Azure REST 2021 collection into.</li>
+</ol>
+<p><img src="059.png" alt="Postman select workspace"></p>
+<ol start="3">
+<li>You will now see the Azure REST 2021 collection in Postman.</li>
+</ol>
+<p><img src="057.png" alt="Postman collection in workspace"></p>
+<h3 id="Variables"><a class="header-anchor" href="#Variables"></a>Variables</h3>
+<p>Postman allows you to set variables at various levels, you can read all about variables and scopes here: <a href="https://learning.postman.com/docs/sending-requests/variables/" target="_blank" rel="noopener">Postman: Using variables</a>. In this example, we’ll use “Collection level” variables.</p>
+<p>Click on the collection name, and then click on the “Variables” tab, you’ll see the variables that need to be set in order to get the token for each Azure REST API call.</p>
+<p><img src="061.png" alt="Postman variables"></p>
+<p>Go through and set each of these variables based on the “Notes” column below.</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Current Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId</td>
+<td></td>
+<td>This is the value of <code>appId</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>clientSecret</td>
+<td></td>
+<td>This is the value of <code>password</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>tenantId</td>
+<td></td>
+<td>This is the value of <code>tenantId</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>subscriptionId</td>
+<td></td>
+<td>You can get this with this Azure CLI command <code>az account show --query id -o tsv</code></td>
+</tr>
+<tr>
+<td>scope</td>
+<td><code>https://management.azure.com/.default</code></td>
+<td>The default value is for managing Azure resources.</td>
+</tr>
+<tr>
+<td>accessTokenUrl</td>
+<td><code>https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token</code></td>
+<td>You shouldn’t need to change this.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>VERY IMPORTANT: Make sure you click the “Save” button after you have set all your variables!</p>
+</blockquote>
+<p><img src="062.png" alt="Postman collection save button"></p>
+<h3 id="Authorization"><a class="header-anchor" href="#Authorization"></a>Authorization</h3>
+<p>Click on the Authorization tab and ensure that the following is set correctly:</p>
+<p>Type: OAuth 2.0<br>
+Add auth data to: Request Headers<br>
+Header Prefix: Bearer<br>
+Configure New Token:<br>
+- Token Name: Bearer<br>
+- Grant Type: Client Credentials<br>
+- Access Token URL: {{tenantId}}<br>
+- Client ID: {{tenantId}}<br>
+- Client Secret: {{tenantId}}<br>
+- Scope: {{tenantId}}<br>
+- Client Authentication: Send client credentials in body</p>
+<h3 id="Execute-“Get-Resource-Groups”-Request"><a class="header-anchor" href="#Execute-“Get-Resource-Groups”-Request"></a>Execute “Get Resource Groups” Request</h3>
+<p>It is now time to execute our first request.  I included a sample “Get Resource Groups” request in the collection.</p>
+<p><img src="075.png" alt="Postman Get resource groups request"></p>
+<p>Click on that request, and then click the blue “Send” button.</p>
+<p><img src="077.png" alt="Postman blue send button"></p>
+<p>You will then see the output of all your resources groups in the response pane.</p>
+<p><img src="076.png" alt="Postman get resource groups output"></p>
+<h3 id="Execute-“Create-Resource-Group”-Request"><a class="header-anchor" href="#Execute-“Create-Resource-Group”-Request"></a>Execute “Create Resource Group” Request</h3>
+<p>You just saw how we can execute a simple GET request.  Here’s how to do a PUT to create a resource group.  You can find the full docs for the Resource Group, and all the other Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate" target="_blank" rel="noopener">Resource Groups - Create Or Update</a></p>
+<p>Click on the “Create Resource Group” request.</p>
+<p><img src="068.png" alt="Postman create resource group request"></p>
+<p>You will notice that we change the HTTP VERB to PUT and added the resource group name to the URL.</p>
+<p><img src="069.png" alt="Postman verb and resource group name"></p>
+<p>We also added a body to supply the location, which is required for this request.</p>
+<p>In order to set the body you need to do the following:</p>
+<p><img src="070.png" alt="Postman body"></p>
+<ol>
+<li>Click on the “Body” tab under the request URI</li>
+<li>Select the “Raw” radio button.</li>
+<li>Select “JSON” in the Content-Type dropdown</li>
+<li>Enter the JSON body into the Body textbox:</li>
+</ol>
+<pre class="line-numbers language-json"><code class="language-json">{"location": "westus"}
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="071.png" alt="Postman body content type"></p>
+<p>All parameters for all requests can be found in the <a href="https://docs.microsoft.com/rest/api/azure/" target="_blank" rel="noopener">Azure REST documentation</a>.</p>
+<p>Now you can click the blue “Send” button and then see the output in the response output pane:</p>
+<p><img src="072.png" alt="Postman create resource group output"></p>
+<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
+<p>That’s my Azure REST with Postman 2021 update.  I hope you found this helpful. Please leave a comment and share with your friends.</p>
+<p>Thanks,<br>
+Jon</p>
+
+        </div>
+        <footer>
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar">
+        <i class="toggle icon"></i>
+    </a>
+    <div class="sidebar-top">
+
+        <ul class="social-links">
+            
+            
+            <li>
+                <a class="social-tooltip" title="twitter" href="http://twitter.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-twitter"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="github" href="https://github.com/jongio"
+                    target="_blank">
+                    <i class="icon fa fa-github"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="rss" href="http://feeds.feedburner.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-rss"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="linkedin" href="http://www.linkedin.com/in/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-linkedin"></i>
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a class="social-tooltip" title="youtube" href="https://www.youtube.com/jongallant"
+                    target="_blank">
+                    <i class="icon fa fa-youtube"></i>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <nav id="article-nav">
+        
+            <a href="/2021/03/azure-rest-apis-postman-oauth2/" id="article-nav-newer" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">
+                    newer
+                </strong>
+                <p class="article-nav-title">
+                    
+                        Azure REST APIs with Postman&#39;s OAuth 2.0 Provider
+                            
+                </p>
+                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+
+            </a>
+            
+                
+                    <a href="/2021/03/mcdonalds-no-salt/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            McDonald&#39;s No Salt
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
+    
+
+    <div class="widgets-container">
+        
+        
+        <br/>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/videoseries?list=PLiMIJTv6gK5_Zmdcmbo-kxAbpeGjSou9x&amp;showinfo=0?ecver=2" width="640" height="360" frameborder="0" gesture="media" allow="encrypted-media" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+<br/>
+        
+        <div class="github-card" data-github="jongio" data-width="340" data-height="150" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+        
+        <a class="twitter-timeline" data-height="700" href="https://twitter.com/jongallant?ref_src=twsrc%5Etfw" target="_blank" rel="noopener"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        
+        <div class="rail-ad">
+            <!-- rail -->
+            <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7253926757222509"
+            data-ad-slot="7222147978"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- 2nd rail -->
+            <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7253926757222509"
+            data-ad-slot="1523952970"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <div class="banner-ad">
+   <!-- footer -->
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-7253926757222509"
+    data-ad-slot="5729050190"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+<footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo-n"></a>
+                </h1>
+                <p>&copy;
+                    2021
+                    Jon Gallant
+                </p>
+                <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
+                    employer’s view in any way. This post may contain affiliate links. If you use these links to buy something I may earn a commission.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'jongallant';
+    
+    
+    var disqus_url = 'https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha512-br8H6OngKoLht57WKRU5jz3Vr0vF+Tw4G6yhNN2F3dSDheq4JiaasROPJB1wy7PxPk7kV/+5AIbmoZLxxx7Zow==" crossorigin="anonymous"></script>
+</body>
+
+</html>

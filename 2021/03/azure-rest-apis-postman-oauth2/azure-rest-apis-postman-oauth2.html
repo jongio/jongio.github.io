@@ -1,0 +1,163 @@
+<hr>
+<p>title: Azure REST APIs with Postman’s OAuth 2.0 Provider<br>
+categories:</p>
+<ul>
+<li>Tech</li>
+<li>Tips<br>
+tags: [azure, rest, postman]<br>
+thumbnail: /2021/03/azure-rest-apis-postman-oauth2/000.png<br>
+alias: azure-rest-apis-postman-oauth2<br>
+date: 2021-03-31 09:10:51</li>
+</ul>
+<hr>
+<p>I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you use the provider you have to manually click the “Get New Access Token” button in Postman to get the token, which isn’t possible when I need to automate the execution of my Postman collections.</p>
+<p>If you are fine with clicking that button when your token expires, then this post is for you, if you would like to use the pre-request script that auto-fetches a new token when it expires, then check out my <a href="azure-rest-apis-with-postman-2021">Azure REST APIs with Postman</a> blog.</p>
+<p>Here’s how to use Postman’s OAuth2 provider with Azure REST APIs.</p>
+<h2 id="Azure-SDKs"><a class="header-anchor" href="#Azure-SDKs"></a>Azure SDKs</h2>
+<p>Before we go too far into this Azure REST APIs with Postman OAuth 2.0 edition blog post, I want to make sure that you know you don’t need to use the Azure REST APIs to interact with Azure resources.  So many people have reached out to me over the years asking for Azure REST help who didn’t know we have SDKs in many languages, including .NET, Python, Java, JavaScript/TypeScript, Go, C++, C, Android, iOS, PHP, and Ruby - and that they work across operating systems - and are available in their favorite package managers.  In my opinion, if you don’t mind taking on the dependency of the Microsoft supported library, then it sure beats building the libraries yourself.  Also, the new Azure SDKs include features like logging, retries, and are fully supported by a sizable team at Microsoft.</p>
+<p>I understand if you want to use the REST APIs directly, but I just want you to know that the libraries exist as well.</p>
+<p>You can find the libraries here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a> and a 3 min “Introducing the Azure SDKs” video here: <a href="https://aka.ms/azsdk/intro" target="_blank" rel="noopener">https://aka.ms/azsdk/intro</a> and all the source for the libraries can be found here: <a href="https://github.com/azure/azure-sdk" target="_blank" rel="noopener">https://github.com/azure/azure-sdk</a></p>
+<h2 id="Postman"><a class="header-anchor" href="#Postman"></a>Postman</h2>
+<p>Postman is a tool that enables you to call the Azure REST APIs via a graphical interface.  You can install it here: <a href="https://www.postman.com/downloads/" target="_blank" rel="noopener">Download Postman</a>.  We are using Postman v8.0.5 for this post.</p>
+<h2 id="Azure-CLI"><a class="header-anchor" href="#Azure-CLI"></a>Azure CLI</h2>
+<p>The Azure CLI is a command line tool that allows you to manage and interact with Azure resources, including the ability to get the necessary accounts and tokens required to call the Azure REST APIs.  We’ll use it to create a service principal, which will be used to get the tokens we need to make Azure REST API requests.</p>
+<h3 id="Installation"><a class="header-anchor" href="#Installation"></a>Installation</h3>
+<p>You can either use the Azure Cloud Shell or install the Azure CLI locally.</p>
+<h4 id="Cloud-Shell"><a class="header-anchor" href="#Cloud-Shell"></a>Cloud Shell</h4>
+<p>The Azure Cloud shell is an in-browser terminal interface that allows you to execute Azure CLI commands without installing the Azure CLI locally.</p>
+<ol>
+<li>Go to <a href="https://shell.azure.com" target="_blank" rel="noopener">Azure Cloud Shell</a> - <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a></li>
+</ol>
+<h4 id="Azure-CLI-Local-Install"><a class="header-anchor" href="#Azure-CLI-Local-Install"></a>Azure CLI Local Install</h4>
+<ol>
+<li><a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank" rel="noopener">Install the Azure CLI</a></li>
+<li>Login with <code>az login</code></li>
+<li>Select your active Azure subscription with <code>az account set -n {name of your sub}</code></li>
+</ol>
+<h2 id="Authentication"><a class="header-anchor" href="#Authentication"></a>Authentication</h2>
+<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
+<p>We first need to create the service principal with the following Azure CLI command:</p>
+<pre><code class="language-bash">az ad sp create-for-rbac
+</code></pre>
+<p>This will output the information you need to setup Postman - you will need it later, so save it to a safe location.</p>
+<p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
+<pre><code class="language-json">{
+  &quot;appId&quot;: &quot;798256c4-bbdc-4f7a-a20a-&quot;,
+  &quot;displayName&quot;: &quot;azure-cli-2021-02-10-22-47-08&quot;,
+  &quot;name&quot;: &quot;http://azure-cli-2021-02-10-22-47-08&quot;,
+  &quot;password&quot;: &quot;&quot;,
+  &quot;tenant&quot;: &quot;72f988bf-86f1-41af-91ab-&quot;
+}
+</code></pre>
+<h2 id="Postman-Setup"><a class="header-anchor" href="#Postman-Setup"></a>Postman Setup</h2>
+<p>Now that we have the service principal created, it is time to configure Postman.</p>
+<p>I created this sample collection to help you get started.  Click on the following “Run in Postman” button to open that collection.</p>
+<p><a href="https://app.getpostman.com/run-collection/f7a84bebc6c08df804ec" target="_blank" rel="noopener"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman"></a></p>
+<p>Here’s the direct link, just in case that button doesn’t work for you: <a href="https://app.getpostman.com/run-collection/f7a84bebc6c08df804ec" target="_blank" rel="noopener">https://app.getpostman.com/run-collection/f7a84bebc6c08df804ec</a></p>
+<ol>
+<li>Choose “Postman for Windows”</li>
+</ol>
+<p><img src="058.png" alt="Postman run in options"></p>
+<ol start="2">
+<li>Choose the workspace you want to import the Azure REST 2021 collection into.</li>
+</ol>
+<p><img src="059.png" alt="Postman select workspace"></p>
+<ol start="3">
+<li>You will now see the Azure REST 2021 collection in Postman.</li>
+</ol>
+<p><img src="057.png" alt="Postman collection in workspace"></p>
+<h3 id="Variables"><a class="header-anchor" href="#Variables"></a>Variables</h3>
+<p>Postman allows you to set variables at various levels, you can read all about variables and scopes here: <a href="https://learning.postman.com/docs/sending-requests/variables/" target="_blank" rel="noopener">Postman: Using variables</a>. In this example, we’ll use “Collection level” variables.</p>
+<p>Click on the collection name, and then click on the “Variables” tab, you’ll see the variables that need to be set in order to get the token for each Azure REST API call.</p>
+<p><img src="061.png" alt="Postman variables"></p>
+<p>Go through and set each of these variables based on the “Notes” column below.</p>
+<table>
+<thead>
+<tr>
+<th>Variable Name</th>
+<th>Current Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId</td>
+<td></td>
+<td>This is the value of <code>appId</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>clientSecret</td>
+<td></td>
+<td>This is the value of <code>password</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>tenantId</td>
+<td></td>
+<td>This is the value of <code>tenantId</code> from the service principal creation output above.</td>
+</tr>
+<tr>
+<td>subscriptionId</td>
+<td></td>
+<td>You can get this with this Azure CLI command <code>az account show --query id -o tsv</code></td>
+</tr>
+<tr>
+<td>scope</td>
+<td><code>https://management.azure.com/.default</code></td>
+<td>The default value is for managing Azure resources.</td>
+</tr>
+<tr>
+<td>accessTokenUrl</td>
+<td><code>https://login.microsoftonline.com/{% raw %}{{tenantId}}{% endraw %}/oauth2/v2.0/token</code></td>
+<td>You shouldn’t need to change this.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>VERY IMPORTANT: Make sure you click the “Save” button after you have set all your variables!</p>
+</blockquote>
+<p><img src="062.png" alt="Postman collection save button"></p>
+<h3 id="Authorization"><a class="header-anchor" href="#Authorization"></a>Authorization</h3>
+<p>Click on the Authorization tab and ensure that the following is set correctly:</p>
+<p>Type: OAuth 2.0<br>
+Add auth data to: Request Headers<br>
+Header Prefix: Bearer<br>
+Configure New Token:<br>
+- Token Name: Bearer<br>
+- Grant Type: Client Credentials<br>
+- Access Token URL: {% raw %}{{tenantId}}{% endraw %}<br>
+- Client ID: {% raw %}{{tenantId}}{% endraw %}<br>
+- Client Secret: {% raw %}{{tenantId}}{% endraw %}<br>
+- Scope: {% raw %}{{tenantId}}{% endraw %}<br>
+- Client Authentication: Send client credentials in body</p>
+<h3 id="Execute-“Get-Resource-Groups”-Request"><a class="header-anchor" href="#Execute-“Get-Resource-Groups”-Request"></a>Execute “Get Resource Groups” Request</h3>
+<p>It is now time to execute our first request.  I included a sample “Get Resource Groups” request in the collection.</p>
+<p><img src="075.png" alt="Postman Get resource groups request"></p>
+<p>Click on that request, and then click the blue “Send” button.</p>
+<p><img src="077.png" alt="Postman blue send button"></p>
+<p>You will then see the output of all your resources groups in the response pane.</p>
+<p><img src="076.png" alt="Postman get resource groups output"></p>
+<h3 id="Execute-“Create-Resource-Group”-Request"><a class="header-anchor" href="#Execute-“Create-Resource-Group”-Request"></a>Execute “Create Resource Group” Request</h3>
+<p>You just saw how we can execute a simple GET request.  Here’s how to do a PUT to create a resource group.  You can find the full docs for the Resource Group, and all the other Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate" target="_blank" rel="noopener">Resource Groups - Create Or Update</a></p>
+<p>Click on the “Create Resource Group” request.</p>
+<p><img src="068.png" alt="Postman create resource group request"></p>
+<p>You will notice that we change the HTTP VERB to PUT and added the resource group name to the URL.</p>
+<p><img src="069.png" alt="Postman verb and resource group name"></p>
+<p>We also added a body to supply the location, which is required for this request.</p>
+<p>In order to set the body you need to do the following:</p>
+<p><img src="070.png" alt="Postman body"></p>
+<ol>
+<li>Click on the “Body” tab under the request URI</li>
+<li>Select the “Raw” radio button.</li>
+<li>Select “JSON” in the Content-Type dropdown</li>
+<li>Enter the JSON body into the Body textbox:</li>
+</ol>
+<pre><code class="language-json">{&quot;location&quot;: &quot;westus&quot;}
+</code></pre>
+<p><img src="071.png" alt="Postman body content type"></p>
+<p>All parameters for all requests can be found in the <a href="https://docs.microsoft.com/rest/api/azure/" target="_blank" rel="noopener">Azure REST documentation</a>.</p>
+<p>Now you can click the blue “Send” button and then see the output in the response output pane:</p>
+<p><img src="072.png" alt="Postman create resource group output"></p>
+<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
+<p>That’s my Azure REST with Postman 2021 update.  I hope you found this helpful. Please leave a comment and share with your friends.</p>
+<p>Thanks,<br>
+Jon</p>
