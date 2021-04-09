@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-03-31T17:33:42.656Z</updated>
+  <updated>2021-04-09T18:31:12.733Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution: The subscription does not have QuotaId/Feature required by SKU &#39;S0&#39;.</title>
+    <link href="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/"/>
+    <id>https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/</id>
+    <published>2021-04-09T11:19:37.000Z</published>
+    <updated>2021-04-09T18:31:12.733Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Got this today:&lt;/p&gt;
+&lt;p&gt;The subscription does not have QuotaId/Feature required by SKU ‘S0’.&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;{
+   &quot;error&quot;:{
+      &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,
+      &quot;message&quot;:&quot;The template deployment &#39;memetest04091&#39; is not valid
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure REST APIs with Postman&#39;s OAuth 2.0 Provider</title>
@@ -602,43 +636,6 @@
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WSL: Disable &#39;ls&#39; folder highlighting</title>
-    <link href="https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/"/>
-    <id>https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/</id>
-    <published>2020-06-24T09:13:32.000Z</published>
-    <updated>2020-06-24T16:24:49.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;In WSL, when I ran &lt;code&gt;ls&lt;/code&gt; I was getting this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;031.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The folders were highlighted, not matter what theme I changed Terminal to.&lt;/p&gt;
-&lt;p&gt;I did a bunch of searching and found this:&lt;br&gt;
-&lt;a href=&quot;https://stackoverflow.com/a/43147778&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="windows" scheme="https://blog.jongallant.com/tags/windows/"/>
-    
-      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
-    
-      <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
     
   </entry>
   
