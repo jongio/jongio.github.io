@@ -85,39 +85,6 @@
   </entry>
   
   <entry>
-    <title>Azure REST APIs with Postman&#39;s OAuth 2.0 Provider</title>
-    <link href="https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/"/>
-    <id>https://blog.jongallant.com/2021/03/azure-rest-apis-postman-oauth2/azure-rest-apis-postman-oauth2/</id>
-    <published>2021-03-31T09:10:51.000Z</published>
-    <updated>2021-03-31T16:43:48.882Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’ve been blogging and vlogging about Azure REST APIs with Postman for a while now and often get asked why I don’t use Postman’s built in OAuth 2.0 provider.  The reason is that when you use the provider you have to manually click the “Get New Access Token” button in Postman to get the token,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
-    
-      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
     <title>McDonald&#39;s No Salt</title>
     <link href="https://blog.jongallant.com/2021/03/mcdonalds-no-salt/"/>
     <id>https://blog.jongallant.com/2021/03/mcdonalds-no-salt/</id>
@@ -636,6 +603,43 @@
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WSL: Disable &#39;ls&#39; folder highlighting</title>
+    <link href="https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/"/>
+    <id>https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/</id>
+    <published>2020-06-24T09:13:32.000Z</published>
+    <updated>2020-06-24T16:24:49.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;In WSL, when I ran &lt;code&gt;ls&lt;/code&gt; I was getting this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;031.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The folders were highlighted, not matter what theme I changed Terminal to.&lt;/p&gt;
+&lt;p&gt;I did a bunch of searching and found this:&lt;br&gt;
+&lt;a href=&quot;https://stackoverflow.com/a/43147778&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="windows" scheme="https://blog.jongallant.com/tags/windows/"/>
+    
+      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
+    
+      <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
     
   </entry>
   
