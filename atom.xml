@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-04-09T18:31:12.733Z</updated>
+  <updated>2021-04-13T19:02:49.340Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>This is Not A Toy - Mandalorian + Grogu Puzzle Added to Puzzle Wall</title>
+    <link href="https://blog.jongallant.com/2021/04/this-is-not-a-toy-puzzle/"/>
+    <id>https://blog.jongallant.com/2021/04/this-is-not-a-toy-puzzle/</id>
+    <published>2021-04-13T10:09:29.000Z</published>
+    <updated>2021-04-13T19:02:49.340Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;We are a puzzle family and a few years ago started hanging them up around the house. We are also a Star Wars family and started doing Star Wars themed puzzles. My office wall now has many puzzles that we’ve completed and we call it the puzzle wall.&lt;/p&gt;
+&lt;p&gt;Today’s addition to the puzzle wall was
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Puzzles" scheme="https://blog.jongallant.com/category/Puzzles/"/>
+    
+    
+      <category term="puzzles" scheme="https://blog.jongallant.com/tags/puzzles/"/>
+    
+      <category term="fun" scheme="https://blog.jongallant.com/tags/fun/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Solution: The subscription does not have QuotaId/Feature required by SKU &#39;S0&#39;.</title>
     <link href="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/"/>
     <id>https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/</id>
     <published>2021-04-09T11:19:37.000Z</published>
-    <updated>2021-04-09T18:31:12.733Z</updated>
+    <updated>2021-04-13T19:01:50.053Z</updated>
     
     <summary type="html">
     
@@ -603,43 +633,6 @@
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WSL: Disable &#39;ls&#39; folder highlighting</title>
-    <link href="https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/"/>
-    <id>https://blog.jongallant.com/2020/06/wsl-ls-folder-highlight/</id>
-    <published>2020-06-24T09:13:32.000Z</published>
-    <updated>2020-06-24T16:24:49.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;In WSL, when I ran &lt;code&gt;ls&lt;/code&gt; I was getting this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;031.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;The folders were highlighted, not matter what theme I changed Terminal to.&lt;/p&gt;
-&lt;p&gt;I did a bunch of searching and found this:&lt;br&gt;
-&lt;a href=&quot;https://stackoverflow.com/a/43147778&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="windows" scheme="https://blog.jongallant.com/tags/windows/"/>
-    
-      <category term="linux" scheme="https://blog.jongallant.com/tags/linux/"/>
-    
-      <category term="wsl" scheme="https://blog.jongallant.com/tags/wsl/"/>
     
   </entry>
   
