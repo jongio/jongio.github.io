@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-04-13T19:02:49.340Z</updated>
+  <updated>2021-04-21T13:49:23.743Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Disable VS Code / GitLens Current Line Blame - &#39;You, seconds ago - Uncommitted Changes&#39;</title>
+    <link href="https://blog.jongallant.com/2021/04/disable-current-line-blame-gitlens-you-seconds-ago-uncommitted-changes/"/>
+    <id>https://blog.jongallant.com/2021/04/disable-current-line-blame-gitlens-you-seconds-ago-uncommitted-changes/</id>
+    <published>2021-04-21T06:23:36.000Z</published>
+    <updated>2021-04-21T13:49:23.743Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;You’re using VS Code with the GitLens extension and you see this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;101.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Or maybe you noticed that sometimes that text is inserted into the middle of what you are typing.&lt;/p&gt;
+&lt;p&gt;This feature is part of GitLens and is called “Current Line Blame”&lt;/p&gt;
+&lt;p&gt;Here’s how
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
+    
+  </entry>
   
   <entry>
     <title>This is Not A Toy - Mandalorian + Grogu Puzzle Added to Puzzle Wall</title>
@@ -601,38 +634,6 @@
       <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
     
       <category term="aks" scheme="https://blog.jongallant.com/tags/aks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution for Error validating token IDX10223</title>
-    <link href="https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/"/>
-    <id>https://blog.jongallant.com/2020/07/solution-Error-validating-token-IDX10223/</id>
-    <published>2020-07-23T13:33:04.000Z</published>
-    <updated>2021-03-18T06:53:55.846Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Got this error today when trying to set a secret with terraform.&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Error checking for presence of existing Secret keyvault.BaseClient#GetSecret: Failure responding to request: StatusCode=401 -- Original Error: autorest/azure:
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
     
   </entry>
   
