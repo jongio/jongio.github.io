@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-04-21T13:49:23.743Z</updated>
+  <updated>2021-04-29T21:25:38.727Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure REST APIs in VS Code with Thunder Client</title>
+    <link href="https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/"/>
+    <id>https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/</id>
+    <published>2021-04-29T13:22:30.000Z</published>
+    <updated>2021-04-29T21:25:38.727Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;azure-rest-apis-vscode-thunder-client.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.thunderclient.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Thunder Client&lt;/a&gt; is a new REST client VS Code extension.  It’s like &lt;a href=&quot;https://getpostman.com&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Postman&lt;/a&gt;, but
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Disable VS Code / GitLens Current Line Blame - &#39;You, seconds ago - Uncommitted Changes&#39;</title>
@@ -597,43 +629,6 @@
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to &#39;This value does not have any attributes.` with kubelet_identity.object_id</title>
-    <link href="https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/"/>
-    <id>https://blog.jongallant.com/2020/07/solution-kubelet-identity-object-id-attributes/</id>
-    <published>2020-07-23T14:49:41.000Z</published>
-    <updated>2021-03-18T06:54:05.582Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Got this today when trying to assign access_policy to kubelet_identity&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Error: Unsupported attribute
-
-  on main.tf line 59, in resource &quot;azurerm_key_vault&quot; &quot;key_vault&quot;:
-  59:     object_id =
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="terraform" scheme="https://blog.jongallant.com/tags/terraform/"/>
-    
-      <category term="aks" scheme="https://blog.jongallant.com/tags/aks/"/>
     
   </entry>
   
