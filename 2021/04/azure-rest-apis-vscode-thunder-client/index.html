@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/azure-rest-apis-vscode-thunder-client.png">
 <meta property="article:published_time" content="2021-04-29T13:22:30.000Z">
-<meta property="article:modified_time" content="2021-04-29T21:25:38.727Z">
+<meta property="article:modified_time" content="2021-05-03T21:29:11.690Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="rest">
@@ -229,8 +229,9 @@ az ad sp create-for-rbac --role Contributor
 <strong><code>clientId</code></strong>: Set to <code>appId</code> outputted from above command.<br>
 <strong><code>clientSecret</code></strong>: Set to <code>password</code> outputted from above command.<br>
 <strong><code>subscriptionId</code></strong>: Set to your current <code>subscriptionId</code>, you can get with <code>az account show</code><br>
+<strong><code>accessTokenUrl</code></strong>: <code>https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token</code><br>
 <strong><code>scope</code></strong>: <code>https://management.azure.com/.default</code></p>
-<p><img src="3.png" alt=""></p>
+<p><img src="102.png" alt=""></p>
 <ol start="4">
 <li>Click Save</li>
 </ol>
@@ -244,11 +245,11 @@ az ad sp create-for-rbac --role Contributor
 <li>Under Auth -&gt; OAuth 2.0, set:</li>
 </ol>
 <p><strong><code>Grant Type</code></strong>: Client Credentials<br>
-<strong><code>Token Url</code></strong>: <code>https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token</code><br>
+<strong><code>Token Url</code></strong>: <code>{{accessTokenUrl}}</code><br>
 <strong><code>Client ID</code></strong>: <code>{{clientId}}</code><br>
 <strong><code>Client Secret</code></strong>: <code>{{clientSecret}}</code><br>
 <strong><code>Scope</code></strong>: <code>{{scope}}</code></p>
-<p><img src="5.png" alt=""></p>
+<p><img src="103.png" alt=""></p>
 <ol start="4">
 <li>Click the “Generate Token” button</li>
 </ol>
