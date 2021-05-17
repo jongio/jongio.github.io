@@ -16,29 +16,23 @@
     
     <title>
         
-        Azure REST APIs in VS Code with Thunder Client |
+        Archive: 2021/5 |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,rest" />
-    
-    <meta name="description" content="Thunder Client is a new REST client VS Code extension.  It’s like Postman, but integrated into VS Code.  I’d consider it an early preview and far from the feature richness and maturity of Postman, bu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Azure REST APIs in VS Code with Thunder Client">
-<meta property="og:url" content="https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/index.html">
+    <meta name="description" content="A tech, career, &amp; life blog from a developer focused on Azure developer experience at Microsoft.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jon Gallant">
+<meta property="og:url" content="https://blog.jongallant.com/archives/2021/05/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Thunder Client is a new REST client VS Code extension.  It’s like Postman, but integrated into VS Code.  I’d consider it an early preview and far from the feature richness and maturity of Postman, bu">
+<meta property="og:description" content="A tech, career, &amp; life blog from a developer focused on Azure developer experience at Microsoft.">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/azure-rest-apis-vscode-thunder-client.png">
-<meta property="article:published_time" content="2021-04-29T13:22:30.000Z">
-<meta property="article:modified_time" content="2021-05-03T21:29:11.690Z">
+<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:author" content="Jon Gallant">
-<meta property="article:tag" content="azure">
-<meta property="article:tag" content="rest">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/azure-rest-apis-vscode-thunder-client.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -158,7 +152,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    Archive: 2021/5
     </h1>
 </div>
 
@@ -172,120 +166,55 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-azure-rest-apis-vscode-thunder-client" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
+                            
+
+
+
+
+
+<section class="archives-wrap">
     
-        <h1 class="article-title" itemprop="name">
-        Azure REST APIs in VS Code with Thunder Client
+    <div class="archive-year-wrap">
+        <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>
+            2021</a>
+    </div>
+    
+    <div class="archives">
+        
+        
+        
+        <div class="article-row">
+            
+            <article class="article article-summary">
+    <div class="article-summary-inner">
+        <div class="article-meta">
+            <p class="date"><time datetime="2021-05-17T10:46:49.000Z" itemprop="datePublished">
+                    2021-05-17</time></p>
+            <p class="category">
+                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
+        </div>
+        
+    
+        <h1 class="article-title-slim" itemprop="name">
+        <a href="/2021/05/cs1061-asyncpageable-does-not-contain-a-definition-for-getawaiter/">Solution: CS1061: &#39;AsyncPageable&lt;GenericResourceExpanded&gt;&#39; does not contain a definition for &#39;GetAwaiter&#39; </a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-subtitle">
-                
-<a href="/2021/04/azure-rest-apis-vscode-thunder-client/" class="article-date">
-    <time datetime="2021-04-29T13:22:30.000Z" itemprop="datePublished">2021-04-29</time>
-</a>
-
-                
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rest/" rel="tag">rest</a></li></ul>
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <p><img src="azure-rest-apis-vscode-thunder-client.png" alt=""></p>
-<p><a href="https://www.thunderclient.io/" target="_blank" rel="noopener">Thunder Client</a> is a new REST client VS Code extension.  It’s like <a href="https://getpostman.com" target="_blank" rel="noopener">Postman</a>, but integrated into VS Code.  I’d consider it an early preview and far from the feature richness and maturity of Postman, but cool nonetheless.</p>
-<p>Here’s how to use it to call the <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">Azure REST APIs</a>.</p>
-<h2 id="Install-Thunder-Client"><a class="header-anchor" href="#Install-Thunder-Client"></a>Install Thunder Client</h2>
-<p>You can install it here: <a href="https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client" target="_blank" rel="noopener">Thunder Client Install</a></p>
-<p>Or search for it from the VS Code extensions pane:</p>
-<p><img src="1.png" alt=""></p>
-<h2 id="Create-a-Service-Principal"><a class="header-anchor" href="#Create-a-Service-Principal"></a>Create a Service Principal</h2>
-<p>We’re going to use OAuth 2.0 to call the Azure REST APIs and we’ll use a Service Principal to do so.</p>
-<ol>
-<li>Install the <a href="https://aka.ms/getazcli" target="_blank" rel="noopener">Azure CLI</a></li>
-<li>Open a terminal and run this command to create a Service Principal.</li>
-</ol>
-<pre class="line-numbers language-bash"><code class="language-bash">az login
-az ad sp create-for-rbac --role Contributor
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>You’ll need the outputted info in a sec, so save it.</p>
-<h2 id="Create-Thunder-Client-Azure-Env"><a class="header-anchor" href="#Create-Thunder-Client-Azure-Env"></a>Create Thunder Client Azure Env</h2>
-<ol>
-<li>Click on the Thunder Client VS Code icon, select Env, and then select New Environment</li>
-</ol>
-<p><img src="2.png" alt=""></p>
-<ol start="2">
-<li>Name it “Azure”</li>
-<li>Add the following values:</li>
-</ol>
-<p><strong><code>tenantId</code></strong>: Set to <code>tenantId</code> outputted from above command.<br>
-<strong><code>clientId</code></strong>: Set to <code>appId</code> outputted from above command.<br>
-<strong><code>clientSecret</code></strong>: Set to <code>password</code> outputted from above command.<br>
-<strong><code>subscriptionId</code></strong>: Set to your current <code>subscriptionId</code>, you can get with <code>az account show</code><br>
-<strong><code>accessTokenUrl</code></strong>: <code>https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token</code><br>
-<strong><code>scope</code></strong>: <code>https://management.azure.com/.default</code></p>
-<p><img src="102.png" alt=""></p>
-<ol start="4">
-<li>Click Save</li>
-</ol>
-<h2 id="Create-a-New-Request"><a class="header-anchor" href="#Create-a-New-Request"></a>Create a New Request</h2>
-<ol>
-<li>In Thunder Client, click the New Request button</li>
-</ol>
-<p><img src="4.png" alt=""></p>
-<ol start="2">
-<li>Set Url to <code>https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups?api-version=2020-09-01</code></li>
-<li>Under Auth -&gt; OAuth 2.0, set:</li>
-</ol>
-<p><strong><code>Grant Type</code></strong>: Client Credentials<br>
-<strong><code>Token Url</code></strong>: <code>{{accessTokenUrl}}</code><br>
-<strong><code>Client ID</code></strong>: <code>{{clientId}}</code><br>
-<strong><code>Client Secret</code></strong>: <code>{{clientSecret}}</code><br>
-<strong><code>Scope</code></strong>: <code>{{scope}}</code></p>
-<p><img src="103.png" alt=""></p>
-<ol start="4">
-<li>Click the “Generate Token” button</li>
-</ol>
-<h2 id="Execute-the-Request"><a class="header-anchor" href="#Execute-the-Request"></a>Execute the Request</h2>
-<ol>
-<li>Click the “Send” button</li>
-</ol>
-<p><img src="6.png" alt=""></p>
-<ol start="2">
-<li>View the results in the Response pane:</li>
-</ol>
-<p><img src="7.png" alt=""></p>
-<h2 id="Save-Request-to-Collection"><a class="header-anchor" href="#Save-Request-to-Collection"></a>Save Request to Collection</h2>
-<p>To save the the request to a collection, click on “Activity”, then the “…”, then “Save to Collection”.</p>
-<p><img src="8.png" alt=""></p>
-<p>Give the collection a name, like “Azure REST”.</p>
-<p>Then click on “Collections” to see your collections.</p>
-<p><img src="9.png" alt=""></p>
-<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
-<p>This was a quick post to get you setup with Azure REST APIs in VS Code with Thunder Client. You can explore all of the other Azure REST APIs here: <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/azure/</a></p>
-
-        </div>
-        <footer>
-        </footer>
+        <p class="article-excerpt">
+            I’ve been coding in .NET for a very-long-time, but this tripped me up.
+Run the following code:
+var resources = await client.Resources.ListByResourceGroupAsync(resourceGroupName);
+foreach (var resource
+        </p>
     </div>
 </article>
-
-    <section id="comments">
-    
+            
+        </div>
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+        
+        
     </div>
-
-    
-    </section>
+</section>
 
 
                         </div>
@@ -345,37 +274,6 @@ az ad sp create-for-rbac --role Contributor
             
         </ul>
     </div>
-    
-    
-    <nav id="article-nav">
-        
-            <a href="/2021/05/cs1061-asyncpageable-does-not-contain-a-definition-for-getawaiter/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Solution: CS1061: &#39;AsyncPageable&lt;GenericResourceExpanded&gt;&#39; does not contain a definition for &#39;GetAwaiter&#39; 
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
-                
-                    <a href="/2021/04/disable-current-line-blame-gitlens-you-seconds-ago-uncommitted-changes/" id="article-nav-older" class="article-nav-link-wrap">
-                        <strong class="article-nav-caption">
-                            older
-                        </strong>
-                        <p class="article-nav-title">
-                            How to Disable VS Code / GitLens Current Line Blame - &#39;You, seconds ago - Uncommitted Changes&#39;
-                        </p>
-                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-
-                    </a>
-                    
-    </nav>
-    
     
 
     <div class="widgets-container">
@@ -456,13 +354,11 @@ az ad sp create-for-rbac --role Contributor
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

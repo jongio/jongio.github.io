@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-05-03T21:29:11.690Z</updated>
+  <updated>2021-05-17T18:11:31.312Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution: CS1061: &#39;AsyncPageable&lt;GenericResourceExpanded&gt;&#39; does not contain a definition for &#39;GetAwaiter&#39; </title>
+    <link href="https://blog.jongallant.com/2021/05/cs1061-asyncpageable-does-not-contain-a-definition-for-getawaiter/"/>
+    <id>https://blog.jongallant.com/2021/05/cs1061-asyncpageable-does-not-contain-a-definition-for-getawaiter/</id>
+    <published>2021-05-17T10:46:49.000Z</published>
+    <updated>2021-05-17T18:11:31.312Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’ve been coding in .NET for a very-long-time, but this tripped me up.&lt;/p&gt;
+&lt;p&gt;Run the following code:&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;var resources = await client.Resources.ListByResourceGroupAsync(resourceGroupName);
+foreach (var resource in
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="dotnet" scheme="https://blog.jongallant.com/tags/dotnet/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure REST APIs in VS Code with Thunder Client</title>
@@ -595,40 +627,6 @@
     
     
       <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>azuresdk/azure-cli-python docker image has been retired. Here&#39;s the new location.</title>
-    <link href="https://blog.jongallant.com/2020/10/azure-cli-python-docker/"/>
-    <id>https://blog.jongallant.com/2020/10/azure-cli-python-docker/</id>
-    <published>2020-10-10T09:36:24.000Z</published>
-    <updated>2020-10-10T17:02:01.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;This Azure CLI docker image has been retired and is no longer available on Docker hub.&lt;br&gt;
-&lt;a href=&quot;https://hub.docker.com/r/azuresdk/azure-cli-python&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://hub.docker.com/r/azuresdk/azure-cli-python&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;048.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Apologies if this
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
     
   </entry>
   
