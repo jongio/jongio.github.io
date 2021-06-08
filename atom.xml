@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-05-17T18:11:31.312Z</updated>
+  <updated>2021-06-08T14:07:11.427Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Using GitHub CLI and Git in GitHub Codespaces</title>
+    <link href="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/"/>
+    <id>https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/</id>
+    <published>2021-06-07T16:25:57.000Z</published>
+    <updated>2021-06-08T14:07:11.427Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;gitcodespaces.png&quot; alt=&quot;&#39;GitHub Codespaces, CLI, and Git&#39;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I work with &lt;a href=&quot;https://github.com/features/codespaces&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub Codespaces&lt;/a&gt; quite a bit and discovered that there a few things that don’t work well with &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
+    
+      <category term="codespaces" scheme="https://blog.jongallant.com/tags/codespaces/"/>
+    
+      <category term="github&#39;" scheme="https://blog.jongallant.com/tags/github/"/>
+    
+      <category term="devex" scheme="https://blog.jongallant.com/tags/devex/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution: CS1061: &#39;AsyncPageable&lt;GenericResourceExpanded&gt;&#39; does not contain a definition for &#39;GetAwaiter&#39; </title>
@@ -583,38 +621,6 @@ foreach (var resource in
           &lt;p&gt;I’m working on setting up Codespaces for my project and tried to open my workspace and got this error:&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;The workspace can not be opened in a container. Folder {folder} is not a subfolder of shared root folder {folder}.
 &lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to VS Code Codespaces Container is not running or /tmp Permission Denied error.</title>
-    <link href="https://blog.jongallant.com/2021/01/vscode-codespaces-container-is-not-running-permission-denied/"/>
-    <id>https://blog.jongallant.com/2021/01/vscode-codespaces-container-is-not-running-permission-denied/</id>
-    <published>2021-01-19T15:14:59.000Z</published>
-    <updated>2021-01-19T23:28:14.675Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I tried to open a VS Code Codespace devcontainer and got these errors:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;Start: Run: docker ps -q -a --filter label=vsch.local.folder=d:\OneDriveMS\code\GitHub\jongio\memealyzer2 --filter label=vsch.quality=insider mount: /tmp: permission denied.&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Error
         
       
     
