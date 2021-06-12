@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-06-08T14:07:11.427Z</updated>
+  <updated>2021-06-12T00:47:15.695Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Adobe Lightroom Import - How to change dash in folder name to underscore</title>
+    <link href="https://blog.jongallant.com/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/"/>
+    <id>https://blog.jongallant.com/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/</id>
+    <published>2021-06-11T17:15:23.000Z</published>
+    <updated>2021-06-12T00:47:15.695Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;102.png&quot; alt=&quot;shootNameFormat setting&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I just organized all my old photos into this folder format &lt;code&gt;YYYY/YYYY_MM/YYYY_MM_DD&lt;/code&gt; - see this blog for more info: &lt;a href=&quot;https://blog.jongallant.com/2021/03/organize-photos-powershell/&quot;&gt;How to Organize Photos by EXIF Date
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Using GitHub CLI and Git in GitHub Codespaces</title>
@@ -602,37 +630,6 @@ foreach (var resource in
     
       <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to VS Codespaces The workspace can not be opened in a container</title>
-    <link href="https://blog.jongallant.com/2021/01/workspace-cannot-be-opened-in-a-container/"/>
-    <id>https://blog.jongallant.com/2021/01/workspace-cannot-be-opened-in-a-container/</id>
-    <published>2021-01-22T13:36:56.000Z</published>
-    <updated>2021-03-18T06:55:30.098Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I’m working on setting up Codespaces for my project and tried to open my workspace and got this error:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;The workspace can not be opened in a container. Folder {folder} is not a subfolder of shared root folder {folder}.
-&lt;span
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
     
   </entry>
   
