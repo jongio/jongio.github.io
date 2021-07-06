@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-06-12T00:47:15.695Z</updated>
+  <updated>2021-07-06T18:55:48.885Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>A Barebones Azure Event Grid to Azure Relay Listener</title>
+    <link href="https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/"/>
+    <id>https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/</id>
+    <published>2021-07-06T10:56:23.000Z</published>
+    <updated>2021-07-06T18:55:48.885Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Let’s say that you are developing with Azure Event Grid and you simply want to see the messages that it is generating to observe the schema or debug it.  To do so you need to configure an Event Grid handler, which can be a Function, WebHook, Relay, Logic App, Service Bus, etc (the full list is
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+  </entry>
   
   <entry>
     <title>Adobe Lightroom Import - How to change dash in folder name to underscore</title>
@@ -591,35 +620,6 @@ foreach (var resource in
           &lt;p&gt;This was time suck for me, hopefully not for you after reading this.&lt;/p&gt;
 &lt;p&gt;I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but then got this error:&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to GitHub CLI &#39;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.&#39; </title>
-    <link href="https://blog.jongallant.com/2021/01/gh-cli-graphql-error/"/>
-    <id>https://blog.jongallant.com/2021/01/gh-cli-graphql-error/</id>
-    <published>2021-01-28T12:36:16.000Z</published>
-    <updated>2021-03-18T06:46:23.813Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Ran a &lt;code&gt;gh clone&lt;/code&gt; today and got this:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;GraphQL error: Resource protected by organization SAML enforcement. You must grant your OAuth token access to this organization.
-&lt;span aria-hidden=&quot;true&quot;
         
       
     

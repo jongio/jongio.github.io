@@ -16,27 +16,28 @@
     
     <title>
         
-        Adobe Lightroom Import - How to change dash in folder name to underscore |
+        A Barebones Azure Event Grid to Azure Relay Listener |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="azure" />
     
-    <meta name="description" content="I just organized all my old photos into this folder format YYYY&#x2F;YYYY_MM&#x2F;YYYY_MM_DD - see this blog for more info: How to Organize Photos by EXIF Date Taken with PowerShell Lightroom doesn’t support t">
+    <meta name="description" content="Let’s say that you are developing with Azure Event Grid and you simply want to see the messages that it is generating to observe the schema or debug it.  To do so you need to configure an Event Grid h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Adobe Lightroom Import - How to change dash in folder name to underscore">
-<meta property="og:url" content="https://blog.jongallant.com/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/index.html">
+<meta property="og:title" content="A Barebones Azure Event Grid to Azure Relay Listener">
+<meta property="og:url" content="https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just organized all my old photos into this folder format YYYY&#x2F;YYYY_MM&#x2F;YYYY_MM_DD - see this blog for more info: How to Organize Photos by EXIF Date Taken with PowerShell Lightroom doesn’t support t">
+<meta property="og:description" content="Let’s say that you are developing with Azure Event Grid and you simply want to see the messages that it is generating to observe the schema or debug it.  To do so you need to configure an Event Grid h">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/102.png">
-<meta property="article:published_time" content="2021-06-11T17:15:23.000Z">
-<meta property="article:modified_time" content="2021-06-12T00:47:15.695Z">
+<meta property="og:image" content="https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/107.png">
+<meta property="article:published_time" content="2021-07-06T10:56:23.000Z">
+<meta property="article:modified_time" content="2021-07-06T18:55:48.885Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/102.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/107.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -170,14 +171,14 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-adobe-lightroom-import-change-folder-dash-to-underscore" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-azure-event-grid-relay-listener" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Adobe Lightroom Import - How to change dash in folder name to underscore
+        A Barebones Azure Event Grid to Azure Relay Listener
         </h1>
     
 
@@ -186,32 +187,100 @@
         
             <div class="article-subtitle">
                 
-<a href="/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/" class="article-date">
-    <time datetime="2021-06-11T17:15:23.000Z" itemprop="datePublished">2021-06-11</time>
+<a href="/2021/07/azure-event-grid-relay-listener/" class="article-date">
+    <time datetime="2021-07-06T10:56:23.000Z" itemprop="datePublished">2021-07-06</time>
 </a>
 
                 
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li></ul>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="102.png" alt="shootNameFormat setting"></p>
-<p>I just organized all my old photos into this folder format <code>YYYY/YYYY_MM/YYYY_MM_DD</code> - see this blog for more info: <a href="https://blog.jongallant.com/2021/03/organize-photos-powershell/">How to Organize Photos by EXIF Date Taken with PowerShell</a></p>
-<p>Lightroom doesn’t support that format, it only supports <code>YYYY/YYYY-MM/YYYY-MM-DD</code> - with dashes, not underscores.</p>
-<p>Here’s how to hack it:</p>
+            <p>Let’s say that you are developing with Azure Event Grid and you simply want to see the messages that it is generating to observe the schema or debug it.  To do so you need to configure an Event Grid handler, which can be a Function, WebHook, Relay, Logic App, Service Bus, etc (the full list is here: <a href="https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers" target="_blank" rel="noopener">Event Grid Handlers</a>, and intercept the message that is sent to it.</p>
+<p>In this blog, we’ll take a look at how to use <a href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-what-is-it" target="_blank" rel="noopener">Azure Relay</a> - <a href="https://docs.microsoft.com/en-us/azure/event-grid/handler-relay-hybrid-connections" target="_blank" rel="noopener">Hybrid Connections</a> - as an Event Grid handler and print the messages it receives to the console.</p>
+<blockquote>
+<p>NOTE: There are variations of Relay listeners out there, but none (that I could find) for Hybrid Connections, so hopefully this gets you what you need.</p>
+</blockquote>
+<p>Typically Relay is used to expose a service that runs in your corporate network to the public cloud, but it can also be used as a simple Event Grid event listener for debugging purposes.</p>
+<blockquote>
+<p>IMPORTANT: Something to keep in mind is the expense of using Azure Relay for debugging purposes.  It’s currently (7/2021) about $10 a month per listener. See the <a href="https://azure.microsoft.com/en-us/pricing/details/service-bus/" target="_blank" rel="noopener">Azure Service Bus pricing page</a> for more info. For debugging purposes, you might just want to spin up a Service Bus listener which is currently $.05/million messages.</p>
+</blockquote>
+<p>A little background/context:</p>
+<p>Event Grid publishes events that either happen in Azure called “system topics” - or you can publish your own called “custom topics”.  You setup handlers for those events. You can find all the supported handlers here: <a href="https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers</a></p>
+<p>Azure Relay is one of the supported handlers.  Azure Relay handles the event and pushes it to “listeners” that you run on your network.</p>
+<p>In our case, our listener will be a simple console app that listens for Relay messages.</p>
+<p>Here’s the message flow that we’ll look at:</p>
 <ol>
-<li>In Lightroom, create an import preset</li>
-<li>Open the preset in a text editor like Notepad from here: <code>C:\Users\[user]\AppData\Roaming\Adobe\Lightroom\Import Presets\User Presets</code></li>
-<li>Change “shootNameFormat”</li>
+<li>Blob Created Event -&gt;</li>
+<li>Event Grid Subscription -&gt;</li>
+<li>Azure Relay -&gt;</li>
+<li>Relay Listener -&gt; Prints message to console.</li>
 </ol>
-<pre><code>shootNameFormat = &quot;%Y/%Y_%m/%Y_%m_%d&quot;,
-</code></pre>
-<ol start="4">
-<li>Save the file</li>
-<li>Close and reopen Lightroom.</li>
-<li>Do an import, select your preset, and see your underscores.</li>
+<p>You will need:</p>
+<ol>
+<li>Azure Storage Account</li>
+<li>Azure Relay</li>
+<li>Event Grid Subscription</li>
+<li>Relay Listener</li>
 </ol>
-<p><img src="105.png" alt="Folders with underscores"></p>
+<h2 id="Azure-Resources"><a class="header-anchor" href="#Azure-Resources"></a>Azure Resources</h2>
+<ol>
+<li>Azure Storage Account</li>
+</ol>
+<p>You need to generate an Event Grid event, one of the easiest ways to do that is to create a storage account and then create a blog to generate that event.</p>
+<p>Go ahead and create a storage account if you don’t already have one you can use.</p>
+<p>See this page for more info: <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal</a></p>
+<ol start="2">
+<li>Azure Relay</li>
+</ol>
+<p>You’ll use Azure Relay to receive the Event Grid events.</p>
+<p>See this page to create an Azure Relay Namespace and Hybrid Connection:<br>
+<a href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started</a></p>
+<ol start="3">
+<li>Azure Event Grid Subscription</li>
+</ol>
+<p>You’ll need an Event Grid subscription to tell Event Grid to send events from Blob Storage to Relay.</p>
+<p>Here’s a screenshot of how I have my subscription configured.</p>
+<p><img src="105.png" alt=""></p>
+<p>Here are the event types:</p>
+<p><img src="106.png" alt=""></p>
+<h2 id="Relay-Listener"><a class="header-anchor" href="#Relay-Listener"></a>Relay Listener</h2>
+<p>This is the console app that you run that listens for Relay events.  It’s actually a sample from the page listed above, but with my added code of printing the Request headers and body to the console for each event.</p>
+<p>I <a href="https://github.com/Azure/azure-relay/pull/62" target="_blank" rel="noopener">submitted a PR</a> to the official repo to add this additional output, but in the meantime use my fork: <a href="https://github.com/jongio/azure-relay" target="_blank" rel="noopener">https://github.com/jongio/azure-relay</a></p>
+<pre class="line-numbers language-bash"><code class="language-bash">git clone https://github.com/jongio/azure-relay
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Open a terminal and navigate to <code>/samples/hybrid-connections/dotnet/simple-http/Server</code></p>
+<p>Run:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">dotnet run [relay-namespace].servicebus.windows.net [hybrid-connection-name] RootManageSharedAccessKey [key]
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>The <code>relay-namespace/hybrid-connection-name</code> is what you named your namespace/connection earlier.  <code>key</code> is the key you can get from the namespace in the portal.</p>
+<p>That will start the listener and you’ll see this output.</p>
+<pre class="line-numbers language-bash"><code class="language-bash">Online
+Server listening
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="Create-and-View-Event"><a class="header-anchor" href="#Create-and-View-Event"></a>Create and View Event</h2>
+<p>Create a blob in the storage account you created earlier and you’ll see a message printed to the console like this:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">=====HEADERS=====
+WebHook-Request-Origin: eventgrid.azure.net
+aeg-subscription-name: JONGEVENTSUB1
+aeg-delivery-count: 0
+aeg-data-version:
+aeg-metadata-version: 1
+aeg-event-type: Notification
+Content-Type: application/cloudevents+json; charset=utf-8
+Accept-Encoding: gzip, deflate
+Host: jongrelaytest.servicebus.windows.net
+Via: 1.1 jongrelaytest.servicebus.windows.net
+
+
+=====BODY=====
+{"id":"28e1ada3-701e-0029-4590-729d6d06b7ee","source":"/subscriptions//resourceGroups/jongio/providers/Microsoft.Storage/storageAccounts/jongiostorage","specversion":"1.0","type":"Microsoft.Storage.BlobCreated","dataschema":"#","subject":"/blobServices/default/containers/container/blobs/jongblob1.txt","time":"2021-07-06T17:55:23.2904438Z","data":{"api":"PutBlob","clientRequestId":"97197e51-c6f6-4f94-5ee0-bff852460cb3","requestId":"28e1ada3-701e-0029-4590-729d6d000000","eTag":"0x8D940A73A62C8F6","contentType":"text/p
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>As always, let me know if you run into any issues.</p>
+<p>Hopefully this helps you dev with Event Grid.</p>
+<p>Jon</p>
 
         </div>
         <footer>
@@ -291,26 +360,13 @@
     
     <nav id="article-nav">
         
-            <a href="/2021/07/azure-event-grid-relay-listener/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        A Barebones Azure Event Grid to Azure Relay Listener
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2021/06/codespaces-gh-cli-git-credentials/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Using GitHub CLI and Git in GitHub Codespaces
+                            Adobe Lightroom Import - How to change dash in folder name to underscore
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -398,7 +454,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2021/06/adobe-lightroom-import-change-folder-dash-to-underscore/';
+    var disqus_url = 'https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/';
     
     (function() {
     var dsq = document.createElement('script');
