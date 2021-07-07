@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-07-06T18:55:48.885Z</updated>
+  <updated>2021-07-07T18:38:38.455Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Microsoft Teams - How to Get a Link to a Private Channel</title>
+    <link href="https://blog.jongallant.com/2021/07/microsoft-teams-get-link-to-private-channel/"/>
+    <id>https://blog.jongallant.com/2021/07/microsoft-teams-get-link-to-private-channel/</id>
+    <published>2021-07-07T11:12:51.000Z</published>
+    <updated>2021-07-07T18:38:38.455Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I just created a Microsoft Teams private channel and noticed that it doesn’t have “Get link to channel” option like other channels.&lt;/p&gt;
+&lt;p&gt;Here, you can see it doesn’t have that option:&lt;br&gt;
+&lt;img src=&quot;107.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Here’s how I found the link:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Click on the Channel name in
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>A Barebones Azure Event Grid to Azure Relay Listener</title>
@@ -591,35 +623,6 @@ foreach (var resource in
         
           &lt;p&gt;I do most of my dev in WSL and occasionally I screw up line endings between Windows and WSL.  I wanted to solve the line ending changes so I added a &lt;code&gt;.gitattributes&lt;/code&gt; to root of repo file with this:&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;* text
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Solution: String was not recognized as a valid DateTime when calling DateTime.ParseExact on results of GetDetailsOf call </title>
-    <link href="https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/"/>
-    <id>https://blog.jongallant.com/2021/02/powershell-datetime-parseexact-getdetailsof-valid-datetime/</id>
-    <published>2021-02-02T16:55:28.000Z</published>
-    <updated>2021-03-18T06:52:35.027Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;This was time suck for me, hopefully not for you after reading this.&lt;/p&gt;
-&lt;p&gt;I’m working on a PowerShell script to organize my photo library.  I want to get Date Taken from EXIF data.  I got the data, but then got this error:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code
         
       
     
