@@ -16,27 +16,28 @@
     
     <title>
         
-        Microsoft Teams - How to Get a Link to a Private Channel |
+        GitHub - Open in Visual Studio Code Insiders |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="vscode" />
     
-    <meta name="description" content="I just created a Microsoft Teams private channel and noticed that it doesn’t have “Get link to channel” option like other channels. Here, you can see it doesn’t have that option:  Here’s how I found t">
+    <meta name="description" content="VS Code just released an update that lets you embed an “Open in Visual Studio Code” button in your GitHub readme.  It uses the Remote Repositories VS Code extension to directly open the repo without">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Microsoft Teams - How to Get a Link to a Private Channel">
-<meta property="og:url" content="https://blog.jongallant.com/2021/07/microsoft-teams-get-link-to-private-channel/index.html">
+<meta property="og:title" content="GitHub - Open in Visual Studio Code Insiders">
+<meta property="og:url" content="https://blog.jongallant.com/2021/07/github-open-in-vscode-insiders/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I just created a Microsoft Teams private channel and noticed that it doesn’t have “Get link to channel” option like other channels. Here, you can see it doesn’t have that option:  Here’s how I found t">
+<meta property="og:description" content="VS Code just released an update that lets you embed an “Open in Visual Studio Code” button in your GitHub readme.  It uses the Remote Repositories VS Code extension to directly open the repo without">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2021/07/microsoft-teams-get-link-to-private-channel/111.png">
-<meta property="article:published_time" content="2021-07-07T11:12:51.000Z">
-<meta property="article:modified_time" content="2021-07-07T18:38:38.455Z">
+<meta property="og:image" content="https://blog.jongallant.com/2021/07/github-open-in-vscode-insiders/109.png">
+<meta property="article:published_time" content="2021-07-08T15:01:07.000Z">
+<meta property="article:modified_time" content="2021-07-08T22:18:23.853Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/2021/07/microsoft-teams-get-link-to-private-channel/111.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/07/github-open-in-vscode-insiders/109.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -170,14 +171,14 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-microsoft-teams-get-link-to-private-channel" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-github-open-in-vscode-insiders" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Microsoft Teams - How to Get a Link to a Private Channel
+        GitHub - Open in Visual Studio Code Insiders
         </h1>
     
 
@@ -186,38 +187,42 @@
         
             <div class="article-subtitle">
                 
-<a href="/2021/07/microsoft-teams-get-link-to-private-channel/" class="article-date">
-    <time datetime="2021-07-07T11:12:51.000Z" itemprop="datePublished">2021-07-07</time>
+<a href="/2021/07/github-open-in-vscode-insiders/" class="article-date">
+    <time datetime="2021-07-08T15:01:07.000Z" itemprop="datePublished">2021-07-08</time>
 </a>
 
                 
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vscode/" rel="tag">vscode</a></li></ul>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just created a Microsoft Teams private channel and noticed that it doesn’t have “Get link to channel” option like other channels.</p>
-<p>Here, you can see it doesn’t have that option:<br>
-<img src="107.png" alt=""></p>
-<p>Here’s how I found the link:</p>
+            <p><img src="109.png" alt=""></p>
+<p>VS Code just released an update that lets you embed an “Open in Visual Studio Code” button in your GitHub readme.  It uses the Remote Repositories VS Code extension to directly open the repo without having to clone it.</p>
+<p>More info here: <a href="https://open.vscode.dev/" target="_blank" rel="noopener">https://open.vscode.dev/</a></p>
+<p>Remote Repositories extension: <a href="https://code.visualstudio.com/blogs/2021/06/10/remote-repositories" target="_blank" rel="noopener">https://code.visualstudio.com/blogs/2021/06/10/remote-repositories</a></p>
+<p>I use VS Code Insiders 99% of the time and didn’t see a way to wire up the new button with Insiders.</p>
+<p>Here’s how:</p>
 <ol>
-<li>Click on the Channel name in the Teams left hand navigation</li>
-<li>Click the 3 dots in the upper right hand corner of Teams</li>
-<li>Select “Open in SharePoint”<br>
-<img src="108.png" alt=""></li>
-<li>Once in SharePoint, click on the “Go to channel” button. If you can’t see it, then click the “…” to reveal it.<br>
-<img src="109.png" alt=""><br>
-<img src="110.png" alt=""></li>
-<li>That will open a new browser tab.</li>
-<li>The URL that is in that tab is the link to the private channel.  It looks something like this:</li>
+<li>Create a short link using <a href="http://TinyUrl.com" target="_blank" rel="noopener">TinyUrl.com</a> - it’s the only site I could find that supports redirects for non-http URLs, the “Open” button uses <code>vscode://</code>, not <code>http</code>, which most shorteners don’t support.</li>
 </ol>
-<pre><code>https://teams.microsoft.com/dl/launcher/launcher.html?url=....&amp;directDl=true&amp;msLaunch=true&amp;enableMobilePage=true&amp;suppressPrompt=true
-</code></pre>
-<ol start="7">
-<li>Remove the <code>&amp;suppressPrompt=true</code> query string from the URL so that it automatically opens Teams to the channel.</li>
-<li>Navigate to that URL to test it out.</li>
-<li>Create a short link to that URL or just share it with the people who need it.</li>
+<p>Go here: <a href="https://tinyurl.com/app/" target="_blank" rel="noopener">https://tinyurl.com/app/</a></p>
+<p>Here’s the link: <code>vscode-insiders://github.remotehub/open?url%3Dhttps%3A%2F%2Fgithub.com%2Fjongio%2Fmemealyzer</code></p>
+<p>Replace ‘jongio’ with your GH user and ‘memealyzer’ with your repo name.</p>
+<p>Choose a link name and enter it.</p>
+<p>Create the link.</p>
+<ol start="2">
+<li>Create or use my “Open in Visual Studio Code Insiders” button</li>
 </ol>
-<p>Jon</p>
+<p>Here’s a link to mine: <a href="https://raw.githubusercontent.com/jongio/memealyzer/main/assets/open-in-vscode-insiders.svg" target="_blank" rel="noopener">https://raw.githubusercontent.com/jongio/memealyzer/main/assets/open-in-vscode-insiders.svg</a></p>
+<ol start="3">
+<li>Add the markdown to your README</li>
+</ol>
+<pre class="line-numbers language-html"><code class="language-html">[![Open in Visual Studio Code Insiders](assets/open-in-vscode-insiders.svg)](https://tinyurl.com/memealyzercodeinsiders)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Change the svg path to the full URL or the url in your repo. Here’s the full URL: <a href="https://raw.githubusercontent.com/jongio/memealyzer/main/assets/open-in-vscode-insiders.svg" target="_blank" rel="noopener">https://raw.githubusercontent.com/jongio/memealyzer/main/assets/open-in-vscode-insiders.svg</a></p>
+<p>Change the tinyurl link to the one you created above.</p>
 
         </div>
         <footer>
@@ -297,26 +302,13 @@
     
     <nav id="article-nav">
         
-            <a href="/2021/07/github-open-in-vscode-insiders/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        GitHub - Open in Visual Studio Code Insiders
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2021/07/azure-event-grid-relay-listener/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2021/07/microsoft-teams-get-link-to-private-channel/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            A Barebones Azure Event Grid to Azure Relay Listener
+                            Microsoft Teams - How to Get a Link to a Private Channel
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -404,7 +396,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2021/07/microsoft-teams-get-link-to-private-channel/';
+    var disqus_url = 'https://blog.jongallant.com/2021/07/github-open-in-vscode-insiders/';
     
     (function() {
     var dsq = document.createElement('script');

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-07-07T18:38:38.455Z</updated>
+  <updated>2021-07-08T22:18:23.853Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GitHub - Open in Visual Studio Code Insiders</title>
+    <link href="https://blog.jongallant.com/2021/07/github-open-in-vscode-insiders/"/>
+    <id>https://blog.jongallant.com/2021/07/github-open-in-vscode-insiders/</id>
+    <published>2021-07-08T15:01:07.000Z</published>
+    <updated>2021-07-08T22:18:23.853Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;109.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;VS Code just released an update that lets you embed an “Open in Visual Studio Code” button in your GitHub readme.  It uses the Remote Repositories VS Code extension to directly open the repo without having to clone it.&lt;/p&gt;
+&lt;p&gt;More info here: &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
+    
+  </entry>
   
   <entry>
     <title>Microsoft Teams - How to Get a Link to a Private Channel</title>
@@ -605,34 +636,6 @@ foreach (var resource in
       <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
     
       <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to PNG files not rendering on GitHub </title>
-    <link href="https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/"/>
-    <id>https://blog.jongallant.com/2021/02/png-files-not-rendering-on-github/</id>
-    <published>2021-02-03T12:07:53.000Z</published>
-    <updated>2021-03-18T06:50:21.682Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I do most of my dev in WSL and occasionally I screw up line endings between Windows and WSL.  I wanted to solve the line ending changes so I added a &lt;code&gt;.gitattributes&lt;/code&gt; to root of repo file with this:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;* text
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
     
   </entry>
   
