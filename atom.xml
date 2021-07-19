@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-07-08T22:21:25.799Z</updated>
+  <updated>2021-07-19T00:57:10.870Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Microsoft Teams - Invite All Team Members to Meeting</title>
+    <link href="https://blog.jongallant.com/2021/07/microsoft-teams-invite-all-team-members-to-meeting/"/>
+    <id>https://blog.jongallant.com/2021/07/microsoft-teams-invite-all-team-members-to-meeting/</id>
+    <published>2021-07-18T17:27:26.000Z</published>
+    <updated>2021-07-19T00:57:10.870Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;You’ve created your Microsoft Teams Team and you want to send an invite to all of the Team members.  You create an invite and see the following, but you aren’t sure what to enter here.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;105.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;You then see the ability to select a channel, but you can’t change
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="teams" scheme="https://blog.jongallant.com/tags/teams/"/>
+    
+  </entry>
   
   <entry>
     <title>GitHub - Open in Visual Studio Code Insiders</title>
@@ -602,40 +633,6 @@ foreach (var resource in
     
     
       <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Azure REST APIs with Postman (2021)</title>
-    <link href="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/"/>
-    <id>https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/</id>
-    <published>2021-02-10T13:10:48.000Z</published>
-    <updated>2021-02-28T22:44:11.967Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;azure-rest-apis-postman.png&quot; alt=&quot;Azure REST APIs with Postman 2021&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Every year or so I do an &lt;a href=&quot;https://docs.microsoft.com/rest/api/azure/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure REST APIs&lt;/a&gt; with &lt;a href=&quot;https://www.postman.com/&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
-    
-      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
     
   </entry>
   
