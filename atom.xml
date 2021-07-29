@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-07-19T00:57:10.870Z</updated>
+  <updated>2021-07-29T15:45:49.269Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Update GitHub Topic Icon and Description</title>
+    <link href="https://blog.jongallant.com/2021/07/update-github-topic-icon-description/"/>
+    <id>https://blog.jongallant.com/2021/07/update-github-topic-icon-description/</id>
+    <published>2021-07-29T08:25:42.000Z</published>
+    <updated>2021-07-29T15:45:49.269Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;GitHub has Topics.  For example, when you search for “Azure” on GitHub it displays the Azure topic:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;105.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;And when you click on “See topic” you can view the details of that topic:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;106.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Azure recently rebranded with a new
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="github" scheme="https://blog.jongallant.com/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>Microsoft Teams - Invite All Team Members to Meeting</title>
@@ -596,33 +629,6 @@ foreach (var resource in
         
           &lt;p&gt;I just returned from a trip to &lt;a href=&quot;https://www.nps.gov/zion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Zion National Park&lt;/a&gt; in February 2021.  Here are some tips that will help if you are considering a trip to Zion in the winter.&lt;/p&gt;
 &lt;h2 id=&quot;Housing&quot;&gt;&lt;a class=&quot;header-anchor&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/"/>
-    
-    
-      <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AirportParkingReservations.com Review</title>
-    <link href="https://blog.jongallant.com/2021/02/airportparkingreservations/"/>
-    <id>https://blog.jongallant.com/2021/02/airportparkingreservations/</id>
-    <published>2021-02-20T11:23:24.000Z</published>
-    <updated>2021-02-20T20:11:43.014Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I recently and successfully used &lt;a href=&quot;https://airportparkingreservations.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;AirportParkingReservations.com&lt;/a&gt; to park my car at Master Park at SeaTac - so I thought I would write a quick note to let my readers know that it’s a good service and worked out
         
       
     
