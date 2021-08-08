@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-07-29T15:45:49.269Z</updated>
+  <updated>2021-08-08T06:40:00.186Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Power BI - Solution to &#39;This dataset includes a dynamic data source ... this dataset won&#39;t be refreshed.&#39;</title>
+    <link href="https://blog.jongallant.com/2021/08/powerbi-dynamic-data-source-refresh/"/>
+    <id>https://blog.jongallant.com/2021/08/powerbi-dynamic-data-source-refresh/</id>
+    <published>2021-08-07T16:25:58.000Z</published>
+    <updated>2021-08-08T06:40:00.186Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’m pulling data from GitHub Codeowners into a Power BI report.  All was dandy locally, but refresh failed on the PBI service with this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;108.png&quot; alt=&quot;&amp;quot;The error message&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This dataset includes a dynamic data source. Since dynamic data sources aren’t
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="powerbi" scheme="https://blog.jongallant.com/tags/powerbi/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Update GitHub Topic Icon and Description</title>
@@ -611,34 +642,6 @@ foreach (var resource in
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zion National Park Tips - Where to stay, park, drive, &amp; hike.</title>
-    <link href="https://blog.jongallant.com/2021/02/zion-national-park-tips/"/>
-    <id>https://blog.jongallant.com/2021/02/zion-national-park-tips/</id>
-    <published>2021-02-20T11:35:16.000Z</published>
-    <updated>2021-02-21T01:57:31.563Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I just returned from a trip to &lt;a href=&quot;https://www.nps.gov/zion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Zion National Park&lt;/a&gt; in February 2021.  Here are some tips that will help if you are considering a trip to Zion in the winter.&lt;/p&gt;
-&lt;h2 id=&quot;Housing&quot;&gt;&lt;a class=&quot;header-anchor&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/"/>
-    
-    
-      <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
     
   </entry>
   
