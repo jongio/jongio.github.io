@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-08T06:40:00.186Z</updated>
+  <updated>2021-08-11T23:57:39.903Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure Identity 101</title>
+    <link href="https://blog.jongallant.com/2021/08/azure-identity-101/"/>
+    <id>https://blog.jongallant.com/2021/08/azure-identity-101/</id>
+    <published>2021-08-11T14:34:33.000Z</published>
+    <updated>2021-08-11T23:57:39.903Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;tn.png&quot; alt=&quot;&amp;quot;Azure Identity 101&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Azure Identity is a library that simplifies how applications authenticate with Azure services.&lt;/p&gt;
+&lt;p&gt;The following code news up a &lt;code&gt;KeyVault&lt;/code&gt; &lt;code&gt;SecretClient&lt;/code&gt; and passes it a &lt;code&gt;DefaultAzureCredential&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+  </entry>
   
   <entry>
     <title>Power BI - Solution to &#39;This dataset includes a dynamic data source ... this dataset won&#39;t be refreshed.&#39;</title>
@@ -52,7 +83,7 @@
     <link href="https://blog.jongallant.com/2021/07/update-github-topic-icon-description/"/>
     <id>https://blog.jongallant.com/2021/07/update-github-topic-icon-description/</id>
     <published>2021-07-29T08:25:42.000Z</published>
-    <updated>2021-08-10T19:50:25.591Z</updated>
+    <updated>2021-08-10T19:58:40.020Z</updated>
     
     <summary type="html">
     
@@ -607,41 +638,6 @@ foreach (var resource in
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Azure Kubernetes Service version not supported exception - Version x.x.x is not supported in this region.</title>
-    <link href="https://blog.jongallant.com/2021/02/aks-kubernetes-version/"/>
-    <id>https://blog.jongallant.com/2021/02/aks-kubernetes-version/</id>
-    <published>2021-02-24T12:14:56.000Z</published>
-    <updated>2021-03-18T06:36:29.231Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;I got this error while deploying a new Azure Kubernetes Cluster.&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;{
-   &quot;error&quot;:{
-      &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,
-      &quot;message&quot;:&quot;The template deployment &#39;memealyzerdev3&#39; is not valid according to the validation
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
     
   </entry>
   
