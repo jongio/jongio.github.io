@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/08/azure-identity-101/tn.png">
 <meta property="article:published_time" content="2021-08-11T14:34:33.000Z">
-<meta property="article:modified_time" content="2021-08-11T23:57:39.903Z">
+<meta property="article:modified_time" content="2021-08-12T00:19:47.050Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -226,20 +226,48 @@
 </ol>
 <h2 id="Dev-Machine-Setup"><a class="header-anchor" href="#Dev-Machine-Setup"></a>Dev Machine Setup</h2>
 <ol start="4">
-<li>Login to your favorite dev tool - DefaultAzureCredential will use it!</li>
+<li>Login to your favorite dev tool - <code>DefaultAzureCredential</code> will use it!</li>
 </ol>
-<p><a href="https://docs.microsoft.com/cli/azure" target="_blank" rel="noopener">Azure CLI</a>: <code>az login</code><br>
-<a href="https://docs.microsoft.com/powershell/azure" target="_blank" rel="noopener">Azure PowerShell</a>: <code>Connect-AzAccount</code><br>
-<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account" target="_blank" rel="noopener">VS Code - Azure Extension</a>: <code>Azure: Sign in</code><br>
-<a href="https://visualstudio.microsoft.com/" target="_blank" rel="noopener">Visual Studio</a>: <code>Tools &gt; Options &gt; Azure Service Authentication</code><br>
-<a href="https://plugins.jetbrains.com/plugin/8053" target="_blank" rel="noopener">IntelliJ - Azure Toolkit</a>: <code>Tools &gt; Azure &gt; Azure Sign In...</code><br>
-Browser Credential - If you don’t sign into any dev tool, then <code>DefaultAzureCredential</code> will authenticate via the browser.</p>
+<table>
+<thead>
+<tr>
+<th>Dev tool</th>
+<th>Login command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/cli/azure" target="_blank" rel="noopener">Azure CLI</a></td>
+<td><code>az login</code></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/powershell/azure" target="_blank" rel="noopener">Azure PowerShell</a></td>
+<td><code>Connect-AzAccount</code></td>
+</tr>
+<tr>
+<td><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account" target="_blank" rel="noopener">VS Code - Azure Extension</a></td>
+<td><code>Azure: Sign in</code></td>
+</tr>
+<tr>
+<td><a href="https://visualstudio.microsoft.com/" target="_blank" rel="noopener">Visual Studio</a></td>
+<td><code>Tools &gt; Options &gt; Azure Service Authentication</code></td>
+</tr>
+<tr>
+<td><a href="https://plugins.jetbrains.com/plugin/8053" target="_blank" rel="noopener">IntelliJ - Azure Toolkit</a></td>
+<td><code>Tools &gt; Azure &gt; Azure Sign In...</code></td>
+</tr>
+<tr>
+<td>Browser Credential</td>
+<td>If you don’t sign into any dev tool, then <code>DefaultAzureCredential</code> will authenticate via the browser.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="Production-Setup"><a class="header-anchor" href="#Production-Setup"></a>Production Setup</h2>
 <ol start="5">
-<li>Configure your Azure resource to use Managed Identity - DefaultAzureCredential will use it!</li>
+<li>Configure your Azure resource to use Managed Identity - <code>DefaultAzureCredential</code> will use it!</li>
 </ol>
 <p>You can read more about Managed Identities here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/</a></p>
-<p>If your host doesn’t support Managed Identity, then use a Service Principal via the <code>AZURE_CLIENT_ID</code>, <code>AZURE_CLIENT_SECRET</code>, <code>AZURE_TENANT_ID</code> environment variables - DefaultAzureCredential will use it!</p>
+<p>If your host doesn’t support Managed Identity, then use a Service Principal via the <code>AZURE_CLIENT_ID</code>, <code>AZURE_CLIENT_SECRET</code>, <code>AZURE_TENANT_ID</code> environment variables - <code>DefaultAzureCredential</code> will use it!</p>
 <h2 id="More-information"><a class="header-anchor" href="#More-information"></a>More information</h2>
 <p>This post just scratched the surface on Azure Identity.  There’s a lot more to learn, like how to configure each of the clients, how to create your own chain of credential types, and much more.  Head on over to <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a>, select your language, find the Identity package, and explore the docs.</p>
 <p>Reach out to me or comment below with any questions.</p>

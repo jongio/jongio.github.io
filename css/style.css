@@ -316,6 +316,10 @@ code {
 .noborder {
   border: none;
 }
+code:not([class]),
+code[class=""] {
+  background: #eee;
+}
 #main {
   float: left;
   width: 100%;
