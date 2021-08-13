@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-12T16:58:07.219Z</updated>
+  <updated>2021-08-13T16:46:13.378Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Create a Golang CLI in Minutes with Cobra</title>
+    <link href="https://blog.jongallant.com/2021/08/golang-cli-cobra/"/>
+    <id>https://blog.jongallant.com/2021/08/golang-cli-cobra/</id>
+    <published>2021-08-13T09:07:35.000Z</published>
+    <updated>2021-08-13T16:46:13.378Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;tn.png&quot; alt=&quot;&amp;quot;Golang CLI Cobra&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I’m new to Golang and yesterday I attempted to create a Golang CLI.&lt;/p&gt;
+&lt;p&gt;Here’s what I learned while getting it up and running on WSL.&lt;/p&gt;
+&lt;p&gt;This took me a while. Hopefully with this post it only takes you a few mins.&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="golang" scheme="https://blog.jongallant.com/tags/golang/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure Identity 101</title>
@@ -606,38 +639,6 @@ foreach (var resource in
     
     
       <category term="powershell" scheme="https://blog.jongallant.com/tags/powershell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Azure REST APIs with Insomnia</title>
-    <link href="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/"/>
-    <id>https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/</id>
-    <published>2021-02-26T06:50:46.000Z</published>
-    <updated>2021-02-26T17:36:37.920Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;azure-rest-apis-insomnia.png&quot; alt=&quot;Azure REST APIs with Insomnia&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Here’s how to call the &lt;a href=&quot;https://docs.microsoft.com/en-us/rest/api/azure/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure REST APIs&lt;/a&gt; with &lt;a href=&quot;https://insomnia.rest&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
     
   </entry>
   
