@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/04/azure-rest-apis-vscode-thunder-client/azure-rest-apis-vscode-thunder-client.png">
 <meta property="article:published_time" content="2021-04-29T13:22:30.000Z">
-<meta property="article:modified_time" content="2021-05-03T21:29:11.690Z">
+<meta property="article:modified_time" content="2021-08-18T22:50:27.158Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="rest">
@@ -229,45 +229,71 @@ az ad sp create-for-rbac --role Contributor
 <strong><code>clientId</code></strong>: Set to <code>appId</code> outputted from above command.<br>
 <strong><code>clientSecret</code></strong>: Set to <code>password</code> outputted from above command.<br>
 <strong><code>subscriptionId</code></strong>: Set to your current <code>subscriptionId</code>, you can get with <code>az account show</code><br>
-<strong><code>accessTokenUrl</code></strong>: <code>https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token</code><br>
-<strong><code>scope</code></strong>: <code>https://management.azure.com/.default</code></p>
-<p><img src="102.png" alt=""></p>
+<strong><code>scope</code></strong>: <code>https://management.azure.com/.default</code><br>
+<strong><code>tokenUrl</code></strong>: <code>https://login.microsoftonline.com/{{tenantId}}/oauth2/v2.0/token</code></p>
+<p><img src="113.png" alt=""></p>
 <ol start="4">
 <li>Click Save</li>
 </ol>
-<h2 id="Create-a-New-Request"><a class="header-anchor" href="#Create-a-New-Request"></a>Create a New Request</h2>
+<h2 id="Create-a-new-Collection"><a class="header-anchor" href="#Create-a-new-Collection"></a>Create a new Collection</h2>
 <ol>
-<li>In Thunder Client, click the New Request button</li>
+<li>In Thunder Client, click “Collections”, and then “New Collection”</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="118.png" alt=""></p>
 <ol start="2">
-<li>Set Url to <code>https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups?api-version=2020-09-01</code></li>
-<li>Under Auth -&gt; OAuth 2.0, set:</li>
+<li>Name it “Azure”</li>
 </ol>
-<p><strong><code>Grant Type</code></strong>: Client Credentials<br>
-<strong><code>Token Url</code></strong>: <code>{{accessTokenUrl}}</code><br>
+<h2 id="Configure-Collection-Auth-Settings"><a class="header-anchor" href="#Configure-Collection-Auth-Settings"></a>Configure Collection Auth Settings</h2>
+<ol>
+<li>Click on the “…” next to the collection name and select “Settings”</li>
+</ol>
+<p><img src="111.png" alt=""></p>
+<ol start="2">
+<li>Click “Auth” and then “OAuth 2.0”</li>
+</ol>
+<p><img src="112.png" alt=""></p>
+<ol start="3">
+<li>Configure the OAuth 2.0 settings as follows:</li>
+</ol>
+<p><strong><code>Grant Type</code></strong>: “Client Credentials”<br>
+<strong><code>Token Url</code></strong>: <code>{{tokenUrl}}</code><br>
 <strong><code>Client ID</code></strong>: <code>{{clientId}}</code><br>
 <strong><code>Client Secret</code></strong>: <code>{{clientSecret}}</code><br>
-<strong><code>Scope</code></strong>: <code>{{scope}}</code></p>
-<p><img src="103.png" alt=""></p>
+<strong><code>Scope</code></strong>: <code>{{scope}}</code><br>
+<strong><code>Send Auth</code></strong>: “As Request Body”</p>
+<p><img src="119.png" alt=""></p>
 <ol start="4">
-<li>Click the “Generate Token” button</li>
+<li>
+<p>Click the “Generate Token” button</p>
+</li>
+<li>
+<p>You will see the generated token in the collection settings, under OAuth Authentication -&gt; Access Token</p>
+</li>
 </ol>
-<h2 id="Execute-the-Request"><a class="header-anchor" href="#Execute-the-Request"></a>Execute the Request</h2>
+<p><img src="114.png" alt=""></p>
+<p>This token will be used by all requests in the collection.</p>
+<h2 id="Create-and-Execute-a-New-Request"><a class="header-anchor" href="#Create-and-Execute-a-New-Request"></a>Create and Execute a New Request</h2>
 <ol>
-<li>Click the “Send” button</li>
+<li>In Thunder Client, click on Collections and then click the “…” next to the Azure collection, then select “New Request”</li>
 </ol>
-<p><img src="6.png" alt=""></p>
+<p><img src="110.png" alt=""></p>
 <ol start="2">
-<li>View the results in the Response pane:</li>
+<li>Name it “Get Resource Groups”</li>
 </ol>
-<p><img src="7.png" alt=""></p>
-<h2 id="Save-Request-to-Collection"><a class="header-anchor" href="#Save-Request-to-Collection"></a>Save Request to Collection</h2>
-<p>To save the the request to a collection, click on “Activity”, then the “…”, then “Save to Collection”.</p>
-<p><img src="8.png" alt=""></p>
-<p>Give the collection a name, like “Azure REST”.</p>
-<p>Then click on “Collections” to see your collections.</p>
-<p><img src="9.png" alt=""></p>
+<p><img src="115.png" alt=""></p>
+<ol start="3">
+<li>Set Url to <code>https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups?api-version=2020-09-01</code></li>
+</ol>
+<p><img src="116.png" alt=""></p>
+<ol start="4">
+<li>
+<p>Click the “Send” button</p>
+</li>
+<li>
+<p>View the results in the Response pane:</p>
+</li>
+</ol>
+<p><img src="117.png" alt=""></p>
 <h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
 <p>This was a quick post to get you setup with Azure REST APIs in VS Code with Thunder Client. You can explore all of the other Azure REST APIs here: <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/rest/api/azure/</a></p>
 
