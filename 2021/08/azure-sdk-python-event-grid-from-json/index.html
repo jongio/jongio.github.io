@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/110.png">
 <meta property="article:published_time" content="2021-08-18T10:10:32.000Z">
-<meta property="article:modified_time" content="2021-08-18T17:44:05.315Z">
+<meta property="article:modified_time" content="2021-08-18T17:52:58.356Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="python">
@@ -207,7 +207,8 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>I had to first convert the <code>msg</code> to a string, then call <code>json.loads</code> and pass that an <code>object_hook</code> to parse the dates. It took me a pretty long time and a few discussions with the team to figure that out.</p>
 <p>I suggested to the Azure SDK Python team that we have a <code>from_json</code> method takes care of all of that for all the various message types, like Service Bus, Event Hub, Storage Queues.</p>
-<p>They ran with my suggestion and just shipped it in<code> azure-eventgrid:4.5.0</code>!  You can find the Event Grid package here: <a href="https://pypi.org/project/azure-eventgrid/" target="_blank" rel="noopener">https://pypi.org/project/azure-eventgrid/</a> and all the other Azure SDK packages here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a>.  Here’s the commit if you are interested in seeing all the changes to support this: <a href="https://github.com/Azure/azure-sdk-for-python/commit/acf226436e5cd6add2a96d099ee9862b8bab07ce#diff-650118ee0761cbfcc2d3c1d31965d3707aedfb8a4b3cb27edefc69cb17eb8c41" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk-for-python/commit/acf226436e5cd6add2a96d099ee9862b8bab07ce#diff-650118ee0761cbfcc2d3c1d31965d3707aedfb8a4b3cb27edefc69cb17eb8c41</a></p>
+<p>They ran with my suggestion and just shipped it in <code>azure-core:1.17.0</code> and <code>azure-eventgrid:4.5.0</code>!</p>
+<p>You can find the packages here: <a href="https://pypi.org/project/azure-core" target="_blank" rel="noopener">https://pypi.org/project/azure-core</a>, <a href="https://pypi.org/project/azure-eventgrid/" target="_blank" rel="noopener">https://pypi.org/project/azure-eventgrid/</a> and all the other Azure SDK packages here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a>.  Here’s the commit if you are interested in seeing all the changes to support this: <a href="https://github.com/Azure/azure-sdk-for-python/commit/acf226436e5cd6add2a96d099ee9862b8bab07ce#diff-650118ee0761cbfcc2d3c1d31965d3707aedfb8a4b3cb27edefc69cb17eb8c41" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk-for-python/commit/acf226436e5cd6add2a96d099ee9862b8bab07ce#diff-650118ee0761cbfcc2d3c1d31965d3707aedfb8a4b3cb27edefc69cb17eb8c41</a></p>
 <p>Here’s my new code with the new <code>from_json</code> method:</p>
 <pre class="line-numbers language-python"><code class="language-python">event = CloudEvent.from_json(msg)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
