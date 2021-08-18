@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-13T16:46:13.378Z</updated>
+  <updated>2021-08-18T17:32:04.764Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -17,11 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Azure SDK Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent</title>
+    <link href="https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/"/>
+    <id>https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/</id>
+    <published>2021-08-18T10:10:32.000Z</published>
+    <updated>2021-08-18T17:32:04.764Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;We recently added native &lt;a href=&quot;https://devblogs.microsoft.com/azure-sdk/event-grid-ga/#new-features&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CloudEvent support to our Event Grid libraries&lt;/a&gt;. I created an app for my &lt;a href=&quot;https://www.youtube.com/watch?v=ns2B_BT7zLo&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="python" scheme="https://blog.jongallant.com/tags/python/"/>
+    
+      <category term="azure-sdk" scheme="https://blog.jongallant.com/tags/azure-sdk/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Create a Golang CLI in Minutes with Cobra</title>
     <link href="https://blog.jongallant.com/2021/08/golang-cli-cobra/"/>
     <id>https://blog.jongallant.com/2021/08/golang-cli-cobra/</id>
     <published>2021-08-13T09:07:35.000Z</published>
-    <updated>2021-08-13T16:46:13.378Z</updated>
+    <updated>2021-08-13T16:52:19.483Z</updated>
     
     <summary type="html">
     
@@ -609,36 +642,6 @@ foreach (var resource in
     
       <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>How to Organize Photos by EXIF Date Taken with PowerShell</title>
-    <link href="https://blog.jongallant.com/2021/03/organize-photos-powershell/"/>
-    <id>https://blog.jongallant.com/2021/03/organize-photos-powershell/</id>
-    <published>2021-03-03T07:25:31.000Z</published>
-    <updated>2021-03-18T06:48:57.983Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;thumbnail.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I recently decided to organize all of my photos from the last 20 years.  Photos from various phones and cameras - all with many different formats, JPEG, RAW, PNG, etc.  They were all stored on my hard drive, but in random folders with random names.  I
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="powershell" scheme="https://blog.jongallant.com/tags/powershell/"/>
     
   </entry>
   

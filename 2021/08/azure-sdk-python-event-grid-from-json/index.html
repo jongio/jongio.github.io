@@ -16,23 +16,30 @@
     
     <title>
         
-        Category: Tech |
+        Azure SDK Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="A tech, career, &amp; life blog from a developer focused on Azure developer experience at Microsoft.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/category/Tech/page/28/index.html">
+    <meta name="keywords" content="azure,python,azure-sdk" />
+    
+    <meta name="description" content="We recently added native CloudEvent support to our Event Grid libraries. I created an app for my Intro to the new Azure SDK Python video and discovered that converting a message from a Service Bus Mes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure SDK Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent">
+<meta property="og:url" content="https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="A tech, career, &amp; life blog from a developer focused on Azure developer experience at Microsoft.">
+<meta property="og:description" content="We recently added native CloudEvent support to our Event Grid libraries. I created an app for my Intro to the new Azure SDK Python video and discovered that converting a message from a Service Bus Mes">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/110.png">
+<meta property="article:published_time" content="2021-08-18T10:10:32.000Z">
+<meta property="article:modified_time" content="2021-08-18T17:32:04.764Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="azure-sdk">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/110.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -152,7 +159,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link">Tech</em>
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
     </h1>
 </div>
 
@@ -166,182 +173,64 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
-    
-    <div class="archive-year-wrap">
-        <a href="/archives/2004" class="archive-year"><i class="icon fa fa-calendar-o"></i>
-            2004</a>
-    </div>
-    
-    <div class="archives">
+                            <article id="post-azure-sdk-python-event-grid-from-json" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/vss-cloaking/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="VSS Cloaking" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/vss-cloaking/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-08T00:01:00.000Z" itemprop="datePublished">
-                    2004-10-08</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/vss-cloaking/">VSS Cloaking</a>
+        Azure SDK Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent
         </h1>
     
 
-        <p class="article-excerpt">
-            I finally learned what the cloaking feature of VSS does and wanted to share.
-If you cloak a folder, you are marking it as a folder that you do not want to include in a recursive get.
-For example, lets
-        </p>
-    </div>
-</article>
-            
-        
-
-
+            </header>
         
         
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/name-that-control/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Name That Control" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/name-that-control/">0</span>
-    
-</span>
-
-    
+            <div class="article-subtitle">
+                
+<a href="/2021/08/azure-sdk-python-event-grid-from-json/" class="article-date">
+    <time datetime="2021-08-18T10:10:32.000Z" itemprop="datePublished">2021-08-18</time>
 </a>
 
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-04T10:32:00.000Z" itemprop="datePublished">
-                    2004-10-04</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/name-that-control/">Name That Control</a>
-        </h1>
-    
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure-sdk/" rel="tag">azure-sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
-        <p class="article-excerpt">
-            What do naming convention do you prefer when naming controls and why?
-Hungarian:  lblUsername
-Pascal: UsernameLabel or Username
-Camel: username
- Other?
-        </p>
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>We recently added native <a href="https://devblogs.microsoft.com/azure-sdk/event-grid-ga/#new-features" target="_blank" rel="noopener">CloudEvent support to our Event Grid libraries</a>. I created an app for my <a href="https://www.youtube.com/watch?v=ns2B_BT7zLo" target="_blank" rel="noopener">Intro to the new Azure SDK Python video</a> and discovered that converting a message from a Service Bus Message to CloudEvent wasn’t super intuitive.  It looked like this:</p>
+<pre class="line-numbers language-python"><code class="language-python">event = CloudEvent.from_dict(
+                json.loads(str(msg), object_hook=datetime_parser)
+            )
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>I had to first convert the <code>msg</code> to a string, then call <code>json.loads</code> and pass that an <code>object_hook</code> to parse the dates. It took me a pretty long time and a few discussions with the team to figure that out.</p>
+<p>I suggested to the Azure SDK Python team that we have a <code>from_json</code> method takes care of all of that for all the various message types, like Service Bus, Event Hub, Storage Queues.</p>
+<p>They ran with my suggestion and just shipped it in<code> azure-eventgrid:4.5.0</code>!  You can find the Event Grid package here: <a href="https://pypi.org/project/azure-eventgrid/" target="_blank" rel="noopener">https://pypi.org/project/azure-eventgrid/</a> and all the other Azure SDK packages here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a></p>
+<p>Here’s my new code with the new <code>from_json</code> method:</p>
+<pre class="line-numbers language-python"><code class="language-python">event = CloudEvent.from_json(msg)
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>This could be considered a small win, but the way I think about it is that the rest of the Azure development community now doesn’t have to go through the struggle I did when trying to go from one message type to another. And my job is about experiencing pain and doing something about it so the rest of the Azure development community doesn’t have to.  So, it’s a win for me and win for you.</p>
+<p>Here’s the before and after - love it!</p>
+<p><img src="110.png" alt="&quot;before CloudEvent.from_json and after&quot;"></p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        </div>
-        
-        
 
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/beyond-compare/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Beyond Compare" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/beyond-compare/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-03T15:50:00.000Z" itemprop="datePublished">
-                    2004-10-03</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/beyond-compare/">Beyond Compare</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I am amazed at how many developers are still using windiff or VSS diff tool. Beyond Compare is great tool that I use almost daily. It allows you to diff files and folders using the context menu of Win
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-            
-        </div>
-        
-        
-        
-    </div>
-</section>
 
-
-<nav id="page-nav">
-    <span class="pages">
-        Page 28 
-        of 28</span>
-    <a class="extend prev" rel="prev" href="/category/Tech/page/27/">&lt;</a><a class="page-number" href="/category/Tech/">1</a><span class="space">&hellip;</span><a class="page-number" href="/category/Tech/page/26/">26</a><a class="page-number" href="/category/Tech/page/27/">27</a><span class="page-number current">28</span>
-</nav>
+    
+    </section>
 
 
                         </div>
@@ -401,6 +290,24 @@ Camel: username
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2021/08/golang-cli-cobra/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            Create a Golang CLI in Minutes with Cobra
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -481,11 +388,13 @@ Camel: username
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2021/08/azure-sdk-python-event-grid-from-json/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
