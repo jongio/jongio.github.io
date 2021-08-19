@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/08/azure-identity-101/tn.png">
 <meta property="article:published_time" content="2021-08-11T14:34:33.000Z">
-<meta property="article:modified_time" content="2021-08-12T16:58:07.219Z">
+<meta property="article:modified_time" content="2021-08-19T00:25:52.577Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -248,7 +248,7 @@
 <blockquote>
 <p>You’ll likely want to switch over to assigning roles via or Infrastructure as Code method (Bicep, ARM, Terraform, etc), but this CLI approach will get your started.</p>
 </blockquote>
-<h2 id="4-Dev-Machine-Setup"><a class="header-anchor" href="#4-Dev-Machine-Setup"></a>4. Dev Machine Setup</h2>
+<h2 id="4-Dev-Environment-Setup"><a class="header-anchor" href="#4-Dev-Environment-Setup"></a>4. Dev Environment Setup</h2>
 <p>Login to your favorite dev tool - <code>DefaultAzureCredential</code> will use it!</p>
 <table>
 <thead>
@@ -285,12 +285,34 @@
 </tbody>
 </table>
 <h2 id="5-Production-Setup"><a class="header-anchor" href="#5-Production-Setup"></a>5. Production Setup</h2>
-<p>Configure your Azure resource to use Managed Identity - <code>DefaultAzureCredential</code> will use it!</p>
-<p>You can read more about Managed Identities here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/</a></p>
-<p>If your host doesn’t support Managed Identity, then use a Service Principal via the <code>AZURE_CLIENT_ID</code>, <code>AZURE_CLIENT_SECRET</code>, <code>AZURE_TENANT_ID</code> environment variables - <code>DefaultAzureCredential</code> will use it!</p>
+<p>You have three options for configuring Azure Identity in a production environment in Azure.</p>
 <blockquote>
-<p>Note that you’ll also need to assign the appropriate role for the Managed Identity or Service Principal account.</p>
+<p>Note that you’ll also need to assign the appropriate role for the Managed Identity, Certificate, or Service Principal account.</p>
 </blockquote>
+<ol>
+<li>Managed Identity</li>
+</ol>
+<p>If you configure your Azure host (VM, AppService, Function) to use Managed Identities - <code>DefaultAzureCredential</code> will use it! You can read more about Managed Identities here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/</a></p>
+<p>You can use either a System-Assigned or User-Assigned Managed Identity.  To use a User-Assigned Managed Identity, then you’ll want to provide that client id via the <code>DefaultAzureCredentialOptions</code>.  You can learn more about System vs User Assigned Managed Identities here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview</a></p>
+<ol start="2">
+<li>Certificate</li>
+</ol>
+<p>If your Azure host doesn’t support Managed Identities, then your next best option is to use an X509 certificate.  You’ll need to copy the certificate to the host and then populate the following environment variables:</p>
+<ul>
+<li><code>AZURE_TENANT_ID</code></li>
+<li><code>AZURE_CLIENT_ID</code></li>
+<li><code>AZURE_CLIENT_CERTIFICATE_PATH</code> - The path to the certificate.</li>
+</ul>
+<p>You can learn more about authenticating with certificates here: <a href="https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/samples/ClientCertificateCredentialSamples.md" target="_blank" rel="noopener">https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/samples/ClientCertificateCredentialSamples.md</a></p>
+<ol start="3">
+<li>Service Principal</li>
+</ol>
+<p>If your Azure host doesn’t support Managed Identities and you can’t use certificates, then the final recommendation is to use a Service Principal.  You can do so by setting the following environment variables:</p>
+<ul>
+<li><code>AZURE_TENANT_ID</code></li>
+<li><code>AZURE_CLIENT_ID</code></li>
+<li><code>AZURE_CLIENT_SECRET</code></li>
+</ul>
 <h2 id="More-information"><a class="header-anchor" href="#More-information"></a>More information</h2>
 <p>This post just scratched the surface on Azure Identity.  There’s a lot more to learn, like how to configure each of the clients, how to create your own chain of credential types, and much more.  Head on over to <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a>, select your language, find the Identity package, and explore the docs.</p>
 <p>Reach out to me or comment below with any questions.</p>
