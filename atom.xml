@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-18T17:52:58.356Z</updated>
+  <updated>2021-08-23T19:47:30.914Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts</title>
+    <link href="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/"/>
+    <id>https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/</id>
+    <published>2021-08-23T10:03:54.000Z</published>
+    <updated>2021-08-23T19:47:30.914Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.&lt;/p&gt;
+&lt;p&gt;I phoned a friend and he said I’m seeing that because I have multiple tenants that use
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="visualstudio" scheme="https://blog.jongallant.com/tags/visualstudio/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure SDK for Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent</title>
@@ -468,7 +498,7 @@ foreach (var resource in
     <link href="https://blog.jongallant.com/2021/04/this-is-not-a-toy-puzzle/"/>
     <id>https://blog.jongallant.com/2021/04/this-is-not-a-toy-puzzle/</id>
     <published>2021-04-13T10:09:29.000Z</published>
-    <updated>2021-04-13T19:02:49.340Z</updated>
+    <updated>2021-08-23T14:43:29.759Z</updated>
     
     <summary type="html">
     
@@ -594,7 +624,7 @@ foreach (var resource in
     <link href="https://blog.jongallant.com/2021/03/the-case-of-the-last-t/"/>
     <id>https://blog.jongallant.com/2021/03/the-case-of-the-last-t/</id>
     <published>2021-03-15T16:22:14.000Z</published>
-    <updated>2021-03-18T06:56:14.235Z</updated>
+    <updated>2021-08-23T14:47:24.783Z</updated>
     
     <summary type="html">
     
@@ -613,34 +643,6 @@ foreach (var resource in
       <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
     
       <category term="Story" scheme="https://blog.jongallant.com/category/Tech/Story/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Solution to Could not locate the included file jekyll-theme-primer</title>
-    <link href="https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/"/>
-    <id>https://blog.jongallant.com/2021/03/could-not-locate-the-included-file-jekyll-theme-primer/</id>
-    <published>2021-03-11T11:13:35.000Z</published>
-    <updated>2021-03-18T02:41:16.457Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Was getting this error today:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;Liquid Exception: Could not locate the included file &#39;app_insights.html&#39; in any of [&quot;D:/OneDriveMS/code/GitHub/jongio/azure-sdk/_includes&quot;,
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
     
   </entry>
