@@ -16,28 +16,28 @@
     
     <title>
         
-        Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts |
+        Azure Identity 201 |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="visualstudio" />
+    <meta name="keywords" content="azure" />
     
-    <meta name="description" content="I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.">
+    <meta name="description" content="Azure Identity is a fundamental building block of the new Azure SDKs. We wanted to make it brain-dead simple for you to authenticate your apps with Azure. Auth can be very hard to get right. There’s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts">
-<meta property="og:url" content="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/index.html">
+<meta property="og:title" content="Azure Identity 201">
+<meta property="og:url" content="https://blog.jongallant.com/2021/08/azure-identity-201/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.">
+<meta property="og:description" content="Azure Identity is a fundamental building block of the new Azure SDKs. We wanted to make it brain-dead simple for you to authenticate your apps with Azure. Auth can be very hard to get right. There’s">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/121.png">
-<meta property="article:published_time" content="2021-08-23T10:03:54.000Z">
-<meta property="article:modified_time" content="2021-08-23T19:47:30.914Z">
+<meta property="og:image" content="https://blog.jongallant.com/2021/08/azure-identity-201/tn.png">
+<meta property="article:published_time" content="2021-08-24T06:38:18.000Z">
+<meta property="article:modified_time" content="2021-08-24T23:26:27.210Z">
 <meta property="article:author" content="Jon Gallant">
-<meta property="article:tag" content="visualstudio">
+<meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/121.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/08/azure-identity-201/tn.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -171,14 +171,14 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-visual-studio-re-enter-credentials" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-azure-identity-201" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts
+        Azure Identity 201
         </h1>
     
 
@@ -187,31 +187,108 @@
         
             <div class="article-subtitle">
                 
-<a href="/2021/08/visual-studio-re-enter-credentials/" class="article-date">
-    <time datetime="2021-08-23T10:03:54.000Z" itemprop="datePublished">2021-08-23</time>
+<a href="/2021/08/azure-identity-201/" class="article-date">
+    <time datetime="2021-08-24T06:38:18.000Z" itemprop="datePublished">2021-08-24</time>
 </a>
 
                 
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visualstudio/" rel="tag">visualstudio</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.</p>
-<p>I phoned a friend and he said I’m seeing that because I have multiple tenants that use 2FA.</p>
-<p>For some reason if you have that the “embedded browser auth” method doesn’t work well.</p>
-<p>Instead you need to use the system browser.</p>
-<p>If you are have auth issues and are being asked to re-enter your credentials, then try this:</p>
+            <p><img src="tn.png" alt="&quot;Azure Identity 201&quot;"></p>
+<p>Azure Identity is a fundamental building block of the new Azure SDKs. We wanted to make it brain-dead simple for you to authenticate your apps with Azure. Auth can be very hard to get right. There’s so much context you have to learn about app types, flows, OAuth, tokens, scopes, etc - we wanted to abstract all of that away so you can get back to building your apps.  In <a href="/azure-identity-101">Azure Identity 101</a>, I introduced the <code>DefaultAzureCredential</code> type that you can simply new up and pass to your clients. It works in your local dev environment as well as production without code changes.  Please go ahead and read that blog for more info on all the options there.</p>
+<p>Here’s a snippet of what the simplest version of <code>DefaultAzureCredential</code> looks like:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new DefaultAzureCredential());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>That’s a great way to get started, but did you know that you also have a lot of control over how <code>DefaultAzureCredential</code> functions?  You have a lot of knobs to turn with the <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredentialoptions" target="_blank" rel="noopener"><code>DefaultAzureCredentialOptions</code> class</a>.</p>
+<p>In this blog we’re going to cover some of the common options available to you when using <code>DefaultAzureCredential</code>.</p>
+<h2 id="The-Default-Credential-Chain"><a class="header-anchor" href="#The-Default-Credential-Chain"></a>The Default Credential Chain</h2>
+<p>When you use <code>DefaultAzureCredential</code>, what you are actually doing is telling the Azure SDK to try a bunch of different credential options until it finds one that returns a valid token.</p>
+<p>To make the initial Azure SDK coding experience straight-forward we put in some intelligent defaults.</p>
+<p>By default, the credential chain (for .NET) is as follows:</p>
 <ol>
-<li>Tools -&gt; Options -&gt; Accounts</li>
-<li>In the “Add and reauthenticate accounts using:” dropdown, select “System web browser”</li>
-<li>Sign out, then sign back in.</li>
-<li>Restart Visual Studio</li>
+<li><code>EnvironmentCredential</code> - inspects values from environment variables</li>
+<li><code>ManagedIdentityCredential</code> - uses auth from managed identity</li>
+<li><code>SharedTokenCacheCredential</code> - uses auth from local shared token cache used by some versions of VS</li>
+<li><code>VisualStudioCredential</code> - uses auth from VS</li>
+<li><code>VisualStudioCodeCredential</code> - uses auth from VS Code</li>
+<li><code>AzureCliCredential</code> - uses auth from Azure CLI</li>
+<li><code>AzurePowerShellCredential</code> - uses auth from Azure PowerShell</li>
+<li><code>InteractiveBrowserCredential</code> - uses browser to auth users - not enabled by default. Pass <code>true</code> to the <code>DefaultAzureCredential</code> to enable it.</li>
 </ol>
-<p><img src="121.png" alt="Tools Options Dialog"></p>
-<p>You can find more info here:</p>
-<p><a href="https://docs.microsoft.com/en-us/visualstudio/ide/work-with-multi-factor-authentication?view=vs-2019" target="_blank" rel="noopener">How to use Visual Studio with accounts that require multi-factor authentication</a></p>
+<p>Once Azure Identity gets a token from one of them it will short circuit the chain and return that token. So, not every credential type is tried.  For example, if you have the appropriate environment variables set it will use <code>EnvironmentCredential</code> and stop at the first step.</p>
+<h2 id="Include-Browser-Credential"><a class="header-anchor" href="#Include-Browser-Credential"></a>Include Browser Credential</h2>
+<p>As mentioned above the <code>InteractiveBrowserCredential</code> is not included by default - that’s because it requires user interaction and we didn’t want to launch a browser by default on headless apps like tools and CLIs.</p>
+<p>To enable it, simply pass <code>true</code> to the <code>DefaultAzureCredential</code>:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new DefaultAzureCredential(true));
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>That will cause Azure Identity to go through the credential chain as above, but will tack <code>InteractiveBrowserCredential</code> to the end of the chain and launch a browser for the user to authenticate with.</p>
+<h2 id="Exclude-Credential-Types"><a class="header-anchor" href="#Exclude-Credential-Types"></a>Exclude Credential Types</h2>
+<p>You can also exclude credential types from <code>DefaultAzureCredential</code>.  For example, let’s say that you are sure you won’t ever need to authenticate developers with Azure PowerShell because your whole team uses the Azure CLI. To remove only the <code>AzurePowerShellCredential</code> and keep everything else as-is, simply new up a <code>DefaultAzureCredentialOptions</code> object and set <code>ExcludeAzurePowerShellCredential</code> to true.</p>
+<p>Here’s how:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { ExcludeAzurePowerShellCredential = true }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>All of the credential types in <code>DefaultAzureCredential</code> have a matching <code>Exclude</code> property in <code>DefaultAzureCredentialsOptions</code>.  For example, if you want to exclude Azure CLI set the <code>ExcludeAzureCliCredential</code> property to <code>true</code>.</p>
+<h2 id="Client-Id-Settings"><a class="header-anchor" href="#Client-Id-Settings"></a>Client Id Settings</h2>
+<p>For Managed Identity, you have the option of using either a system-assigned or user-assigned identity.  By default, <code>DefaultAzureCredential</code> will use system-assigned identity, but if your Azure host uses a user-assigned identity you’ll want to tell it to use that client Id instead.  You can read all about system and user-assigned identities here: <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">What are managed identities for Azure resources?</a>.</p>
+<p>Here’s how to set that user-assigned client id:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { ManagedIdentityClientId = clientId }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>You can also set this via the <code>AZURE_CLIENT_ID</code> environment variable.</p>
+<h2 id="Tenant-Id-Settings"><a class="header-anchor" href="#Tenant-Id-Settings"></a>Tenant Id Settings</h2>
+<p>By default, <code>DefaultAzureCredential</code> will use the default tenant associated with the user account.  But, you can override that with the <code>*TenantId</code> properties.  For example, here’s how to tell <code>DefaultAzureCredential</code> to use a specific tenant Id for the <code>VisualStudioCodeCredential</code>.</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { VisualStudioCodeTenantId = tenantId }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>The following credential types support this tenant Id override explicitly via Options:</p>
+<ul>
+<li><code>SharedTokenCacheCredential</code> via <code>SharedTokenCacheTenantId</code></li>
+<li><code>VisualStudioCredential</code> via <code>VisualStudioTenantId</code></li>
+<li><code>VisualStudioCodeCredential</code> via <code>VisualStudioCodeTenantId</code></li>
+<li><code>InteractiveBrowserCredential</code> via <code>InteractiveBrowserTenantId</code></li>
+</ul>
+<p>You can also set tenant Id via the <code>AZURE_TENANT_ID</code> environment variable which will work for all credential types.</p>
+<h2 id="Multi-Tenant-and-Tenant-Fallback-Setting"><a class="header-anchor" href="#Multi-Tenant-and-Tenant-Fallback-Setting"></a>Multi-Tenant and Tenant Fallback Setting</h2>
+<blockquote>
+<p>This is a new feature that is currently in beta as of 8/24/2021.</p>
+</blockquote>
+<p>Sometimes your app needs to support multiple tenants and you don’t want to hard-code a single Tenant Id. By default, if the user doesn’t belong to the default or specified tenant, then the Azure Identity token request will fail. But now there’s a way to fix that.</p>
+<p>When an Azure service authentication fails and the resource is in a tenant different than the one used in the request, then the service will return its Tenant Id with the 403:Unauthenticated response as part of the WWW-Authenticate challenge.</p>
+<p>Azure Identity now provides a setting that allows you to take advantage of that response and will try to auth again with the alternate Tenant Id.  It will also ensure that the user is part of the alternate tenant and has permissions to access the resource.</p>
+<p>Here’s how to enable that multi-tenant fallback feature:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp"> var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { AllowMultiTenantAuthentication = true }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Targeting-other-clouds-Government-China-etc"><a class="header-anchor" href="#Targeting-other-clouds-Government-China-etc"></a>Targeting other clouds (Government, China, etc)</h2>
+<p>By default Azure Identity will target the public Azure cloud. If you are using a different Azure cloud, like Azure Government, you need to configure Azure Identity to use the corresponding authority host. You can find all of the <code>AuthorityHosts</code> here: <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.azureauthorityhosts" target="_blank" rel="noopener">AzureAuthorityHosts Class</a>.</p>
+<p>Here’s how to target the Azure Government cloud.</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { AuthorityHost = AzureAuthorityHosts.AzureGovernment }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>You can also set this via the <code>AZURE_AUTHORITY_HOST</code> environment variable.  Use the Azure CLI command <code>az cloud list</code> to find the appropriate Authority host url that you are uing - it will be in the <code>endpoints.activeDirectory</code> property.</p>
+<p>Please see my blog: <a href="/azure-identity-other-clouds">How to use Azure.Identity with Azure Government Cloud, Azure German Cloud, and Azure China Cloud</a> for full details on how to target other clouds.</p>
+<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
+<p>I hope this blog helped you understand the options available to you when using Azure Identity and DefaultAzureCredential.  Please let me know if you found this useful and I’ll create more posts like this.</p>
 <p>Jon</p>
 
         </div>
@@ -292,26 +369,13 @@
     
     <nav id="article-nav">
         
-            <a href="/2021/08/azure-identity-201/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Azure Identity 201
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2021/08/azure-sdk-python-event-grid-from-json/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2021/08/visual-studio-re-enter-credentials/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Azure SDK for Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent
+                            Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -399,7 +463,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/';
+    var disqus_url = 'https://blog.jongallant.com/2021/08/azure-identity-201/';
     
     (function() {
     var dsq = document.createElement('script');

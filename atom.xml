@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-23T19:47:30.914Z</updated>
+  <updated>2021-08-24T23:26:27.210Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure Identity 201</title>
+    <link href="https://blog.jongallant.com/2021/08/azure-identity-201/"/>
+    <id>https://blog.jongallant.com/2021/08/azure-identity-201/</id>
+    <published>2021-08-24T06:38:18.000Z</published>
+    <updated>2021-08-24T23:26:27.210Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;tn.png&quot; alt=&quot;&amp;quot;Azure Identity 201&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Azure Identity is a fundamental building block of the new Azure SDKs. We wanted to make it brain-dead simple for you to authenticate your apps with Azure. Auth can be very hard to get right. There’s so much context you have to learn
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts</title>
@@ -117,7 +147,7 @@
     <link href="https://blog.jongallant.com/2021/08/azure-identity-101/"/>
     <id>https://blog.jongallant.com/2021/08/azure-identity-101/</id>
     <published>2021-08-11T14:34:33.000Z</published>
-    <updated>2021-08-19T00:25:52.577Z</updated>
+    <updated>2021-08-24T17:30:27.927Z</updated>
     
     <summary type="html">
     
@@ -616,34 +646,6 @@ foreach (var resource in
     
     
       <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>The Case of the Last T: A behind the scenes look at how we decided to capitalize the T in Azure.IoT </title>
-    <link href="https://blog.jongallant.com/2021/03/the-case-of-the-last-t/"/>
-    <id>https://blog.jongallant.com/2021/03/the-case-of-the-last-t/</id>
-    <published>2021-03-15T16:22:14.000Z</published>
-    <updated>2021-08-23T14:47:24.783Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;068.png&quot; alt=&quot;using Azure.IoT;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;This is a story of how much effort and care we put into &lt;a href=&quot;https://aka.ms/azsdk/intro&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure SDK&lt;/a&gt; naming &lt;a href=&quot;https://aka.ms/azsdk/guide&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;guidelines&lt;/a&gt; and consistency -
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Story" scheme="https://blog.jongallant.com/category/Tech/Story/"/>
-    
     
   </entry>
   
