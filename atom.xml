@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-24T23:26:27.210Z</updated>
+  <updated>2021-08-27T18:07:00.398Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to run Playwright codegen in a devcontainer - Solution to &#39;Unable to open X display&#39;</title>
+    <link href="https://blog.jongallant.com/2021/08/playwright-codegen-devcontainer/"/>
+    <id>https://blog.jongallant.com/2021/08/playwright-codegen-devcontainer/</id>
+    <published>2021-08-27T10:10:47.000Z</published>
+    <updated>2021-08-27T18:07:00.398Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;112.png&quot; alt=&quot;&#39;Playwright taskbar&#39;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;I started playing with &lt;a href=&quot;https://playwright.dev/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Playwright&lt;/a&gt; (the browser test automation tool) yesterday and discovered that the &lt;code&gt;codegen&lt;/code&gt; feature doesn’t work in a devcontainer out of the
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure Identity 201</title>
@@ -618,34 +648,6 @@ foreach (var resource in
       <category term="postman" scheme="https://blog.jongallant.com/tags/postman/"/>
     
       <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>McDonald&#39;s No Salt</title>
-    <link href="https://blog.jongallant.com/2021/03/mcdonalds-no-salt/"/>
-    <id>https://blog.jongallant.com/2021/03/mcdonalds-no-salt/</id>
-    <published>2021-03-27T16:22:38.000Z</published>
-    <updated>2021-03-31T17:04:21.298Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;I don’t eat at McDonald’s often, but when I do it’s sodium overload because me and my kid are use to a very low-sodium diet. While on a recent roadtrip we wanted to make a quick stop at McDonald’s. I did some searching to see if there was a low-sodium/no salt
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Reviews" scheme="https://blog.jongallant.com/category/Reviews/"/>
-    
-    
-      <category term="reviews" scheme="https://blog.jongallant.com/tags/reviews/"/>
     
   </entry>
   
