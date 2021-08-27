@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/08/playwright-codegen-devcontainer/112.png">
 <meta property="article:published_time" content="2021-08-27T10:10:47.000Z">
-<meta property="article:modified_time" content="2021-08-27T18:07:00.398Z">
+<meta property="article:modified_time" content="2021-08-27T18:12:06.510Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
@@ -200,7 +200,8 @@
         <div class="article-entry" itemprop="articleBody">
             <p><img src="112.png" alt="'Playwright taskbar'"></p>
 <p>I started playing with <a href="https://playwright.dev/" target="_blank" rel="noopener">Playwright</a> (the browser test automation tool) yesterday and discovered that the <code>codegen</code> feature doesn’t work in a devcontainer out of the box. You’ll get the “Unable to open X display.” error message if you don’t do the steps below.</p>
-<p>Here’s how to set it up if you are starting from scratch with a Windows host.</p>
+<p>If you want to go full virtual and stay away from X forwarding, then you can try to get this <a href="https://github.com/microsoft/vscode-dev-containers/blob/main/script-library/docs/desktop-lite.md" target="_blank" rel="noopener">desktop-lite.sh script</a> working in your container.  I personally ran out of time and X forwarding works for me so I didn’t try it.</p>
+<p>Here’s how to set it up if you are starting from scratch with a Windows host and X forwarding.</p>
 <blockquote>
 <p>The code below can also be found here: <a href="https://github.com/jongio/playwright-codegen-devcontainer" target="_blank" rel="noopener">https://github.com/jongio/playwright-codegen-devcontainer</a></p>
 </blockquote>
@@ -228,7 +229,7 @@ RUN npx -q playwright install \
      &amp;&amp; npx playwright install-deps
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
-<li>Modify the devcontainer.json file to include the x forwarding bits in <code>runArgs</code></li>
+<li>Modify the devcontainer.json file to include the X forwarding bits in <code>runArgs</code></li>
 </ol>
 <p>Required snippet to add to existing devcontainer.json</p>
 <pre class="line-numbers language-json"><code class="language-json">// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
