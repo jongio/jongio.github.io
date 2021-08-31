@@ -16,28 +16,28 @@
     
     <title>
         
-        Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts |
+        Azure Identity 202 - Environment Variables |
         
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="visualstudio" />
+    <meta name="keywords" content="azure" />
     
-    <meta name="description" content="I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.">
+    <meta name="description" content="Azure Identity is a library that abstracts away all of the Azure authentication complexities so you can focus on building your solutions. In Azure Identity 101, I introduced DefaultAzureCredential, w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts">
-<meta property="og:url" content="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/index.html">
+<meta property="og:title" content="Azure Identity 202 - Environment Variables">
+<meta property="og:url" content="https://blog.jongallant.com/2021/08/azure-identity-202/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.">
+<meta property="og:description" content="Azure Identity is a library that abstracts away all of the Azure authentication complexities so you can focus on building your solutions. In Azure Identity 101, I introduced DefaultAzureCredential, w">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/121.png">
-<meta property="article:published_time" content="2021-08-23T10:03:54.000Z">
-<meta property="article:modified_time" content="2021-08-23T19:47:30.914Z">
+<meta property="og:image" content="https://blog.jongallant.com/2021/08/azure-identity-202/tn.png">
+<meta property="article:published_time" content="2021-08-31T07:30:44.000Z">
+<meta property="article:modified_time" content="2021-08-31T20:05:22.872Z">
 <meta property="article:author" content="Jon Gallant">
-<meta property="article:tag" content="visualstudio">
+<meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/121.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/08/azure-identity-202/tn.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -171,14 +171,14 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            <article id="post-visual-studio-re-enter-credentials" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-azure-identity-202" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Solution to Visual Studio &#39;Re-enter Credentials&#39; and multiple authentication prompts
+        Azure Identity 202 - Environment Variables
         </h1>
     
 
@@ -187,32 +187,315 @@
         
             <div class="article-subtitle">
                 
-<a href="/2021/08/visual-studio-re-enter-credentials/" class="article-date">
-    <time datetime="2021-08-23T10:03:54.000Z" itemprop="datePublished">2021-08-23</time>
+<a href="/2021/08/azure-identity-202/" class="article-date">
+    <time datetime="2021-08-31T07:30:44.000Z" itemprop="datePublished">2021-08-31</time>
 </a>
 
                 
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visualstudio/" rel="tag">visualstudio</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m using Visual Studio 2021 Preview 2.1 and I was constantly getting prompted to re-enter my credentials multiple times.  I would have to 2FA 3-4 times everytime I wanted to do something with Azure.</p>
-<p>I phoned a friend and he said I’m seeing that because I have multiple tenants that use 2FA.</p>
-<p>For some reason if you have that the “embedded browser auth” method doesn’t work well.</p>
-<p>Instead you need to use the system browser.</p>
-<p>If you are have auth issues and are being asked to re-enter your credentials, then try this:</p>
+            <p><img src="tn.png" alt="&quot;Azure Identity 202&quot;"></p>
+<p>Azure Identity is a library that abstracts away all of the Azure authentication complexities so you can focus on building your solutions.</p>
+<p>In <a href="/azure-identity-101">Azure Identity 101</a>, I introduced <code>DefaultAzureCredential</code>, which is a chain of credential types that will try a slew of local development credentials, like Azure CLI, and a slew of production credential types like Managed Identity.</p>
+<p>The one-liner to get started with <code>DefaultAzureCredential</code> looks like this:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new DefaultAzureCredential());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>In <a href="/azure-identity-201">Azure Identity 201</a>, I brought you through the various options available to you when using <code>DefaultAzureCredential</code>.  For example, to use a specific user-assigned Managed Identity client Id you’d use the following code.</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { ManagedIdentityClientId = clientId }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>In this Azure Identity 202 post, we’ll go through all of the environment variables available to you when using Azure Identity. Using environment variables allows you to easily change the option values without having to change code.</p>
+<p>The order of precedence for how Azure Identity reads the values is the following:</p>
 <ol>
-<li>Tools -&gt; Options -&gt; Accounts</li>
-<li>In the “Add and reauthenticate accounts using:” dropdown, select “System web browser”</li>
-<li>Sign out, then sign back in.</li>
-<li>Restart Visual Studio</li>
+<li>Property values</li>
+<li>Environment variables</li>
 </ol>
-<p><img src="121.png" alt="Tools Options Dialog"></p>
-<p>You can find more info here:</p>
-<p><a href="https://docs.microsoft.com/en-us/visualstudio/ide/work-with-multi-factor-authentication?view=vs-2019" target="_blank" rel="noopener">How to use Visual Studio with accounts that require multi-factor authentication</a></p>
-<p>Jon</p>
+<p>Azure Identity will first read in the property values that are set in code, if they are not set in code, it will then look for values in envrionment variables.</p>
+<p>For example, here’s the code in the Azure Identity library that gets <code>ManagedIdentityClientId</code>:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">public string ManagedIdentityClientId { get; set; } = GetNonEmptyStringOrNull(EnvironmentVariables.ClientId);
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a href="https://github.com/Azure/azure-sdk-for-net/blob/a480413766a689775951e015471d43926cc84857/sdk/identity/Azure.Identity/src/DefaultAzureCredentialOptions.cs#L57" target="_blank" rel="noopener">Source: DefaultAzureCredentialOptions.cs</a></p>
+<p>You are also free to configure your own environment variables with your own names - but, you shouldn’t have to (unless dictated by your company’s security policies).</p>
+<h2 id="Azure-Identity-Environment-Variables"><a class="header-anchor" href="#Azure-Identity-Environment-Variables"></a>Azure Identity Environment Variables</h2>
+<p>Azure Identity allows you to set properties via default environment variables.  We have standardized on the <code>AZURE_</code> prefix for environment names (when possible).  For example, to set <code>ManagedIdentityClientId</code> via environment variables, just set <code>AZURE_CLIENT_ID</code> and Azure Identity will set it.</p>
+<p>You can view all of the current environment variables by going directly to the source: <a href="https://github.com/Azure/azure-sdk-for-net/blob/a480413766a689775951e015471d43926cc84857/sdk/identity/Azure.Identity/src/EnvironmentVariables.cs#L8" target="_blank" rel="noopener">EnvironmentVariables.cs</a></p>
+<h2 id="DefaultAzureCredentialOptions-Environment-Variables"><a class="header-anchor" href="#DefaultAzureCredentialOptions-Environment-Variables"></a>DefaultAzureCredentialOptions Environment Variables</h2>
+<p><code>DefaultAzureCredential</code> will, by default, populate the following properties for <code>DefaultAzureCredentialOptions</code> from environment variables:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Environment Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InteractiveBrowserTenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+<tr>
+<td><code>SharedTokenCacheTenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+<tr>
+<td><code>VisualStudioTenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+<tr>
+<td><code>VisualStudioCodeTenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+<tr>
+<td><code>SharedTokenCacheUsername</code></td>
+<td><code>AZURE_USERNAME</code></td>
+</tr>
+<tr>
+<td><code>ManagedIdentityClientId</code></td>
+<td><code>AZURE_CLIENT_ID</code></td>
+</tr>
+<tr>
+<td><code>AuthorityHost</code></td>
+<td><code>AZURE_AUTHORITY_HOST</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="EnvironmentCredential-Environment-Variables"><a class="header-anchor" href="#EnvironmentCredential-Environment-Variables"></a>EnvironmentCredential Environment Variables</h2>
+<p><code>EnvironmentCredential</code> is the first credential type that <code>DefaultAzureCredential</code> will attempt to get a token from. The following environment variables will also be inspected when you use <code>DefaultAzureCredential</code>.</p>
+<p><code>EnvironmentCredential</code> is comprised of 3 credential types: <code>ClientSecretCredential</code>, <code>UsernamePasswordCredential</code>, and <code>ClientCertificateCredential</code>.</p>
+<p>This is what the chain looks like:</p>
+<ul>
+<li><code>DefaultAzureCredential</code>
+<ul>
+<li><code>EnvironmentCredential</code>
+<ul>
+<li>
+<p><code>ClientSecretCredential</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Environment Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ClientId</code></td>
+<td><code>AZURE_CLIENT_ID</code></td>
+</tr>
+<tr>
+<td><code>TenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+<tr>
+<td><code>ClientSecret</code></td>
+<td><code>AZURE_CLIENT_SECRET</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>UsernamePasswordCredential</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Environment Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Username</code></td>
+<td><code>AZURE_USERNAME</code></td>
+</tr>
+<tr>
+<td><code>Password</code></td>
+<td><code>AZURE_PASSWORD</code></td>
+</tr>
+<tr>
+<td><code>ClientId</code></td>
+<td><code>AZURE_CLIENT_ID</code></td>
+</tr>
+<tr>
+<td><code>TenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>ClientCertificateCredential</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Environment Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ClientId</code></td>
+<td><code>AZURE_CLIENT_ID</code></td>
+</tr>
+<tr>
+<td><code>TenantId</code></td>
+<td><code>AZURE_TENANT_ID</code></td>
+</tr>
+<tr>
+<td><code>ClientCertificatePath</code></td>
+<td><code>AZURE_CLIENT_CERTIFICATE_PATH</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Managed-Identity-Environment-Variables"><a class="header-anchor" href="#Managed-Identity-Environment-Variables"></a>Managed Identity Environment Variables</h2>
+<p>You can set the client Id to be used by <code>ManagedIdentityCredential</code> via the <code>AZURE_CLIENT_ID</code> environment variable.</p>
+<p>You can also set the following Managed Identity environment variables.  You can find more info about these standard variables here: <a href="https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity?tabs=dotnet#obtain-tokens-for-azure-resources" target="_blank" rel="noopener">How to use managed identities for App Service and Azure Functions</a></p>
+<table>
+<thead>
+<tr>
+<th>Environment Variable</th>
+<th>Property</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AZURE_CLIENT_ID</code></td>
+<td><code>DefaultAzureCredentialOptions.ManagedIdentityClientId</code></td>
+</tr>
+<tr>
+<td><code>IDENTITY_ENDPOINT</code></td>
+<td><code>AppServiceV2019ManagedIdentitySource</code><br/><code>AzureArcManagedIdentitySource</code><br/><code>ServiceFabricManagedIdentitySource</code></td>
+</tr>
+<tr>
+<td><code>IDENTITY_HEADER</code></td>
+<td><code>AppServiceV2019ManagedIdentitySource</code><br/><code>ServiceFabricManagedIdentitySource</code></td>
+</tr>
+<tr>
+<td><code>MSI_ENDPOINT</code></td>
+<td><code>AppServiceV2017ManagedIdentitySource</code><br/><code>CloudShellManagedIdentitySource</code></td>
+</tr>
+<tr>
+<td><code>MSI_SECRET</code></td>
+<td><code>AppServiceV2017ManagedIdentitySource</code></td>
+</tr>
+<tr>
+<td><code>IMDS_ENDPOINT</code></td>
+<td><code>AzureArcManagedIdentitySource</code></td>
+</tr>
+<tr>
+<td><code>IDENTITY_SERVER_THUMBPRINT</code></td>
+<td><code>ServiceFabricManagedIdentitySource</code></td>
+</tr>
+<tr>
+<td><code>AZURE_POD_IDENTITY_AUTHORITY_HOST</code></td>
+<td><code>ImdsManagedIdentitySource</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="By-Environment-Variable-Name"><a class="header-anchor" href="#By-Environment-Variable-Name"></a>By Environment Variable Name</h2>
+<p>Here’s a complete list of all the Environment variables that Azure Identity uses.</p>
+<table>
+<thead>
+<tr>
+<th>Environment Variable</th>
+<th>Property</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AZURE_USERNAME</code></td>
+<td><code>DefaultAzureCredentialOptions.SharedTokenCacheUsername</code><br/><code>EnvironmentCredential.UsernamePasswordCredential.Username</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_PASSWORD</code></td>
+<td><code>EnvironmentCredential.UsernamePasswordCredential.Password</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_TENANT_ID</code></td>
+<td><code>DefaultAzureCredentialOptions.InteractiveBrowserTenantId</code><br/><code>DefaultAzureCredentialOptions.SharedTokenCacheTenantId</code><br/><code>DefaultAzureCredentialOptions.VisualStudioTenantId</code><br/><code>DefaultAzureCredentialOptions.VisualStudioCodeTenantId</code><br/><code>EnvironmentCredential.ClientSecretCredential.TenantId</code><br/><code>EnvironmentCredential.UsernamePasswordCredential.TenantId</code><br/><code>EnvironmentCredential.ClientCertificateCredential.TenantId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_CLIENT_ID</code></td>
+<td><code>AzureApplicationCredentialOptions.ManagedIdentityClientId</code><br/><code>DefaultAzureCredentialOptions.ManagedIdentityClientId</code><br/><code>EnvironmentCredential.ClientSecretCredential.ClientId</code><br/><code>EnvironmentCredential.UsernamePasswordCredential.ClientId</code><br/><code>EnvironmentCredential.ClientCertificateCredential.ClientId</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_CLIENT_SECRET</code></td>
+<td><code>EnvironmentCredential.ClientSecretCredential.ClientSecret</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_CLIENT_CERTIFICATE_PATH</code></td>
+<td><code>EnvironmentCredential.ClientCertificateCredential.ClientCertificatePath</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>IDENTITY_ENDPOINT</code></td>
+<td><code>AppServiceV2019ManagedIdentitySource</code><br/><code>AzureArcManagedIdentitySource</code><br/><code>ServiceFabricManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>IDENTITY_HEADER</code></td>
+<td><code>AppServiceV2019ManagedIdentitySource</code><br/><code>ServiceFabricManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MSI_ENDPOINT</code></td>
+<td><code>AppServiceV2017ManagedIdentitySource</code><br/><code>CloudShellManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MSI_SECRET</code></td>
+<td><code>AppServiceV2017ManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>IMDS_ENDPOINT</code></td>
+<td><code>AzureArcManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>IDENTITY_SERVER_THUMBPRINT</code></td>
+<td><code>ServiceFabricManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_POD_IDENTITY_AUTHORITY_HOST</code></td>
+<td><code>ImdsManagedIdentitySource</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AZURE_AUTHORITY_HOST</code></td>
+<td>All OAuth credential types</td>
+<td><a href="https://login.microsoftonline.com/" target="_blank" rel="noopener">https://login.microsoftonline.com/</a></td>
+</tr>
+<tr>
+<td><code>AZURE_REGIONAL_AUTHORITY_NAME</code></td>
+<td><code>ClientCertificateCredentialOptions.RegionalAuthority</code><br/><code>ClientSecretCredentialOptions.RegionalAuthority</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>I hoped this help you on your Azure solution building journey.</p>
+<p>Please leave a comment or contact me if you get stuck or have any feedback.</p>
+<p>Thanks,<br>
+Jon</p>
 
         </div>
         <footer>
@@ -292,26 +575,13 @@
     
     <nav id="article-nav">
         
-            <a href="/2021/08/azure-identity-201/" id="article-nav-newer" class="article-nav-link-wrap">
-                <strong class="article-nav-caption">
-                    newer
-                </strong>
-                <p class="article-nav-title">
-                    
-                        Azure Identity 201 - DefaultAzureCredential Options
-                            
-                </p>
-                <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-
-            </a>
-            
                 
-                    <a href="/2021/08/azure-sdk-python-event-grid-from-json/" id="article-nav-older" class="article-nav-link-wrap">
+                    <a href="/2021/08/playwright-codegen-devcontainer/" id="article-nav-older" class="article-nav-link-wrap">
                         <strong class="article-nav-caption">
                             older
                         </strong>
                         <p class="article-nav-title">
-                            Azure SDK for Python - Introducing the new CloudEvent.from_json method to convert messages from Service Bus, Event Hubs, and Storage Queues to CloudEvent
+                            How to run Playwright codegen in a devcontainer - Solution to &#39;Unable to open X display&#39;
                         </p>
                         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
 
@@ -399,7 +669,7 @@
     var disqus_shortname = 'jongallant';
     
     
-    var disqus_url = 'https://blog.jongallant.com/2021/08/visual-studio-re-enter-credentials/';
+    var disqus_url = 'https://blog.jongallant.com/2021/08/azure-identity-202/';
     
     (function() {
     var dsq = document.createElement('script');
