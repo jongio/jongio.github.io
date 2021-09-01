@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-08-31T20:05:22.872Z</updated>
+  <updated>2021-09-01T21:46:43.838Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution to SignalR error &#39;Unexpected token in JSON&#39; when parsing event data</title>
+    <link href="https://blog.jongallant.com/2021/09/signalr-unexpected-token-in-json/"/>
+    <id>https://blog.jongallant.com/2021/09/signalr-unexpected-token-in-json/</id>
+    <published>2021-09-01T13:50:20.000Z</published>
+    <updated>2021-09-01T21:46:43.838Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;I’ve been writing some UI automation tests with &lt;a href=&quot;https://playwright.dev/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Playwright&lt;/a&gt; and was trying to parse a SignalR event. Like so:&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;const imageEvent =
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="signalr" scheme="https://blog.jongallant.com/tags/signalr/"/>
+    
+      <category term="playwright" scheme="https://blog.jongallant.com/tags/playwright/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure Identity 202 - Environment Variables</title>
@@ -611,40 +643,6 @@ foreach (var resource in
       <category term="puzzles" scheme="https://blog.jongallant.com/tags/puzzles/"/>
     
       <category term="fun" scheme="https://blog.jongallant.com/tags/fun/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Solution: The subscription does not have QuotaId/Feature required by SKU &#39;S0&#39;.</title>
-    <link href="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/"/>
-    <id>https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/</id>
-    <published>2021-04-09T11:19:37.000Z</published>
-    <updated>2021-04-13T19:01:50.053Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Got this today:&lt;/p&gt;
-&lt;p&gt;The subscription does not have QuotaId/Feature required by SKU ‘S0’.&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;{
-   &quot;error&quot;:{
-      &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,
-      &quot;message&quot;:&quot;The template deployment &#39;memetest04091&#39; is not valid
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
   </entry>
   
