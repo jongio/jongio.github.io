@@ -16,21 +16,29 @@
     
     <title>
         
+        Azure Identity 301 - ChainedTokenCredential |
+        
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="A tech, career, &amp; life blog from a developer focused on Azure developer experience at Microsoft.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jon Gallant">
-<meta property="og:url" content="https://blog.jongallant.com/page/29/index.html">
+    <meta name="keywords" content="azure,azure-sdk" />
+    
+    <meta name="description" content="Azure Identity is an Azure SDK library that abstracts all the authentication complexities so you can get back to building your Azure solutions. In Azure Identity 101, we learned about DefaultAzureCre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Identity 301 - ChainedTokenCredential">
+<meta property="og:url" content="https://blog.jongallant.com/2021/09/azure-identity-301/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="A tech, career, &amp; life blog from a developer focused on Azure developer experience at Microsoft.">
+<meta property="og:description" content="Azure Identity is an Azure SDK library that abstracts all the authentication complexities so you can get back to building your Azure solutions. In Azure Identity 101, we learned about DefaultAzureCre">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta property="og:image" content="https://blog.jongallant.com/2021/09/azure-identity-301/tn.png">
+<meta property="article:published_time" content="2021-09-03T08:17:54.000Z">
+<meta property="article:modified_time" content="2021-09-03T16:07:33.701Z">
 <meta property="article:author" content="Jon Gallant">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="azure-sdk">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
+<meta name="twitter:image" content="https://blog.jongallant.com/2021/09/azure-identity-301/tn.png">
 <meta name="twitter:creator" content="@jongallant">
     
 
@@ -147,6 +155,14 @@
                 <div class="main-body-inner">
                     <section id="main">
                         
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/category/Tech/Tips/">Tips</a>
+    </h1>
+</div>
+
+                        
                         <div class="main-body-content">
                             <div class="banner-ad">
                                 <!-- banner -->
@@ -156,223 +172,114 @@
                                     (adsbygoogle = window.adsbygoogle || []).push({});
                                 </script>
                             </div>
-                            
-
-
-
-
-
-<section class="archives-wrap">
-    
-    <div class="archives">
+                            <article id="post-azure-identity-301" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/outlook-2003-add-in-for-xp-events/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Outlook 2003 Add-in for XP Events" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/outlook-2003-add-in-for-xp-events/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-19T16:39:00.000Z" itemprop="datePublished">
-                    2004-10-19</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/outlook-2003-add-in-for-xp-events/">Outlook 2003 Add-in for XP Events</a>
+        Azure Identity 301 - ChainedTokenCredential
         </h1>
     
 
-        <p class="article-excerpt">
-            In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working 
-        </p>
-    </div>
-</article>
-            
-        
-
-
+            </header>
         
         
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/vss-cloaking/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="VSS Cloaking" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/vss-cloaking/">0</span>
-    
-</span>
-
-    
+            <div class="article-subtitle">
+                
+<a href="/2021/09/azure-identity-301/" class="article-date">
+    <time datetime="2021-09-03T08:17:54.000Z" itemprop="datePublished">2021-09-03</time>
 </a>
 
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-08T00:01:00.000Z" itemprop="datePublished">
-                    2004-10-08</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/vss-cloaking/">VSS Cloaking</a>
-        </h1>
-    
+                
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure-sdk/" rel="tag">azure-sdk</a></li></ul>
 
-        <p class="article-excerpt">
-            I finally learned what the cloaking feature of VSS does and wanted to share.
-If you cloak a folder, you are marking it as a folder that you do not want to include in a recursive get.
-For example, lets
-        </p>
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p><img src="tn.png" alt="&quot;Azure Identity 301&quot;"></p>
+<p>Azure Identity is an <a href="https://azure.com/sdk" target="_blank" rel="noopener">Azure SDK</a> library that abstracts all the authentication complexities so you can get back to building your Azure solutions.</p>
+<p>In <a href="/azure-identity-101">Azure Identity 101</a>, we learned about <code>DefaultAzureCredential</code>, which allows you to quickly add authentication to your application with a single line of code:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new DefaultAzureCredential());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>In <a href="/azure-identity-201">Azure Identity 201</a>, we learned about <code>DefaultAzureCredentialOptions</code>, which allows you to configure various <code>DefaultAzureCredential</code> options. For example if you want to set the user-assigned Managed Identity client Id you would do the following:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { ManagedIdentityClientId = clientId }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>In <a href="/azure-identity-202">Azure Identity 202</a>, we learned about all of the Environment Variables that Azure Identity inspects, which you can override at the system or terminal level.  This is convenient when you need to change a setting in an environment without changing code.</p>
+<p>In this <a href="/azure-identity-301">Azure Identity 301</a> post we’ll take a look at using individual credential types, <code>EnvironmentCredential</code> and <code>ChainedTokenCredential</code> - which allows you to create your own chain of credentials to suit your application needs.</p>
+<h2 id="Individual-Credential-Types"><a class="header-anchor" href="#Individual-Credential-Types"></a>Individual Credential Types</h2>
+<p>Up until this point, we’ve been using <code>DefaultAzureCredential</code> which is an opinionated, but heavily customer-researched chain of credential types.  Refer to <a href="/azure-identity-101">Azure Identity 101</a> for the full list of credential types it attempts to get a token from.</p>
+<p><code>DefaultAzureCredential</code> is amazingly useful for getting started quickly.  Just new-it-up and go.  But, let’s say that you are 100% sure your application will only ever use the Azure CLI to authenticate users, which could happen if it is an internal-developer centric tool.  If that is the case, then you could simply new up an <code>AzureCliCredential</code> object and use that just like you used <code>DefaultAzureCredential</code>.</p>
+<p>Here’s what that would look like:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new AzureCliCredential());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>The benefit of using a discreet credential type is that Azure libraries will only attempt to get a token from that one type and you know where your token is coming from.  The downside is that your application will fail if it is unable to get a token from that type.</p>
+<p>You can find the full list of credential types here: <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity" target="_blank" rel="noopener">Azure.Identity Namespace</a>.</p>
+<h2 id="Environment-Credential"><a class="header-anchor" href="#Environment-Credential"></a>Environment Credential</h2>
+<p><code>EnvironmentCredential</code> is also a chain of credentials, that includes credentials that authenticate via service principal, app or user.  They include <code>ClientSecretCredential</code>, <code>UsernamePasswordCredential</code>, and <code>ClientCertificateCredential</code>.  It is include as the first credential type in <code>DefaultAzureCredential</code>, but you can also use it directly:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new EnvironmentCredential());
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>You’d use this type directly if you know your app will only ever authenticate with one of those types and you’d like to take advantage of Azure Identity’s built in support for well known Environment Variables.</p>
+<p>You can learn more about all of the supported Environment Variables here: <a href="/azure-identity-202">Azure Identity 202</a></p>
+<h2 id="Chained-Token-Credential"><a class="header-anchor" href="#Chained-Token-Credential"></a>Chained Token Credential</h2>
+<p><code>ChainedTokenCredential</code> is a type that allows you to easily build your own chain of credentials.  For example, let’s say that you are 100% sure you want to use Azure CLI for local development and Managed Identity for your production cloud environment.  You <strong>could</strong> use <code>DefaultAzureCredential</code> for this scenario, because that chain includes both <code>ManagedIdentityCredential</code> and <code>AzureCLiCredential</code>. It will attempt to get tokens in that order and short-circuit when it gets a token, so in a production environment the <code>AzureCliCredential</code> won’t even be executed.</p>
+<p>But if you use <code>DefaultAzureCredential</code> in this scenario, then there’s a little bit of unknown in exactly how much time it takes to go attempt the credentials that are in the chain that you know you’ll never use.  For example, if you know you won’t ever need to try <code>AzurePowerShellCredential</code>, then you could exclude it with this:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { ExcludeAzurePowerShellCredential = true }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>But let’s say you want to also not include the <code>VisualStudioCodeCredential</code>, that would look like this:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions { ExcludeAzurePowerShellCredential = true, ExcludeVisualStudioCodeCredential = true }
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>You’d get to a point where you have so many <code>Exclude...Credential</code> statements that <code>DefaultAzureCredential</code> starts to gets cumbersome.</p>
+<p>This is where <code>ChainedTokenCredential</code> come into the picture.</p>
+<p>When…</p>
+<ol>
+<li>You know the exact list of credentials you want your application to attempt.  For example: <code>ManagedIdentityCredential</code> (cloud) and <code>AzureCliCredential</code> (local).</li>
+<li>You would rather build a custom list rather than use the <code>DefaultAzureCredentialOptions.Exclude...Credential</code> options.</li>
+</ol>
+<p>It’s very easy to create your own chain.  For example, with the Azure CLI for local and Managed Identity for cloud, you could new-up a <code>ChainedTokenCredential</code> object like this:</p>
+<pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri,
+    new ChainedTokenCredential(
+        new ManagedIdentityCredential(),
+        new AzureCliCredential()
+    )
+);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This will tell the Azure Identity library to try to get a token from Managed Identity first and then Azure CLI.  When building your own chain it is recommended that you try production credentials first followed by developer based credentials. That way developer credential types are never used in production.</p>
+<h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
+<p>I hope this post helped you expand your Azure Identity horizons and helps you build your own chain and understand why you’d do so.</p>
+<p>Feel free to reach out with any questions.</p>
+<p>Jon</p>
+
+        </div>
+        <footer>
+        </footer>
     </div>
 </article>
-            
-        </div>
-        
-        
 
-
-        
-        
-        <div class="article-row">
-            
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/name-that-control/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Name That Control" class="thumbnail-image"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/name-that-control/">0</span>
-    
-</span>
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-04T10:32:00.000Z" itemprop="datePublished">
-                    2004-10-04</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/name-that-control/">Name That Control</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            What do naming convention do you prefer when naming controls and why?
-Hungarian:  lblUsername
-Pascal: UsernameLabel or Username
-Camel: username
- Other?
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-            
-        
-
-
-        
-        
-            <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2004/10/beyond-compare/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/logo_thumb_1024.png)" alt="Beyond Compare" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://blog.jongallant.com/2004/10/beyond-compare/">0</span>
-    
-</span>
 
     
-</a>
+    </section>
 
-        
-        <div class="article-meta">
-            <p class="date"><time datetime="2004-10-03T15:50:00.000Z" itemprop="datePublished">
-                    2004-10-03</time></p>
-            <p class="category">
-                <a class="article-category-link" href="/category/Tech/">Tech</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/category/Tech/Tips/">Tips</a>
-            </p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2004/10/beyond-compare/">Beyond Compare</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            I am amazed at how many developers are still using windiff or VSS diff tool. Beyond Compare is great tool that I use almost daily. It allows you to diff files and folders using the context menu of Win
-        </p>
-    </div>
-</article>
-            
-        </div>
-        
-        
-        
-    </div>
-</section>
-
-
-<nav id="page-nav">
-    <span class="pages">
-        Page 29 
-        of 29</span>
-    <a class="extend prev" rel="prev" href="/page/28/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span>
-</nav>
 
                         </div>
                     </section>
@@ -431,6 +338,24 @@ Camel: username
             
         </ul>
     </div>
+    
+    
+    <nav id="article-nav">
+        
+                
+                    <a href="/2021/09/signalr-unexpected-token-in-json/" id="article-nav-older" class="article-nav-link-wrap">
+                        <strong class="article-nav-caption">
+                            older
+                        </strong>
+                        <p class="article-nav-title">
+                            Solution to SignalR error &#39;Unexpected token in JSON&#39; when parsing event data
+                        </p>
+                        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+
+                    </a>
+                    
+    </nav>
+    
     
 
     <div class="widgets-container">
@@ -511,11 +436,13 @@ Camel: username
     var disqus_shortname = 'jongallant';
     
     
+    var disqus_url = 'https://blog.jongallant.com/2021/09/azure-identity-301/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

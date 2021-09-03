@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-09-01T21:46:43.838Z</updated>
+  <updated>2021-09-03T16:07:33.701Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Azure Identity 301 - ChainedTokenCredential</title>
+    <link href="https://blog.jongallant.com/2021/09/azure-identity-301/"/>
+    <id>https://blog.jongallant.com/2021/09/azure-identity-301/</id>
+    <published>2021-09-03T08:17:54.000Z</published>
+    <updated>2021-09-03T16:07:33.701Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;tn.png&quot; alt=&quot;&amp;quot;Azure Identity 301&amp;quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Azure Identity is an &lt;a href=&quot;https://azure.com/sdk&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Azure SDK&lt;/a&gt; library that abstracts all the authentication complexities so you can get back to building your Azure solutions.&lt;/p&gt;
+&lt;p&gt;In &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
+    
+      <category term="azure-sdk" scheme="https://blog.jongallant.com/tags/azure-sdk/"/>
+    
+  </entry>
   
   <entry>
     <title>Solution to SignalR error &#39;Unexpected token in JSON&#39; when parsing event data</title>
@@ -613,36 +646,6 @@ foreach (var resource in
     
     
       <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>This is Not A Toy - Mandalorian + Grogu Puzzle Added to Puzzle Wall</title>
-    <link href="https://blog.jongallant.com/2021/04/this-is-not-a-toy-puzzle/"/>
-    <id>https://blog.jongallant.com/2021/04/this-is-not-a-toy-puzzle/</id>
-    <published>2021-04-13T10:09:29.000Z</published>
-    <updated>2021-08-23T14:43:29.759Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;We are a puzzle family and a few years ago started hanging them up around the house. We are also a Star Wars family and started doing Star Wars themed puzzles. My office wall now has many puzzles that we’ve completed and we call it the puzzle wall.&lt;/p&gt;
-&lt;p&gt;Today’s addition to the puzzle wall was
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Puzzles" scheme="https://blog.jongallant.com/category/Puzzles/"/>
-    
-    
-      <category term="puzzles" scheme="https://blog.jongallant.com/tags/puzzles/"/>
-    
-      <category term="fun" scheme="https://blog.jongallant.com/tags/fun/"/>
     
   </entry>
   
