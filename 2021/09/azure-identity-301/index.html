@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/09/azure-identity-301/tn.png">
 <meta property="article:published_time" content="2021-09-03T08:17:54.000Z">
-<meta property="article:modified_time" content="2021-09-03T16:07:33.701Z">
+<meta property="article:modified_time" content="2021-09-03T16:19:17.571Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="azure-sdk">
@@ -214,7 +214,7 @@
 <p>In <a href="/azure-identity-202">Azure Identity 202</a>, we learned about all of the Environment Variables that Azure Identity inspects, which you can override at the system or terminal level.  This is convenient when you need to change a setting in an environment without changing code.</p>
 <p>In this <a href="/azure-identity-301">Azure Identity 301</a> post we’ll take a look at using individual credential types, <code>EnvironmentCredential</code> and <code>ChainedTokenCredential</code> - which allows you to create your own chain of credentials to suit your application needs.</p>
 <h2 id="Individual-Credential-Types"><a class="header-anchor" href="#Individual-Credential-Types"></a>Individual Credential Types</h2>
-<p>Up until this point, we’ve been using <code>DefaultAzureCredential</code> which is an opinionated, but heavily customer-researched chain of credential types.  Refer to <a href="/azure-identity-101">Azure Identity 101</a> for the full list of credential types it attempts to get a token from.</p>
+<p>Up until this point, we’ve been using <code>DefaultAzureCredential</code> which is an opinionated and heavily customer-researched chain of credential types.  Refer to <a href="/azure-identity-101">Azure Identity 101</a> for the full list of credential types it attempts to get a token from.</p>
 <p><code>DefaultAzureCredential</code> is amazingly useful for getting started quickly.  Just new-it-up and go.  But, let’s say that you are 100% sure your application will only ever use the Azure CLI to authenticate users, which could happen if it is an internal-developer centric tool.  If that is the case, then you could simply new up an <code>AzureCliCredential</code> object and use that just like you used <code>DefaultAzureCredential</code>.</p>
 <p>Here’s what that would look like:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var client = new SecretClient(vaultUri, new AzureCliCredential());
