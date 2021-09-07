@@ -22,24 +22,24 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,cli,codespaces,github&#39;,devex" />
+    <meta name="keywords" content="azure,cli,codespaces,devex,github" />
     
-    <meta name="description" content="I work with GitHub Codespaces quite a bit and discovered that there a few things that don’t work well with GitHub CLI and Git. To set some context:  GitHub CLI uses the GITHUB_TOKEN environment varia">
+    <meta name="description" content="Update - New GitHub CLI Extension GitHub CLI 2.0 introduced CLI Extensions.  I took a few minutes and threw all of the fixes below into a new extension called “Setup Git Credential Helper” and can be">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Using GitHub CLI and Git in GitHub Codespaces">
 <meta property="og:url" content="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I work with GitHub Codespaces quite a bit and discovered that there a few things that don’t work well with GitHub CLI and Git. To set some context:  GitHub CLI uses the GITHUB_TOKEN environment varia">
+<meta property="og:description" content="Update - New GitHub CLI Extension GitHub CLI 2.0 introduced CLI Extensions.  I took a few minutes and threw all of the fixes below into a new extension called “Setup Git Credential Helper” and can be">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/gitcodespaces.png">
 <meta property="article:published_time" content="2021-06-07T16:25:57.000Z">
-<meta property="article:modified_time" content="2021-08-26T17:37:01.489Z">
+<meta property="article:modified_time" content="2021-09-07T17:23:10.142Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="cli">
 <meta property="article:tag" content="codespaces">
-<meta property="article:tag" content="github&#39;">
 <meta property="article:tag" content="devex">
+<meta property="article:tag" content="github">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/gitcodespaces.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -196,13 +196,25 @@
 </a>
 
                 
-    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cli/" rel="tag">cli</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codespaces/" rel="tag">codespaces</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devex/" rel="tag">devex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github'</a></li></ul>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/azure/" rel="tag">azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cli/" rel="tag">cli</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codespaces/" rel="tag">codespaces</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devex/" rel="tag">devex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li></ul>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
             <p><img src="gitcodespaces.png" alt="'GitHub Codespaces, CLI, and Git'"></p>
+<h2 id="Update-New-GitHub-CLI-Extension"><a class="header-anchor" href="#Update-New-GitHub-CLI-Extension"></a>Update - New GitHub CLI Extension</h2>
+<p>GitHub CLI 2.0 introduced CLI Extensions.  I took a few minutes and threw all of the fixes below into a new extension called “Setup Git Credential Helper” and can be found here:</p>
+<p><a href="https://github.com/jongio/gh-setup-git-credential-helper" target="_blank" rel="noopener">GitHub CLI Extension - Setup Git Credential Helper</a></p>
+<p>Here are some links that should help:<br>
+<a href="https://docs.github.com/en/github-cli/github-cli/creating-github-cli-extensions" target="_blank" rel="noopener">Creating GitHub CLI Extensions</a><br>
+<a href="https://github.com/topics/gh-extension" target="_blank" rel="noopener">GitHub CLI Extension Topic - Lists all extensions</a></p>
+<p>To use it install GitHub CLI v2+ and run these commands:</p>
+<pre class="line-numbers language-bash"><code class="language-bash">gh extension install jongio/gh-setup-git-credential-helper
+gh setup-git-credential-helper
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>That will do all of fixes I mention below and get you all setup with Git in your Codespace.</p>
+<h2 id="Post"><a class="header-anchor" href="#Post"></a>Post</h2>
 <p>I work with <a href="https://github.com/features/codespaces" target="_blank" rel="noopener">GitHub Codespaces</a> quite a bit and discovered that there a few things that don’t work well with <a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI</a> and <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>.</p>
 <p>To set some context:</p>
 <ol>
