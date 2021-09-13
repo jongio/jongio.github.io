@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2021-09-08T23:29:59.032Z</updated>
+  <updated>2021-09-13T16:41:26.071Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to delete a GitHub Codespace when you&#39;ve reached the max of 20</title>
+    <link href="https://blog.jongallant.com/2021/09/github-codespaces-delete-codespace-when-you-hit-the-limit/"/>
+    <id>https://blog.jongallant.com/2021/09/github-codespaces-delete-codespace-when-you-hit-the-limit/</id>
+    <published>2021-09-13T08:50:25.000Z</published>
+    <updated>2021-09-13T16:41:26.071Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;You are on a repo that you love and you see that you have maxed out your allowed 20 Codespaces!!!&lt;/p&gt;
+&lt;p&gt;You’ll see this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;113.png&quot; alt=&quot;Out of Codespaces&quot;&gt;&lt;/p&gt;
+&lt;p&gt;But there’s no link to delete a Codespace.&lt;/p&gt;
+&lt;p&gt;This may be obvious, but it took me a minute to figure this
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+      <category term="github" scheme="https://blog.jongallant.com/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure Identity 301 - ChainedTokenCredential</title>
@@ -628,39 +661,6 @@ foreach (var resource in
       <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
     
       <category term="rest" scheme="https://blog.jongallant.com/tags/rest/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Disable VS Code / GitLens Current Line Blame - &#39;You, seconds ago - Uncommitted Changes&#39;</title>
-    <link href="https://blog.jongallant.com/2021/04/disable-current-line-blame-gitlens-you-seconds-ago-uncommitted-changes/"/>
-    <id>https://blog.jongallant.com/2021/04/disable-current-line-blame-gitlens-you-seconds-ago-uncommitted-changes/</id>
-    <published>2021-04-21T06:23:36.000Z</published>
-    <updated>2021-04-21T13:49:23.743Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;You’re using VS Code with the GitLens extension and you see this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;101.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Or maybe you noticed that sometimes that text is inserted into the middle of what you are typing.&lt;/p&gt;
-&lt;p&gt;This feature is part of GitLens and is called “Current Line Blame”&lt;/p&gt;
-&lt;p&gt;Here’s how
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="vscode" scheme="https://blog.jongallant.com/tags/vscode/"/>
     
   </entry>
   
