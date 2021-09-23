@@ -1,4 +1,14 @@
 (function ($) {
+
+    $('.tabs').tabs(
+        {
+            activate: function(event, ui){
+                $('.tabs').tabs('option', 'active', ui.newTab.index());
+            }
+        }
+    );
+    
+
     // To top button
     $("#back-to-top").on('click', function () {
         $('body, html').animate({ scrollTop: 0 }, 600);
