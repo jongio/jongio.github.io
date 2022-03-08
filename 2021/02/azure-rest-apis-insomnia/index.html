@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/azure-rest-apis-insomnia.png">
 <meta property="article:published_time" content="2021-02-26T06:50:46.000Z">
-<meta property="article:modified_time" content="2021-02-26T17:36:37.920Z">
+<meta property="article:modified_time" content="2022-03-08T17:44:25.918Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="rest">
@@ -207,18 +207,18 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><img src="azure-rest-apis-insomnia.png" alt="Azure REST APIs with Insomnia"></p>
-<p>Here’s how to call the <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">Azure REST APIs</a> with <a href="https://insomnia.rest" target="_blank" rel="noopener">Insomnia</a> - a modern lightweight REST API client.</p>
+<p>Here’s how to call the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/azure/">Azure REST APIs</a> with <a target="_blank" rel="noopener" href="https://insomnia.rest">Insomnia</a> - a modern lightweight REST API client.</p>
 <h2 id="Azure-SDKs"><a class="header-anchor" href="#Azure-SDKs"></a>Azure SDKs</h2>
 <p>Before we go too far into this Azure REST APIs for Insomnia post, I want to make sure that you know you don’t need to use the Azure REST APIs to interact with Azure resources.  So many people have reached out to me over the years asking for Azure REST help who didn’t know we have SDKs in many languages, including .NET, Python, Java, JavaScript/TypeScript, Go, C++, C, Android, iOS, PHP, and Ruby - and that they work across operating systems - and are available in their favorite package managers.  In my opinion, if you don’t mind taking on the dependency of the Microsoft supported library, then it sure beats building the libraries yourself.  Also, the new Azure SDKs include features like logging, retries, and are fully supported by a sizable team at Microsoft.</p>
 <p>I understand if you want to use the REST APIs directly, but I just want you to know that the libraries exist as well.</p>
-<p>You can find the libraries here: <a href="https://azure.com/sdk" target="_blank" rel="noopener">https://azure.com/sdk</a> and a 3 min “Introducing the Azure SDKs” video here: <a href="https://aka.ms/azsdk/intro" target="_blank" rel="noopener">https://aka.ms/azsdk/intro</a> and all the source for the libraries can be found here: <a href="https://github.com/azure/azure-sdk" target="_blank" rel="noopener">https://github.com/azure/azure-sdk</a></p>
+<p>You can find the libraries here: <a target="_blank" rel="noopener" href="https://azure.com/sdk">https://azure.com/sdk</a> and a 3 min “Introducing the Azure SDKs” video here: <a target="_blank" rel="noopener" href="https://aka.ms/azsdk/intro">https://aka.ms/azsdk/intro</a> and all the source for the libraries can be found here: <a target="_blank" rel="noopener" href="https://github.com/azure/azure-sdk">https://github.com/azure/azure-sdk</a></p>
 <p>Alright, so you are sure you want to use the Azure REST APIs instead of the SDKs?  Here’s how to do so with Insomnia.</p>
 <h2 id="1-Install-Insomnia-Core"><a class="header-anchor" href="#1-Install-Insomnia-Core"></a>1. Install Insomnia Core</h2>
-<p>Download and install <a href="https://insomnia.rest/download" target="_blank" rel="noopener">Insomnia Core</a>.</p>
+<p>Download and install <a target="_blank" rel="noopener" href="https://insomnia.rest/download">Insomnia Core</a>.</p>
 <h2 id="2-Install-Insomnia-Default-Headers-Plugin"><a class="header-anchor" href="#2-Install-Insomnia-Default-Headers-Plugin"></a>2. Install Insomnia - Default Headers Plugin</h2>
-<p>We are going to send the “Authorization” header Bearer token with each request and need the Default Headers Plugin to do so. You can find the plugin here on npm: <a href="https://www.npmjs.com/package/insomnia-plugin-default-headers" target="_blank" rel="noopener">Insomnia Default Headers</a>.</p>
+<p>We are going to send the “Authorization” header Bearer token with each request and need the Default Headers Plugin to do so. You can find the plugin here on npm: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/insomnia-plugin-default-headers">Insomnia Default Headers</a>.</p>
 <blockquote>
-<p>There are other ways to auth with Insomnia, including the built-in OAuth2 provider, but I found this Default Header method better because I don’t need to manually set the authentication header with each request. Insomnia has a <a href="https://github.com/Kong/insomnia/issues/1116" target="_blank" rel="noopener">feature request to add authentication header at the workspace or folder level</a>, but until then this is the best option IMO.</p>
+<p>There are other ways to auth with Insomnia, including the built-in OAuth2 provider, but I found this Default Header method better because I don’t need to manually set the authentication header with each request. Insomnia has a <a target="_blank" rel="noopener" href="https://github.com/Kong/insomnia/issues/1116">feature request to add authentication header at the workspace or folder level</a>, but until then this is the best option IMO.</p>
 </blockquote>
 <ol>
 <li>Open Insomnia</li>
@@ -247,28 +247,28 @@
 <h4 id="Cloud-Shell"><a class="header-anchor" href="#Cloud-Shell"></a>Cloud Shell</h4>
 <p>The Azure Cloud shell is an in-browser terminal interface that allows you to execute Azure CLI commands without installing the Azure CLI locally.</p>
 <ol>
-<li>Go to <a href="https://shell.azure.com" target="_blank" rel="noopener">Azure Cloud Shell</a> - <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a></li>
+<li>Go to <a target="_blank" rel="noopener" href="https://shell.azure.com">Azure Cloud Shell</a> - <a target="_blank" rel="noopener" href="https://shell.azure.com">https://shell.azure.com</a></li>
 </ol>
 <h4 id="Azure-CLI-Local-Install"><a class="header-anchor" href="#Azure-CLI-Local-Install"></a>Azure CLI Local Install</h4>
 <ol>
-<li><a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank" rel="noopener">Install the Azure CLI</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/cli/azure/install-azure-cli">Install the Azure CLI</a></li>
 <li>Login with <code>az login</code></li>
-<li>Select your active Azure subscription with <code>az account set -n {name of your sub}</code></li>
+<li>Select your active Azure subscription with <code>az account set -n &#123;name of your sub&#125;</code></li>
 </ol>
 <h2 id="5-Authentication"><a class="header-anchor" href="#5-Authentication"></a>5. Authentication</h2>
-<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object" target="_blank" rel="noopener">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad" target="_blank" rel="noopener">Azure REST API Authentication</a>.</p>
+<p>Azure REST API authentication is done via a Bearer token in the Authentication header. We’ll use a service principal to get that token for us. A service principal is an Azure account that allows you to perform actions on Azure resources.  Think about it like a system account that you can assign roles to and get tokens with.  You can optionally read all about Service Principals here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object">Applications and service principals</a>.  Note that there are other ways to authenticate with the Azure REST APIs, but in this post we will only cover the Bearer token and service principal approach.  You can research all the various ways to authenticate with the Azure REST APIs here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad">Azure REST API Authentication</a>.</p>
 <p>We first need to create the service principal with the following Azure CLI command:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">az ad sp create-for-rbac
+<pre class="line-numbers language-bash"><code class="language-bash">az ad sp create-for-rbac --role Contributor
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>This will output the information you need to setup Insomnia - you will need it later, so save it to a safe location.</p>
 <p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
   "appId": "798256c4-bbdc-4f7a-a20a-",
   "displayName": "azure-cli-2021-02-10-22-47-08",
   "name": "http://azure-cli-2021-02-10-22-47-08",
   "password": "",
   "tenant": "72f988bf-86f1-41af-91ab-"
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="6-Update-Insomnia-Environment"><a class="header-anchor" href="#6-Update-Insomnia-Environment"></a>6. Update Insomnia Environment</h2>
 <ol>
@@ -312,12 +312,12 @@
 </tr>
 <tr>
 <td>resource</td>
-<td><a href="https://management.azure.com/" target="_blank" rel="noopener">https://management.azure.com/</a></td>
+<td><a target="_blank" rel="noopener" href="https://management.azure.com/">https://management.azure.com/</a></td>
 <td>The default value is for managing Azure resources.</td>
 </tr>
 <tr>
 <td>tokenUrl</td>
-<td><a href="https://login.microsoftonline.com/" target="_blank" rel="noopener">https://login.microsoftonline.com/</a>{{tenantId}}/oauth2/token</td>
+<td><a target="_blank" rel="noopener" href="https://login.microsoftonline.com/">https://login.microsoftonline.com/</a>{{tenantId}}/oauth2/token</td>
 <td>You do not need to modify this value, but can if you want to use a different token url.</td>
 </tr>
 <tr>
@@ -345,7 +345,7 @@
 <li>Modify the “Resource Group Name” in the URL.</li>
 <li>Notice that we set the request Body with the location with this JSON:</li>
 </ol>
-<pre class="line-numbers language-json"><code class="language-json">{"location": "westus"}
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;"location": "westus"&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="071.png" alt="&quot;Body type&quot;"></p>
 <ol>
@@ -354,7 +354,7 @@
 </ol>
 <p><img src="070.png" alt="&quot;Create Resource Group&quot;"></p>
 <h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
-<p>From here you need to explore the <a href="https://docs.microsoft.com/en-us/rest/api/azure/" target="_blank" rel="noopener">Azure REST APIs</a> and add the requests that you’d like to call.</p>
+<p>From here you need to explore the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/azure/">Azure REST APIs</a> and add the requests that you’d like to call.</p>
 <p>That’s the easiest way to get going with Azure REST APIs and Insomnia.  Hope this helps you out.</p>
 <p>Jon</p>
 
