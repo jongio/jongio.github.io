@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.jongallant.com/"/>
-  <updated>2022-03-17T16:44:22.525Z</updated>
+  <updated>2022-04-29T17:55:15.132Z</updated>
   <id>https://blog.jongallant.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Solution: GitHub Actions Failing with Unexpected value &#39;branches&#39; </title>
+    <link href="https://blog.jongallant.com/2022/04/github-actions-failing-with-unexpected-value-branches/"/>
+    <id>https://blog.jongallant.com/2022/04/github-actions-failing-with-unexpected-value-branches/</id>
+    <published>2022-04-29T10:44:39.000Z</published>
+    <updated>2022-04-29T17:55:15.132Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Starting seeing this today:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;001.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;The workflow is not valid. .github/workflows/azure-dev.yml (Line: 3, Col: 5): Unexpected value &#39;branches&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Apparently &lt;code&gt;workflow_dispatch&lt;/code&gt; never supported &lt;code&gt;branches&lt;/code&gt;, but GH silently
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
+    
+      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>We&#39;re Hiring Developers for Microsoft Azure Developer Experience Team!</title>
@@ -621,45 +651,6 @@
     
       <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Using GitHub CLI and Git in GitHub Codespaces</title>
-    <link href="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/"/>
-    <id>https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/</id>
-    <published>2021-06-07T16:25:57.000Z</published>
-    <updated>2021-09-07T17:23:10.142Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;gitcodespaces.png&quot; alt=&quot;&#39;GitHub Codespaces, CLI, and Git&#39;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Update-New-GitHub-CLI-Extension&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#Update-New-GitHub-CLI-Extension&quot;&gt;&lt;/a&gt;Update - New GitHub CLI Extension&lt;/h2&gt;
-&lt;p&gt;GitHub CLI 2.0 introduced CLI Extensions.  I took a few minutes and
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Tech" scheme="https://blog.jongallant.com/category/Tech/"/>
-    
-      <category term="Tips" scheme="https://blog.jongallant.com/category/Tech/Tips/"/>
-    
-    
-      <category term="azure" scheme="https://blog.jongallant.com/tags/azure/"/>
-    
-      <category term="cli" scheme="https://blog.jongallant.com/tags/cli/"/>
-    
-      <category term="codespaces" scheme="https://blog.jongallant.com/tags/codespaces/"/>
-    
-      <category term="devex" scheme="https://blog.jongallant.com/tags/devex/"/>
-    
-      <category term="github" scheme="https://blog.jongallant.com/tags/github/"/>
     
   </entry>
   
