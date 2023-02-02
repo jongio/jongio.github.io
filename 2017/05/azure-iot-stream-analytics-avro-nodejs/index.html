@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/05/azure-iot-stream-analytics-avro-nodejs/000188.png">
 <meta property="article:published_time" content="2017-05-03T21:32:50.000Z">
-<meta property="article:modified_time" content="2018-12-11T02:49:05.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:17:34.019Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="iot">
@@ -307,14 +307,14 @@ Objavro.schema�&amp;#123;"name":"telemetry","type":"record","fields":[&amp
 <p>You can see the full code on GitHub <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs/blob/master/index.js">here</a>. There are lots of comments inline that should help you see how it all works together.</p>
 <p>The script uses following npm packages: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/avsc">avsc</a>, <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/memory-streams">memory-streams</a>, <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/azure-iot-device">azure-iot-device</a> and <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/azure-iot-device-amqp">azure-iot-device-amqp</a>.</p>
 <p>With Avro, you can embed the payload schema into the Avro Container file.  In this repo, we have a file called <code>schema.avsc</code>, which looks like this:</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
     "name": "telemetry",
     "type": "record",
     "fields": [
-        &amp;#123; "name": "deviceId", "type": "string" &amp;#125;,
-        &amp;#123; "name": "windSpeed", "type": "float" &amp;#125;
+        { "name": "deviceId", "type": "string" },
+        { "name": "windSpeed", "type": "float" }
     ]
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>In fact, ASA requires the schema to be embedded into the message payload.</p>
 <p>This file Avro type is loaded via the parse method like this:</p>

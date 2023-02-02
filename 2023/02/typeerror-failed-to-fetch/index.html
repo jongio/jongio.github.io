@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2023/02/typeerror-failed-to-fetch/img-04.png">
 <meta property="article:published_time" content="2023-02-01T18:28:17.000Z">
-<meta property="article:modified_time" content="2023-02-02T02:47:21.033Z">
+<meta property="article:modified_time" content="2023-02-02T03:13:14.381Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="reactjs">
@@ -214,26 +214,26 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>If you see that it is likely because you don’t have CORS configured.</p>
 <p>Add this to local.settings.json</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "IsEncrypted": false,
-  "Values": &amp;#123;
+  "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "AzureWebJobsStorage": "UseDevelopmentStorage=true"
-  &amp;#125;,
-  "Host": &amp;#123;
+  },
+  "Host": {
     "CORS": "*",
     "CORSCredentials": false,
     "LocalHttpPort": 7071
-  &amp;#125;
-&amp;#125;
+  }
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>Change 7071 to the port your function is running on.</p>
 </blockquote>
 <p>If that doesn’t work, then make sure you have access to the function.  Sometimes you need to configure it for <code>anonymous</code> access in the function.json file</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "bindings": [
-    &amp;#123;
+    {
       "authLevel": "anonymous",
       "type": "httpTrigger",
       "direction": "in",
@@ -242,15 +242,15 @@
         "get",
         "post"
       ]
-    &amp;#125;,
-    &amp;#123;
+    },
+    {
       "type": "http",
       "direction": "out",
       "name": "res"
-    &amp;#125;
+    }
   ],
   "scriptFile": "../dist/HttpTrigger/index.js"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>See ‘authLevel’ setting above.</p>

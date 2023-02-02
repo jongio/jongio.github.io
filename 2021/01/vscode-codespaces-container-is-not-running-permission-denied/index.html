@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/01/vscode-codespaces-container-is-not-running-permission-denied/053.png">
 <meta property="article:published_time" content="2021-01-19T15:14:59.000Z">
-<meta property="article:modified_time" content="2021-01-19T23:28:14.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:18:21.283Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
@@ -212,14 +212,14 @@
 </ol>
 <p>Solution:</p>
 <p>Open devcontainer.json and add <code>--privileged</code> to runArgs</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
 	"runArgs": [
 		"--cap-add=SYS_PTRACE",
 		"--security-opt",
 		"seccomp=unconfined",
 		"--privileged"
 	],
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Reopen in the container and it should work.</p>
 <p>jon</p>

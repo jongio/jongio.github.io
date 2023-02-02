@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/azure-rest-apis-postman.png">
 <meta property="article:published_time" content="2021-02-10T13:10:48.000Z">
-<meta property="article:modified_time" content="2022-03-08T17:44:32.074Z">
+<meta property="article:modified_time" content="2023-02-02T03:17:43.895Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="postman">
@@ -240,13 +240,13 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>This will output the information you need to setup Postman - you will need it later, so save it to a safe location.</p>
 <p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "appId": "798256c4-bbdc-4f7a-a20a-",
   "displayName": "azure-cli-2021-02-10-22-47-08",
   "name": "http://azure-cli-2021-02-10-22-47-08",
   "password": "",
   "tenant": "72f988bf-86f1-41af-91ab-"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Postman-Setup"><a class="header-anchor" href="#Postman-Setup"></a>Postman Setup</h2>
 <p>Now that we have the service principal created, it is time to configure Postman.</p>
@@ -350,7 +350,7 @@
 <li>Select “JSON” in the Content-Type dropdown</li>
 <li>Enter the JSON body into the Body textbox:</li>
 </ol>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;"location": "westus"&amp;#125;
+<pre class="line-numbers language-json"><code class="language-json">{"location": "westus"}
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="071.png" alt="Postman body content type"></p>
 <p>All parameters for all requests can be found in the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/rest/api/azure/">Azure REST documentation</a>.</p>

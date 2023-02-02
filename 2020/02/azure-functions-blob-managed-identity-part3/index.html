@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part3/000067.png">
 <meta property="article:published_time" content="2020-02-02T13:35:43.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:41:53.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:17:26.108Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -355,7 +355,7 @@ var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
 <li><code>TENANT_ID</code> This is the Azure tenant that your subscription lives in - you can find this with <code>az account show --query tenantId -o tsv</code>.</li>
 </ul>
 <p>If you don’t do this, then you’ll likely see the following exception later in the logstream.  (See below for info on how to view the logstream)</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;"statusCode":400,"message":"Unable to load requested managed identity.","correlationId":"fc7504dd-c16c-4526-b8a8-667f6463d306"&amp;#125;
+<pre class="line-numbers language-json"><code class="language-json">{"statusCode":400,"message":"Unable to load requested managed identity.","correlationId":"fc7504dd-c16c-4526-b8a8-667f6463d306"}
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Now that you have your Managed Identity configured it is time to deploy our Function to Azure.</p>
 <h3 id="Deploy-Azure-Function-to-Azure"><a class="header-anchor" href="#Deploy-Azure-Function-to-Azure"></a>Deploy Azure Function to Azure</h3>
@@ -412,14 +412,14 @@ Environment variables not fully configured. AZURE_TENANT_ID and AZURE_CLIENT_ID 
 <pre class="line-numbers language-bash"><code class="language-bash">az resource list -n FUNCTION_APP_NAME -g RESOURCE_GROUP_NAME
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Which will output something like this:</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
     "id": "/subscriptions/25fd0362-aa79-488b-b37b-d6e892009fdf/resourceGroups/jgfnrg1/providers/Microsoft.Web/sites/jgfnapp1",
-    "identity": &amp;#123;
+    "identity": {
       "principalId": "ca9937fe-2967-443b-99c1-c480bf6000dd",
       "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
       "type": "SystemAssigned",
       "userAssignedIdentities": null
-    &amp;#125;,
+    },
     "kind": "functionapp,linux,container",
     "location": "westus2",
     "managedBy": null,
@@ -430,7 +430,7 @@ Environment variables not fully configured. AZURE_TENANT_ID and AZURE_CLIENT_ID 
     "sku": null,
     "tags": null,
     "type": "Microsoft.Web/sites"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>Debug the Function</li>

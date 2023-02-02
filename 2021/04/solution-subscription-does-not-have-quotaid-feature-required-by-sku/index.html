@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="azure" />
     
-    <meta name="description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. &amp;#123;    &quot;error&quot;:&amp;#123;       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment">
+    <meta name="description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. {    &quot;error&quot;:{       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memetest04091&#39; i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution: The subscription does not have QuotaId&#x2F;Feature required by SKU &#39;S0&#39;.">
 <meta property="og:url" content="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. &amp;#123;    &quot;error&quot;:&amp;#123;       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment">
+<meta property="og:description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. {    &quot;error&quot;:{       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memetest04091&#39; i">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/086.png">
 <meta property="article:published_time" content="2021-04-09T11:19:37.000Z">
-<meta property="article:modified_time" content="2021-04-13T19:01:50.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:18:15.434Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -207,18 +207,18 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Got this today:</p>
 <p>The subscription does not have QuotaId/Feature required by SKU ‘S0’.</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
-   "error":&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
+   "error":{
       "code":"InvalidTemplateDeployment",
       "message":"The template deployment 'memetest04091' is not valid according to the validation procedure. The tracking id is 'e3552149-b5b3-4cd0-8715-6ae788d0a95a'. See inner errors for details.",
       "details":[
-         &amp;#123;
+         {
             "code":"SpecialFeatureOrQuotaIdRequired",
             "message":"The subscription does not have QuotaId/Feature required by SKU 'S0'."
-         &amp;#125;
+         }
       ]
-   &amp;#125;
-&amp;#125;
+   }
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It’s because TextAnalytics retired S0-S4 SKUs and only have ‘S’ now.  So, just change your SKU to <code>S</code> to fix it.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">resource text_analytics 'Microsoft.CognitiveServices/accounts@2017-04-18' = &amp;#123;

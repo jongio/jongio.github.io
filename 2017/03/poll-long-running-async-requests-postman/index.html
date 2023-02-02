@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/03/poll-long-running-async-requests-postman/000135.png">
 <meta property="article:published_time" content="2017-03-23T22:08:34.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:51:01.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:18:10.149Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="postman">
 <meta name="twitter:card" content="summary_large_image">
@@ -213,14 +213,14 @@
 <pre class="line-numbers language-bash"><code class="language-bash">https://management.azure.com/subscriptions/f9766876-e50b-006f-9ad3-5afb7bb8cf45/resourceGroups/jongtrash/providers/Microsoft.Devices/IotHubs/jongiothubtest2/operationResults/NzRkNDQ3NGUtN2NmNS00YWLWIyZGEtNTMxZjEwYzJjNWI4?api-version=2016-02-03&amp;asyncinfo
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Which will have a payload like this when still running:</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "status": "Running"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Or this when the IoT Hub has been created:</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "status": "Succeeded"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Here’s how to deal with this scenario in Postman.</p>
 <p>The flow of requests will be executed in this order:</p>

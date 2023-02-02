@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/000051.png">
 <meta property="article:published_time" content="2019-02-04T09:56:45.000Z">
-<meta property="article:modified_time" content="2019-02-05T19:14:53.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:18:47.790Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="webdev">
 <meta property="article:tag" content="vscode">
@@ -288,14 +288,14 @@ warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:
 <pre class="line-numbers language-json"><code class="language-json">"vetur.format.defaultFormatter.html": "js-beautify-html"
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Did a format…and whitespace was retained in my .vue files, but attributes were still being wrapped, so I dug and found the <code>wrap_attributes</code> settings and added this:</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "vetur.format.defaultFormatter.html": "js-beautify-html",
-  "vetur.format.defaultFormatterOptions": &amp;#123;
-    "js-beautify-html": &amp;#123;
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
      "wrap_attributes": "auto"
-    &amp;#125;
-   &amp;#125;
-&amp;#125;
+    }
+   }
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And that setting disables wrap_attributes.</p>
 <p>So, I’m golden with Formatting…now onto ES Lint issues.</p>
@@ -330,11 +330,11 @@ extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescr
  18 | &lt;/script&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It’s looking for a dangling comman, which I don’t want to add to my code, so I disable it with this:</p>
-<pre class="line-numbers language-json"><code class="language-json">rules: &amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">rules: {
   "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
   "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   "comma-dangle": ["error", "never"]
- &amp;#125;,
+ },
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I re-run <code>yarn serve</code> and get this:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">error: Expected linebreaks to be 'LF' but found 'CRLF' (linebreak-style) at src\main.ts:13:19:
@@ -345,12 +345,12 @@ extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescr
  14 |
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It is checking for consistent linebreaks. At this point, I don’t really care, so I just disable that rule with this:</p>
-<pre class="line-numbers language-json"><code class="language-json"> rules: &amp;#123;
+<pre class="line-numbers language-json"><code class="language-json"> rules: {
   "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
   "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   "comma-dangle": ["error", "never"],
   "linebreak-style": "off"
- &amp;#125;,
+ },
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>AND BOOM!</em></p>
 <pre class="line-numbers language-bash"><code class="language-bash">DONE Compiled successfully in 5661ms                                                                              10:20:40 AM
@@ -374,35 +374,35 @@ Time: 3210ms
 <p>Jon</p>
 <p>Here are the files:</p>
 <p><strong>.eslintrc.js</strong></p>
-<pre class="line-numbers language-json"><code class="language-json">module.exports = &amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">module.exports = {
  root: true,
- env: &amp;#123;
+ env: {
   node: true
- &amp;#125;,
+ },
  plugins: ["es-beautifier"],
  extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],
- rules: &amp;#123;
+ rules: {
   "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
   "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   "comma-dangle": ["error", "never"],
   "linebreak-style": "off"
- &amp;#125;,
- parserOptions: &amp;#123;
+ },
+ parserOptions: {
   parser: "@typescript-eslint/parser"
- &amp;#125;
-&amp;#125;;
+ }
+};
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>VS Code User Settings</strong></p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "window.zoomLevel": 2,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
-  "vetur.format.defaultFormatterOptions": &amp;#123;
-    "js-beautify-html": &amp;#123;
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
       "wrap_attributes": "auto"
-    &amp;#125;
-  &amp;#125;,
+    }
+  },
   "vetur.format.defaultFormatter.ts": "vscode-typescript"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>

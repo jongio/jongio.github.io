@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2019/02/experimental-decorators-vs-code-error/000054.png">
 <meta property="article:published_time" content="2019-02-06T16:06:23.000Z">
-<meta property="article:modified_time" content="2019-02-07T00:14:48.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:17:57.055Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="webdev">
 <meta property="article:tag" content="vscode">
@@ -219,11 +219,11 @@ export default class CategoryRating extends Vue &amp;#123;
 </blockquote>
 <p><img src="000054.png" alt=""></p>
 <p>Even though I have experimentalDecorators set to true in my tsconfig</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
-  "compilerOptions": &amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
+  "compilerOptions": {
     "experimentalDecorators": true,
-  &amp;#125;
-&amp;#125;
+  }
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Turns out I had the parent folder open in VS Code,</p>
 <p><code>\code\project\</code></p>

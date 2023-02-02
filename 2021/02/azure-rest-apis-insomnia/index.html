@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/02/azure-rest-apis-insomnia/azure-rest-apis-insomnia.png">
 <meta property="article:published_time" content="2021-02-26T06:50:46.000Z">
-<meta property="article:modified_time" content="2022-03-08T17:44:25.918Z">
+<meta property="article:modified_time" content="2023-02-02T03:17:39.047Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="rest">
@@ -262,13 +262,13 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>This will output the information you need to setup Insomnia - you will need it later, so save it to a safe location.</p>
 <p><img src="074.png" alt="az ad sp create-for-rbac output"></p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
   "appId": "798256c4-bbdc-4f7a-a20a-",
   "displayName": "azure-cli-2021-02-10-22-47-08",
   "name": "http://azure-cli-2021-02-10-22-47-08",
   "password": "",
   "tenant": "72f988bf-86f1-41af-91ab-"
-&amp;#125;
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="6-Update-Insomnia-Environment"><a class="header-anchor" href="#6-Update-Insomnia-Environment"></a>6. Update Insomnia Environment</h2>
 <ol>
@@ -345,7 +345,7 @@
 <li>Modify the “Resource Group Name” in the URL.</li>
 <li>Notice that we set the request Body with the location with this JSON:</li>
 </ol>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;"location": "westus"&amp;#125;
+<pre class="line-numbers language-json"><code class="language-json">{"location": "westus"}
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="071.png" alt="&quot;Body type&quot;"></p>
 <ol>

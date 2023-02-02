@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
 <meta property="article:published_time" content="2020-02-05T01:42:47.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:43:20.000Z">
+<meta property="article:modified_time" content="2023-02-02T03:17:52.921Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -349,9 +349,9 @@ console.log("Reverse Proxy from https://127.0.0.1:10010 (DefaultAzureCredential 
 </ol>
 <p>We need to instantiate the Azure SDK Client objects with the port number that is the HTTPS enabled one from our reverse proxy, which in this example is 10010 (HTTPS), not 10000 (HTTP)</p>
 <p>Your local.settings.json file should look like this with the 10010 port.</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+<pre class="line-numbers language-json"><code class="language-json">{
     "IsEncrypted": false,
-    "Values": &amp;#123;
+    "Values": {
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
         "AZURE_CLIENT_ID": "SERVICE_PRINCIPAL_APP_ID",
@@ -360,8 +360,8 @@ console.log("Reverse Proxy from https://127.0.0.1:10010 (DefaultAzureCredential 
         "AZURE_STORAGE_HOST": "127.0.0.1:10010",
         "AZURE_STORAGE_ACCOUNT": "devstoreaccount1",
         "AZURE_STORAGE_CONTAINER": "azfuncblobs"
-    &amp;#125;
-&amp;#125;
+    }
+}
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>You’ll notice that we are using a service principal here.  We do need to let DefaultAzureCredntial get a token from somewhere, so a service principal will be required.  See the following post for instructions on setting up a service principal: <a href="/azure-functions-blob-managed-identity-part2">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities - (Part 2): Local Function with Azure Storage and Service Principal (local function, cloud storage)</a>.  You will see in that post how to give that Service Principal the appropriate permissions to access Azure Storage.</p>
 <ol start="2">
