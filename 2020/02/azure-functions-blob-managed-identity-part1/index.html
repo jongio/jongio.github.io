@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part1/000063.png">
 <meta property="article:published_time" content="2020-02-02T08:32:07.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:40:39.734Z">
+<meta property="article:modified_time" content="2021-03-18T06:40:39.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -97,7 +97,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,13 +210,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
+            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a target="_blank" rel="noopener" href="https://aka.ms/azsdk/releases">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
 <p>Here are the 3 development scenarios that we are going to cover in this series:</p>
 <p>Part 1: Local Function with Azurite and AzureCliCredential (local function, local storage)<br>
 Part 2: <a href="/azure-functions-blob-managed-identity-part2">Local Function with Azure Storage and AzureCliCredential (local function, cloud storage)</a><br>
 Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function with Azure Storage and ManagedIdentityCredential (cloud function, cloud storage)</a></p>
 <blockquote>
-<p>Code: The code for this series can be found here: <a href="https://github.com/jongio/azure-blob-functions-managedid" target="_blank" rel="noopener">https://github.com/jongio/azure-blob-functions-managedid</a></p>
+<p>Code: The code for this series can be found here: <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-blob-functions-managedid">https://github.com/jongio/azure-blob-functions-managedid</a></p>
 </blockquote>
 <h2 id="Azure-Identity-and-DefaultAzureCredential"><a class="header-anchor" href="#Azure-Identity-and-DefaultAzureCredential"></a>Azure Identity and DefaultAzureCredential</h2>
 <p>With Azure Identity, we have many token credential types and allow you to chain them in any way that you please.  For example, if you want your app to try to use Managed Identity first and then fallback to Azure CLI credential, then you would do something like this:</p>
@@ -226,7 +226,7 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <pre class="line-numbers language-csharp"><code class="language-csharp">var client = new BlobServiceClient(uri, cred);
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>When you call a method on that client, it will try to get tokens from each of the credential types that you instantiated ChainedTokenCredential with.</p>
-<p>Azure Identity also provides a default chain called <code>DefaultAzureCredential</code>, which will try many of the common credential types. The exact order can be found here: <a href="https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential Class</a>. DefaultAzureCredential includes ManagedIdentityCredential and AzureCliCredential, so you can use it to cover the local and cloud scenarios without changing code, but I have seen most customers start with DefaultAzureCredential and then create their own chain, so they know exactly what credentials are being tried and used.</p>
+<p>Azure Identity also provides a default chain called <code>DefaultAzureCredential</code>, which will try many of the common credential types. The exact order can be found here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet">DefaultAzureCredential Class</a>. DefaultAzureCredential includes ManagedIdentityCredential and AzureCliCredential, so you can use it to cover the local and cloud scenarios without changing code, but I have seen most customers start with DefaultAzureCredential and then create their own chain, so they know exactly what credentials are being tried and used.</p>
 <blockquote>
 <p>This series makes use of the Azure CLI, because that is my preference for interacting with Azure. You can also do all of the Azure related steps with the Portal, ARM, Powershell, or REST.</p>
 </blockquote>
@@ -237,7 +237,7 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <h3 id="Local-Machine-Setup"><a class="header-anchor" href="#Local-Machine-Setup"></a>Local Machine Setup</h3>
 <p>Let’s get our local machine setup to run the function locally using Azurite</p>
 <ol>
-<li><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Install Azurite</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/azure/azurite">Install Azurite</a></li>
 </ol>
 <p>You will need this to run the function locally as the Function needs a place to store its metadata.  We’ll also write our blobs here for this ‘local only’ scenario. I have not tested this on Linux, so comments on your experience with Azurite would be appreciated.</p>
 <p>Versions:</p>
@@ -252,34 +252,34 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Full steps, including how to generate the cert, can be found here: <a href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/">Local Azure Storage Development with Azurite, Azure SDKs, and Azure Storage Explorer</a></p>
 <ol start="3">
-<li><a href="https://storageexplorer.com/" target="_blank" rel="noopener">Install Azure Storage Explorer</a></li>
+<li><a target="_blank" rel="noopener" href="https://storageexplorer.com/">Install Azure Storage Explorer</a></li>
 </ol>
-<p>You’ll use this to view the blobs that have been created.  You can find more info about Storage Explorer here: <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a></p>
+<p>You’ll use this to view the blobs that have been created.  You can find more info about Storage Explorer here: <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/features/storage-explorer/">Azure Storage Explorer</a></p>
 <p>Version: 1.15.0</p>
 <ol start="4">
-<li><a href="https://dotnet.microsoft.com/download" target="_blank" rel="noopener">Install .NET Core SDK</a></li>
+<li><a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/download">Install .NET Core SDK</a></li>
 </ol>
 <p>This is needed to code the Azure Function in .NET Core.  (You won’t need this if you create a Function in a different language)</p>
 <p>Version: 3.1.401</p>
 <ol start="5">
-<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Install Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Install Node.js</a></li>
 </ol>
 <p>This is required for the Azure Function Core Tools in the next step. Ensure you have Node.js 10+ with the <code>node -v</code> command.</p>
 <p>Version: 12.13</p>
 <ol start="6">
-<li><a href="https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows#install-the-azure-functions-core-tools" target="_blank" rel="noopener">Install Azure Functions Core Tools</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows#install-the-azure-functions-core-tools">Install Azure Functions Core Tools</a></li>
 </ol>
 <p>The Core Tools allow you to create projects, functions, and host them locally.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">npm install -g azure-functions-core-tools@3
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Version: 3.0.2798</p>
 <ol start="7">
-<li><a href="https://code.visualstudio.com/download" target="_blank" rel="noopener">Install VS Code</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/download">Install VS Code</a></li>
 </ol>
 <p>This is my main editor, but feel free to use something else.</p>
 <p>Version: VS Code Insiders: 1.49</p>
 <ol start="8">
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions" target="_blank" rel="noopener">Install Azure Functions VS Code Extension (Optional)</a></li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Install Azure Functions VS Code Extension (Optional)</a></li>
 </ol>
 <ul>
 <li>Optional, but useful to start streaming logs.</li>
@@ -379,7 +379,7 @@ dotnet add package Azure.Storage.Blobs
 <li>Storage.Blobs: 12.5.1</li>
 </ul>
 <blockquote>
-<p>See <a href="https://aka.ms/azsdk" target="_blank" rel="noopener">https://aka.ms/azsdk</a> for latest versions.</p>
+<p>See <a target="_blank" rel="noopener" href="https://aka.ms/azsdk">https://aka.ms/azsdk</a> for latest versions.</p>
 </blockquote>
 <ol start="7">
 <li>Open Function Project in VS Code</li>
@@ -403,11 +403,11 @@ using Azure.Storage.Blobs;
 var account = Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT");
 var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
 var emulator = account == "devstoreaccount1";
-var uri = $"https://{(emulator ? $"{host}/{account}" : $"{account}.{host}")}/{container}";
+var uri = $"https://&amp;#123;(emulator ? $"&amp;#123;host&amp;#125;/&amp;#123;account&amp;#125;" : $"&amp;#123;account&amp;#125;.&amp;#123;host&amp;#125;")&amp;#125;/&amp;#123;container&amp;#125;";
 
 // Generate random string for blob content and file name
 var content = Guid.NewGuid().ToString("n").Substring(0, 8);
-var file = $"{content}.txt";
+var file = $"&amp;#123;content&amp;#125;.txt";
 
 // For Azurite 3.7+ with HTTPS and OAuth enabled, you can run Azurite with the following
 // azurite --oauth basic --cert cert-name.pem --key cert-name-key.pem
@@ -422,7 +422,7 @@ using var stream = new MemoryStream(Encoding.ASCII.GetBytes(content));
 // Upload blob
 await client.UploadBlobAsync(file, stream);
 
-return (ActionResult)new OkObjectResult($"{file} uploaded.");
+return (ActionResult)new OkObjectResult($"&amp;#123;file&amp;#125; uploaded.");
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="10">
 <li>Set Local Settings</li>
@@ -431,16 +431,16 @@ return (ActionResult)new OkObjectResult($"{file} uploaded.");
 <blockquote>
 <p>If you have cloned the repo, then take the settings from <code>local.settings.local.json</code> and copy them to <code>'local.settings.json</code></p>
 </blockquote>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
     "IsEncrypted": false,
-    "Values": {
+    "Values": &amp;#123;
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
         "AZURE_STORAGE_HOST": "127.0.0.1:10000",
         "AZURE_STORAGE_ACCOUNT": "devstoreaccount1",
         "AZURE_STORAGE_CONTAINER": "azfuncblobs"
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Notes:</p>
 <ul>
@@ -646,7 +646,7 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

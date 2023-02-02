@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,7 +207,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’ve spent a good part of the last 15 years doing .NET development. When I <a href="/2014/11/iot-devs-needed.html">joined IoT</a> and started getting ramped up, I quickly discovered that it is largely an unmanaged non-.net non-Microsoft world. I’m having a blast learning everything, but I can’t get over the hunch that there are a bunch of devs out there who want to be makers, but aren’t because of the disconnect in technology. I’m positive this mindset is out there: “I want to be a maker, but I don’t know Linux, I don’t know c++ and I don’t have a ton of time to learn everything”. My new passion is helping Microsoft learn about, discover and adapt to the maker movement and meet people where they are and to help Microsoft-tech developers become makers.</p>
-<p>Microsoft-tech devs have a couple of options. You could get a <a href="http://www.netduino.com/hardware/" target="_blank" rel="noopener">Netduino</a> or Gadgeteer - which run on the .NET Micro Framework. You could get a <a href="http://windowsondevices.com" target="_blank" rel="noopener">Galileo</a> – which runs Windows. But did you know that you could also use .NET on RaspberryPi with <a href="http://www.mono-project.com/" target="_blank" rel="noopener">Mono</a>? People typically use python on RaspberryPi, but if your comfort zone is .NET then .NET on RaspberryPi with Mono is worth checking out.</p>
+<p>Microsoft-tech devs have a couple of options. You could get a <a target="_blank" rel="noopener" href="http://www.netduino.com/hardware/">Netduino</a> or Gadgeteer - which run on the .NET Micro Framework. You could get a <a target="_blank" rel="noopener" href="http://windowsondevices.com">Galileo</a> – which runs Windows. But did you know that you could also use .NET on RaspberryPi with <a target="_blank" rel="noopener" href="http://www.mono-project.com/">Mono</a>? People typically use python on RaspberryPi, but if your comfort zone is .NET then .NET on RaspberryPi with Mono is worth checking out.</p>
 <p>In this post we’ll build a standard .NET console app with Visual Studio and run it on a RaspberryPi with Mono. The only real magic is Mono, the rest is stock .NET. I don’t even need Mono on my Windows machine. I just write a Console app like I do any other Console app. Deploy it to my Pi and run it with Mono. Xamarin Studio is not required.</p>
 <p>Let’s build a simple Blinky console app (which is the Hello World for maker projects). I’ll show you how to get your RaspberryPi setup with Mono, how to write to pins and how to deploy and run your code.</p>
 <p>I’m using Visual Studio 2013, RaspberryPi model B and Windows 8.1.</p>
@@ -216,32 +216,32 @@
 <blockquote>
 <h4 id="Get-Occidentalis-v0-2"><a class="header-anchor" href="#Get-Occidentalis-v0-2"></a>Get Occidentalis v0.2</h4>
 <ul>
-<li><a href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></li>
 </ul>
 <h4 id="Make-Occidentalis-SD-card"><a class="header-anchor" href="#Make-Occidentalis-SD-card"></a>Make Occidentalis SD card</h4>
 <ul>
-<li><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" target="_blank" rel="noopener">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></li>
 </ul>
 <h4 id="Run-first-time-config"><a class="header-anchor" href="#Run-first-time-config"></a>Run first time config</h4>
 <ul>
-<li><a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" target="_blank" rel="noopener">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></li>
 </ul>
 </blockquote>
 <h3 id="2-Configure-Network"><a class="header-anchor" href="#2-Configure-Network"></a>2. Configure Network</h3>
 <p>Plug Ethernet Cable into Pi<p>Setup Samba for NetBIOS name or give it a static IP. This is so you can deploy your code to the Pi</p>
 <ul>
 <li>
-<p>Samba route: <a href="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" target="_blank" rel="noopener" title="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html">http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html</a> – Takes longer than static IP route, but better long term.</p>
+<p>Samba route: <a target="_blank" rel="noopener" href="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html" title="http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html">http://www.openframeworks.cc/setup/raspberrypi/Raspberry-Pi-SMB.html</a> – Takes longer than static IP route, but better long term.</p>
 </li>
 <li>
-<p>Mount as a Windows drive: <a href="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" target="_blank" rel="noopener" title="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/">http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/</a>*   Static IP: <a href="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" target="_blank" rel="noopener" title="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address">https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address</a></p>
+<p>Mount as a Windows drive: <a target="_blank" rel="noopener" href="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/" title="http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/">http://rasspberrypi.wordpress.com/2012/09/04/mounting-and-automounting-windows-shares-on-raspberry-pi/</a>*   Static IP: <a target="_blank" rel="noopener" href="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address" title="https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address">https://www.modmypi.com/blog/tutorial-how-to-give-your-raspberry-pi-a-static-ip-address</a></p>
 </li>
 </ul>
 <h3 id="3-Setup-Remote-Desktop-Optional"><a class="header-anchor" href="#3-Setup-Remote-Desktop-Optional"></a>3. Setup Remote Desktop (Optional)</h3>
 <p>This is so you can use your main computer's mouse and keyboard instead of having to go back and forth between the Pi and your desktop. I've found this link the quickest way with xrdp<p>[http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/](http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/ "http://www.maketecheasier.com/enabling-remote-desktop-access-on-raspberry-pi/")
 <h3 id="4-Setup-SFTP"><a class="header-anchor" href="#4-Setup-SFTP"></a>4. Setup SFTP</h3>
 <p>You are going to deploy your code from your Windows machine to your Pi via SFTP. Here's how with FileZilla
-<p><a href="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" target="_blank" rel="noopener" title="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html">http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html" title="http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html">http://trevorappleton.blogspot.com/2014/03/remotely-copy-files-to-and-from-your.html</a></p>
 <h3 id="5-Install-Mono"><a class="header-anchor" href="#5-Install-Mono"></a>5. Install Mono</h3>
 <p>Run this command from RaspberryPi terminal to install mono.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">sudo apt-get install mono-complete
@@ -254,7 +254,7 @@
 <li>1x Breadboard</li>
 <li>2x Jumper Wires</li>
 </ul>
-<p>There are two ways to look at Pi wiring Board layout and BCM, this is great resource for making sure you are using the right pin numbers: <a href="http://pi.gadgetoid.com/pinout" target="_blank" rel="noopener" title="http://pi.gadgetoid.com/pinout">http://pi.gadgetoid.com/pinout</a>. We’ll use the “Board” physical layout, so the 6th pin down from the outer rail is 12.</p>
+<p>There are two ways to look at Pi wiring Board layout and BCM, this is great resource for making sure you are using the right pin numbers: <a target="_blank" rel="noopener" href="http://pi.gadgetoid.com/pinout" title="http://pi.gadgetoid.com/pinout">http://pi.gadgetoid.com/pinout</a>. We’ll use the “Board” physical layout, so the 6th pin down from the outer rail is 12.</p>
 <p>1. Place LED in breadboard</p>
 <p>2. Connect Pin 18 to LED Annode (the long lead) via jumper wire.</p>
 <p>3. Connect Ground to breadboard</p>
@@ -263,9 +263,9 @@
 <p><a href="/images/blog/05a34f94e298_3E89/P-738-3.jpg"><img src="/images/blog/05a34f94e298_3E89/P-738-3_thumb.jpg" alt="P-738-3" title="P-738-3"></a><a href="/images/blog/05a34f94e298_3E89/P-750-3.jpg"><img src="/images/blog/05a34f94e298_3E89/P-750-3_thumb.jpg" alt="P-750-3" title="P-750-3"></a></p>
 <h2 id="C-Console-App"><a class="header-anchor" href="#C-Console-App"></a>C# Console App</h2>
 <p>We are going to use the stock Visual Studio C# console app template. Go ahead and create a Console app.</p>
-<p>We are going to also use the <a href="https://www.nuget.org/packages/Raspberry.IO.GeneralPurpose" target="_blank" rel="noopener">Raspberry.IO.GeneralPurpose nuget package</a> to talk to the GPIO pin 18. Go ahead and add a reference to that. GPIO = General Purpose Input Output</p>
+<p>We are going to also use the <a target="_blank" rel="noopener" href="https://www.nuget.org/packages/Raspberry.IO.GeneralPurpose">Raspberry.IO.GeneralPurpose nuget package</a> to talk to the GPIO pin 18. Go ahead and add a reference to that. GPIO = General Purpose Input Output</p>
 <p>That library has a Toggle method so let’s just use it. The code is super simple. Just configure the pin, init a GpioConnection and call Toggle.</p>
-<p>This code is also on GitHub: <a href="https://github.com/jongio/" target="_blank" rel="noopener" title="https://github.com/jongio/">https://github.com/jongio/</a><a href="http://github.io/jongallant/dotnet-raspberrypi-mono" target="_blank" rel="noopener">dotnet-raspberrypi-mono</a></p>
+<p>This code is also on GitHub: <a target="_blank" rel="noopener" href="https://github.com/jongio/" title="https://github.com/jongio/">https://github.com/jongio/</a><a target="_blank" rel="noopener" href="http://github.io/jongallant/dotnet-raspberrypi-mono">dotnet-raspberrypi-mono</a></p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">using Raspberry.IO.GeneralPurpose;
 using System;
 using System.Collections.Generic;
@@ -275,25 +275,25 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace dotnet_raspberrypi_mono
-{
+&amp;#123;
     class Program
-    {
+    &amp;#123;
         static void Main(string[] args)
-        {
+        &amp;#123;
             OutputPinConfiguration pin12 = ConnectorPin.P1Pin12.Output();
             pin12.Enabled = false;
 
             using (GpioConnection connection = new GpioConnection(pin12))
-            {
+            &amp;#123;
                 while (!Console.KeyAvailable)
-                {
+                &amp;#123;
                     connection.Toggle(pin12);
                     Thread.Sleep(250);
-                }
-            }
-        }
-    }
-}
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Build the app in Visual Studio.</p>
@@ -477,7 +477,7 @@ namespace dotnet_raspberrypi_mono
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

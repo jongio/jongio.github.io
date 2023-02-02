@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/05/cs1061-asyncpageable-does-not-contain-a-definition-for-getawaiter/102.png">
 <meta property="article:published_time" content="2021-05-17T10:46:49.000Z">
-<meta property="article:modified_time" content="2021-05-17T18:11:31.312Z">
+<meta property="article:modified_time" content="2021-05-17T18:11:31.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="dotnet">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -209,9 +209,9 @@
 <p>Run the following code:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var resources = await client.Resources.ListByResourceGroupAsync(resourceGroupName);
 foreach (var resource in resources)
-{
+&amp;#123;
     Console.WriteLine(resource.Name);
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And you get this:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">error CS1061: 'AsyncPageable&lt;GenericResourceExpanded&gt;' does not contain a definition for 'GetAwaiter' 
@@ -221,9 +221,9 @@ and no accessible extension method 'GetAwaiter' accepting a first argument of ty
 <p>I thought I was doing everything right, awaiting an “Async” method.  But it turns out with <code>IAsyncEnumerable</code> you <code>await</code> the result of the call like so:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var resources = client.Resources.ListByResourceGroupAsync(resourceGroupName);
 await foreach (var resource in resources)
-{
+&amp;#123;
     Console.WriteLine(resource.Name);
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Notice the <code>await foreach</code>?</p>
 <p>I hope that helps.<br>
@@ -398,7 +398,7 @@ Jon</p>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -217,24 +217,24 @@
 <ol start="2">
 <li>Query all, but only return Name and Id in a nice table</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">az role definition list --query "sort_by([].{Name:roleName,Id:name}, &amp;Name)" --output table
+<pre class="line-numbers language-bash"><code class="language-bash">az role definition list --query "sort_by([].&amp;#123;Name:roleName,Id:name&amp;#125;, &amp;Name)" --output table
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>Filter by name contains:</li>
 </ol>
 <p>This one filters for roles with “Map” in the name:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">az role definition list --query "sort_by([?contains(roleName, 'Map')].{Name:roleName,Id:name}, &amp;Name)" --output table
+<pre class="line-numbers language-bash"><code class="language-bash">az role definition list --query "sort_by([?contains(roleName, 'Map')].&amp;#123;Name:roleName,Id:name&amp;#125;, &amp;Name)" --output table
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Azure-PowerShell"><a class="header-anchor" href="#Azure-PowerShell"></a>Azure PowerShell</h2>
-<p><a href="https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0">https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azroledefinition?view=azps-3.8.0</a></p>
 <pre class="line-numbers language-powershell"><code class="language-powershell">Get-AzRoleDefinition
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Docs"><a class="header-anchor" href="#Docs"></a>Docs</h2>
 <p>This page has all the built in roles:<br>
-<a href="https://docs.microsoft.com/azure/role-based-access-control/built-in-roles" target="_blank" rel="noopener">https://docs.microsoft.com/azure/role-based-access-control/built-in-roles</a></p>
+<a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/role-based-access-control/built-in-roles">https://docs.microsoft.com/azure/role-based-access-control/built-in-roles</a></p>
 <h2 id="AzAdvertizer"><a class="header-anchor" href="#AzAdvertizer"></a>AzAdvertizer</h2>
 <p>Just found this site today by Julian Hayward.  It’s a great way to find roles</p>
-<p><a href="https://www.azadvertizer.net/azrolesadvertizer_all.html" target="_blank" rel="noopener">https://www.azadvertizer.net/azrolesadvertizer_all.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.azadvertizer.net/azrolesadvertizer_all.html">https://www.azadvertizer.net/azrolesadvertizer_all.html</a></p>
 <p><img src="013.png" alt="'AzAdvertizer'"></p>
 
         </div>
@@ -406,7 +406,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

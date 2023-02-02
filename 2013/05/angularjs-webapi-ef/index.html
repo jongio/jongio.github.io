@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,60 +205,60 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>UPDATE 7/30/2013: I modified the code to use $resource instead of $http. Go to my new post <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html">“V2 of my AngularJS, WebAPI CRUD Grid - Now using $resource instead of $http and deployed a LIVE DEMO to Azure!”</a> for all the details. You can still access the $http code here: <a href="https://github.com/jongio/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1</a></p>
-<p>Here’s how I built a quick single entity CRUD grid with <a href="http://angularjs.org/" target="_blank" rel="noopener">AngularJS</a>, <a href="http://www.asp.net/web-api" target="_blank" rel="noopener">WebAPI</a>, <a href="http://www.asp.net/entity-framework" target="_blank" rel="noopener">Entity Framework</a>, <a href="http://twitter.github.io/bootstrap/" target="_blank" rel="noopener">Bootstrap</a>, <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" rel="noopener">Font Awesome</a> &amp; <a href="https://github.com/CodeSeven/toastr" target="_blank" rel="noopener">Toastr</a>. I spent a more time than I should have getting this all wired up, so I thought I’d share the code to save you some time. It’s not perfect – but should be a good starting point for you.</p>
+            <p>UPDATE 7/30/2013: I modified the code to use $resource instead of $http. Go to my new post <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html">“V2 of my AngularJS, WebAPI CRUD Grid - Now using $resource instead of $http and deployed a LIVE DEMO to Azure!”</a> for all the details. You can still access the $http code here: <a target="_blank" rel="noopener" href="https://github.com/jongio/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1">https://github.com/jongio/AngularJS-WebApi-EF/tree/6b9df7c3b52caac64df800a4c8dcf8e45e0bb2d1</a></p>
+<p>Here’s how I built a quick single entity CRUD grid with <a target="_blank" rel="noopener" href="http://angularjs.org/">AngularJS</a>, <a target="_blank" rel="noopener" href="http://www.asp.net/web-api">WebAPI</a>, <a target="_blank" rel="noopener" href="http://www.asp.net/entity-framework">Entity Framework</a>, <a target="_blank" rel="noopener" href="http://twitter.github.io/bootstrap/">Bootstrap</a>, <a target="_blank" rel="noopener" href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> &amp; <a target="_blank" rel="noopener" href="https://github.com/CodeSeven/toastr">Toastr</a>. I spent a more time than I should have getting this all wired up, so I thought I’d share the code to save you some time. It’s not perfect – but should be a good starting point for you.</p>
 <p>Here’s what the grid looks like.</p>
 <p><img src="/images/blog/53d7f9fc4f70_10652/image.png" alt=""></p>
 <p><strong>THE CODE</strong></p>
-<p>All the code is on GitHub here: <a href="https://github.com/jongio/AngularJS-WebApi-EF/" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF/</a></p>
+<p>All the code is on GitHub here: <a target="_blank" rel="noopener" href="https://github.com/jongio/AngularJS-WebApi-EF/">https://github.com/jongio/AngularJS-WebApi-EF/</a></p>
 <p><strong>The $http methods that call WebAPI</strong></p>
-<p>You could also do this with <a href="http://docs.angularjs.org/api/ngResource.$resource" target="_blank" rel="noopener">$resource</a> or <a href="https://github.com/mgonto/restangular" target="_blank" rel="noopener">Restangular</a>, but I just stuck with <a href="http://docs.angularjs.org/api/ng.$http" target="_blank" rel="noopener">$http</a> for this example because it is easier to grok.</p>
+<p>You could also do this with <a target="_blank" rel="noopener" href="http://docs.angularjs.org/api/ngResource.$resource">$resource</a> or <a target="_blank" rel="noopener" href="https://github.com/mgonto/restangular">Restangular</a>, but I just stuck with <a target="_blank" rel="noopener" href="http://docs.angularjs.org/api/ng.$http">$http</a> for this example because it is easier to grok.</p>
 <p>Each of the methods below perform $http actions and return a promise.</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">var url = 'api/person/';
 
-app.factory('personFactory', function ($http) {
-    return {
-        getPeople: function () {
+app.factory('personFactory', function ($http) &amp;#123;
+    return &amp;#123;
+        getPeople: function () &amp;#123;
             return $http.get(url);
-        },
-        addPerson: function (person) {
+        &amp;#125;,
+        addPerson: function (person) &amp;#123;
             return $http.post(url, person);
-        },
-        deletePerson: function (person) {
+        &amp;#125;,
+        deletePerson: function (person) &amp;#123;
             return $http.delete(url + person.Id);
-        },
-        updatePerson: function (person) {
+        &amp;#125;,
+        updatePerson: function (person) &amp;#123;
             return $http.put(url + person.Id, person);
-        }
-    };
-});
+        &amp;#125;
+    &amp;#125;;
+&amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The personFactory is injected into the IndexCtrl and called like so. Provide “success” and “error” callbacks to process the promise.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">app.controller('IndexCtrl', function ($scope, personFactory, notificationFactory) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.controller('IndexCtrl', function ($scope, personFactory, notificationFactory) &amp;#123;
     $scope.people = [];
 
-    var successCallback = function (data, status, headers, config) {
+    var successCallback = function (data, status, headers, config) &amp;#123;
         notificationFactory.success();
 
         return personFactory.getPeople().success(getPeopleSuccessCallback).error(errorCallback);
-    };
+    &amp;#125;;
 
-    var successPostCallback = function (data, status, headers, config) {
-        successCallback(data, status, headers, config).success(function () {
+    var successPostCallback = function (data, status, headers, config) &amp;#123;
+        successCallback(data, status, headers, config).success(function () &amp;#123;
             $scope.toggleAddMode();
-            $scope.person = {};
-        });
-    };
+            $scope.person = &amp;#123;&amp;#125;;
+        &amp;#125;);
+    &amp;#125;;
 
-    var errorCallback = function (data, status, headers, config) {
+    var errorCallback = function (data, status, headers, config) &amp;#123;
         notificationFactory.error(data.ExceptionMessage);
-    };
+    &amp;#125;;
 
-    $scope.addPerson = function () {
+    $scope.addPerson = function () &amp;#123;
         personFactory.addPerson($scope.person).success(successPostCallback).error(errorCallback);
-    };
+    &amp;#125;;
 
-});
+&amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>HTML/JavaScript</strong></p>
 <pre class="line-numbers language-html"><code class="language-html">&lt;!doctype html&gt;
@@ -274,9 +274,9 @@ app.factory('personFactory', function ($http) {
     @Styles.Render("~/content/toastr")
 
     &lt;style&gt;
-        i {
+        i &amp;#123;
             cursor: pointer;
-        }
+        &amp;#125;
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -333,82 +333,82 @@ app.factory('personFactory', function ($http) {
 
         var url = 'api/person/';
 
-        app.factory('personFactory', function ($http) {
-            return {
-                getPeople: function () {
+        app.factory('personFactory', function ($http) &amp;#123;
+            return &amp;#123;
+                getPeople: function () &amp;#123;
                     return $http.get(url);
-                },
-                addPerson: function (person) {
+                &amp;#125;,
+                addPerson: function (person) &amp;#123;
                     return $http.post(url, person);
-                },
-                deletePerson: function (person) {
+                &amp;#125;,
+                deletePerson: function (person) &amp;#123;
                     return $http.delete(url + person.Id);
-                },
-                updatePerson: function (person) {
+                &amp;#125;,
+                updatePerson: function (person) &amp;#123;
                     return $http.put(url + person.Id, person);
-                }
-            };
-        });
+                &amp;#125;
+            &amp;#125;;
+        &amp;#125;);
 
-        app.factory('notificationFactory', function () {
+        app.factory('notificationFactory', function () &amp;#123;
 
-            return {
-                success: function () {
+            return &amp;#123;
+                success: function () &amp;#123;
                     toastr.success("Success");
-                },
-                error: function (text) {
+                &amp;#125;,
+                error: function (text) &amp;#123;
                     toastr.error(text, "Error!");
-                }
-            };
-        });
+                &amp;#125;
+            &amp;#125;;
+        &amp;#125;);
 
-        app.controller('IndexCtrl', function ($scope, personFactory, notificationFactory) {
+        app.controller('IndexCtrl', function ($scope, personFactory, notificationFactory) &amp;#123;
             $scope.people = [];
             $scope.addMode = false;
 
-            $scope.toggleAddMode = function () {
+            $scope.toggleAddMode = function () &amp;#123;
                 $scope.addMode = !$scope.addMode;
-            };
+            &amp;#125;;
 
-            $scope.toggleEditMode = function (person) {
+            $scope.toggleEditMode = function (person) &amp;#123;
                 person.editMode = !person.editMode;
-            };
+            &amp;#125;;
 
-            var getPeopleSuccessCallback = function (data, status) {
+            var getPeopleSuccessCallback = function (data, status) &amp;#123;
                 $scope.people = data;
-            };
+            &amp;#125;;
 
-            var successCallback = function (data, status, headers, config) {
+            var successCallback = function (data, status, headers, config) &amp;#123;
                 notificationFactory.success();
 
                 return personFactory.getPeople().success(getPeopleSuccessCallback).error(errorCallback);
-            };
+            &amp;#125;;
 
-            var successPostCallback = function (data, status, headers, config) {
-                successCallback(data, status, headers, config).success(function () {
+            var successPostCallback = function (data, status, headers, config) &amp;#123;
+                successCallback(data, status, headers, config).success(function () &amp;#123;
                     $scope.toggleAddMode();
-                    $scope.person = {};
-                });
-            };
+                    $scope.person = &amp;#123;&amp;#125;;
+                &amp;#125;);
+            &amp;#125;;
 
-            var errorCallback = function (data, status, headers, config) {
+            var errorCallback = function (data, status, headers, config) &amp;#123;
                 notificationFactory.error(data.ExceptionMessage);
-            };
+            &amp;#125;;
 
             personFactory.getPeople().success(getPeopleSuccessCallback).error(errorCallback);
 
-            $scope.addPerson = function () {
+            $scope.addPerson = function () &amp;#123;
                 personFactory.addPerson($scope.person).success(successPostCallback).error(errorCallback);
-            };
+            &amp;#125;;
 
-            $scope.deletePerson = function (person) {
+            $scope.deletePerson = function (person) &amp;#123;
                 personFactory.deletePerson(person).success(successCallback).error(errorCallback);
-            };
+            &amp;#125;;
 
-            $scope.updatePerson = function (person) {
+            $scope.updatePerson = function (person) &amp;#123;
                 personFactory.updatePerson(person).success(successCallback).error(errorCallback);
-            };
-        });
+            &amp;#125;;
+        &amp;#125;);
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -428,104 +428,104 @@ using System.Web;
 using System.Web.Http;
 
 namespace AngularJS_WebApi_EF.Models
-{
+&amp;#123;
     public class PersonController : ApiController
-    {
+    &amp;#123;
         private PersonContext db = new PersonContext();
 
         // GET api/Person
         public IEnumerable&lt;Person&gt; GetPeople()
-        {
+        &amp;#123;
             return db.People.AsEnumerable();
-        }
+        &amp;#125;
 
         // GET api/Person/5
         public Person GetPerson(int id)
-        {
+        &amp;#123;
             Person person = db.People.Find(id);
             if (person == null)
-            {
+            &amp;#123;
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
+            &amp;#125;
 
             return person;
-        }
+        &amp;#125;
 
         // PUT api/Person/5
         public HttpResponseMessage PutPerson(int id, Person person)
-        {
+        &amp;#123;
             if (!ModelState.IsValid)
-            {
+            &amp;#123;
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
+            &amp;#125;
 
             if (id != person.Id)
-            {
+            &amp;#123;
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+            &amp;#125;
 
             db.Entry(person).State = EntityState.Modified;
 
             try
-            {
+            &amp;#123;
                 db.SaveChanges();
-            }
+            &amp;#125;
             catch (DbUpdateConcurrencyException ex)
-            {
+            &amp;#123;
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+            &amp;#125;
 
             return Request.CreateResponse(HttpStatusCode.OK);
-        }
+        &amp;#125;
 
         // POST api/Person
         public HttpResponseMessage PostPerson(Person person)
-        {
+        &amp;#123;
             if (ModelState.IsValid)
-            {
+            &amp;#123;
                 db.People.Add(person);
                 db.SaveChanges();
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, person);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = person.Id }));
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new &amp;#123; id = person.Id &amp;#125;));
                 return response;
-            }
+            &amp;#125;
             else
-            {
+            &amp;#123;
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
+            &amp;#125;
+        &amp;#125;
 
         // DELETE api/Person/5
         public HttpResponseMessage DeletePerson(int id)
-        {
+        &amp;#123;
             Person person = db.People.Find(id);
             if (person == null)
-            {
+            &amp;#123;
                 return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
+            &amp;#125;
 
             db.People.Remove(person);
 
             try
-            {
+            &amp;#123;
                 db.SaveChanges();
-            }
+            &amp;#125;
             catch (DbUpdateConcurrencyException ex)
-            {
+            &amp;#123;
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+            &amp;#125;
 
             return Request.CreateResponse(HttpStatusCode.OK, person);
-        }
+        &amp;#125;
 
         protected override void Dispose(bool disposing)
-        {
+        &amp;#123;
             db.Dispose();
             base.Dispose(disposing);
-        }
-    }
-}
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
@@ -697,7 +697,7 @@ namespace AngularJS_WebApi_EF.Models
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

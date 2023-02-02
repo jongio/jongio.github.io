@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,7 +210,7 @@
         <div class="article-entry" itemprop="articleBody">
             <p>The Azure IoT team just announced Custom Endpoints and Routes feature - which allows you to route IoT Hub messages to your own Event Hub, Service Bus Queues or Service Bus Topics. You define your alternate endpoints in “Endpoints” and you define your routing logic in “Routes”.</p>
 <h2 id="Update-1-Routes-Based-on-Message-Payload"><a class="header-anchor" href="#Update-1-Routes-Based-on-Message-Payload"></a>Update #1: Routes Based on Message Payload</h2>
-<p>You can now create routes based on message payload.  You can read more about it <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="noopener">here</a>.</p>
+<p>You can now create routes based on message payload.  You can read more about it <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/">here</a>.</p>
 <h2 id="What-are-Some-Use-Cases-for-Endpoints-and-Routes"><a class="header-anchor" href="#What-are-Some-Use-Cases-for-Endpoints-and-Routes"></a>What are Some Use Cases for Endpoints and Routes?</h2>
 <p>This is very useful for customers that want to segregate messages for security or billing purposes. Imagine if you are using IoT Hub to build your own IoT SaaS product that has tenants. You will likely want to push all messages from each tenant into its own Event Hub so you can easily map Event Hub cost to a tenant. Endpoints and Routes is also a great way to integrate with other services, such as Logic Apps or Notification services or your own custom service.</p>
 <h2 id="What-Do-Endpoints-and-Routes-Do-Under-the-Covers"><a class="header-anchor" href="#What-Do-Endpoints-and-Routes-Do-Under-the-Covers"></a>What Do Endpoints and Routes Do Under the Covers?</h2>
@@ -251,9 +251,9 @@
 </ol>
 <p>Give your rule a name, select your data source, add a query and select and endpoint to send the matching message to.</p>
 <blockquote>
-<p><s>The rule works against the IoT Hub message properties. It does not inspect the payload of the message. The IoT Hub team has said message inspection is on their backlog.</s> Routes based on payload are now supported, read more <a href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/" target="_blank" rel="noopener">here</a>.</p>
+<p><s>The rule works against the IoT Hub message properties. It does not inspect the payload of the message. The IoT Hub team has said message inspection is on their backlog.</s> Routes based on payload are now supported, read more <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/blog/iot-hub-message-routing-now-with-routing-on-message-body/">here</a>.</p>
 </blockquote>
-<p>You can find the Query String syntax docs <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#get-started-with-device-to-cloud-message-routes-query-expressions" target="_blank" rel="noopener">here</a> and <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#expressions-and-conditions" target="_blank" rel="noopener">here</a>.</p>
+<p>You can find the Query String syntax docs <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#get-started-with-device-to-cloud-message-routes-query-expressions">here</a> and <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language#expressions-and-conditions">here</a>.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_10.png" alt=""></p>
 <p>As you can see below, you can send the messages directly to the events endpoint or to the custom endpoint you created.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_11.png" alt=""></p>
@@ -264,10 +264,10 @@
 <h3 id="Test-It-Out"><a class="header-anchor" href="#Test-It-Out"></a>Test It Out</h3>
 <ol>
 <li>
-<p>Download this node.js script to your machine. <a href="https://gist.githubusercontent.com/jongio/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" target="_blank" rel="noopener" title="https://gist.githubusercontent.com/jongio/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend">https://gist.githubusercontent.com/jongio/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend</a></p>
+<p>Download this node.js script to your machine. <a target="_blank" rel="noopener" href="https://gist.githubusercontent.com/jongio/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend" title="https://gist.githubusercontent.com/jongio/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend">https://gist.githubusercontent.com/jongio/8f478cbce44960628482e0491d3dccb1/raw/1183b42f48a768e62420d58d3a7779a9062ab7fa/iothubnodesend</a></p>
 </li>
 <li>
-<p>Replace line 17 with your device’s connection string. You can create devices and get their connection strings using the <a href="https://github.com/Azure/azure-iot-sdks/releases" target="_blank" rel="noopener">IoT Device Explorer</a></p>
+<p>Replace line 17 with your device’s connection string. You can create devices and get their connection strings using the <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdks/releases">IoT Device Explorer</a></p>
 </li>
 <li>
 <p>Scroll to line 39 and change any of the properties to suit your needs.</p>
@@ -284,18 +284,18 @@ npm i azure-iot-device-amqp
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will now see this in your command prompt</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_13.png" alt=""></p>
-<p>You will now see the messages coming through to your Event Hub. You can use the <a href="https://github.com/paolosalvatori/ServiceBusExplorer" target="_blank" rel="noopener">Service Bus Explorer</a> to view them. I just clone that repo and F5 from VS to run the Service Bus Explorer.</p>
+<p>You will now see the messages coming through to your Event Hub. You can use the <a target="_blank" rel="noopener" href="https://github.com/paolosalvatori/ServiceBusExplorer">Service Bus Explorer</a> to view them. I just clone that repo and F5 from VS to run the Service Bus Explorer.</p>
 <p>Notice in the Event Custom Properties section that tenant=1234 and location=sea, which is how we configured the message properties and how we setup the Route rule.</p>
 <p><img src="/images/blog/a97c5045d7a3_82AA/image_14.png" alt=""></p>
 <p>Hope this helps you get started with the new and very useful feature.</p>
 <p>Jon</p>
 <h2 id="Related-Links"><a class="header-anchor" href="#Related-Links"></a>Related Links</h2>
 <ul>
-<li>Blog Announcement: <a href="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/" target="_blank" rel="noopener" title="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/">https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/</a></li>
-<li>Endpoints Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints" target="_blank" rel="noopener" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints</a> &amp; <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" target="_blank" rel="noopener" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints</a></li>
-<li>Routes Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes" target="_blank" rel="noopener" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes</a></li>
-<li>IoT Hub Query Language Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language" target="_blank" rel="noopener" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language</a> (Does not currently contain “Route rule query syntax”, but will soon)</li>
-<li>Messaging Documentation: <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging" target="_blank" rel="noopener" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging</a></li>
+<li>Blog Announcement: <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/" title="https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/">https://azure.microsoft.com/en-us/blog/azure-iot-hub-message-routing-enhances-device-telemetry-and-optimizes-iot-infrastructure-resources/</a></li>
+<li>Endpoints Documentation: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#endpoints</a> &amp; <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints</a></li>
+<li>Routes Documentation: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#routes</a></li>
+<li>IoT Hub Query Language Documentation: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-query-language</a> (Does not currently contain “Route rule query syntax”, but will soon)</li>
+<li>Messaging Documentation: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging" title="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-messaging</a></li>
 </ul>
 
         </div>
@@ -467,7 +467,7 @@ npm i azure-iot-device-amqp
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

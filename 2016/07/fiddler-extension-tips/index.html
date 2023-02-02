@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2016-07-27T10:52:00.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:46:02.492Z">
+<meta property="article:modified_time" content="2021-03-18T06:46:02.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="c#">
 <meta property="article:tag" content="howto">
@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,9 +208,9 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I recently created a custom <a href="http://www.telerik.com/fiddler" target="_blank" rel="noopener">Fiddler</a> extension called <a href="https://github.com/jongio/PowerBIFiddler" target="_blank" rel="noopener">PowerBIFiddler</a>. Here are a few tricks that I learned along the way.</p>
+            <p>I recently created a custom <a target="_blank" rel="noopener" href="http://www.telerik.com/fiddler">Fiddler</a> extension called <a target="_blank" rel="noopener" href="https://github.com/jongio/PowerBIFiddler">PowerBIFiddler</a>. Here are a few tricks that I learned along the way.</p>
 <h2 id="Re-use-Default-Fiddler-Inspectors"><a class="header-anchor" href="#Re-use-Default-Fiddler-Inspectors"></a><strong>Re-use Default Fiddler Inspectors</strong></h2>
-<p>For PowerBI-Fiddler, I wanted to re-use the JSONResponseViewer that Fiddler uses for their “JSON” inspector. I used <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">JustDecompile</a> to decompile Fiddler.exe and discovered that the default inspectors are located in this DLL: C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll. The JSONResponseViewer is sealed, so you have to use a composition pattern instead of inheritance. You can see an example here: <a href="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" target="_blank" rel="noopener" title="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs">https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs</a></p>
+<p>For PowerBI-Fiddler, I wanted to re-use the JSONResponseViewer that Fiddler uses for their “JSON” inspector. I used <a target="_blank" rel="noopener" href="http://www.telerik.com/products/decompiler.aspx">JustDecompile</a> to decompile Fiddler.exe and discovered that the default inspectors are located in this DLL: C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll. The JSONResponseViewer is sealed, so you have to use a composition pattern instead of inheritance. You can see an example here: <a target="_blank" rel="noopener" href="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs" title="https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs">https://github.com/jongio/PowerBIFiddler/blob/master/PowerBIFiddler/TileDataViewer.cs</a></p>
 <p><img src="/images/blog/8eabae91e1ff_D2C8/image_3.png" alt=""></p>
 <h2 id="Inspector-loading"><a class="header-anchor" href="#Inspector-loading"></a><strong>Inspector loading</strong></h2>
 <p>Fiddler searches %userprofile%\Documents\Fiddler2\Inspectors and C:\Program Files (x86)\Fiddler2\Inspectors for Inspectors when it launches. You’ll want to copy your custom Inspectors into either of those folders. I setup the following Post-build event to automatically copy the DLL over after each build.</p>
@@ -225,12 +225,12 @@ copy "Newtonsoft.Json.dll" "%userprofile%\My Documents\Fiddler2\Inspectors\"
 <p>**<br>
 **</p>
 <h2 id="Learn-by-Decompiling-Existing-Extensions"><a class="header-anchor" href="#Learn-by-Decompiling-Existing-Extensions"></a><strong>Learn by Decompiling Existing Extensions</strong></h2>
-<p>You’ll find a bunch of good examples here: <a href="http://www.telerik.com/fiddler/add-ons" target="_blank" rel="noopener" title="http://www.telerik.com/fiddler/add-ons">http://www.telerik.com/fiddler/add-ons</a>. You can install them and then use JustDecompile to see how they were built.</p>
+<p>You’ll find a bunch of good examples here: <a target="_blank" rel="noopener" href="http://www.telerik.com/fiddler/add-ons" title="http://www.telerik.com/fiddler/add-ons">http://www.telerik.com/fiddler/add-ons</a>. You can install them and then use JustDecompile to see how they were built.</p>
 <h2 id="Helpful-Links"><a class="header-anchor" href="#Helpful-Links"></a><strong>Helpful Links</strong></h2>
 <ul>
-<li>Fiddler Extensions on Codeplex: <a href="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2" target="_blank" rel="noopener" title="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2">https://www.codeplex.com/site/search?query=fiddler&amp;ac=2</a></li>
-<li>Fiddler Extensions on GitHub: <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults" target="_blank" rel="noopener" title="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults">https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults</a></li>
-<li>Fiddler Extension Docs: <a href="http://docs.telerik.com/fiddler/extend-fiddler/extendwithdotnet" target="_blank" rel="noopener">http://docs.telerik.com/fiddler/extend-fiddler/extendwithdotnet</a></li>
+<li>Fiddler Extensions on Codeplex: <a target="_blank" rel="noopener" href="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2" title="https://www.codeplex.com/site/search?query=fiddler&amp;ac=2">https://www.codeplex.com/site/search?query=fiddler&amp;ac=2</a></li>
+<li>Fiddler Extensions on GitHub: <a target="_blank" rel="noopener" href="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults" title="https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults">https://github.com/search?utf8=%E2%9C%93&amp;q=fiddler+extension&amp;type=Repositories&amp;ref=searchresults</a></li>
+<li>Fiddler Extension Docs: <a target="_blank" rel="noopener" href="http://docs.telerik.com/fiddler/extend-fiddler/extendwithdotnet">http://docs.telerik.com/fiddler/extend-fiddler/extendwithdotnet</a></li>
 </ul>
 <p>Jon</p>
 
@@ -403,7 +403,7 @@ copy "Newtonsoft.Json.dll" "%userprofile%\My Documents\Fiddler2\Inspectors\"
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

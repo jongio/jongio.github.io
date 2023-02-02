@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,7 +208,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I was recently working with a customer that uses <a href="https://avro.apache.org/" target="_blank" rel="noopener">Apache Avro</a> compression and discovered that there isn’t a great example out there that shows you how to send Avro compressed messages through the IoT pipeline. This post will hopefully fill that gap.</p>
+            <p>I was recently working with a customer that uses <a target="_blank" rel="noopener" href="https://avro.apache.org/">Apache Avro</a> compression and discovered that there isn’t a great example out there that shows you how to send Avro compressed messages through the IoT pipeline. This post will hopefully fill that gap.</p>
 <p>Compression is a very common need in IoT scenarios because most large scale IoT solutions include message aggregation and compression before sending the messages across the wire.  IoT Hub itself “supports compression” because it doesn’t crack the message payload - it just treats the message as bytes across the wire. So, the cloud endpoint (IoT Hub) isn’t an issue. The issue arises when we need to use compression and then process those messages post-ingestion. Azure Stream Analytics, a common Azure IoT message ingestor, supports JSON, CSV and Avro.  Gzip/Deflate are not supported, but the request has been made into the ASA team to support them. In the meantime, this post will demonstrate how to get Avro to work through the IoT pipeline and unblock those customers that want compression and are considering Avro. If you need to support Gzip/Deflate or any other compression mechanism, then you will need to process your IoT Hub messages via the backing Event Hub using Event Processor Host via Azure Functions, Service Fabric or any custom application.</p>
 <p>The architecture for this walkthrough is as follows:</p>
 <p>A <strong>Node.js</strong> script reads telemetry data from sensors, compresses that data with <strong>Avro</strong> and then sends to <strong>IoT Hub</strong>. An <strong>Azure Stream Analytics (ASA)</strong> job picks up those messages and forwards them to <strong>Azure Blob Storage</strong> as JSON objects.</p>
@@ -216,20 +216,20 @@
 <h2 id="Tools"><a class="header-anchor" href="#Tools"></a>Tools</h2>
 <h3 id="Azure-CLI-2-0"><a class="header-anchor" href="#Azure-CLI-2-0"></a>Azure CLI 2.0</h3>
 <p>You have three options for creating the Azure resources required for this example. <strong>I will use Azure CLI 2.0 in this post.</strong></p>
-<p>1. <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="noopener">Azure CLI 2.0</a><br>
-2. <a href="https://docs.microsoft.com/en-us/azure/cli-install-nodejs" target="_blank" rel="noopener">Azure CLI 1.0</a><br>
-3. <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a></p>
-<p>Follow the steps <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli" target="_blank" rel="noopener">here to install Azure CLI 2.0</a>.</p>
+<p>1. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI 2.0</a><br>
+2. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/cli-install-nodejs">Azure CLI 1.0</a><br>
+3. <a target="_blank" rel="noopener" href="https://portal.azure.com">Azure Portal</a></p>
+<p>Follow the steps <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">here to install Azure CLI 2.0</a>.</p>
 <h3 id="iothub-explorer"><a class="header-anchor" href="#iothub-explorer"></a>iothub-explorer</h3>
 <p>We will use the iothub-explorer to monitor messages that are sent to IoT Hub.</p>
-<p>Follow the steps <a href="https://github.com/Azure/iothub-explorer" target="_blank" rel="noopener">here to install the iothub-explorer</a>.</p>
-<p>You could also use the Windows Form version called the <a href="https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer#download" target="_blank" rel="noopener">Device Explorer</a>.</p>
+<p>Follow the steps <a target="_blank" rel="noopener" href="https://github.com/Azure/iothub-explorer">here to install the iothub-explorer</a>.</p>
+<p>You could also use the Windows Form version called the <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer#download">Device Explorer</a>.</p>
 <h3 id="Azure-Storage-Explorer"><a class="header-anchor" href="#Azure-Storage-Explorer"></a>Azure Storage Explorer</h3>
 <p>We will use Azure Storage Explorer to view the outputted messages that are sent to Blob storage from the ASA job.</p>
-<p>Follow the steps <a href="http://storageexplorer.com/" target="_blank" rel="noopener">here to install the Azure Storage Explorer</a>.</p>
+<p>Follow the steps <a target="_blank" rel="noopener" href="http://storageexplorer.com/">here to install the Azure Storage Explorer</a>.</p>
 <h2 id="IoT-Hub"><a class="header-anchor" href="#IoT-Hub"></a>IoT Hub</h2>
 <h3 id="Create-IoT-Hub"><a class="header-anchor" href="#Create-IoT-Hub"></a>Create IoT Hub</h3>
-<p>Follow the steps <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli" target="_blank" rel="noopener">here to create an Azure IoT Hub using the Azure CLI 2.0</a>.</p>
+<p>Follow the steps <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-using-cli">here to create an Azure IoT Hub using the Azure CLI 2.0</a>.</p>
 <h3 id="Get-IoT-Hub-Connection-String"><a class="header-anchor" href="#Get-IoT-Hub-Connection-String"></a>Get IoT Hub Connection String</h3>
 <p>Execute the following command to get the connection string for the IoT Hub you just created.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">az iot hub show-connection-string --hub-name [your IoT Hub name]
@@ -259,7 +259,7 @@
 <p>We will now get the Node.js code that will compress messages with Avro and send them to IoT Hub.</p>
 <p>Let’s get it running and then go through code.</p>
 <h3 id="Install-Node-js-and-git"><a class="header-anchor" href="#Install-Node-js-and-git"></a>Install Node.js and git</h3>
-<p>Make sure you have <a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Node.js</a> and <a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git</a> installed.</p>
+<p>Make sure you have <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.js</a> and <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git</a> installed.</p>
 <h3 id="Clone-Repo"><a class="header-anchor" href="#Clone-Repo"></a>Clone Repo</h3>
 <p>Open up a command prompt, navigate to an empty folder and execute the following command.  This will copy the code to a local folder.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">git clone https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs.git
@@ -269,7 +269,7 @@
 <pre class="line-numbers language-bash"><code class="language-bash">npm i
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Setup-Config"><a class="header-anchor" href="#Setup-Config"></a>Setup Config</h3>
-<p>This script uses <a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener">dotenv</a> to allow you to set an IoT Hub connection string in a .env file.</p>
+<p>This script uses <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/dotenv">dotenv</a> to allow you to set an IoT Hub connection string in a .env file.</p>
 <p>Rename “.env.sample” to “.env” and paste your <strong>device</strong> connection string that you saved earlier. If you are using Windows, then name the file .env. (with the . at the end) and Windows will automatically change it to .env for you.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">iotHubConnectionString=[your device's connection string goes here]
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -279,15 +279,15 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>You will now see the following output:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">Connected to IoT Hub
-Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate }4똑�%��
+Sending message: Obj╔╝avro.schema�╔&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate &amp;#125;4똑�%��
                                                                                                                                                                                     ��E��x╗�KI-�LN5��
-}4똑�%��
+&amp;#125;4똑�%��
         ��E��x
 send status: MessageEnqueued
-Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate �7�zXNObQU}��╗�KI-�LN5�=�
-�7�zXNObQU}��
+Sending message: Obj╔╝avro.schema�╔&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate �7�zXNObQU&amp;#125;��╗�KI-�LN5�=�
+�7�zXNObQU&amp;#125;��
 send status: MessageEnqueued
-Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate ��b�zj����[���╗�KI-�LN5
+Sending message: Obj╔╝avro.schema�╔&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate ��b�zj����[���╗�KI-�LN5
                                                                                                                                                                                                    �
 
 p╝ ��b�zj����[���
@@ -296,25 +296,25 @@ send status: MessageEnqueued
 <h3 id="Monitor-Messages-Coming-into-IoT-Hub"><a class="header-anchor" href="#Monitor-Messages-Coming-into-IoT-Hub"></a>Monitor Messages Coming into IoT Hub</h3>
 <p>Switch back to the command prompt with iothub-explorer open and you will now start to see events outputted:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">==== From: avro ====
-Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate K=�8h{�!���ng�q�KI-�LN5��1r K=�8h{�!���ng�q
+Objavro.schema�&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate K=�8h&amp;#123;�!���ng�q�KI-�LN5��1r K=�8h&amp;#123;�!���ng�q
 ====================
 ==== From: avro ====
-Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate ӣ ��މ�]#��T���KI-�LN5\��� ӣ ��މ�]#��T��
+Objavro.schema�&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate ӣ ��މ�]#��T���KI-�LN5\��� ӣ ��މ�]#��T��
 ====================
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Inspect-Avro-Script"><a class="header-anchor" href="#Inspect-Avro-Script"></a>Inspect Avro Script</h2>
 <p>Now that we have it running, let’s take a look at the script to see how it works.</p>
-<p>You can see the full code on GitHub <a href="https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs/blob/master/index.js" target="_blank" rel="noopener">here</a>. There are lots of comments inline that should help you see how it all works together.</p>
-<p>The script uses following npm packages: <a href="https://www.npmjs.com/package/avsc" target="_blank" rel="noopener">avsc</a>, <a href="https://www.npmjs.com/package/memory-streams" target="_blank" rel="noopener">memory-streams</a>, <a href="https://www.npmjs.com/package/azure-iot-device" target="_blank" rel="noopener">azure-iot-device</a> and <a href="https://www.npmjs.com/package/azure-iot-device-amqp" target="_blank" rel="noopener">azure-iot-device-amqp</a>.</p>
+<p>You can see the full code on GitHub <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-stream-analytics-avro-nodejs/blob/master/index.js">here</a>. There are lots of comments inline that should help you see how it all works together.</p>
+<p>The script uses following npm packages: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/avsc">avsc</a>, <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/memory-streams">memory-streams</a>, <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/azure-iot-device">azure-iot-device</a> and <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/azure-iot-device-amqp">azure-iot-device-amqp</a>.</p>
 <p>With Avro, you can embed the payload schema into the Avro Container file.  In this repo, we have a file called <code>schema.avsc</code>, which looks like this:</p>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
     "name": "telemetry",
     "type": "record",
     "fields": [
-        { "name": "deviceId", "type": "string" },
-        { "name": "windSpeed", "type": "float" }
+        &amp;#123; "name": "deviceId", "type": "string" &amp;#125;,
+        &amp;#123; "name": "windSpeed", "type": "float" &amp;#125;
     ]
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>In fact, ASA requires the schema to be embedded into the message payload.</p>
 <p>This file Avro type is loaded via the parse method like this:</p>
@@ -330,7 +330,7 @@ Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"devi
 <li>Send IoT Hub message in the ‘end’ event handler, which calls WriateableStream.toBuffer()</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript">// Instantiate a BlockEncoder, which allows you to write avro into a buffer.
-var avroEncoder = new avro.streams.BlockEncoder(type, { codec: 'deflate' }); // Choose 'deflate' or it will default to 'null'
+var avroEncoder = new avro.streams.BlockEncoder(type, &amp;#123; codec: 'deflate' &amp;#125;); // Choose 'deflate' or it will default to 'null'
 
 // Instantiate a stream to write the avro buffer to, which we'll send to IoT Hub
 var writer = new streams.WritableStream();
@@ -338,36 +338,36 @@ avroEncoder.pipe(writer);
 
 // Generate the faux json
 var windSpeed = 10 + (Math.random() * 4); // range: [10, 14]
-var json = { deviceId: 'device1', windSpeed: windSpeed };
+var json = &amp;#123; deviceId: 'device1', windSpeed: windSpeed &amp;#125;;
 
 // Write the json
-if (type.isValid(json)) {
+if (type.isValid(json)) &amp;#123;
     avroEncoder.write(json);
-}
+&amp;#125;
 
 // Call end to tell avro we are done writing and to trigger the end event.
 avroEncoder.end();
 
 // end event was triggered, get the avro data from the piped stream and send to IoT Hub.
-avroEncoder.on('end', function () {
+avroEncoder.on('end', function () &amp;#123;
     // call toBuffer on the WriteableStream and pass to IoT Hub message ctor
     var message = new Message(writer.toBuffer());
 
     console.log('Sending message: ' + message.getData());
     client.sendEvent(message, printResultFor('send'));
-})
+&amp;#125;)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>While this seems like a pretty straight forward script, it took me a while to get it all working.  In the process, I collected the following Avro related resources:</p>
 <ul>
-<li><a href="https://github.com/mtth/avsc/" target="_blank" rel="noopener">Avro Node.js Library: mtth/avsc</a></li>
-<li><a href="http://www.michael-noll.com/blog/2013/03/17/reading-and-writing-avro-files-from-the-command-line/" target="_blank" rel="noopener">Reading and Writing Avro Files From the Command Line</a></li>
-<li><a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener">Node.js Stream Docs</a></li>
-<li><a href="http://codewinds.com/blog/2013-08-31-nodejs-duplex-streams.html" target="_blank" rel="noopener">Creating duplex streams with Node.js</a></li>
-<li><a href="https://stackoverflow.com/questions/39045356/how-to-send-compacted-data-to-azure-stream-analytics" target="_blank" rel="noopener">How to send compacted data to Azure Stream Analytics?</a></li>
-<li><a href="https://blogs.msdn.microsoft.com/streamanalytics/2015/10/28/sending-and-consuming-events-in-avro-format/" target="_blank" rel="noopener">Sending and consuming events in Avro format</a></li>
-<li><a href="https://github.com/mtth/avsc/issues/75" target="_blank" rel="noopener">Rotate stream into google cloud storage #75</a></li>
-<li><a href="https://github.com/mtth/avsc/issues/17" target="_blank" rel="noopener">BlockEncoder produces invalid avro format? #17</a></li>
-<li><a href="https://github.com/miguno/avro-cli-examples" target="_blank" rel="noopener">avro-cli-examples</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mtth/avsc/">Avro Node.js Library: mtth/avsc</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.michael-noll.com/blog/2013/03/17/reading-and-writing-avro-files-from-the-command-line/">Reading and Writing Avro Files From the Command Line</a></li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/stream.html">Node.js Stream Docs</a></li>
+<li><a target="_blank" rel="noopener" href="http://codewinds.com/blog/2013-08-31-nodejs-duplex-streams.html">Creating duplex streams with Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39045356/how-to-send-compacted-data-to-azure-stream-analytics">How to send compacted data to Azure Stream Analytics?</a></li>
+<li><a target="_blank" rel="noopener" href="https://blogs.msdn.microsoft.com/streamanalytics/2015/10/28/sending-and-consuming-events-in-avro-format/">Sending and consuming events in Avro format</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mtth/avsc/issues/75">Rotate stream into google cloud storage #75</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mtth/avsc/issues/17">BlockEncoder produces invalid avro format? #17</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/miguno/avro-cli-examples">avro-cli-examples</a></li>
 </ul>
 <h2 id="Azure-Blob-Storage"><a class="header-anchor" href="#Azure-Blob-Storage"></a>Azure Blob Storage</h2>
 <p>For this contrived exercise, we’re going to configure a Blob Storage account that ASA sends all messages to.  Let’s create the account and then wire up ASA.</p>
@@ -416,54 +416,54 @@ FROM
 <p><img src="000186.png" alt=""></p>
 <p>If you have any issues, please refer to the Activity log tab to see if any messages are being logged.</p>
 <h2 id="View-Blob-Storage-Messages"><a class="header-anchor" href="#View-Blob-Storage-Messages"></a>View Blob Storage Messages</h2>
-<p>We’ll now use the <a href="http://storageexplorer.com/" target="_blank" rel="noopener">Azure Storage Explorer</a> to inspect the JSON messages that have been stored in Blob Storage.</p>
+<p>We’ll now use the <a target="_blank" rel="noopener" href="http://storageexplorer.com/">Azure Storage Explorer</a> to inspect the JSON messages that have been stored in Blob Storage.</p>
 <p>1. Open Azure Storage Explorer, sign-in and navigate to the Blob Storage account you created earlier. Expand the Blob Containers node. Click on ‘avros’ and you will see a JSON file in the right pane.</p>
 <p><img src="000187.png" alt=""></p>
 <p>2. Double-click on that file to download it. Open it and you will see the JSON messages.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">{
+<pre class="line-numbers language-javascript"><code class="language-javascript">&amp;#123;
     "deviceId": "device1",
     "windSpeed": 11.22899055480957,
     "EventProcessedUtcTime": "2017-05-05T05:52:52.0236378Z",
     "PartitionId": 0,
     "EventEnqueuedUtcTime": "2017-05-05T05:51:52.7660000Z",
-    "IoTHub": {
+    "IoTHub": &amp;#123;
         "MessageId": null,
         "CorrelationId": null,
         "ConnectionDeviceId": "avro-device",
         "ConnectionDeviceGenerationId": "636295329478829335",
         "EnqueuedTime": "2017-05-05T05:51:53.2330000Z",
         "StreamId": null
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
 <p>We now have all of the services setup and running that enable Avro compression in an Azure IoT solution.</p>
 <p>1. <strong>Avro Node.js Script</strong> is sending messages to IoT Hub</p>
-<pre class="line-numbers language-bash"><code class="language-bash">Sending message: Obj╔╝avro.schema�╔{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate x║���N;:i&gt;&amp;�N��╗�KI-�LN5&lt;r
+<pre class="line-numbers language-bash"><code class="language-bash">Sending message: Obj╔╝avro.schema�╔&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate x║���N;:i&gt;&amp;�N��╗�KI-�LN5&lt;r
 0� x║���N;:i&gt;&amp;�N��
 send status: MessageEnqueued
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>2. <strong>IoT Hub</strong> is receiving messages.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">==== From: avro-device ====
-Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"deviceId","type":"string"},{"name":"windSpeed","type":"float"}]}avro.codecdeflate u+q��?�Bw�F�_�KI-�LN5ly� u+q��?�Bw�F�_
+Objavro.schema�&amp;#123;"name":"telemetry","type":"record","fields":[&amp;#123;"name":"deviceId","type":"string"&amp;#125;,&amp;#123;"name":"windSpeed","type":"float"&amp;#125;]&amp;#125;avro.codecdeflate u+q��?�Bw�F�_�KI-�LN5ly� u+q��?�Bw�F�_
 ====================
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>3. <strong>Azure Stream Analytics</strong> is picking up messages from IoT Hub and saving them as JSON to Blob Storage</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">{
+<pre class="line-numbers language-javascript"><code class="language-javascript">&amp;#123;
     "deviceId": "device1",
     "windSpeed": 11.22899055480957,
     "EventProcessedUtcTime": "2017-05-05T05:52:52.0236378Z",
     "PartitionId": 0,
     "EventEnqueuedUtcTime": "2017-05-05T05:51:52.7660000Z",
-    "IoTHub": {
+    "IoTHub": &amp;#123;
         "MessageId": null,
         "CorrelationId": null,
         "ConnectionDeviceId": "avro-device",
         "ConnectionDeviceGenerationId": "636295329478829335",
         "EnqueuedTime": "2017-05-05T05:51:53.2330000Z",
         "StreamId": null
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Hope this helps you out.</p>
 <p>Jon</p>
@@ -637,7 +637,7 @@ Objavro.schema�{"name":"telemetry","type":"record","fields":[{"name":"devi
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

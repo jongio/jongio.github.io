@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/12/dotnet-value-cannot-be-null-parameter-name-path1/02.png">
 <meta property="article:published_time" content="2017-12-22T13:39:50.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:45:54.609Z">
+<meta property="article:modified_time" content="2021-03-18T06:45:54.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="dotnet">
 <meta property="article:tag" content="python">
@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -223,7 +223,7 @@ Parameter name: path1
 <p>Open <code>tox.ini</code> and add the <code>passenv = APPDATA ProgramFiles USERPROFILE</code> line:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">[testenv]
 setenv =
-    PYTHONPATH = {toxinidir}
+    PYTHONPATH = &amp;#123;toxinidir&amp;#125;
 
 commands = 
     python setup.py test
@@ -401,7 +401,7 @@ passenv = APPDATA ProgramFiles USERPROFILE
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

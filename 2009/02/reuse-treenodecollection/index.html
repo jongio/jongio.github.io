@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -224,14 +224,14 @@ selectForm.treeView1.Nodes.AddRange(nodes);
 <p>Here’s the quick and dirty (feel free to make it cleaner w/ extension method, etc)</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">selectForm.treeView1.Nodes.AddRange(TreeViewUtility.CloneNodes(treeView1));
         public static TreeNode[] CloneNodes(TreeView tree)
-        {
+        &amp;#123;
             TreeNode[] nodes = new TreeNode[tree.Nodes.Count];
             for(int i = 0; i &lt; tree.Nodes.Count; i++)
-            {
+            &amp;#123;
                 nodes[i] = tree.Nodes[i].Clone() as TreeNode;
-            }
+            &amp;#125;
             return nodes;
-        }
+        &amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
@@ -403,7 +403,7 @@ selectForm.treeView1.Nodes.AddRange(nodes);
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

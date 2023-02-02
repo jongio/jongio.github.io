@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,7 +207,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>You may have noticed that ConfigurationManager is not available in Azure Functions v2 .NET Standard projects.  It’s no longer supported. AF v2 now uses <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/" target="_blank" rel="noopener">ASPNET Core Configuration</a>.  If you add the System.Configuration.ConfigurationManager NuGet package and try to use it you will see the following error:</p>
+            <p>You may have noticed that ConfigurationManager is not available in Azure Functions v2 .NET Standard projects.  It’s no longer supported. AF v2 now uses <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/">ASPNET Core Configuration</a>.  If you add the System.Configuration.ConfigurationManager NuGet package and try to use it you will see the following error:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">[1/7/2018 1:50:51 PM] System.Private.CoreLib: Exception while executing function: Function1. 
 System.Configuration.ConfigurationManager: Configuration system failed to initialize. 
 System.Configuration.ConfigurationManager: Unrecognized configuration section system.serviceModel.
@@ -220,7 +220,7 @@ System.Configuration.ConfigurationManager: Unrecognized configuration section sy
 <p>The bottom line is that ConfigurationManager is no longer supported, you have to use the new <strong>ASPNET Core Configuration system</strong>.</p>
 <p>Here’s how to do that in Azure Function v2.</p>
 <blockquote>
-<p>The code for this post can be found here: <a href="https://github.com/jongio/azure-function-config" target="_blank" rel="noopener">https://github.com/jongio/azure-function-config</a></p>
+<p>The code for this post can be found here: <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-function-config">https://github.com/jongio/azure-function-config</a></p>
 </blockquote>
 <ol>
 <li>
@@ -228,16 +228,16 @@ System.Configuration.ConfigurationManager: Unrecognized configuration section sy
 </li>
 <li>
 <p>Make sure you include “ConnectionStrings” in your local.settings.json file</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">    {
+<pre class="line-numbers language-javascript"><code class="language-javascript">    &amp;#123;
         "IsEncrypted": false,
-        "Values": {
+        "Values": &amp;#123;
             "AzureWebJobsStorage": "UseDevelopmentStorage=true",
             "AzureWebJobsDashboard": "UseDevelopmentStorage=true"
-        },
-        "ConnectionStrings": {
+        &amp;#125;,
+        "ConnectionStrings": &amp;#123;
             "SqlConnectionString": "server=jongdb;user=jong;"
-        }
-    }
+        &amp;#125;
+    &amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
@@ -289,7 +289,7 @@ First, update your AppSettings and ConnectionString settings to include <code>Se
 <img src="14.png" alt=""></p>
 </li>
 </ol>
-<p>You can also use Strongly Typed classes for your configuration.  Here’s a good blog that shows you how to do that: <a href="https://blogs.msdn.microsoft.com/fkaduk/2017/02/22/using-strongly-typed-configuration-in-net-core-console-app/" target="_blank" rel="noopener">Using strongly typed configuration in .NET Core console app</a></p>
+<p>You can also use Strongly Typed classes for your configuration.  Here’s a good blog that shows you how to do that: <a target="_blank" rel="noopener" href="https://blogs.msdn.microsoft.com/fkaduk/2017/02/22/using-strongly-typed-configuration-in-net-core-console-app/">Using strongly typed configuration in .NET Core console app</a></p>
 <p>As an aside, when you republish your Azure Function v2 app, you’ll need to stop it first.</p>
 <p><img src="12.png" alt=""></p>
 <p>Let me know if you run into any issues.</p>
@@ -464,7 +464,7 @@ First, update your AppSettings and ConnectionString settings to include <code>Se
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

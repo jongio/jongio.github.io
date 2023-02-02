@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,11 +207,11 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing I want to do is try to figure out how to get OAuth working when I have a thousand other things to do. I downloaded all the C# libraries I could find, but most required a bunch of setup or compiling or hacking that I don’t have time for. I then came across the <a href="http://www.springframework.net/social-linkedin/" target="_blank" rel="noopener">Spring.net Social Extension for LinkedIn</a>. I went over to the <a href="https://github.com/SpringSource/spring-net-social-linkedin" target="_blank" rel="noopener">SpringSource LinkedIn GitHub page</a> and found <a href="https://github.com/SpringSource/spring-net-social-linkedin/blob/master/examples/Spring.ConsoleQuickStart/src/Spring.ConsoleQuickStart/Program.cs" target="_blank" rel="noopener">this sample</a>. It looked pretty straight forward so I decided to go for it…and got it working in about 10 minutes.</p>
+            <p>I just spent way too much time trying to figure out how to call the LinkedIn People Search API. I needed to simply use the LinkedIn API to find people in my network by their full name. The last thing I want to do is try to figure out how to get OAuth working when I have a thousand other things to do. I downloaded all the C# libraries I could find, but most required a bunch of setup or compiling or hacking that I don’t have time for. I then came across the <a target="_blank" rel="noopener" href="http://www.springframework.net/social-linkedin/">Spring.net Social Extension for LinkedIn</a>. I went over to the <a target="_blank" rel="noopener" href="https://github.com/SpringSource/spring-net-social-linkedin">SpringSource LinkedIn GitHub page</a> and found <a target="_blank" rel="noopener" href="https://github.com/SpringSource/spring-net-social-linkedin/blob/master/examples/Spring.ConsoleQuickStart/src/Spring.ConsoleQuickStart/Program.cs">this sample</a>. It looked pretty straight forward so I decided to go for it…and got it working in about 10 minutes.</p>
 <p>Here’s what I did:</p>
 <ol>
 <li>
-<p>Created my LinkedIn app. <a href="https://www.linkedin.com/secure/developer?newapp=" target="_blank" rel="noopener" title="https://www.linkedin.com/secure/developer?newapp=">https://www.linkedin.com/secure/developer?newapp=</a></p>
+<p>Created my LinkedIn app. <a target="_blank" rel="noopener" href="https://www.linkedin.com/secure/developer?newapp=" title="https://www.linkedin.com/secure/developer?newapp=">https://www.linkedin.com/secure/developer?newapp=</a></p>
 </li>
 <li>
 <p>Created a new C# project and referenced Spring.Social.LinkedIn via nuGet</p>
@@ -234,16 +234,16 @@ private const string LinkedInUserSecret = "[copy from your linked in app details
 <li>Created this SearchAsync method</li>
 </ol>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public async Task&lt;LinkedInProfiles&gt; SearchAsync(string queryText)
-{
+&amp;#123;
      var l = new LinkedInServiceProvider(LinkedInApiKey, LinkedInApiSecret);
      var a = l.GetApi(LinkedInUserToken, LinkedInUserSecret);
-     var sp = new SearchParameters() { Keywords = queryText };
+     var sp = new SearchParameters() &amp;#123; Keywords = queryText &amp;#125;;
      return await a.ProfileOperations.SearchAsync(sp);
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>6. Called SearchAsync method from another method</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var p = SearchAsync(queryText);
-foreach (LinkedInProfile pr in p.Result.Profiles){}
+foreach (LinkedInProfile pr in p.Result.Profiles)&amp;#123;&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>I hope this saves you some time.</p>
@@ -418,7 +418,7 @@ foreach (LinkedInProfile pr in p.Result.Profiles){}
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

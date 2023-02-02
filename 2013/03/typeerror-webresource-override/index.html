@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -212,10 +212,10 @@
 <p><em>“TypeError: m[5] is undefined”</em></p>
 <p><img src="/images/blog/Solution-to-TypeError_57B3/image_3.png" alt=""></p>
 <p><em>“TypeError: Cannot read property ‘length’ of undefined”</em></p>
-<p>There has been a known issue with Firefox and Chrome when you combine RegularExpressionValidators and RequiredFieldValidators. It’s been around since 2009, but no one has addressed the issue. Here’s the bug report on <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> forums: <a href="http://forums.asp.net/t/1417973.aspx" target="_blank" rel="noopener" title="http://forums.asp.net/t/1417973.aspx">http://forums.asp.net/t/1417973.aspx</a> and here’s the bug report filed to Mozilla for the FF issue. Neither of them have a solution.</p>
+<p>There has been a known issue with Firefox and Chrome when you combine RegularExpressionValidators and RequiredFieldValidators. It’s been around since 2009, but no one has addressed the issue. Here’s the bug report on <a target="_blank" rel="noopener" href="http://ASP.NET">ASP.NET</a> forums: <a target="_blank" rel="noopener" href="http://forums.asp.net/t/1417973.aspx" title="http://forums.asp.net/t/1417973.aspx">http://forums.asp.net/t/1417973.aspx</a> and here’s the bug report filed to Mozilla for the FF issue. Neither of them have a solution.</p>
 <p>I narrowed it down to these lines of code in WebResource.axd – the one with the Validator control JavaScript that starts with</p>
 <p>var Page_ValidationVer = “125”;</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">if (m != null &amp;amp;&amp;amp; (m[2].length == 4 || val.dateorder == "ymd")) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">if (m != null &amp;amp;&amp;amp; (m[2].length == 4 || val.dateorder == "ymd")) &amp;#123;
   year = (m[5].length == 4) ? m[5] : GetFullYear(parseInt(m[6], 10))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>The root of the problem is that the WebResource JavaScript isn’t checking if “m[2]” and “m[5]” are undefined before checking the “length” property. The obvious fix is to do just that, but it’s embedded in an automatically generated WebResource.axd file. You can’t edit it directly, but since Microsoft didn’t scope the JavaScript properly you can override that method if you insert a method with the same name at the bottom of the page.</p>
@@ -224,7 +224,7 @@
 <p>2. Copy the entire “ValidatorConvert” method from the WebResource.axd file to the file I created in Step 1.</p>
 <p>3. Modify the method to check for undefined</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">// added m[2] undefined check because it was failing in FF and Chrome
-if (m != null &amp;&amp; ( (typeof(m[2]) != 'undefined' &amp;&amp; m[2].length == 4) || val.dateorder == "ymd")) {
+if (m != null &amp;&amp; ( (typeof(m[2]) != 'undefined' &amp;&amp; m[2].length == 4) || val.dateorder == "ymd")) &amp;#123;
 
 .
 .
@@ -237,7 +237,7 @@ year = (typeof m[5] != 'undefined' &amp;amp;&amp;amp; m[5].length == 4) ? m[5] :
 <p>4. Reference that new js file AT THE BOTTOM OF my master page</p>
 <pre class="line-numbers language-html"><code class="language-html">&lt;script type="text/javascript" src="/WebResourceOverrides.js"&lt;/script&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>You can download my version of the WebResourceOverrides.js file from here: <a href="http://jongallant.com/blogassets/WebResourceOverrides.js.txt" target="_blank" rel="noopener">http://jongallant.com/blogassets/WebResourceOverrides.js.txt</a>. Just remove the “.txt” extension, copy to your site, add the reference to the bottom of your master page and you are good to go.</p>
+<p>You can download my version of the WebResourceOverrides.js file from here: <a target="_blank" rel="noopener" href="http://jongallant.com/blogassets/WebResourceOverrides.js.txt">http://jongallant.com/blogassets/WebResourceOverrides.js.txt</a>. Just remove the “.txt” extension, copy to your site, add the reference to the bottom of your master page and you are good to go.</p>
 <p>Jon</p>
 
         </div>
@@ -409,7 +409,7 @@ year = (typeof m[5] != 'undefined' &amp;amp;&amp;amp; m[5].length == 4) ? m[5] :
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

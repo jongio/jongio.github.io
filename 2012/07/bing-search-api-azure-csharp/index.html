@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,7 +208,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The <a href="http://go.microsoft.com/fwlink/?LinkID=248077" target="_blank" rel="noopener">Bing API to Azure Marketplace migration doc</a> is a great resource for learning how to call the new Azure Marketplace.</p>
+            <p>It took me more than 2 minutes (too long!) to figure out how to call the new Bing search API. The <a target="_blank" rel="noopener" href="http://go.microsoft.com/fwlink/?LinkID=248077">Bing API to Azure Marketplace migration doc</a> is a great resource for learning how to call the new Azure Marketplace.</p>
 <p>Here’s a quick code-post to get you going.</p>
 <h2 id="1-Get-a-Bing-API-Azure-Marketplace-Key"><a class="header-anchor" href="#1-Get-a-Bing-API-Azure-Marketplace-Key"></a>1. Get a Bing API Azure Marketplace Key</h2>
 <p>a) Go to Bing API Azure Marketplace page<br>
@@ -238,28 +238,28 @@ using System.Net;
 using Bing;
 
 namespace BingSearchAzureAPI
-{
+&amp;#123;
     class Program
-    {
+    &amp;#123;
         static void Main(string[] args)
-        {
+        &amp;#123;
             const string bingKey = "[your key here]";
             var bing = new BingSearchContainer(
                 new Uri("https://api.datamarket.azure.com/Bing/Search/")) 
-                { Credentials = new NetworkCredential(bingKey, bingKey) };
+                &amp;#123; Credentials = new NetworkCredential(bingKey, bingKey) &amp;#125;;
 
             var query = bing.Web("Jon Gallant blog", null, null, null, null, null, null, null);
             var results = query.Execute();
 
             foreach(var result in results)
-            {
+            &amp;#123;
                 Console.WriteLine(result.Url);
-            }
+            &amp;#125;
 
             Console.ReadKey();
-        }
-    }
-}
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Hope this saves you some time and get you on the new Bing API quickly.</p>
 <p>Jon</p>
@@ -433,7 +433,7 @@ namespace BingSearchAzureAPI
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

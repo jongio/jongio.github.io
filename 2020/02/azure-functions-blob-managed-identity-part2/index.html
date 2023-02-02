@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-functions-blob-managed-identity-part2/000072.png">
 <meta property="article:published_time" content="2020-02-02T13:35:38.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:41:02.843Z">
+<meta property="article:modified_time" content="2021-03-18T06:41:02.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="functions">
@@ -97,7 +97,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,9 +210,9 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
+            <p>In this 3 part series we are going to learn a few methods for developing an Azure Function that uploads blobs to Azure Storage using the new <a target="_blank" rel="noopener" href="https://aka.ms/azsdk/releases">Azure Blob Storage and Azure Identity Client Libraries</a>.</p>
 <blockquote>
-<p>Code: The code for this series can be found here: <a href="https://github.com/jongio/azure-blob-functions-managedid" target="_blank" rel="noopener">https://github.com/jongio/azure-blob-functions-managedid</a></p>
+<p>Code: The code for this series can be found here: <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-blob-functions-managedid">https://github.com/jongio/azure-blob-functions-managedid</a></p>
 </blockquote>
 <p>Part 1: <a href="/azure-functions-blob-managed-identity-part1">Local Function with Storage Emulator (local function, local storage)</a><br>
 Part 2: Local Function with Azure Storage and Service Principal (local function, cloud storage)<br>
@@ -222,7 +222,7 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <h3 id="Azure-Setup"><a class="header-anchor" href="#Azure-Setup"></a>Azure Setup</h3>
 <p>Let’s get all our Azure resources created and configured.</p>
 <ol>
-<li><a href="https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest" target="_blank" rel="noopener">Install Azure CLI</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest">Install Azure CLI</a></li>
 <li>Login to Azure CLI</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash">az login
@@ -258,7 +258,7 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <ul>
 <li><code>BLOB_STORAGE_ACCOUNT_NAME</code> A unique name that you create.</li>
 <li><code>RESOURCE_GROUP_NAME</code> The name of the resource group that you created earlier.</li>
-<li><code>--sku</code> - List of available SKUs can be found here: <a href="https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types" target="_blank" rel="noopener">SKU Types</a></li>
+<li><code>--sku</code> - List of available SKUs can be found here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types">SKU Types</a></li>
 </ul>
 <ol start="6">
 <li>Give your account Blob Storage permissions</li>
@@ -269,12 +269,12 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <pre class="line-numbers language-bash"><code class="language-bash">az ad signed-in-user show --query 'objectId' -o tsv
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Then run the following command to assign your id to the role</p>
-<pre class="line-numbers language-bash"><code class="language-bash">az role assignment create --assignee {id from last step} --role ba92f5b4-2d11-453d-a403-e96b0029c9fe
+<pre class="line-numbers language-bash"><code class="language-bash">az role assignment create --assignee &amp;#123;id from last step&amp;#125; --role ba92f5b4-2d11-453d-a403-e96b0029c9fe
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
 <li><code>assignee</code> Your Azure account id.</li>
-<li><code>--role</code> - The GUID <code>ba92f5b4-2d11-453d-a403-e96b0029c9fe</code> is the ID for the Storage Blob Data Contributor role.  You can find all of the built-in Azure roles here: <a href="https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles" target="_blank" rel="noopener">Built-in roles for Azure resources</a></li>
+<li><code>--role</code> - The GUID <code>ba92f5b4-2d11-453d-a403-e96b0029c9fe</code> is the ID for the Storage Blob Data Contributor role.  You can find all of the built-in Azure roles here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles">Built-in roles for Azure resources</a></li>
 </ul>
 <h3 id="Configure-Function-App-to-use-Azure-Storage"><a class="header-anchor" href="#Configure-Function-App-to-use-Azure-Storage"></a>Configure Function App to use Azure Storage</h3>
 <ol>
@@ -284,16 +284,16 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
 <blockquote>
 <p>If you have cloned the repo, then take the settings from <code>local.settings.azure.json</code> and copy them to <code>'local.settings.json</code></p>
 </blockquote>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
     "IsEncrypted": false,
-    "Values": {
+    "Values": &amp;#123;
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
         "AZURE_STORAGE_HOST": "blob.core.windows.net",
         "AZURE_STORAGE_ACCOUNT": "BLOB_STORAGE_ACCOUNT_NAME",
         "AZURE_STORAGE_CONTAINER": "azfuncblobs"
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Parameters:</p>
 <ul>
@@ -497,7 +497,7 @@ Part 3: <a href="/azure-functions-blob-managed-identity-part3">Azure Function wi
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

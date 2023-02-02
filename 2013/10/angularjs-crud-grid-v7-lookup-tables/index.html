@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2013-10-29T19:14:00.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:38:54.297Z">
+<meta property="article:modified_time" content="2021-03-18T06:38:54.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="angularjs">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,7 +206,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I just committed a big change to the AngularJS CRUD Grid – Lookup Tables!</p>
-<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
+<p>CODE: <a target="_blank" rel="noopener" href="https://github.com/jongio/AngularJS-WebApi-EF">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
 <p>Here’s what’s included:</p>
 <ul>
 <li>Lookup tables: You can now specify that a column is a lookup column. The directive will retrieve the data for that lookup table and manage it states  <li>AngularJS 1.2 RC3, Font Awesome  <li>Refactored the way I’m hiding and showing UI elements with ng-switch  <li>Added form-control class to form elements and modified the layout to use container and rows.  <li>Added a clear button to the filter control  <li>Clicking on a row’s text puts that row into edit mode. That way you don’t have to move mouse all the way over to the left to edit a row. Just click on any of the row’s text fields.</li>
@@ -217,29 +217,29 @@
 <pre class="line-numbers language-javascript"><code class="language-javascript">var $docScope = angular.element(document).scope();
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Then issue a broadcast call after data has been updated. I pass $broadcast the table name so that my other directives don’t refresh all lookup tables.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">var successCallback = function (e, cb) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">var successCallback = function (e, cb) &amp;#123;
     notificationFactory.success();
     $docScope.$broadcast('lookupDataCh ange', [$attrs.table]);
     $scope.getData(cb);
-};
+&amp;#125;;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I then listen for the ‘lookupDataChange’ event and refresh the lookup data:</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.$on('lookupDataChange', function (scope,  table) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.$on('lookupDataChange', function (scope,  table) &amp;#123;
     $scope.resetLookupData(table[0]);
-});
+&amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>You define the lookup attributes for the column in the directive element:</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">lookup
-{
+&amp;#123;
     table:'name of the table you want to pull data from',
     key: 'the column that you want to use as your select key',
     value: 'the column that you want to use as the select display text',
     orderBy
-    {
+    &amp;#123;
         field: 'the field to sort by',
         asc: 'true|false - the direction to sort by'
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>See Index.html for a working example.</p>
 <p>I’m happy with the way this turned out. I hope you are too.</p>
@@ -414,7 +414,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

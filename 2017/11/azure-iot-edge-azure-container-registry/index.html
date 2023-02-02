@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,iot,azureiotedge,docker" />
+    <meta name="keywords" content="azure,iot,docker,azureiotedge" />
     
     <meta name="description" content="You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially supported eventually, right now it is not, but there is a workaround.">
 <meta property="og:type" content="article">
@@ -33,12 +33,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/000359.png">
 <meta property="article:published_time" content="2017-11-21T06:02:47.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:42:05.901Z">
+<meta property="article:modified_time" content="2021-03-18T06:42:05.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="iot">
-<meta property="article:tag" content="azureiotedge">
 <meta property="article:tag" content="docker">
+<meta property="article:tag" content="azureiotedge">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2017/11/azure-iot-edge-azure-container-registry/000359.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,10 +210,10 @@
         <div class="article-entry" itemprop="articleBody">
             <p>You will likely want to run the Azure IoT Edge Runtime from your own Azure Container Registry (ACR). While this will be officially supported eventually, right now it is not, but there is a workaround. It isn’t officially supported out of the box because the runtime deploys the “edgeHub” container under-the-covers from Docker Hub and there’s no obvious way to override that. I’ve been working with the Azure IoT team over the last couple of days to unblock a customer who has network restrictions that prevent them from running the Edge from anything other than the West Europe Azure Region. Here’s everything that we had to do to get it running. Hopefully this helps you out while the Azure team gets this officially implemented.</p>
 <h2 id="Azure-IoT-Edge-Configuration"><a class="header-anchor" href="#Azure-IoT-Edge-Configuration"></a>Azure IoT Edge Configuration</h2>
-<p>The first thing you are going to want to do is go to the <a href="https://github.com/jongio/azure-iot-edge-config" target="_blank" rel="noopener">azure-iot-edge-config</a> repository and learn about the two types of Edge configuration: <strong>Runtime</strong> and <strong>Module</strong> configuration.  Come back to this post after you have absorbed that info.</p>
+<p>The first thing you are going to want to do is go to the <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-edge-config">azure-iot-edge-config</a> repository and learn about the two types of Edge configuration: <strong>Runtime</strong> and <strong>Module</strong> configuration.  Come back to this post after you have absorbed that info.</p>
 <h2 id="Setup-Azure-Resources"><a class="header-anchor" href="#Setup-Azure-Resources"></a>Setup Azure Resources</h2>
-<p>1. <a href="https://docs.microsoft.com/en-us/azure/iot-edge/quickstart" target="_blank" rel="noopener">Create IoT Hub &amp; Edge Device</a><br>
-2. <a href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli" target="_blank" rel="noopener">Create Azure Container Registry</a></p>
+<p>1. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-edge/quickstart">Create IoT Hub &amp; Edge Device</a><br>
+2. <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli">Create Azure Container Registry</a></p>
 <h2 id="Azure-Container-Registry-Setup"><a class="header-anchor" href="#Azure-Container-Registry-Setup"></a>Azure Container Registry Setup</h2>
 <p>You are first going to pull the Azure IoT Edge containers down to your local machine, tag them and then push them to your own ACR.</p>
 <h3 id="Pull-Containers"><a class="header-anchor" href="#Pull-Containers"></a>Pull Containers</h3>
@@ -248,9 +248,9 @@ docker push myregistry.azurecr.io/azureiotedge-simulated-temperature-sensor:1.0-
 <h3 id="Modify-Config"><a class="header-anchor" href="#Modify-Config"></a>Modify Config</h3>
 <p>You now need to change two config files: <strong>Runtime</strong> and <strong>Module</strong> Configuration.</p>
 <h4 id="Runtime-Configuration"><a class="header-anchor" href="#Runtime-Configuration"></a>Runtime Configuration</h4>
-<p>When you run <code>iotedgectl setup</code> you can pass it a custom config file, which will contain your ACR credentials. See <a href="https://github.com/jongio/azure-iot-edge-config" target="_blank" rel="noopener">azure-iot-edge-config</a> for more information about IoT Edge configuration requirements.</p>
+<p>When you run <code>iotedgectl setup</code> you can pass it a custom config file, which will contain your ACR credentials. See <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-edge-config">azure-iot-edge-config</a> for more information about IoT Edge configuration requirements.</p>
 <p>Here’s how to get your config file setup:</p>
-<p>1. Copy <a href="https://github.com/jongio/azure-iot-edge-config/blob/master/config/runtimeconfig.json" target="_blank" rel="noopener">this file (runtimeconfig.json)</a> to your local machine.<br>
+<p>1. Copy <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-edge-config/blob/master/config/runtimeconfig.json">this file (runtimeconfig.json)</a> to your local machine.<br>
 2. Open file and replace all the tokens [[enter …]] with your values for your ACR URI, password, username, connection string and hostname.<br>
 3. Save the file.</p>
 <p>Now when you setup the Edge Runtime you pass it a <code>--config-file</code> parameter to your new config file.</p>
@@ -271,12 +271,12 @@ Microsoft.Azure.Devices.Edge.Agent.Core.ConfigSources.ConfigEmptyException: This
 2017-11-23 04:26:58 [INF] - Updated reported properties
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Module-Configuration"><a class="header-anchor" href="#Module-Configuration"></a>Module Configuration</h4>
-<p>Now we need to apply a custom configuration to the module twin config in the cloud.  See <a href="https://github.com/jongio/azure-iot-edge-config" target="_blank" rel="noopener">azure-iot-edge-config</a> for more information about IoT Edge configuration requirements.</p>
-<p>0. Install <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Python 2.7+</a><br>
-1. Copy <a href="https://github.com/jongio/azure-iot-edge-config/blob/master/config/moduleconfig.json" target="_blank" rel="noopener">this file (moduleconfig.json)</a> to your local machine.<br>
+<p>Now we need to apply a custom configuration to the module twin config in the cloud.  See <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-edge-config">azure-iot-edge-config</a> for more information about IoT Edge configuration requirements.</p>
+<p>0. Install <a target="_blank" rel="noopener" href="https://www.python.org/downloads/">Python 2.7+</a><br>
+1. Copy <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-edge-config/blob/master/config/moduleconfig.json">this file (moduleconfig.json)</a> to your local machine.<br>
 2. Change all of the [[enter ACR URI]] tags with your ACR URI.<br>
 3. Save the file<br>
-4. Clone this repo <a href="https://github.com/jongio/azure-iot-rest" target="_blank" rel="noopener">azure-iot-rest</a></p>
+4. Clone this repo <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-rest">azure-iot-rest</a></p>
 <pre class="line-numbers language-bash"><code class="language-bash">git clone https://github.com/jongio/azure-iot-rest.git
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>5. Open command and navigate to <code>data-plane\devices</code> and execute the following to apply your new configuration file:</p>
@@ -466,7 +466,7 @@ Jon</p>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

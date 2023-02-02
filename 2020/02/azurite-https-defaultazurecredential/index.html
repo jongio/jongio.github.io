@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azurite-https-defaultazurecredential/000078.png">
 <meta property="article:published_time" content="2020-02-05T01:42:47.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:43:20.165Z">
+<meta property="article:modified_time" content="2021-03-18T06:43:20.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="sdk">
@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -212,7 +212,7 @@
 <p>UPDATE 04/23/2020 - Azurite now officially supports HTTPS and OAuth.  Please see my new blog here for all the details.  You won’t need to create a reverse-proxy anymore like I describe in this post below. <a href="https://blog.jongallant.com/local-azure-storage-development-with-azurite-azuresdks-storage-explorer">https://blog.jongallant.com/local-azure-storage-development-with-azurite-azuresdks-storage-explorer</a></p>
 </blockquote>
 <hr>
-<p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a href="https://github.com/Azure/Azurite" target="_blank" rel="noopener">Azurite</a> and you can peek into your storage account with <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a>. Second, you love the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
+<p>If you are like me, then first, you love to save money and not hit the cloud when you don’t have to; use of local tooling and emulators is a great way achieve that. You can emulate Azure Storage with <a target="_blank" rel="noopener" href="https://github.com/Azure/Azurite">Azurite</a> and you can peek into your storage account with <a target="_blank" rel="noopener" href="https://azure.microsoft.com/features/storage-explorer/">Storage Explorer</a>. Second, you love the new <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet">Azure Identity DefaultAzureCredential</a> class and want to use it with your local emulation tools. Sadly, you cannot do so today. The current problem is that Azurite doesn’t support HTTP or Token based authentication, which the new Azure Identity DefaultAzureCredential requires, and Storage Explorer only supports HTTP.  So even if you run Azurite with HTTPS, you still need token support for DefaultAzureCredential, and Storage Explorer can’t talk to the HTTPS endpoints.</p>
 <p>Here are the problems in a nutshell:</p>
 <ol>
 <li>
@@ -233,7 +233,7 @@
 <p>I’m using on Azurite instead of Azure Storage Emulator in this post because Azurite is open source and I figured out what needs to be done to get this to work.</p>
 </blockquote>
 <blockquote>
-<p>If you find any of this post useful, then it is important that you either comment below or send me an email here: <a href="https://jongio/contact" target="_blank" rel="noopener">https://jongio/contact</a> so we know that it is important to you, which will help us prioritize.</p>
+<p>If you find any of this post useful, then it is important that you either comment below or send me an email here: <a target="_blank" rel="noopener" href="https://jongio/contact">https://jongio/contact</a> so we know that it is important to you, which will help us prioritize.</p>
 </blockquote>
 <p>Here’s a table that summarizes the issues with each of the tools:</p>
 <table>
@@ -248,28 +248,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">Azure SDK: DefaultAzureCredential</a></td>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet">Azure SDK: DefaultAzureCredential</a></td>
 <td>Allows you to use the same credential objects for Dev and Production environments without code changes.</td>
 <td>Required</td>
 <td>Yes</td>
 <td>The only way to use DefaultAzureCredential is with token based auth and it only supports HTTPS</td>
 </tr>
 <tr>
-<td><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite</a></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/azure/azurite">Azurite</a></td>
 <td>Azurite is an open source Azure Storage emulator that supports Windows and Linux.  It starts a local server that behaves like Azure Storage, so you can dev against it like you would Azure.</td>
 <td>Yes (v3.7)</td>
 <td>Yes (v3.7)</td>
 <td></td>
 </tr>
 <tr>
-<td><a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Storage Explorer</a></td>
+<td><a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/features/storage-explorer/">Storage Explorer</a></td>
 <td>Allows you to locally view Azure Storage accounts and contents, including Azurite.</td>
 <td>Yes</td>
 <td>Not needed</td>
 <td>You can point to HTTPS endpoints and import self-signed certs.  See <a href="https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/">this post</a> for more info.</td>
 </tr>
 <tr>
-<td><a href="https://docs.microsoft.com/azure/storage/common/storage-use-emulator" target="_blank" rel="noopener">Azure Storage Emulator</a></td>
+<td><a target="_blank" rel="noopener" href="https://docs.microsoft.com/azure/storage/common/storage-use-emulator">Azure Storage Emulator</a></td>
 <td>Similar to Azurite, but closed source and Windows only.</td>
 <td>No</td>
 <td>No</td>
@@ -288,11 +288,11 @@
 <p>Like I mentioned before, you could update Azurite codebase to support HTTPS natively, but then Azure Storage Explorer won’t work. You could setup an HTTP (Azure Storage Explorer) to HTTPS (Azurite) reverse proxy, but again I couldn’t get that fullly functioning in the time allotted for this problem, so I decided to show you how to setup a simple HTTPS to HTTP proxy. With that, DefaultAzureCredential gets an HTTPS endpoint via the redirection and Azure Storage Explorer get the HTTP endpoint via direct access to Azurite HTTP endpoints.</p>
 <h5 id="Local-SSL-Cert"><a class="header-anchor" href="#Local-SSL-Cert"></a>Local SSL Cert</h5>
 <p>You need a cert because in the next step we’ll create an HTTPS to HTTP Reverse Proxy. Anytime you publish a server that accepts HTTPS you need a cert, even if it is self-signed. Otherwise, you’ll get an insecure error when you access the site.</p>
-<p>There are good reasons to not setup an SSL cert for <code>localhost</code>, read this article by <a href="https://letsencrypt.org/docs/certificates-for-localhost/" target="_blank" rel="noopener">Let’s Crypt: Certificates for localhost</a> if interested in learning more about that.</p>
+<p>There are good reasons to not setup an SSL cert for <code>localhost</code>, read this article by <a target="_blank" rel="noopener" href="https://letsencrypt.org/docs/certificates-for-localhost/">Let’s Crypt: Certificates for localhost</a> if interested in learning more about that.</p>
 <p>You can use OpenSSL, but I’m on a Windows machine and there are workarounds to get that to work.  I found the two following scripted options that I liked better.</p>
 <ol>
-<li><a href="https://www.hanselman.com/blog/DevelopingLocallyWithASPNETCoreUnderHTTPSSSLAndSelfSignedCerts.aspx" target="_blank" rel="noopener">dotnet dev-certs</a> - I haven’t tried this option, but it should work. Let me know in the comments if you got this working.</li>
-<li><a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a> - This is the option I went with because I found it before the <code>dotnet dev-certs</code> option.</li>
+<li><a target="_blank" rel="noopener" href="https://www.hanselman.com/blog/DevelopingLocallyWithASPNETCoreUnderHTTPSSSLAndSelfSignedCerts.aspx">dotnet dev-certs</a> - I haven’t tried this option, but it should work. Let me know in the comments if you got this working.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert">mkcert</a> - This is the option I went with because I found it before the <code>dotnet dev-certs</code> option.</li>
 </ol>
 <p>Read up on mkcert and dotnet dev-certs and determine which one is best for you.</p>
 <p>Here are the mkcert commands I ran:</p>
@@ -304,9 +304,9 @@ mkcert 127.0.0.1
 <p><img src="000075.png" alt=""></p>
 <h5 id="HTTPS-to-HTTP-Reverse-Proxy"><a class="header-anchor" href="#HTTPS-to-HTTP-Reverse-Proxy"></a>HTTPS to HTTP Reverse Proxy</h5>
 <p>As mentioned above, DefaultAzureCredential and any TokenCredential only support HTTPS (not HTTP), so we need a Reverse Proxy to direct all DefaultAzureCredential HTTPS calls to the Azurite HTTP endpoints.</p>
-<p>We are going to use the <a href="https://github.com/http-party/node-http-proxy" target="_blank" rel="noopener">Node.js http-party/node-http-proxy</a> module to do so. You could also use nginx or any other server.  This Node.js was the quickest way for me to get this to work.</p>
+<p>We are going to use the <a target="_blank" rel="noopener" href="https://github.com/http-party/node-http-proxy">Node.js http-party/node-http-proxy</a> module to do so. You could also use nginx or any other server.  This Node.js was the quickest way for me to get this to work.</p>
 <ol start="0">
-<li><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">Install Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Install Node.js</a></li>
 <li>Install http-proxy</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash">npm install http-proxy --save
@@ -317,13 +317,13 @@ mkcert 127.0.0.1
 <pre class="line-numbers language-javascript"><code class="language-javascript">var httpProxy = require('http-proxy'),
     fs = require('fs');
 
-httpProxy.createProxyServer({
+httpProxy.createProxyServer(&amp;#123;
     target: 'http://127.0.0.1:10000',
-    ssl: {
+    ssl: &amp;#123;
         key: fs.readFileSync('127.0.0.1-key.pem', 'utf8'),
         cert: fs.readFileSync('127.0.0.1.pem', 'utf8')
-    }
-}).listen(10010);
+    &amp;#125;
+&amp;#125;).listen(10010);
 
 console.log("Reverse Proxy from https://127.0.0.1:10010 (DefaultAzureCredential HTTPS) to http://127.0.0.1:10000 (Azurite HTTP) now running.")
 
@@ -349,9 +349,9 @@ console.log("Reverse Proxy from https://127.0.0.1:10010 (DefaultAzureCredential 
 </ol>
 <p>We need to instantiate the Azure SDK Client objects with the port number that is the HTTPS enabled one from our reverse proxy, which in this example is 10010 (HTTPS), not 10000 (HTTP)</p>
 <p>Your local.settings.json file should look like this with the 10010 port.</p>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
     "IsEncrypted": false,
-    "Values": {
+    "Values": &amp;#123;
         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
         "AZURE_CLIENT_ID": "SERVICE_PRINCIPAL_APP_ID",
@@ -360,8 +360,8 @@ console.log("Reverse Proxy from https://127.0.0.1:10010 (DefaultAzureCredential 
         "AZURE_STORAGE_HOST": "127.0.0.1:10010",
         "AZURE_STORAGE_ACCOUNT": "devstoreaccount1",
         "AZURE_STORAGE_CONTAINER": "azfuncblobs"
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>You’ll notice that we are using a service principal here.  We do need to let DefaultAzureCredntial get a token from somewhere, so a service principal will be required.  See the following post for instructions on setting up a service principal: <a href="/azure-functions-blob-managed-identity-part2">How to Upload Blobs to Azure Storage from an Azure Function with Azure Managed Identities - (Part 2): Local Function with Azure Storage and Service Principal (local function, cloud storage)</a>.  You will see in that post how to give that Service Principal the appropriate permissions to access Azure Storage.</p>
 <ol start="2">
@@ -376,7 +376,7 @@ var host = Environment.GetEnvironmentVariable("AZURE_STORAGE_HOST");
 var account = Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT");
 var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
 var emulator = connection.Contains("UseDevelopmentStorage=true") &amp;&amp; account == "devstoreaccount1";
-var path = emulator ? $"https://{host}/{account}/{container}" : $"https://{account}.{host}/{container}";
+var path = emulator ? $"https://&amp;#123;host&amp;#125;/&amp;#123;account&amp;#125;/&amp;#123;container&amp;#125;" : $"https://&amp;#123;account&amp;#125;.&amp;#123;host&amp;#125;/&amp;#123;container&amp;#125;";
 
 var client = new BlobContainerClient(new Uri(path), new DefaultAzureCredential());
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -393,9 +393,9 @@ Time:2020-02-05T07:42:03.652Z
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Tokens-Issue-Resolution"><a class="header-anchor" href="#Tokens-Issue-Resolution"></a>Tokens Issue Resolution</h4>
 <blockquote>
-<p>Keep in mind that the below is just a prototype to unblock the customers that are blocked and they understand that using this approach is not final, not supported, and only to be used as an example.  It is not secure as it only checks for the existance of a Bearer token and does not validate it any way.  Please follow along at this issue for updates on the conversation with the Azurite team: <a href="https://github.com/Azure/Azurite/issues/389" target="_blank" rel="noopener">Support Bearer Token Credentials #389</a></p>
+<p>Keep in mind that the below is just a prototype to unblock the customers that are blocked and they understand that using this approach is not final, not supported, and only to be used as an example.  It is not secure as it only checks for the existance of a Bearer token and does not validate it any way.  Please follow along at this issue for updates on the conversation with the Azurite team: <a target="_blank" rel="noopener" href="https://github.com/Azure/Azurite/issues/389">Support Bearer Token Credentials #389</a></p>
 </blockquote>
-<p>Azurite doesn’t support Token based auth, so I have implemented a BlobTokenAuthenticator in this commit here: <a href="https://github.com/jongio/Azurite/commit/273e3b11e53c6eddd7f2c1e4ace8f68120e15213" target="_blank" rel="noopener">Add support for Bearer tokens</a>.</p>
+<p>Azurite doesn’t support Token based auth, so I have implemented a BlobTokenAuthenticator in this commit here: <a target="_blank" rel="noopener" href="https://github.com/jongio/Azurite/commit/273e3b11e53c6eddd7f2c1e4ace8f68120e15213">Add support for Bearer tokens</a>.</p>
 <blockquote>
 <p>I only implemented BlobTokenAuthenticator. I’ll implement Queue support if you need it and leave a comment below or on my fork.</p>
 </blockquote>
@@ -429,19 +429,19 @@ azurite --loose
 <p>Now that you have the HTTPS-&gt;HTTP reverse proxy setup, and my fork of Azurite with BlobTokenAuthentication, it is time to test out your code.</p>
 <p>Re-run your code, the same code that I posted above with BlobContainerClient and it will work.</p>
 <p>In the case of Azure Functions, you should see a successful output from the app, like this:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">[2/5/2020 9:21:27 AM] Executed HTTP request: {
+<pre class="line-numbers language-bash"><code class="language-bash">[2/5/2020 9:21:27 AM] Executed HTTP request: &amp;#123;
 [2/5/2020 9:21:27 AM]   "requestId": "4b570fbd-d058-4d2b-8c1d-093f8bb05d34",
 [2/5/2020 9:21:27 AM]   "method": "GET",
 [2/5/2020 9:21:27 AM]   "uri": "/api/func1",
 [2/5/2020 9:21:27 AM]   "identities": [
-[2/5/2020 9:21:27 AM]     {
+[2/5/2020 9:21:27 AM]     &amp;#123;
 [2/5/2020 9:21:27 AM]       "type": "WebJobsAuthLevel",
 [2/5/2020 9:21:27 AM]       "level": "Admin"
-[2/5/2020 9:21:27 AM]     }
+[2/5/2020 9:21:27 AM]     &amp;#125;
 [2/5/2020 9:21:27 AM]   ],
 [2/5/2020 9:21:27 AM]   "status": 200,
 [2/5/2020 9:21:27 AM]   "duration": 1924
-[2/5/2020 9:21:27 AM] }
+[2/5/2020 9:21:27 AM] &amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And then when you load up Storage Explorer, you’ll now see the blobs that you uploaded or whatever you did in your code.</p>
 <p><img src="000076.png" alt=""></p>
@@ -623,7 +623,7 @@ azurite --loose
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/01/azure-data-explorer-rest/000040.png">
 <meta property="article:published_time" content="2020-01-17T09:13:18.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:40:09.411Z">
+<meta property="article:modified_time" content="2021-03-18T06:40:09.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="rest">
@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,32 +208,32 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m working on project that pulls <a href="https://www.gharchive.org/" target="_blank" rel="noopener">gharchive</a> data into Azure Data Explorer (kusto) and I decided to try to do all of my setup with the Azure CLI.  I could easily create my cluster and database with the CLI, but could not create the table, so I resorted to using the REST APIs.  I could have used the management plane SDKs or the Azure Portal, but I didn’t want to write any code or use a UI for this particular exercise.</p>
-<p>I found the Azure Data Explorer REST API docs here: <a href="https://docs.microsoft.com/en-us/azure/kusto/api/rest/" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/kusto/api/rest/</a>. They do a decent job of explaining the expected format and parameters, but when it comes to which URLs to use, it can use some work. It was not a smooth experience and it took me too long. So blogging this now to hopefully help you out.  I also have a PR to clear things up here: <a href="https://github.com/MicrosoftDocs/Kusto/pull/115" target="_blank" rel="noopener">https://github.com/MicrosoftDocs/Kusto/pull/115</a></p>
-<p>If you want to follow along, then you’ll need to create the cluster and database as described here: <a href="https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-cli" target="_blank" rel="noopener">Create an Azure Data Explorer cluster and database by using Azure CLI<br>
+            <p>I’m working on project that pulls <a target="_blank" rel="noopener" href="https://www.gharchive.org/">gharchive</a> data into Azure Data Explorer (kusto) and I decided to try to do all of my setup with the Azure CLI.  I could easily create my cluster and database with the CLI, but could not create the table, so I resorted to using the REST APIs.  I could have used the management plane SDKs or the Azure Portal, but I didn’t want to write any code or use a UI for this particular exercise.</p>
+<p>I found the Azure Data Explorer REST API docs here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/kusto/api/rest/">https://docs.microsoft.com/en-us/azure/kusto/api/rest/</a>. They do a decent job of explaining the expected format and parameters, but when it comes to which URLs to use, it can use some work. It was not a smooth experience and it took me too long. So blogging this now to hopefully help you out.  I also have a PR to clear things up here: <a target="_blank" rel="noopener" href="https://github.com/MicrosoftDocs/Kusto/pull/115">https://github.com/MicrosoftDocs/Kusto/pull/115</a></p>
+<p>If you want to follow along, then you’ll need to create the cluster and database as described here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/data-explorer/create-cluster-database-cli">Create an Azure Data Explorer cluster and database by using Azure CLI<br>
 </a></p>
 <p>After the cluster and database have been created, then we’ll want to create a table and a mapping - but that’s not possible with the CLI.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">.create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-bash"><code class="language-bash">.create table GithubEvent ingestion json mapping "GitMapping" '[{"column":"Id","path":"$.id"},{"column":"Type","path":"$.type"},{"column":"Actor","path":"$.actor"},{"column":"Repo","path":"$.repo"},{"column":"Payload","path":"$.payload"},{"column":"Public","path":"$.public"},{"column":"CreatedAt","path":"$.created_at"}]'
+<pre class="line-numbers language-bash"><code class="language-bash">.create table GithubEvent ingestion json mapping "GitMapping" '[&amp;#123;"column":"Id","path":"$.id"&amp;#125;,&amp;#123;"column":"Type","path":"$.type"&amp;#125;,&amp;#123;"column":"Actor","path":"$.actor"&amp;#125;,&amp;#123;"column":"Repo","path":"$.repo"&amp;#125;,&amp;#123;"column":"Payload","path":"$.payload"&amp;#125;,&amp;#123;"column":"Public","path":"$.public"&amp;#125;,&amp;#123;"column":"CreatedAt","path":"$.created_at"&amp;#125;]'
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>BTW, the original code for this is from: <a href="https://medium.com/microsoftazure/exploring-github-events-with-azure-data-explorer-69f28eb705b9" target="_blank" rel="noopener">https://medium.com/microsoftazure/exploring-github-events-with-azure-data-explorer-69f28eb705b9</a></p>
+<p>BTW, the original code for this is from: <a target="_blank" rel="noopener" href="https://medium.com/microsoftazure/exploring-github-events-with-azure-data-explorer-69f28eb705b9">https://medium.com/microsoftazure/exploring-github-events-with-azure-data-explorer-69f28eb705b9</a></p>
 <h2 id="Get-Access-Token"><a class="header-anchor" href="#Get-Access-Token"></a>Get Access Token</h2>
 <p>You need to pass a bearer token in the Authorization header, you can get one that is scoped to the kusto cluster by executing the following Azure CLI command:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">az account get-access-token --resource https://{cluster}.{location}.kusto.windows.net --query accessToken --output tsv
+<pre class="line-numbers language-bash"><code class="language-bash">az account get-access-token --resource https://&amp;#123;cluster&amp;#125;.&amp;#123;location&amp;#125;.kusto.windows.net --query accessToken --output tsv
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Install-httpie"><a class="header-anchor" href="#Install-httpie"></a>Install httpie</h2>
-<p><a href="https://httpie.org/" target="_blank" rel="noopener">httpie</a> is alternative to curl: <code>pip install httpie</code>.</p>
+<p><a target="_blank" rel="noopener" href="https://httpie.org/">httpie</a> is alternative to curl: <code>pip install httpie</code>.</p>
 <h2 id="Create-GitHubEvents-Table-and-Mapping"><a class="header-anchor" href="#Create-GitHubEvents-Table-and-Mapping"></a>Create GitHubEvents Table and Mapping</h2>
 <p>You can use the /v1/rest/mgmt endpoint to create a table and mapping, the body payload schema is:</p>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
   "db":"database",
   "csl":"command"
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Create-Table"><a class="header-anchor" href="#Create-Table"></a>Create Table</h3>
 <h4 id="httpie"><a class="header-anchor" href="#httpie"></a>httpie</h4>
-<pre class="line-numbers language-bash"><code class="language-bash">http POST https://{cluster}.{location}.kusto.windows.net/v1/rest/mgmt db={database} csl=".create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)" Authorization:"Bearer {bearer_token}"
+<pre class="line-numbers language-bash"><code class="language-bash">http POST https://&amp;#123;cluster&amp;#125;.&amp;#123;location&amp;#125;.kusto.windows.net/v1/rest/mgmt db=&amp;#123;database&amp;#125; csl=".create table GithubEvent ( Id:int64, Type: string, Actor: dynamic, Repo: dynamic, Payload: dynamic, Public:bool, CreatedAt: datetime)" Authorization:"Bearer &amp;#123;bearer_token&amp;#125;"
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>Replace cluster, location, database, and bearer_token before running the following commands.</p>
@@ -242,7 +242,7 @@
 <p>Execute that command and the table will be created.</p>
 <h3 id="Create-Mapping"><a class="header-anchor" href="#Create-Mapping"></a>Create Mapping</h3>
 <h4 id="httpie-v2"><a class="header-anchor" href="#httpie-v2"></a>httpie</h4>
-<pre class="line-numbers language-bash"><code class="language-bash">http POST https://{cluster}.{location}.kusto.windows.net/v1/rest/mgmt db=gharchive csl=".create table GithubEvent ingestion json mapping \"GitMapping\" '[{\"column\":\"Id\",\"path\":\"$.id\"},{\"column\":\"Type\",\"path\":\"$.type\"},{\"column\":\"Actor\",\"path\":\"$.actor\"},{\"column\":\"Repo\",\"path\":\"$.repo\"},{\"column\":\"Payload\",\"path\":\"$.payload\"},{\"column\":\"Public\",\"path\":\"$.public\"},{\"column\":\"CreatedAt\",\"path\":\"$.created_at\"}]'" Authorization:"Bearer {bearer_token}"
+<pre class="line-numbers language-bash"><code class="language-bash">http POST https://&amp;#123;cluster&amp;#125;.&amp;#123;location&amp;#125;.kusto.windows.net/v1/rest/mgmt db=gharchive csl=".create table GithubEvent ingestion json mapping \"GitMapping\" '[&amp;#123;\"column\":\"Id\",\"path\":\"$.id\"&amp;#125;,&amp;#123;\"column\":\"Type\",\"path\":\"$.type\"&amp;#125;,&amp;#123;\"column\":\"Actor\",\"path\":\"$.actor\"&amp;#125;,&amp;#123;\"column\":\"Repo\",\"path\":\"$.repo\"&amp;#125;,&amp;#123;\"column\":\"Payload\",\"path\":\"$.payload\"&amp;#125;,&amp;#123;\"column\":\"Public\",\"path\":\"$.public\"&amp;#125;,&amp;#123;\"column\":\"CreatedAt\",\"path\":\"$.created_at\"&amp;#125;]'" Authorization:"Bearer &amp;#123;bearer_token&amp;#125;"
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>Replace cluster, location, database, and bearer_token before running the following commands.</p>
@@ -422,7 +422,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

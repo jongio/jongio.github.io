@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,7 +206,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="https://twitter.com/itsananderson" target="_blank" rel="noopener">@itsananderson</a> and I just spent way too long trying to get <a href="https://github.com/mgonto/restangular" target="_blank" rel="noopener">Restangular</a> running. Here’s what worked for us:</p>
+            <p><a target="_blank" rel="noopener" href="https://twitter.com/itsananderson">@itsananderson</a> and I just spent way too long trying to get <a target="_blank" rel="noopener" href="https://github.com/mgonto/restangular">Restangular</a> running. Here’s what worked for us:</p>
 <pre class="line-numbers language-html"><code class="language-html">&lt;!doctype html &gt;
 &lt;html ng-app="app"&gt;
 &lt;head&gt;
@@ -225,13 +225,13 @@
 
     &lt;script&gt;
         var app = angular.module('app', ['restangular'])
-            .config(function(RestangularProvider) {
+            .config(function(RestangularProvider) &amp;#123;
                 RestangularProvider.setBaseUrl('/api');
-            });
+            &amp;#125;);
 
-        app.controller('IndexCtrl', function($scope, Restangular) {
+        app.controller('IndexCtrl', function($scope, Restangular) &amp;#123;
             $scope.people = Restangular.all('person').getList();
-        });
+        &amp;#125;);
 
     &lt;/script&gt;
 &lt;/body&gt;
@@ -407,7 +407,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,7 +208,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I have a long running script that needs to run once a day and I’d like to store the results of that script in cache for the rest of the day so only one user (or any automated http request) will incur the delay.</p>
-<p>It took me a few mins to figure out the best cache the day for the rest of the day. I went back and forth between using <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Cache object directly and OutputCaching.</p>
+<p>It took me a few mins to figure out the best cache the day for the rest of the day. I went back and forth between using <a target="_blank" rel="noopener" href="http://ASP.NET">ASP.NET</a> Cache object directly and OutputCaching.</p>
 <p>I ended up going with OutputCache because it is really simple and I don’t need to worry about locking, inserting, updaing like I would the Cache object.</p>
 <p>I was going to use VaryByHeader=“Date”, but that would invalidate on the second, not the day like I need it to. So I ended up going with VaryByCustom.</p>
 <h3 id="OutputCache-Attribute-on-Controller-Action-Method"><a class="header-anchor" href="#OutputCache-Attribute-on-Controller-Action-Method"></a>OutputCache Attribute on Controller Action Method</h3>
@@ -218,21 +218,21 @@
 </ul>
 <pre class="line-numbers language-csharp"><code class="language-csharp">[OutputCache(VaryByCustom = "Day", Duration = 86400)]
 public ActionResult Index()
-{
+&amp;#123;
     var report = new HealthReport();
     report.Load();
     return this.View(report);
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Override-GetVaryByCustomString-in-Global-asax-cs"><a class="header-anchor" href="#Override-GetVaryByCustomString-in-Global-asax-cs"></a>Override GetVaryByCustomString in Global.asax.cs</h3>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public override string GetVaryByCustomString(HttpContext context, string custom)
-{
+&amp;#123;
     if (string.Compare(custom, "Day", true) == 0)
-    {
+    &amp;#123;
         return DateTime.Now.ToShortDateString();
-    }
+    &amp;#125;
     return base.GetVaryByCustomString(context, custom);
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Jon</p>
 
@@ -405,7 +405,7 @@ public ActionResult Index()
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

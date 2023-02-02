@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="webdev,javascript,vuejs,vscode" />
+    <meta name="keywords" content="webdev,vscode,javascript,vuejs" />
     
     <meta name="description" content="I spent way too much time this weekend debugging Vue.js - Vetur - Prettyhtml - Prettier - Beautify - Eslint issues. Here’s what I discovered: By default, Vetur (The VS Code Vue.js Extension) uses Pre">
 <meta property="og:type" content="article">
@@ -36,9 +36,9 @@
 <meta property="article:modified_time" content="2019-02-05T19:14:53.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="webdev">
+<meta property="article:tag" content="vscode">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="vuejs">
-<meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/02/vuejs-vetur-vscode-format-eslint-issues/000051.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -211,7 +211,7 @@
             <p><img src="vuevscode.png" alt=""></p>
 <p>I spent way too much time this weekend debugging Vue.js - Vetur - Prettyhtml - Prettier - Beautify - Eslint issues.</p>
 <p>Here’s what I discovered:</p>
-<p>By default, <a href="https://vuejs.github.io/vetur/" target="_blank" rel="noopener">Vetur</a> (The VS Code Vue.js Extension) uses <a href="https://github.com/Prettyhtml/prettyhtml" target="_blank" rel="noopener">Prettyhtml</a> as the default html formatter. Which wraps <a href="https://prettier.io/" target="_blank" rel="noopener">Prettier</a> and adds a bunch of formatting on top of it. Vetur uses Prettyhtml, which wraps Prettier. I chose ES Lint + Prettier when I created my project…given all that I went through to get this right, you might want to try to use the ESLint + Standard settings instead.</p>
+<p>By default, <a target="_blank" rel="noopener" href="https://vuejs.github.io/vetur/">Vetur</a> (The VS Code Vue.js Extension) uses <a target="_blank" rel="noopener" href="https://github.com/Prettyhtml/prettyhtml">Prettyhtml</a> as the default html formatter. Which wraps <a target="_blank" rel="noopener" href="https://prettier.io/">Prettier</a> and adds a bunch of formatting on top of it. Vetur uses Prettyhtml, which wraps Prettier. I chose ES Lint + Prettier when I created my project…given all that I went through to get this right, you might want to try to use the ESLint + Standard settings instead.</p>
 <p>Here’s a video that I created to walk you through all of this:</p>
 <div class="video-container"><iframe src="https://www.youtube.com/embed/z3u6LYRKHWE" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
 <p>Scroll down to the bottom of this post for the VS Code and ES Lint settings I ended up using.</p>
@@ -288,14 +288,14 @@ warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:
 <pre class="line-numbers language-json"><code class="language-json">"vetur.format.defaultFormatter.html": "js-beautify-html"
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Did a format…and whitespace was retained in my .vue files, but attributes were still being wrapped, so I dug and found the <code>wrap_attributes</code> settings and added this:</p>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
   "vetur.format.defaultFormatter.html": "js-beautify-html",
-  "vetur.format.defaultFormatterOptions": {
-    "js-beautify-html": {
+  "vetur.format.defaultFormatterOptions": &amp;#123;
+    "js-beautify-html": &amp;#123;
      "wrap_attributes": "auto"
-    }
-   }
-}
+    &amp;#125;
+   &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>And that setting disables wrap_attributes.</p>
 <p>So, I’m golden with Formatting…now onto ES Lint issues.</p>
@@ -311,7 +311,7 @@ warning: Insert `·` (prettier/prettier) at src\App.vue:7:17:
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>The issue is that ES Lint is configured to use Prettier, which wants attributes on new lines.</p>
 <p>I could have disabled that setting, but I’m now using es-beautifer, so I better switch to the ES Lint rules for that.</p>
-<p>I found the ES Lint beautifier plugin here: <a href="https://github.com/dai-shi/es-beautifier#usage-eslint-plugin" target="_blank" rel="noopener">https://github.com/dai-shi/es-beautifier#usage-eslint-plugin</a></p>
+<p>I found the ES Lint beautifier plugin here: <a target="_blank" rel="noopener" href="https://github.com/dai-shi/es-beautifier#usage-eslint-plugin">https://github.com/dai-shi/es-beautifier#usage-eslint-plugin</a></p>
 <p>And I installed it:</p>
 <p><code>yarn add eslint eslint-plugin-es-beautifier</code></p>
 <p>And then opened <code>.eslintrc.js</code> and added that plugin:</p>
@@ -321,36 +321,36 @@ extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescr
 <p>Re-ran <code>yarn serve</code></p>
 <p>And got this error:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">error: Missing trailing comma (comma-dangle) at src\views\Home.vue:15:4:
- 13 |  components: {
+ 13 |  components: &amp;#123;
  14 |   HelloWorld
-&gt; 15 |  }
+&gt; 15 |  &amp;#125;
    |  ^
- 16 | })
- 17 | export default class Home extends Vue {}
+ 16 | &amp;#125;)
+ 17 | export default class Home extends Vue &amp;#123;&amp;#125;
  18 | &lt;/script&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It’s looking for a dangling comman, which I don’t want to add to my code, so I disable it with this:</p>
-<pre class="line-numbers language-json"><code class="language-json">rules: {
+<pre class="line-numbers language-json"><code class="language-json">rules: &amp;#123;
   "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
   "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   "comma-dangle": ["error", "never"]
- },
+ &amp;#125;,
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I re-run <code>yarn serve</code> and get this:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">error: Expected linebreaks to be 'LF' but found 'CRLF' (linebreak-style) at src\main.ts:13:19:
  11 |  store,
  12 |  render: h =&gt; h(App)
-&gt; 13 | }).$mount("#app");
+&gt; 13 | &amp;#125;).$mount("#app");
    |          ^
  14 |
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It is checking for consistent linebreaks. At this point, I don’t really care, so I just disable that rule with this:</p>
-<pre class="line-numbers language-json"><code class="language-json"> rules: {
+<pre class="line-numbers language-json"><code class="language-json"> rules: &amp;#123;
   "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
   "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   "comma-dangle": ["error", "never"],
   "linebreak-style": "off"
- },
+ &amp;#125;,
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>AND BOOM!</em></p>
 <pre class="line-numbers language-bash"><code class="language-bash">DONE Compiled successfully in 5661ms                                                                              10:20:40 AM
@@ -374,35 +374,35 @@ Time: 3210ms
 <p>Jon</p>
 <p>Here are the files:</p>
 <p><strong>.eslintrc.js</strong></p>
-<pre class="line-numbers language-json"><code class="language-json">module.exports = {
+<pre class="line-numbers language-json"><code class="language-json">module.exports = &amp;#123;
  root: true,
- env: {
+ env: &amp;#123;
   node: true
- },
+ &amp;#125;,
  plugins: ["es-beautifier"],
  extends: ["plugin:vue/essential", "plugin:es-beautifier/standard", "@vue/typescript"],
- rules: {
+ rules: &amp;#123;
   "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
   "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
   "comma-dangle": ["error", "never"],
   "linebreak-style": "off"
- },
- parserOptions: {
+ &amp;#125;,
+ parserOptions: &amp;#123;
   parser: "@typescript-eslint/parser"
- }
-};
+ &amp;#125;
+&amp;#125;;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>VS Code User Settings</strong></p>
-<pre class="line-numbers language-json"><code class="language-json">{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
   "window.zoomLevel": 2,
   "vetur.format.defaultFormatter.html": "js-beautify-html",
-  "vetur.format.defaultFormatterOptions": {
-    "js-beautify-html": {
+  "vetur.format.defaultFormatterOptions": &amp;#123;
+    "js-beautify-html": &amp;#123;
       "wrap_attributes": "auto"
-    }
-  },
+    &amp;#125;
+  &amp;#125;,
   "vetur.format.defaultFormatter.ts": "vscode-typescript"
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
@@ -574,7 +574,7 @@ Time: 3210ms
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

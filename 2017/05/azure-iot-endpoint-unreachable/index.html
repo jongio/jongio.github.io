@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -209,7 +209,7 @@
             <p>Azure IoT allows you to define “Endpoints” and send messages to them via “Routes”. Learn more about Endpoints and Routes <a href="/2016/12/azure-iot-hub-routes/">here</a>.</p>
 <p>I setup a Service Bus Queue Endpoint, but it was showing as “Unreachable” in the portal.</p>
 <p><img src="000082.png" alt=""></p>
-<p>I spent a bunch of time trying to debug this and ultimately discovered that IoT Hub Service Bus Endpoints don’t support Queues with “Sessions” or “Duplicate Detection” enabled. Here’s a link to the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints" target="_blank" rel="noopener">official docs</a>.</p>
+<p>I spent a bunch of time trying to debug this and ultimately discovered that IoT Hub Service Bus Endpoints don’t support Queues with “Sessions” or “Duplicate Detection” enabled. Here’s a link to the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints">official docs</a>.</p>
 <p>So, when you create your Queue, make sure you <strong>DO NOT</strong> check the boxes below:</p>
 <ul>
 <li>“Enable duplicate detection”</li>
@@ -387,7 +387,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -218,9 +218,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Office.Interop.Outlook;
 
-namespace OutlookRssDelete {
- class Program {
-  static void Main(string[] args) {
+namespace OutlookRssDelete &amp;#123;
+ class Program &amp;#123;
+  static void Main(string[] args) &amp;#123;
    Application app = new Application();
    NameSpace ns = app.GetNamespace("MAPI");
 
@@ -229,28 +229,28 @@ namespace OutlookRssDelete {
 
    // Put in temp because we need to delete from the same list
    List feedFolders = new List();
-   foreach(MAPIFolder f in feeds.Folders) {
+   foreach(MAPIFolder f in feeds.Folders) &amp;#123;
     feedFolders.Add(f);
-   }
+   &amp;#125;
 
-   foreach(MAPIFolder f in feedFolders) {
+   foreach(MAPIFolder f in feedFolders) &amp;#123;
     Console.WriteLine(f.Name);
-    try {
+    try &amp;#123;
 
      f.Delete();
-    } catch {
-     try {
+    &amp;#125; catch &amp;#123;
+     try &amp;#123;
       Console.WriteLine("Delete failed.Try Moving to Deleted Items");
       f.MoveTo(delitems);
-     } catch (System.Exception ex1) {
+     &amp;#125; catch (System.Exception ex1) &amp;#123;
       Console.WriteLine("Move to Deleted Items Failed.Call Helpdesk: )" + ex1.ToString());
-    }
+    &amp;#125;
 
-   }
-  }
- }
-}
-}
+   &amp;#125;
+  &amp;#125;
+ &amp;#125;
+&amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
@@ -422,7 +422,7 @@ namespace OutlookRssDelete {
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

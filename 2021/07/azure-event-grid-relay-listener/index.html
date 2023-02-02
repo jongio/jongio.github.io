@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/07/azure-event-grid-relay-listener/107.png">
 <meta property="article:published_time" content="2021-07-06T10:56:23.000Z">
-<meta property="article:modified_time" content="2021-07-20T22:35:50.567Z">
+<meta property="article:modified_time" content="2021-07-20T22:35:50.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,17 +205,17 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Let’s say that you are developing with Azure Event Grid and you simply want to see the messages that it is generating to observe the schema or debug it.  To do so you need to configure an Event Grid handler, which can be a Function, WebHook, Relay, Logic App, Service Bus, etc (the full list is here: <a href="https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers" target="_blank" rel="noopener">Event Grid Handlers</a>, and intercept the message that is sent to it.</p>
-<p>In this blog, we’ll take a look at how to use <a href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-what-is-it" target="_blank" rel="noopener">Azure Relay</a> - <a href="https://docs.microsoft.com/en-us/azure/event-grid/handler-relay-hybrid-connections" target="_blank" rel="noopener">Hybrid Connections</a> - as an Event Grid handler and print the messages it receives to the console.</p>
+            <p>Let’s say that you are developing with Azure Event Grid and you simply want to see the messages that it is generating to observe the schema or debug it.  To do so you need to configure an Event Grid handler, which can be a Function, WebHook, Relay, Logic App, Service Bus, etc (the full list is here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers">Event Grid Handlers</a>, and intercept the message that is sent to it.</p>
+<p>In this blog, we’ll take a look at how to use <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-what-is-it">Azure Relay</a> - <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/event-grid/handler-relay-hybrid-connections">Hybrid Connections</a> - as an Event Grid handler and print the messages it receives to the console.</p>
 <blockquote>
 <p>NOTE: There are variations of Relay listeners out there, but none (that I could find) for Hybrid Connections, so hopefully this gets you what you need.</p>
 </blockquote>
 <p>Typically Relay is used to expose a service that runs in your corporate network to the public cloud, but it can also be used as a simple Event Grid event listener for debugging purposes.</p>
 <blockquote>
-<p>IMPORTANT: Something to keep in mind is the expense of using Azure Relay for debugging purposes.  It’s currently (7/2021) about $10 a month per listener. See the <a href="https://azure.microsoft.com/en-us/pricing/details/service-bus/" target="_blank" rel="noopener">Azure Service Bus pricing page</a> for more info. For debugging purposes, you might just want to spin up a Service Bus listener which is currently $.05/million messages.</p>
+<p>IMPORTANT: Something to keep in mind is the expense of using Azure Relay for debugging purposes.  It’s currently (7/2021) about $10 a month per listener. See the <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/pricing/details/service-bus/">Azure Service Bus pricing page</a> for more info. For debugging purposes, you might just want to spin up a Service Bus listener which is currently $.05/million messages.</p>
 </blockquote>
 <p>A little background/context:</p>
-<p>Event Grid publishes events that either happen in Azure called “system topics” - or you can publish your own called “custom topics”.  You setup handlers for those events. You can find all the supported handlers here: <a href="https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers</a></p>
+<p>Event Grid publishes events that either happen in Azure called “system topics” - or you can publish your own called “custom topics”.  You setup handlers for those events. You can find all the supported handlers here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers">https://docs.microsoft.com/en-us/azure/event-grid/overview#event-handlers</a></p>
 <p>Azure Relay is one of the supported handlers.  Azure Relay handles the event and pushes it to “listeners” that you run on your network.</p>
 <p>In our case, our listener will be a simple console app that listens for Relay messages.</p>
 <p>Here’s the message flow that we’ll look at:</p>
@@ -238,13 +238,13 @@
 </ol>
 <p>You need to generate an Event Grid event, one of the easiest ways to do that is to create a storage account and then create a blog to generate that event.</p>
 <p>Go ahead and create a storage account if you don’t already have one you can use.</p>
-<p>See this page for more info: <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal</a></p>
+<p>See this page for more info: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal">https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal</a></p>
 <ol start="2">
 <li>Azure Relay</li>
 </ol>
 <p>You’ll use Azure Relay to receive the Event Grid events.</p>
 <p>See this page to create an Azure Relay Namespace and Hybrid Connection:<br>
-<a href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started</a></p>
+<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started">https://docs.microsoft.com/en-us/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started</a></p>
 <ol start="3">
 <li>Azure Event Grid Subscription</li>
 </ol>
@@ -282,7 +282,7 @@ Via: 1.1 jongrelaytest.servicebus.windows.net
 
 
 =====BODY=====
-{"id":"28e1ada3-701e-0029-4590-729d6d06b7ee","source":"/subscriptions//resourceGroups/jongio/providers/Microsoft.Storage/storageAccounts/jongiostorage","specversion":"1.0","type":"Microsoft.Storage.BlobCreated","dataschema":"#","subject":"/blobServices/default/containers/container/blobs/jongblob1.txt","time":"2021-07-06T17:55:23.2904438Z","data":{"api":"PutBlob","clientRequestId":"97197e51-c6f6-4f94-5ee0-bff852460cb3","requestId":"28e1ada3-701e-0029-4590-729d6d000000","eTag":"0x8D940A73A62C8F6","contentType":"text/p
+&amp;#123;"id":"28e1ada3-701e-0029-4590-729d6d06b7ee","source":"/subscriptions//resourceGroups/jongio/providers/Microsoft.Storage/storageAccounts/jongiostorage","specversion":"1.0","type":"Microsoft.Storage.BlobCreated","dataschema":"#","subject":"/blobServices/default/containers/container/blobs/jongblob1.txt","time":"2021-07-06T17:55:23.2904438Z","data":&amp;#123;"api":"PutBlob","clientRequestId":"97197e51-c6f6-4f94-5ee0-bff852460cb3","requestId":"28e1ada3-701e-0029-4590-729d6d000000","eTag":"0x8D940A73A62C8F6","contentType":"text/p
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>As always, let me know if you run into any issues.</p>
 <p>Hopefully this helps you dev with Event Grid.</p>
@@ -457,7 +457,7 @@ Via: 1.1 jongrelaytest.servicebus.windows.net
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

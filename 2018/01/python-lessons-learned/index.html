@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2018/01/python-lessons-learned/python.png">
 <meta property="article:published_time" content="2018-01-04T06:14:25.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:53:20.439Z">
+<meta property="article:modified_time" content="2021-03-18T06:53:20.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,15 +205,15 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I just published my first official distributable <a href="https://pypi.python.org/pypi/iotedgedev" target="_blank" rel="noopener">Python package to PyPI</a>, which makes it available to install via <code>pip install</code>.  It’s called <strong>Azure IoT Edge Dev Tool</strong> (<a href="https://pypi.python.org/pypi/iotedgedev" target="_blank" rel="noopener">PyPI</a>, <a href="https://github.com/azure/iotedgedev" target="_blank" rel="noopener">GitHub</a>, <a href="https://www.youtube.com/watch?v=lcDFX8PXqUQ" target="_blank" rel="noopener">Video</a>) and helps IoT Edge developers with inner loop dev tasks (dev, test, debug, build, push, release). This post is less about the actual pip package and more about my experience building and distributing one.</p>
+            <p>I just published my first official distributable <a target="_blank" rel="noopener" href="https://pypi.python.org/pypi/iotedgedev">Python package to PyPI</a>, which makes it available to install via <code>pip install</code>.  It’s called <strong>Azure IoT Edge Dev Tool</strong> (<a target="_blank" rel="noopener" href="https://pypi.python.org/pypi/iotedgedev">PyPI</a>, <a target="_blank" rel="noopener" href="https://github.com/azure/iotedgedev">GitHub</a>, <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=lcDFX8PXqUQ">Video</a>) and helps IoT Edge developers with inner loop dev tasks (dev, test, debug, build, push, release). This post is less about the actual pip package and more about my experience building and distributing one.</p>
 <p>Coding in Python is easy. Distributing it as a Python package is hard.  5% of the effort is coding. 95% of the effort goes into figuring out how to distribute the thing.  I spent so many hours struggling through this on my own that I had to share to hopefully save you some ticks.</p>
 <p>Let’s jump right in.</p>
 <h2 id="Python-Version-2-or-3"><a class="header-anchor" href="#Python-Version-2-or-3"></a>Python Version 2 or 3</h2>
 <p>My project works with both Python 2.7 and Python 3.6, but I <strong>should have only coded it for Python 3</strong>.  If you don’t absolutely need to support Python 2.7, then don’t.  I spent way too much time debugging issues that worked on one version but not the other.  I’m building a proof-of-concept package, so I could easily ask my users to install Python 3. In more official organization supported packages, you might not have that luxury.</p>
 <h2 id="Isolate-Installs-with-Virtual-Environments"><a class="header-anchor" href="#Isolate-Installs-with-Virtual-Environments"></a>Isolate Installs with Virtual Environments</h2>
-<p>I just jumped right in to writing Python code and didn’t realize the concept of Virtual Environments existed in Python.  In a nutshell, it allows you to isolate pip installs from other pip installs, so you avoid versioning conflicts with global packages.  You can read more about them here: <a href="https://docs.python.org/3/tutorial/venv.html" target="_blank" rel="noopener">https://docs.python.org/3/tutorial/venv.html</a></p>
+<p>I just jumped right in to writing Python code and didn’t realize the concept of Virtual Environments existed in Python.  In a nutshell, it allows you to isolate pip installs from other pip installs, so you avoid versioning conflicts with global packages.  You can read more about them here: <a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/venv.html">https://docs.python.org/3/tutorial/venv.html</a></p>
 <h2 id="Python-Package-Scaffold-Cookiecutter"><a class="header-anchor" href="#Python-Package-Scaffold-Cookiecutter"></a>Python Package Scaffold: Cookiecutter</h2>
-<p>I discovered <a href="https://github.com/audreyr/cookiecutter" target="_blank" rel="noopener">Cookiecutter</a>, the Python package project scaffolding tool, about half way through the creation of my pip package.  I wish I would have known about it earlier, because it is really helpful. It will scaffold out an entire project for you with unit tests, Travis integration, setuptools and so on.  I used the <a href="https://github.com/audreyr/cookiecutter-pypackage" target="_blank" rel="noopener">Cookiecutter PyPackage</a> template, but you can find a lot more of them here: <a href="https://cookiecutter.readthedocs.io/en/latest/readme.html#a-pantry-full-of-cookiecutters" target="_blank" rel="noopener">A Pantry Full of Cookiecutters<br>
+<p>I discovered <a target="_blank" rel="noopener" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a>, the Python package project scaffolding tool, about half way through the creation of my pip package.  I wish I would have known about it earlier, because it is really helpful. It will scaffold out an entire project for you with unit tests, Travis integration, setuptools and so on.  I used the <a target="_blank" rel="noopener" href="https://github.com/audreyr/cookiecutter-pypackage">Cookiecutter PyPackage</a> template, but you can find a lot more of them here: <a target="_blank" rel="noopener" href="https://cookiecutter.readthedocs.io/en/latest/readme.html#a-pantry-full-of-cookiecutters">A Pantry Full of Cookiecutters<br>
 </a></p>
 <h3 id="Create-Project"><a class="header-anchor" href="#Create-Project"></a>Create Project</h3>
 <pre class="line-numbers language-bash"><code class="language-bash">pip install -U cookiecutter
@@ -227,21 +227,21 @@ cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git
 <li>In <code>.travis.yml</code> and <code>travis_pypi_setup.py</code> changed <code>iotedgedev</code> to <code>iotedgedev</code></li>
 </ol>
 <h3 id="Reserve-Your-Project-Name-on-both-PyPI-Test-and-PyPI-Production-Environments"><a class="header-anchor" href="#Reserve-Your-Project-Name-on-both-PyPI-Test-and-PyPI-Production-Environments"></a>Reserve Your Project Name on both PyPI Test and PyPI Production Environments</h3>
-<p>PyPI Test(<a href="https://test.pypi.org" target="_blank" rel="noopener">https://test.pypi.org</a>) and PyPI Production(<a href="https://pypi.org" target="_blank" rel="noopener">https://pypi.org</a>) have different backends, so you need to register your project name with both of them.  Do this immediately after you decide on a name, because someone could register it or you could run into an issue like I did, where I was getting a ]403 because someone already registered the name against the PyPI Test environment](<a href="https://github.com/pypa/warehouse/issues/4607" target="_blank" rel="noopener">https://github.com/pypa/warehouse/issues/4607</a>).  PyPI was able to resolve the issue - but you might not be able to.  Reserve your names.</p>
+<p>PyPI Test(<a target="_blank" rel="noopener" href="https://test.pypi.org">https://test.pypi.org</a>) and PyPI Production(<a target="_blank" rel="noopener" href="https://pypi.org">https://pypi.org</a>) have different backends, so you need to register your project name with both of them.  Do this immediately after you decide on a name, because someone could register it or you could run into an issue like I did, where I was getting a ]403 because someone already registered the name against the PyPI Test environment](<a target="_blank" rel="noopener" href="https://github.com/pypa/warehouse/issues/4607">https://github.com/pypa/warehouse/issues/4607</a>).  PyPI was able to resolve the issue - but you might not be able to.  Reserve your names.</p>
 <h2 id="Testing-Tox-and-unittest"><a class="header-anchor" href="#Testing-Tox-and-unittest"></a>Testing: Tox and unittest</h2>
-<p>The template I chose uses <a href="https://pypi.python.org/pypi/tox" target="_blank" rel="noopener">Tox</a> and <a href="https://docs.python.org/2/library/unittest.html" target="_blank" rel="noopener">unittest</a> (not pytest) so I just went with that.  The tests are in the tests folder and were pretty straight forward to write.  Granted, I only did a few simple tests and might switch to pytest at a later time if need be, but for my case unittest worked fine.</p>
+<p>The template I chose uses <a target="_blank" rel="noopener" href="https://pypi.python.org/pypi/tox">Tox</a> and <a target="_blank" rel="noopener" href="https://docs.python.org/2/library/unittest.html">unittest</a> (not pytest) so I just went with that.  The tests are in the tests folder and were pretty straight forward to write.  Granted, I only did a few simple tests and might switch to pytest at a later time if need be, but for my case unittest worked fine.</p>
 <p>Tox is configured in the <code>tox.ini</code> file.  You can set it up to run your code against any Python version and linters such as flake.</p>
 <p>When you want to run your tests, you simply navigate to your root and execute <code>tox</code>.</p>
 <h2 id="Install-Package-Locally-with-Editable-Installs"><a class="header-anchor" href="#Install-Package-Locally-with-Editable-Installs"></a>Install Package Locally with Editable Installs</h2>
-<p>When I first started, I was using full commands such as <code>python edge.py runtime --setup --start</code>, but then I discovered <a href="https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs" target="_blank" rel="noopener">“Editable Installs”</a>, which will install a package from a local or github source without having to have it on PyPI</p>
+<p>When I first started, I was using full commands such as <code>python edge.py runtime --setup --start</code>, but then I discovered <a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs">“Editable Installs”</a>, which will install a package from a local or github source without having to have it on PyPI</p>
 <p>So, I ran <code>pip install -e .</code> from the root of my project and <code>iotedgedev</code> is now available.</p>
 <p>This is super helpful because I can just edit my code and when I go back to the command prompt, iotedgedev commands are all up-to-date without any other installs required.</p>
 <h2 id="Package-Distribution-PyPI"><a class="header-anchor" href="#Package-Distribution-PyPI"></a>Package Distribution: PyPI</h2>
-<p>After you have coded your project, you are going to want to upload it to <a href="https://testpypi.python.org/pypi" target="_blank" rel="noopener">PyPI test environment</a> to test it out first and then, when ready, upload it to the <a href="https://pypi.python.org/pypi" target="_blank" rel="noopener">PyPI production environment</a>.</p>
+<p>After you have coded your project, you are going to want to upload it to <a target="_blank" rel="noopener" href="https://testpypi.python.org/pypi">PyPI test environment</a> to test it out first and then, when ready, upload it to the <a target="_blank" rel="noopener" href="https://pypi.python.org/pypi">PyPI production environment</a>.</p>
 <h3 id="Setuptools-not-distutils"><a class="header-anchor" href="#Setuptools-not-distutils"></a>Setuptools, not distutils</h3>
 <p>The Cookiecutter project I used included setuptools configuration. After a quick search, I discovered that’s the preferred route, so I just went with it.</p>
 <h3 id="Wheel-not-egg"><a class="header-anchor" href="#Wheel-not-egg"></a>Wheel, not egg</h3>
-<p>Wheel and Egg are packaging formats, you can read more about them <a href="https://packaging.python.org/discussions/wheel-vs-egg/" target="_blank" rel="noopener">here</a>.  I went with Wheel because it appears to be the recommended approach and it worked the first time I tried it.</p>
+<p>Wheel and Egg are packaging formats, you can read more about them <a target="_blank" rel="noopener" href="https://packaging.python.org/discussions/wheel-vs-egg/">here</a>.  I went with Wheel because it appears to be the recommended approach and it worked the first time I tried it.</p>
 <p>To generate a new wheel: <code>python setup.py bdist_wheel</code></p>
 <h3 id="Bumpversion"><a class="header-anchor" href="#Bumpversion"></a>Bumpversion</h3>
 <p>This package will find all the appropriate versions and bump them up by one when you call it.</p>
@@ -301,7 +301,7 @@ password=
 <pre class="line-numbers language-bash"><code class="language-bash">pip --no-cache-dir install --index-url https://test.pypi.org/simple/ iotedgedev --extra-index-url https://pypi.org/simple
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Command-Line-Arguments-Click"><a class="header-anchor" href="#Command-Line-Arguments-Click"></a>Command Line Arguments: Click</h2>
-<p>I started off with <a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">argparse</a> and evaluated a few others, but landed on <a href="http://click.pocoo.org" target="_blank" rel="noopener">Click</a> because I like how it is integrated into the code. I had everything working with argparse and it was fine, but one I started writing tests I really appreciated that Click came with a <code>CLiRunner</code> object that was really helpful. I converted everything to Click in an hour or so.  You can see the final result here: <a href="https://github.com/azure/iotedgedev/blob/master/iotedgedev/cli.py" target="_blank" rel="noopener">iotedgedev/iotedgedev/cli.py</a>. You can view the full command structure on GitHub here: <a href="https://github.com/azure/iotedgedev#commands" target="_blank" rel="noopener">iotedgedev/README.md</a></p>
+<p>I started off with <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/argparse.html">argparse</a> and evaluated a few others, but landed on <a target="_blank" rel="noopener" href="http://click.pocoo.org">Click</a> because I like how it is integrated into the code. I had everything working with argparse and it was fine, but one I started writing tests I really appreciated that Click came with a <code>CLiRunner</code> object that was really helpful. I converted everything to Click in an hour or so.  You can see the final result here: <a target="_blank" rel="noopener" href="https://github.com/azure/iotedgedev/blob/master/iotedgedev/cli.py">iotedgedev/iotedgedev/cli.py</a>. You can view the full command structure on GitHub here: <a target="_blank" rel="noopener" href="https://github.com/azure/iotedgedev#commands">iotedgedev/README.md</a></p>
 <h3 id="Help-with-h-and-help"><a class="header-anchor" href="#Help-with-h-and-help"></a>Help with -h and --help</h3>
 <p>You can get both -h and --help for help commands if you pass this <code>CONTEXT_SETTINGS = dict(help_option_names=[&quot;-h&quot;, &quot;--help&quot;])</code> into the <code>@click.group</code> statement.</p>
 <pre class="line-numbers language-py"><code class="language-py">CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
@@ -342,13 +342,13 @@ def main():
             self.output.error(self.decode(stderr_data))
             sys.exit()
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24" target="_blank" rel="noopener">https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24">https://github.com/Azure/iotedgedev/blob/master/iotedgedev/utility.py#L24</a></p>
 <h2 id="PyPI-Readme"><a class="header-anchor" href="#PyPI-Readme"></a>PyPI Readme</h2>
 <p>PyPI does not natively support Markdown, although the website says it does, after many hours of trying I could not get it to work.  They do support RST and there are ways to convert Markdown to RST - but nothing was working for me. The Markdown to RST converter I was using <code>pyandoc</code> was not generating valid RST and I was not interested in maintaining two versions (Markdown &amp; RST) of my Readme. If this project was officially supported by Microsoft, then I would have figured it out, but this is a proof-of-concept project, so I decided to abandon the PyPI readme in favor of GitHub markdown and then linked to GitHub from PyPI.</p>
 <p>See link to github in this image:</p>
 <p><img src="04.png" alt=""></p>
 <h2 id="Environment-Variables-Python-DotEnv"><a class="header-anchor" href="#Environment-Variables-Python-DotEnv"></a>Environment Variables: Python-DotEnv</h2>
-<p>My package heavily relies on Environment Variables so I can have a very simple command interface.  I did not want to ask the user to type all them in at the command line.  I used dotenv in my node projects and was happy to see that there’s one available for Python as well: <a href="https://github.com/theskumar/python-dotenv" target="_blank" rel="noopener">Python-DotEnv</a>. You can view my .env file here:<a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/template/.env.tmp" target="_blank" rel="noopener">iotedgedev/template/.env.tmp</a> and you can see how I’m loading it here: <a href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/envvars.py#L59" target="_blank" rel="noopener">iotedgedev/envvars.py</a></p>
+<p>My package heavily relies on Environment Variables so I can have a very simple command interface.  I did not want to ask the user to type all them in at the command line.  I used dotenv in my node projects and was happy to see that there’s one available for Python as well: <a target="_blank" rel="noopener" href="https://github.com/theskumar/python-dotenv">Python-DotEnv</a>. You can view my .env file here:<a target="_blank" rel="noopener" href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/template/.env.tmp">iotedgedev/template/.env.tmp</a> and you can see how I’m loading it here: <a target="_blank" rel="noopener" href="https://github.com/Azure/iotedgedev/blob/master/iotedgedev/envvars.py#L59">iotedgedev/envvars.py</a></p>
 <p>This will load the .env from the current directory:</p>
 <pre class="line-numbers language-py"><code class="language-py">from dotenv import load_dotenv
 
@@ -360,7 +360,7 @@ load_dotenv(dotenv_path)
 <p>Make sure you add <code>.env</code> to your .gitignore file.</p>
 </blockquote>
 <h2 id="Resources"><a class="header-anchor" href="#Resources"></a>Resources</h2>
-<p>I found this video really helpful: <a href="https://www.youtube.com/watch?v=4fzAMdLKC5k" target="_blank" rel="noopener">Python Packaging from Init to Deploy</a></p>
+<p>I found this video really helpful: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=4fzAMdLKC5k">Python Packaging from Init to Deploy</a></p>
 <h2 id="Conclusion"><a class="header-anchor" href="#Conclusion"></a>Conclusion</h2>
 <p>I still have a lot to learn about Python and package distribution, but I feel like I’m in decent shape after getting this far. I went back and forth from hating Python to sometimes liking it. It took a lot less time to write the Python code then it did to distribute it.</p>
 <p>I really hope this posts saves you a time.</p>
@@ -535,7 +535,7 @@ load_dotenv(dotenv_path)
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

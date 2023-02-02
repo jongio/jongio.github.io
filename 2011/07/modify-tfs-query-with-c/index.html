@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,34 +207,34 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I had to change TFS Iterations and didn’t want to break all existing queries. I also didn’t want to update them all manually.</p>
-<p>Thanks to Tarun Arora for a good starting point: <a href="http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx" target="_blank" rel="noopener">http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx</a></p>
+<p>Thanks to Tarun Arora for a good starting point: <a target="_blank" rel="noopener" href="http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx">http://geekswithblogs.net/TarunArora/archive/2011/07/10/tfs-2010-sdk-get-projects-iterations-area-path-queries-and.aspx</a></p>
 <p>Here’s how to update a query in code:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using System;
 
 namespace ConsoleApplication1
-{
+&amp;#123;
     class Program
-    {
+    &amp;#123;
         static void Main(string[] args)
-        {
+        &amp;#123;
             var tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri("http://yourtfsurl/"));
             var store = tfs.GetService&lt;WorkItemStore&gt;();
             var project = store.Projects["your project name"];
 
             foreach (StoredQuery query in project.StoredQueries)
-            {
+            &amp;#123;
                 if (query.QueryText.Contains("[System.IterationPath] under 'your area path'"))
-                {
+                &amp;#123;
                     query.QueryText = query.QueryText.Replace("[System.IterationPath] under 'your area path'", 
                         "[System.IterationPath] under 'your iteration path'");
                     query.Update();
-                }
-            }
-        }
-    }
-}
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </div>
@@ -406,7 +406,7 @@ namespace ConsoleApplication1
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

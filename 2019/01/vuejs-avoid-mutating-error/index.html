@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -217,7 +217,7 @@ Working on a Vue.js and TypeScript project.</p>
 <p>Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “enabled”</p>
 </blockquote>
 <p>And fixed by doing:</p>
-<pre class="line-numbers language-typescript"><code class="language-typescript">@Prop({default: false}) enabled!: boolean;
+<pre class="line-numbers language-typescript"><code class="language-typescript">@Prop(&amp;#123;default: false&amp;#125;) enabled!: boolean;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Discovered that you set the default in the @Prop init, versus inline.</p>
 <p>Jon</p>
@@ -391,7 +391,7 @@ Working on a Vue.js and TypeScript project.</p>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

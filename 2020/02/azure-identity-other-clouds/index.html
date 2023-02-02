@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,sdk,government,cloud,azure-sdk,azure-identity" />
+    <meta name="keywords" content="azure,azure-identity,azure-sdk,sdk,government,cloud" />
     
     <meta name="description" content="Azure has many cloud instances like: Azure Public, Azure Government, Azure German, and Azure China.  You can see the full cloud list and associated endpoints via the Azure CLI command az cloud list. I">
 <meta property="og:type" content="article">
@@ -33,14 +33,14 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta property="article:published_time" content="2020-02-29T13:46:26.000Z">
-<meta property="article:modified_time" content="2021-09-09T00:34:11.665Z">
+<meta property="article:modified_time" content="2021-09-09T00:34:11.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
+<meta property="article:tag" content="azure-identity">
+<meta property="article:tag" content="azure-sdk">
 <meta property="article:tag" content="sdk">
 <meta property="article:tag" content="government">
 <meta property="article:tag" content="cloud">
-<meta property="article:tag" content="azure-sdk">
-<meta property="article:tag" content="azure-identity">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2020/02/azure-identity-other-clouds/000099.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -97,7 +97,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -216,8 +216,8 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>That is because all of the libraries default to using <code>https://login.microsoftonline.com</code> as the Azure Active Diretory authority host.  Each of the other clouds have different authority host endpoints, as you can see from the Azure Government profile here:</p>
 <p>The <code>activeDirectory</code> property doesn’t end with <code>.com</code> it ends with <code>.us</code>, and every cloud is different.</p>
-<pre class="line-numbers language-json"><code class="language-json">{
-    "endpoints": {
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+    "endpoints": &amp;#123;
       "activeDirectory": "https://login.microsoftonline.us",
       "activeDirectoryDataLakeResourceId": null,
       "activeDirectoryGraphResourceId": "https://graph.windows.net/",
@@ -231,19 +231,19 @@
       "resourceManager": "https://management.usgovcloudapi.net/",
       "sqlManagement": "https://management.core.usgovcloudapi.net:8443/",
       "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json"
-    },
+    &amp;#125;,
     "isActive": true,
     "name": "AzureUSGovernment",
     "profile": "latest",
-    "suffixes": {
+    "suffixes": &amp;#123;
       "acrLoginServerEndpoint": ".azurecr.us",
       "azureDatalakeAnalyticsCatalogAndJobEndpoint": null,
       "azureDatalakeStoreFileSystemEndpoint": null,
       "keyvaultDns": ".vault.usgovcloudapi.net",
       "sqlServerHostname": ".database.usgovcloudapi.net",
       "storageEndpoint": "core.usgovcloudapi.net"
-    }
-  },
+    &amp;#125;
+  &amp;#125;,
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>When you instantiate <code>Azure.Identity.DefaultAzureCredential()</code> without any parameters:</p>
 <pre class="line-numbers language-js"><code class="language-js">const credential = new DefaultAzureCredential();
@@ -256,13 +256,13 @@
 <p>Here’s what you need to do for each language:</p>
 <h2 id="Setting-Authority-Host-via-the-AZURE-AUTHORITY-HOST-Environment-Variable"><a class="header-anchor" href="#Setting-Authority-Host-via-the-AZURE-AUTHORITY-HOST-Environment-Variable"></a>Setting Authority Host via the AZURE_AUTHORITY_HOST Environment Variable</h2>
 <p>As of the following releases, each Azure SDK library now supports setting authority host via the AZURE_AUTHORITY_HOST environment variable.</p>
-<p><strong>.NET</strong>: <a href="https://www.nuget.org/packages/Azure.Identity/1.2.0" target="_blank" rel="noopener">Azure.Identity 1.2.0</a></p>
-<p><strong>Python</strong>: <a href="https://pypi.org/project/azure-identity/1.4.0/" target="_blank" rel="noopener">azure-identity 1.4.0</a></p>
-<p><strong>Java</strong>: <a href="https://search.maven.org/artifact/com.azure/azure-identity/1.1.0/jar" target="_blank" rel="noopener">com.azure:azure-identity 1.1.0</a></p>
-<p><strong>JavaScript/TypeScript</strong>: <a href="https://www.npmjs.com/package/@azure/identity/v/1.1.0" target="_blank" rel="noopener">@azure/identity 1.1.0</a></p>
+<p><strong>.NET</strong>: <a target="_blank" rel="noopener" href="https://www.nuget.org/packages/Azure.Identity/1.2.0">Azure.Identity 1.2.0</a></p>
+<p><strong>Python</strong>: <a target="_blank" rel="noopener" href="https://pypi.org/project/azure-identity/1.4.0/">azure-identity 1.4.0</a></p>
+<p><strong>Java</strong>: <a target="_blank" rel="noopener" href="https://search.maven.org/artifact/com.azure/azure-identity/1.1.0/jar">com.azure:azure-identity 1.1.0</a></p>
+<p><strong>JavaScript/TypeScript</strong>: <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/@azure/identity/v/1.1.0">@azure/identity 1.1.0</a></p>
 <h2 id="Setting-Authority-Host-via-the-“AuthorityHost”-property-and-AzureAuthorityHosts-enums"><a class="header-anchor" href="#Setting-Authority-Host-via-the-“AuthorityHost”-property-and-AzureAuthorityHosts-enums"></a>Setting Authority Host via the “AuthorityHost” property and AzureAuthorityHosts enums.</h2>
 <h3 id="NET"><a class="header-anchor" href="#NET"></a>.NET</h3>
-<pre class="line-numbers language-csharp"><code class="language-csharp">var options = new DefaultAzureCredentialOptions { AuthorityHost = AzureAuthorityHosts.AzureGovernment };
+<pre class="line-numbers language-csharp"><code class="language-csharp">var options = new DefaultAzureCredentialOptions &amp;#123; AuthorityHost = AzureAuthorityHosts.AzureGovernment &amp;#125;;
 var client = new KeyClient(new Uri(keyVaultUrl), new DefaultAzureCredential(options));
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>With service version number:</p>
@@ -293,11 +293,11 @@ client = KeyClient(vault_url=VAULT_URL, credential=credential)
 <pre class="line-numbers language-python"><code class="language-python">client = KeyClient(vault_url=VAULT_URL, credential=credential, api_version="7.0")
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="JavaScript-TypeScript"><a class="header-anchor" href="#JavaScript-TypeScript"></a>JavaScript/TypeScript</h3>
-<pre class="line-numbers language-js"><code class="language-js">const credential = new DefaultAzureCredential({ authorityHost: KnownAuthorityHosts.AzureGovernment });
+<pre class="line-numbers language-js"><code class="language-js">const credential = new DefaultAzureCredential(&amp;#123; authorityHost: KnownAuthorityHosts.AzureGovernment &amp;#125;);
 const client = new KeyClient(url, credential);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>With service version number:</p>
-<pre class="line-numbers language-js"><code class="language-js">const client = new KeyClient(url, credential, { serviceVersion: "7.0" });
+<pre class="line-numbers language-js"><code class="language-js">const client = new KeyClient(url, credential, &amp;#123; serviceVersion: "7.0" &amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="Service-Version-Error"><a class="header-anchor" href="#Service-Version-Error"></a>Service Version Error</h2>
 <p>If you get the following error, then you’ll need to explicitly set the version number. Both examples are shown above for each language.</p>
@@ -473,7 +473,7 @@ const client = new KeyClient(url, credential);
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

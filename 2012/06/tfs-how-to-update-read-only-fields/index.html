@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -227,7 +227,7 @@
 </ul>
 <p>2. Copy the following code into your project or take snippets to meet your needs. The inline comments explain what everything does.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">namespace ChangeReadonlyField
-{
+&amp;#123;
     using System;
     using System.Text;
     using System.Xml;
@@ -236,9 +236,9 @@
     using Microsoft.TeamFoundation.WorkItemTracking.Proxy;
 
     class Program
-    {
+    &amp;#123;
         static void Main(string[] args)
-        {
+        &amp;#123;
             var tfs = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(new Uri("[tfs url"));
             var store = tfs.GetService&lt;WorkItemStore&gt;();
             var server = tfs.GetService&lt;WorkItemServer&gt;();
@@ -256,9 +256,9 @@
             // You won't get the correct date if you just call date.ToString()
             var sb = new StringBuilder();
             sb.Append("&lt;Package&gt;");
-            sb.AppendFormat("&lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='{0}' Revision='{1}'&gt;", id, revision);
+            sb.AppendFormat("&lt;UpdateWorkItem ObjectType='WorkItem' BypassRules='1' WorkItemID='&amp;#123;0&amp;#125;' Revision='&amp;#123;1&amp;#125;'&gt;", id, revision);
             sb.Append("&lt;Columns&gt;");
-            sb.AppendFormat("&lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;{0}&lt;/Value&gt;&lt;/Column&gt;",
+            sb.AppendFormat("&lt;Column Column='System.CreatedDate' Type='DateTime'&gt;&lt;Value&gt;&amp;#123;0&amp;#125;&lt;/Value&gt;&lt;/Column&gt;",
                 XmlConvert.ToString(date, XmlDateTimeSerializationMode.Local));
             sb.Append("&lt;/Columns&gt;&lt;/UpdateWorkItem&gt;&lt;/Package&gt;");
 
@@ -290,9 +290,9 @@
                 mthe,
                 out dbStamp,
                 out rowsets);
-        }
-    }
-}
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Jon</p>
 
@@ -465,7 +465,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

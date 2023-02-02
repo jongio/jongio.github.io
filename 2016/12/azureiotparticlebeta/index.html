@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2016/12/azureiotparticlebeta/azureiotparticlebeta_00.png">
 <meta property="article:published_time" content="2016-12-19T13:07:09.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:42:55.851Z">
+<meta property="article:modified_time" content="2021-03-18T06:42:55.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="iot">
@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,13 +207,13 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><img src="azureiotparticlebeta_00.png" alt=""></p>
-<p>Over the past couple of months, the <a href="http://particle.io" target="_blank" rel="noopener">Particle</a> team and the <a href="https://azure.microsoft.com/en-us/suites/iot-suite/" target="_blank" rel="noopener">Azure IoT</a> team have been developing a integration between the two cloud services. Particle is an IoT company that launced on Kickstarter in 2013 and Azure IoT is a new IoT cloud service offering from Microsoft. IoT developers use Particle because their devices are inexpensive, easy to aquire and easy to connect to the cloud. I’ve been a fan of Particle for a long time and use the Particle Photon as the primary device in a workshop I teach at the Microsoft Garage.</p>
+<p>Over the past couple of months, the <a target="_blank" rel="noopener" href="http://particle.io">Particle</a> team and the <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/suites/iot-suite/">Azure IoT</a> team have been developing a integration between the two cloud services. Particle is an IoT company that launced on Kickstarter in 2013 and Azure IoT is a new IoT cloud service offering from Microsoft. IoT developers use Particle because their devices are inexpensive, easy to aquire and easy to connect to the cloud. I’ve been a fan of Particle for a long time and use the Particle Photon as the primary device in a workshop I teach at the Microsoft Garage.</p>
 <p>I’ve been in regular contact with the folks at Particle and recently stirred up a conversation about the integration possibilities between the two clouds. While it is possible to configure the Particle device to send data to Azure today, it isn’t as intuitive as it could be. The proper way to implement the integration is via Particle’s webhook infrastructure that allows you to forward messages to other HTTPS endpoints after the Particle cloud has received them. After a few meetings with the Particle folks, we decided that cloud-to-cloud integration was the best way to go.</p>
 <p>The Particle to Azure IoT integration is going to be useful in scenarios where you have a Particle device and want to take advantage of all the downstream Azure services, such as Azure Stream Analytics, Events Hubs and Power BI. If you are already using Particle and want your data in Azure IoT, this is for you.</p>
 <p>In a recent call with Particle, we talked about how to best get feedback on the integration beta and decided to send out a quick tweet with more information and ask people to kick the tires and provide some feedback.</p>
 <h2 id="Particle-to-Azure-IoT-Setup"><a class="header-anchor" href="#Particle-to-Azure-IoT-Setup"></a>Particle to Azure IoT Setup</h2>
 <p>We’d love your help testing it.  Here’s how to get started:</p>
-<p>1. Go to your Particle console here: <a href="https://console.particle.io/integrations" target="_blank" rel="noopener">https://console.particle.io/integrations</a> and click on “New Integration”.</p>
+<p>1. Go to your Particle console here: <a target="_blank" rel="noopener" href="https://console.particle.io/integrations">https://console.particle.io/integrations</a> and click on “New Integration”.</p>
 <p><img src="azureiotparticlebeta_01.png" alt=""></p>
 <p>2. Select Azure IoT Hub.</p>
 <p><img src="azureiotparticlebeta_02.png" alt=""></p>
@@ -221,25 +221,25 @@
 <p><img src="azureiotparticlebeta_03.png" alt=""></p>
 <p>4. Enter IoT Hub information, select your device and enable the integration.</p>
 <p><img src="azureiotparticlebeta_04.png" alt=""></p>
-<p>5. You can optionally use the “Send Custom JSON” feature to format the JSON to suit your application needs.  See the <a href="https://docs.particle.io/guide/tools-and-features/webhooks/#webhook-variables" target="_blank" rel="noopener">“Webhook Variables”</a> page for available token replacements.</p>
+<p>5. You can optionally use the “Send Custom JSON” feature to format the JSON to suit your application needs.  See the <a target="_blank" rel="noopener" href="https://docs.particle.io/guide/tools-and-features/webhooks/#webhook-variables">“Webhook Variables”</a> page for available token replacements.</p>
 <p><img src="azureiotparticlebeta_05.png" alt=""></p>
-<p>6. Then implement code for your Particle device to <a href="https://docs.particle.io/reference/firmware/photon/#particle-publish-" target="_blank" rel="noopener">publish</a> and <a href="https://docs.particle.io/reference/firmware/photon/#particle-subscribe-" target="_blank" rel="noopener">subscribe</a> to events.</p>
+<p>6. Then implement code for your Particle device to <a target="_blank" rel="noopener" href="https://docs.particle.io/reference/firmware/photon/#particle-publish-">publish</a> and <a target="_blank" rel="noopener" href="https://docs.particle.io/reference/firmware/photon/#particle-subscribe-">subscribe</a> to events.</p>
 <p>It can be as simple as the following to publish an event named “temp”</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">void loop() {
+<pre class="line-numbers language-cpp"><code class="language-cpp">void loop() &amp;#123;
   // Get some data
   String data = String(10);
   // Trigger the integration
   Particle.publish("temp", data, PRIVATE);
   // Wait 60 seconds
   delay(60000);
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>7. You will start to see messages flowing into Particle via the Particle Console log and <a href="https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer" target="_blank" rel="noopener">Azure IoT Device Explorer</a></p>
+<p>7. You will start to see messages flowing into Particle via the Particle Console log and <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer">Azure IoT Device Explorer</a></p>
 <p><img src="azureiotparticlebeta_06.png" alt=""></p>
 <h2 id="Provide-Feedback"><a class="header-anchor" href="#Provide-Feedback"></a>Provide Feedback</h2>
 <p>Now that you have it all setup let us know what you think.  Was it easy to configure? Was anything missing from the integration or the docs?</p>
-<p>Let us know what you think by posting to the <a href="https://community.particle.io/c/cloud-software" target="_blank" rel="noopener">Particle Community Forums</a></p>
-<p>You can find Particle on Twitter here: <a href="http://twitter.com/particleio" target="_blank" rel="noopener">http://twitter.com/particleio</a> and follow Azure IoT here: <a href="https://twitter.com/search?q=azureiot" target="_blank" rel="noopener">https://twitter.com/search?q=azureiot</a></p>
+<p>Let us know what you think by posting to the <a target="_blank" rel="noopener" href="https://community.particle.io/c/cloud-software">Particle Community Forums</a></p>
+<p>You can find Particle on Twitter here: <a target="_blank" rel="noopener" href="http://twitter.com/particleio">http://twitter.com/particleio</a> and follow Azure IoT here: <a target="_blank" rel="noopener" href="https://twitter.com/search?q=azureiot">https://twitter.com/search?q=azureiot</a></p>
 <p>Jon</p>
 
         </div>
@@ -411,7 +411,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

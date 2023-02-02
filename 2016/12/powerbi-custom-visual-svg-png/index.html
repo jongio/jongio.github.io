@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,15 +206,15 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s how to render either an SVG or a PNG from within a Power BI Custom Visual. For this post, I’m going to use the IoT Hub icon that can be found in the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=41937" target="_blank" rel="noopener">Microsoft Azure, Cloud and Enterprise Symbol / Icon Set</a>. Download that now if you want to follow along.</p>
-<p>If you get lost in this post, please see my Custom Visual series here: <a href="http://bit.ly/pbicustomviz" target="_blank" rel="noopener">http://bit.ly/pbicustomviz</a></p>
+            <p>Here’s how to render either an SVG or a PNG from within a Power BI Custom Visual. For this post, I’m going to use the IoT Hub icon that can be found in the <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=41937">Microsoft Azure, Cloud and Enterprise Symbol / Icon Set</a>. Download that now if you want to follow along.</p>
+<p>If you get lost in this post, please see my Custom Visual series here: <a target="_blank" rel="noopener" href="http://bit.ly/pbicustomviz">http://bit.ly/pbicustomviz</a></p>
 <p>Here’s the icon:</p>
 <p>[<img src="/images/blog/f0bcb844da1f_D7C9/iothub_thumb.png" alt="iothub" title="iothub"></p>
 <p>You can find it by searching for “iot” in Windows Explorer.</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image.png" alt=""></p>
-<p>The working code for this post can be found here: <a href="https://gist.github.com/jongio/aba10a2fd9ef88fd5ebb2141dcf310e6" target="_blank" rel="noopener" title="https://gist.github.com/jongio/aba10a2fd9ef88fd5ebb2141dcf310e6">https://gist.github.com/jongio/aba10a2fd9ef88fd5ebb2141dcf310e6</a></p>
+<p>The working code for this post can be found here: <a target="_blank" rel="noopener" href="https://gist.github.com/jongio/aba10a2fd9ef88fd5ebb2141dcf310e6" title="https://gist.github.com/jongio/aba10a2fd9ef88fd5ebb2141dcf310e6">https://gist.github.com/jongio/aba10a2fd9ef88fd5ebb2141dcf310e6</a></p>
 <h2 id="SVG"><a class="header-anchor" href="#SVG"></a>SVG</h2>
-<p>If you open up the file “Azure IoT Hub_Color.svg”, you’ll see the raw SVG code used to render that image. It is verbose, has line breaks and other characters that we don’t need. I used <a href="https://jakearchibald.github.io/svgomg/" target="_blank" rel="noopener">SVGOMG</a> to minimize it. Go to the SVGOMG site, open the SVG and click the download button. In the lower right</p>
+<p>If you open up the file “Azure IoT Hub_Color.svg”, you’ll see the raw SVG code used to render that image. It is verbose, has line breaks and other characters that we don’t need. I used <a target="_blank" rel="noopener" href="https://jakearchibald.github.io/svgomg/">SVGOMG</a> to minimize it. Go to the SVGOMG site, open the SVG and click the download button. In the lower right</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image_3.png" alt=""></p>
 <p>Open the optimized version and paste it into a variable in your Custom Visual like this:</p>
 <hr>
@@ -229,7 +229,7 @@
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image_4.png" alt=""></p>
 <h2 id="PNG"><a class="header-anchor" href="#PNG"></a>PNG</h2>
 <p>To reference a PNG, you have to encode it and reference as a background image in CSS. I chose base64 for this post, but other encodings should work as well.</p>
-<p>Find the Azure IoTHub_Color.png file from the icon set and use a site like <a href="https://www.base64-image.de/" target="_blank" rel="noopener">Base64 Image Encoder</a> to get the base64 encoding of it. Just upload the image, click “show code” and copy the “For use as CSS Background” code:</p>
+<p>Find the Azure IoTHub_Color.png file from the icon set and use a site like <a target="_blank" rel="noopener" href="https://www.base64-image.de/">Base64 Image Encoder</a> to get the base64 encoding of it. Just upload the image, click “show code” and copy the “For use as CSS Background” code:</p>
 <p><img src="/images/blog/f0bcb844da1f_D7C9/image_5.png" alt=""></p>
 <p>In your Custom Visual project, open style/visual.less and create a new style like this:</p>
 <hr>
@@ -414,7 +414,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

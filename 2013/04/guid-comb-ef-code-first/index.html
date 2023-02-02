@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,11 +205,11 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Read <a href="http://www.informit.com/articles/article.aspx?p=25862" target="_blank" rel="noopener">this</a> if you don’t know the “why” behind Guid.Comb. In a nutshell. We want to uniquely identify records and don’t want PK collisions across database instances. Using Guid as a PK used to be taboo. Now (circa 2002) it’s acceptable with Guid.Comb. It generates Guids in a semi-sequential order to limit page splits. This post is a combination of <a href="http://stackoverflow.com/a/7098804/2211981" target="_blank" rel="noopener">this</a> and <a href="http://stackoverflow.com/a/13014102/2211981" target="_blank" rel="noopener">this</a>.</p>
-<p><a href="https://github.com/jongio/guid-comb-ef-code-first" target="_blank" rel="noopener">Download <span>Latest version from GitHub</span></a></p>
+            <p>Read <a target="_blank" rel="noopener" href="http://www.informit.com/articles/article.aspx?p=25862">this</a> if you don’t know the “why” behind Guid.Comb. In a nutshell. We want to uniquely identify records and don’t want PK collisions across database instances. Using Guid as a PK used to be taboo. Now (circa 2002) it’s acceptable with Guid.Comb. It generates Guids in a semi-sequential order to limit page splits. This post is a combination of <a target="_blank" rel="noopener" href="http://stackoverflow.com/a/7098804/2211981">this</a> and <a target="_blank" rel="noopener" href="http://stackoverflow.com/a/13014102/2211981">this</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jongio/guid-comb-ef-code-first">Download <span>Latest version from GitHub</span></a></p>
 <p>What I’m using:</p>
 <ol>
-<li><a href="http://nuget.org/packages/entityframework" target="_blank" rel="noopener">EF 6 beta3</a> – Though you could probably use EF5 without issue</li>
+<li><a target="_blank" rel="noopener" href="http://nuget.org/packages/entityframework">EF 6 beta3</a> – Though you could probably use EF5 without issue</li>
 </ol>
 <ul>
 <li>VS2012 – Express should work</li>
@@ -228,40 +228,40 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace GuidComb
-{
+&amp;#123;
     class Program
-    {
+    &amp;#123;
         static void Main(string[] args)
-        {
+        &amp;#123;
             using (var db = new ItemContext())
-            {
+            &amp;#123;
                 for (var i = 0; i &amp;lt; 10; i++)
                     db.Items.Add(new Item());
 
                 db.SaveChanges();
-            }
+            &amp;#125;
 
             using (var db = new ItemContext())
-            {
+            &amp;#123;
                 foreach (var item in db.Items)
                     Console.WriteLine(item.Id);
-            }
+            &amp;#125;
 
             Console.ReadKey();
-        }
-    }
+        &amp;#125;
+    &amp;#125;
 
     public class Item
-    {
+    &amp;#123;
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
-    }
+        public Guid Id &amp;#123; get; set; &amp;#125;
+    &amp;#125;
 
     public class ItemContext : DbContext
-    {
-        public DbSet&amp;lt;Item&amp;gt; Items { get; set; }
-    }
-}
+    &amp;#123;
+        public DbSet&amp;lt;Item&amp;gt; Items &amp;#123; get; set; &amp;#125;
+    &amp;#125;
+&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>4. Run the following in Package Manager Console</p>
@@ -274,36 +274,36 @@ namespace GuidComb
 </blockquote>
 <p>6. Open the /Migrations/[Timestamp]_Comb.cs that was created by the Add-Migration command and add defaultValueSql: “newsequentialid()” to the Item table Column builder.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">namespace GuidComb.Migrations
-{
+&amp;#123;
     using System;
     using System.Data.Entity.Migrations;
 
     public partial class Comb : DbMigration
-    {
+    &amp;#123;
         public override void Up()
-        {
+        &amp;#123;
             CreateTable(
                 "dbo.Items",
                 c =&amp;gt; new
-                    {
+                    &amp;#123;
                         Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
-                    })
+                    &amp;#125;)
                 .PrimaryKey(t =&amp;gt; t.Id);
 
-        }
+        &amp;#125;
 
         public override void Down()
-        {
+        &amp;#123;
             DropTable("dbo.Items");
-        }
-    }
-}
+        &amp;#125;
+    &amp;#125;
+&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>7. Hit F5 and you should see this:</p>
 <p><img src="/images/blog/343c5f9b6c9a_661C/image.png" alt=""></p>
 <p>As you can see the Guid are being generated sequentially.</p>
-<p><a href="https://github.com/jongio/guid-comb-ef-code-first" target="_blank" rel="noopener">Download <span>Latest version from GitHub</span></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jongio/guid-comb-ef-code-first">Download <span>Latest version from GitHub</span></a></p>
 
         </div>
         <footer>
@@ -474,7 +474,7 @@ namespace GuidComb
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

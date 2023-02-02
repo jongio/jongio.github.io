@@ -91,7 +91,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -203,7 +203,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>The second parameter overload of Response.Redirect is nice because it doesn’t call Response.End, which is responsible for throwing the ThreadAbortException. BUT…</p>
-<p>The drawback to using this is that the page will continue to process on the server and be sent to the client. If you are doing a redirect in Page_Init (or like) and call Response.Redirect(url, false) the page will only redirect once the current page is done executing. This means that any server side processing you are performing on that page WILL get executed. In most cases, I will take the exception perf hit over the rendering perf hit, esp since the page won’t be rendered anyway and that page could potentially have a ton of data. Using <a href="http://www.fiddlertool.com/fiddler/" target="_blank" rel="noopener">Fiddler</a> I was also able monitor my http traffic and see that when using this redirect method the page is actually being sent to the client as well.</p>
+<p>The drawback to using this is that the page will continue to process on the server and be sent to the client. If you are doing a redirect in Page_Init (or like) and call Response.Redirect(url, false) the page will only redirect once the current page is done executing. This means that any server side processing you are performing on that page WILL get executed. In most cases, I will take the exception perf hit over the rendering perf hit, esp since the page won’t be rendered anyway and that page could potentially have a ton of data. Using <a target="_blank" rel="noopener" href="http://www.fiddlertool.com/fiddler/">Fiddler</a> I was also able monitor my http traffic and see that when using this redirect method the page is actually being sent to the client as well.</p>
 <p>I don’t usually do redirects in try/catch blocks, but if you do the ThreadAbortException will be handled by your catch and potentially cause a transaction Abort (depending on what you are doing of course). If you do put the redirect in the try block, then you’ll need to explicitly catch the ThreadAbortException or create a wrapper method that does that for you.</p>
 <p>Something like this would work.</p>
 <pre><code>///
@@ -213,7 +213,7 @@
      ///
 
      public static class RedirectUtility
-    {
+    &#123;
          ///
 
          /// Redirects to the given url and swallows ThreadAbortException that is raised by the Redirect call.
@@ -221,16 +221,16 @@
 
          /// The url to redirect to.
          public static void Redirect(string url)
-         {
+         &#123;
              try
-             {
+             &#123;
                  HttpContext.Current.Response.Redirect(url, true);
-             }
+             &#125;
              catch (ThreadAbortException)
-             {
-             }
-         }
-  }
+             &#123;
+             &#125;
+         &#125;
+  &#125;
 </code></pre>
 
         </div>
@@ -402,7 +402,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -211,7 +211,7 @@
 <p>UPDATE 5/13/2020 - This is now outdated as of version 5.2.0 of java-dotnet package.  A systemProperties method was added to make all of this easier. You can find all of the updated details on the new post here: <a href="https://blog.jongallant.com/java-dotenv-azure-sdk-update/">https://blog.jongallant.com/java-dotenv-azure-sdk-update/</a></p>
 </blockquote>
 <p>I regularly use .env files to store secrets locally which saves me from having to configure environment variables at the machine level.</p>
-<p><s>Today, if you try to use the Azure SDKs with the <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">java-dotenv package</a>, it will not work because java-dotenv does not write to System environment variables or System properties. The TLDR is at the bottom, so you can scroll down to get the solution to use .env with Azure SDK for Java.</s></p>
+<p><s>Today, if you try to use the Azure SDKs with the <a target="_blank" rel="noopener" href="https://github.com/cdimascio/java-dotenv">java-dotenv package</a>, it will not work because java-dotenv does not write to System environment variables or System properties. The TLDR is at the bottom, so you can scroll down to get the solution to use .env with Azure SDK for Java.</s></p>
 <h2 id="How-env-files-work"><a class="header-anchor" href="#How-env-files-work"></a>How .env files work</h2>
 <p>Here’s an example of a .env file.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">AZURE_CLIENT_ID=d40990d4
@@ -228,7 +228,7 @@ Dotenv dotenv = Dotenv.load();
 dotenv.get("AZURE_CLIENT_ID")
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>That uses this java-dotenv package: <a href="https://github.com/cdimascio/java-dotenv" target="_blank" rel="noopener">https://github.com/cdimascio/java-dotenv</a> to load the .env file and then read the value from <code>AZURE_CLIENT_ID</code></p>
+<p>That uses this java-dotenv package: <a target="_blank" rel="noopener" href="https://github.com/cdimascio/java-dotenv">https://github.com/cdimascio/java-dotenv</a> to load the .env file and then read the value from <code>AZURE_CLIENT_ID</code></p>
 <h2 id="The-issue-with-Java-and-env-files"><a class="header-anchor" href="#The-issue-with-Java-and-env-files"></a>The issue with Java and .env files</h2>
 <p>All other languages I work with also automatically stuff those values into the standard machine environment variables and can be access like this C# example:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var clientId = System.GetEnvironmentVariable("AZURE_CLIENT_ID");
@@ -237,18 +237,18 @@ dotenv.get("AZURE_CLIENT_ID")
 <pre class="line-numbers language-java"><code class="language-java">Dotenv dotenv = Dotenv.load();
 String clientId = System.getenv("AZURE_CLIENT_ID");
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>…will return <code>null</code> for clientId, because the Java library java-dotenv does not stuff environment variables and it doesn’t look like there’s an easy way to do so with Java.  I found some hacks, but they were rough.  Here’s a link to the java-dotenv FAQ on this: <a href="https://github.com/cdimascio/java-dotenv#faq" target="_blank" rel="noopener">https://github.com/cdimascio/java-dotenv#faq</a></p>
+<p>…will return <code>null</code> for clientId, because the Java library java-dotenv does not stuff environment variables and it doesn’t look like there’s an easy way to do so with Java.  I found some hacks, but they were rough.  Here’s a link to the java-dotenv FAQ on this: <a target="_blank" rel="noopener" href="https://github.com/cdimascio/java-dotenv#faq">https://github.com/cdimascio/java-dotenv#faq</a></p>
 <blockquote>
 <p>Q: Why should I use dotenv.get(“MY_ENV_VAR”) instead of System.getenv(“MY_ENV_VAR”)<br>
 A: Since Java does not provide a way to set environment variables on a currently running process, vars listed in .env cannot be set and thus cannot be retrieved using System.getenv(…).</p>
 </blockquote>
 <h2 id="The-issue-with-Azure-SDK-and-java-dotenv"><a class="header-anchor" href="#The-issue-with-Azure-SDK-and-java-dotenv"></a>The issue with Azure SDK and java-dotenv</h2>
-<p>If you try to use any of the Azure SDK classes that depend on environment variables, like <a href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#authenticating-with-defaultazurecredential" target="_blank" rel="noopener"><code>DefaultAzureCredential</code></a>, they will not work with java-dotenv out of the box.</p>
+<p>If you try to use any of the Azure SDK classes that depend on environment variables, like <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#authenticating-with-defaultazurecredential"><code>DefaultAzureCredential</code></a>, they will not work with java-dotenv out of the box.</p>
 <p>This is because java-dotenv does not write to system environment variables or system properties - it stuffs the variables in the Dotenv class and stops there.</p>
 <p>The Azure SDK obviously doesn’t know to look for settings in the Dotenv instance.</p>
 <h2 id="The-solution-to-using-Azure-SDK-with-java-dotenv"><a class="header-anchor" href="#The-solution-to-using-Azure-SDK-with-java-dotenv"></a>The solution to using Azure SDK with java-dotenv</h2>
 <h3 id="Azure-SDK-for-Java-reads-from-both-System-properties-and-environment-variables"><a class="header-anchor" href="#Azure-SDK-for-Java-reads-from-both-System-properties-and-environment-variables"></a>Azure SDK for Java reads from both System properties and environment variables</h3>
-<p>Luckily, the Azure SDK for Java reads from both environment variables and system properties.  As you can see in the <a href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/Configuration.java" target="_blank" rel="noopener"><code>Configuration.java</code> file</a>, both <code>System::getProperty</code> and <code>System::getenv</code> are implemented as configuration loaders:</p>
+<p>Luckily, the Azure SDK for Java reads from both environment variables and system properties.  As you can see in the <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/Configuration.java"><code>Configuration.java</code> file</a>, both <code>System::getProperty</code> and <code>System::getenv</code> are implemented as configuration loaders:</p>
 <pre class="line-numbers language-java"><code class="language-java">/*
     * System property loader.
     */
@@ -270,24 +270,24 @@ private static final List&lt;Function&lt;String, String&gt;&gt; LOADERS = Arrays
 * @param name Name of the configuration.
 * @return If found the loaded configuration, otherwise null.
 */
-private static String load(String name) {
-    for (Function&lt;String, String&gt; loader : LOADERS) {
+private static String load(String name) &amp;#123;
+    for (Function&lt;String, String&gt; loader : LOADERS) &amp;#123;
         String value = loader.apply(name);
-        if (value != null) {
+        if (value != null) &amp;#123;
             return value;
-        }
-    }
+        &amp;#125;
+    &amp;#125;
 
     return null;
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Copy-java-dotenv-properties-to-System-properties"><a class="header-anchor" href="#Copy-java-dotenv-properties-to-System-properties"></a>Copy java-dotenv properties to System properties</h3>
 <p>Because Azure SDK reads from System properties - you can simply copy all of the java-dotenv properties to system properties and then the Azure SDK will read them.</p>
 <p>My fellow Azure SDK dev Srikanta wrote the following code to copy all properties from dotenv to system properties.  He is going to work with the java-dotenv project to see if we can get this implemented as a feature in the library itself. For now, copy this to your project.</p>
-<pre class="line-numbers language-java"><code class="language-java">static void loadEnvironmentProperties() {
+<pre class="line-numbers language-java"><code class="language-java">static void loadEnvironmentProperties() &amp;#123;
     Dotenv ENVIRONMENT = Dotenv.load();
     ENVIRONMENT.entries().forEach(entry -&gt; System.setProperty(entry.getKey(), entry.getValue()));
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Then call <code>loadEnvironmentProperties</code> before you use the Azure SDKs.</p>
 <pre class="line-numbers language-java"><code class="language-java">loadEnvironmentProperties();
@@ -470,7 +470,7 @@ KeyClient keyClient = new KeyClientBuilder().vaultUrl(System.getProperty("AZURE_
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

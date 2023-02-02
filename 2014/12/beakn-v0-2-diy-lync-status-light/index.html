@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,8 +207,8 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><a href="/images/blog/054bc659d506_E402/IMG_1827.jpg"><img src="/images/blog/054bc659d506_E402/IMG_1827_thumb.jpg" alt="IMG_1827" title="IMG_1827"></a>I’m working on a “maker experience” project called beakn. It’s a Lync status light that lights up red, yellow or green based on your Lync status. <a href="/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1</a> was all about getting it working without it being too complex – so I opted for using the USB connection from my computer to the Arduino and then send Serial commands over that connection to tell the Arduino what LED to light up. My ultimate goal of the project is to get into the shoes of a maker and see what it takes to take a product from inception to proof of concept to prototype and finally to production. The end product will be a completely wireless Lync status light that you place anywhere in your office, home or oil rig.</p>
-<p>beakn v0.2 gets us one step closer by introducing Ethernet and <a href="http://mqtt.org/" target="_blank" rel="noopener">MQTT</a> (Message Queue Telemetry Transport), which is VERY light weight pub-sub messaging protocol for IoT devices (<a href="http://en.wikipedia.org/wiki/MQTT" target="_blank" rel="noopener">wikipedia</a>). I spent a lot of time working with the Arduino WiFi shield as well, but I couldn’t get it stabilized in time for the v0.2 release. Also in that process I realized that WiFi is probably out of the picture because of the setup and config that is involved – you have to get the SSID and Password into the sketch and upload it via the IDE, which isn’t something I want my early adopters to have to do. I will likely end up going with a gateway device connected to Ethernet that listens for MQTT events and sends commands to the beakn via Bluetooth LE or Xbee. That was a rat hole I didn’t want to go down for this version. Also, with regard to power, I want it to run on battery – the problem is that the Uno and the WiFi shield together won’t run for very long on a 9V. I dug into what it would take to power the beakn, but didn’t get too far. I’m thinking I’m going to have to deal with that in the prototype phase…I still consider this to be in the proof of concept phase. Prototype will move away from Arduino and onto getting individual microcontrollers, surface mount LEDs, power management and a 3D printed enclosure.</p>
-<p>This entire project is available on GitHub here: <a href="https://github.com/jongio/beakn/" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/">https://github.com/jongio/beakn/</a></p>
+<p>beakn v0.2 gets us one step closer by introducing Ethernet and <a target="_blank" rel="noopener" href="http://mqtt.org/">MQTT</a> (Message Queue Telemetry Transport), which is VERY light weight pub-sub messaging protocol for IoT devices (<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/MQTT">wikipedia</a>). I spent a lot of time working with the Arduino WiFi shield as well, but I couldn’t get it stabilized in time for the v0.2 release. Also in that process I realized that WiFi is probably out of the picture because of the setup and config that is involved – you have to get the SSID and Password into the sketch and upload it via the IDE, which isn’t something I want my early adopters to have to do. I will likely end up going with a gateway device connected to Ethernet that listens for MQTT events and sends commands to the beakn via Bluetooth LE or Xbee. That was a rat hole I didn’t want to go down for this version. Also, with regard to power, I want it to run on battery – the problem is that the Uno and the WiFi shield together won’t run for very long on a 9V. I dug into what it would take to power the beakn, but didn’t get too far. I’m thinking I’m going to have to deal with that in the prototype phase…I still consider this to be in the proof of concept phase. Prototype will move away from Arduino and onto getting individual microcontrollers, surface mount LEDs, power management and a 3D printed enclosure.</p>
+<p>This entire project is available on GitHub here: <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/" title="https://github.com/jongio/beakn/">https://github.com/jongio/beakn/</a></p>
 <p>If you are new to beakn it might be a good idea for you to read through the <a href="/2014/12/beakn-v0-1-diy-lync-status-light.html">beakn v0.1 post</a></p>
 <p><strong>Here are some pictures of the v0.2 build</strong></p>
 <p><a href="/images/blog/054bc659d506_E402/IMG_1830.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1830_thumb.jpg" alt="IMG_1830" title="IMG_1830"></strong></a><a href="/images/blog/054bc659d506_E402/IMG_1829.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1829_thumb.jpg" alt="IMG_1829" title="IMG_1829"></strong></a><a href="/images/blog/054bc659d506_E402/IMG_1832.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1832_thumb.jpg" alt="IMG_1832" title="IMG_1832"></strong></a><a href="/images/blog/054bc659d506_E402/IMG_1834.jpg"><strong><img src="/images/blog/054bc659d506_E402/IMG_1834_thumb.jpg" alt="IMG_1834" title="IMG_1834"></strong></a></p>
@@ -225,10 +225,10 @@
 </ul>
 <p><a href="/images/blog/054bc659d506_E402/IMG_1835.jpg"><img src="/images/blog/054bc659d506_E402/IMG_1835_thumb.jpg" alt="IMG_1835" title="IMG_1835"></a></p>
 <ul>
-<li>If you are going to stick with Arduino and don’t have one yet, then get the <a href="http://arduino.cc/en/Main/ArduinoBoardYun?from=Products.ArduinoYUN" target="_blank" rel="noopener">Yun</a> instead. It comes with an Ethernet port.*   There are a couple of MQTT Arduino libraries out there and I decided to use the <a href="http://knolleary.net/arduino-client-for-mqtt/" target="_blank" rel="noopener">Arduino Client for MQTT</a> because it looked simple enough and I got it running pretty quickly.</li>
+<li>If you are going to stick with Arduino and don’t have one yet, then get the <a target="_blank" rel="noopener" href="http://arduino.cc/en/Main/ArduinoBoardYun?from=Products.ArduinoYUN">Yun</a> instead. It comes with an Ethernet port.*   There are a couple of MQTT Arduino libraries out there and I decided to use the <a target="_blank" rel="noopener" href="http://knolleary.net/arduino-client-for-mqtt/">Arduino Client for MQTT</a> because it looked simple enough and I got it running pretty quickly.</li>
 <li>The beakn desktop application is much more stable and won’t lose connection when you sign in and out of Lync. It will lose connection if you completely exit Lync. I spent a bit of time researching that, but just decided to address that issue later.</li>
-<li>For MQTT on the desktop app I decided to use <a href="https://m2mqtt.codeplex.com/" target="_blank" rel="noopener">M2Mqtt</a> because it looks like it is the only game in town and they have a nuGet package.</li>
-<li>There are a couple of free MQTT services out there to test things out and I decided to use a HiveMQ one here: <a href="http://mqttdashboard.com/info/broker" target="_blank" rel="noopener" title="http://mqttdashboard.com/info/broker">http://mqttdashboard.com/info/broker</a>. There also GnatMQ, but I couldn’t find a freely available version online. Obviously if you productionize this you are going to want to get your own MQTT server going.</li>
+<li>For MQTT on the desktop app I decided to use <a target="_blank" rel="noopener" href="https://m2mqtt.codeplex.com/">M2Mqtt</a> because it looks like it is the only game in town and they have a nuGet package.</li>
+<li>There are a couple of free MQTT services out there to test things out and I decided to use a HiveMQ one here: <a target="_blank" rel="noopener" href="http://mqttdashboard.com/info/broker" title="http://mqttdashboard.com/info/broker">http://mqttdashboard.com/info/broker</a>. There also GnatMQ, but I couldn’t find a freely available version online. Obviously if you productionize this you are going to want to get your own MQTT server going.</li>
 <li>The Arduino LED pin numbers have changed because the Ethernet shield uses some of the pins I was using before.</li>
 </ul>
 <p>As a C#/JavaScript developer it was a big relief to work with the Netduino. It’s nice to be back in Visual Studio and C# and it was great that the M2Mqtt library was available. I didn’t get the Serial version working on Netduino, but that’s not important at this stage because of my wireless goal. I’m going to keep prototyping with the Arduino to see what is possible, but as a long time Microsoft developer the Netduino is definitely preferred. Being able to use nuGet is sweet too.</p>
@@ -252,13 +252,13 @@
 <p>For Arduino</p>
 </li>
 <li>
-<p>Open <a href="https://github.com/jongio/beakn/blob/v0.2/arduino/beakn.arduino.mqtt.ethernet.sketch/beakn.arduino.mqtt.ethernet.sketch.ino" target="_blank" rel="noopener">this sketch</a> in the Arduino IDE.</p>
+<p>Open <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/blob/v0.2/arduino/beakn.arduino.mqtt.ethernet.sketch/beakn.arduino.mqtt.ethernet.sketch.ino">this sketch</a> in the Arduino IDE.</p>
 </li>
 <li>
 <p>Change both topicName and clientName to something unique. It can be whatever you want it to be.*   Deploy the sketch to your Arduino*   For Netduino</p>
 </li>
 </ul>
-<p>**3. Install the **<a href="https://github.com/jongio/beakn/releases/download/v0.2/beakn.v0.2.msi" target="_blank" rel="noopener"><strong>beakn v0.2 desktop app</strong></a> or get the code <a href="https://github.com/jongio/beakn/tree/v0.2/desktop/beakn/beakn" target="_blank" rel="noopener">here</a> and compile it yourself.</p>
+<p>**3. Install the **<a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/releases/download/v0.2/beakn.v0.2.msi"><strong>beakn v0.2 desktop app</strong></a> or get the code <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/tree/v0.2/desktop/beakn/beakn">here</a> and compile it yourself.</p>
 <p><strong>4. Update the beakn.exe.config file.</strong></p>
 <ul>
 <li>[Only do this if you installed via msi installer] Open CMD as Admin. Navigate to the beakn install directory. Execute “notepad beakn.exe.config”</li>
@@ -270,7 +270,7 @@
 <li>You must first plug in the ethernet cable, then power when you setup the beakn. The init script runs when it boots and if the Ethernet isn’t there it will jus fail.</li>
 </ol>
 <p>That should be all there is to it.</p>
-<p>Let me know if you run into any other issues and follow me on <a href="http://twitter.com/jongallant" target="_blank" rel="noopener">twitter</a> to get updates of future version.</p>
+<p>Let me know if you run into any other issues and follow me on <a target="_blank" rel="noopener" href="http://twitter.com/jongallant">twitter</a> to get updates of future version.</p>
 <p>Jon</p>
 <p>p.s. Just for kicks – I wired up this full size traffic light in my office as a beakn – it’s super bright and very hot!</p>
 <p><a href="/images/blog/054bc659d506_E402/IMG_1837.jpg"><img src="/images/blog/054bc659d506_E402/IMG_1837_thumb.jpg" alt="IMG_1837" title="IMG_1837"></a></p>
@@ -444,7 +444,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

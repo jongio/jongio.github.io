@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -209,8 +209,8 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><img src="000338.png" alt=""></p>
-<p><a href="https://azure.microsoft.com/en-us/services/iot-edge/" target="_blank" rel="noopener">Azure IoT Edge Public Preview</a> was just announced at Microsoft Connect.</p>
-<p>Here’s how to get it running on Raspberry Pi with Raspbian Stretch or Stretch Lite. Raspbian Jessie should work as well, but I haven’t tested it yet. Azure IoT Edge does not run on Raspberry Pi with Windows 10 IoT Core, you must use an x64 based board such as the MinnowBoard.  Windows 10 IoT Core Instructions can be found <a href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-core" target="_blank" rel="noopener">here</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/services/iot-edge/">Azure IoT Edge Public Preview</a> was just announced at Microsoft Connect.</p>
+<p>Here’s how to get it running on Raspberry Pi with Raspbian Stretch or Stretch Lite. Raspbian Jessie should work as well, but I haven’t tested it yet. Azure IoT Edge does not run on Raspberry Pi with Windows 10 IoT Core, you must use an x64 based board such as the MinnowBoard.  Windows 10 IoT Core Instructions can be found <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-core">here</a>.</p>
 <h2 id="Raspberry-Pi-Setup"><a class="header-anchor" href="#Raspberry-Pi-Setup"></a>Raspberry Pi Setup</h2>
 <p>1. <a href="/raspberrypi-setup"><strong>Setup Raspberry Pi</strong></a> - Follow <a href="/raspberrypi-setup">these instructions</a> to get your Raspberry Pi setup for general Pi dev.</p>
 <blockquote>
@@ -229,15 +229,15 @@
 <pre class="line-numbers language-python"><code class="language-python">sudo apt install python-pip -y
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3. <strong>Upgrade Setup Tools</strong><br>
-You will find the Azure IoT Edge Runtime on PyPI <a href="https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl" target="_blank" rel="noopener">here</a>, which has the Raspbian specific steps, which I’ve included here as well.  I’ve asked the team to include these steps in the <a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux" target="_blank" rel="noopener">Linux setup tutorial guide</a>. This issue is being tracked on GitHub <a href="https://github.com/Azure/iot-edge/issues/419" target="_blank" rel="noopener">here</a>.</p>
+You will find the Azure IoT Edge Runtime on PyPI <a target="_blank" rel="noopener" href="https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl">here</a>, which has the Raspbian specific steps, which I’ve included here as well.  I’ve asked the team to include these steps in the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux">Linux setup tutorial guide</a>. This issue is being tracked on GitHub <a target="_blank" rel="noopener" href="https://github.com/Azure/iot-edge/issues/419">here</a>.</p>
 <p>Open a Terminal and run the following:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">sudo pip install --upgrade setuptools pip
 sudo apt install python2.7-dev libffi-dev libssl-dev -y
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>3. <a href="/raspberrypi-docker"><strong>Install Docker</strong></a> - The Azure IoT Edge Runtime runs as a container and each module is a container, so Docker is required.</p>
 <h2 id="Azure-IoT-and-Azure-IoT-Edge-Setup"><a class="header-anchor" href="#Azure-IoT-and-Azure-IoT-Edge-Setup"></a>Azure IoT and Azure IoT Edge Setup</h2>
-<p>Now that you have your Raspberry Pi all setup, you can now follow the instructions on the official Azure IoT Edge docs site: <a href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-Linux" target="_blank" rel="noopener"><strong>Deploy Azure IoT Edge on a simulated device in Linux</strong></a></p>
-<p>When you’re all set up and running, you can use <a href="https://conemu.github.io/" target="_blank" rel="noopener">ConEmu</a> to see all the logs flowing through in a nice paned layout.</p>
+<p>Now that you have your Raspberry Pi all setup, you can now follow the instructions on the official Azure IoT Edge docs site: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-Linux"><strong>Deploy Azure IoT Edge on a simulated device in Linux</strong></a></p>
+<p>When you’re all set up and running, you can use <a target="_blank" rel="noopener" href="https://conemu.github.io/">ConEmu</a> to see all the logs flowing through in a nice paned layout.</p>
 <p><img src="console.png" alt=""></p>
 <h2 id="Troubleshooting"><a class="header-anchor" href="#Troubleshooting"></a>Troubleshooting</h2>
 <p>1. <strong>Upgrade Setup Tools</strong></p>
@@ -257,7 +257,7 @@ sudo apt install python2.7-dev libffi-dev libssl-dev -y
 Command "/usr/bin/python -u -c "import setuptools, tokenize;__file__='/tmp/pip-build-14Rowp/cffi/setup.py';f=getattr(tokenize, 'open', open)(__file__);code=f.read().replace('\r\n', '\n');f.close();exec(compile(code, __file__, 'exec'))" install --record /tmp/pip-kaIjHU-record/install-record.txt --single-version-externally-managed --compile" failed with error code 1 in /tmp/pip-build-14Rowp/cffi/
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>2. <strong>RocksDB Issue</strong></p>
-<p>You will see the following error when you run Azure IoT Edge on Pi.  It is a known issue and being tracked on GitHub here: <a href="https://github.com/Azure/iot-edge/issues/417" target="_blank" rel="noopener">https://github.com/Azure/iot-edge/issues/417</a>. The result is that you won’t have store-and-forward capabilities (doesn’t persist messages to disk) on Raspberry Pi. The Azure IoT Edge team is working on a fix.</p>
+<p>You will see the following error when you run Azure IoT Edge on Pi.  It is a known issue and being tracked on GitHub here: <a target="_blank" rel="noopener" href="https://github.com/Azure/iot-edge/issues/417">https://github.com/Azure/iot-edge/issues/417</a>. The result is that you won’t have store-and-forward capabilities (doesn’t persist messages to disk) on Raspberry Pi. The Azure IoT Edge team is working on a fix.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">2017-11-16 19:03:53 [ERR] - Error creating RocksDB store. Falling back to in-memory store.
 System.TypeInitializationException: The type initializer for 'Microsoft.Azure.Devices.Edge.Storage.RocksDb.ColumnFamilyStorageRocksDbWrapper' threw an exception. ---&gt; System.TypeInitializationException: The type initializer for 'RocksDbSharp.Native' threw an exception. ---&gt; NativeImport.NativeLoadException: Unable to locate rocksdb native library, either install it, or use RocksDbNative nuget package
 Searched:
@@ -276,11 +276,11 @@ Searched:
    at Microsoft.Azure.Devices.Edge.Hub.Service.Modules.RoutingModule.&lt;Load&gt;b__11_18(IComponentContext c) in /opt/vsts/work/1/s/edge-hub/src/Microsoft.Azure.Devices.Edge.Hub.Service/modules/RoutingModule.cs:line 231
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>3. <strong>KeyNotFoundException</strong></p>
-<p>If you see the following error and you aren’t receiving messages, then stop the runtime, rerun setup and restart it.  Instructions for doing so can be found here.  This issue is being tracked on GitHub here: <a href="https://github.com/Azure/iot-edge/issues/418" target="_blank" rel="noopener">https://github.com/Azure/iot-edge/issues/418</a></p>
+<p>If you see the following error and you aren’t receiving messages, then stop the runtime, rerun setup and restart it.  Instructions for doing so can be found here.  This issue is being tracked on GitHub here: <a target="_blank" rel="noopener" href="https://github.com/Azure/iot-edge/issues/418">https://github.com/Azure/iot-edge/issues/418</a></p>
 <pre class="line-numbers language-bash"><code class="language-bash">2017-11-16 19:32:18 [INF] - Updating reported properties for jongpi5/$edgeHub in cloud failed with error System.Collections.Generic.KeyNotFoundException The given key was not present in the dictionary.
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>4. <strong>TypeError: unsupported operand type(s) for -=: ‘Retry’ and 'int’</strong></p>
-<p>If you see the following error when installing the runtime, then restart the runtime.  I only saw this once and I’m not sure what caused this issue, but I have reported it on GitHub here: <a href="https://github.com/Azure/iot-edge/issues/420" target="_blank" rel="noopener">https://github.com/Azure/iot-edge/issues/420</a></p>
+<p>If you see the following error when installing the runtime, then restart the runtime.  I only saw this once and I’m not sure what caused this issue, but I have reported it on GitHub here: <a target="_blank" rel="noopener" href="https://github.com/Azure/iot-edge/issues/420">https://github.com/Azure/iot-edge/issues/420</a></p>
 <pre class="line-numbers language-bash"><code class="language-bash">sudo pip install -U azure-iot-edge-runtime-ctl
 
 Collecting cffi&gt;=1.7 (from cryptography&gt;=1.3.4; extra == "tls"-&gt;docker[tls]==2.6-&gt;azure-iot-edge-runtime-ctl)
@@ -496,7 +496,7 @@ TypeError: unsupported operand type(s) for -=: 'Retry' and 'int'
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

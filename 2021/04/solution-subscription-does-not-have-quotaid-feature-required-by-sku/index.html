@@ -24,16 +24,16 @@
     
     <meta name="keywords" content="azure" />
     
-    <meta name="description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. {    &quot;error&quot;:{       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memetest04091&#39; i">
+    <meta name="description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. &amp;#123;    &quot;error&quot;:&amp;#123;       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solution: The subscription does not have QuotaId&#x2F;Feature required by SKU &#39;S0&#39;.">
 <meta property="og:url" content="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. {    &quot;error&quot;:{       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment &#39;memetest04091&#39; i">
+<meta property="og:description" content="Got this today: The subscription does not have QuotaId&#x2F;Feature required by SKU ‘S0’. &amp;#123;    &quot;error&quot;:&amp;#123;       &quot;code&quot;:&quot;InvalidTemplateDeployment&quot;,       &quot;message&quot;:&quot;The template deployment">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/04/solution-subscription-does-not-have-quotaid-feature-required-by-sku/086.png">
 <meta property="article:published_time" content="2021-04-09T11:19:37.000Z">
-<meta property="article:modified_time" content="2021-04-13T19:01:50.053Z">
+<meta property="article:modified_time" content="2021-04-13T19:01:50.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,37 +207,37 @@
         <div class="article-entry" itemprop="articleBody">
             <p>Got this today:</p>
 <p>The subscription does not have QuotaId/Feature required by SKU ‘S0’.</p>
-<pre class="line-numbers language-json"><code class="language-json">{
-   "error":{
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+   "error":&amp;#123;
       "code":"InvalidTemplateDeployment",
       "message":"The template deployment 'memetest04091' is not valid according to the validation procedure. The tracking id is 'e3552149-b5b3-4cd0-8715-6ae788d0a95a'. See inner errors for details.",
       "details":[
-         {
+         &amp;#123;
             "code":"SpecialFeatureOrQuotaIdRequired",
             "message":"The subscription does not have QuotaId/Feature required by SKU 'S0'."
-         }
+         &amp;#125;
       ]
-   }
-}
+   &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>It’s because TextAnalytics retired S0-S4 SKUs and only have ‘S’ now.  So, just change your SKU to <code>S</code> to fix it.</p>
-<pre class="line-numbers language-bash"><code class="language-bash">resource text_analytics 'Microsoft.CognitiveServices/accounts@2017-04-18' = {
-  name: '${basename}ta'
+<pre class="line-numbers language-bash"><code class="language-bash">resource text_analytics 'Microsoft.CognitiveServices/accounts@2017-04-18' = &amp;#123;
+  name: '$&amp;#123;basename&amp;#125;ta'
   location: location
   kind: 'TextAnalytics'
-  sku: {
+  sku: &amp;#123;
     name: 'S'
-  }
-  properties: {
-    customSubDomainName: '${basename}ta'
-  }
-  identity: {
+  &amp;#125;
+  properties: &amp;#123;
+    customSubDomainName: '$&amp;#123;basename&amp;#125;ta'
+  &amp;#125;
+  identity: &amp;#123;
     type: 'SystemAssigned'
-  }
-}
+  &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Here’s more info on the change:<br>
-<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api?tabs=synchronous#change-your-pricing-tier" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api?tabs=synchronous#change-your-pricing-tier</a></p>
+<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api?tabs=synchronous#change-your-pricing-tier">https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api?tabs=synchronous#change-your-pricing-tier</a></p>
 
         </div>
         <footer>
@@ -408,7 +408,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

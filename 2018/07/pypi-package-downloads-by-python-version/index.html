@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2018/07/pypi-package-downloads-by-python-version/000008.png">
 <meta property="article:published_time" content="2018-07-30T09:50:30.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:52:41.380Z">
+<meta property="article:modified_time" content="2021-03-18T06:52:41.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,13 +210,13 @@
 <h1>What I learned</h1>
 <ol>
 <li>PyPI does not give you this data.</li>
-<li>Google BigQuery does here: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="noopener">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
+<li>Google BigQuery does here: <a target="_blank" rel="noopener" href="https://bigquery.cloud.google.com/dataset/the-psf:pypi">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
 <li>You need to sign up for Google Cloud Platform, Create a Project, and Enable BigQuery API for that project to run BigQuery API queries.</li>
 <li>BigQuery API free allowance only allows you to run the following query a couple of times before hitting limit. So use it wisely.</li>
 </ol>
 <h1>How to run the query</h1>
 <ol>
-<li>Go to: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="noopener">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
+<li>Go to: <a target="_blank" rel="noopener" href="https://bigquery.cloud.google.com/dataset/the-psf:pypi">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a></li>
 <li>Sign In</li>
 <li>Accept Terms<br>
 <img src="000012.png" alt=""><br>
@@ -244,7 +244,7 @@
 <img src="000024.png" alt=""></li>
 <li>Click “Enable” button<br>
 <img src="000026.png" alt=""></li>
-<li>Go to: <a href="https://bigquery.cloud.google.com/dataset/the-psf:pypi" target="_blank" rel="noopener">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a><br>
+<li>Go to: <a target="_blank" rel="noopener" href="https://bigquery.cloud.google.com/dataset/the-psf:pypi">https://bigquery.cloud.google.com/dataset/the-psf:pypi</a><br>
 If you see “Unable to find dataset the-psf:pypi”, then that means you probably haven’t BigQuery API. See above for how to enable that.<br>
 <img src="000011.png" alt=""></li>
 <li>Click “Compose Query”<br>
@@ -272,18 +272,18 @@ ORDER BY downloads DESC
 <img src="000008.png" alt=""></li>
 </ol>
 <blockquote>
-<p>From <a href="https://langui.sh/2016/12/09/data-driven-decisions/" target="_blank" rel="noopener">https://langui.sh/2016/12/09/data-driven-decisions/</a><br>
+<p>From <a target="_blank" rel="noopener" href="https://langui.sh/2016/12/09/data-driven-decisions/">https://langui.sh/2016/12/09/data-driven-decisions/</a><br>
 null = downloads from PyPI using clients that do not support sending the statistics we’re querying against. This can be an older version of pip or alternate clients. You also see 341 downloads from 1.17, which is…who knows! When making maintenance decisions you should factor these unknowns as you feel appropriate.</p>
 </blockquote>
 <h1>The following sites were helpful</h1>
 <ul>
-<li><a href="https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python%20Community%20Insights.ipynb" target="_blank" rel="noopener">https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python Community Insights.ipynb</a></li>
-<li><a href="https://kirankoduru.github.io/python/pypi-stats.html" target="_blank" rel="noopener">https://kirankoduru.github.io/python/pypi-stats.html</a></li>
-<li><a href="https://stackoverflow.com/questions/38102317/why-pypi-doesnt-show-download-stats-anymore" target="_blank" rel="noopener">https://stackoverflow.com/questions/38102317/why-pypi-doesnt-show-download-stats-anymore</a></li>
-<li><a href="https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage" target="_blank" rel="noopener">https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage</a></li>
-<li><a href="https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project" target="_blank" rel="noopener">https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project</a></li>
-<li><a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="noopener">https://packaging.python.org/guides/analyzing-pypi-package-downloads/</a></li>
-<li><a href="https://langui.sh/2016/12/09/data-driven-decisions/" target="_blank" rel="noopener">https://langui.sh/2016/12/09/data-driven-decisions/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python%20Community%20Insights.ipynb">https://github.com/tswast/code-snippets/blob/master/2018/python-community-insights/Python Community Insights.ipynb</a></li>
+<li><a target="_blank" rel="noopener" href="https://kirankoduru.github.io/python/pypi-stats.html">https://kirankoduru.github.io/python/pypi-stats.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38102317/why-pypi-doesnt-show-download-stats-anymore">https://stackoverflow.com/questions/38102317/why-pypi-doesnt-show-download-stats-anymore</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage">https://cloud.google.com/blog/big-data/2017/05/try-google-bigquery-today-now-with-10gb-of-free-storage</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project">https://cloud.google.com/billing/docs/how-to/modify-project#change_the_billing_account_for_a_project</a></li>
+<li><a target="_blank" rel="noopener" href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/">https://packaging.python.org/guides/analyzing-pypi-package-downloads/</a></li>
+<li><a target="_blank" rel="noopener" href="https://langui.sh/2016/12/09/data-driven-decisions/">https://langui.sh/2016/12/09/data-driven-decisions/</a></li>
 </ul>
 <p>Hope this helps you out.</p>
 <p>Jon</p>
@@ -457,7 +457,7 @@ null = downloads from PyPI using clients that do not support sending the statist
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

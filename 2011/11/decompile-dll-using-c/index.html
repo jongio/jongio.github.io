@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,8 +208,8 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on a project that involves researching and comparing many versions of the same DLL. I don’t have the source for every version of this DLL so I needed a way to convert it to C# files and diff those. Since there are thousands of versions of this file out there I needed to be able to generate the C# files programmatically.<br>
 I started with Reflector, but it doesn’t have a simple API needed to generate the files programmatically.<br>
-I came across [JustDecompile](<a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">http://www.telerik.com/products/decompiler.aspx</a>. from Telerik and found that they do have a command line API that works great. I could have just invoked the EXE with Process.Start, but I figured I should see how they are doing and see if I could do everything inproc. So I decompiled the JustDecompile.exe file and found a very simple DLL method that they use to output C# files.</p>
-<p>1. Download <a href="http://www.telerik.com/products/decompiler.aspx" target="_blank" rel="noopener">JustDecompile</a><br>
+I came across [JustDecompile](<a target="_blank" rel="noopener" href="http://www.telerik.com/products/decompiler.aspx">http://www.telerik.com/products/decompiler.aspx</a>. from Telerik and found that they do have a command line API that works great. I could have just invoked the EXE with Process.Start, but I figured I should see how they are doing and see if I could do everything inproc. So I decompiled the JustDecompile.exe file and found a very simple DLL method that they use to output C# files.</p>
+<p>1. Download <a target="_blank" rel="noopener" href="http://www.telerik.com/products/decompiler.aspx">JustDecompile</a><br>
 2. Open up your project and Add References to these two DLLs.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">C:\Program Files (x86)\Telerik\JustDecompile\Libraries\JustDecompile.Tools.MSBuildProjectBuilder.dll
 C:\Program Files (x86)\Telerik\JustDecompile\Libraries\JustDecompiler.dll
@@ -227,9 +227,9 @@ projectBuilder.BuildProject(new CancellationToken());
 <p>Where [path to dll] is the path to the dll that you want to decompile and outfolder is the folder you want to output the C# files.</p>
 <p>5. Add this event handler to be notified when the Visual Studio Project file has been created</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">static void projectBuilder_ProjectFileCreated(object sender, ProjectFileCreatedEvent e)
-{
+&amp;#123;
   //throw new NotImplementedException();
-}
+&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Hope this saves you some time.</p>
@@ -404,7 +404,7 @@ projectBuilder.BuildProject(new CancellationToken());
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

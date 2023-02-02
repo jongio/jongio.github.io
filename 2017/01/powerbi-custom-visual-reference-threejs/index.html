@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2017/01/powerbi-custom-visual-reference-threejs/000009.png">
 <meta property="article:published_time" content="2017-01-20T11:53:12.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:51:54.158Z">
+<meta property="article:modified_time" content="2021-03-18T06:51:54.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,11 +205,11 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s how to reference <a href="https://www.npmjs.com/package/three" target="_blank" rel="noopener">three.js</a> in your Power BI Custom Visual project.</p>
+            <p>Here’s how to reference <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/three">three.js</a> in your Power BI Custom Visual project.</p>
 <blockquote>
-<p>I have not tested to see if three.js actually works on <a href="http://powerbi.com" target="_blank" rel="noopener">powerbi.com</a>, but this is how to resolve reference issues.</p>
+<p>I have not tested to see if three.js actually works on <a target="_blank" rel="noopener" href="http://powerbi.com">powerbi.com</a>, but this is how to resolve reference issues.</p>
 </blockquote>
-<p>1. Setup your dev environment by following the instructions in this post: <a href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools" target="_blank" rel="noopener">Power BI Documentation: Use developer tools to create custom visuals</a></p>
+<p>1. Setup your dev environment by following the instructions in this post: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/power-bi/service-custom-visuals-getting-started-with-developer-tools">Power BI Documentation: Use developer tools to create custom visuals</a></p>
 <p>2. Create visual and navigate to the new directory.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">pbiviz new threejstest
 cd threejstest
@@ -227,22 +227,22 @@ cd threejstest
 <pre class="line-numbers language-bash"><code class="language-bash">code .
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>7. Open tsconfig.json and add references to the three.js files</p>
-<pre class="line-numbers language-json"><code class="language-json">{
-  "compilerOptions": {
+<pre class="line-numbers language-json"><code class="language-json">&amp;#123;
+  "compilerOptions": &amp;#123;
     "allowJs": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "ES5",
     "sourceMap": true,
     "out": "./.tmp/build/visual.js"
-  },
+  &amp;#125;,
   "files": [
     ".api/v1.4.0/PowerBI-visuals.d.ts",
     "node_modules/three/build/three.js",
     "typings/index.d.ts",
     "src/visual.ts"
   ]
-}
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>8. Add three.d.ts to /src folder and copy this code to that file</p>
 <pre class="line-numbers language-js"><code class="language-js">declare var three: any;
@@ -424,7 +424,7 @@ cd threejstest
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

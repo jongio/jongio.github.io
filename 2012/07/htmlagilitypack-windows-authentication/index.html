@@ -91,7 +91,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,11 +206,11 @@
 <p>The trick is to set UseDefaultCredentials on the WebProxy object that is passed to the Load method.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var web = new HtmlWeb();
 web.PreRequest = delegate(HttpWebRequest webRequest)
-{
+&amp;#123;
     webRequest.Timeout = 1200000;
     return true;
-};
-var proxy = new WebProxy() { UseDefaultCredentials = true };
+&amp;#125;;
+var proxy = new WebProxy() &amp;#123; UseDefaultCredentials = true &amp;#125;;
 var doc = web.Load("http://[windowsauthurl]", "GET", proxy, CredentialCache.DefaultNetworkCredentials);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -383,7 +383,7 @@ var doc = web.Load("http://[windowsauthurl]", "GET", proxy, CredentialCache.Defa
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,7 +207,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I built a stateless Azure Service Fabric service and later realized I would need a stateful service. Rather than try to comb through docs to see what the conversion looked like, I created a brand new stateless service and another stateful service and diff’d them. I’m sharing in case someone else needs to do the same.</p>
-<p>You can see everything you need to do in this commit: <a href="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" target="_blank" rel="noopener" title="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f">https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
+<p>You can see everything you need to do in this commit: <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f" title="https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f">https://github.com/jongio/azure-service-fabric-stateless-to-stateful-conversion/commit/168c42776fbd4d23f5f8d0ebc943a9ee6fe2129f</a></p>
 <p>Or you can follow along below…</p>
 <h2 id="MySolution-MyService-MyService-cs"><a class="header-anchor" href="#MySolution-MyService-MyService-cs"></a>MySolution/MyService/MyService.cs</h2>
 <h3 id="Add-Microsoft-ServiceFabric-Data-Collections-namespace"><a class="header-anchor" href="#Add-Microsoft-ServiceFabric-Data-Collections-namespace"></a>Add Microsoft.ServiceFabric.Data.Collections namespace</h3>
@@ -408,7 +408,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2019/12/powerbi-desktop-missing-data-tab/000011.png">
 <meta property="article:published_time" content="2019-12-29T21:21:48.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:51:58.994Z">
+<meta property="article:modified_time" content="2021-03-18T06:51:58.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,8 +210,8 @@
 <p>When you create a new DirectQuery connection, the “Data” tab disappears.</p>
 <p><img src="000007.png" alt=""></p>
 <p>It wasn’t obvious to me that the “Data” tab disappeared because I only had a DirectQuery connection in my model. As soon as you bring a non DirectQuery data table into the model, the “Data” tab reappears.</p>
-<p>The best way to bring it back is to click the Modeling tab, then select the “New Table” option, and enter your DAX command to create a new DATATABLE. You can find the full documentation here: <a href="https://docs.microsoft.com/en-us/dax/datatable-function" target="_blank" rel="noopener">DATATABLE docs</a>, but here’s some sample code to get you going:</p>
-<pre class="line-numbers language-js"><code class="language-js">NewTable = DataTable("Name", STRING, {{"Jon"}})
+<p>The best way to bring it back is to click the Modeling tab, then select the “New Table” option, and enter your DAX command to create a new DATATABLE. You can find the full documentation here: <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dax/datatable-function">DATATABLE docs</a>, but here’s some sample code to get you going:</p>
+<pre class="line-numbers language-js"><code class="language-js">NewTable = DataTable("Name", STRING, &amp;#123;&amp;#123;"Jon"&amp;#125;&amp;#125;)
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="000008.png" alt=""></p>
 <p>As you can see the “Data” tab immediately reappears, but only stays there if you actually create a table.</p>
@@ -392,7 +392,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

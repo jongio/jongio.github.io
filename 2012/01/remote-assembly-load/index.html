@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -213,7 +213,7 @@
 <p>I got this error. Could not load file or assembly or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x80131515)</p>
 <p><img src="/images/blog/5126.image_5F00_thumb_5F00_2C51C4A6.png" alt=""></p>
 <p>I figured I could copy it locally, but knew there must be a better way. So I scoured the interwebs and found this post on StackOverflow:</p>
-<p><a href="http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep" target="_blank" rel="noopener">http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep</a></p>
+<p><a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep">http://stackoverflow.com/questions/8308312/assembly-loaded-using-assembly-loadfrom-on-remote-machine-causes-securityexcep</a></p>
 <p>Which basically tells us to use Assembly.Load instead of Assembly.LoadFrom. Here’s the code that works:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">Assembly a2 = Assembly.Load(File.ReadAllBytes(file));
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -388,7 +388,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

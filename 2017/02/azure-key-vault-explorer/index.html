@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,10 +205,10 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>We often need to share database connection strings, system account passwords and whatnot with our team members. People typically put the secret in a DRM’d email, but that’s not secure enough and you can’t copy and paste them.  There’s a better way with <a href="https://azure.microsoft.com/en-us/services/key-vault/" target="_blank" rel="noopener">Azure Key Vault</a> and <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="noopener">Azure Key Vault Explorer</a>.</p>
+            <p>We often need to share database connection strings, system account passwords and whatnot with our team members. People typically put the secret in a DRM’d email, but that’s not secure enough and you can’t copy and paste them.  There’s a better way with <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/services/key-vault/">Azure Key Vault</a> and <a target="_blank" rel="noopener" href="https://github.com/elize1979/AzureKeyVaultExplorer">Azure Key Vault Explorer</a>.</p>
 <p>Here’s how to get it all setup.</p>
 <h2 id="Create-Azure-Key-Vault"><a class="header-anchor" href="#Create-Azure-Key-Vault"></a>Create Azure Key Vault</h2>
-<p>Go to the <a href="https://portal.azure.com/#create/Microsoft.KeyVault" target="_blank" rel="noopener">Azure Portal</a> and create an Azure Key Vault</p>
+<p>Go to the <a target="_blank" rel="noopener" href="https://portal.azure.com/#create/Microsoft.KeyVault">Azure Portal</a> and create an Azure Key Vault</p>
 <p><img src="000074.png" alt=""></p>
 <h2 id="Add-Team-Members-to-Azure-Key-Vault"><a class="header-anchor" href="#Add-Team-Members-to-Azure-Key-Vault"></a>Add Team Members to Azure Key Vault</h2>
 <p>I tried adding a security group here, but it appears that this only works if you add each user individually.</p>
@@ -222,8 +222,8 @@
 <p>Repeat that for every team member you want to have access to your secrets.</p>
 </blockquote>
 <h2 id="Download-Azure-Key-Vault-Explorer"><a class="header-anchor" href="#Download-Azure-Key-Vault-Explorer"></a>Download Azure Key Vault Explorer</h2>
-<p>You could manage your secrets via the portal, but I’ve found that the <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="noopener">Azure Key Vault Explorer</a> requires less clicks to get to the secrets. I’m a fan of less clicks.</p>
-<p>Download the <a href="https://aka.ms/ve" target="_blank" rel="noopener">Azure Key Vault Explorer</a>. You can read more about it <a href="https://github.com/elize1979/AzureKeyVaultExplorer" target="_blank" rel="noopener">here</a>.</p>
+<p>You could manage your secrets via the portal, but I’ve found that the <a target="_blank" rel="noopener" href="https://github.com/elize1979/AzureKeyVaultExplorer">Azure Key Vault Explorer</a> requires less clicks to get to the secrets. I’m a fan of less clicks.</p>
+<p>Download the <a target="_blank" rel="noopener" href="https://aka.ms/ve">Azure Key Vault Explorer</a>. You can read more about it <a target="_blank" rel="noopener" href="https://github.com/elize1979/AzureKeyVaultExplorer">here</a>.</p>
 <h2 id="Connect-Vault-Explorer-to-Azure-Subscription"><a class="header-anchor" href="#Connect-Vault-Explorer-to-Azure-Subscription"></a>Connect Vault Explorer to Azure Subscription</h2>
 <p>In Vault Explorer, select “Pick vault from Subscription”</p>
 <p><img src="000078.png" alt=""></p>
@@ -408,7 +408,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

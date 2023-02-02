@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,16 +207,16 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I just added sorting and upgraded to AngularJS 1.2.0 and Bootstrap 3.</p>
 <p><img src="/images/blog/V4_EA30/image.png" alt=""></p>
-<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
+<p>CODE: <a target="_blank" rel="noopener" href="https://github.com/jongio/AngularJS-WebApi-EF">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
 <p>I’ll eventually put the into directives, just ran out of time today.</p>
 <p>1. Added ‘orderBy’ property to the controller scope</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.orderBy = { field: 'Name', asc: true };
+<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.orderBy = &amp;#123; field: 'Name', asc: true &amp;#125;;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2. Added setOrderBy function to scope. If we are resorting current field then flip direction.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.setOrderBy = function (field) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.setOrderBy = function (field) &amp;#123;
     var asc = $scope.orderBy.field === field ? !$scope.orderBy.asc : true;
-    $scope.orderBy = { field: field, asc: asc };
-}
+    $scope.orderBy = &amp;#123; field: field, asc: asc &amp;#125;;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>3. Binding the row orderBy to the orderBy scope property</p>
 <pre class="line-numbers language-html"><code class="language-html">&lt;tr ng-repeat="object in objects | orderBy:orderBy.field:!orderBy.asc"&gt;
@@ -225,7 +225,7 @@
 <pre class="line-numbers language-html"><code class="language-html">&lt;th ng-click="setOrderBy('Name')"&gt;
     &lt;div&gt;
         Name
-        &lt;i class="glyphicon" ng-class="{'glyphicon-sort-by-alphabet': orderBy.asc, 'glyphicon-sort-by-alphabet-alt': !orderBy.asc}" ng-show="orderBy.field == 'Name'"&gt;&lt;/i&gt;
+        &lt;i class="glyphicon" ng-class="&amp;#123;'glyphicon-sort-by-alphabet': orderBy.asc, 'glyphicon-sort-by-alphabet-alt': !orderBy.asc&amp;#125;" ng-show="orderBy.field == 'Name'"&gt;&lt;/i&gt;
     &lt;/div&gt;
 &lt;/th&gt;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -399,7 +399,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

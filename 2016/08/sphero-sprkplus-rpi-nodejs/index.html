@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2016-08-29T16:31:00.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:54:48.892Z">
+<meta property="article:modified_time" content="2021-03-18T06:54:48.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,7 +205,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m working on a demo that involves streaming <a href="http://www.sphero.com/" target="_blank" rel="noopener">Sphero</a> data through the <a href="https://azure.microsoft.com/en-us/suites/iot-suite/" target="_blank" rel="noopener">Azure IoT</a> stack. I got my <a href="http://www.sphero.com/sprk-plus" target="_blank" rel="noopener">Sphero SPRK+</a> last week and quickly discovered that it only has <a href="https://en.wikipedia.org/wiki/Bluetooth_low_energy" target="_blank" rel="noopener">Bluetooth Low Energy (BLE)</a> enabled and not regular Bluetooth. So, I couldn’t get it to connect to my Windows or OSX machines because they don’t have a BLE chipset. I suspect that Sphero will push Bluetooth support via a firmware update later this fall. Until then, you can do the following to code against your SPRK+ using a Raspberry Pi 3, which ships with BLE.</p>
+            <p>I’m working on a demo that involves streaming <a target="_blank" rel="noopener" href="http://www.sphero.com/">Sphero</a> data through the <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/suites/iot-suite/">Azure IoT</a> stack. I got my <a target="_blank" rel="noopener" href="http://www.sphero.com/sprk-plus">Sphero SPRK+</a> last week and quickly discovered that it only has <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bluetooth_low_energy">Bluetooth Low Energy (BLE)</a> enabled and not regular Bluetooth. So, I couldn’t get it to connect to my Windows or OSX machines because they don’t have a BLE chipset. I suspect that Sphero will push Bluetooth support via a firmware update later this fall. Until then, you can do the following to code against your SPRK+ using a Raspberry Pi 3, which ships with BLE.</p>
 <h2 id="Raspberry-Pi-3"><a class="header-anchor" href="#Raspberry-Pi-3"></a>Raspberry Pi 3</h2>
 <p>Get a Raspberry Pi 3 and plug it in. Monitor, keyboard, mouse, network cable.</p>
 <h2 id="Sphero-SPRK"><a class="header-anchor" href="#Sphero-SPRK"></a>Sphero SPRK+</h2>
@@ -215,8 +215,8 @@
 <p>Flash Raspbian Jessie onto a MicroSD card and boot up your RPI3. Use <a href="/2016/08/azure-iot-gateway-raspberry-pi-3.html">this blog post</a> if you need help with this step.</p>
 <h2 id="Install-TightVNC"><a class="header-anchor" href="#Install-TightVNC"></a>Install TightVNC</h2>
 <p>This is helpful for accessing the RPI3 from your desktop. This step isn’t required if you want to control RPI3 using locally keyboard and mouse.</p>
-<p>Install on Desktop: <a href="http://www.tightvnc.com/download.php" target="_blank" rel="noopener" title="http://www.tightvnc.com/download.php">http://www.tightvnc.com/download.php</a></p>
-<p>Install on RPI3: <a href="https://www.raspberrypi.org/documentation/remote-access/vnc/" target="_blank" rel="noopener" title="https://www.raspberrypi.org/documentation/remote-access/vnc/">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
+<p>Install on Desktop: <a target="_blank" rel="noopener" href="http://www.tightvnc.com/download.php" title="http://www.tightvnc.com/download.php">http://www.tightvnc.com/download.php</a></p>
+<p>Install on RPI3: <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/remote-access/vnc/" title="https://www.raspberrypi.org/documentation/remote-access/vnc/">https://www.raspberrypi.org/documentation/remote-access/vnc/</a></p>
 <p>Use the following to start VNC Server on your RPI3</p>
 <pre class="line-numbers language-bash"><code class="language-bash">vncserver :1
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -433,7 +433,7 @@ leafpad sphero.js
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -225,7 +225,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
     ));
   }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
 </script>
-<p>From my experience with Azure IoT Device Twin REST APIs, I thought it would be great to do the same thing for the entire Azure IoT REST API surface. I’m a huge fan of starting small and showing incremental progress, so with this post, I’m going to show you how I got the entire <a href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource" target="_blank" rel="noopener">Azure IoT Resource Provider REST API</a> surface working in Postman and Newman. The Resource Provider REST APIs allow you to manage IoT Hubs as an Azure Resource via the Azure Resource Manager APIs.  The official Swagger for the Resource Provider APIs can be found here: <a href="https://github.com/Azure/azure-rest-api-specs/blob/129d712131beef11c2c184b64de0edf1f9c62c17/specification/iothub/resource-manager/Microsoft.Devices/stable/2017-07-01/iothub.json" target="_blank" rel="noopener">Azure IoT Hub Resource Provider Swagger</a>.</p>
+<p>From my experience with Azure IoT Device Twin REST APIs, I thought it would be great to do the same thing for the entire Azure IoT REST API surface. I’m a huge fan of starting small and showing incremental progress, so with this post, I’m going to show you how I got the entire <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource">Azure IoT Resource Provider REST API</a> surface working in Postman and Newman. The Resource Provider REST APIs allow you to manage IoT Hubs as an Azure Resource via the Azure Resource Manager APIs.  The official Swagger for the Resource Provider APIs can be found here: <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-rest-api-specs/blob/129d712131beef11c2c184b64de0edf1f9c62c17/specification/iothub/resource-manager/Microsoft.Devices/stable/2017-07-01/iothub.json">Azure IoT Hub Resource Provider Swagger</a>.</p>
 <p>I’ve written this blog post with two audiences in mind:</p>
 <p><strong>1. View Only</strong>: You want to learn how to use the Azure IoT Resource Provider REST APIs but don’t want to setup all the Azure resources required to execute the requests.</p>
 <blockquote>
@@ -236,7 +236,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 <p>See <a href="#Option-2-View-and-Execute-Requests">Option 2: View and Execute Requests</a> below.</p>
 </blockquote>
 <h2 id="Install-Postman"><a class="header-anchor" href="#Install-Postman"></a>Install Postman</h2>
-<p>With either approach below, you will need to install Postman, which you can do here: <a href="http://getpostman.com" target="_blank" rel="noopener">Install Postman</a>.  I use the Desktop version, but the Chrome version should work fine as well.</p>
+<p>With either approach below, you will need to install Postman, which you can do here: <a target="_blank" rel="noopener" href="http://getpostman.com">Install Postman</a>.  I use the Desktop version, but the Chrome version should work fine as well.</p>
 <h2 id="Option-1-View-Requests-Only"><a class="header-anchor" href="#Option-1-View-Requests-Only"></a>Option 1: View Requests Only</h2>
 <p>If all you want to do is view the requests in Postman without executing anything, then jump to the <a href="#Open-Postman-Collection">Open Postman Collection</a> section below.</p>
 <h2 id="Option-2-View-and-Execute-Requests"><a class="header-anchor" href="#Option-2-View-and-Execute-Requests"></a>Option 2: View and Execute Requests</h2>
@@ -256,7 +256,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 <p><img src="000117.png" alt=""></p>
 <h2 id="Setup-Azure-Resources"><a class="header-anchor" href="#Setup-Azure-Resources"></a>Setup Azure Resources</h2>
 <h3 id="1-Create-Azure-Subscription"><a class="header-anchor" href="#1-Create-Azure-Subscription"></a>1. Create Azure Subscription</h3>
-<p>You will likely already have an Azure Subscription, but if you don’t, you can create one in the <a href="https://portal.azure.com" target="_blank" rel="noopener">Azure Portal</a>.</p>
+<p>You will likely already have an Azure Subscription, but if you don’t, you can create one in the <a target="_blank" rel="noopener" href="https://portal.azure.com">Azure Portal</a>.</p>
 <p>Whether you just created an Azure Subscription or are using an existing one, you will need your Subscription Id to execute these REST API calls.</p>
 <blockquote>
 <p>Copy your <strong>Subscription Id</strong>, which is a GUID, to the <strong>subscriptionId</strong> Postman Environment variable.</p>
@@ -278,7 +278,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 <blockquote>
 <p>You can skip this step if you don’t need to test Device Bulk operations, but just keep in mind that those requests will fail.</p>
 </blockquote>
-<p>1. Create the Blob Storage Account, feel free to use <a href="http://storageexplorer.com" target="_blank" rel="noopener">Azure Storage Explorer</a> to do so.<br>
+<p>1. Create the Blob Storage Account, feel free to use <a target="_blank" rel="noopener" href="http://storageexplorer.com">Azure Storage Explorer</a> to do so.<br>
 2. Create two containers, one called ‘export’ and one called ‘import’.</p>
 <p>This is what your Blob Account will look like when you are done with this step:<br>
 <img src="000108.png" alt=""></p>
@@ -339,7 +339,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 <p>With the current configuration, the tests will take a while to execute because I am running the “Create IoT Hub” request and the “Verify IoT Hub” request, which is a polling request that returns a “Success” code when the IoT Hub is created.</p>
 </blockquote>
 <h2 id="Run-Postman-Collection-via-Newman"><a class="header-anchor" href="#Run-Postman-Collection-via-Newman"></a>Run Postman Collection via Newman</h2>
-<p><a href="https://github.com/postmanlabs/newman" target="_blank" rel="noopener">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/postmanlabs/newman">Newman</a> is a Postman Collection runner CLI. With Newman, you can run Postman collections as part of your continuous integration suite.</p>
 <p>For example, the following will execute a Postman Collection with a given set of Environment variables.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">newman run postman-collection.json -e environment-variables.json
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -365,7 +365,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
 </blockquote>
 <h2 id="Setup-Postman-Monitor"><a class="header-anchor" href="#Setup-Postman-Monitor"></a>Setup Postman Monitor</h2>
 <p>I haven’t tried this yet, but Postman offers a PRO feature called “Monitor”, which allows you to schedule the Collection Run.  I am more interested in integration with existing continuous integration software, which I will be exploring very soon.</p>
-<p>In the meantime, checkout their post <a href="https://www.getpostman.com/docs/integrating_with_jenkins" target="_blank" rel="noopener">Integrating automated API tests with Jenkins</a>.</p>
+<p>In the meantime, checkout their post <a target="_blank" rel="noopener" href="https://www.getpostman.com/docs/integrating_with_jenkins">Integrating automated API tests with Jenkins</a>.</p>
 <p>Jon</p>
 
         </div>
@@ -537,7 +537,7 @@ data-postman-var-1="84a38008cd07accf565e"></div>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

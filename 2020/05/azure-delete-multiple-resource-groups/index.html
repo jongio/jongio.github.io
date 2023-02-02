@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/05/azure-delete-multiple-resource-groups/011.png">
 <meta property="article:published_time" content="2020-05-02T16:08:02.000Z">
-<meta property="article:modified_time" content="2021-03-04T18:19:12.710Z">
+<meta property="article:modified_time" content="2021-03-04T18:19:12.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,15 +208,15 @@
             <p>Azure doesn’t currently provide a way to delete multiple resource groups at the same time.</p>
 <p>Here’s a method that works for me.</p>
 <ol>
-<li>Open Azure Portal <a href="https://portal.azure.com" target="_blank" rel="noopener">https://portal.azure.com</a></li>
+<li>Open Azure Portal <a target="_blank" rel="noopener" href="https://portal.azure.com">https://portal.azure.com</a></li>
 <li>Click on Resource Groups</li>
 <li>Select the Resource Groups that you want to delete</li>
 <li>Click “Assign tags”<br>
 <img src="012.png" alt="&quot;Assign tags&quot;"></li>
 <li>Assign a new tag called “delete”. Click Save. You don’t need to provide a tag value.<br>
 <img src="010.png" alt="&quot;Assign delete tag&quot;"></li>
-<li>Open Azure Cloud Shell <a href="https://shell.azure.com" target="_blank" rel="noopener">https://shell.azure.com</a> or click on the Azure Shell icon in the Azure Portal toolbar.</li>
-<li>Set active subscription <code>az account set -n {SUB_NAME}</code> (only required if you have more than one sub)</li>
+<li>Open Azure Cloud Shell <a target="_blank" rel="noopener" href="https://shell.azure.com">https://shell.azure.com</a> or click on the Azure Shell icon in the Azure Portal toolbar.</li>
+<li>Set active subscription <code>az account set -n &#123;SUB_NAME&#125;</code> (only required if you have more than one sub)</li>
 </ol>
 <blockquote>
 <p>IMPORTANT: By running the following script you understand that you can inadvertently delete resources that you don’t intend to delete. You cannot hold me or any of my associates responsible for any actions you take against your own Azure subscription. Also, don’t run this in production. This is a dev helper script.</p>
@@ -225,12 +225,12 @@
 <li>Paste the following script into Cloud Shell and hit enter.</li>
 </ol>
 <p>This script will loop through all resource groups that have the tag ‘delete’ and will prompt you to confirm deletion. If you type ‘y’, then the resource group will be deleted. If you type ‘n’ that resource group will be skipped.</p>
-<p>If you don’t want to be prompted for every resource group, then add a <code>-y</code> to the <code>az group delete -n ${rg}</code> command like so: <code>az group delete -n ${rg} -y</code>. I’m not going to publish that full command because I want you to explicitly understand what you are doing when you add that flag.</p>
+<p>If you don’t want to be prompted for every resource group, then add a <code>-y</code> to the <code>az group delete -n $&#123;rg&#125;</code> command like so: <code>az group delete -n $&#123;rg&#125; -y</code>. I’m not going to publish that full command because I want you to explicitly understand what you are doing when you add that flag.</p>
 <h2 id="The-Amazing-Multiple-Resource-Group-Bash-Delete-Script"><a class="header-anchor" href="#The-Amazing-Multiple-Resource-Group-Bash-Delete-Script"></a>The Amazing Multiple Resource Group Bash Delete Script</h2>
 <pre class="line-numbers language-bash"><code class="language-bash">az group list --tag delete --query [].name -o tsv | xargs -otl az group delete --no-wait  -n
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="011.png" alt="&quot;Run delete script&quot;"></p>
-<p>Props to Ruben Koster for helping me figure out how to parse JSON arrays with Bash <a href="https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/" target="_blank" rel="noopener">https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/</a></p>
+<p>Props to Ruben Koster for helping me figure out how to parse JSON arrays with Bash <a target="_blank" rel="noopener" href="https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/">https://starkandwayne.com/blog/bash-for-loop-over-json-array-using-jq/</a></p>
 
         </div>
         <footer>
@@ -401,7 +401,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

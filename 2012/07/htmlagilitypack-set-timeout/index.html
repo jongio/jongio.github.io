@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,35 +207,35 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="http://htmlagilitypack.codeplex.com/" target="_blank" rel="noopener">HtmlAgilityPack</a> is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property. I see a lot of people recommending using HttpWebRequest or WebClient to get the request and then HtmlAgilityPack to query the DOM, but there’s an easier way.</p>
-<p>You can view the source for <a href="http://htmlagilitypack.codeplex.com/SourceControl/changeset/view/98677#1096541" target="_blank" rel="noopener">HtmlWeb here</a> and see that they expose a PreRequest delegate:</p>
+            <p><a target="_blank" rel="noopener" href="http://htmlagilitypack.codeplex.com/">HtmlAgilityPack</a> is a great HTML parser library that I often use for scraping. It does web requests on your behalf via the HtmlWeb().Load methods, but doesn’t expose the HttpWebRequest.Timeout property. I see a lot of people recommending using HttpWebRequest or WebClient to get the request and then HtmlAgilityPack to query the DOM, but there’s an easier way.</p>
+<p>You can view the source for <a target="_blank" rel="noopener" href="http://htmlagilitypack.codeplex.com/SourceControl/changeset/view/98677#1096541">HtmlWeb here</a> and see that they expose a PreRequest delegate:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public delegate bool PreRequestHandler(HttpWebRequest request);
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>And they call that delegate right before making the GetResponse call:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">if (PreRequest != null)
-{
+&amp;#123;
     // allow our user to change the request at will
     if (!PreRequest(req))
-    {
+    &amp;#123;
         return HttpStatusCode.ResetContent;
-    }              
-}
+    &amp;#125;              
+&amp;#125;
 
 HttpWebResponse resp;
 
 try
-{
+&amp;#123;
     resp = req.GetResponse() as HttpWebResponse;
-}
+&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>So all you have to do is assign a delegate to PreRequest and set your timeout within that delegate:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var web = new HtmlWeb();
 web.PreRequest = delegate(HttpWebRequest webRequest)
-{
+&amp;#123;
      webRequest.Timeout = 4;
      return true;
-};
+&amp;#125;;
 var doc = web.Load("http://www.msn.com/");
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Yep, it’s that easy.</p>
@@ -410,7 +410,7 @@ var doc = web.Load("http://www.msn.com/");
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

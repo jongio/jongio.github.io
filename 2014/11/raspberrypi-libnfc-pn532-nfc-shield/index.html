@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,29 +206,29 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image.png" alt="">I’m working on an NFC project and to test things out I got a <a href="http://www.adafruit.com/products/789" target="_blank" rel="noopener">PN532 NFC shield</a> working with a RaspberryPi via <a href="http://nfc-tools.org/" target="_blank" rel="noopener">libnfc</a>.</p>
-<p>Adafruit has a good <a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/overview" target="_blank" rel="noopener">step-by-step tutorial</a>, but it’s not up-to-date and it’s for the <a href="http://www.adafruit.com/product/364" target="_blank" rel="noopener">PN532 breakout board</a> not the PN532 shield. They also have <a href="https://learn.adafruit.com/adafruit-pn532-rfid-nfc/overview" target="_blank" rel="noopener">this one for Arduino</a> – it’s not RaspberryPi, but still helpful for understanding the concepts.</p>
+            <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image.png" alt="">I’m working on an NFC project and to test things out I got a <a target="_blank" rel="noopener" href="http://www.adafruit.com/products/789">PN532 NFC shield</a> working with a RaspberryPi via <a target="_blank" rel="noopener" href="http://nfc-tools.org/">libnfc</a>.</p>
+<p>Adafruit has a good <a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/overview">step-by-step tutorial</a>, but it’s not up-to-date and it’s for the <a target="_blank" rel="noopener" href="http://www.adafruit.com/product/364">PN532 breakout board</a> not the PN532 shield. They also have <a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-pn532-rfid-nfc/overview">this one for Arduino</a> – it’s not RaspberryPi, but still helpful for understanding the concepts.</p>
 <p>Here’s how I got it going – hope this saves you some time.</p>
 <p><strong>1. Get Occidentalis v0.2</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2" title="https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2">https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro/occidentalis-v0-dot-2</a></p>
 <p><strong>2. Make Occidentalis SD card</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7" title="https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7">https://learn.adafruit.com/adafruit-raspberry-pi-lesson-1-preparing-and-sd-card-for-your-raspberry-pi/making-an-sd-card-using-a-windows-vista-slash-7</a></p>
 <p><strong>3. Run first time config</strong></p>
-<p><a href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration" title="https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration">https://learn.adafruit.com/adafruits-raspberry-pi-lesson-2-first-time-configuration</a></p>
 <p><strong>4. Free UART on the Pi</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/freeing-uart-on-the-pi</a></p>
 <ul>
-<li>On step one remove any key-value pairs that reference ttyAMAO (i.e. console=ttyAMAO,115200) and keep everything else. <a href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins" target="_blank" rel="noopener" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins</a></li>
+<li>On step one remove any key-value pairs that reference ttyAMAO (i.e. console=ttyAMAO,115200) and keep everything else. <a target="_blank" rel="noopener" href="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins" title="http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins">http://www.raspberry-projects.com/pi/pi-operating-systems/raspbian/io-pins-raspbian/uart-pins</a></li>
 </ul>
 <p><strong>5. Get and Build libnfc</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/building-libnfc</a></p>
 <ul>
-<li>On step three you might get the following: “./configure command not found” if so then follow the instructions here: <a href="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489" target="_blank" rel="noopener" title="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489">http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489</a></li>
+<li>On step three you might get the following: “./configure command not found” if so then follow the instructions here: <a target="_blank" rel="noopener" href="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489" title="http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489">http://forums.adafruit.com/viewtopic.php?f=19&amp;t=53935#p292489</a></li>
 </ul>
 <p><strong>6. Prepare the PN532</strong></p>
 <p>When I was going through this I was going under the assumption that libnfc only worked in UART mode (because that is what I found on from many sources), but I later found that it does support I2C and SPI. To get PN532 in UART mode you need to solder SEL0 on the board (make sure you are soldering SEL closest to MOSI on the board. In v.1 of PN532 SEL0 and SEL1 labels were reversed.</p>
 <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_3.png" alt=""></p>
-<p>I found that info here: <a href="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html" target="_blank" rel="noopener" title="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html">http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html</a></p>
+<p>I found that info here: <a target="_blank" rel="noopener" href="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html" title="http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html">http://www.mobilefish.com/developer/libnfc/libnfc_quickguide_adafruit.html</a></p>
 <p><strong>7. Wire up the PN532 to the breadboard and the RaspberryPi</strong></p>
 <ul>
 <li>Connect 5v power and GND from RaspberryPi to breadboard</li>
@@ -241,7 +241,7 @@
 </ul>
 <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_4.png" alt=""></p>
 <p><strong>8. Test it out</strong></p>
-<p><a href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out" target="_blank" rel="noopener" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out" title="https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out">https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi/testing-it-out</a></p>
 <p>After running nfc-poll and swiping a card you should see your UID – which means it is working!</p>
 <p><img src="/images/blog/nfc-shield-pn532-raspberrypi-libnfc_D006/image_5.png" alt=""></p>
 <p>Let me know if you run into any issues.</p>
@@ -416,7 +416,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

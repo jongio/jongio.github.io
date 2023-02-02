@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,12 +207,12 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from <a href="https://channel9.msdn.com/Events/Build/2016/B844" target="_blank" rel="noopener">Olivier Bloch’s Build Talk</a>:</p>
-<p>1. Create a new Azure IoT Hub – Free Tier – in Azure Portal <a href="http://portal.azure.com" target="_blank" rel="noopener">http://portal.azure.com</a></p>
+            <p>Here’s a quick post on how to get setup with Azure IoT Hub with a UWP App. These steps and code taken from <a target="_blank" rel="noopener" href="https://channel9.msdn.com/Events/Build/2016/B844">Olivier Bloch’s Build Talk</a>:</p>
+<p>1. Create a new Azure IoT Hub – Free Tier – in Azure Portal <a target="_blank" rel="noopener" href="http://portal.azure.com">http://portal.azure.com</a></p>
 <p><img src="/images/blog/987201621419_9160/image.png" alt=""></p>
 <p>Once that is created, grab the “iothubowner” connection string – primary key value. (Click Settings –&gt; Shared Access Policies –&gt; iothubowner)</p>
 <p><img src="/images/blog/987201621419_9160/image_3.png" alt=""></p>
-<p>2. Install the <a href="https://github.com/Azure/azure-iot-sdks/releases/latest" target="_blank" rel="noopener">Azure IoT Hub Device Explorer Windows app</a> – you’ll use this to view and send messages that come and go through the IoT Hub.</p>
+<p>2. Install the <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdks/releases/latest">Azure IoT Hub Device Explorer Windows app</a> – you’ll use this to view and send messages that come and go through the IoT Hub.</p>
 <p><img src="/images/blog/987201621419_9160/image_4.png" alt=""></p>
 <p>Enter the iothubowner connection string from the last step and click update.</p>
 <p><img src="/images/blog/987201621419_9160/image_5.png" alt=""></p>
@@ -243,25 +243,25 @@
 <p><img src="/images/blog/987201621419_9160/image_19.png" alt=""></p>
 <p>Open MainPage.xml.cs and add this code – receive and send messages to the IoT Hub vai the AzureIoTHub helper.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">public MainPage()
-{
+&amp;#123;
      this.InitializeComponent();
 
     Task.Run(
-         async () =&gt; {
-             while (true) {
+         async () =&gt; &amp;#123;
+             while (true) &amp;#123;
                  var message = await AzureIoTHub.ReceiveCloudToDeviceMessageAsync();
-                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.High, () =&gt; {
+                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.High, () =&gt; &amp;#123;
                      textBlock.Text += Environment.NewLine + message;
-                 });
-             }
-         }
+                 &amp;#125;);
+             &amp;#125;
+         &amp;#125;
          );
-}
+&amp;#125;
 
 private void button_Click(object sender, RoutedEventArgs e)
-{
-     Task.Run(async () =&gt; { await AzureIoTHub.SendDeviceToCloudMessageAsync(); });
-}
+&amp;#123;
+     Task.Run(async () =&gt; &amp;#123; await AzureIoTHub.SendDeviceToCloudMessageAsync(); &amp;#125;);
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Compile and Run the VS Project.</p>
 <p>Open the Data tab in Device Explorer and click the Monitor button</p>
@@ -442,7 +442,7 @@ private void button_Click(object sender, RoutedEventArgs e)
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

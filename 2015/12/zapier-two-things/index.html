@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2015-12-15T07:16:00.000Z">
-<meta property="article:modified_time" content="2021-02-21T01:57:38.709Z">
+<meta property="article:modified_time" content="2021-02-21T01:57:38.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="reviews">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,8 +206,8 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>I’m working on a project that involves aggregating data from many sources (Twitter, Blogs, Yammer, etc) so my team can get visibility and respond to questions being asked about our product. My goal is to suck in all the data from those sources, pop it into a database and then create a Power BI dashboard out of it.</p>
-<p>To do so, I created a webhook endpoint that accepts HTTP POST operations so I can have a single endpoint that accepts data and inserts it into the database. The missing part was querying for the data and calling my webhook. Instead of writing all those connectors I would rather use a service that does that for me. There are a bunch of services out there that enable service to service integrations, like <a href="https://zapier.com/" target="_blank" rel="noopener">Zapier</a> and <a href="http://ifttt.com/" target="_blank" rel="noopener">IFTTT</a>. There’s a good list of them <a href="http://apievangelist.com/2013/02/10/bringing-etl-to-the-masses-with-apis/" target="_blank" rel="noopener">here</a>. I spent a bunch of time with Zapier because they have connectors to most of the services I need to connect with and they support webhooks. IFTTT does those things as well, but I found their product to be too buggy for me to work with, especially the webhook (aka Maker) connector.</p>
-<p><a href="https://zapier.com/" target="_blank" rel="noopener">Zapier</a> is a polished product with an amazing user experience, but there are a few limitations that I think you should know about. I want to make sure you know that I think very highly of Zapier as a product. The UX is amazing. The error messaging is great. The support team is phenomenal. There are just two important things that prevent me from using it….</p>
+<p>To do so, I created a webhook endpoint that accepts HTTP POST operations so I can have a single endpoint that accepts data and inserts it into the database. The missing part was querying for the data and calling my webhook. Instead of writing all those connectors I would rather use a service that does that for me. There are a bunch of services out there that enable service to service integrations, like <a target="_blank" rel="noopener" href="https://zapier.com/">Zapier</a> and <a target="_blank" rel="noopener" href="http://ifttt.com/">IFTTT</a>. There’s a good list of them <a target="_blank" rel="noopener" href="http://apievangelist.com/2013/02/10/bringing-etl-to-the-masses-with-apis/">here</a>. I spent a bunch of time with Zapier because they have connectors to most of the services I need to connect with and they support webhooks. IFTTT does those things as well, but I found their product to be too buggy for me to work with, especially the webhook (aka Maker) connector.</p>
+<p><a target="_blank" rel="noopener" href="https://zapier.com/">Zapier</a> is a polished product with an amazing user experience, but there are a few limitations that I think you should know about. I want to make sure you know that I think very highly of Zapier as a product. The UX is amazing. The error messaging is great. The support team is phenomenal. There are just two important things that prevent me from using it….</p>
 <h2 id="It-only-retrieves-new-data"><a class="header-anchor" href="#It-only-retrieves-new-data"></a><strong>It only retrieves new data</strong></h2>
 <p>Zapier is for “new” data. Any new piece of content that is created in your source connector will be sent to your destination connector. But, if you need old data you have to get that yourself. It doesn’t allow you to go back in time. For my project, I have to get old and new data from the source. I could still use Zapier for new data, but I would have to write a script to get old data to prime it. If I go that far to get old data, then I can just quickly write a script to ping for new data. So, that alone would prevent me from using Zapier.</p>
 <p>I asked Zapier if they plan to expose direct access to their connectors so I could use then when creating my code to get old data. They unfortunately said no.</p>
@@ -215,7 +215,7 @@
 <h2 id="It-can-get-costly"><a class="header-anchor" href="#It-can-get-costly"></a><strong>It can get costly</strong></h2>
 <p>Zapier has “Zaps” and “Tasks”. A Zap is equivalent to <em>a job that connects source and destination data</em> and a Task is equivalent to <em>a POST operation to your destination</em>. They charge per Task, not per run of the Zap. Tasks can add up quickly, especially if you have a lot of connectors that are popular.</p>
 <p>I incorrectly assumed that a Task was a “run of the Zap”, but it’s not. A Task is “an execution of your destination connector”. If your destination is a webhook, then each time they call that webhook will count as a Task.</p>
-<p>As you can see on their <a href="https://zapier.com/app/pricing" target="_blank" rel="noopener">pricing page</a> you have multiple plans to choose from.</p>
+<p>As you can see on their <a target="_blank" rel="noopener" href="https://zapier.com/app/pricing">pricing page</a> you have multiple plans to choose from.</p>
 <div class="separator" style="clear: both; text-align: center;">![](/images/blog/zapier1.png)</div>
 They also have "[higher plans](https://zapier.com/help/higher-plans/)"
 <div class="separator" style="clear: both; text-align: center;">![](/images/blog/zapier2.png)</div>
@@ -395,7 +395,7 @@ Jon</p>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

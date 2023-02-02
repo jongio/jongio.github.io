@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,13 +208,13 @@
             <p>Could not find an implementation of the query pattern for source type ‘[type]’. ‘Where’ not found. Consider explicitly specifying the type of the range variable ‘[variableName]’</p>
 <p>You get this error if you try to do a LINQ query on a collection that doesn’t have an explicit type:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public interface ISubSection
-{
-    string Title { get; set; }
+&amp;#123;
+    string Title &amp;#123; get; set; &amp;#125;
 
-    string Description { get; set; }
+    string Description &amp;#123; get; set; &amp;#125;
 
-    IList Items { get; set; }
-}
+    IList Items &amp;#123; get; set; &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var x  =  from c in FailingBuilds.Items
 
@@ -396,7 +396,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

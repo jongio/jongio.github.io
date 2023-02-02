@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,37 +205,37 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I recently gave a <a href="https://channel9.msdn.com/Events/Speakers/jon-gallant" target="_blank" rel="noopener">few presentations</a> at Ignite New Zealand and used a couple of applications to help me find the lowest latency Azure Region from Auckland.  You’ll want to know the top two regions, because you have your primary setup in one region and your backup is in another region (just in case the primary region goes offline during your demo).</p>
-<p>If you want more accurate results then use <a href="http://www.azurespeed.com/Azure/PsPing" target="_blank" rel="noopener">PsPing</a>, if you want a quick estimate based on latency from a browser to an Azure Datacenter, then use one of the options below.</p>
-<p>Here’s another good post with more tips on finding your idea Azure Region: <a href="https://www.petri.com/tips-choosing-microsoft-azure-region" target="_blank" rel="noopener">Tips for Choosing a Microsoft Azure Region<br>
+            <p>I recently gave a <a target="_blank" rel="noopener" href="https://channel9.msdn.com/Events/Speakers/jon-gallant">few presentations</a> at Ignite New Zealand and used a couple of applications to help me find the lowest latency Azure Region from Auckland.  You’ll want to know the top two regions, because you have your primary setup in one region and your backup is in another region (just in case the primary region goes offline during your demo).</p>
+<p>If you want more accurate results then use <a target="_blank" rel="noopener" href="http://www.azurespeed.com/Azure/PsPing">PsPing</a>, if you want a quick estimate based on latency from a browser to an Azure Datacenter, then use one of the options below.</p>
+<p>Here’s another good post with more tips on finding your idea Azure Region: <a target="_blank" rel="noopener" href="https://www.petri.com/tips-choosing-microsoft-azure-region">Tips for Choosing a Microsoft Azure Region<br>
 </a></p>
 <blockquote>
 <p>With either approach below, you will need to ask someone from your target location to run the test.</p>
 </blockquote>
 <h2 id="Azure-Storage-Latency-Test"><a class="header-anchor" href="#Azure-Storage-Latency-Test"></a>Azure Storage Latency Test</h2>
-<p><a href="http://www.azurespeed.com/" target="_blank" rel="noopener">azurespeed.com</a></p>
-<p>The <a href="http://www.azurespeed.com/" target="_blank" rel="noopener">Azure Storage Latency Test</a> site looks like it is maintained more frequently, becuase it has the West US 2 region, while the other option below does not.</p>
+<p><a target="_blank" rel="noopener" href="http://www.azurespeed.com/">azurespeed.com</a></p>
+<p>The <a target="_blank" rel="noopener" href="http://www.azurespeed.com/">Azure Storage Latency Test</a> site looks like it is maintained more frequently, becuase it has the West US 2 region, while the other option below does not.</p>
 <p>This site allows you to select the regions you want to test and shows you the top 3 closest regions.</p>
 <p><img src="000005.png" alt=""></p>
 <p>The other great thing about this site is that it includes Upload/Download Speed Tests, Cloud IP Ranges and a Cloud Region Finder.</p>
 <p><img src="000006.png" alt=""></p>
-<p>You can find the source here: <a href="https://github.com/blrchen/AzureSpeed" target="_blank" rel="noopener">blrchen / AzureSpeed</a></p>
+<p>You can find the source here: <a target="_blank" rel="noopener" href="https://github.com/blrchen/AzureSpeed">blrchen / AzureSpeed</a></p>
 <h2 id="Microsoft-Azure-Speed-Test"><a class="header-anchor" href="#Microsoft-Azure-Speed-Test"></a>Microsoft Azure Speed Test</h2>
-<p><a href="https://azurespeedtest.azurewebsites.net/" target="_blank" rel="noopener">azurespeedtest.azurewebsites.net</a></p>
-<p>When you hit <a href="https://azurespeedtest.azurewebsites.net/" target="_blank" rel="noopener">Microsoft Azure Speed Test</a> the speed test will start and you will be presented with a line chart with all of the regions sorted by Average Latency.</p>
+<p><a target="_blank" rel="noopener" href="https://azurespeedtest.azurewebsites.net/">azurespeedtest.azurewebsites.net</a></p>
+<p>When you hit <a target="_blank" rel="noopener" href="https://azurespeedtest.azurewebsites.net/">Microsoft Azure Speed Test</a> the speed test will start and you will be presented with a line chart with all of the regions sorted by Average Latency.</p>
 <p><img src="000004.png" alt=""></p>
 <blockquote>
 <p>This isn’t an exact measurement of all services as it just a read test from blog storage.</p>
 </blockquote>
 <p>Here’s the code that is used to ping the blob.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"> $.ajax({
+<pre class="line-numbers language-javascript"><code class="language-javascript"> $.ajax(&amp;#123;
     url: "https://" + x + ".blob.core.windows.net/cb.json",
     dataType: "jsonp",
     cache: false
-});
+&amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><a href="https://github.com/two10degrees/AzureSpeedTest/blob/master/index.html" target="_blank" rel="noopener">Source</a></p>
-<p>You can for their repo here: <a href="https://github.com/two10degrees/AzureSpeedTest" target="_blank" rel="noopener">two10degress / AzureSpeedTest</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/two10degrees/AzureSpeedTest/blob/master/index.html">Source</a></p>
+<p>You can for their repo here: <a target="_blank" rel="noopener" href="https://github.com/two10degrees/AzureSpeedTest">two10degress / AzureSpeedTest</a></p>
 <p>Jon</p>
 
         </div>
@@ -407,7 +407,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

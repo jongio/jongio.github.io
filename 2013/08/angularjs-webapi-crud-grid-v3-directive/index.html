@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,9 +205,9 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Today I took my <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html#.Ufr2V42SpMw">V2 Crud Grid</a> and moved it into an <a href="http://docs.angularjs.org/guide/directive" target="_blank" rel="noopener">AngularJS directive</a>. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:</p>
+            <p>Today I took my <a href="/2013/07/angularjs-webapi-ef-crud-grid-v2.html#.Ufr2V42SpMw">V2 Crud Grid</a> and moved it into an <a target="_blank" rel="noopener" href="http://docs.angularjs.org/guide/directive">AngularJS directive</a>. That allows me to reuse the crud grid functionality and have many of them on the same page. Here’s what it looks like now:</p>
 <p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image.png" alt=""></p>
-<p>CODE: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
+<p>CODE: <a target="_blank" rel="noopener" href="https://github.com/jongio/AngularJS-WebApi-EF">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
 <p>Here’s what I did in a nutshell:</p>
 <p>1. Moved all the angular code to the /Scripts folder:</p>
 <p><img src="/images/blog/V3-of-my-AngularJS-WebApi-CRUD-GridNow-_EECB/image_3.png" alt=""></p>
@@ -218,71 +218,71 @@
 <p>4. I created the crud-grid-directive.js file and put the directive code. I renamed person to object so that we can reuse the directive for multiple tables.</p>
 <p>scope: true – tells angular to create a new scope for each instance of the directive</p>
 <p>$attrs.tableName is set in the view…see how below.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">app.directive('crudGrid', function () {
-    return {
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.directive('crudGrid', function () &amp;#123;
+    return &amp;#123;
         restrict: 'A',
         replace: false,
         scope: true,
         templateUrl: '/Scripts/App/Directives/Templates/crud-grid-directive-template.html',
         controller: ['$scope', '$element', '$attrs', 'crudGridDataFactory', 'notificationFactory',
-            function ($scope, $element, $attrs, crudGridDataFactory, notificationFactory) {
+            function ($scope, $element, $attrs, crudGridDataFactory, notificationFactory) &amp;#123;
                 $scope.objects = [];
                 $scope.addMode = false;
 
-                $scope.toggleAddMode = function () {
+                $scope.toggleAddMode = function () &amp;#123;
                     $scope.addMode = !$scope.addMode;
-                };
+                &amp;#125;;
 
-                $scope.toggleEditMode = function (object) {
+                $scope.toggleEditMode = function (object) &amp;#123;
                     object.editMode = !object.editMode;
-                };
+                &amp;#125;;
 
-                var successCallback = function (e, cb) {
+                var successCallback = function (e, cb) &amp;#123;
                     notificationFactory.success();
                     $scope.getData(cb);
-                };
+                &amp;#125;;
 
-                var successPostCallback = function (e) {
-                    successCallback(e, function () {
+                var successPostCallback = function (e) &amp;#123;
+                    successCallback(e, function () &amp;#123;
                         $scope.toggleAddMode();
-                        $scope.object = {};
-                    });
-                };
+                        $scope.object = &amp;#123;&amp;#125;;
+                    &amp;#125;);
+                &amp;#125;;
 
-                var errorCallback = function (e) {
+                var errorCallback = function (e) &amp;#123;
                     notificationFactory.error(e.object.Message);
-                };
+                &amp;#125;;
 
-                $scope.addObject = function () {
+                $scope.addObject = function () &amp;#123;
                     crudGridDataFactory($attrs.tableName).save($scope.object, successPostCallback, errorCallback);
-                };
+                &amp;#125;;
 
-                $scope.deleteObject = function (object) {
-                    crudGridDataFactory($attrs.tableName).delete({ id: object.Id }, successCallback, errorCallback);
-                };
+                $scope.deleteObject = function (object) &amp;#123;
+                    crudGridDataFactory($attrs.tableName).delete(&amp;#123; id: object.Id &amp;#125;, successCallback, errorCallback);
+                &amp;#125;;
 
-                $scope.updateObject = function (object) {
-                    crudGridDataFactory($attrs.tableName).update({ id: object.Id }, object, successCallback, errorCallback);
-                };
+                $scope.updateObject = function (object) &amp;#123;
+                    crudGridDataFactory($attrs.tableName).update(&amp;#123; id: object.Id &amp;#125;, object, successCallback, errorCallback);
+                &amp;#125;;
 
-                $scope.getData = function (cb) {
-                    crudGridDataFactory($attrs.tableName).query(function (data) {
+                $scope.getData = function (cb) &amp;#123;
+                    crudGridDataFactory($attrs.tableName).query(function (data) &amp;#123;
                         $scope.objects = data;
                         if (cb) cb();
-                    });
-                };
+                    &amp;#125;);
+                &amp;#125;;
 
                 $scope.getData();
-            }]
-    }
-});
+            &amp;#125;]
+    &amp;#125;
+&amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>5. Moved the factory code to /Directives/Services. It now accepts a type and builds the URL from that so we can reuse for multiple tables.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">app.factory('crudGridDataFactory', ['$http', '$resource', function ($http, $resource) {
-    return function (type) {
-        return $resource('api/' + type + '/:id', { id: '@id' }, { 'update': { method: 'PUT' } }, { 'query': { method: 'GET', isArray: false } });
-    };
-}]);
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.factory('crudGridDataFactory', ['$http', '$resource', function ($http, $resource) &amp;#123;
+    return function (type) &amp;#123;
+        return $resource('api/' + type + '/:id', &amp;#123; id: '@id' &amp;#125;, &amp;#123; 'update': &amp;#123; method: 'PUT' &amp;#125; &amp;#125;, &amp;#123; 'query': &amp;#123; method: 'GET', isArray: false &amp;#125; &amp;#125;);
+    &amp;#125;;
+&amp;#125;]);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>6. As you can see in the code above I created a new template for the directive in Directives/Templates called crud-grid-directive-template.html, which contains the HTML markup that the grid will render.</p>
 <pre class="line-numbers language-html"><code class="language-html">&lt;table class="crud-grid table table-striped table-bordered table-condensed table-hover"&gt;
@@ -509,7 +509,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,13 +206,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>As you can imagine, we have many Power BI internal test environments and all Microsofties get redirected to an internal pre-release version of Power BI so we can test the latest features and provide feedback.  It’s great setup, but sometimes I need to just hit <a href="http://app.powerbi.com" target="_blank" rel="noopener">app.powerbi.com</a> as a customer would and not be redirected to the internal version.  We have a bunch of test users to do so, but I wanted to have a more controlled user directory so I could handout credentials to partners and customers to allow them to test features against <a href="http://app.powerbi.com" target="_blank" rel="noopener">app.powerbi.com</a>.</p>
+            <p>As you can imagine, we have many Power BI internal test environments and all Microsofties get redirected to an internal pre-release version of Power BI so we can test the latest features and provide feedback.  It’s great setup, but sometimes I need to just hit <a target="_blank" rel="noopener" href="http://app.powerbi.com">app.powerbi.com</a> as a customer would and not be redirected to the internal version.  We have a bunch of test users to do so, but I wanted to have a more controlled user directory so I could handout credentials to partners and customers to allow them to test features against <a target="_blank" rel="noopener" href="http://app.powerbi.com">app.powerbi.com</a>.</p>
 <p>You can set this up for free in Azure by using an Azure Active Directory and then use Office 365 to assign a Power BI Subscription to your users.</p>
 <p>Here’s how I got everything setup:</p>
 <h2 id="Create-Azure-Subscription"><a class="header-anchor" href="#Create-Azure-Subscription"></a>Create Azure Subscription</h2>
-<p>You are going to need an Azure Subscription to create an Azure Active Directory (AAD) and add users. You can get a <a href="https://azure.microsoft.com/en-us/free/" target="_blank" rel="noopener">free trial here</a>.</p>
+<p>You are going to need an Azure Subscription to create an Azure Active Directory (AAD) and add users. You can get a <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/free/">free trial here</a>.</p>
 <h2 id="Create-Azure-Active-Directory"><a class="header-anchor" href="#Create-Azure-Active-Directory"></a>Create Azure Active Directory</h2>
-<p>1. Go to the <a href="https://portal.azure.com/#create/Microsoft.AzureActiveDirectory" target="_blank" rel="noopener">Azure Portal</a> and create a new Azure Active Directory. AAD pricing information can be found <a href="https://azure.microsoft.com/en-us/pricing/details/active-directory/" target="_blank" rel="noopener">here</a>.<br>
+<p>1. Go to the <a target="_blank" rel="noopener" href="https://portal.azure.com/#create/Microsoft.AzureActiveDirectory">Azure Portal</a> and create a new Azure Active Directory. AAD pricing information can be found <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/pricing/details/active-directory/">here</a>.<br>
 <img src="000014.png" alt=""></p>
 <p><img src="000021.png" alt=""></p>
 <p>2. Click on the “Click here” link to manage your directory. You will be redirected to the AAD management page.<br>
@@ -233,7 +233,7 @@
 <blockquote>
 <p>Make sure the browser is in “In-Private” or “Incognito” mode so you can login with the right account.</p>
 </blockquote>
-<p>5. Go to the <a href="https://portal.office.com/admin/default.aspx" target="_blank" rel="noopener">Office 365 Admin Portal</a> and login with the Global Administrator account you created earlier.</p>
+<p>5. Go to the <a target="_blank" rel="noopener" href="https://portal.office.com/admin/default.aspx">Office 365 Admin Portal</a> and login with the Global Administrator account you created earlier.</p>
 <p>You will be prompted to change the password.</p>
 <p>This is where you will assign the Power BI license to the user you just created.</p>
 <p>6. Click Billing -&gt; Subscriptions in the left hand nav.<br>
@@ -263,8 +263,8 @@
 <p>13. You will then see that the user was created and you will be given the option to send the password to them via email.<br>
 <img src="000050.png" alt=""></p>
 <h2 id="Login-to-Power-BI"><a class="header-anchor" href="#Login-to-Power-BI"></a>Login to Power BI</h2>
-<p>14. Go to <a href="http://app.powerbi.com" target="_blank" rel="noopener">Power BI</a> and login as that user.</p>
-<p>You will now see the Power BI portal and you’ll stay on <a href="http://app.powerbi.com" target="_blank" rel="noopener">app.powerbi.com</a>.<br>
+<p>14. Go to <a target="_blank" rel="noopener" href="http://app.powerbi.com">Power BI</a> and login as that user.</p>
+<p>You will now see the Power BI portal and you’ll stay on <a target="_blank" rel="noopener" href="http://app.powerbi.com">app.powerbi.com</a>.<br>
 <img src="000043.png" alt=""></p>
 <p>Jon</p>
 
@@ -437,7 +437,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

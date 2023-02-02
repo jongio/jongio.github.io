@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,12 +207,12 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload" target="_blank" rel="noopener">File Upload API</a>. It took us a while to figure it out and ran into a bunch of issues.</p>
+            <p>I’m hacking with a customer today who is using Python and needs to upload images to Azure IoT Hub using the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-file-upload">File Upload API</a>. It took us a while to figure it out and ran into a bunch of issues.</p>
 <p>Here’s how we got it working.</p>
 <h2 id="Create-Azure-IoT-Hub-and-Register-a-Device"><a class="header-anchor" href="#Create-Azure-IoT-Hub-and-Register-a-Device"></a>Create Azure IoT Hub and Register a Device</h2>
 <ol>
-<li><a href="https://aka.ms/howtocreateazureiothub" target="_blank" rel="noopener">Create an Azure IoT Hub</a></li>
-<li><a href="https://aka.ms/manageiothub" target="_blank" rel="noopener">Register an Azure IoT Hub Device</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/howtocreateazureiothub">Create an Azure IoT Hub</a></li>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/manageiothub">Register an Azure IoT Hub Device</a>.</li>
 <li>Copy the Device’s connection string, you’ll need it later.</li>
 </ol>
 <h2 id="Enable-Azure-IoT-Hub-File-Upoads"><a class="header-anchor" href="#Enable-Azure-IoT-Hub-File-Upoads"></a>Enable Azure IoT Hub File Upoads</h2>
@@ -238,12 +238,12 @@
 </blockquote>
 <p><img src="000314.png" alt=""></p>
 <h2 id="Get-Python-IDE"><a class="header-anchor" href="#Get-Python-IDE"></a>Get Python IDE</h2>
-<p>You’ll need an IDE if you want to debug and step-through the code. I use <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a> and <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python" target="_blank" rel="noopener">this Python extension</a>.</p>
+<p>You’ll need an IDE if you want to debug and step-through the code. I use <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a> and <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">this Python extension</a>.</p>
 <h2 id="Install-Azure-IoT-Python-SDK"><a class="header-anchor" href="#Install-Azure-IoT-Python-SDK"></a>Install Azure IoT Python SDK</h2>
 <h3 id="Raspberry-Pi"><a class="header-anchor" href="#Raspberry-Pi"></a>Raspberry Pi</h3>
-<p>If you are running this on a Raspberry PI, then you will likely need to <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#build-the-azure-iot-hub-sdks-for-python-on-linux" target="_blank" rel="noopener">build the SDK locally</a>.</p>
+<p>If you are running this on a Raspberry PI, then you will likely need to <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#build-the-azure-iot-hub-sdks-for-python-on-linux">build the SDK locally</a>.</p>
 <h3 id="Other"><a class="header-anchor" href="#Other"></a>Other</h3>
-<p>Follow the instructions <a href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python" target="_blank" rel="noopener">here</a> to get the Python SDK on your machine. You can <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#pypi-wheels" target="_blank" rel="noopener">use pip</a> or compile it yourself.</p>
+<p>Follow the instructions <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-python#how-to-use-the-azure-iot-sdks-for-python">here</a> to get the Python SDK on your machine. You can <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#pypi-wheels">use pip</a> or compile it yourself.</p>
 <h2 id="Get-Python-Sample"><a class="header-anchor" href="#Get-Python-Sample"></a>Get Python Sample</h2>
 <p>1. Clone the Python SDK</p>
 <pre class="line-numbers language-bash"><code class="language-bash">git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
@@ -283,7 +283,7 @@ iotHubClient.upload_blob_async(filename, content, len(content), blob_upload_conf
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="File-Upload-Notifications"><a class="header-anchor" href="#File-Upload-Notifications"></a>File Upload Notifications</h2>
 <p>Please reference the following article to learn how to handle the File Upload Notification event on the server-side.  This is helpful when you want to kick-off a backend process when a file has been uploaded.</p>
-<p><a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification">https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-java-java-file-upload#receive-a-file-upload-notification</a></p>
 <h2 id="Troubleshooting"><a class="header-anchor" href="#Troubleshooting"></a>Troubleshooting</h2>
 <h3 id="1-Invalid-Syntax"><a class="header-anchor" href="#1-Invalid-Syntax"></a>1. Invalid Syntax</h3>
 <p>If you see the following error…you will need to open up the sample file in your IDE and add a comma after ‘size’ like this:</p>
@@ -304,21 +304,21 @@ Blob upload confirmation[1001] received for message with result = ERROR
     Total calls confirmed: 1
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-HTTPAPI-ExecuteRequest-Line-552-curl-easy-perform-failed-Out-of-memory"><a class="header-anchor" href="#3-HTTPAPI-ExecuteRequest-Line-552-curl-easy-perform-failed-Out-of-memory"></a>3. HTTPAPI_ExecuteRequest Line:552 curl_easy_perform() failed: Out of memory</h3>
-<p>This is due to a bug in the Azure IoT Python SDK.  The issue is being tracked on GitHub <a href="https://github.com/Azure/azure-iot-sdk-python/issues/80" target="_blank" rel="noopener">here</a>.  In the meantime, you can use the sample code found here: <a href="https://github.com/jongio/azure-iot-rest" target="_blank" rel="noopener">https://github.com/jongio/azure-iot-rest</a>. You will find a Python sample that shows you how to upload files via the Azure IoT REST APIs.</p>
+<p>This is due to a bug in the Azure IoT Python SDK.  The issue is being tracked on GitHub <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-python/issues/80">here</a>.  In the meantime, you can use the sample code found here: <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-iot-rest">https://github.com/jongio/azure-iot-rest</a>. You will find a Python sample that shows you how to upload files via the Azure IoT REST APIs.</p>
 <h3 id="4-ImportError-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-No-such-file-or-directory"><a class="header-anchor" href="#4-ImportError-libboost-python-py27-so-1-55-0-cannot-open-shared-object-file-No-such-file-or-directory"></a>4. ImportError: libboost_python-py27.so.1.55.0: cannot open shared object file: No such file or directory</h3>
-<p>This is due to the SDK being built with references that you don’t currently have on your machine.  <a href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#installs-needed-to-compile-the-sdks-for-python-from-souce-code" target="_blank" rel="noopener">Follow the instructions here</a> to build the SDK on the machine you will be running it on.  I got it work on a Raspberry Pi 3 / Stretch.</p>
+<p>This is due to the SDK being built with references that you don’t currently have on your machine.  <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md#installs-needed-to-compile-the-sdks-for-python-from-souce-code">Follow the instructions here</a> to build the SDK on the machine you will be running it on.  I got it work on a Raspberry Pi 3 / Stretch.</p>
 <blockquote>
 <p>Make sure you use the --recursive flag when you clone.</p>
 </blockquote>
 <h2 id="View-The-File"><a class="header-anchor" href="#View-The-File"></a>View The File</h2>
-<p>You can use <a href="https://storageexplorer.com/" target="_blank" rel="noopener">Azure Storage Explorer</a> to view the uploaded file.</p>
+<p>You can use <a target="_blank" rel="noopener" href="https://storageexplorer.com/">Azure Storage Explorer</a> to view the uploaded file.</p>
 <p>If you go to the storage account that you associated with IoT Hub in Azure Portal, you’ll see an Open in Storage Explorer button.</p>
 <p><img src="000048.png" alt=""></p>
 <p>Drill down to your container and you’ll see your file.<br>
 <img src="000055.png" alt=""></p>
 <h2 id="Access-The-File"><a class="header-anchor" href="#Access-The-File"></a>Access The File</h2>
 <p>If you want a direct URL to the file it will look like this:<br>
-<a href="https://jongiothubstandard.blob.core.windows.net/blobcontainer/foo/hello_python_blob.txt" target="_blank" rel="noopener">https://jongiothubstandard.blob.core.windows.net/blobcontainer/foo/hello_python_blob.txt</a></p>
+<a target="_blank" rel="noopener" href="https://jongiothubstandard.blob.core.windows.net/blobcontainer/foo/hello_python_blob.txt">https://jongiothubstandard.blob.core.windows.net/blobcontainer/foo/hello_python_blob.txt</a></p>
 <blockquote>
 <p>You’ll need to replace your storage name, container name and then build the rest of the path based on the parameters you passed to the upload method when you uploaded the file.</p>
 </blockquote>
@@ -494,7 +494,7 @@ Blob upload confirmation[1001] received for message with result = ERROR
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

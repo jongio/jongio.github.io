@@ -16,8 +16,6 @@
     
     <title>
         
-        webapi-twitterizer2-jsonnet |
-        
         Jon Gallant
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -26,7 +24,7 @@
     
     <meta name="description" content="Problem Microsoft ASP.NET Web API (RTM) references Newtonsoft.Json (&gt;&#x3D; 4.5.6) (AKA Json.net) Twitterizer 2 references Newtonsoft.Json (&#x3D;4.5.5) You can’t have both Newtonsoft.Json (&gt;&#x3D; 4.5.6) AND">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webapi-twitterizer2-jsonnet">
+<meta property="og:title" content="Jon Gallant">
 <meta property="og:url" content="https://blog.jongallant.com/2012/08/webapi-twitterizer2-jsonnet/index.html">
 <meta property="og:site_name" content="Jon Gallant">
 <meta property="og:description" content="Problem Microsoft ASP.NET Web API (RTM) references Newtonsoft.Json (&gt;&#x3D; 4.5.6) (AKA Json.net) Twitterizer 2 references Newtonsoft.Json (&#x3D;4.5.5) You can’t have both Newtonsoft.Json (&gt;&#x3D; 4.5.6) AND">
@@ -94,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -183,16 +181,6 @@
                             <article id="post-webapi-twitterizer2-jsonnet" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
-            <header class="article-header">
-                
-    
-        <h1 class="article-title" itemprop="name">
-        webapi-twitterizer2-jsonnet
-        </h1>
-    
-
-            </header>
-        
         
             <div class="article-subtitle">
                 
@@ -208,22 +196,22 @@
         
         <div class="article-entry" itemprop="articleBody">
             <h3 id="Problem"><a class="header-anchor" href="#Problem"></a>Problem</h3>
-<p><a href="http://www.asp.net/web-api" target="_blank" rel="noopener">Microsoft ASP.NET Web API (RTM)</a> references <a href="http://james.newtonking.com/projects/json-net.aspx" target="_blank" rel="noopener">Newtonsoft.Json (&gt;= 4.5.6) (AKA Json.net)</a></p>
-<p><a href="https://github.com/Twitterizer/Twitterizer" target="_blank" rel="noopener">Twitterizer 2</a> references Newtonsoft.Json (=4.5.5)</p>
+<p><a target="_blank" rel="noopener" href="http://www.asp.net/web-api">Microsoft ASP.NET Web API (RTM)</a> references <a target="_blank" rel="noopener" href="http://james.newtonking.com/projects/json-net.aspx">Newtonsoft.Json (&gt;= 4.5.6) (AKA Json.net)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Twitterizer/Twitterizer">Twitterizer 2</a> references Newtonsoft.Json (=4.5.5)</p>
 <p>You can’t have both Newtonsoft.Json (&gt;= 4.5.6) AND Newtonsoft.Json (=4.5.5) NuGet packages installed in the same project.</p>
 <p>That means you CAN’T have WebApi and Twitterizer in the same project.</p>
 <h3 id="Solution"><a class="header-anchor" href="#Solution"></a>Solution</h3>
-<p>You could create separate projects like I mentioned in <a href="/2012/08/newtonsoft-version-twitterizer-webapi.html">this post</a> or you can get the Twitterizer source from GitHub, change the <a href="http://Json.net" target="_blank" rel="noopener">Json.net</a> reference, compile it and then reference that Twitterizer2.dll from your project instead of using the NuGet package. Here’s how to do the that:</p>
+<p>You could create separate projects like I mentioned in <a href="/2012/08/newtonsoft-version-twitterizer-webapi.html">this post</a> or you can get the Twitterizer source from GitHub, change the <a target="_blank" rel="noopener" href="http://Json.net">Json.net</a> reference, compile it and then reference that Twitterizer2.dll from your project instead of using the NuGet package. Here’s how to do the that:</p>
 <p>Keep in mind:</p>
 <ul>
 <li>Use this at your own risk. I haven’t tested it fully, but it seems to work alright after a couple of smoke tests.</li>
 <li>Yeah, I could have contributed this back to GitHub, but I don’t have time right now and I’m sure they are already working on it. I needed it now and might deal with that later.</li>
 </ul>
-<p>1. Go to <a href="https://github.com/Twitterizer/Twitterizer" target="_blank" rel="noopener">Twitterizer on GitHub</a> and get the source:</p>
+<p>1. Go to <a target="_blank" rel="noopener" href="https://github.com/Twitterizer/Twitterizer">Twitterizer on GitHub</a> and get the source:</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image.png" alt=""></p>
 <p>2. Open the Twitterizer2.sln file</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image_3.png" alt=""></p>
-<p>3. Right click –&gt; Manage NuGet Packages –&gt; Update <a href="http://Json.net" target="_blank" rel="noopener">Json.net</a> for each of the projects in the solution. Make sure you do them all!</p>
+<p>3. Right click –&gt; Manage NuGet Packages –&gt; Update <a target="_blank" rel="noopener" href="http://Json.net">Json.net</a> for each of the projects in the solution. Make sure you do them all!</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image_4.png" alt=""></p>
 <p>4. Double check each of the Newtonsoft.Json references are 4.5.0.</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image_5.png" alt=""></p>
@@ -235,11 +223,11 @@
 <p>8. Remove your reference to Twitterizer NuGet package</p>
 <p>9. Add a referenced to the newly created Twitterizer DLL</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image_8.png" alt=""></p>
-<p>10. Add the <a href="http://Json.net" target="_blank" rel="noopener">Json.net</a> 4.5.5 reference</p>
+<p>10. Add the <a target="_blank" rel="noopener" href="http://Json.net">Json.net</a> 4.5.5 reference</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image_9.png" alt=""></p>
-<p>11. Add a reference to Microsoft <a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Web API (If you need it and if not already referenced)</p>
+<p>11. Add a reference to Microsoft <a target="_blank" rel="noopener" href="http://ASP.NET">ASP.NET</a> Web API (If you need it and if not already referenced)</p>
 <p><img src="/images/blog/5b4ba5fe39de_542C/image_10.png" alt=""></p>
-<p>I know it’s a pain to do all this, but it looks like the only option until Twitterizer updates to <a href="http://Json.net" target="_blank" rel="noopener">Json.net</a> 4.5.5</p>
+<p>I know it’s a pain to do all this, but it looks like the only option until Twitterizer updates to <a target="_blank" rel="noopener" href="http://Json.net">Json.net</a> 4.5.5</p>
 <p>Jon</p>
 
         </div>
@@ -411,7 +399,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

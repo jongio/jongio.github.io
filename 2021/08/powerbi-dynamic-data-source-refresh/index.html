@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/08/powerbi-dynamic-data-source-refresh/106.png">
 <meta property="article:published_time" content="2021-08-07T16:25:58.000Z">
-<meta property="article:modified_time" content="2021-08-08T06:40:00.186Z">
+<meta property="article:modified_time" content="2021-08-08T06:40:00.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="powerbi">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,22 +207,22 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I’m pulling data from GitHub Codeowners into a Power BI report.  All was dandy locally, but refresh failed on the PBI service with this:</p>
 <p><img src="108.png" alt="&quot;The error message&quot;"></p>
-<p><strong>This dataset includes a dynamic data source. Since dynamic data sources aren’t refreshed in the Power BI service, this dataset won’t be refreshed. Learn more: <a href="https://aka.ms/dynamic-data-sources" target="_blank" rel="noopener">https://aka.ms/dynamic-data-sources</a>.</strong></p>
+<p><strong>This dataset includes a dynamic data source. Since dynamic data sources aren’t refreshed in the Power BI service, this dataset won’t be refreshed. Learn more: <a target="_blank" rel="noopener" href="https://aka.ms/dynamic-data-sources">https://aka.ms/dynamic-data-sources</a>.</strong></p>
 <p>Initially I had this type of query:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">(langText as text, langCode as text) =&gt; 
 
 let
-    Source = Table.FromColumns({Lines.FromBinary(Web.Contents(Text.Format("https://github.com/Azure/azure-sdk-for-#{0}/blob/main/.github/CODEOWNERS", {langCode})), null, null, 65001)}),
+    Source = Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents(Text.Format("https://github.com/Azure/azure-sdk-for-#&amp;#123;0&amp;#125;/blob/main/.github/CODEOWNERS", &amp;#123;langCode&amp;#125;)), null, null, 65001)&amp;#125;),
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>I was dynamically building the URL inside of a custom function, <code>#{0}</code> gets replaced by the <code>langCode</code> parameter.</p>
-<p>All worked well locally, but the Power BI service doesn’t refresh data source with dynamic URLs (and other things, more info here: <a href="https://aka.ms/dynamic-data-sources" target="_blank" rel="noopener">https://aka.ms/dynamic-data-sources</a>).</p>
+<p>I was dynamically building the URL inside of a custom function, <code>#&#123;0&#125;</code> gets replaced by the <code>langCode</code> parameter.</p>
+<p>All worked well locally, but the Power BI service doesn’t refresh data source with dynamic URLs (and other things, more info here: <a target="_blank" rel="noopener" href="https://aka.ms/dynamic-data-sources">https://aka.ms/dynamic-data-sources</a>).</p>
 <p>So, I was forced to modify my custom function to accept the entire URL as a parameter instead of just the <code>langCode</code></p>
 <p>Here’s the updated version - that still doesn’t work.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">(langText as text, url as text) =&gt; 
 
 let
-    Source = Table.FromColumns({Lines.FromBinary(Web.Contents(url), null, null, 65001)}),
+    Source = Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents(url), null, null, 65001)&amp;#125;),
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>I was under the impression that Web.Contents would refresh if <code>url</code> was a variable…but apparently it needs to be an inline string.</p>
 <p>So I had to rethink my whole approach.</p>
@@ -235,30 +235,30 @@ let
     Source = table,
     #"Filtered Rows" = Table.SelectRows(Source, each not Text.StartsWith([Column1], "#")),
     #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each ([Column1] &lt;&gt; "")),
-    #"Split Column by Delimiter" = Table.SplitColumn(#"Filtered Rows1", "Column1", Splitter.SplitTextByEachDelimiter({" "}, QuoteStyle.Csv, false), {"Column1.1", "Column1.2"}),
-    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Column1.1", type text}, {"Column1.2", type text}}),
-    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Column1.1", "Path"}}),
+    #"Split Column by Delimiter" = Table.SplitColumn(#"Filtered Rows1", "Column1", Splitter.SplitTextByEachDelimiter(&amp;#123;" "&amp;#125;, QuoteStyle.Csv, false), &amp;#123;"Column1.1", "Column1.2"&amp;#125;),
+    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",&amp;#123;&amp;#123;"Column1.1", type text&amp;#125;, &amp;#123;"Column1.2", type text&amp;#125;&amp;#125;),
+    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",&amp;#123;&amp;#123;"Column1.1", "Path"&amp;#125;&amp;#125;),
     #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Language", each langText),
-    #"Renamed Columns1" = Table.RenameColumns(#"Added Custom",{{"Column1.2", "Codeowners"}}),
-    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns1",{{"Codeowners", Text.Trim, type text}}),
-    #"Split Column by Delimiter1" = Table.ExpandListColumn(Table.TransformColumns(#"Trimmed Text", {{"Codeowners", Splitter.SplitTextByDelimiter("@", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "Codeowners"),
-    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"Codeowners", type text}}),
+    #"Renamed Columns1" = Table.RenameColumns(#"Added Custom",&amp;#123;&amp;#123;"Column1.2", "Codeowners"&amp;#125;&amp;#125;),
+    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns1",&amp;#123;&amp;#123;"Codeowners", Text.Trim, type text&amp;#125;&amp;#125;),
+    #"Split Column by Delimiter1" = Table.ExpandListColumn(Table.TransformColumns(#"Trimmed Text", &amp;#123;&amp;#123;"Codeowners", Splitter.SplitTextByDelimiter("@", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type &amp;#123;itemType&amp;#125;&amp;#125;&amp;#125;), "Codeowners"),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter1",&amp;#123;&amp;#123;"Codeowners", type text&amp;#125;&amp;#125;),
     #"Filtered Rows2" = Table.SelectRows(#"Changed Type1", each ([Codeowners] &lt;&gt; null and [Codeowners] &lt;&gt; ""))
 in
     #"Filtered Rows2"
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="The-Query"><a class="header-anchor" href="#The-Query"></a>The Query</h2>
 <pre class="line-numbers language-bash"><code class="language-bash">let
-    net = GetCodeowners(".NET", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-net/main/.github/CODEOWNERS"))})),
-    java = GetCodeowners("Java", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-java/main/.github/CODEOWNERS"))})),
-    python = GetCodeowners("Python", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-python/main/.github/CODEOWNERS"))})),
-    js = GetCodeowners("JavaScript", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-js/main/.github/CODEOWNERS"))})),
-    android = GetCodeowners("Android", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-android/main/.github/CODEOWNERS"))})),
-    go = GetCodeowners("Go", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-go/main/.github/CODEOWNERS"))})),
-    c = GetCodeowners("C", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-c/main/.github/CODEOWNERS"))})),
-    cpp = GetCodeowners("CPP", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-cpp/main/.github/CODEOWNERS"))})),
-    ios = GetCodeowners("iOS", Table.FromColumns({Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-ios/main/.github/CODEOWNERS"))})),
-    all  = Table.Combine({net, java, python, js, android, go, c, cpp, ios})
+    net = GetCodeowners(".NET", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-net/main/.github/CODEOWNERS"))&amp;#125;)),
+    java = GetCodeowners("Java", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-java/main/.github/CODEOWNERS"))&amp;#125;)),
+    python = GetCodeowners("Python", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-python/main/.github/CODEOWNERS"))&amp;#125;)),
+    js = GetCodeowners("JavaScript", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-js/main/.github/CODEOWNERS"))&amp;#125;)),
+    android = GetCodeowners("Android", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-android/main/.github/CODEOWNERS"))&amp;#125;)),
+    go = GetCodeowners("Go", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-go/main/.github/CODEOWNERS"))&amp;#125;)),
+    c = GetCodeowners("C", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-c/main/.github/CODEOWNERS"))&amp;#125;)),
+    cpp = GetCodeowners("CPP", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-cpp/main/.github/CODEOWNERS"))&amp;#125;)),
+    ios = GetCodeowners("iOS", Table.FromColumns(&amp;#123;Lines.FromBinary(Web.Contents("https://raw.githubusercontent.com/Azure/azure-sdk-for-ios/main/.github/CODEOWNERS"))&amp;#125;)),
+    all  = Table.Combine(&amp;#123;net, java, python, js, android, go, c, cpp, ios&amp;#125;)
 in
     all
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -440,7 +440,7 @@ in
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

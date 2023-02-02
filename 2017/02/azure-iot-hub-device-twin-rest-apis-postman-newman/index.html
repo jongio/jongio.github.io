@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,14 +208,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>This post describes how to use <a href="https://www.getpostman.com/" target="_blank" rel="noopener">Postman</a> and <a href="https://www.getpostman.com/docs/newman_intro" target="_blank" rel="noopener">Newman</a> to demonstrate your APIs to your users. Of course, you are going to want to use <a href="https://apiary.io/" target="_blank" rel="noopener">Apiary</a> to officially describe your APIs, but if you really want to demonstrate exact calls and provide guidance on how to use the APIs in a personal manner, it doesn’t get any better than sending over a Postman Collection file and asking them to run that inside of Postman or Newman. Within the file they are able to see the exact URIs, parameters, headers that you use to accomplish their scenario. They can then take that guidance and convert it to whatever technology best suits their application needs.</p>
-<p>I’m working with a customer that needs to use the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/" target="_blank" rel="noopener">Azure IoT Hub REST APIs</a> to work with <a href="https://docs.microsoft.com/en-us/rest/api/iothub/service/gettwin" target="_blank" rel="noopener">Device Twins</a> (a cloud representation of your IoT device). You can read more about Device Twins <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins" target="_blank" rel="noopener">here</a> and see the official REST API docs <a href="https://docs.microsoft.com/en-us/rest/api/iothub/service/gettwin" target="_blank" rel="noopener">here</a>.</p>
+            <p>This post describes how to use <a target="_blank" rel="noopener" href="https://www.getpostman.com/">Postman</a> and <a target="_blank" rel="noopener" href="https://www.getpostman.com/docs/newman_intro">Newman</a> to demonstrate your APIs to your users. Of course, you are going to want to use <a target="_blank" rel="noopener" href="https://apiary.io/">Apiary</a> to officially describe your APIs, but if you really want to demonstrate exact calls and provide guidance on how to use the APIs in a personal manner, it doesn’t get any better than sending over a Postman Collection file and asking them to run that inside of Postman or Newman. Within the file they are able to see the exact URIs, parameters, headers that you use to accomplish their scenario. They can then take that guidance and convert it to whatever technology best suits their application needs.</p>
+<p>I’m working with a customer that needs to use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/iothub/">Azure IoT Hub REST APIs</a> to work with <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/iothub/service/gettwin">Device Twins</a> (a cloud representation of your IoT device). You can read more about Device Twins <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins">here</a> and see the official REST API docs <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/iothub/service/gettwin">here</a>.</p>
 <p>A few days ago I forwarded the documentation over to the customer and they struggled with trying to figure out how to use the APIs. There’s a lot missing from the docs and it is mostly generated from comments. My recommendation back to the Azure IoT team is going to be to use Apiary and provide very clear and concise code samples for common scenarios. Many customers have to use the REST APIs because of the memory constrained devices and they want complete control over the interation with IoT Hub - REST APIs should be treated as first class citizens and Postman/Newman/Apiary help do so.</p>
 <p>Given that I needed to resolve this customer issue right away, I could not take the time to update the documentation, but wanted to get them the help they needed ASAP.  This is the perfect use case for Postman/Newman. So, I jumped into Postman, created a new collection, wrote a pre-request script to generate a SAS token and then demonstrated how to use the APIs. I then used Newman to script the test runs from the command line.</p>
 <p>This post will bring you through how I did that. We will go through how to GET a Device Twin document as well as PATCH it to include a desired property.</p>
 <h2 id="Get-Postman"><a class="header-anchor" href="#Get-Postman"></a>Get Postman</h2>
 <ul>
-<li>Download Postman from <a href="http://getpostman.com" target="_blank" rel="noopener">http://getpostman.com</a> (I’m using Windows, but feel free to use whatever version works for you.)</li>
+<li>Download Postman from <a target="_blank" rel="noopener" href="http://getpostman.com">http://getpostman.com</a> (I’m using Windows, but feel free to use whatever version works for you.)</li>
 </ul>
 <p><img src="000051.png" alt=""></p>
 <h2 id="Create-a-New-Postman-Collection"><a class="header-anchor" href="#Create-a-New-Postman-Collection"></a>Create a New Postman Collection</h2>
@@ -239,7 +239,7 @@
 <li>deviceName - The second step of this script PATCHES the device twin metadata, it will use this name. Enter anything you want.</li>
 </ul>
 <h2 id="Add-Pre-request-Script-to-Generate-SAS-Token"><a class="header-anchor" href="#Add-Pre-request-Script-to-Generate-SAS-Token"></a>Add Pre-request Script to Generate SAS Token</h2>
-<p>Azure IoT Hub requires you to supply an Authorization header when you call the REST endpoints. You can read more about the requirements for that token on the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="noopener">IoT Hub Security Guide</a>.</p>
+<p>Azure IoT Hub requires you to supply an Authorization header when you call the REST endpoints. You can read more about the requirements for that token on the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security">IoT Hub Security Guide</a>.</p>
 <p>The Authorization header has the following format:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">SharedAccessSignature sr=jongiothub.azure-devices.net&amp;sig=ZiyjB%2FWuGrG43%2BkfuE07w3iC6em8eluH918%2Bi1F46Uo%3D&amp;se=1486605666&amp;skn=iothubowner
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -262,12 +262,12 @@
 <p>For the first example we are going to start with the “GET Device Twin” call, which just gets the device twin (cloud representation of the device metadata).</p>
 <p><img src="000053.png" alt=""></p>
 <p>The URI to get the device twin is in the following format:</p>
-<pre class="line-numbers language-bash"><code class="language-bash">https://{%raw%}{{hubName}}{%endraw%}.azure-devices.net/twins/{%raw%}{{deviceId}}{%endraw%}?api-version=2016-11-14
+<pre class="line-numbers language-bash"><code class="language-bash">https://{{hubName}}.azure-devices.net/twins/{{deviceId}}?api-version=2016-11-14
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>Notice that Postman uses a double-curly syntax for variables.</p>
 </blockquote>
-<p>With every Azure IoT Hub API call you need to include the api-version and Authorization header.  You can read more about IoT Hub security <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security" target="_blank" rel="noopener">here</a>. The <strong>api-version</strong> is pretty straight forward and you can get the most recent version that you should use from the <a href="https://docs.microsoft.com/en-us/rest/api/iothub/#common-parameters-and-headers" target="_blank" rel="noopener">Common parameters and headers</a> page. The <strong>Authorization</strong> header is a Shared Access Signature that follows very strict, but not very well documented requirements. You can read more about that above.</p>
+<p>With every Azure IoT Hub API call you need to include the api-version and Authorization header.  You can read more about IoT Hub security <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-security">here</a>. The <strong>api-version</strong> is pretty straight forward and you can get the most recent version that you should use from the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/rest/api/iothub/#common-parameters-and-headers">Common parameters and headers</a> page. The <strong>Authorization</strong> header is a Shared Access Signature that follows very strict, but not very well documented requirements. You can read more about that above.</p>
 <h3 id="Add-GET-Device-Twin-Call"><a class="header-anchor" href="#Add-GET-Device-Twin-Call"></a>Add GET Device Twin Call</h3>
 <p>1. Enter the URI, in this case: <code>https://{{hubName}}.azure-devices.net/twins/{{deviceId}}?api-version=2016-11-14</code><br>
 2. Add ‘Authorization’ header and set the value to <code>{{token}}</code> - that tells Postman to read that value from the global variables you just set in your Pre-request script.<br>
@@ -284,7 +284,7 @@
 <p>1. Create a new call by clicking the + sign tab. You can also duplicate the GET call, but remove the Pre-request script if you do that.<br>
 <img src="000060.png" alt=""></p>
 <p>2. The URI is the same as the GET call</p>
-<pre class="line-numbers language-bash"><code class="language-bash">https://{{hubName}}.azure-devices.net/twins/{{deviceId}}?api-version=2016-11-14
+<pre class="line-numbers language-bash"><code class="language-bash">https://&amp;#123;&amp;#123;hubName&amp;#125;&amp;#125;.azure-devices.net/twins/&amp;#123;&amp;#123;deviceId&amp;#125;&amp;#125;?api-version=2016-11-14
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3. Select “PATCH” verb.<br>
 <img src="000061.png" alt=""></p>
@@ -498,7 +498,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

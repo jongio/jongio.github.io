@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -209,7 +209,7 @@
             <p>The SqlXml datatype constructor only accepts a Stream or XmlReader, if you have an XmlDocument in memory (go with stream if you have it) then you can easily convert to a SqlXml compatible stream with the XmlNodeReader class.</p>
 <p>XmlNodeReader implements IDisposable, so wrap it in a using or try/catch.</p>
 <p>For example:</p>
-<p><code>XmlDocument xml = new XmlDocument();  using (XmlNodeReader xnr = new XmlNodeReader(xml))  {  SqlXml sx = new SqlXml(xnr);  }</code></p>
+<p><code>XmlDocument xml = new XmlDocument();  using (XmlNodeReader xnr = new XmlNodeReader(xml))  &#123;  SqlXml sx = new SqlXml(xnr);  &#125;</code></p>
 
         </div>
         <footer>
@@ -380,7 +380,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

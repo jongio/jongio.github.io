@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -215,14 +215,14 @@
 <h3 id="The-beakn-Hardware"><a class="header-anchor" href="#The-beakn-Hardware"></a><strong>The beakn Hardware</strong></h3>
 <h4 id="Components"><a class="header-anchor" href="#Components"></a>Components</h4>
 <ul>
-<li>Arduino – I used an <a href="http://arduino.cc/en/Main/arduinoBoardUno" target="_blank" rel="noopener">Uno</a>, but any Arduino with 3 outputs and a serial port will work.</li>
-<li>1 Half-size <a href="https://www.adafruit.com/products/64" target="_blank" rel="noopener">Breadboard</a></li>
-<li>1 <a href="https://www.sparkfun.com/products/512" target="_blank" rel="noopener">USB A to B-Type cable</a> to connect Arduino to computer</li>
-<li>3 10mm Diffused LEDs. One <a href="https://www.sparkfun.com/products/10632" target="_blank" rel="noopener">red</a>, one <a href="https://www.sparkfun.com/products/10634" target="_blank" rel="noopener">yellow</a>, one <a href="https://www.sparkfun.com/products/10633" target="_blank" rel="noopener">green</a>.</li>
+<li>Arduino – I used an <a target="_blank" rel="noopener" href="http://arduino.cc/en/Main/arduinoBoardUno">Uno</a>, but any Arduino with 3 outputs and a serial port will work.</li>
+<li>1 Half-size <a target="_blank" rel="noopener" href="https://www.adafruit.com/products/64">Breadboard</a></li>
+<li>1 <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/512">USB A to B-Type cable</a> to connect Arduino to computer</li>
+<li>3 10mm Diffused LEDs. One <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/10632">red</a>, one <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/10634">yellow</a>, one <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/10633">green</a>.</li>
 <li>3 220ohm, 1/4W Resistors</li>
-<li>6 <a href="https://www.sparkfun.com/products/9140" target="_blank" rel="noopener">Jumper Wires</a> Male/Female – For connecting LEDs to breadboard and Arduino</li>
+<li>6 <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/9140">Jumper Wires</a> Male/Female – For connecting LEDs to breadboard and Arduino</li>
 <li>1 Ping Pong Ball</li>
-<li>1 Box – I used an Intel Edison box that I had, which is 6&quot;L x 3.5&quot;W x 2&quot;H. You can <a href="https://www.youtube.com/watch?v=d-QGl1EKrlI" target="_blank" rel="noopener">make one out of scrap cardboard</a> if you don’t have one handy.</li>
+<li>1 Box – I used an Intel Edison box that I had, which is 6&quot;L x 3.5&quot;W x 2&quot;H. You can <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=d-QGl1EKrlI">make one out of scrap cardboard</a> if you don’t have one handy.</li>
 </ul>
 <h4 id="Tools"><a class="header-anchor" href="#Tools"></a><strong>Tools</strong></h4>
 <ul>
@@ -276,17 +276,17 @@
 <p>This first version of beakn uses serial communication to communicate from your desktop to the Arduino. The two main components of the software are:</p>
 <h4 id="Desktop-App"><a class="header-anchor" href="#Desktop-App"></a>Desktop App</h4>
 <p><img src="/images/blog/ef55af178d49_C2E0/image_3.png" alt=""></p>
-<p>You will need a desktop application that uses the <a href="http://msdn.microsoft.com/en-us/library/office/jj933215%28v=office.15%29.aspx" target="_blank" rel="noopener">Lync SDK</a> to listen for Lync events and <a href="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="noopener">Command Messenger</a> to communicate with the Arduino. This is a Windows Form application that doesn’t have a UI. It’s a form, not a Windows service because it needs to run under the context of the currently logged in user and a Windows Service is machine level.</p>
-<p>You can install this app from GitHub here: <a href="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/releases/tag/v0.1">https://github.com/jongio/beakn/releases/tag/v0.1</a>. Click the beakn-0.1.msi green button and install.</p>
-<p>Or you can get the source and build it yourself: <a href="https://github.com/jongio/beakn/tree/master/desktop" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/tree/master/desktop">https://github.com/jongio/beakn/tree/master/desktop</a> (that is the latest code) if you want to download the code as of v0.1 then use this link and click the “source code” button. <a href="https://github.com/jongio/beakn/releases/tag/v0.1" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/releases/tag/v0.1">https://github.com/jongio/beakn/releases/tag/v0.1</a></p>
+<p>You will need a desktop application that uses the <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/office/jj933215%28v=office.15%29.aspx">Lync SDK</a> to listen for Lync events and <a target="_blank" rel="noopener" href="https://github.com/thijse/Arduino-CmdMessenger">Command Messenger</a> to communicate with the Arduino. This is a Windows Form application that doesn’t have a UI. It’s a form, not a Windows service because it needs to run under the context of the currently logged in user and a Windows Service is machine level.</p>
+<p>You can install this app from GitHub here: <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1">https://github.com/jongio/beakn/releases/tag/v0.1</a>. Click the beakn-0.1.msi green button and install.</p>
+<p>Or you can get the source and build it yourself: <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/tree/master/desktop" title="https://github.com/jongio/beakn/tree/master/desktop">https://github.com/jongio/beakn/tree/master/desktop</a> (that is the latest code) if you want to download the code as of v0.1 then use this link and click the “source code” button. <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/releases/tag/v0.1" title="https://github.com/jongio/beakn/releases/tag/v0.1">https://github.com/jongio/beakn/releases/tag/v0.1</a></p>
 <p>The default COM port is COM3. Check Device Manager to see what COM port your Arduino is on and adjust the beakn.exe.config file to match that.</p>
 <p><img src="/images/blog/ef55af178d49_C2E0/port_thumb.png" alt=""></p>
-<p>The meat of the app is in <a href="https://github.com/jongio/beakn/blob/master/desktop/beakn/beakn/Protocol/Serial.cs" target="_blank" rel="noopener">Serial.cs</a>. Serial.cs uses CmdMessenger to initiate and communicate with the Arduino. Controller.cs uses the Lync SDK to handle Lync status change events</p>
-<p>I also created a wrapper around the Lync SDK called lyncx, which you can find the source for here: <a href="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs">https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs</a></p>
+<p>The meat of the app is in <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/blob/master/desktop/beakn/beakn/Protocol/Serial.cs">Serial.cs</a>. Serial.cs uses CmdMessenger to initiate and communicate with the Arduino. Controller.cs uses the Lync SDK to handle Lync status change events</p>
+<p>I also created a wrapper around the Lync SDK called lyncx, which you can find the source for here: <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs" title="https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs">https://github.com/jongio/beakn/blob/master/desktop/lyncx/lyncx/LyncxClient.cs</a></p>
 <h4 id="Arduino-Sketch"><a class="header-anchor" href="#Arduino-Sketch"></a>Arduino Sketch</h4>
 <p><img src="/images/blog/ef55af178d49_C2E0/image_4.png" alt=""></p>
-<p>You will need an Arduino sketch to receive the serial command and turn the appropriate LED. You can download the Arduino sketch here: <a href="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" target="_blank" rel="noopener" title="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch">https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch</a>.</p>
-<p>Open it in your Arduino IDE and upload it to your Arduino. You will need to have the CmdMessenger.h file in your Arduino libraries folder (C:\Program Files (x86)\Arduino\libraries\CmdMessenger), which you can get here: <a href="https://github.com/thijse/Arduino-CmdMessenger" target="_blank" rel="noopener" title="https://github.com/thijse/Arduino-CmdMessenger">https://github.com/thijse/Arduino-CmdMessenger</a></p>
+<p>You will need an Arduino sketch to receive the serial command and turn the appropriate LED. You can download the Arduino sketch here: <a target="_blank" rel="noopener" href="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch" title="https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch">https://github.com/jongio/beakn/tree/master/arduino/beakn.arduino.digital.sketch</a>.</p>
+<p>Open it in your Arduino IDE and upload it to your Arduino. You will need to have the CmdMessenger.h file in your Arduino libraries folder (C:\Program Files (x86)\Arduino\libraries\CmdMessenger), which you can get here: <a target="_blank" rel="noopener" href="https://github.com/thijse/Arduino-CmdMessenger" title="https://github.com/thijse/Arduino-CmdMessenger">https://github.com/thijse/Arduino-CmdMessenger</a></p>
 <p>The “loop” of the sketch listens for serial events and uses the readStringArg method of CmdMessenger to get the current availability status and then calls analogWrite to set the colors of each of the ping. I’m using analogWrite instead of digitialWrite here because I will use an RGB LED in a future version.</p>
 <h3 id="Test-it-out"><a class="header-anchor" href="#Test-it-out"></a>Test it out</h3>
 <p>After you install the desktop app and upload your sketch the ping pong ball should turn the color of your Lync status!  Play with changing your Lync status and see if the color changes. I’m hoping it does!</p>
@@ -465,7 +465,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

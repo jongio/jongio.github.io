@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,31 +205,31 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approach worked best for me. Example source is on <a href="https://github.com/jongio/windows-startup-example" target="_blank" rel="noopener">GitHub</a> and walkthrough is below. Hope this saves you some time.</p>
+            <p>It took me a while to figure out the best way to automatically start a windows app when a user logs into their computer. There were a bunch of suggestions on StackOverflow, but the registry key approach worked best for me. Example source is on <a target="_blank" rel="noopener" href="https://github.com/jongio/windows-startup-example">GitHub</a> and walkthrough is below. Hope this saves you some time.</p>
 <p>Jon</p>
-<p>1. Create Windows app. Create Installer app using the <a href="https://visualstudiogallery.msdn.microsoft.com/9abe329c-9bba-44a1-be59-0fbf6151054d" target="_blank" rel="noopener">Microsoft Visual Studio Installer Projects extension</a></p>
+<p>1. Create Windows app. Create Installer app using the <a target="_blank" rel="noopener" href="https://visualstudiogallery.msdn.microsoft.com/9abe329c-9bba-44a1-be59-0fbf6151054d">Microsoft Visual Studio Installer Projects extension</a></p>
 <p>2. Open up the build config manager and make sure the Installer project is building as well.</p>
 <p><img src="/images/blog/12077fd3b80a_13FA2/image.png" alt=""></p>
 <p>3. Right click on the Windows project. Add Item –&gt; Installer class</p>
 <p><img src="/images/blog/12077fd3b80a_13FA2/image_3.png" alt=""></p>
 <p>4. In the Installer class override both the Commit and Uninstall methods. Replace “windows-startup-example-app” with the name of your app and change the exe name.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public override void Commit(System.Collections.IDictionary savedState)
-{
+&amp;#123;
     base.Commit(savedState);
     using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
-    {
+    &amp;#123;
         key.SetValue("windows-startup-example-app", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\windows-startup-example-app.exe");
-    }
-}
+    &amp;#125;
+&amp;#125;
 
        public override void Uninstall(System.Collections.IDictionary savedState)
-{
+&amp;#123;
     base.Uninstall(savedState);
    using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
-    {
+    &amp;#123;
         key.DeleteValue("windows-startup-example-app", false);
-    }
-}
+    &amp;#125;
+&amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>5\. Right click on Installer project and view Custom Actions
@@ -416,7 +416,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

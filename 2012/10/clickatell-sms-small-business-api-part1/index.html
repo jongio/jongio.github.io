@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2012-11-01T01:46:00.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:44:10.880Z">
+<meta property="article:modified_time" content="2021-03-18T06:44:10.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="reviews">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,7 +207,7 @@
         <div class="article-entry" itemprop="articleBody">
             <p>This is the first post in a two part series on integrating SMS functionality into an application. In this post, I focus on the analysis I did into Clickatell’s Small Business API. My second post in this series, “<em><a href="/2012/11/clickatell-sms-small-business-api-part2.html">How to integrate Clickatell’s SMS Small Business API into a .NET application</a></em>”, focuses on the options available and technical details for integrating the API into your application.</p>
 <hr>
-<p><a href="http://clickatell.com" target="_blank" rel="noopener">Clickatell</a> is a worldwide mobile messaging company that just released a <a href="http://americas.clickatell.com/solutions/small-business-api/" target="_blank" rel="noopener">Small Business API</a>, which allows you to integrate SMS functionality into your small business applications. Their target audience is small businesses that want to integrate SMS into their business model. For example, appointment reminders or delivery notifications are perfect scenarios for this API. It is not intended for multi-national business that need to send thousands of messages in bulk. You’ll want to look into the other messaging capabilities that Clickatell provides if you need to support over 10k messages a month. My dentist sends me appointment reminders and the Small Business API would be a perfect solution for them to implement for that.</p>
+<p><a target="_blank" rel="noopener" href="http://clickatell.com">Clickatell</a> is a worldwide mobile messaging company that just released a <a target="_blank" rel="noopener" href="http://americas.clickatell.com/solutions/small-business-api/">Small Business API</a>, which allows you to integrate SMS functionality into your small business applications. Their target audience is small businesses that want to integrate SMS into their business model. For example, appointment reminders or delivery notifications are perfect scenarios for this API. It is not intended for multi-national business that need to send thousands of messages in bulk. You’ll want to look into the other messaging capabilities that Clickatell provides if you need to support over 10k messages a month. My dentist sends me appointment reminders and the Small Business API would be a perfect solution for them to implement for that.</p>
 <p>Clickatell asked me to try it out and give them feedback so they can continue to improve the product.</p>
 <h1>API RESEARCH</h1>
 <p>Before I sat down to look at the API I came up with the following list of questions I would ask of any SMS API provider.</p>
@@ -230,7 +230,7 @@ You get the callback functionality by setting up a page that processes the callb
 <p><img src="/images/blog/A-high-level-look-into-Clickatells-new-S_1134/image.png" alt=""></p>
 <h3 id="USABILITY"><a class="header-anchor" href="#USABILITY"></a>USABILITY</h3>
 <p><strong><em>Can I quickly get what I need from the API? Is it easy to use?</em></strong><br>
-Based on a cursory glance of their <a href="http://www.clickatell.com/apis-scripts/" target="_blank" rel="noopener">APIs &amp; Scripts</a> it looks fairly straightforward to use. You can see more details in my second post: <em>&quot;</em><a href="/2012/11/clickatell-sms-small-business-api-part2.html">How to integrate Clickatell’s SMS Small Business API into a .NET application</a><em>&quot;</em><br>
+Based on a cursory glance of their <a target="_blank" rel="noopener" href="http://www.clickatell.com/apis-scripts/">APIs &amp; Scripts</a> it looks fairly straightforward to use. You can see more details in my second post: <em>&quot;</em><a href="/2012/11/clickatell-sms-small-business-api-part2.html">How to integrate Clickatell’s SMS Small Business API into a .NET application</a><em>&quot;</em><br>
 Here are some examples of what the endpoints look like to give you an idea of their usage:<br>
 <strong>HTTP:</strong></p>
 <pre class="line-numbers language-html"><code class="language-html">http://api.clickatell.com/http/sendmsg?api_id=xxxx&amp;amp;user=xxxx&amp;amp;password=xxxx&amp;amp;to=xxxx&amp;amp;text=xxxx
@@ -250,25 +250,25 @@ Here are some examples of what the endpoints look like to give you an idea of th
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="NETWORKS-AND-COUNTRIES"><a class="header-anchor" href="#NETWORKS-AND-COUNTRIES"></a>NETWORKS AND COUNTRIES</h3>
 <p><strong><em>Do they support the mobile networks that the majority of my customers are on? Only US or entire world?</em></strong><br>
-Clickatells’ Small Business API supports all the major mobile networks in the US, including AT&amp;T, Sprint, Verizon and T-Mobile, so you shouldn’t have any concerns when targeting US customers. It also supports Canada, Latin America and China. I’m unfamiliar with non-US networks, so be sure to scroll to the bottom of the <a href="https://www.clickatell.com/products/sms-api/" target="_blank" rel="noopener">Pricing and Coverage</a> to page to make sure your target customer’s network is listed.</p>
+Clickatells’ Small Business API supports all the major mobile networks in the US, including AT&amp;T, Sprint, Verizon and T-Mobile, so you shouldn’t have any concerns when targeting US customers. It also supports Canada, Latin America and China. I’m unfamiliar with non-US networks, so be sure to scroll to the bottom of the <a target="_blank" rel="noopener" href="https://www.clickatell.com/products/sms-api/">Pricing and Coverage</a> to page to make sure your target customer’s network is listed.</p>
 <h3 id="PERFORMANCE"><a class="header-anchor" href="#PERFORMANCE"></a>PERFORMANCE</h3>
 <p><strong><em>What is the typical response time of the endpoint?</em></strong><br>
 Clickatell claims that each SMS submission takes less than a second and it appears to be very fast in my initial tests. Definitely fast enough for the average small business.</p>
 <h3 id="PLATFORM-SUPPORT"><a class="header-anchor" href="#PLATFORM-SUPPORT"></a>PLATFORM SUPPORT</h3>
 <p><strong><em>Do they support .NET and JavaScript calls?</em></strong><br>
 Clickatell’s Small Business API provides you with 4 ways to implement SMS functionality into your application: HTTP/S, COM, XML and SOAP. They also provide a Connect API that allows you to manage your account (buy credits, create new connections, etc) programmatically.<br>
-They also supply scripts for PhP, VBScript, C#, <a href="http://VB.NET" target="_blank" rel="noopener">VB.NET</a>, Cold Fusion, Oracle and there are libraries for Java, Ruby, Perl and Applescript. See their <a href="http://www.clickatell.com/apis-scripts/" target="_blank" rel="noopener">APIs and Scripts</a> page for more details.</p>
+They also supply scripts for PhP, VBScript, C#, <a target="_blank" rel="noopener" href="http://VB.NET">VB.NET</a>, Cold Fusion, Oracle and there are libraries for Java, Ruby, Perl and Applescript. See their <a target="_blank" rel="noopener" href="http://www.clickatell.com/apis-scripts/">APIs and Scripts</a> page for more details.</p>
 <p>I dig into the options in more detail in my second post: <em>&quot;</em><a href="/2012/11/clickatell-sms-small-business-api-part2.html">How to integrate Clickatell’s SMS Small Business API into a .NET application</a><em>&quot;</em></p>
 <h3 id="TECHNICAL-SUPPORT"><a class="header-anchor" href="#TECHNICAL-SUPPORT"></a>TECHNICAL SUPPORT</h3>
 <p><strong><em>What is response time for technical support inquires? Is there a phone number to call if needed?</em></strong><br>
 Clickatell offers email support with a 1 day turnaround time, phone support if you need immediate assistance and they also offer chat on their website. I haven’t had the opportunity to contact their support, but at least they have multiple options with prompt turnaround times.</p>
-<p>You can find all the ways to contact them at the <a href="http://www.clickatell.com/about-us/contact-us/" target="_blank" rel="noopener">Clickatell’s Contact Us page</a>.</p>
+<p>You can find all the ways to contact them at the <a target="_blank" rel="noopener" href="http://www.clickatell.com/about-us/contact-us/">Clickatell’s Contact Us page</a>.</p>
 <h3 id="AVAILABILITY"><a class="header-anchor" href="#AVAILABILITY"></a>AVAILABILITY</h3>
 <p><strong><em>How many nines? Do they have downtime notifications?</em></strong><br>
 Clickatell’s Small Business API supports 99.99% uptime availability which equates to them being unavailable for 1.01 minute a week, 4.32 minutes a month and 52.56 minutes a year. This is much higher than I expected and should meet all the needs of small businesses.</p>
 <h3 id="PRICING"><a class="header-anchor" href="#PRICING"></a>PRICING</h3>
 <p><strong><em>How much does it cost per message?</em></strong><br>
-The pricing information I found on <a href="https://www.clickatell.com/products/sms-api/" target="_blank" rel="noopener">Clickatell Small Business API Pricing page</a> seemed pretty reasonable at .7 to 2 cents per message (depending on what plan you select). One thing to note is that they don’t charge for “mobile to server” (i.e. incoming) messages, whereas other companies do.</p>
+The pricing information I found on <a target="_blank" rel="noopener" href="https://www.clickatell.com/products/sms-api/">Clickatell Small Business API Pricing page</a> seemed pretty reasonable at .7 to 2 cents per message (depending on what plan you select). One thing to note is that they don’t charge for “mobile to server” (i.e. incoming) messages, whereas other companies do.</p>
 <h3 id="RATE-LIMITING"><a class="header-anchor" href="#RATE-LIMITING"></a>RATE LIMITING</h3>
 <p><strong>_How much do they throttle messages? _</strong><br>
 With the Small Business API you are limited to 10 messages a second, 5k messages a day and 10k messages a month. Their backend will queue messages so you should be able to exceed 10 messages a second, but just be cautious and check for rate limiting status codes if you need to send in bulk.<br>
@@ -456,7 +456,7 @@ Clickatell’s Small Business API does not support MMS.</p>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

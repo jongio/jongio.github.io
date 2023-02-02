@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="productivity,todo,ifttt,twitter" />
+    <meta name="keywords" content="productivity,todo,twitter,ifttt" />
     
     <meta name="description" content="I only “like” tweets that I want to follow up on. For example, when someone tweets a new podcast I’ll “like” it as a reminder to listen to it later. Before today, I would have to go to my “Liked Tweet">
 <meta property="og:type" content="article">
@@ -37,8 +37,8 @@
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="productivity">
 <meta property="article:tag" content="todo">
-<meta property="article:tag" content="ifttt">
 <meta property="article:tag" content="twitter">
+<meta property="article:tag" content="ifttt">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2019/01/twitter-likes-microsoft-todo-with-ifttt/TweetTodo2.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -210,9 +210,9 @@
         <div class="article-entry" itemprop="articleBody">
             <p>I only “like” tweets that I want to follow up on. For example, when someone tweets a new podcast I’ll “like” it as a reminder to listen to it later.</p>
 <p>Before today, I would have to go to my “Liked Tweets” page on Twitter to find my likes and then take action on them.  But there’s no way to remove a tweet from that list and I don’t want to “Unlike” them.</p>
-<p>I recently started using the <a href="https://todo.microsoft.com" target="_blank" rel="noopener">Microsoft To-Do app</a>, which is the best To-Do app I’ve ever used, not just saying that because I work at Microsoft.  It’s really great. Follow them on Twitter <a href="https://twitter.com/MicrosoftToDo" target="_blank" rel="noopener">@MicrosoftTo-Do</a></p>
-<p>It would be AWESOME if <a href="https://todo.uservoice.com/forums/597175-feature-suggestions/suggestions/36607948-create-tasks-when-i-like-a-tweet" target="_blank" rel="noopener">To-Do was integrated with Twitter directly</a>, but it isn’t. Hence the following hackery.</p>
-<p>You can, however, connect <a href="https://todosupport.helpshift.com/a/microsoft-to-do/?p=web&amp;s=tips-tricks&amp;f=using-siri-with-microsoft-to-do&amp;l=en" target="_blank" rel="noopener">iOS Reminders to To-Do</a>, so you can add tasks to To-Do via Siri like so: “Hey Siri, remind me to buy tacos for James”</p>
+<p>I recently started using the <a target="_blank" rel="noopener" href="https://todo.microsoft.com">Microsoft To-Do app</a>, which is the best To-Do app I’ve ever used, not just saying that because I work at Microsoft.  It’s really great. Follow them on Twitter <a target="_blank" rel="noopener" href="https://twitter.com/MicrosoftToDo">@MicrosoftTo-Do</a></p>
+<p>It would be AWESOME if <a target="_blank" rel="noopener" href="https://todo.uservoice.com/forums/597175-feature-suggestions/suggestions/36607948-create-tasks-when-i-like-a-tweet">To-Do was integrated with Twitter directly</a>, but it isn’t. Hence the following hackery.</p>
+<p>You can, however, connect <a target="_blank" rel="noopener" href="https://todosupport.helpshift.com/a/microsoft-to-do/?p=web&amp;s=tips-tricks&amp;f=using-siri-with-microsoft-to-do&amp;l=en">iOS Reminders to To-Do</a>, so you can add tasks to To-Do via Siri like so: “Hey Siri, remind me to buy tacos for James”</p>
 <p>Here’s where IFTTT comes in:</p>
 <p>IFTTT has a Twitter: “When I like a tweet…” action and a “Create an iOS Reminder” action service.</p>
 <p>So, the flow is this:</p>
@@ -235,10 +235,10 @@
 <p>Here’s what you need to do to set this up.</p>
 <ol>
 <li>
-<p>Install the <a href="https://itunes.apple.com/us/app/microsoft-to-do/id1212616790?mt=8" target="_blank" rel="noopener">Microsoft To-Do app</a>.</p>
+<p>Install the <a target="_blank" rel="noopener" href="https://itunes.apple.com/us/app/microsoft-to-do/id1212616790?mt=8">Microsoft To-Do app</a>.</p>
 </li>
 <li>
-<p>Enable <a href="https://todosupport.helpshift.com/a/microsoft-to-do/?p=web&amp;s=tips-tricks&amp;f=using-siri-with-microsoft-to-do&amp;l=en" target="_blank" rel="noopener">iOS Reminder and To-Do Integration</a></p>
+<p>Enable <a target="_blank" rel="noopener" href="https://todosupport.helpshift.com/a/microsoft-to-do/?p=web&amp;s=tips-tricks&amp;f=using-siri-with-microsoft-to-do&amp;l=en">iOS Reminder and To-Do Integration</a></p>
 <ol>
 <li>Add your email account to the iOS device<br>
 <img src="46.png" alt=""></li>
@@ -248,14 +248,14 @@
 </ol>
 </li>
 <li>
-<p>Install the <a href="https://itunes.apple.com/us/app/ifttt/id660944635?mt=8" target="_blank" rel="noopener">IFTTT app</a>.</p>
+<p>Install the <a target="_blank" rel="noopener" href="https://itunes.apple.com/us/app/ifttt/id660944635?mt=8">IFTTT app</a>.</p>
 <ul>
 <li>When the app loads it will ask you to enable reminder integration. Select OK.<br>
 <img src="41.png" alt=""></li>
 </ul>
 </li>
 <li>
-<p>Create new <a href="http://IFTTT.com" target="_blank" rel="noopener">IFTTT.com</a> applet. Here’s <a href="https://ifttt.com/applets/93968024d-if-new-liked-tweet-by-jongallant-then-add-reminder-to-list-tasks" target="_blank" rel="noopener">My Applet</a></p>
+<p>Create new <a target="_blank" rel="noopener" href="http://IFTTT.com">IFTTT.com</a> applet. Here’s <a target="_blank" rel="noopener" href="https://ifttt.com/applets/93968024d-if-new-liked-tweet-by-jongallant-then-add-reminder-to-list-tasks">My Applet</a></p>
 <ol>
 <li>Click My Applets -&gt; New Applet</li>
 <li>Choose Twitter as your service.</li>
@@ -447,7 +447,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,51 +205,51 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Like I mentioned in my post “<a href="/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>”, it is awesome to be able to ping the people who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a href="http://romiller.com/" target="_blank" rel="noopener">Rowan Miller</a> and <a href="http://blogs.msdn.com/diego/" target="_blank" rel="noopener">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
+            <p>Like I mentioned in my post “<a href="/2012/08/microsoftie-perk-9-product-team-devs.html">Microsoftie Perk #9 – Access to product team devs</a>”, it is awesome to be able to ping the people who build the tools we use every day. This post is a great example of that perk. The EF team has been amazing, especially <a target="_blank" rel="noopener" href="http://romiller.com/">Rowan Miller</a> and <a target="_blank" rel="noopener" href="http://blogs.msdn.com/diego/">Diego Vega</a>. Always very positive and eager to help out. This post is about my research into a question that has always been lingering in the back of my mind….</p>
 <p><em>**“Should I always call Dispose() on my DbContext objects?”  **</em></p>
 <p>Before I talked with the devs on the EF team my answer was always a resounding “of course!”. But it’s not true with DbContext. You don’t need to be religious about calling Dispose on your DbContext objects. Even though it does implement IDisposable, it only implements it so you can call Dispose as a safeguard in some special cases. By default DbContext automatically manages the connection for you. Read to the end to hear the full story and see what the EF devs had to say about it.</p>
 <p><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/image.png" alt=""></p>
 <p><em>(Showing that DbContext implements IDisposable)</em></p>
-<p>I started the conversation with the EF team by proclaiming that the industry needs to stop teaching people to use DbContext objects as private members without disposing of them properly. <a href="http://romiller.com/" target="_blank" rel="noopener">Rowan Miller</a>’s first response, was that yes, we do encourage it and try to make sure we dispose of all our DbContext objects anytime we have a demo or sample code. So I thought “yes, I’m right!” let me code up an example that demonstrates to my blog readers the difference calling Dispose makes to our User Connections count. So I setup perfmon to monitor User Connections and ran the sample below. I was surprised to see that the User Connection numbers were exactly the same. I didn’t matter if I called Dispose or not!</p>
+<p>I started the conversation with the EF team by proclaiming that the industry needs to stop teaching people to use DbContext objects as private members without disposing of them properly. <a target="_blank" rel="noopener" href="http://romiller.com/">Rowan Miller</a>’s first response, was that yes, we do encourage it and try to make sure we dispose of all our DbContext objects anytime we have a demo or sample code. So I thought “yes, I’m right!” let me code up an example that demonstrates to my blog readers the difference calling Dispose makes to our User Connections count. So I setup perfmon to monitor User Connections and ran the sample below. I was surprised to see that the User Connection numbers were exactly the same. I didn’t matter if I called Dispose or not!</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">static void Main(string[] args)
-        {
+        &amp;#123;
             bool useUsing = args.Length == 0 || bool.Parse(args[0]);
             Call(useUsing);
-        }
+        &amp;#125;
 
         private static void Call(bool useUsing)
-        {
+        &amp;#123;
             for (int i = 0; i &amp;lt; 5000; i++)
-            {
+            &amp;#123;
                 if (useUsing)
-                {
+                &amp;#123;
                     using (var db = new DbContextUsingTestEntities())
-                    {
+                    &amp;#123;
                         CallInternal(db);
-                    }
-                }
+                    &amp;#125;
+                &amp;#125;
                 else
-                {
+                &amp;#123;
                     var db = new DbContextUsingTestEntities();
                     CallInternal(db);
-                }
+                &amp;#125;
 
-            }
-        }
+            &amp;#125;
+        &amp;#125;
 
         private static void CallInternal(DbContextUsingTestEntities db)
-        {
+        &amp;#123;
             var data = from d in db.Data select d;
             foreach (var datum in data)
-            {
+            &amp;#123;
                 Console.WriteLine(string.Concat(datum.Id, ":", datum.Name));
-            }
-        }
+            &amp;#125;
+        &amp;#125;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>So I pinged Rowan again with my code snippet to see if they had any other code samples that accurately demonstrated the effect on User Connections. In the meantime I was watching the MVC4 PluralSight course and saw Scott Allen use a DbContext object without calling Dispose. I thought, man I totally respect Scott Allen and if he’s not calling Dispose then something must be wrong with my thinking, so I sent this along to Rowan as well.</p>
 <p><a href="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/clip_image002.jpg"><img src="/images/blog/Should-I-call-Dispose-on-my-DbContext_13FC5/clip_image002_thumb.jpg" alt="clip_image002" title="clip_image002"></a></p>
-<p>Rowan forwarded my mail to <a href="http://blogs.msdn.com/diego/" target="_blank" rel="noopener">Diego Vega</a> (the Senior SDE Lead on EF) and here is his response</p>
+<p>Rowan forwarded my mail to <a target="_blank" rel="noopener" href="http://blogs.msdn.com/diego/">Diego Vega</a> (the Senior SDE Lead on EF) and here is his response</p>
 <blockquote>
 <p>Hello Jon,</p>
 <p>The default behavior of DbContext is that the underlying connection is automatically opened any time is needed and closed when it is no longer needed. E.g. when you execute a query and iterate over query results using "foreach", the call to IEnumerable&lt;T&gt;.GetEnumerator() will cause the connection to be opened, and when later there are no more results available, "foreach" will take care of calling Dispose on the enumerator, which will close the connection. In a similar way, a call to DbContext.SaveChanges() will open the connection before sending changes to the database and will close it before returning. 
@@ -437,7 +437,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

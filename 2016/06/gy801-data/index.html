@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,7 +205,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I’m hacking on project that requires an accelerometer. I picked up this <a href="http://www.vetco.net/catalog/product_info.php?products_id=13835" target="_blank" rel="noopener">9-Axis Inertial Navigation Module for Arduino</a> from my local Vetco. That board is actually a <a href="http://www.hotmcu.com/imu-10dof-l3g4200dadxl345hmc5883lbmp180-p-190.html" target="_blank" rel="noopener">GY801</a> (the newer version of the GY80). It has a gyroscope L3G4200D, accelerometer (<a href="http://www.analog.com/en/products/mems/mems-accelerometers/adxl345.html" target="_blank" rel="noopener">ADXL345</a>), compass (<a href="https://cdn-shop.adafruit.com/datasheets/HMC5883L_3-Axis_Digital_Compass_IC.pdf" target="_blank" rel="noopener">HMC5883L</a>) and a barometer (<a href="https://www.bosch-sensortec.com/bst/products/all_products/bmp180" target="_blank" rel="noopener">BMP180</a>) (<a href="https://www.adafruit.com/product/391" target="_blank" rel="noopener">BMP085</a> on the GY80) all on one board.</p>
+            <p>I’m hacking on project that requires an accelerometer. I picked up this <a target="_blank" rel="noopener" href="http://www.vetco.net/catalog/product_info.php?products_id=13835">9-Axis Inertial Navigation Module for Arduino</a> from my local Vetco. That board is actually a <a target="_blank" rel="noopener" href="http://www.hotmcu.com/imu-10dof-l3g4200dadxl345hmc5883lbmp180-p-190.html">GY801</a> (the newer version of the GY80). It has a gyroscope L3G4200D, accelerometer (<a target="_blank" rel="noopener" href="http://www.analog.com/en/products/mems/mems-accelerometers/adxl345.html">ADXL345</a>), compass (<a target="_blank" rel="noopener" href="https://cdn-shop.adafruit.com/datasheets/HMC5883L_3-Axis_Digital_Compass_IC.pdf">HMC5883L</a>) and a barometer (<a target="_blank" rel="noopener" href="https://www.bosch-sensortec.com/bst/products/all_products/bmp180">BMP180</a>) (<a target="_blank" rel="noopener" href="https://www.adafruit.com/product/391">BMP085</a> on the GY80) all on one board.</p>
 <p><img src="/images/blog/86e948720d7c_81EC/image.png" alt=""></p>
 <p>Hooking this up to an arduino is simple, just connect:</p>
 <ul>
@@ -214,8 +214,8 @@
 <li>SDA to SDA</li>
 <li>SCL to SCL</li>
 </ul>
-<p>I searched around a bit for some sample code to get all the data from each component and found <a href="https://github.com/jrowberg/i2cdevlib" target="_blank" rel="noopener">this i2cdevlib GitHub repo</a> that has sample sketches for every component included in the GY801. I combined all of the components included in the GY80 and GY801 boards into one sample sketch, which can be found here <a href="https://github.com/jrowberg/i2cdevlib/pull/244/files" target="_blank" rel="noopener" title="https://github.com/jrowberg/i2cdevlib/pull/244/files">https://github.com/jrowberg/i2cdevlib/pull/244/files</a>. (I’ll update links if my PR is merged)</p>
-<p>To get started quickly, just <a href="https://github.com/jongio/i2cdevlib" target="_blank" rel="noopener">clone my fork</a>, copy all the folders in the Arduino folder to your arduino/libraries folder and open up the GY80_raw.ino file and deploy. After you do that you should see output in your serial monitor like this:</p>
+<p>I searched around a bit for some sample code to get all the data from each component and found <a target="_blank" rel="noopener" href="https://github.com/jrowberg/i2cdevlib">this i2cdevlib GitHub repo</a> that has sample sketches for every component included in the GY801. I combined all of the components included in the GY80 and GY801 boards into one sample sketch, which can be found here <a target="_blank" rel="noopener" href="https://github.com/jrowberg/i2cdevlib/pull/244/files" title="https://github.com/jrowberg/i2cdevlib/pull/244/files">https://github.com/jrowberg/i2cdevlib/pull/244/files</a>. (I’ll update links if my PR is merged)</p>
+<p>To get started quickly, just <a target="_blank" rel="noopener" href="https://github.com/jongio/i2cdevlib">clone my fork</a>, copy all the folders in the Arduino folder to your arduino/libraries folder and open up the GY80_raw.ino file and deploy. After you do that you should see output in your serial monitor like this:</p>
 <p><img src="/images/blog/86e948720d7c_81EC/image_3.png" alt=""></p>
 <p>Jon</p>
 
@@ -388,7 +388,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

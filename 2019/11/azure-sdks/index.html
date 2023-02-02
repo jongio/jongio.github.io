@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,35 +208,35 @@
         
         <div class="article-entry" itemprop="articleBody">
             <blockquote>
-<p>As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: <a href="https://azure.github.io/azure-sdk/index.html" target="_blank" rel="noopener">Azure SDK Releases</a></p>
+<p>As of 11/4/2019, a few of the New Azure SDKs have hit General Availability!  Read more here: <a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/index.html">Azure SDK Releases</a></p>
 </blockquote>
-<p>Azure has had a tremendous amount of growth in a very short amount of time. With that growth came a lot of goodness, but also a significant amount of inconsistencies at the SDK surface. While developing for Azure you may have noticed a few ways to authenticate with our SDKs, and a few ways to perform logging, package name differences, and things that just didn’t play nice with your application.  We heard our customers loud and clear and, one year ago, decided to fix this problem across all of Azure. We corralled some of the best API and Framework design folks, like <a href="https://twitter.com/PeterMarcu" target="_blank" rel="noopener">Peter Marcu</a>, <a href="https://twitter.com/JeffRichter" target="_blank" rel="noopener">Jeffrey Richter</a>, and <a href="https://twitter.com/kcwalina" target="_blank" rel="noopener">Krzysztof Cwalina</a> and started a new team called the Azure SDK team with the following mission: <strong>&quot;Azure SDK Team: Creating a high quality, consistent, diagnosable, and idiomatic experience for developers to connect their applications to Azure.&quot;</strong></p>
+<p>Azure has had a tremendous amount of growth in a very short amount of time. With that growth came a lot of goodness, but also a significant amount of inconsistencies at the SDK surface. While developing for Azure you may have noticed a few ways to authenticate with our SDKs, and a few ways to perform logging, package name differences, and things that just didn’t play nice with your application.  We heard our customers loud and clear and, one year ago, decided to fix this problem across all of Azure. We corralled some of the best API and Framework design folks, like <a target="_blank" rel="noopener" href="https://twitter.com/PeterMarcu">Peter Marcu</a>, <a target="_blank" rel="noopener" href="https://twitter.com/JeffRichter">Jeffrey Richter</a>, and <a target="_blank" rel="noopener" href="https://twitter.com/kcwalina">Krzysztof Cwalina</a> and started a new team called the Azure SDK team with the following mission: <strong>&quot;Azure SDK Team: Creating a high quality, consistent, diagnosable, and idiomatic experience for developers to connect their applications to Azure.&quot;</strong></p>
 <p><img src="sdks.jpeg" alt="Azure SDK Ship It Award"></p>
 <blockquote>
 <p>On a personal note, I worked a lot with the Azure SDK team in my previous role at Microsoft and became super intrigued by the team’s vision and decided to move over to the SDK team last week!</p>
 </blockquote>
 <h2 id="SDK-Guidelines"><a class="header-anchor" href="#SDK-Guidelines"></a>SDK Guidelines</h2>
-<p>The first objective was to create a set of guidelines that all Azure SDKs will follow to bring consistency across all SDKs.  As you can imagine there were many hours of discussions and documentation that went into developing these guidelines, which can now be found here: <a href="https://azure.github.io/azure-sdk/general_introduction.html" target="_blank" rel="noopener">Azure SDK General Guidelines</a>. General guidelines are great to set a baseline across all languages, but we wanted more.  We wanted each of the SDKs to be idiomatic - we want every developer to feel at home in their language of choice - for example, if you are a Python dev, we wanted to make sure that when you are developing with Azure that it fells pythonic and not like you are using APIs created by a Java or .NET dev.  So taking that to heart, we also developed guidelines for each of the languages we target including:</p>
+<p>The first objective was to create a set of guidelines that all Azure SDKs will follow to bring consistency across all SDKs.  As you can imagine there were many hours of discussions and documentation that went into developing these guidelines, which can now be found here: <a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/general_introduction.html">Azure SDK General Guidelines</a>. General guidelines are great to set a baseline across all languages, but we wanted more.  We wanted each of the SDKs to be idiomatic - we want every developer to feel at home in their language of choice - for example, if you are a Python dev, we wanted to make sure that when you are developing with Azure that it fells pythonic and not like you are using APIs created by a Java or .NET dev.  So taking that to heart, we also developed guidelines for each of the languages we target including:</p>
 <ul>
-<li><a href="https://azure.github.io/azure-sdk/java_introduction.html" target="_blank" rel="noopener">Java</a></li>
-<li><a href="https://azure.github.io/azure-sdk/python_introduction.html" target="_blank" rel="noopener">Python</a></li>
-<li><a href="https://azure.github.io/azure-sdk/typescript_introduction.html" target="_blank" rel="noopener">JavaScript &amp; TypeScript</a></li>
-<li><a href="https://azure.github.io/azure-sdk/dotnet_introduction.html" target="_blank" rel="noopener">.NET</a></li>
-<li><a href="https://azure.github.io/azure-sdk/golang_introduction.html" target="_blank" rel="noopener">Go (Draft)</a></li>
-<li><a href="https://azure.github.io/azure-sdk/android_introduction.html" target="_blank" rel="noopener">Android (Draft)</a></li>
-<li><a href="https://azure.github.io/azure-sdk/clang_introduction.html" target="_blank" rel="noopener">C (Draft)</a></li>
-<li><a href="https://azure.github.io/azure-sdk/ios_introduction.html" target="_blank" rel="noopener">iOS (Draft)</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/java_introduction.html">Java</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/python_introduction.html">Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/typescript_introduction.html">JavaScript &amp; TypeScript</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/dotnet_introduction.html">.NET</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/golang_introduction.html">Go (Draft)</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/android_introduction.html">Android (Draft)</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/clang_introduction.html">C (Draft)</a></li>
+<li><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/ios_introduction.html">iOS (Draft)</a>.</li>
 </ul>
 <h2 id="GitHub-Repos"><a class="header-anchor" href="#GitHub-Repos"></a>GitHub Repos</h2>
-<p>Each of the SDKs is grouped by language and is linked to from the central <a href="https://github.com/Azure/azure-sdk" target="_blank" rel="noopener">Azure SDK repo</a>. For example, all Java SDKs are in the same repo and the same goes for all the other languages.  This enables us to easily share code, build systems, and other dependencies across the entire SDK surface for each language.  You will find each of the language repos here:</p>
+<p>Each of the SDKs is grouped by language and is linked to from the central <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk">Azure SDK repo</a>. For example, all Java SDKs are in the same repo and the same goes for all the other languages.  This enables us to easily share code, build systems, and other dependencies across the entire SDK surface for each language.  You will find each of the language repos here:</p>
 <ul>
-<li><a href="https://github.com/Azure/azure-sdk-for-java" target="_blank" rel="noopener">Java</a></li>
-<li><a href="https://github.com/Azure/azure-sdk-for-python" target="_blank" rel="noopener">Python</a></li>
-<li><a href="https://github.com/Azure/azure-sdk-for-js" target="_blank" rel="noopener">JavaScript &amp; TypeScript</a></li>
-<li><a href="https://github.com/Azure/azure-sdk-for-net" target="_blank" rel="noopener">.NET</a></li>
-<li><a href="https://github.com/Azure/azure-sdk-for-go" target="_blank" rel="noopener">Go (Draft)</a></li>
-<li><a href="https://github.com/Azure/azure-sdk-for-net" target="_blank" rel="noopener">Android (Draft)</a></li>
-<li><a href="https://github.com/Azure/azure-sdk-for-ios" target="_blank" rel="noopener">iOS (Draft)</a>.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-java">Java</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-python">Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-js">JavaScript &amp; TypeScript</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-net">.NET</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-go">Go (Draft)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-net">Android (Draft)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk-for-ios">iOS (Draft)</a>.</li>
 </ul>
 <h2 id="Azure-Services"><a class="header-anchor" href="#Azure-Services"></a>Azure Services</h2>
 <p>The SDK team obviously couldn’t boil the ocean and ship all new SDKs in one shot, so they had to decide which services to target first. After a lot of data crunching and customer engagement we decided to start with:</p>
@@ -265,29 +265,29 @@
 <li><strong>Azure Event Hubs</strong> - Data streaming and event ingestion.</li>
 </ul>
 <blockquote>
-<p>Each of the various languages is at different release cycles so please review all of the release notes available here: <a href="https://azure.github.io/azure-sdk/index.html" target="_blank" rel="noopener">Azure SDK Releases</a> to determine if the service/language you use has GA’d.</p>
+<p>Each of the various languages is at different release cycles so please review all of the release notes available here: <a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/index.html">Azure SDK Releases</a> to determine if the service/language you use has GA’d.</p>
 </blockquote>
 <h2 id="Feature-Spotlight-DefaultAzureCredential"><a class="header-anchor" href="#Feature-Spotlight-DefaultAzureCredential"></a>Feature Spotlight: DefaultAzureCredential</h2>
-<p>One of my favorite new SDK features is Azure Identity’s <a href="https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python" target="_blank" rel="noopener"><code>DefaultAzureCredential()</code></a>, which searches for Service Principal, Managed Identities, and VS2019 login credentials so you can easily move your code from your dev box to production.</p>
+<p>One of my favorite new SDK features is Azure Identity’s <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python"><code>DefaultAzureCredential()</code></a>, which searches for Service Principal, Managed Identities, and VS2019 login credentials so you can easily move your code from your dev box to production.</p>
 <p>For example, the following code will first check environment variables for Service Principal, then if your app is on an Azure resource that supports Managed Identities will look for that, and finally, it will see if you’ve logged into VS2019.</p>
 <pre class="line-numbers language-python"><code class="language-python">credential = DefaultAzureCredential()
 blobclient = BlobServiceClient(account_url="https://name.blob.core.windows.net/", credential=credential)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>This is huge for devs who have had to self manage all the various authentication mechanisms and change them for dev vs prod.</p>
-<p>Stay tuned, because I’ll be blogging and <a href="https://www.youtube.com/jongallant" target="_blank" rel="noopener">creating videos</a> for more SDK features in the coming months.</p>
+<p>Stay tuned, because I’ll be blogging and <a target="_blank" rel="noopener" href="https://www.youtube.com/jongallant">creating videos</a> for more SDK features in the coming months.</p>
 <h2 id="Azure-SDK-Videos"><a class="header-anchor" href="#Azure-SDK-Videos"></a>Azure SDK Videos</h2>
 <p>Here are some videos from my teammates to help you get started and learn more about the SDKs:</p>
 <ul>
-<li><a href="https://myignite.techcommunity.microsoft.com/sessions/83979" target="_blank" rel="noopener">15 Minutes to improve your Python App in Azure</a> by <a href="https://twitter.com/OlszewskaKate" target="_blank" rel="noopener">Kate Olszewska</a></li>
-<li><a href="https://myignite.techcommunity.microsoft.com/sessions/85022" target="_blank" rel="noopener">Build a better Java Spring App with Azure</a> by <a href="https://twitter.com/cyau25" target="_blank" rel="noopener">Connie Yau</a></li>
-<li><a href="https://myignite.techcommunity.microsoft.com/sessions/85028" target="_blank" rel="noopener">Build a better .NET Core Azure Service</a> by <a href="https://twitter.com/JeffRichter" target="_blank" rel="noopener">Jeffrey Richter</a></li>
+<li><a target="_blank" rel="noopener" href="https://myignite.techcommunity.microsoft.com/sessions/83979">15 Minutes to improve your Python App in Azure</a> by <a target="_blank" rel="noopener" href="https://twitter.com/OlszewskaKate">Kate Olszewska</a></li>
+<li><a target="_blank" rel="noopener" href="https://myignite.techcommunity.microsoft.com/sessions/85022">Build a better Java Spring App with Azure</a> by <a target="_blank" rel="noopener" href="https://twitter.com/cyau25">Connie Yau</a></li>
+<li><a target="_blank" rel="noopener" href="https://myignite.techcommunity.microsoft.com/sessions/85028">Build a better .NET Core Azure Service</a> by <a target="_blank" rel="noopener" href="https://twitter.com/JeffRichter">Jeffrey Richter</a></li>
 </ul>
 <h2 id="My-Ask"><a class="header-anchor" href="#My-Ask"></a>My Ask</h2>
 <p>My ask is that you start using the SDKs in your new apps, port your existing apps, and give us feedback via GitHub issues - I will see you there.</p>
 <h2 id="Links"><a class="header-anchor" href="#Links"></a>Links</h2>
-<p><a href="https://azure.github.io/azure-sdk/" target="_blank" rel="noopener">Azure SDK Documentation</a><br>
-<a href="https://github.com/Azure/azure-sdk" target="_blank" rel="noopener">Azure SDK Repo</a><br>
-<a href="https://twitter.com/AzureSDK" target="_blank" rel="noopener">Azure SDK Twitter @AzureSDK</a></p>
+<p><a target="_blank" rel="noopener" href="https://azure.github.io/azure-sdk/">Azure SDK Documentation</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/Azure/azure-sdk">Azure SDK Repo</a><br>
+<a target="_blank" rel="noopener" href="https://twitter.com/AzureSDK">Azure SDK Twitter @AzureSDK</a></p>
 
         </div>
         <footer>
@@ -458,7 +458,7 @@ blobclient = BlobServiceClient(account_url="https://name.blob.core.windows.net/"
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2004-10-19T16:39:00.000Z">
-<meta property="article:modified_time" content="2021-03-18T06:49:16.036Z">
+<meta property="article:modified_time" content="2021-03-18T06:49:16.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
@@ -91,7 +91,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -202,14 +202,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working great on my 2003 server dev box, but when installed on XP they did not fire. I tried many workarounds, but nothing was working, so I posted at <a href="http://www.outlookcode.com/threads.aspx?forumid=5&amp;messageid=7859" target="_blank" rel="noopener">OutlookCode.com</a> and Robert Halstead was nice enough to share a work around with me.</p>
+            <p>In the process of building a COM Add-in for Outlook I ran into the issue of events not being fired with XP. I needed to capture the ItemAdd, ItemSend and SelectionChange events, which his was working great on my 2003 server dev box, but when installed on XP they did not fire. I tried many workarounds, but nothing was working, so I posted at <a target="_blank" rel="noopener" href="http://www.outlookcode.com/threads.aspx?forumid=5&amp;messageid=7859">OutlookCode.com</a> and Robert Halstead was nice enough to share a work around with me.</p>
 <p>What you have to do is add the “static” modifier to the variable declaration. It is hard to believe that I could not find this online somewhere and I hope someone with the same issue finds this post.</p>
 <p>Here is some sample code with the workaround.</p>
 <pre class="line-numbers language-cs"><code class="language-cs">public class Connect : Object, Extensibility.IDTExtensibility2
-{
+&amp;#123;
     private static Microsoft.Office.Interop.Outlook.Items sentFolderItems;
     public void OnConnection(object application, Extensibility.ext_ConnectMode connectMode, object addInInst, ref System.Array custom)
-    {
+    &amp;#123;
         sentFolderItems = applicationObject.Session.GetDefaultFolder(OlDefaultFolders.olFolderSentMail).Items;
         sentFolderItems.ItemAdd += new ItemsEvents_ItemAddEventHandler(SentItems_ItemAdd);
 
@@ -384,7 +384,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

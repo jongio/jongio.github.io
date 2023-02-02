@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,24 +208,24 @@
             <p>In <a href="/2013/05/angularjs-webapi-ef.html">V1 of my AngularJS, WebApi grid</a> I used $http to call my WebApi endpoints. I’ve been using $resource a lot lately, so I thought I’d go back and update it to use $resource instead.</p>
 <p>Here’s what it looks like:</p>
 <p><img src="/images/blog/AngularJS-WebAPI-CRUD-Grid-v2_1404F/image.png" alt=""></p>
-<p><strong>SOURCE</strong>: <a href="https://github.com/jongio/AngularJS-WebApi-EF" target="_blank" rel="noopener">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
+<p><strong>SOURCE</strong>: <a target="_blank" rel="noopener" href="https://github.com/jongio/AngularJS-WebApi-EF">https://github.com/jongio/AngularJS-WebApi-EF</a></p>
 <p>Here’s how I wired up resource:</p>
 <p>1. Reference angular-resource.js</p>
 <p>2. Inject ngResource into the app</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">var app = angular.module('app', ['ngResource']);
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>3. Modify the personFactory to return a resource object instead of the individual $http calls.</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">app.factory('personFactory', function ($http, $resource) {
+<pre class="line-numbers language-javascript"><code class="language-javascript">app.factory('personFactory', function ($http, $resource) &amp;#123;
     return $resource('api/person/:id',
-        { id: '@@id' },
-        { 'update': { method: 'PUT' } },
-        { 'query': { method: 'GET', isArray: false } });
-});
+        &amp;#123; id: '@@id' &amp;#125;,
+        &amp;#123; 'update': &amp;#123; method: 'PUT' &amp;#125; &amp;#125;,
+        &amp;#123; 'query': &amp;#123; method: 'GET', isArray: false &amp;#125; &amp;#125;);
+&amp;#125;);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>4. Modify the $scope methods to use the resource methods, save, delete, query, update:</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.addPerson = function () {
+<pre class="line-numbers language-javascript"><code class="language-javascript">$scope.addPerson = function () &amp;#123;
     personFactory.save($scope.person, successPostCallback, errorCallback);
-};
+&amp;#125;;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>Here’s the entire view. I’ll refactor it later.</p>
 <pre class="line-numbers language-html"><code class="language-html">&lt;!doctype html&gt;
@@ -289,73 +289,73 @@
     &lt;script type="text/javascript"&gt;
         var app = angular.module('app', ['ngResource']);
 
-        app.factory('personFactory', function ($http, $resource) {
+        app.factory('personFactory', function ($http, $resource) &amp;#123;
             return $resource('api/person/:id',
-                { id: '@@id' },
-                { 'update': { method: 'PUT' } },
-                { 'query': { method: 'GET', isArray: false } });
-        });
+                &amp;#123; id: '@@id' &amp;#125;,
+                &amp;#123; 'update': &amp;#123; method: 'PUT' &amp;#125; &amp;#125;,
+                &amp;#123; 'query': &amp;#123; method: 'GET', isArray: false &amp;#125; &amp;#125;);
+        &amp;#125;);
 
-        app.factory('notificationFactory', function () {
-            return {
-                success: function () {
+        app.factory('notificationFactory', function () &amp;#123;
+            return &amp;#123;
+                success: function () &amp;#123;
                     toastr.success("Success");
-                },
-                error: function (text) {
+                &amp;#125;,
+                error: function (text) &amp;#123;
                     toastr.error(text, "Error");
-                }
-            };
-        });
+                &amp;#125;
+            &amp;#125;;
+        &amp;#125;);
 
-        app.controller('IndexCtrl', function ($scope, $q, personFactory, notificationFactory) {
+        app.controller('IndexCtrl', function ($scope, $q, personFactory, notificationFactory) &amp;#123;
             $scope.people = [];
             $scope.addMode = false;
 
-            $scope.toggleAddMode = function () {
+            $scope.toggleAddMode = function () &amp;#123;
                 $scope.addMode = !$scope.addMode;
-            };
+            &amp;#125;;
 
-            $scope.toggleEditMode = function (person) {
+            $scope.toggleEditMode = function (person) &amp;#123;
                 person.editMode = !person.editMode;
-            };
+            &amp;#125;;
 
-            var successCallback = function (e, cb) {
+            var successCallback = function (e, cb) &amp;#123;
                 notificationFactory.success();
                 $scope.getPeople(cb);
-            };
+            &amp;#125;;
 
-            var successPostCallback = function (e) {
-                successCallback(e, function () {
+            var successPostCallback = function (e) &amp;#123;
+                successCallback(e, function () &amp;#123;
                     $scope.toggleAddMode();
-                    $scope.person = {};
-                });
-            };
+                    $scope.person = &amp;#123;&amp;#125;;
+                &amp;#125;);
+            &amp;#125;;
 
-            var errorCallback = function (e) {
+            var errorCallback = function (e) &amp;#123;
                 notificationFactory.error(e.data.Message);
-            };
+            &amp;#125;;
 
-            $scope.addPerson = function () {
+            $scope.addPerson = function () &amp;#123;
                 personFactory.save($scope.person, successPostCallback, errorCallback);
-            };
+            &amp;#125;;
 
-            $scope.deletePerson = function (person) {
-                personFactory.delete({ id: person.Id }, successCallback, errorCallback);
-            };
+            $scope.deletePerson = function (person) &amp;#123;
+                personFactory.delete(&amp;#123; id: person.Id &amp;#125;, successCallback, errorCallback);
+            &amp;#125;;
 
-            $scope.updatePerson = function (person) {
-                personFactory.update({ id: person.Id }, person, successCallback, errorCallback);
-            };
+            $scope.updatePerson = function (person) &amp;#123;
+                personFactory.update(&amp;#123; id: person.Id &amp;#125;, person, successCallback, errorCallback);
+            &amp;#125;;
 
-            $scope.getPeople = function (cb) {
-                personFactory.query(function (data) {
+            $scope.getPeople = function (cb) &amp;#123;
+                personFactory.query(function (data) &amp;#123;
                     $scope.people = data;
                     if (cb) cb();
-                });
-            };
+                &amp;#125;);
+            &amp;#125;;
 
             $scope.getPeople();
-        });
+        &amp;#125;);
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -531,7 +531,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

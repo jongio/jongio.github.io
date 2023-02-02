@@ -22,7 +22,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="azure,cli,codespaces,devex,github" />
+    <meta name="keywords" content="azure,cli,codespaces,github,devex" />
     
     <meta name="description" content="Update - New GitHub CLI Extension GitHub CLI 2.0 introduced CLI Extensions.  I took a few minutes and threw all of the fixes below into a new extension called “Setup Git Credential Helper” and can be">
 <meta property="og:type" content="article">
@@ -33,13 +33,13 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/gitcodespaces.png">
 <meta property="article:published_time" content="2021-06-07T16:25:57.000Z">
-<meta property="article:modified_time" content="2021-09-07T17:23:10.142Z">
+<meta property="article:modified_time" content="2021-09-07T17:23:10.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="azure">
 <meta property="article:tag" content="cli">
 <meta property="article:tag" content="codespaces">
-<meta property="article:tag" content="devex">
 <meta property="article:tag" content="github">
+<meta property="article:tag" content="devex">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://blog.jongallant.com/2021/06/codespaces-gh-cli-git-credentials/gitcodespaces.png">
 <meta name="twitter:creator" content="@jongallant">
@@ -96,7 +96,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -212,17 +212,17 @@
             <p><img src="gitcodespaces.png" alt="'GitHub Codespaces, CLI, and Git'"></p>
 <h2 id="Update-New-GitHub-CLI-Extension"><a class="header-anchor" href="#Update-New-GitHub-CLI-Extension"></a>Update - New GitHub CLI Extension</h2>
 <p>GitHub CLI 2.0 introduced CLI Extensions.  I took a few minutes and threw all of the fixes below into a new extension called “Setup Git Credential Helper” and can be found here:</p>
-<p><a href="https://github.com/jongio/gh-setup-git-credential-helper" target="_blank" rel="noopener">GitHub CLI Extension - Setup Git Credential Helper</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jongio/gh-setup-git-credential-helper">GitHub CLI Extension - Setup Git Credential Helper</a></p>
 <p>Here are some links that should help:<br>
-<a href="https://docs.github.com/en/github-cli/github-cli/creating-github-cli-extensions" target="_blank" rel="noopener">Creating GitHub CLI Extensions</a><br>
-<a href="https://github.com/topics/gh-extension" target="_blank" rel="noopener">GitHub CLI Extension Topic - Lists all extensions</a></p>
+<a target="_blank" rel="noopener" href="https://docs.github.com/en/github-cli/github-cli/creating-github-cli-extensions">Creating GitHub CLI Extensions</a><br>
+<a target="_blank" rel="noopener" href="https://github.com/topics/gh-extension">GitHub CLI Extension Topic - Lists all extensions</a></p>
 <p>To use it install GitHub CLI v2+ and run these commands:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">gh extension install jongio/gh-setup-git-credential-helper
 gh setup-git-credential-helper
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>That will do all of fixes I mention below and get you all setup with Git in your Codespace.</p>
 <h2 id="Post"><a class="header-anchor" href="#Post"></a>Post</h2>
-<p>I work with <a href="https://github.com/features/codespaces" target="_blank" rel="noopener">GitHub Codespaces</a> quite a bit and discovered that there a few things that don’t work well with <a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI</a> and <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>.</p>
+<p>I work with <a target="_blank" rel="noopener" href="https://github.com/features/codespaces">GitHub Codespaces</a> quite a bit and discovered that there a few things that don’t work well with <a target="_blank" rel="noopener" href="https://cli.github.com/">GitHub CLI</a> and <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>.</p>
 <p>To set some context:</p>
 <ol>
 <li>GitHub CLI uses the GITHUB_TOKEN environment variable to cache GitHub auth tokens after a user logs into the GitHub CLI.</li>
@@ -243,7 +243,7 @@ gh setup-git-credential-helper
 HTTP 403: Resource not accessible by integration
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>What that error means is: “Your current authentication doesn’t have permissions to create a secret” - because you are using the limited permissions that the Codespace gave you.</p>
-<p>I’ve filed an issue here to get a better error message: <a href="https://github.com/cli/cli/issues/3797" target="_blank" rel="noopener">https://github.com/cli/cli/issues/3797</a></p>
+<p>I’ve filed an issue here to get a better error message: <a target="_blank" rel="noopener" href="https://github.com/cli/cli/issues/3797">https://github.com/cli/cli/issues/3797</a></p>
 <p>What you need to do is re-authenticate.  You try with <code>gh auth login</code>, but when you do that you get this error:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">The value of the GITHUB_TOKEN environment variable is being used for authentication.
 To have GitHub CLI store credentials instead, first clear the value from the environment.
@@ -251,20 +251,20 @@ To have GitHub CLI store credentials instead, first clear the value from the env
 <p>Currently, the GitHub CLI doesn’t let you overwrite the GITHUB_TOKEN env var when you run <code>gh auth login</code>, so what you need to do is clear that env var like this:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">export GITHUB_TOKEN=
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>I’ve filed an issue here to allow us to overwrite GITHUB_TOKEN: <a href="https://github.com/cli/cli/issues/3799" target="_blank" rel="noopener">https://github.com/cli/cli/issues/3799</a></p>
+<p>I’ve filed an issue here to allow us to overwrite GITHUB_TOKEN: <a target="_blank" rel="noopener" href="https://github.com/cli/cli/issues/3799">https://github.com/cli/cli/issues/3799</a></p>
 <p>Then you can re-auth with the GitHub CLI with <code>gh auth login</code> and create your secret or do whatever you were trying to do with it.</p>
 <p>Then, when you try to do something with git, like push code changes to your fork, you’ll likely get this error:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">git push --set-upstream origin env-dev5
 remote: Invalid username or password.
 fatal: Authentication failed for 'https://github.com/jongio/golang-sample-app/'
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>I’ve filed an issue here to not put git in an invalid state after calling gh auth login: <a href="https://github.com/cli/cli/issues/3798" target="_blank" rel="noopener">https://github.com/cli/cli/issues/3798</a></p>
+<p>I’ve filed an issue here to not put git in an invalid state after calling gh auth login: <a target="_blank" rel="noopener" href="https://github.com/cli/cli/issues/3798">https://github.com/cli/cli/issues/3798</a></p>
 <p>It doesn’t prompt you to enter username or password.  So you are stuck.</p>
 <p>But, it turns out that you can use the GitHub CLI as a git credential helper, so that when git needs to auth it will use the GitHub CLI to do so.  Here’s how you set that up:</p>
 <pre class="line-numbers language-bash"><code class="language-bash">git config --global credential.https://github.com.helper ''
 git config --global 'credential.https://github.com' '!gh auth git-credential'
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>I’ve filed an issue here to make that easier for us: <a href="https://github.com/cli/cli/issues/3796" target="_blank" rel="noopener">https://github.com/cli/cli/issues/3796</a></p>
+<p>I’ve filed an issue here to make that easier for us: <a target="_blank" rel="noopener" href="https://github.com/cli/cli/issues/3796">https://github.com/cli/cli/issues/3796</a></p>
 <p>Hopefully, you found this post by searching up the error messages and this helped you resolve your issue.  If not, comment below and I’ll try to help.</p>
 <p>Jon</p>
 <p>how to use gh in .gitconfig<br>
@@ -441,7 +441,7 @@ how to push from github-cli</p>
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

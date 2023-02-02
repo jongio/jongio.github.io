@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -206,24 +206,24 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with <a href="http://blogs.msdn.com/b/csharpfaq/archive/2010/02/16/covariance-and-contravariance-faq.aspx" target="_blank" rel="noopener">covariance and contravariance</a>.</p>
+            <p>Okay, it’s not really a “solution” per se, but more of a workaround to a limitation with generic List objects that has to do with <a target="_blank" rel="noopener" href="http://blogs.msdn.com/b/csharpfaq/archive/2010/02/16/covariance-and-contravariance-faq.aspx">covariance and contravariance</a>.</p>
 <p>I struggled with this for way too long, hope you save you some time.</p>
 <p>I have a list that contains a Heavy object that I don’t want to serialize down to the client. So I created a Slim version of it with an explicit operator to convert from Heavy to Slim.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public class WorkItem
-{
-    public int Id { get; set; }
-}
+&amp;#123;
+    public int Id &amp;#123; get; set; &amp;#125;
+&amp;#125;
 
 public class WorkItemSlim
-{
-    public int Id { get; set; }
+&amp;#123;
+    public int Id &amp;#123; get; set; &amp;#125;
     public static explicit operator WorkItemSlim(WorkItem workItem)
-    {
+    &amp;#123;
         var wis = new WorkItemSlim();
         wis.Id = workItem.Id;
         return wis;
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>This works great when explicitly casting a single Heavy object to a Slim object like so:</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var workItem = new WorkItem();
@@ -409,7 +409,7 @@ WorkItemSlim wis = (WorkItemSlim)workItem;
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -93,7 +93,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -207,15 +207,15 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>Most people know that the KendoUI controls are awesome and free. The thing that is missing from there demo site is how to create a Jsonp WebApi service that the controls can talk to. I tried to get it up and running and ran into an issue because my service was returning regular Json and the “Loading” icon just spun for ever.</p>
-<p>Here’s how to get an e2e going with KendoUI TreeView and WebApi. This post very intentionally follows the code demo provided by Telerik <a href="http://demos.kendoui.com/web/treeview/remote-data.html" target="_blank" rel="noopener">here</a></p>
+<p>Here’s how to get an e2e going with KendoUI TreeView and WebApi. This post very intentionally follows the code demo provided by Telerik <a target="_blank" rel="noopener" href="http://demos.kendoui.com/web/treeview/remote-data.html">here</a></p>
 <p>Hopefully you find it useful.</p>
-<p><a href="https://github.com/jongio/KendoUIJsonPWebApi" target="_blank" rel="noopener">Download <span>Latest version from GitHub</span></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jongio/KendoUIJsonPWebApi">Download <span>Latest version from GitHub</span></a></p>
 <p><strong>Create VS Project</strong><br>
 1. Create a new MVC project.</p>
 <p><strong>Add Nuget References</strong><br>
 2. Add the following references</p>
-<p><a href="http://nuget.org/packages/WebApiContrib.Formatting.Jsonp/" target="_blank" rel="noopener">WebApiContrib.Formatting.Jsonp</a> – This adds the JsonpMediaTypeFormatter class to the project.</p>
-<p><a href="http://nuget.org/packages/KendoUIWeb/" target="_blank" rel="noopener">KendoUIWeb</a> – This adds the KendoUI controls to the project.</p>
+<p><a target="_blank" rel="noopener" href="http://nuget.org/packages/WebApiContrib.Formatting.Jsonp/">WebApiContrib.Formatting.Jsonp</a> – This adds the JsonpMediaTypeFormatter class to the project.</p>
+<p><a target="_blank" rel="noopener" href="http://nuget.org/packages/KendoUIWeb/">KendoUIWeb</a> – This adds the KendoUI controls to the project.</p>
 <p><strong>Register Formatter</strong><br>
 3. Add the following line of code to the Application_Start() method of the Global.asax file</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">GlobalConfiguration.Configuration.Formatters.Insert(0, new JsonpMediaTypeFormatter());
@@ -224,36 +224,36 @@
 <p><strong>Create Model</strong></p>
 <p>4. Add the following Employee class to the /Models folder</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public class Employee
-{
-    public int EmployeeId { get; set; }
-    public string FullName { get; set; }
-    public bool HasEmployees { get; set; }
-    public int? ReportsTo { get; set; }
-}
+&amp;#123;
+    public int EmployeeId &amp;#123; get; set; &amp;#125;
+    public string FullName &amp;#123; get; set; &amp;#125;
+    public bool HasEmployees &amp;#123; get; set; &amp;#125;
+    public int? ReportsTo &amp;#123; get; set; &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Create Controller</strong></p>
 <p>5. Add the following Controller to the /Controllers folder</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public class EmployeesController : ApiController
-{
+&amp;#123;
     private readonly List&lt;Employee&gt; _employees = new List&lt;Employee&gt; 
-    {
-        new Employee{ FullName = "Jon Gallant", EmployeeId = 1, HasEmployees = true, ReportsTo = null},
-        new Employee{ FullName = "Scott Hanselman", EmployeeId = 2, HasEmployees = false, ReportsTo = 1},
-        new Employee {FullName = "Howard Dierking", EmployeeId = 3, HasEmployees = false, ReportsTo = 1},
-        new Employee {FullName = "Drew Miller", EmployeeId = 4, HasEmployees = false, ReportsTo = 1},
-        new Employee { FullName = "Jeff Atwood", EmployeeId = 5, HasEmployees = false, ReportsTo = 1}
-    };
+    &amp;#123;
+        new Employee&amp;#123; FullName = "Jon Gallant", EmployeeId = 1, HasEmployees = true, ReportsTo = null&amp;#125;,
+        new Employee&amp;#123; FullName = "Scott Hanselman", EmployeeId = 2, HasEmployees = false, ReportsTo = 1&amp;#125;,
+        new Employee &amp;#123;FullName = "Howard Dierking", EmployeeId = 3, HasEmployees = false, ReportsTo = 1&amp;#125;,
+        new Employee &amp;#123;FullName = "Drew Miller", EmployeeId = 4, HasEmployees = false, ReportsTo = 1&amp;#125;,
+        new Employee &amp;#123; FullName = "Jeff Atwood", EmployeeId = 5, HasEmployees = false, ReportsTo = 1&amp;#125;
+    &amp;#125;;
 
     public IEnumerable&lt;Employee&gt; Get()
-    {
+    &amp;#123;
         return _employees.Where(e =&gt; !e.ReportsTo.HasValue);
-    }
+    &amp;#125;
 
     public IEnumerable&lt;Employee&gt; Get(int employeeId)
-    {
+    &amp;#123;
         return _employees.Where(e =&gt; e.ReportsTo == employeeId);
-    }
-}
+    &amp;#125;
+&amp;#125;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>Create View</strong></p>
 <p>6. Add the following View to the /Views/Home/Index.cshtml file.</p>
@@ -268,25 +268,25 @@
     //var serviceRoot = "http://demos.kendoui.com/service";
     var serviceRoot = "api";
 
-    homogeneous = new kendo.data.HierarchicalDataSource({
-        transport: {
-            read: {
+    homogeneous = new kendo.data.HierarchicalDataSource(&amp;#123;
+        transport: &amp;#123;
+            read: &amp;#123;
                 url: serviceRoot + "/Employees",
                 dataType: "jsonp"
-            }
-        },
-        schema: {
-            model: {
+            &amp;#125;
+        &amp;#125;,
+        schema: &amp;#123;
+            model: &amp;#123;
                 id: "EmployeeId",
                 hasChildren: "HasEmployees"
-            }
-        }
-    });
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;);
 
-    $("#treeview").kendoTreeView({
+    $("#treeview").kendoTreeView(&amp;#123;
         dataSource: homogeneous,
         dataTextField: "FullName"
-    });
+    &amp;#125;);
 &lt;/script&gt;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -464,7 +464,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

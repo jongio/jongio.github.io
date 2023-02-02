@@ -33,7 +33,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/images/logo_thumb_1024.png">
 <meta property="article:published_time" content="2013-02-12T07:44:00.000Z">
-<meta property="article:modified_time" content="2021-08-23T14:43:49.390Z">
+<meta property="article:modified_time" content="2021-08-23T14:43:49.000Z">
 <meta property="article:author" content="Jon Gallant">
 <meta property="article:tag" content="howto">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,12 +208,12 @@
             <p>I got this error today in Sony Movie Studio Platinum Suite when I tried to render a video file.</p>
  <p>_An error occurred while creating the media file …. The system is low on memory. You may be able to reduce memory usage by closing other applications._ 
 <p><img src="/images/blog/a5398cafde13_6889/image.png" alt=""></p>
-<p>The real problem is that Vegas is a 32bit application and therefore is only allowed 2GB of RAM. Rendering video files requires much more than that. (Good discussion on SOF here: <a href="http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system" target="_blank" rel="noopener" title="http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system">http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system</a>)</p>
-<p>You need to modify the CF header of the Vegas executable to allow it to consume more than 2GB of RAM. This process is documented in detail on creativecow here: <a href="http://forums.creativecow.net/thread/24/910691" target="_blank" rel="noopener" title="http://forums.creativecow.net/thread/24/910691">http://forums.creativecow.net/thread/24/910691</a></p>
+<p>The real problem is that Vegas is a 32bit application and therefore is only allowed 2GB of RAM. Rendering video files requires much more than that. (Good discussion on SOF here: <a target="_blank" rel="noopener" href="http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system" title="http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system">http://stackoverflow.com/questions/639540/how-much-memory-can-a-32-bit-process-access-on-a-64-bit-operating-system</a>)</p>
+<p>You need to modify the CF header of the Vegas executable to allow it to consume more than 2GB of RAM. This process is documented in detail on creativecow here: <a target="_blank" rel="noopener" href="http://forums.creativecow.net/thread/24/910691" title="http://forums.creativecow.net/thread/24/910691">http://forums.creativecow.net/thread/24/910691</a></p>
 <p>Here’s how I did it:</p>
 <p>1. Download and install CFFExplorer.exe.</p>
 <blockquote>
-<p>a) Go to <a href="http://www.ntcore.com/exsuite.php" target="_blank" rel="noopener" title="http://www.ntcore.com/exsuite.php">http://www.ntcore.com/exsuite.php</a></p>
+<p>a) Go to <a target="_blank" rel="noopener" href="http://www.ntcore.com/exsuite.php" title="http://www.ntcore.com/exsuite.php">http://www.ntcore.com/exsuite.php</a></p>
 <p>b) Click on the “Download the Explorer Suite” link in the upper right hand corner of the page:</p>
 <p><img src="/images/blog/a5398cafde13_6889/image_3.png" alt=""></p>
 <p>c) Install it</p>
@@ -403,7 +403,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

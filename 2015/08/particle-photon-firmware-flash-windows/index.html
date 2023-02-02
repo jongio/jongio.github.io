@@ -94,7 +94,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,7 +208,7 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p>1. Plug Photon into laptop via USB</p>
-<p>1a. Go ahead and install the Particle Photon driver now: <a href="https://particle.io" target="_blank" rel="noopener">https://particle.io</a></p>
+<p>1a. Go ahead and install the Particle Photon driver now: <a target="_blank" rel="noopener" href="https://particle.io">https://particle.io</a></p>
 <p>2. Put Photon into DFU mode.<br>
 a) Hold down both Setup and Reset buttons<br>
 b) Release the Reset button (Keep Setup Button pressed)<br>
@@ -216,14 +216,14 @@ c) Let go of the setup button when it flashes yellow. The Photon will keep flash
 <iframe width="300" height="300" src="https://vine.co/v/eZUgeu0r639/embed/simple" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
 <p>You will see the Photon in DFU mode in Device Manager</p>
 <p><img src="/images/blog/ca6e74fa906b_C3F2/image.png" alt=""></p>
-<p>4. Download and unzip all the tar files in <a href="http://dfu-util.sourceforge.net/releases/dfu-util-0.8-binaries.tar.xz" target="_blank" rel="noopener">dfu-util</a> using <a href="http://www.7-zip.org/" target="_blank" rel="noopener">7-zip</a>. Add the win32-mingw32 folder to your PATH environment variable.</p>
-<p>5. Install <a href="http://zadig.akeo.ie/" target="_blank" rel="noopener">Zadig</a> and install WinUSB to your Photon.</p>
+<p>4. Download and unzip all the tar files in <a target="_blank" rel="noopener" href="http://dfu-util.sourceforge.net/releases/dfu-util-0.8-binaries.tar.xz">dfu-util</a> using <a target="_blank" rel="noopener" href="http://www.7-zip.org/">7-zip</a>. Add the win32-mingw32 folder to your PATH environment variable.</p>
+<p>5. Install <a target="_blank" rel="noopener" href="http://zadig.akeo.ie/">Zadig</a> and install WinUSB to your Photon.</p>
 <p><img src="/images/blog/ca6e74fa906b_C3F2/image_3.png" alt=""></p>
 <p>6. Download the following files to your local machine:</p>
-<p><a href="https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin" target="_blank" rel="noopener" title="https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin">https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin</a></p>
-<p><a href="https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin" target="_blank" rel="noopener" title="https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin">https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin" title="https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin">https://github.com/spark/firmware/releases/download/v0.4.7/system-part1-0.4.7-photon.bin</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin" title="https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin">https://github.com/spark/firmware/releases/download/v0.4.7/system-part2-0.4.7-photon.bin</a></p>
 <p>There’s a good chance the firmware will have updated since the time this post was created, so just modify the version number above 0.4.7 with the firmware version you want to flash.</p>
-<p>7. Download this <a href="https://gist.githubusercontent.com/jongio/4ac59884183611790ea7/raw/a9a213477a1314731a1a65932bf556c75f12fa1c/photonflash.cmd" target="_blank" rel="noopener">photonflash.cmd</a> (right-click, Save Target as…) file to the same folder you have the bin files from the previous step. There’s a good chance that Particle has a released a new version of the firmware before I have a chance to update my script. Feel free to check this url for the latest: <a href="https://github.com/spark/firmware/releases" target="_blank" rel="noopener" title="https://github.com/spark/firmware/releases">https://github.com/spark/firmware/releases</a>  This post uses 0.4.7</p>
+<p>7. Download this <a target="_blank" rel="noopener" href="https://gist.githubusercontent.com/jongio/4ac59884183611790ea7/raw/a9a213477a1314731a1a65932bf556c75f12fa1c/photonflash.cmd">photonflash.cmd</a> (right-click, Save Target as…) file to the same folder you have the bin files from the previous step. There’s a good chance that Particle has a released a new version of the firmware before I have a chance to update my script. Feel free to check this url for the latest: <a target="_blank" rel="noopener" href="https://github.com/spark/firmware/releases" title="https://github.com/spark/firmware/releases">https://github.com/spark/firmware/releases</a>  This post uses 0.4.7</p>
 <script src="https://gist.github.com/jongio/4ac59884183611790ea7.js"></script>
 <p>8. Open a Command prompt. Navigate to the folder you put the photonflash.cmd file in and execute it.</p>
 <p>Your output will look something like this:</p>
@@ -402,7 +402,7 @@ c) Let go of the setup button when it flashes yellow. The Photon will keep flash
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

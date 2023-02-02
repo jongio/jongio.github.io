@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,16 +208,16 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>The <a href="https://github.com/Azure/azure-iot-gateway-sdk" target="_blank" rel="noopener">Azure IoT Field Gateway SDK</a> is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.</p>
+            <p>The <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-iot-gateway-sdk">Azure IoT Field Gateway SDK</a> is a set of libraries that allow you to build a device that acts as a proxy between an individual IoT device and Azure IoT Hub.</p>
 <p>Individual IoT devices will connect to the Gateway via some transport layer (BLE, NFC, etc) and the Gateway will forward the device data to IoT Hub. The Gateway will usually aggregate many messages into a single message or convert it to a data protocol (MQTT, AMQP, etc) that IoT Hub understands.</p>
 <p>Here’s how to get it the Field Gateway running on a Raspberry Pi 3.</p>
 <h2 id="Download-Raspbian"><a class="header-anchor" href="#Download-Raspbian"></a>Download Raspbian</h2>
-<p>I’m using <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">Raspbian Jessie</a> full desktop image.</p>
+<p>I’m using <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Jessie</a> full desktop image.</p>
 <h2 id="Get-a-MicroSD-Card-and-MicroSD-USB-Card-Reader"><a class="header-anchor" href="#Get-a-MicroSD-Card-and-MicroSD-USB-Card-Reader"></a>Get a MicroSD Card and MicroSD USB Card Reader</h2>
-<p>I have a <a href="https://www.amazon.com/Kingston-Digital-microSDHC-SDC10-32GB/dp/B00519BEQY" target="_blank" rel="noopener">Kingston 32GB Class 10</a> MicroSD card and a <a href="https://www.amazon.com/Transcend-microSDHC-Reader-TS-RDF5K-Black/dp/B009D79VH4/" target="_blank" rel="noopener">Transcend USB 3.0 Card Reader</a></p>
+<p>I have a <a target="_blank" rel="noopener" href="https://www.amazon.com/Kingston-Digital-microSDHC-SDC10-32GB/dp/B00519BEQY">Kingston 32GB Class 10</a> MicroSD card and a <a target="_blank" rel="noopener" href="https://www.amazon.com/Transcend-microSDHC-Reader-TS-RDF5K-Black/dp/B009D79VH4/">Transcend USB 3.0 Card Reader</a></p>
 <h2 id="Install-Win32DiskImager"><a class="header-anchor" href="#Install-Win32DiskImager"></a>Install Win32DiskImager</h2>
 <p>This will be used to write Raspbian to the MicroSD card</p>
-<p><a href="https://sourceforge.net/projects/win32diskimager/" target="_blank" rel="noopener" title="https://sourceforge.net/projects/win32diskimager/">https://sourceforge.net/projects/win32diskimager/</a></p>
+<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/win32diskimager/" title="https://sourceforge.net/projects/win32diskimager/">https://sourceforge.net/projects/win32diskimager/</a></p>
 <h2 id="Copy-Raspbian-to-MicroSD-card"><a class="header-anchor" href="#Copy-Raspbian-to-MicroSD-card"></a>Copy Raspbian to MicroSD card</h2>
 <p>Open Win32DiskImager. Find the yyyy-mm-dd-raspbian-jessie.img file. Select your USB drive. Click Write. This took about 5 minutes on my machine.</p>
 <p><img src="/images/blog/533c87e4ef7b_9338/image.png" alt=""></p>
@@ -225,9 +225,9 @@
 <p>Plug in HDMI monitor, keyboard, mouse and Ethernet cable (you can also use Wifi instead)</p>
 <h2 id="Configure-Remote-Access-to-Pi"><a class="header-anchor" href="#Configure-Remote-Access-to-Pi"></a>Configure Remote Access to Pi</h2>
 <p>TightVNC allows you to remote desktop into the Raspberry Pi from your Windows desktop. This step is optional. You could also just use the monitor, mouse and keyboard that is connected to the Pi, but that gets old quick. There are other options here, but I’ve found TightVNC to be the most reliable when you just need to connect to the Pi from the same wireless network. If the Pi is on a difference network, then use Weaved.</p>
-<p>All your remote options are located here: <a href="https://www.raspberrypi.org/documentation/remote-access/" target="_blank" rel="noopener" title="https://www.raspberrypi.org/documentation/remote-access/">https://www.raspberrypi.org/documentation/remote-access/</a>. Feel free to use one that best suits your needs. SSH with Putty is a good option if you don’t need to access the desktop.</p>
+<p>All your remote options are located here: <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/remote-access/" title="https://www.raspberrypi.org/documentation/remote-access/">https://www.raspberrypi.org/documentation/remote-access/</a>. Feel free to use one that best suits your needs. SSH with Putty is a good option if you don’t need to access the desktop.</p>
 <h2 id="Go-to-Azure-IoT-Field-Gateway-SDK-GitHub-Page"><a class="header-anchor" href="#Go-to-Azure-IoT-Field-Gateway-SDK-GitHub-Page"></a>Go to Azure IoT Field Gateway SDK GitHub Page</h2>
-<p>If you are using TightVNC, on the Pi, open the web browser and go to <a href="http://bit.ly/azuregatewaypi" target="_blank" rel="noopener">http://bit.ly/azuregatewaypi</a> – that will redirect you to this page on your Pi, so you can easily copy and paste the following commands.</p>
+<p>If you are using TightVNC, on the Pi, open the web browser and go to <a target="_blank" rel="noopener" href="http://bit.ly/azuregatewaypi">http://bit.ly/azuregatewaypi</a> – that will redirect you to this page on your Pi, so you can easily copy and paste the following commands.</p>
 <p>If you are using SSH, then just execute the commands below in your SSH window.</p>
 <h2 id="Install-Packages"><a class="header-anchor" href="#Install-Packages"></a>Install Packages</h2>
 <pre class="line-numbers language-bash"><code class="language-bash">sudo apt-get update
@@ -245,8 +245,8 @@ sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-
 <p>I like to execute this command after I checkout a branch to be sure I have the latest submodule bits that correspond to my current branch.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">git submodule update --init --recursive
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="Run-Build-sh"><a class="header-anchor" href="#Run-Build-sh"></a>Run <a href="http://Build.sh" target="_blank" rel="noopener">Build.sh</a></h2>
-<p>Change to the /tools directory and excute <a href="http://build.sh" target="_blank" rel="noopener">build.sh</a></p>
+<h2 id="Run-Build-sh"><a class="header-anchor" href="#Run-Build-sh"></a>Run <a target="_blank" rel="noopener" href="http://Build.sh">Build.sh</a></h2>
+<p>Change to the /tools directory and excute <a target="_blank" rel="noopener" href="http://build.sh">build.sh</a></p>
 <pre class="line-numbers language-bash"><code class="language-bash">cd tools
 ./build.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -455,7 +455,7 @@ sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -95,7 +95,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -208,13 +208,13 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite</a>, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storage development on your local machine, saving you time and money during all of your tight inner-loop cycles. Prior to the Azurite v3.7.0 release, you could not use any Bearer Token based authentication mechanism like what is provided with Azure Identity’s <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential</a>, because it requires both HTTPS and OAuth.  Now that Azurite supports both, we can new up a Storage client the same way regardless of whether we’re pointing to Azurite or Azure.</p>
+            <p><a target="_blank" rel="noopener" href="https://github.com/azure/azurite">Azurite</a>, the local cross-platform Azure Storage emulator, just released support for HTTPS and OAuth, making our local Azure Storage development story complete.  You can now do all of your Azure Storage development on your local machine, saving you time and money during all of your tight inner-loop cycles. Prior to the Azurite v3.7.0 release, you could not use any Bearer Token based authentication mechanism like what is provided with Azure Identity’s <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet">DefaultAzureCredential</a>, because it requires both HTTPS and OAuth.  Now that Azurite supports both, we can new up a Storage client the same way regardless of whether we’re pointing to Azurite or Azure.</p>
 <p>In this post, I’ll show you the tools we have available and how to get everything setup.</p>
 <p>Here are the local dev Azure Storage tools we have available:</p>
 <ul>
-<li><strong>Emulation</strong>: <a href="https://github.com/azure/azurite" target="_blank" rel="noopener">Azurite v3.7.0+</a>: Cross-platform Azure Storage Emulator - a local process that adheres to the Azure Storage interfaces. Azurite V3 does not support Azure Tables yet. If you need Azure Tables, then use Azurite V2 or the Cosmos emulator.  Table support in Azurite is coming soon.  Follow along and contribute here: <a href="https://github.com/Azure/Azurite/projects/2" target="_blank" rel="noopener">https://github.com/Azure/Azurite/projects/2</a></li>
-<li><strong>Development</strong>: <a href="https://aka.ms/azsdk" target="_blank" rel="noopener">Azure SDKs</a>: Cross-platform, multi-language libraries that talk to either Azurite or Azure.  We’ll use the new <a href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet" target="_blank" rel="noopener">DefaultAzureCredential</a>, which under the covers, has a chain of credential options and with the <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">latest preview</a>, it will use your Azure CLI credentials.</li>
-<li><strong>Management</strong>: <a href="https://azure.microsoft.com/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a>: Cross-platform application that lets you view and manage Azure Storage with Azurite or Azure.</li>
+<li><strong>Emulation</strong>: <a target="_blank" rel="noopener" href="https://github.com/azure/azurite">Azurite v3.7.0+</a>: Cross-platform Azure Storage Emulator - a local process that adheres to the Azure Storage interfaces. Azurite V3 does not support Azure Tables yet. If you need Azure Tables, then use Azurite V2 or the Cosmos emulator.  Table support in Azurite is coming soon.  Follow along and contribute here: <a target="_blank" rel="noopener" href="https://github.com/Azure/Azurite/projects/2">https://github.com/Azure/Azurite/projects/2</a></li>
+<li><strong>Development</strong>: <a target="_blank" rel="noopener" href="https://aka.ms/azsdk">Azure SDKs</a>: Cross-platform, multi-language libraries that talk to either Azurite or Azure.  We’ll use the new <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet">DefaultAzureCredential</a>, which under the covers, has a chain of credential options and with the <a target="_blank" rel="noopener" href="https://aka.ms/azsdk/releases">latest preview</a>, it will use your Azure CLI credentials.</li>
+<li><strong>Management</strong>: <a target="_blank" rel="noopener" href="https://azure.microsoft.com/features/storage-explorer/">Azure Storage Explorer</a>: Cross-platform application that lets you view and manage Azure Storage with Azurite or Azure.</li>
 </ul>
 <p>We’ll get to the nitty gritty details of getting everything setup in a minute. But in a nutshell, here’s what we’re going to do:</p>
 <h2 id="Local-Certificate"><a class="header-anchor" href="#Local-Certificate"></a>Local Certificate</h2>
@@ -255,11 +255,11 @@ mkdir azurite
 cd azurite
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="Local-Certificate-Setup"><a class="header-anchor" href="#Local-Certificate-Setup"></a>Local Certificate Setup</h2>
-<p>You need a local self-signed certificate, which is super easy to create with <a href="https://github.com/FiloSottile/mkcert" target="_blank" rel="noopener">mkcert</a>.  You have other certificate options available and detailed instructions for those options can be found on the <a href="https://github.com/Azure/Azurite#https-setup" target="_blank" rel="noopener">Azurite installation page</a>.</p>
+<p>You need a local self-signed certificate, which is super easy to create with <a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert">mkcert</a>.  You have other certificate options available and detailed instructions for those options can be found on the <a target="_blank" rel="noopener" href="https://github.com/Azure/Azurite#https-setup">Azurite installation page</a>.</p>
 <ol>
 <li>Install mkcert</li>
 </ol>
-<p>The mkcert site has many <a href="https://github.com/FiloSottile/mkcert#installation" target="_blank" rel="noopener">installation methods</a>, but I like <a href="https://chocolatey.org/" target="_blank" rel="noopener">Chocolately</a>.</p>
+<p>The mkcert site has many <a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert#installation">installation methods</a>, but I like <a target="_blank" rel="noopener" href="https://chocolatey.org/">Chocolately</a>.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">choco install mkcert
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
@@ -286,7 +286,7 @@ The certificate is at "./127.0.0.1.pem" and the key at "./127.0.0.1-key.pem" ✅
 <ol>
 <li>Install Azurite</li>
 </ol>
-<p>We’ll use npm here, but you have other options listed on the <a href="https://github.com/Azure/Azurite#getting-started" target="_blank" rel="noopener">Azurite install page</a>.</p>
+<p>We’ll use npm here, but you have other options listed on the <a target="_blank" rel="noopener" href="https://github.com/Azure/Azurite#getting-started">Azurite install page</a>.</p>
 <pre class="line-numbers language-bash"><code class="language-bash">npm install azurite
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2">
@@ -305,23 +305,23 @@ Azurite Queue service is successfully listening at https://127.0.0.1:10001
 <h2 id="Azure-CLI-Setup"><a class="header-anchor" href="#Azure-CLI-Setup"></a>Azure CLI Setup</h2>
 <p>To avoid having to create service principals for local development, we’ll install the Azure CLI and login.</p>
 <ol>
-<li>Install the Azure CLI <a href="https://aka.ms/azcliget" target="_blank" rel="noopener">https://aka.ms/azcliget</a></li>
+<li>Install the Azure CLI <a target="_blank" rel="noopener" href="https://aka.ms/azcliget">https://aka.ms/azcliget</a></li>
 <li>Run <code>az login</code> to login to the Azure CLI.</li>
 </ol>
-<p>NOTE: You’ll need to install the latest Azure Identity preview for Azure CLI authentication integratino with the Azure SDKs to work. See <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
+<p>NOTE: You’ll need to install the latest Azure Identity preview for Azure CLI authentication integratino with the Azure SDKs to work. See <a target="_blank" rel="noopener" href="https://aka.ms/azsdk/releases">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
 <h2 id="Azure-SDK-Setup"><a class="header-anchor" href="#Azure-SDK-Setup"></a>Azure SDK Setup</h2>
-<p>Now, we’ll run some code that hits our Azurite HTTPS endpoints.  All of the following code can be found here: <a href="https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer" target="_blank" rel="noopener">https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer</a></p>
-<p>NOTE: You will need the Azure Identity preview versions for this to work with Azure CLI Credentials, see <a href="https://aka.ms/azsdk/releases" target="_blank" rel="noopener">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
+<p>Now, we’ll run some code that hits our Azurite HTTPS endpoints.  All of the following code can be found here: <a target="_blank" rel="noopener" href="https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer">https://github.com/jongio/azure-storage-azurite-azuresdks-storage-explorer</a></p>
+<p>NOTE: You will need the Azure Identity preview versions for this to work with Azure CLI Credentials, see <a target="_blank" rel="noopener" href="https://aka.ms/azsdk/releases">https://aka.ms/azsdk/releases</a> for the latest SDK versions.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">var blobHost = Environment.GetEnvironmentVariable("AZURE_STORAGE_BLOB_HOST");  // 127.0.0.1:10000
 var account = Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"); // devstoreaccount1
 var container = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONTAINER");
 var emulator = account == "devstoreaccount1";
-var blobBaseUri = $"https://{(emulator ? $"{blobHost}/{account}" : $"{account}.{blobHost}")}/";
-var blobContainerUri = $"{blobBaseUri}{container}";
+var blobBaseUri = $"https://&amp;#123;(emulator ? $"&amp;#123;blobHost&amp;#125;/&amp;#123;account&amp;#125;" : $"&amp;#123;account&amp;#125;.&amp;#123;blobHost&amp;#125;")&amp;#125;/";
+var blobContainerUri = $"&amp;#123;blobBaseUri&amp;#125;&amp;#123;container&amp;#125;";
 
 // Generate random string for blob content and file name
 var content = Guid.NewGuid().ToString("n").Substring(0, 8);
-var file = $"{content}.txt";
+var file = $"&amp;#123;content&amp;#125;.txt";
 
 // With container uri and DefaultAzureCredential
 // Since we are using the Azure Identity preview version, DefaultAzureCredential will use your Azure CLI token.
@@ -342,7 +342,7 @@ await client.UploadBlobAsync(file, stream);
 <ol>
 <li>Install Azure Storage Explorer</li>
 </ol>
-<p>Go to the <a href="https://azure.microsoft.com/en-us/features/storage-explorer/" target="_blank" rel="noopener">Azure Storage Explorer</a> install page and install it.</p>
+<p>Go to the <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/features/storage-explorer/">Azure Storage Explorer</a> install page and install it.</p>
 <ol start="2">
 <li>Import SSL Certificate</li>
 </ol>
@@ -553,7 +553,7 @@ await client.UploadBlobAsync(file, stream);
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -91,7 +91,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,32 +205,32 @@
             <p>While building our Commerce Server 2007 solution it made sense to wrap the LineItem class to easily access the weakly typed indexer accessible properties (which are exposed as object).</p>
 <p>Because the underlying datatype could have been anything (ref/value type, nullable, custom) I created a helper method that accepts an object value and returns the value casted to the appropriate type.  The can obviously be used in many contexts so I thought I’d share.</p>
 <pre class="line-numbers language-csharp"><code class="language-csharp">public static T ConvertTo(object value)
-{
+&amp;#123;
     // check for value = null, thx alex
 
     Type t = typeof(T);
 
     // do we have a nullable type?
     if (t.IsGenericType &amp;&amp; t.GetGenericTypeDefinition().Equals(typeof(Nullable&lt;&gt;)))
-    {
+    &amp;#123;
         NullableConverter nc = new NullableConverter(t);
         t = nc.UnderlyingType;
-    }
+    &amp;#125;
 
     if (t.IsEnum) // if enum use parse
         return (T)Enum.Parse(t, value.ToString(), false);
     else
-    {
+    &amp;#123;
         // if we have a custom type converter then use it
         TypeConverter td = TypeDescriptor.GetConverter(t);
         if (td.CanConvertFrom(value.GetType()))
-        {
+        &amp;#123;
             return (T)td.ConvertFrom(value);
-        }
+        &amp;#125;
         else // otherwise use the changetype
             return (T)Convert.ChangeType(value, t);
-    }
-}
+    &amp;#125;
+&amp;#125;
 
 DateTime dt = TypeConversionUtility.ConvertTo(dateVal);
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -404,7 +404,7 @@ DateTime dt = TypeConversionUtility.ConvertTo(dateVal);
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my

@@ -24,12 +24,12 @@
     
     <meta name="keywords" content="onedrive" />
     
-    <meta name="description" content="I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format OneDrive - {">
+    <meta name="description" content="I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format OneDrive - &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to rename or remove spaces from OneDrive folder name">
 <meta property="og:url" content="https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/index.html">
 <meta property="og:site_name" content="Jon Gallant">
-<meta property="og:description" content="I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format OneDrive - {">
+<meta property="og:description" content="I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format OneDrive - &amp;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://blog.jongallant.com/2020/01/onedrive-rename-remove-spaces-from-folder-name/000036.png">
 <meta property="article:published_time" content="2020-01-08T11:43:20.000Z">
@@ -92,7 +92,7 @@
 </script>
     
 
-<link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="/css/prism-vsc-dark-plus.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
@@ -205,10 +205,10 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format <code>OneDrive - {Name}</code>. Which causes endless issues as a dev, such as running <code>tox</code> or long file name issues.</p>
+            <p>I have two OneDrive accounts, one for personal, one for work. When you have two accounts on the same machine, OneDrive automatically creates a folder for the second account in this format <code>OneDrive - &#123;Name&#125;</code>. Which causes endless issues as a dev, such as running <code>tox</code> or long file name issues.</p>
 <p>My first attempt at this took me down the path of editing the registry, basically I found all occurrences of <code>OneDrive - Microsoft</code> and replaced it with <code>OneDriveMS</code> - but that’s a lot of work to do on every machine and error prone.</p>
-<p>I googled my way to a better solution, and giving credit, I found a good solution here: <a href="https://superuser.com/a/1512052" target="_blank" rel="noopener">https://superuser.com/a/1512052</a>. I’m blogging it because I’m hoping the SEO of this page helps you out.  So, while this post is titled “rename or remove spaces” we aren’t going to actually do that - I just gave it that title so you could easily find it.</p>
-<p>All you have to do is create a junction link from the name you want to the name of the OneDrive folder via the following <code>mklink</code> command. You can learn more about mklink here: <a href="https://en.wikipedia.org/wiki/NTFS_links" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/NTFS_links</a>. I personally love this solution because I don’t have to mess with the registry and OneDrive just works as is.</p>
+<p>I googled my way to a better solution, and giving credit, I found a good solution here: <a target="_blank" rel="noopener" href="https://superuser.com/a/1512052">https://superuser.com/a/1512052</a>. I’m blogging it because I’m hoping the SEO of this page helps you out.  So, while this post is titled “rename or remove spaces” we aren’t going to actually do that - I just gave it that title so you could easily find it.</p>
+<p>All you have to do is create a junction link from the name you want to the name of the OneDrive folder via the following <code>mklink</code> command. You can learn more about mklink here: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NTFS_links">https://en.wikipedia.org/wiki/NTFS_links</a>. I personally love this solution because I don’t have to mess with the registry and OneDrive just works as is.</p>
 <p>Here’s the generic command:<br>
 <code>mklink /J desired_name &quot;OneDrive - company</code></p>
 <p>Here’s what I used:<br>
@@ -397,7 +397,7 @@
                     <a href="/" class="logo-n"></a>
                 </h1>
                 <p>&copy;
-                    2022
+                    2023
                     Jon Gallant
                 </p>
                 <p>Disclaimer: The opinions expressed herein are my own personal opinions and do not represent my
